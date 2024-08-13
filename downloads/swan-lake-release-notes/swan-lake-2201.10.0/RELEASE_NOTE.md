@@ -30,18 +30,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### `http` package
-
-- Introduced support for server-sent events.
-- Introduced service contract type.
-- Introduced default status code response record type.
-
 ### Improvements
-
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -77,12 +66,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ### New features
 
-#### `persist` package
-
-- Introduced support for the h2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
-
-### Improvements
-
 #### `data.jsondata` package
 
 - Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
@@ -94,11 +77,127 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+#### `data.yaml` package
+
+The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
+
+```ballerina
+import ballerina/data.yaml;
+import ballerina/io;
+
+type ServerConfig record {|
+    string host;
+    int port;
+    int[2] remotePorts;
+    DatabaseConfig database;
+|};
+
+type DatabaseConfig record {|
+    string dbName;
+    string username;
+|};
+
+public function main() returns error? {
+    // Similar to content read from a YAML file.
+    string yamlString = string `
+        host: "localhost"
+        port: 8080
+        remotePorts: [9000, 9001, 9002, 9003]
+        protocol: "http"
+        database:
+          dbName: "testdb"
+          username: "dbuser"
+          password: "dbpassword"`;
+
+    // Based on the expected type, it parses the YAML string to selectively construct the record value.
+    ServerConfig serverConfig = check yaml:parseString(yamlString);
+    io:println(serverConfig);
+}
+```
+
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract types.
+- Introduced the default status code response record type.
+
+#### `ldap` package
+
+- Added support for the main operation types in LDAP.
+
+#### `persist` package
+
+- Introduced support for the h2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
+
+### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
+
+#### `jwt` package
+
+- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`.
+
+    Previous `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+    ```
+
+    New `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|crypto:PrivateKey|string config?;
+    |};
+    ```
+
+    Previous `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string certFile?;
+    |};
+    ```
+
+    New `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+    ```
+
+    >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
+
 #### `java.jdbc` package
 
 - Updated the `datasourceName` and `properties` field in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
 
 #### `xslt` package
+
 - Added parameter passing support for xslt transformations.
 
 ### Deprecations

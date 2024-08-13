@@ -98,6 +98,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 - Updated the `datasourceName` and `properties` field in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
 
+#### `xslt` package
+- Added parameter passing support for xslt transformations.
+
 ### Deprecations
 
 ### Bug fixes

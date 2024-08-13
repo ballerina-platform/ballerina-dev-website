@@ -127,7 +127,7 @@ public function main() returns error? {
 
 #### `persist` package
 
-- Introduced support for the h2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
+- Introduced support for the H2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
 
 ### Improvements
 
@@ -194,7 +194,7 @@ public function main() returns error? {
 
 #### `java.jdbc` package
 
-- Updated the `datasourceName` and `properties` field in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
+- Updated the `datasourceName` and `properties` fields in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
 
 #### `xslt` package
 
@@ -228,16 +228,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### Persist tool
 
-- Introduced a new option to the `persist generate` command to give test datastore. This will generate separate client which can use to mock the actual client.
-    - `--test-datastore` - This is optional and used to indicate the test data store. The possible options are h2 datastore for SQL datastores and inmemory datastore for non-SQL datastores.
+- Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
   For example,
     ```
     $ bal persist generate --datastore mysql --module db --test-datastore h2
     ```
 
-- Introduced a new option to the `persist add` command to give test datastore. This will generate separate client which can use to mock the actual client.
-  - `--test-datastore` - This is optional and used to indicate the test data store. The possible options are h2 datastore for SQL datastores and inmemory datastore for non-SQL datastores.
+- Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
   For example,
     ```

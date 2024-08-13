@@ -194,11 +194,11 @@ public function main() returns error? {
 
 #### `java.jdbc` package
 
-- Updated the `datasourceName` and `properties` fields in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
+- Updated the `datasourceName` and `properties` fields in the `jdbc:Options` record to be optional fields instead of fields of optional types, to allow users to use the `jdbc:Options` type in configurable variables.
 
 #### `xslt` package
 
-- Added parameter passing support for xslt transformations.
+- Added parameter passing support for XSLT transformations.
 
 ### Deprecations
 
@@ -228,13 +228,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### Persist tool
 
-- Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+- Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
     ```
     $ bal persist generate --datastore mysql --module db --test-datastore h2
     ```
 
-- Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+- Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
     ```
     $ bal persist add --datastore mysql --module db --test-datastore h2

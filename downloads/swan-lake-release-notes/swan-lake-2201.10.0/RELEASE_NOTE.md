@@ -230,14 +230,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 - Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
-  For example,
     ```
     $ bal persist generate --datastore mysql --module db --test-datastore h2
     ```
 
 - Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can use to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
 
-  For example,
     ```
     $ bal persist add --datastore mysql --module db --test-datastore h2
     ```

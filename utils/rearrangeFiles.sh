@@ -35,15 +35,15 @@ rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-central/ ./o
 
 #Edit the sitemap
 sed -i '' 's/development-tutorials\///g' ./out/sitemap.xml
-sed -i '' 's/integration\///g' ./out/sitemap.xml
+sed -i '' 's/\/integration\//\//g' ./out/sitemap.xml
 sed -i '' 's/integration-tools\///g' ./out/sitemap.xml
 sed -i '' 's/troubleshoot-the-runtime\///g' ./out/sitemap.xml
-sed -i '' 's/references\///g' ./out/sitemap.xml
-sed -i '' 's/resources\///g' ./out/sitemap.xml
+sed -i '' 's/\/learn\/references\//\/learn\//g' ./out/sitemap.xml
+sed -i '' 's/\/resources\//\//g' ./out/sitemap.xml
 sed -i '' 's/policies\///g' ./out/sitemap.xml
 
 sed -i '' 's/build-a-graalvm-executable\///g' ./out/sitemap.xml
-sed -i '' 's/ballerina-central\///g' ./out/sitemap.xml
+sed -i '' 's/\/ballerina-central\//\//g' ./out/sitemap.xml
 sed -i '' 's/ballerina-persist\///g' ./out/sitemap.xml
 sed -i '' 's/java-interoperability\///g' ./out/sitemap.xml
 sed -i '' 's/test-document-the-code\///g' ./out/sitemap.xml
@@ -54,5 +54,4 @@ sed -i '' 's/featured-scenarios\///g' ./out/sitemap.xml
 sed -i '' 's/learn-the-language\///g' ./out/sitemap.xml
 sed -i '' 's/build-and-run\///g' ./out/sitemap.xml
 sed -i '' 's/run-in-the-cloud\///g' ./out/sitemap.xml
-
 

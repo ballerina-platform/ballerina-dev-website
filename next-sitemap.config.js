@@ -18,10 +18,6 @@ var traverseFolder = function (dir) {
   return results;
 };
 
-
-const files = traverseFolder("public/spec/lang");
-
-
 const config = {
     siteUrl: 'https://ballerina.io/',
     generateRobotsTxt: false, // (optional)

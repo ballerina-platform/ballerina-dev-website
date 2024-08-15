@@ -164,7 +164,7 @@ const CardGrid = React.forwardRef((props, ref) => {
                                 {propsData.slice(0, limit).map((_, idx) => {
                                     const encodedEmail = _.advisor.email ? btoa(_.advisor.email) : '';
                                     return (
-                                        <>
+                                        <React.Fragment key={idx}>
                                         {/* <Col className={`${styles.useCaseCard} mt-4`} key={_.title.replace(/ /g, '-').toLowerCase()}>
                                             <div className={styles.cardWrapper}>
                                                 <div>
@@ -213,7 +213,7 @@ const CardGrid = React.forwardRef((props, ref) => {
                                             </div>
                                         </Col> */}
 
-<Col xl={{ span: 12 }} style={{ display: "flex", flexWrap: "row wrap" }}>
+<Col xl={{ span: 12 }} style={{ display: "flex", flexWrap: "row wrap" }} key={idx}>
 
         <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
           <Row className="g-0 align-items-center">
@@ -278,7 +278,7 @@ const CardGrid = React.forwardRef((props, ref) => {
         </Card>
 
       </Col>
-                                        </>
+                                        </React.Fragment>
                                     );
                                 })}
 

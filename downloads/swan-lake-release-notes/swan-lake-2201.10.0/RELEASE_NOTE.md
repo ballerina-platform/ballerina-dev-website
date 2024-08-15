@@ -64,48 +64,33 @@ The following are now allowed.
 
 ```ballerina
 [int, int...] tuple1 = [1, 2];
-int val1 = tuple1.shift();          // 1
+int val1 = tuple1.shift();
 
-[string, string...] tuple2 = ["hello"];
-tuple2.unshift("world", "cat");     // ["hello", "world", "cat"]
-
-[int, string, int...] tuple3 = [1, "hello", 4];
-var val3 = tuple3.pop();            // 4
-
-[int,string, float...] tuple4 = [7, "hello", 67.5, 89.7];
-var val4 = tuple4.remove(2);        // 67.5
+[int, string, float...] tuple2 = [7, "hello", 67.5, 89.7];
+int|string|float val2 = tuple2.remove(2);
 ```
 
 The following examples will result in errors.
 
 ```ballerina
-[int, string...] tuple1 = [1, "hello"];
-var val1 = tuple1.shift();          // inherent type violation
+[string, string...] tuple1 = ["hello"];
+tuple1.unshift(154);
 
-[int, int] tuple2 = [1, 2];
-var val2 = tuple2.shift();          // inherent type violation
-
-[string, string...] tuple3 = ["hello"];
-tuple3.unshift(154);                // inherent type violation
-
-[int, string, int] tuple4 = [1, "hello", 4];
-var val4 = tuple4.pop();            // inherent type violation
-
-[int,string, float...] tuple5 = [7, "hello", 67.5, 89.7];
-var val5 = tuple5.remove(1);        // inherent type violation
+[int, string, float...] tuple2 = [7, "hello", 67.5, 89.7];
+int|string|float val2 = tuple2.remove(1);
 ```
 
-### New runtime Java APIs
+#### New runtime Java APIs
 
-#### A runtime Java API to check if remote management is enabled
+##### A runtime Java API to check if remote management is enabled
 
-A new runtime Java API is added to check if remote management is enabled, via a build option.
+A new runtime Java API is added to check if remote management is enabled via a build option.
 
 ```java
 boolean isRemoteManagementEnabled();
 ```
 
-The above API can be called via a Ballerina environment instance as follows.
+The above API can be called via a Ballerina `Environment` instance as follows.
 
 ```java
 import io.ballerina.runtime.api.Repository;

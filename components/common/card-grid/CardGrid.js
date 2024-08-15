@@ -255,7 +255,7 @@ const CardGrid = React.forwardRef((props, ref) => {
 
     <div className={styles.cardLinks}>
                                                     {getTechnologies(_.tags)}
-                                                    <p>Advisor: <a href={_.advisor.x} className={styles.cDownload}>
+                                                    <p>Mentor: <a href={_.advisor.x} className={styles.cDownload}>
                                                         {_.advisor.name}
                                                     </a></p>
                                                     {props.section === "Available projects" ? (

@@ -546,37 +546,6 @@ components:
 ...
 ```
 
-
-
-
-## OpenAPI validator compiler plugin
-
-The OpenAPI Validator Compiler plugin validates a service against a given OpenAPI contract. The Compiler Plugin gets activated if a service has the `@openapi:ServiceInfo` annotation. This plugin compares the service and the OpenAPI contract and validates both against a pre-defined set of validation rules. If any of the rules fail, the plugin provides compilation errors.
-
-The `@openapi:ServiceInfo` annotation is used to bind the service with an OpenAPI contract. You need to add this annotation to the service file with the required values for enabling the validations.
-
->**Note:** Providing a `contract` path attribute is mandatory for the OpenAPI validator. The other attributes are optional.
-
-The following is an example of the annotation usage in the Ballerina file.
-
-```ballerina
-import ballerina/openapi;
-
-@openapi:ServiceInfo {
-    contract: "/path/to/openapi.json|yaml",
-    tags: ["store"],
-    operations: ["op1", "op2"],
-    failOnErrors: true // (default value => true),
-    excludeTags: ["pets", "user"],
-    excludeOperations: ["op1", "op2"]
-}
-service /greet on new http:Listener(9090) {
-  ...
-}
-```
-
->**Info:** For annotation attributes details, see [Annotation reference](#annotation-reference).
-
 ## Generate Ballerina clients from OpenAPI definitions
 
 The client generated from an OpenAPI definition can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 

@@ -173,8 +173,6 @@ of which the `absolute-resource-path` is `/hello`.
 
 You can use the `@openapi:ServiceInfo` annotation for specifying the meta data such as title, description, email, contact information and version information of the OpenAPI contract as follows.
 
-
-
 ```ballerina
 @openapi:ServiceInfo {
     contract: "/path/to/openapi.json|yaml",
@@ -184,7 +182,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
 ```
 >**Info:** These `contract`, `title`, `'version` and all the other fields are all optional attributes and can be used as described below.
 
-| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+| Field Attributes      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `contract: string?` | A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.                          | Optional          |
 | `title: string?`    | You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                                                    | Optional          |
@@ -195,7 +193,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
 | `contactURL: string?` | You can use this to add the URL to a web page with more information about the API, the provider, or support. | Optional |
 | `termsOfService: string?` | You can use this to add the URL details to the terms of service for the API.  | Optional |
 | `licenseName: string?` | You can use this to add the name of the license under which the API is provided. | Optional |
-| `licenseURL: string?` | You can use this to add the URL details regarding the full text of the license.
+| `licenseURL: string?` | You can use this to add the URL details regarding the full text of the license. | Optional |
 
 For example,
 
@@ -203,7 +201,8 @@ For example,
 ```ballerina
 @openapi:ServiceInfo {
     title: "Store Management APIs",
-    'version: "1.1.0"
+    'version: "1.1.0",
+    email: "mark@abc.com"
 }
 service /greet on new http:Listener(9090) {
 ...
@@ -215,12 +214,50 @@ openapi: 3.0.1
 info:
   title: Store Management APIs
   version: 1.1.0
+  contact:
+    email: mark@abc.com
 ...
 ```
 #### Using `@openapi:ResourceInfo` annotation
 
-You can use the `@openapi:ResourceInfo` annotation for specifying the meta data such as operation id, summary, tags information and example details of the OpenAPI operation as follows.
+You can use the `@openapi:ResourceInfo` annotation for specifying the meta data such as operation id, summary, tags information and example details of the OpenAPI operation as follows. This annotation used to be attached with the resource functions.
 
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `operationId: string?` |  You can use this to update operation Id in generated OAS | Optional |
+| `summary: string?` | This helps you to add summary for the particuler operation in OAS | Optional |
+| `tags: string[]?` | Specifies the tag in the list map to the tags list in OpenAPI operation | Optional |  
+
+For example,
+**Ballerina resource function with the OpenAPI annotation**
+
+```ballerina
+    @openapi:ResourceInfo {
+       operationId: "createStoreData"
+       summary: "API for adding store amount",
+       tags: ["retail", "rate"]
+    }
+    resource function post store(Inventory payload) returns string? {
+    }
+```
+**Generated OpenAPI contract with the given details**
+
+```yaml
+...
+paths:
+  /store:
+    post:
+      tags:
+      - retail
+      - rate
+      summary: API for adding store amount
+      operationId: createStoreData
+      requestBody:
+        content:
+          application/json:
+            schema:
+    ...
+```
 
 ## OpenAPI validator compiler plugin
 
@@ -362,13 +399,13 @@ The attributes of the annotation are optional and can be used for each particula
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `Contract: string?`            | Provides a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                                              | Mandatory          |
-| `Tags: string[]?`              | Specifies the tag in the list for the compiler to validate resources against operations that are tagged with it. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                                           | Optional          |
-| `Operations: string[]?`        | Contains a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources.                          | Optional          |
-| `ExcludeTags: string[]?`       | Stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                                              | Optional          |
-| `ExcludeOperations: string[]?` | Specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                                                | Optional          |
-| `FailOnErrors: boolean?`       | Turns off the validation when used with `false` in the annotation.                                                                                                                                                                                                                                                                        | Optional          |
-| `Title: string?`               | Adds the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                  | Optional          |
-| `Version: string?`             | Adds the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                 | Optional          |
-| `Embed: string?`               | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                                                   | Optional          |
+| `contract: string?`            | Provides a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                                              | Mandatory          |
+| `tags: string[]?`              | Specifies the tag in the list for the compiler to validate resources against operations that are tagged with it. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                                           | Optional          |
+| `operations: string[]?`        | Contains a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources.                          | Optional          |
+| `excludeTags: string[]?`       | Stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                                              | Optional          |
+| `excludeOperations: string[]?` | Specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                                                | Optional          |
+| `failOnErrors: boolean?`       | Turns off the validation when used with `false` in the annotation.                                                                                                                                                                                                                                                                        | Optional          |
+| `title: string?`               | Adds the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                  | Optional          |
+| `version: string?`             | Adds the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                 | Optional          |
+| `embed: string?`               | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                                                   | Optional          |
 

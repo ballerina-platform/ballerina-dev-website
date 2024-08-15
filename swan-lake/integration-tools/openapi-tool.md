@@ -258,6 +258,296 @@ paths:
             schema:
     ...
 ```
+### Export with a given example information
+
+An API specification can include examples for parameters, responses, schemas (data models), individual properties in
+schemas and request bodies. Following the below options, you can generate OAS with examples.
+
+### Export example using `@openapi:ResourceInfo` annotation
+
+#### Add response examples
+
+Here, you need to provide example details according to the structure shown in the sample below.
+
+Structure Explanation:
+ 1. Examples Container: The **examples** key is a container for all example details related to responses.
+ 2. Response Object: Inside **examples**, the **response** key groups examples that pertain to response status codes.
+ 3. Status Code as Key: Under response, each key is a status code (e.g., "200").
+ 4. MediaType as Key: Under each status code, the **examples** key contains another map where the keys are media types (e.g., "application/json").
+ 5. Record with Example Details: 
+    - For each media type, you can provide examples using either the **value** field or the **filePath** field.
+        - The **value** field is used to include the example inline.
+        - The **filePath** field is used to specify a .json file that contains the example.
+
+```ballerina
+...
+service /convert on new http:Listener(9090) {
+...
+    @openapi:ResourceInfo {
+       operationId: "getStoreData",
+       examples: {
+            "response": {
+                "200": {
+                    "examples": {
+                        "application/json": {
+                            "store01": {
+                                "value": {
+                                    "materials": "Wood",
+                                    "status": "InProgress",
+                                    "Item": "Table",
+                                    "amount": 120
+                                }
+                            },
+                            "store02": {
+                                "filePath": "storeExamples.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    resource function get store() returns Inventory? {
+    }
+...
+}
+```
+**Generated OpenAPI contract with the given details**
+```yaml
+paths:
+  /store:
+    get:
+      operationId: getStoreData
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                store01:
+                  value:
+                    materials: Wood
+                    status: InProgress
+                    Item: Table
+                    amount: 120
+                store02:
+                  value:
+                    Item: Table
+                    amount: 100
+                    materials: Plastic
+                    status: Done
+        "202":
+          description: Accepted
+```
+#### Add request examples
+Here, you need to provide example details according to the structure shown in the sample below.
+
+ 1. Examples Container: The **examples** key is a container for all example details related to request bodies.
+ 2. Request Body Object: Inside examples, the **requestBody** key groups examples that pertain to request bodies.
+ 3. MediaType as Key: Under **requestBody**, the key is the media type (e.g., "application/json").
+ 4. Example Details: For each media type, examples can be provided using either the value field (for inline examples) or the filePath field (for external JSON files).
+
+```ballerina
+...
+@openapi:ResourceInfo {
+        examples: {
+            "requestBody": {
+                "application/json": {
+                    "payloadStore01": {
+                        "filePath": "storeExamples.json"
+                    },
+                    "PayloadStore02": {
+                        "value": {
+                            "materials": "Wood",
+                            "status": "InProgress",
+                            "Item": "Table",
+                            "amount": 120
+                        }
+                    }
+                }
+            }
+        }
+    }
+    resource function post store(Inventory payload) {
+    }
+...
+```
+
+**Generated OpenAPI contract with the given details**
+```yaml
+...
+paths:
+ /store:
+    post:
+      operationId: postStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+            examples:
+              payloadStore01:
+                value:
+                  Item: Table
+                  amount: 100
+                  materials: Plastic
+                  status: Done
+              PayloadStore02:
+                value:
+                  materials: Wood
+                  status: InProgress
+                  Item: Table
+                  amount: 120
+        required: true
+      responses:
+        "202":
+          description: Accepted
+...
+```
+
+### Export example using `@openapi:Example` annotation
+
+This annotation is used to render a single example in the OpenAPI Specification. It is attached to parameters, record types and record field.
+
+#### Ballerina code sample for object level example mapping
+
+```ballerina
+@openapi:Example {
+  value: {
+    id: 10,
+    name: "Jessica Smith"
+  }
+}
+type User record {
+  int id;
+  string name
+}
+```
+
+**Generated OpenAPI contract with the given details**
+
+```
+...
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      example:
+        id: 10
+        name: Jessica Smith
+...
+```
+
+#### Ballerina code sample for parameter level example mapping
+
+```ballerina
+...
+resource function get path(@openapi:Example{value: "approved"} "approved"|"pending"|"closed"|"new" status) {
+}
+...
+```
+
+**Generated OpenAPI contract with the given details**
+
+```yaml
+...
+parameters:
+  - in: query
+    name: status
+    schema:
+      type: string
+      enum: [approved, pending, closed, new]
+      example: approved
+...
+```
+#### Ballerina code sample for object level example mapping
+
+```ballerina
+type User record {
+   @openapi:Example { value: 1 }
+   int id;
+   @openapi:Example { value: "Jessica Smith" }
+   string name;
+}
+```
+**Generated OpenAPI contract with the given details**
+
+```yaml
+components:
+  schemas:
+    User:    # Schema name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1          # Property example
+        name:
+          type: string
+          example: Jessica Smith  # Property example
+```
+
+### Export example using `@openapi:Examples` annotation
+
+This annotation is used to render list of examples in the OpenAPI Specification. It is attached to parameters and record types.
+
+#### Ballerina code sample for object level example mapping
+
+```yaml
+@openapi:Examples {
+  Jessica: { // Example 1
+    value: {
+       id: 10,
+       name: "Jessica Smith"
+    }
+  },
+  Ron: { // Example 2
+    value: {
+       id: 11,
+       name: "Ron Stewart"
+    }
+  } 
+}
+type User record {
+  int id;
+  string name
+}
+```
+
+**Generated OpenAPI contract with the given details**
+
+```yaml
+...
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      examples:
+          Jessica:   # Example 1
+            value:
+              id: 10
+              name: Jessica Smith
+          Ron:       # Example 2
+            value:
+              id: 11
+              name: Ron Stewart
+...
+```
+
+
+
 
 ## OpenAPI validator compiler plugin
 

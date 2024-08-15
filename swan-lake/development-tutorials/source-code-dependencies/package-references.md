@@ -554,7 +554,7 @@ The `tests/` directory contains unit tests for the module and tests the module i
 
 ## The `generated/` directory
 
-This directory contains generated Ballerina code. The `.bal` files at the root of the generated directory become a part of the default module. Any direct subdirectory becomes a module in the package. The files will logically merge into the existing modules during compilation. Any files added to the `resources` folder within the `generated/` directory will be recognized as resources for the package.
+This directory contains generated Ballerina code. The `.bal` files at the root of the generated directory become a part of the default module. Any direct subdirectory becomes a module in the package. The files will logically merge into the existing modules during compilation. Any files added to the `resources` directory within the `generated/` directory will be recognized as resources for the package.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 

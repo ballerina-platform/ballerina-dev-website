@@ -125,6 +125,10 @@ public function main() returns error? {
 
 - Added support for the main operation types in LDAP.
 
+#### `persist` package
+
+- Introduced support for the H2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
+
 ### Improvements
 
 #### `http` package
@@ -188,6 +192,14 @@ public function main() returns error? {
 
     >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
 
+#### `java.jdbc` package
+
+- Updated the `datasourceName` and `properties` fields in the `jdbc:Options` record to be optional fields instead of fields of optional types, to allow users to use the `jdbc:Options` type in configurable variables.
+
+#### `xslt` package
+
+- Added parameter passing support for XSLT transformations.
+
 ### Deprecations
 
 ### Bug fixes
@@ -213,6 +225,22 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
     ```
 
 #### OpenAPI tool
+
+#### Persist tool
+
+- Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+
+    ```
+    $ bal persist generate --datastore mysql --module db --test-datastore h2
+    ```
+
+- Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+
+    ```
+    $ bal persist add --datastore mysql --module db --test-datastore h2
+    ```
+
+- Added introspection support for `mssql` and `postgres` databases to facilitate the generation of the persist data model.
 
 ### Improvements
 

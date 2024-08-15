@@ -67,7 +67,7 @@ The command-line arguments below can be used with the command for each particula
 | `--client-methods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
 | `--status-code-binding`| This option can be used in the client generation to generate the client methods with status code response binding. | Optional |
 | `--mock` |  This option can be used in the client generation to generate a mock client for the given OpenAPI contract. | Optional |
-|`--with-service-contract`| This option can be used to generate the service contract type for thegiven OpenAPI contract. | Optional |
+|`--with-service-contract`| This option can be used to generate the service contract type for the given OpenAPI contract. | Optional |
 | `--single-file` | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
 | `--use-sanitized-oas` | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow the Ballerina language best practices. | Optional |
 
@@ -167,9 +167,9 @@ $ bal openapi -i helloService.bal -s "/hello"
 This generates the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
 of which the `absolute-resource-path` is `/hello`. 
 
-### Export with a given meta data information
+### Export with a given metadata information
 
-#### Using `@openapi:ServiceInfo` annotation
+#### Export with metadata using the `@openapi:ServiceInfo` annotation.
 
 You can use the `@openapi:ServiceInfo` annotation for specifying the meta data such as title, description, email, contact information and version information of the OpenAPI contract as follows.
 
@@ -182,18 +182,18 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
 ```
 >**Info:** These `contract`, `title`, `'version` and all the other fields are all optional attributes and can be used as described below.
 
-| Field Attributes      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `contract: string?` | A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.                          | Optional          |
-| `title: string?`    | You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                                                    | Optional          |
-| `version: string?`  | You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                                                                         | Optional          |
-| `description: string?` | You can use this to add the description of the `info` section in the generated OpenAPI contract. brief description of the API, outlining its purpose, features, and any other relevant details that help users understand what the API does and how to use it.  | Optional |
-| `email: string?` | The email address to contact the API provider or support | Optional |
-| `contactName: string?` | You can use this attribution to add the name of the person or organization responsible for the API. | Optional |
-| `contactURL: string?` | You can use this to add the URL to a web page with more information about the API, the provider, or support. | Optional |
-| `termsOfService: string?` | You can use this to add the URL details to the terms of service for the API.  | Optional |
-| `licenseName: string?` | You can use this to add the name of the license under which the API is provided. | Optional |
-| `licenseURL: string?` | You can use this to add the URL details regarding the full text of the license. | Optional |
+| Annotation Field          | Description                                                                                                                                                                                                                                                                                                                                                           | Mandatory/Optional |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `contract: string?`       | A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.     | Optional           |
+| `title: string?`          | You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                            | Optional           |
+| `version: string?`        | You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                 | Optional           |
+| `description: string?`    | You can use this to add the description of the `info` section in the generated OpenAPI contract. Brief description of the API, outlining its purpose, features, and any other relevant details that help users understand what the API does and how to use it.                                                                                                        | Optional           |
+| `email: string?`          | You can use this to add the email address to `contact` section in OpenAPI contract. This desribes email details for the API provider or support .                                                                                                                                                                                                                     | Optional           |
+| `contactName: string?`    | You can use this attribute to add the name of the person or organization responsible for the API.                                                                                                                                                                                                                                                                     | Optional           |
+| `contactURL: string?`     | You can use `contactURL` to add the URL to a web page with more information about the API, the provider, or support.                                                                                                                                                                                                                                                  | Optional           |
+| `termsOfService: string?` | You can use this to add the URL details to the terms of service for the API.                                                                                                                                                                                                                                                                                          | Optional           |
+| `licenseName: string?`    | You can use this to add the name of the license under which the API is provided.                                                                                                                                                                                                                                                                                      | Optional           |
+| `licenseURL: string?`     | You can use this to add the URL details regarding the full text of the license.                                                                                                                                                                                                                                                                                       | Optional           |
 
 For example,
 
@@ -218,17 +218,18 @@ info:
     email: mark@abc.com
 ...
 ```
-#### Using `@openapi:ResourceInfo` annotation
+#### Export with metadata using the `@openapi:ResourceInfo` annotation.
 
 You can use the `@openapi:ResourceInfo` annotation for specifying the meta data such as operation id, summary, tags information and example details of the OpenAPI operation as follows. This annotation used to be attached with the resource functions.
 
-| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+| Annotation Field      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `operationId: string?` |  You can use this to update operation Id in generated OAS | Optional |
+| `operationId: string?` |  You can use this to update operation Id in particuler operation in OpenAPI Specification(OAS) | Optional |
 | `summary: string?` | This helps you to add summary for the particuler operation in OAS | Optional |
-| `tags: string[]?` | Specifies the tag in the list map to the tags list in OpenAPI operation | Optional |  
+| `tags: string[]?` | Specifies the tag in the list map to the tags list in operation | Optional |  
 
 For example,
+
 **Ballerina resource function with the OpenAPI annotation**
 
 ```ballerina
@@ -258,7 +259,7 @@ paths:
             schema:
     ...
 ```
-### Export with a given example information
+### Export with given examples information
 
 An API specification can include examples for parameters, responses, schemas (data models), individual properties in
 schemas and request bodies. Following the below options, you can generate OAS with examples.
@@ -341,7 +342,8 @@ paths:
         "202":
           description: Accepted
 ```
-#### Add request examples
+#### Add request body examples
+
 Here, you need to provide example details according to the structure shown in the sample below.
 
  1. Examples Container: The **examples** key is a container for all example details related to request bodies.
@@ -406,6 +408,7 @@ paths:
           description: Accepted
 ...
 ```
+As explained in the example section, you can use this annotation for parameters, record fields, and record types.
 
 ### Export example using `@openapi:Example` annotation
 
@@ -498,7 +501,7 @@ components:
 
 This annotation is used to render list of examples in the OpenAPI Specification. It is attached to parameters and record types.
 
-#### Ballerina code sample for object level example mapping
+#### Ballerina code sample for object level examples mapping
 
 ```yaml
 @openapi:Examples {
@@ -646,6 +649,13 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
     excludeOperations: ["op1", "op2"],
     title: "store",
     'version: "0.1.0",
+    description: "API system description",
+    email: "mark@abc.com",
+    contactName: "ABC compaby",
+    contactURL: "http://mock-api-contact",
+    termsOfService: "http://mock-api-doc",
+    licenseName: "ABC",
+    licenseURL: "http://abc-license.com"
     embed: true // (default value => true)
 }
 service /greet on new http:Listener(9090) {
@@ -656,15 +666,22 @@ service /greet on new http:Listener(9090) {
 The attributes of the annotation are optional and can be used for each particular purpose as described below.  
 
 
-| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `contract: string?`            | Provides a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                                              | Mandatory          |
+| Command option                 | Description                                                                                                                                                                                                                                                                                                                               | Mandatory/Optional|
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `contract: string?`            | Provides a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                                              | Mandatory         |
 | `tags: string[]?`              | Specifies the tag in the list for the compiler to validate resources against operations that are tagged with it. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                                           | Optional          |
 | `operations: string[]?`        | Contains a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources.                          | Optional          |
 | `excludeTags: string[]?`       | Stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                                              | Optional          |
 | `excludeOperations: string[]?` | Specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                                                | Optional          |
 | `failOnErrors: boolean?`       | Turns off the validation when used with `false` in the annotation.                                                                                                                                                                                                                                                                        | Optional          |
-| `title: string?`               | Adds the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                  | Optional          |
+| `title: string?`               | Adds the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                   | Optional          |
 | `version: string?`             | Adds the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                                                 | Optional          |
+| `description: string?`         | You can use this to add the description of the `info` section in the generated OpenAPI contract. brief description of the API, outlining its purpose, features, and any other relevant details that help users understand what the API does and how to use it.                                                                            | Optional          |
+| `email: string?`               | You can use this to add the email address to `contact` section in OpenAPI contract. This desribes email details for the API provider or support .                                                                                                                                                                                         | Optional          |
+| `contactName: string?`         | You can use this attribute to add the name of the person or organization responsible for the API.                                                                                                                                                                                                                                         | Optional          |
+| `contactURL: string?`          | You can use `contactURL` to add the URL to a web page with more information about the API, the provider, or support.                                                                                                                                                                                                                      | Optional          |
+| `termsOfService: string?`      | You can use this to add the URL details to the terms of service for the API.                                                                                                                                                                                                                                                              | Optional          |
+| `licenseName: string?`         | You can use this to add the name of the license under which the API is provided.                                                                                                                                                                                                                                                          | Optional          |
+| `licenseURL: string?`          | You can use this to add the URL details regarding the full text of the license.                                                                                                                                                                                                                                                           | Optional          |
 | `embed: string?`               | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                                                   | Optional          |
 

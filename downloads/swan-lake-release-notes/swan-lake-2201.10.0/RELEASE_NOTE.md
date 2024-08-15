@@ -30,18 +30,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### `http` package
-
-- Introduced support for server-sent events.
-- Introduced service contract type.
-- Introduced default status code response record type.
-
 ### Improvements
-
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -87,6 +76,129 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
+
+#### `data.yaml` package
+
+The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
+
+```ballerina
+import ballerina/data.yaml;
+import ballerina/io;
+
+type ServerConfig record {|
+    string host;
+    int port;
+    int[2] remotePorts;
+    DatabaseConfig database;
+|};
+
+type DatabaseConfig record {|
+    string dbName;
+    string username;
+|};
+
+public function main() returns error? {
+    // Similar to content read from a YAML file.
+    string yamlString = string `
+        host: "localhost"
+        port: 8080
+        remotePorts: [9000, 9001, 9002, 9003]
+        protocol: "http"
+        database:
+          dbName: "testdb"
+          username: "dbuser"
+          password: "dbpassword"`;
+
+    // Based on the expected type, it parses the YAML string to selectively construct the record value.
+    ServerConfig serverConfig = check yaml:parseString(yamlString);
+    io:println(serverConfig);
+}
+```
+
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract types.
+- Introduced the default status code response record type.
+
+#### `ldap` package
+
+- Added support for the main operation types in LDAP.
+
+#### `persist` package
+
+- Introduced support for the H2 data store, mirroring the functionality provided for other supported SQL data stores like MySQL, MSSQL, and PostgreSQL.
+
+### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
+
+#### `jwt` package
+
+- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`.
+
+    Previous `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+    ```
+
+    New `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|crypto:PrivateKey|string config?;
+    |};
+    ```
+
+    Previous `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string certFile?;
+    |};
+    ```
+
+    New `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+    ```
+
+    >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
+
+#### `java.jdbc` package
+
+- Updated the `datasourceName` and `properties` fields in the `jdbc:Options` record to be optional fields instead of fields of optional types, to allow users to use the `jdbc:Options` type in configurable variables.
+
+#### `xslt` package
+
+- Added parameter passing support for XSLT transformations.
 
 ### Deprecations
 
@@ -180,6 +292,22 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
   $ bal openapi -i <yml file> --mode <client|service> --use-sanitized-oas
   ```
   
+#### Persist tool
+
+- Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+
+    ```
+    $ bal persist generate --datastore mysql --module db --test-datastore h2
+    ```
+
+- Introduced a new option to the `persist add` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.
+
+    ```
+    $ bal persist add --datastore mysql --module db --test-datastore h2
+    ```
+
+- Added introspection support for `mssql` and `postgres` databases to facilitate the generation of the persist data model.
+
 ### Improvements
 
 #### Language Server
@@ -204,6 +332,43 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ### New features
 
 ### Improvements
+
+- Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level have to be moved from modules to the package root to continue to be identified as resources.
+
+  >**Note:** Any resources within the current package, as well as those exported from package dependencies, can be accessed via an [external function](https://ballerina.io/learn/by-example/interface-to-external-code/).
+
+    * Old package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           ├── resources
+           │   └── open-api-spec.json
+           └── util.bal
+    ```
+
+    * New package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    │   └── open-api-spec.json
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           └── util.bal
+    ```
 
 - Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
 

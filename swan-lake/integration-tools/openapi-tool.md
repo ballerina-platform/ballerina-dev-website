@@ -32,6 +32,8 @@ $ bal openapi [-i | --input] <openapi-contract-file-path>
             [-n | --nullable]
             [--license] <license-file-path> 
             [--with-tests]
+            [--status-code-binding] [--mock] [--with-service-contract]
+            [--single-file] [--use-sanitized-oas]
 ```
 
 ### Ballerina to OpenAPI usage
@@ -63,6 +65,11 @@ The command-line arguments below can be used with the command for each particula
 | `-n \|--nullable` | If your OpenAPI specification includes JSON schema properties that are not marked as `nullable:true`, they may return as null in some responses. It results in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.<br><br>**E.g.,** `bal openapi -i <openapi-contract> [-n \|--nullable]`                          | Optional          |
 | `--with-tests`    | It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                                                                              | Optional          |
 | `--client-methods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
+| `--status-code-binding`| This option can be used in the client generation to generate the client methods with status code response binding. | Optional |
+| `--mock` |  This option can be used in the client generation to generate a mock client for the given OpenAPI contract. | Optional |
+|`--with-service-contract`| This option can be used to generate the service contract type for thegiven OpenAPI contract. | Optional |
+| `--single-file` | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
+| `--use-sanitized-oas` | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow the Ballerina language best practices. | Optional |
 
 ### Ballerina to OpenAPI command options
 
@@ -159,9 +166,12 @@ $ bal openapi -i helloService.bal -s "/hello"
 
 This generates the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
 of which the `absolute-resource-path` is `/hello`. 
-### Export with a given title and version
 
-You can use the `@openapi:ServiceInfo` annotation for specifying the title and version information of the OpenAPI contract as follows.
+### Export with a given meta data information
+
+#### Using `@openapi:ServiceInfo` annotation
+
+You can use the `@openapi:ServiceInfo` annotation for specifying the meta data such as title, description, email, contact information and version information of the OpenAPI contract as follows.
 
 
 
@@ -169,16 +179,23 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the title and v
 @openapi:ServiceInfo {
     contract: "/path/to/openapi.json|yaml",
     title: "Store Management",
-    'version: "0.1.0"
+    version: "0.1.0"
 }    
 ```
->**Info:** These `contract`, `title`, and `'version` are all optional attributes and can be used as described below.
+>**Info:** These `contract`, `title`, `'version` and all the other fields are all optional attributes and can be used as described below.
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `Contract: string?` | A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.                          | Optional          |
-| `Title: string?`    | You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                                                    | Optional          |
-| `Version: string?`  | You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                                                                         | Optional          |
+| `contract: string?` | A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content.                          | Optional          |
+| `title: string?`    | You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                                                    | Optional          |
+| `version: string?`  | You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                                                                         | Optional          |
+| `description: string?` | You can use this to add the description of the `info` section in the generated OpenAPI contract. brief description of the API, outlining its purpose, features, and any other relevant details that help users understand what the API does and how to use it.  | Optional |
+| `email: string?` | The email address to contact the API provider or support | Optional |
+| `contactName: string?` | You can use this attribution to add the name of the person or organization responsible for the API. | Optional |
+| `contactURL: string?` | You can use this to add the URL to a web page with more information about the API, the provider, or support. | Optional |
+| `termsOfService: string?` | You can use this to add the URL details to the terms of service for the API.  | Optional |
+| `licenseName: string?` | You can use this to add the name of the license under which the API is provided. | Optional |
+| `licenseURL: string?` | You can use this to add the URL details regarding the full text of the license.
 
 For example,
 
@@ -200,6 +217,10 @@ info:
   version: 1.1.0
 ...
 ```
+#### Using `@openapi:ResourceInfo` annotation
+
+You can use the `@openapi:ResourceInfo` annotation for specifying the meta data such as operation id, summary, tags information and example details of the OpenAPI operation as follows.
+
 
 ## OpenAPI validator compiler plugin
 

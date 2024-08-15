@@ -504,7 +504,7 @@ These are directories related to the default module. For detailed information, s
 
 ## The `resources/` directory
 
-The `resources/` directory stores all package resources such as images, default configs, etc.
+The `resources/` directory stores package resources such as images, default configs, etc.
 
 ## The `modules/` directory
 

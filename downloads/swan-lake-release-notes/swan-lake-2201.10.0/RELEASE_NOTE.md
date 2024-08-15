@@ -64,20 +64,20 @@ The following are now allowed.
 
 ```ballerina
 [int, int...] tuple1 = [1, 2];
-int val1 = tuple1.shift();
+int val1 = tuple1.shift(); // 1
 
 [int, string, float...] tuple2 = [7, "hello", 67.5, 89.7];
-int|string|float val2 = tuple2.remove(2);
+int|string|float val2 = tuple2.remove(2); // 67.5
 ```
 
 The following examples will result in errors.
 
 ```ballerina
 [string, string...] tuple1 = ["hello"];
-tuple1.unshift(154);
+tuple1.unshift(154); // Compile-time error.
 
 [int, string, float...] tuple2 = [7, "hello", 67.5, 89.7];
-int|string|float val2 = tuple2.remove(1);
+int|string|float val2 = tuple2.remove(1); // Panics.
 ```
 
 #### New runtime Java APIs

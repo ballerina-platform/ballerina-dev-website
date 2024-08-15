@@ -22,8 +22,12 @@ table<Album> key(title) albums = table [
 // It can be represented by both identifiers and string literals. E.g., \`/music\\-info\`, \`"/music-info"\`.
 service /info on new http:Listener(9090) {
 
-    // The \`resource path\` is \`albums\` and the \`resource accessor\` is \`get\`.
-    // The \`.\` represents the current resource that is \`/info\`.
+    // The \`resource path\` represents the relative path to the resource, and the \`resource accessor\`
+    // represents the HTTP method used to access the resource.
+    // Here, the resource path is \`/albums\`, and the resource accessor is \`get\`.
+    // This means the resource is invoked when an HTTP GET request is made to \`/info/albums\`.
+    // The \`resource path\` can be set as \`.\` to represent a resource with the \`service path\` 
+    // that is \`/info\`.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -65,7 +69,7 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/http-service-and-resource-paths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/http-service-and-resource-paths",
                 "_blank",
               );
             }}

@@ -34,7 +34,8 @@ The conforming implementation of the specification is released and included in t
             * [onIdleTimeout](#onidletimeout)
             * [onClose](#onclose)
             * [onError](#onerror)
-        * 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
+        * 3.2.2. [Dispatching custom remote methods](#322-dispatching-custom-remote-methods)
+          * [Dispatching custom error remote methods](#Dispatching custom error remote methods)
 4. [Client](#4-client)
     * 4.1. [Client Configurations](#41-client-configurations)
     * 4.2. [Initialization](#42-initialization)
@@ -213,11 +214,16 @@ When writing the service, following configurations can be provided,
 # + maxFrameSize - The maximum payload size of a WebSocket frame in bytes.
 #                  If this is not set or is negative or zero, the default frame size which is 65536 will be used.
 # + auth - Listener authenticaton configurations
+# + dispatcherKey - The key which is going to be used for dispatching to custom remote functions.
+# + dispatcherStreamId - The identifier used to distinguish between requests and their corresponding responses in a multiplexing scenario.
 public type WSServiceConfig record {|
     string[] subProtocols = [];
     decimal idleTimeout = 0;
     int maxFrameSize = 65536;
     ListenerAuthConfig[] auth?;
+    boolean validation = true;
+    string dispatcherKey?;
+    string dispatcherStreamId?;
 |};
 ```
 
@@ -341,7 +347,7 @@ remote function onError(websocket:Caller caller, error err) {
 }
 ```
 
-#### 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
+#### 3.2.2. [Dispatching custom remote methods](#322-dispatching-custom-remote-methods)
 
 The WebSocket service also supports dispatching messages to custom remote functions based on the message type(declared by a field in the received message) with the end goal of generating meaningful Async APIs. 
 
@@ -352,18 +358,36 @@ For example, if the message is `{"event": "heartbeat"}` it will get dispatched t
 1. The user can configure the field name(key) to identify the messages and the allowed values as message types.
 
 The `dispatcherKey` is used to identify the event type of the incoming message by its value. 
+The `dispatcherStreamId` is used to distinguish between requests and their corresponding responses in a multiplexing scenario.
+
+```ballerina
 
 Ex:
-incoming message = ` {"event": "heartbeat"}`
+incoming message = ` {"event": "heartbeat", "id": "1"}`
 dispatcherKey = "event"
+dispatcherStreamId = "id"
 event/message type = "heartbeat"
 dispatching to remote function = "onHeartbeat"
 
 ```ballerina
 @websocket:ServiceConfig {
-    dispatcherKey: "event"
+    dispatcherKey: "event",
+    dispatcherStreamId: "id"
 }
 service / on new websocket:Listener(9090) {}
+```
+
+##### [Dispatching custom error remote methods](#Dispatching custom error remote methods)
+
+If the user has defined a remote function with the name `customRemoteFunction` + `Error` in the WebSocket service, the error messages will get dispatched to that remote function when there is a data binding error. If that is not defined, the generic `onError` remote function gets dispatched.
+
+```ballerina
+Ex:
+incoming message = ` {"event": "heartbeat"}`
+dispatcherKey = "event"
+event/message type = "heartbeat"
+dispatching remote function = "onHeartbeat"
+dispatching error remote function = "onHeartbeatError"
 ```
 
 2. Naming of the remote function.

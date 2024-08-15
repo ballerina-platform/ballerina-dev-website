@@ -1,0 +1,18 @@
+{
+  "title": "XML to record with projection",
+  "description": "This BBE demonstrates how to selectively convert fields from a XML source, which can be provided as a string, byte array, byte block stream, or xml, into a Ballerina record.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "xml",
+    "record",
+    "data projection"
+  ],
+  "permalink": "/learn/by-example/xml-to-record-with-projection",
+  "active": "xml-to-record-with-projection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-to-record-with-projection",
+    "/swan-lake/learn/by-example/xml-to-record-with-projection.html"
+  ]
+}

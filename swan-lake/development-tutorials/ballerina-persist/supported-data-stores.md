@@ -340,6 +340,7 @@ The Redis data store supports the following Ballerina types. As we have utilized
 - float
 - decimal
 - string
+- boolean
 - time:Date
 - time:TimeOfDay
 - time:Utc
@@ -360,17 +361,17 @@ maxAge = -1
 
 Alternatively, you can provide connection parameters instead of the `URI` as follows.
 
-Currently, the Redis data store only supports global cache configuration at the client level. The `maxAge` parameter in the cache configuration specifies the maximum age in `seconds` for cached objects. A value of `-1` indicates that objects within the cache have no expiry time, persisting indefinitely until manually removed.
-
 ```toml
 [<packageName>.<moduleName>.connectionConfig.connection]
 host = "localhost"
 port = 6379
 ```
 
+Currently, the Redis data store only supports global cache configuration at the client level. The `maxAge` parameter in the cache configuration specifies the maximum age in `seconds` for cached objects. A value of `-1` indicates that objects within the cache have no expiry time, persisting indefinitely until manually removed.
+
 Additionally, you can set values for the advanced configuration parameters in the `Config.toml` file in your project to use the Redis data store. For more information on these parameters, see the [Redis Connector documentation](https://central.ballerina.io/ballerinax/redis/latest#ConnectionConfig).
 
-### Setup guide
+### How to set up
 
 #### Setup a Redis server instance
 

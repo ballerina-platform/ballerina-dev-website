@@ -1,9 +1,9 @@
 # Specification: Ballerina JWT Library
 
-_Owners_: @ldclakmal @shafreenAnfar  
+_Authors_: @ldclakmal @shafreenAnfar @ayeshLK  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2021/10/01  
-_Updated_: 2022/02/17  
+_Updated_: 2024/06/15  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -104,7 +104,7 @@ public type ValidatorSignatureConfig record {|
         cache:CacheConfig cacheConfig?;
         ClientConfiguration clientConfig = {};
     |} jwksConfig?;
-    string certFile?;
+    string|crypto:PublicKey certFile?;
     record {|
         crypto:TrustStore trustStore;
         string certAlias;
@@ -222,7 +222,7 @@ public type IssuerSignatureConfig record {|
     |}|record {|
         string keyFile;
         string keyPassword?;
-    |}|string config?;
+    |}|crypto:PrivateKey|string config?;
 |};
 
 public class ClientSelfSignedJwtAuthProvider {

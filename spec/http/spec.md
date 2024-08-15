@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/04/17   
+_Updated_: 2024/06/13   
 _Edition_: Swan Lake
 
 
@@ -42,7 +42,9 @@ The conforming implementation of the specification is released and included in t
             * 2.3.5.1. [Status Code Response](#2351-status-code-response)
             * 2.3.5.2. [Return nil](#2352-return-nil)
             * 2.3.5.3. [Default response status codes](#2353-default-response-status-codes)
-        * 2.3.6. [Introspection resource](#236-introspection-resource)
+        * 2.3.6. [OpenAPI specification resources](#236-openapi-specification-resources)
+            * 2.3.6.1. [Introspection resource](#2361-introspection-resource)
+            * 2.3.6.2. [SwaggerUI resource](#2362-swaggerui-resource)
     * 2.4. [Client](#24-client)
         * 2.4.1. [Client types](#241-client-types)
             * 2.4.1.1. [Security](#2411-security)
@@ -162,6 +164,8 @@ public type ListenerConfiguration record {|
     string? server = ();
     RequestLimitConfigs requestLimits = {};
     int http2InitialWindowSize = 65535;
+    decimal minIdleTimeInStaleState = 300;
+    decimal timeBetweenStaleEviction = 30;
 |};
 ```
 
@@ -823,13 +827,13 @@ service /headerparamservice on HeaderBindingIdealEP {
 
 
 #### 2.3.5. Return types
-The resource method supports anydata, error?, http:Response and http:StatusCodeResponse as return types. 
+The resource method supports `anydata`, `error?`, `http:Response`, `http:StatusCodeResponse` and `stream<http:SseEvent, error?>` as return types. 
 Whenever user returns a particular output, that will result in an HTTP response to the caller who initiated the 
 call. Therefore, user does not necessarily depend on the `http:Caller` and its remote methods to proceed with the 
 response. 
 
 ```ballerina
-resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|http:Error? {
+resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|stream<http:SseEvent, error?>|http:Error? {
 }
 ```
 
@@ -853,6 +857,7 @@ Based on the return types respective header value is added as the `Content-type`
 | int, float, decimal, boolean                                          | application/json            |
 | map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json            |
 | http:StatusCodeResponse                                               | derived from the body field |
+| stream<http:SseEvent, error?>                                         | text/event-stream           |
 
 ##### 2.3.5.1. Status Code Response
 
@@ -929,7 +934,19 @@ Return nil from the resource has few meanings.
     }
     ```
 
-##### 2.3.5.3. Default response status codes
+##### 2.3.5.3. Return stream<http:SseEvent, error?>
+
+When an `http:SseEvent` stream is returned from the service, it's considered a server-sent event. By default, the service will add the following headers: 
+
+- For HTTP 2.0: 
+  - `Content-Type: text/event-stream`
+  - `Cache-Control: no-cache`
+
+- For HTTP 1.1, in addition to the previously mentioned headers, the following headers will also be included in the response: 
+  - `Transfer-Encoding: chunked`
+  - `Connection: keep-alive`
+
+##### 2.3.5.4. Default response status codes
 
 To improve the developer experience for RESTful API development, following default status codes will be used in outbound 
 response when returning `anydata` directly from a resource method.
@@ -944,18 +961,20 @@ response when returning `anydata` directly from a resource method.
 | HEAD              | Retrieve headers                                              | 200 OK                  |
 | OPTIONS           | Retrieve permitted communication options                      | 200 OK                  |
 
-#### 2.3.6. Introspection resource
+#### 2.3.6. OpenAPI specification resources
 
-The introspection resource is internally generated for each service and host the openAPI doc can be generated 
-(or retrieved) at runtime when requested from the hosted service itself. In order to get the openAPI doc hosted
-resource path, user can send an OPTIONS request either to one of the resources or the service. The link header
-in the 204 response specifies the location. Then user can send a GET request to the dynamically generated URL in the 
-link header with the relation openapi to get the openAPI definition for the service.
+OAS resources are internally generated for each service and host the generated OpenAPI specification for the service in
+different formats. In order to access these resources user can send an OPTIONS request either to one of the resources or
+the service base-path. The link header in the 204 response specifies the location for the OAS resources.
 
 Sample service
 ```ballerina
 import ballerina/http;
+import ballerina/openapi;
 
+@openapi:ServiceInfo {
+    embed: true
+}
 service /hello on new http:Listener(9090) {
     resource function get greeting() returns string {
         return "Hello world";
@@ -963,97 +982,95 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-Output of OPTIONS call to usual resource
-```ballerina
-curl -v localhost:9090/hello/greeting -X OPTIONS
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> OPTIONS /hello/greeting HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 204 No Content
-< allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:09:40 +0530
-< 
-```
-
-Output of GET call to introspection resource
-```ballerina
-curl -v localhost:9090/hello/openapi-doc-dygixywsw
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> GET /hello/openapi-doc-dygixywsw HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 200 OK
-< content-type: application/json
-< content-length: 634
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:22:29 +0530
-< 
-{
-  "openapi": "3.0.1",
-  "info": {
-     "title": " hello",
-     "version": "1.0.0"
-  },
-  "servers": [
-     {
-        "url": "localhost:9090/hello"
-     }
-  ],
-  "paths": {
-     "/greeting": {
-        "get": {
-           "operationId": "operation1_get_/greeting",
-           "responses": {
-              "200": {
-                 "description": "Ok",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
-                          "type": "string"
-                       }
-                    }
-                 }
-              }
-           }
-        }
-     }
-  },
-  "components": {}
-}
-```
-
 Output of OPTIONS call to service base path
-
 ```ballerina
 curl -v localhost:9090/hello -X OPTIONS 
-*   Trying ::1...
+*   Trying 127.0.0.1:9090...
 * TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 > OPTIONS /hello HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.64.1
+> User-Agent: curl/7.68.0
 > Accept: */*
-> 
+>
 < HTTP/1.1 204 No Content
 < allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Thu, 19 Aug 2021 13:47:29 +0530
+< link: </hello/openapi-doc-dygixywsw>;rel="service-desc", </hello/swagger-ui-dygixywsw>;rel="swagger-ui"
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:04:11 +0530
 < 
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
+
+##### 2.3.6.1. Introspection resource
+
+The introspection resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service 
+in JSON format. The user can send a GET request to the resource path specified in the link header with the relation 
+attribute set to `service-desc`.
+
+Output of GET call to introspection resource
+```ballerina
+curl -v localhost:9090/hello/openapi-doc-dygixywsw
+*   Trying 127.0.0.1:9090...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> GET /hello/openapi-doc-dygixywsw HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.68.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 675
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:05:03 +0530
+< 
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Hello",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "{server}:{port}/hello",
+    "variables" : {
+      "server" : {
+        "default" : "http://localhost"
+      },
+      "port" : {
+        "default" : "9090"
+      }
+    }
+  } ],
+  "paths" : {
+    "/greeting" : {
+      "get" : {
+        "operationId" : "getGreeting",
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+##### 2.3.6.2. SwaggerUI resource
+
+The swagger-ui resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service in 
+HTML format. The user can view it in a web browser by accessing the URL specified in the HTTP link header, which has 
+relation attribute set to `swagger-ui`.
 
 ### 2.4. Client
 A client allows the program to send network messages to a remote process according to the HTTP protocol. The fixed 
@@ -1490,50 +1507,52 @@ infer the expected payload type from the LHS variable type. This is called as cl
 inbound response payload is accessed and parse to the expected type in the method signature. It is easy to access the
 payload directly rather manipulation `http:Response` using its support methods such as `getTextPayload()`, ..etc.
 
-Client data binding supports `anydata` where the payload is deserialized based on the media type before binding it 
+Client data binding supports `anydata` and `stream<http:SseEvent>` where the payload is deserialized based on the media type before binding it 
 to the required type. Similar to the service data binding following table explains the compatible `anydata` types with 
 each common media type. In the absence of a standard media type, the binding type is inferred by the payload parameter 
 type itself. If the type is not compatible with the media type, error is returned.
 
-| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
-|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
-| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
-|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
-| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" | "event-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|:--------------:
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |       ❌  
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| stream         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                |stream<http:SseEvent, error?>|   ❌    |   ❌   |   ❌    |            ❌            |       ❌        |        ✅        |
 
 ```ballerina
 http:Client httpClient = check new ("https://person.free.beeceptor.com");
@@ -2496,20 +2515,48 @@ path = "testTraceLog.txt"   # Optional
 host = "localhost"          # Optional
 port = 8080                 # Optional
 ```
-#### 8.2.4 Access log
 
-Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format.
-The HTTP access logs are **disabled as default**.
-To enable access logs, set console=true under the ballerina.http.accessLogConfig in the Config.toml file. Also, 
-the path field can be used to specify the file path to save the access logs.
+#### 8.2.4 Access log
+Ballerina supports HTTP access logs for HTTP services, providing insights into web traffic and request handling.
+The access log feature is **disabled by default** to allow users to opt-in as per their requirements.
+
+To enable access logs, configuration settings are provided under `ballerina.http.accessLogConfig` in the
+`Config.toml` file. Users can specify whether logs should be output to the console, a file, or both, 
+and can select the format and specific attributes to log.
 
 ```toml
 [ballerina.http.accessLogConfig]
 # Enable printing access logs in console
 console = true              # Default is false
-# Specify the file path to save the access logs  
-path = "testAccessLog.txt"  # Optional
+# Specify the file path to save the access logs
+path = "testAccessLog.txt"  # Optional, omit to disable file logging
+# Select the format of the access logs
+format = "json"             # Options: "flat", "json"; Default is "flat". Omit to stick to the default.
+# Specify which attributes to log. Omit to stick to the default set.
+attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
+# Default attributes: ip, date_time, request, status, response_body_size, http_referrer, http_user_agent
 ```
+
+##### Configurable Attributes
+Users can customize which parts of the access data are logged by specifying attributes in the configuration.
+This allows for tailored logging that can focus on particular details relevant to the users' needs.
+
+|        Attribute       | Description                                         |
+|:----------------------:|:---------------------------------------------------:|
+| ip                     | Client's IP address                                 |
+| date_time              | HTTP request received time                          |
+| request                | Full HTTP request line (method, URI, protocol)      |
+| request_method         | HTTP method of the request                          |
+| request_uri            | URI of the request, including parameters            |
+| scheme                 | Scheme of the request and HTTP version              |
+| status                 | HTTP status code returned to the client             |
+| request_body_size      | Size of the request body in bytes                   |
+| response_body_size     | Size of the HTTP response body in bytes             |
+| request_time           | Total time taken to process the request             |
+| http_referrer          | HTTP Referer header, indicating the previous page   |
+| http_user_agent        | User-Agent header, identifying the client software  |
+| http_x_forwarded_for   | Originating IP address if using a proxy             |
+| http_(X-Custom-Header) | Header fields. Referring to them with `http` followed by the header name. (`x-request-id` ->; `http_x-request-id`) |
 
 #### 8.2.5 Panic inside resource
 

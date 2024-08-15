@@ -124,7 +124,7 @@
         },
         {
             "dirName": "Integration tools",
-            "level": 2,
+            "level": 1,
             "position": 3,
             "isDir": true,
             "url": "/learn/integration-tools",
@@ -182,7 +182,7 @@
         },
         {
             "dirName": "References",
-            "level": 2,
+            "level": 1,
             "position": 4,
             "isDir": true,
             "url": "/learn/references",
@@ -347,6 +347,14 @@
                             ]
                         },
                         {
+                            "dirName": "Customize formatting",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/customize-formatting",
+                            "id": "customize-formatting"
+                        },
+                        {
                             "dirName": "Organize Ballerina code",
                             "level": 3,
                             "position": 1,
@@ -359,7 +367,7 @@
                 {
                     "dirName": "Test, debug & document the code",
                     "level": 2,
-                    "position": 2,
+                    "position": 3,
                     "isDir": true,
                     "url": "/learn/test-document-the-code",
                     "id": "test-document-the-code",
@@ -451,6 +459,14 @@
                                     "isDir": false,
                                     "url": "/learn/test-ballerina-code/execute-tests",
                                     "id": "execute-tests"
+                                },
+                                {
+                                    "dirName": "Execute tests in parallel",
+                                    "level": 4,
+                                    "position": 11,
+                                    "isDir": false,
+                                    "url": "/learn/test-ballerina-code/execute-tests-in-parallel/",
+                                    "id": "execute-tests-in-parallel"
                                 },
                                 {
                                     "dirName": "Define data-driven tests",
@@ -723,6 +739,14 @@
                             "isDir": false,
                             "url": "/learn/publish-packages-to-ballerina-central",
                             "id": "publish-packages-to-ballerina-central"
+                        },
+                        {
+                            "dirName": "Configure a network proxy",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-a-network-proxy",
+                            "id": "configure-a-network-proxy"
                         }
                     ]
                 },
@@ -880,8 +904,6 @@
                 }
             ]
         },
-        
-
         {
             "dirName": "other",
             "level": 1,
@@ -1246,7 +1268,6 @@
                 }
             ]
         },
-
         {
             "dirName": "slides",
             "level": 1,

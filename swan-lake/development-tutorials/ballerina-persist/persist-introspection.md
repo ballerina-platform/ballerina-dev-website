@@ -16,7 +16,7 @@ data model. Currently, introspection is only supported for MySQL databases and n
 in the future. [Advanced SQL annotations](/learn/persist-model/#advanced-sql-annotations) are used to annotate names, special types, declare generated fields, custom foreign
 keys, and indexes etc.
 
-During introspection, all table and column names which does not conform to Ballerina naming conventions will be converted to conforming names and their original names will be mapped with the [`@sql:Name`](/learn/persist-model/#mapping-names-with-name-annotation) annotation.
+During introspection, all table and column names which does not conform to Ballerina naming conventions will be converted to conforming names and their original names will be mapped with the [`@sql:Name`](/learn/persist-model/#name-mapping-with-name-annotation) annotation.
 
 ## Type Mapping
 
@@ -68,5 +68,5 @@ The types that are partially supported will be fully supported later along with 
 - Cross-referring relations, where foreign keys are found in both sides of a couple of associated entities are not supported
 - Foreign keys occurring from unique keys are not supported
 - Some data types are unsupported, in which case the client API for those entities are not generated. However, you can still perform join queries that include those relations, without unsupported fields.
-- Bal Persist only supports `auto-increment` generation strategy with the [`@sql:Generated`](/learn/persist-model/#declaring-generated-fields-with-generated-annotation) annotation
+- Bal Persist only supports `auto-increment` generation strategy with the [`@sql:Generated`](/learn/persist-model/#declare-generated-fields-with-generated-annotation) annotation
 - Introspection ignores the order of columns in composite indexes and annotates index fields with [`@sql:Index`](/learn/persist-model/#index-annotation) or [`@sql:UniqueIndex`](/learn/persist-model/#uniqueindex-annotation) annotation without considering the column order

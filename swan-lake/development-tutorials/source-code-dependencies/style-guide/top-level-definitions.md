@@ -15,7 +15,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     ```ballerina
     import ballerina/http;
 
-    const int MIN_AGE = 20;
+    const MIN_AGE = 20;
     int repetitions = 0;
 
     service / on ep1 {
@@ -29,7 +29,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     // This import is indented correctly.
     import ballerina/http; 
         
-        const int MIN_AGE = 20; // Not indented correctly.
+        const MIN_AGE = 20; // Not indented correctly.
         int repetitions = 0; // Not indented correctly.
             
     // Not indented correctly.
@@ -42,7 +42,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     import ballerina/http;
@@ -50,10 +50,54 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Imports should be sorted alphabetically, first by the organization name and then by the module name.
 
+## Constant declaration
+
+* Use SCREAMING_SNAKE_CASE for constant names.
+
+    **Example:**
+    
+    ```ballerina
+    // don't
+    const minAge = 20;
+    const MinAge = 20;
+    const min_age = 20;
+    
+    // do
+    const MIN_AGE = 20;
+    ```
+
+* The type descriptor can be omitted in a constant declaration unless the type descriptor is required to construct the value (e.g., provide defaults, provide expected types to determine the inherent type, etc.).
+
+    **Example:**
+    
+    ```ballerina
+    // don't
+    const int MIN_AGE = 20;
+    const decimal TAX_RATE = 0.15;
+    
+    // do
+    const MIN_AGE = 20;
+    const TAX_RATE = 0.15d;
+    ```
+
+* Explicitly defining the type descriptor can enhance readability, particularly when the constant is defined with a compound expression.
+
+    **Example:**
+    
+    ```ballerina
+    // don't
+    const COMPLEX_VALUE = (50 * 2 + 100) % 256;
+    
+    // do
+    // The explicit `byte` type descriptor here improves readability. 
+    // It ensures that `COMPLEX_VALUE` can be safely used wherever a `byte` is expected.
+    const byte COMPLEX_VALUE = (50 * 2 + 100) % 256;
+    ```
+
 ## Function definition
 * Do not keep spaces between the function name and the open parentheses `(` of the function signature.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     function func1() {
@@ -62,7 +106,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * If the function needs to be split into new lines due to it exceeding the max line length, you can break lines from the parameter list by moving only a parameter value to a new line and indenting it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value,
@@ -73,7 +117,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
   - You can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value, string name)
@@ -85,7 +129,7 @@ intro: The sections below include the coding conventions with respect to top-lev
   - You can break after the `returns` keyword by moving the return value to a new line
     and indenting it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value, string name) returns
@@ -98,7 +142,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Keep the listener inline with the service signature.
   
-    **Example,**
+    **Example:**
 
     ```ballerina
     service / on new http:Listener(9090) {
@@ -109,7 +153,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 * When formatting service-level method definitions, block indent each element and
   follow the [Function definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
   
-    **Example,**
+    **Example:**
 
     ```ballerina
     import ballerina/http;
@@ -131,7 +175,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 * The `init` method should be placed before all the other methods.
 * For method definitions in the class definition, follow the [Function definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     class Person {
@@ -161,7 +205,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 ## Record definition
 * Block indent each of the field definitions (including the rest field) in their own line.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     type Person record {|
@@ -180,7 +224,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 ## Reference record or object
 * Do not keep spaces between the `*` and the object name or the record name.
   
-    **Example,**
+    **Example:**
     
     ```ballerina
     *Person;

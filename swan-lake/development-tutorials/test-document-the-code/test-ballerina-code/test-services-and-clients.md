@@ -44,24 +44,21 @@ import ballerina/http;
 
 http:Client testClient = check new ("http://localhost:9090/foo");
 
-@test:Config {}
+@test:Config
 public function testGet() returns error? {
-    http:Response response = check testClient->get("/bar/?value=10");
+    http:Response response = check testClient->/bar.get(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);
     test:assertEquals(response.getTextPayload(), "Retrieved ID 10");
 
-    response = check testClient->get("/bar/?value=-5");
+    response = check testClient->/bar.get(value = -5);
     test:assertEquals(response.statusCode, http:STATUS_BAD_REQUEST);
     test:assertEquals(response.getTextPayload(), "Incorrect ID value");
 }
 ```
 
-## Test clients
+## Test with clients
 
-In cases where a fully fledged client is already defined for a particular service, you can make use
-of `object mocking` to mock the calls to the service and return curated responses to the client.
-It is useful when testing the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios.
- It would cover a variety of cases that the client can handle without having the service to be up and running.
+A fully-fledged client is defined and the client is used across your code. Now, you want to test your code. Here, you can make use of `object mocking` to mock the client calls and return curated responses from the client to test your code. It is useful when testing with the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios. It would cover a variety of cases that the client can handle without having the service to be up and running.
 
 ***Example:***
 The following is a simple example on how mocking can be used to stub responses to services that you 
@@ -70,8 +67,8 @@ may not be able to access during the test execution.
 ***main.bal***
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -79,7 +76,7 @@ http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 // with the name replaced by the provided name or an error if the API invocation fails.
 function getRandomJoke(string name) returns string|error {
 
-    http:Response response = check clientEndpoint->get("/random");
+    http:Response response = check clientEndpoint->/random;
 
     if response.statusCode != http:STATUS_OK {
         string errorMsg = "error occurred while sending GET request";
@@ -97,16 +94,16 @@ function getRandomJoke(string name) returns string|error {
 ***main_test.bal***
 
 ```ballerina
-import ballerina/test;
 import ballerina/http;
+import ballerina/test;
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() returns error? {
     clientEndpoint = test:mock(http:Client);
 
-    test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
+    test:prepare(clientEndpoint).whenResource("::path").withPathParameters({path: ["random"]}).onMethod("get").thenReturn(getMockResponse());
 
-    http:Response result = check clientEndpoint->get("/random");
+    http:Response result = check clientEndpoint->/random;
     json payload = check result.getJsonPayload();
 
     test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
@@ -149,7 +146,7 @@ function getMockClient() returns http:Client|error {
     return test:mock(http:Client);
 }
 ```
-To lean more about how to use mocking to test services, see [Mocking](/learn/test-ballerina-code/mocking).
+To learn more about how to use mocking to test services, see [Mocking](/learn/test-ballerina-code/mocking).
 
 ## Configure services and clients
 
@@ -185,13 +182,13 @@ configurable string hostName = "http://originalService.com/foo";
 
 http:Client testClient = check new (hostName);
 
-@test:Config {}
+@test:Config
 public function testGet() returns error? {
-    http:Response response = check testClient->get("/bar/?value=10");
+    http:Response response = check testClient->/bar(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);
     test:assertEquals(response.getTextPayload(), "Retrieved ID 10");
 
-    response = check testClient->get("/bar/?value=-5");
+    response = check testClient->/bar(value = -5);
     test:assertEquals(response.statusCode, http:STATUS_BAD_REQUEST);
     test:assertEquals(response.getTextPayload(), "Incorrect ID value");
 }

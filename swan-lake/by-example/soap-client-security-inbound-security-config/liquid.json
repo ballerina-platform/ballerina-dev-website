@@ -1,0 +1,18 @@
+{
+  "title": "Inbound Security",
+  "description": "This example demonstrates applying inbound security configurations for SOAP envelopes when the request is made.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "soap",
+    "client",
+    "security",
+    "inbound security"
+  ],
+  "permalink": "/learn/by-example/soap-client-security-inbound-security-config",
+  "active": "soap-client-security-inbound-security-config",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/soap-client-security-inbound-security-config",
+    "/swan-lake/learn/by-example/soap-client-security-inbound-security-config.html"
+  ]
+}

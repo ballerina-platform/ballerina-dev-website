@@ -364,6 +364,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Best practices to follow when formatting Ballerina code.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/customize-formatting`} className={styles.titleLink}>
+                            Customize formatting
+                          </a>
+                        </p>
+                        <p className={styles.description}>Provide custom formatting options to Ballerina formatter.</p>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -758,6 +766,14 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Publish your library package to Ballerina Central.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/configure-a-network-proxy`} className={styles.titleLink}>
+                            Configure a network proxy
+                          </a>
+                        </p>
+                        <p className={styles.description}>Perform operations with the Ballerina Central over an HTTP proxy.</p>
                       </div>
                     </div>
                   </div>

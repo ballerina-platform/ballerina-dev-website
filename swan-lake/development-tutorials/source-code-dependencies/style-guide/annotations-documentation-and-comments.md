@@ -33,7 +33,7 @@ intro: The sections below include the coding conventions with respect to annotat
     **Example,**
 
     ```ballerina
-    @test:Config {}
+    @test:Config
     ```
 
 * If you are annotating a parameter or a return type, the annotation should be added inline to the parameter or the return type.

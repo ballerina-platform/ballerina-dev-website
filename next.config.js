@@ -237,6 +237,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
+        source: `/${redirectBase}learn/configure-a-network-proxy`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/configure-a-network-proxy`,
+      },
+      {
         source: `/${redirectBase}learn/code-to-cloud-deployment`,
         destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/code-to-cloud-deployment`,
       },
@@ -255,6 +259,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/package-references`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
+      },
+      {
+        source: `/${redirectBase}learn/customize-formatting`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/customize-formatting`,
       },
       {
         source: `/${redirectBase}learn/cli-commands/`,

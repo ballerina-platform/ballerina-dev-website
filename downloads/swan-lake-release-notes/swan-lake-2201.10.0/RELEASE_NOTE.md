@@ -132,7 +132,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
     $ bal openapi -i <yml file> --mode <client|service> --with-service-contract
     ```
 
--  Introduced example annotations in the OpenAPI package. This feature will  enable rendering example schemas in the generated OpenAPI specification.
+-  Introduced example annotations in the OpenAPI package. This feature will enable rendering example schemas in the generated OpenAPI specification.
   
     For example,
 

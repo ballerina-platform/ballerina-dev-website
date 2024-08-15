@@ -174,6 +174,62 @@ public function main() returns error? {
 - Added connection eviction support for the HTTP listener.
 - Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
+#### `jwt` package
+
+- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`.
+
+    Previous `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+    ```
+
+    New `jwt:IssuerSignatureConfig` record:
+
+    ```ballerina
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|crypto:PrivateKey|string config?;
+    |};
+    ```
+
+    Previous `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string certFile?;
+    |};
+    ```
+
+    New `jwt:ValidatorSignatureConfig` record:
+
+    ```ballerina
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+    ```
+
+    >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
+
 ### Deprecations
 
 ### Bug fixes
@@ -218,6 +274,43 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ### New features
 
 ### Improvements
+
+- Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level have to be moved from modules to the package root to continue to be identified as resources.
+
+  >**Note:** Any resources within the current package, as well as those exported from package dependencies, can be accessed via an [external function](https://ballerina.io/learn/by-example/interface-to-external-code/).
+
+    * Old package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           ├── resources
+           │   └── open-api-spec.json
+           └── util.bal
+    ```
+
+    * New package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    │   └── open-api-spec.json
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           └── util.bal
+    ```
 
 - Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
 

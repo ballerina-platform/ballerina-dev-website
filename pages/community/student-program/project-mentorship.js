@@ -47,7 +47,7 @@ export default function StudentengagementProgram() {
           } catch (error) {
             console.error(`Failed to fetch contributors for ${project.title}:`, error);
           }
-          return { ...project, contributors: contributors.slice(0, 6) };
+          return { ...project, contributors: contributors.slice(0, 8) };
         })
       );
       setProjects(projectsWithContributors);

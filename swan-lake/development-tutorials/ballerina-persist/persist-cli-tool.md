@@ -21,13 +21,14 @@ There are two ways that you can use the `bal persist` feature.
 The Ballerina project should be initialized with `bal persist` before generating the derived types, clients, and script files. This can be done using the `add` command. You can specify the preferred data store and the module, which you need to generate files. If you do not specify the data store and the module, the default values will be used.
 
 ```
-$ bal persist add --datastore="mysql" --module="store"
+$ bal persist add --datastore mysql --module store --test-datastore h2
 ```
 
-|  Command parameter   |                                                               Description                                                                | Mandatory  |        Default value         |
-|:--------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:----------------------------:|
-|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, `mssql`,  and `googlesheets` |     No     |          `inmemory`          |
-|       `module`       |                              Used to indicate the persist-enabled module in which the files are generated.                               |     No     |       `<root_module>`        |
+| Command parameter |                                                                         Description                                                                          | Mandatory  |  Default value  |
+|:-----------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:---------------:|
+|    --datastore    |   Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |     No     |   `inmemory`    |
+|     --module      |                                        Used to indicate the persist-enabled module in which the files are generated.                                         |     No     | `<root_module>` |
+| --test-datastore  | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore.  |     No     |       No        |
 
 
 The command initializes the `bal persist` feature in the project. This command will do the following,
@@ -45,6 +46,7 @@ The command initializes the `bal persist` feature in the project. This command w
    id = "generate-db-client"
    targetModule = "store"
    options.datastore = "mysql"
+   options.testDatastore = "h2"
    filePath = "persist/model.bal"
    ```
 
@@ -60,6 +62,7 @@ rainier
 Behaviour of the `add` command,
 - You should invoke the command from within a Ballerina project.
 - You can use the optional arguments to indicate the preferred module name and data store. Otherwise, the default values will be used.
+- You can use test-datastore to indicate the preferred database client for testing. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore. If specified it will update the Ballerina.toml file with the testDatastore option to generate the test client along with the main client at the build time.
 - You cannot execute the command multiple times within the same project. You need to remove the `Ballerina.toml` configurations if the user wants to reinitialize the project.
 
 ### Generate the derived types, client, and script files
@@ -77,6 +80,8 @@ rainier
               ├── persist_client.bal
               ├── persist_db_config.bal
               ├── persist_types.bal
+              ├── persist_test_client.bal (This file will be generated if the test-datastore is provided)
+              ├── persist_test_init.bal (This file will be generated if h2 is provided as the test-datastore)
               └── script.sql
    ├── persist
         └── model.bal
@@ -100,6 +105,10 @@ configurable string database = ?;
 ```
 
 * The script file (`script.sql`) will contain the scripts to create the tables in the data store. This script file will be generated based on the data store specified in the `Ballerina.toml` file.
+
+* The `persist_test_client.bal` file will contain the client, which is used to access the test data store. This file will be generated if the test-datastore is provided.
+
+* The `persist_test_init.bal` file will contain the script to initialize the test data store. This file will be generated if h2 is provided as the test-datastore.
 
 Additionally, this command will create/update the `Config.toml` file with the configurables used to connect the client to the data store. The generated configurables will be based on the data store specified in the `Ballerina.toml` file.
 
@@ -125,13 +134,14 @@ This command includes the following steps,
 You can use the `bal persist generate` command to generate the derived types, client, and script files.
 
 ```bash
-bal persist generate --datastore mysql --module store
+bal persist generate --datastore mysql --module store --test-datastore h2
 ```
 
-| Command Parameter |                                                                     Description                                                                     | Mandatory | Default Value  |
-|:-----------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:--------------:|
-|    --datastore    | used to indicate the preferred database client. Currently, 'inmemory', 'mysql', 'mssql', 'postgresql', 'google sheets', and  'redis' are supported. |    Yes     |        |
-|     --module      |                                    used to indicate the persist enabled module in which the files are generated.                                    |    No     | <package_name> |
+| Command Parameter |                                                                         Description                                                                         | Mandatory | Default Value  |
+|:-----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:--------------:|
+|    --datastore    |  Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |    Yes     |                |
+|     --module      |                                        Used to indicate the persist enabled module in which the files are generated.                                        |    No     | <package_name> |
+| --test-datastore  | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore. |     No     |       No        |
 
 If the module name is provided, it will generate the files under a new subdirectory with the module name like below. Otherwise, it will generate the files under the `root` directory.
 
@@ -142,6 +152,8 @@ rainier
               ├── persist_client.bal
               ├── persist_db_config.bal
               ├── persist_types.bal
+              ├── persist_test_client.bal (This file will be generated if the test-datastore is provided)
+              ├── persist_test_init.bal (This file will be generated if h2 is provided as the test-datastore)
               └── script.sql
    ├── persist
         └── model.bal
@@ -154,11 +166,9 @@ Behaviour of the `generate` command,
 - User should invoke the command within a Ballerina project
 - The model definition file should contain the `persist` module import (`import ballerina/persist as _;`)
 - The model definition file should contain at least one entity
-- If the user invokes the command twice, it will not fail. It will generate the files once again.
+- If the user invokes the command twice, it will fail if the client's native dependency exists in the `Ballerina.toml` file and is different from the current version. The user should remove the persist native dependency from the `Ballerina.toml` configurations to generate the files again.
 
-## Generate the data model by introspecting an existing database [Experimental]
-
->**Info:** The support for introspection is currently an experimental feature, and its behavior may be subject to change in future releases. Also, the support for introspection is currently limited to the MySQL data store.
+## Generate the data model by introspecting an existing database
 
 The command below generates the data model for an existing database. The generated data model can be used to generate the client API for the existing database after verifying it.
 
@@ -166,14 +176,13 @@ The command below generates the data model for an existing database. The generat
 $ bal persist pull --datastore mysql --host localhost --port 3306 --user root --database db
 ```
 
-| Command Parameter |                                   Description                                    | Mandatory | Default Value |
-|:-----------------:|:--------------------------------------------------------------------------------:|:---------:|:-------------:|
-|    --datastore    | used to indicate the preferred data store. Currently, only 'mysql' is supported. |    No     |     mysql     |
-|      --host       |                        used to indicate the database host                        |    Yes    |     None      |
-|      --port       |                        used to indicate the database port                        |    No     |     3306      |
-|      --user       |                        used to indicate the database user                        |    Yes    |     None      |
-|    --database     |                        used to indicate the database name                        |    Yes    |     None      |
-
+| Command Parameter |                                               Description                                               | Mandatory | Default Value |
+|:-----------------:|:-------------------------------------------------------------------------------------------------------:|:---------:|:-------------:|
+|    --datastore    | Used to indicate the preferred data store. Currently, `mysql`, `mssql`, and `postgresql` are supported. |    No     |     mysql     |
+|      --host       |                                   Used to indicate the database host                                    |    Yes    |     None      |
+|      --port       |                                   Used to indicate the database port                                    |    No     |     3306      |
+|      --user       |                                   Used to indicate the database user                                    |    Yes    |     None      |
+|    --database     |                                   Used to indicate the database name                                    |    Yes    |     None      |
 
 The file structure of the project after executing the command will be as follows.
 

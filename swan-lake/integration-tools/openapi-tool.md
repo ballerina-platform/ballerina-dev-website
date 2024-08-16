@@ -66,7 +66,7 @@ The command-line arguments below can be used with the command for each particula
 | `--with-tests`            | It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                 | Optional           |
 | `--client-methods`        | This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
 | `--status-code-binding`   | This option can be used in the client generation to generate the client methods with status code response binding. | Optional |
-| `--mock`                  |  This option can be used in the client generation to generate a mock client for the given OpenAPI contract. | Optional |
+| `--mock`                  | This flag can be used to switch client generation to generate a mock client for the given OpenAPI contract.  | Optional |
 |`--with-service-contract`  | This option can be used to generate the service contract type for the given OpenAPI contract. | Optional |
 | `--single-file`           | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
 | `--use-sanitized-oas`     | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow the Ballerina language best practices. | Optional |
@@ -122,6 +122,17 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 
 Once you execute the command, only the operations related to the given tags get included in the generated service file.
 
+## Generate Ballerina service contract type from OpenAPI Contracts
+
+A service contract-first approach is introduced as a standout key feature using the OpenAPI tool and the HTTP package. By generating a service contract type directly from the OpenAPI specification, you can design services that are contract-compliant from the outset. 
+In addition, centralizing metadata within the service contract type results in a cleaner, more maintainable codebase.
+
+For example, 
+
+```
+$bal openapi -i hello.yaml --mode service --with-service-contract
+```
+
 ## Export OpenAPI contracts from Ballerina services
 
 If you prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.
@@ -135,6 +146,40 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [(-o | --output) <out
 The `ballerina-service-file-path` command option specifies the path of the ballerina service file (e.g., `my_api.bal`) and is mandatory.
 
 If your Ballerina file includes multiple services, this command generates the OpenAPI contract for each service in the Ballerina file.
+
+>**Info:** With this command, you can use either the service contract object type or the service implementation to generate an OpenAPI contract.
+
+For examples,
+
+1. Service contract object type representation,
+
+```ballerina
+import ballerina/http;
+
+@http:ServiceConfig {basePath: "/convert"}
+type OASServiceType service object {
+    *http:ServiceContract;
+    resource function get store() returns Inventory|http:Accepted;
+    resource function post store(@http:Payload Inventory payload) returns http:Accepted|ErrorPayloadBadRequest;
+};
+```
+2. Service implementations  representation
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener ep0 = new (9090, config = {host: "localhost"});
+
+service /convert on ep0 {
+    resource function get store() returns Inventory|http:Accepted {
+        // logic here
+    }
+
+    resource function post store(@http:Payload Inventory payload) {
+        //logic here
+    }
+}
+```
 
 ### Export in JSON format
 
@@ -192,7 +237,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
 | `contactName: string?`    | You can use this attribute to add the name of the person or organization responsible for the API.                                                                                                                                                                                                                                                                     | Optional           |
 | `contactURL: string?`     | You can use `contactURL` to add the URL to a web page with more information about the API, the provider, or support.                                                                                                                                                                                                                                                  | Optional           |
 | `termsOfService: string?` | You can use this to add the URL details to the terms of service for the API.                                                                                                                                                                                                                                                                                          | Optional           |
-| `licenseName: string?`    | You can use this to add the name of the license under which the API is provided.                                                                                                                                                                                                                                                                                      | Optional           |
+| `licenseName: string?`    | The `licenseName` is used to add the name of the license under which the API is provided for `contact` section.                                                                                                                                                                                                                                                       | Optional           |
 | `licenseURL: string?`     | You can use this to add the URL details regarding the full text of the license.                                                                                                                                                                                                                                                                                       | Optional           |
 
 For example,
@@ -264,9 +309,9 @@ paths:
 An API specification can include examples for parameters, responses, schemas (data models), individual properties in
 schemas and request bodies. Following the below options, you can generate OAS with examples.
 
-### Export example using `@openapi:ResourceInfo` annotation
+#### Export example using `@openapi:ResourceInfo` annotation
 
-#### Add response examples
+##### Add response examples
 
 Here, you need to provide example details according to the structure shown in the sample below.
 
@@ -295,7 +340,7 @@ service /convert on new http:Listener(9090) {
                                 "value": {
                                     "materials": "Wood",
                                     "status": "InProgress",
-                                    "Item": "Table",
+                                    "item": "Table",
                                     "amount": 120
                                 }
                             },
@@ -331,18 +376,18 @@ paths:
                   value:
                     materials: Wood
                     status: InProgress
-                    Item: Table
+                    item: Table
                     amount: 120
                 store02:
                   value:
-                    Item: Table
+                    item: Table
                     amount: 100
                     materials: Plastic
                     status: Done
         "202":
           description: Accepted
 ```
-#### Add request body examples
+##### Add request body examples
 
 Here, you need to provide example details according to the structure shown in the sample below.
 
@@ -364,7 +409,7 @@ Here, you need to provide example details according to the structure shown in th
                         "value": {
                             "materials": "Wood",
                             "status": "InProgress",
-                            "Item": "Table",
+                            "item": "Table",
                             "amount": 120
                         }
                     }
@@ -392,7 +437,7 @@ paths:
             examples:
               payloadStore01:
                 value:
-                  Item: Table
+                  item: Table
                   amount: 100
                   materials: Plastic
                   status: Done
@@ -400,7 +445,7 @@ paths:
                 value:
                   materials: Wood
                   status: InProgress
-                  Item: Table
+                  item: Table
                   amount: 120
         required: true
       responses:
@@ -410,11 +455,11 @@ paths:
 ```
 As explained in the example section, you can use this annotation for parameters, record fields, and record types.
 
-### Export example using `@openapi:Example` annotation
+#### Export example using `@openapi:Example` annotation
 
 This annotation is used to render a single example in the OpenAPI Specification. It is attached to parameters, record types and record field.
 
-#### Ballerina code sample for object level example mapping
+##### Ballerina code sample for object level example mapping
 
 ```ballerina
 @openapi:Example {
@@ -448,7 +493,7 @@ components:
 ...
 ```
 
-#### Ballerina code sample for parameter level example mapping
+##### Ballerina code sample for parameter level example mapping
 
 ```ballerina
 ...
@@ -470,7 +515,7 @@ parameters:
       example: approved
 ...
 ```
-#### Ballerina code sample for object level example mapping
+##### Ballerina code sample for object property level example mapping
 
 ```ballerina
 type User record {
@@ -497,11 +542,11 @@ components:
           example: Jessica Smith  # Property example
 ```
 
-### Export example using `@openapi:Examples` annotation
+#### Export example using `@openapi:Examples` annotation
 
-This annotation is used to render list of examples in the OpenAPI Specification. It is attached to parameters and record types.
+>**Info:** This annotation is used to render list of examples in the OpenAPI Specification. It is attached to parameters and record types.
 
-#### Ballerina code sample for object level examples mapping
+##### Ballerina code sample for object level examples mapping
 
 ```yaml
 @openapi:Examples {
@@ -548,6 +593,7 @@ components:
               name: Ron Stewart
 ...
 ```
+As explained in the example section, you can use this annotation for parameters, record fields, and record types.
 
 ## Generate Ballerina clients from OpenAPI definitions
 
@@ -597,13 +643,77 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
 ### Generate with a given method type
-Use the `--client-methods <resource|remote>` option to select the client method type, which can be `resource` or `remote`. (The default option is `remote`).
+Use the `--client-methods <resource|remote>` option to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).
 
 ```
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
 
 >**Info:** For more command options, see [OpenAPI to Ballerina CLI options](#openapi-to-ballerina-command-options).
+
+### Generate mock client using included example in OAS
+
+Introduces mock client generation with examples directly from the OpenAPI specification. Picture a developer tasked with integrating a new API: you can now effortlessly generate 
+mock clients with examples which you documented in the OAS, test and validate integrations, and then seamlessly replace the mock client with the actual one when ready for production.
+
+```
+$ bal openapi -i <openapi-contract> --mode client --mock
+```
+
+OpenAPI contract sample,
+```yaml
+openapi: 3.0.1
+...
+paths:
+  /store:
+    get:
+      operationId: getStoreData
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              examples:
+                store01:
+                  value:
+                    materials: Wood
+                    status: InProgress
+                    Item: Table
+                    amount: 120
+        "202":
+          description: Accepted
+components:
+  schemas:
+    Inventory:
+      required:
+      - Item
+      - amount
+      - materials
+      - status
+      type: object
+      properties:
+        materials:
+          type: string
+        status:
+          type: string
+        Item:
+          type: string
+        amount:
+          type: integer
+          format: int64
+```
+**Generated mock client for the example provided under the response**
+
+```ballerina
+public isolated client class Client {
+ ...
+    resource isolated function get store(map<string|string[]> headers = {}) returns Inventory|error? {
+        return {"materials": "Wood", "status": "InProgress", "Item": "Table", "amount": 120};
+    }
+}
+```
 
 ### Automate client generation
 

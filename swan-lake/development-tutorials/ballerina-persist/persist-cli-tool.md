@@ -24,11 +24,11 @@ The Ballerina project should be initialized with `bal persist` before generating
 $ bal persist add --datastore mysql --module store --test-datastore h2
 ```
 
-| Command parameter |                                                                         Description                                                                          | Mandatory  |  Default value  |
-|:-----------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:---------------:|
-|    --datastore    |   Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |     No     |   `inmemory`    |
-|     --module      |                                        Used to indicate the persist-enabled module in which the files are generated.                                         |     No     | `<root_module>` |
-| --test-datastore  | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore.  |     No     |       No        |
+|  Command option  |                                                                         Description                                                                          | Mandatory  |  Default value  |
+|:----------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:---------------:|
+|   --datastore    |   Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |     No     |   `inmemory`    |
+|     --module     |                                        Used to indicate the persist-enabled module in which the files are generated.                                         |     No     | `<root_module>` |
+| --test-datastore | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore.  |     No     |       No        |
 
 
 The command initializes the `bal persist` feature in the project. This command will do the following,
@@ -118,7 +118,7 @@ Additionally, this command will create/update the `Config.toml` file with the co
 
 you can initialize the project with the following `init` command,
 
-```bash
+```
 bal persist init
 ```
 
@@ -133,15 +133,15 @@ This command includes the following steps,
 
 You can use the `bal persist generate` command to generate the derived types, client, and script files.
 
-```bash
+```
 bal persist generate --datastore mysql --module store --test-datastore h2
 ```
 
-| Command Parameter |                                                                         Description                                                                         | Mandatory | Default Value  |
-|:-----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:--------------:|
-|    --datastore    |  Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |    Yes     |                |
-|     --module      |                                        Used to indicate the persist enabled module in which the files are generated.                                        |    No     | <package_name> |
-| --test-datastore  | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore. |     No     |       No        |
+|  Command option  |                                                                         Description                                                                         | Mandatory | Default Value  |
+|:----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:--------------:|
+|   --datastore    |  Used to indicate the preferred database client. Currently, `inmemory`, `mysql`, `mssql`, `postgresql`, `h2`, `googlesheets`, and  `redis` are supported.   |    Yes     |                |
+|     --module     |                                        Used to indicate the persist enabled module in which the files are generated.                                        |    No     | <package_name> |
+| --test-datastore | Used to indicate the preferred data store for the test cases. It can be either `inmemory` for non-SQL or `h2` for SQL, as these are the supported datastore. |     No     |       No        |
 
 If the module name is provided, it will generate the files under a new subdirectory with the module name like below. Otherwise, it will generate the files under the `root` directory.
 
@@ -176,13 +176,13 @@ The command below generates the data model for an existing database. The generat
 $ bal persist pull --datastore mysql --host localhost --port 3306 --user root --database db
 ```
 
-| Command Parameter |                                               Description                                               | Mandatory | Default Value |
-|:-----------------:|:-------------------------------------------------------------------------------------------------------:|:---------:|:-------------:|
-|    --datastore    | Used to indicate the preferred data store. Currently, `mysql`, `mssql`, and `postgresql` are supported. |    No     |     mysql     |
-|      --host       |                                   Used to indicate the database host                                    |    Yes    |     None      |
-|      --port       |                                   Used to indicate the database port                                    |    No     |     3306      |
-|      --user       |                                   Used to indicate the database user                                    |    Yes    |     None      |
-|    --database     |                                   Used to indicate the database name                                    |    Yes    |     None      |
+| Command option |                                               Description                                               | Mandatory | Default Value |
+|:--------------:|:-------------------------------------------------------------------------------------------------------:|:---------:|:-------------:|
+|  --datastore   | Used to indicate the preferred data store. Currently, `mysql`, `mssql`, and `postgresql` are supported. |    No     |     mysql     |
+|     --host     |                                   Used to indicate the database host                                    |    Yes    |     None      |
+|     --port     |                                   Used to indicate the database port                                    |    No     |     3306      |
+|     --user     |                                   Used to indicate the database user                                    |    Yes    |     None      |
+|   --database   |                                   Used to indicate the database name                                    |    Yes    |     None      |
 
 The file structure of the project after executing the command will be as follows.
 

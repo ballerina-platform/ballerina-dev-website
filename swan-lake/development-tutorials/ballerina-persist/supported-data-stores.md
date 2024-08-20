@@ -22,7 +22,7 @@ There are two ways to use `bal persist`.
 
 1. Initialize `bal persist` and integrate to `bal build` using the following command,
 
-    ```shell
+    ```
     $ bal persist add --datastore <data_store> --module <module_name>
     ```
    
@@ -30,7 +30,7 @@ There are two ways to use `bal persist`.
 
 2. After defining the entities, build the application using the following command,
 
-    ```shell
+    ```
     $ bal build
     ```
 
@@ -38,13 +38,13 @@ There are two ways to use `bal persist`.
 
 1. Initialize `bal persist` using the following command,
 
-    ```shell
+    ```
     $ bal persist init
     ```
 
 2. Generate the persist client using the following command,
 
-    ```shell
+    ```
     $ bal persist generate --datastore <data_store> --module <module_name>
     ```
    > *Note*: Specifying the data store is mandatory and not implicitly configured.
@@ -67,13 +67,13 @@ Below are the ways you can provide the data store for each client generation opt
 1. Integrate the client API generation with the package build.
 The default data store used in the package build is the in-memory data store. Therefore, you do not need to specify the data store explicitly when using it with `bal build`.
 
-   ```shell
+   ```
    $ bal persist add [--datastore inmemory]
    ```
 
 2. One-time generation of the client API against the data model.
 
-   ```shell
+   ```
    $ bal persist generate --datastore inmemory
    ```
 
@@ -96,13 +96,13 @@ Below are the ways you can provide the data store for each client generation opt
 
 1. Integrate the client API generation with the package build.
 
-   ```shell
+   ```
    $ bal persist add --datastore [mysql/mssql/postgresql/h2]
    ```
 
 2. One-time generation of the client API against the data model.
 
-   ```shell
+   ```
    $ bal persist generate --datastore [mysql/mssql/postgresql/h2]
    ```
 
@@ -269,13 +269,13 @@ Below are the ways you can provide the data store for each client generation opt
 
 1. Integrate the client API generation with the package build.
 
-   ```shell
+   ```
    $ bal persist add --datastore googlesheets
    ```
 
 2. One-time generation of the client API against the data model.
 
-   ```shell
+   ```
    $ bal persist generate --datastore googlesheets
    ```
 
@@ -350,13 +350,13 @@ Below are the ways you can provide the data store for each client generation opt
 
 1. Integrate the client API generation with the package build.
 
-   ```shell
+   ```
    $ bal persist add --datastore redis
    ```
 
 2. One-time generation of the client API against the data model.
 
-   ```shell
+   ```
    $ bal persist generate --datastore redis
    ```
 
@@ -410,13 +410,13 @@ Select one of the methods below to set up a Redis server.
    1. Install Docker on your machine if you haven't already.
    2. Pull the Redis Docker image from Docker Hub using the following command.
 
-      ```shell
+      ```
       $ docker pull redis
       ```
    
    3. Run the Redis container as follows.
    
-      ```shell
+      ```
       $ docker run -d -p 6379:6379 --name <container-name> redis
       ```
    

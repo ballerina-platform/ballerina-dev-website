@@ -35,7 +35,7 @@ rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-central/ ./o
 
 #Edit the sitemap
 sed -i '' 's/development-tutorials\///g' ./out/sitemap.xml
-sed -i '' 's/\/integration\//\//g' ./out/sitemap.xml
+sed -i '' -e '/\/use-cases\/integration\//!s/\/integration\//\//g' ./out/sitemap.xml
 sed -i '' 's/integration-tools\///g' ./out/sitemap.xml
 sed -i '' 's/troubleshoot-the-runtime\///g' ./out/sitemap.xml
 sed -i '' 's/\/learn\/references\//\/learn\//g' ./out/sitemap.xml

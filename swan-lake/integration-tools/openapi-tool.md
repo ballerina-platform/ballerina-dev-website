@@ -5,7 +5,7 @@ description: Check out how the Ballerina OpenAPI tool makes it easy for you to s
 keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /learn/openapi-tool/
 active: openapi-tool
-intro: OpenAPI contract is a specification that creates a RESTFUL contract for APIs by detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the OpenAPI contract version 3.0.0 onwards.
+intro: The OpenAPI contract is a specification that creates a RESTful contract for APIs by detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the OpenAPI contract version 3.0.0 onwards.
 --- 
 
 Ballerina OpenAPI tool makes it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
@@ -66,10 +66,10 @@ The command-line arguments below can be used with the command for each particula
 | `--with-tests`            | It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                 | Optional           |
 | `--client-methods`        | This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
 | `--status-code-binding`   | This option can be used in the client generation to generate the client methods with status code response binding. | Optional |
-| `--mock`                  | This flag can be used to switch client generation to generate a mock client for the given OpenAPI contract.  | Optional |
+| `--mock`                  | This option can be used to switch client generation to generate a mock client for the given OpenAPI contract.  | Optional |
 |`--with-service-contract`  | This option can be used to generate the service contract type for the given OpenAPI contract. | Optional |
 | `--single-file`           | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
-| `--use-sanitized-oas`     | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow the Ballerina language best practices. | Optional |
+| `--use-sanitized-oas`     | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow Ballerina language best practices. | Optional |
 
 ### Ballerina to OpenAPI command options
 
@@ -112,7 +112,7 @@ service /store on ep0 {
         // logic here
     }
 
-    resource function post store(@http:Payload Inventory payload) {
+    resource function post store(Inventory payload) {
         //logic here
     }
 }
@@ -125,9 +125,10 @@ The service generation process is complete. The following files were created.
 -- store_service.bal
 -- types.bal
 ```
+
 ### Generate service contract object for given OpenAPI contract
 
-OpenAPI Specification (OAS) is a way to describe the service interface of REST APIs. Counterpart of this in Ballerina is service object type. This `--with-service-contract` is to enable code generation for Ballerina service contract object.
+OpenAPI Specification (OAS) is a way to describe the service interface of REST APIs. Counterpart of this in Ballerina is service object types. This `--with-service-contract` is to enable code generation for the Ballerina service contract object type.
 
 For example,
 
@@ -147,6 +148,7 @@ type OASServiceType service object {
     resource function post store(@http:Payload Inventory payload) returns http:Accepted|ErrorPayloadBadRequest;
 };
 ```
+
 This generates a Ballerina service in a file named `service_contract.bal` and relevant schemas in a file named `types.bal` for the `store.yaml` OpenAPI contract as depicted below. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```
@@ -154,6 +156,7 @@ The service generation process is complete. The following files were created.
 -- service_contract.bal
 -- types.bal
 ```
+
 ### Generate from tags
 
 To generate the Ballerina service stub with a subset of tags defined in an OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.
@@ -172,13 +175,13 @@ Once you execute the command, only the operations related to the given tags get 
 
 ## Generate Ballerina service contract type from OpenAPI Contracts
 
-A service contract-first approach is introduced as a standout key feature using the OpenAPI tool and the HTTP package. By generating a service contract type directly from the OpenAPI contract, you can design services that are contract-compliant from the outset. 
+By generating a service contract type directly from the OpenAPI contract, you can design services that are contract-compliant from the outset, following a service contract-first approach. 
 In addition, centralizing metadata within the service contract type results in a cleaner, more maintainable codebase.
 
 For example, 
 
 ```
-$bal openapi -i hello.yaml --mode service --with-service-contract
+$ bal openapi -i hello.yaml --mode service --with-service-contract
 ```
 
 ## Export OpenAPI contracts from Ballerina services
@@ -241,6 +244,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
     version: "0.1.0"
 }    
 ```
+
 >**Info:** These `contract`, `title`, `version` and all the other fields are all optional attributes and can be used as described below.
 
 | Field Name               | Description                                                                                                                                                                                                                                                                                                                                                           | Mandatory/Optional |
@@ -259,6 +263,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the meta data s
 For example,
 
 **Ballerina service file with the OpenAPI annotation**
+
 ```ballerina
 @openapi:ServiceInfo {
     title: "Store Management APIs",
@@ -269,7 +274,9 @@ service /greet on new http:Listener(9090) {
 ...
 }
 ```
+
 **Generated OpenAPI contract with the given details**
+
 ```openapi
 openapi: 3.0.1
 info:
@@ -279,6 +286,7 @@ info:
     email: mark@abc.com
 ...
 ```
+
 #### Export with metadata using the `@openapi:ResourceInfo` annotation.
 
 You can use the `@openapi:ResourceInfo` annotation for specifying the meta data such as operation id, summary, tags information and example details of the OpenAPI operation as follows. This annotation used to be attached with the resource functions.
@@ -302,6 +310,7 @@ For example,
     resource function post store(Inventory payload) returns string? {
     }
 ```
+
 **Generated OpenAPI contract with the given details**
 
 ```yaml
@@ -320,6 +329,7 @@ paths:
             schema:
     ...
 ```
+
 ### Export with given examples information
 
 An API specification can include examples for parameters, responses, schemas (data models), individual properties in
@@ -355,6 +365,7 @@ Here, you need to provide example details according to the structure shown in th
     }
 ...
 ```
+
 Structure Explanation:
  1. Examples Container: The **examples** key is a container for all example details related to responses.
  2. Response Object: Inside **examples**, the **response** key groups examples that pertain to response status codes.
@@ -398,7 +409,9 @@ service /convert on new http:Listener(9090) {
 ...
 }
 ```
+
 **Generated OpenAPI contract with the given details**
+
 ```yaml
 paths:
   /store:
@@ -427,6 +440,7 @@ paths:
         "202":
           description: Accepted
 ```
+
 ##### Add request body examples
 
 Here, you need to provide example details according to the structure shown in the sample below.
@@ -482,6 +496,7 @@ Here, you need to provide example details according to the structure shown in th
 ```
 
 **Generated OpenAPI contract with the given details**
+
 ```yaml
 ...
 paths:
@@ -512,6 +527,7 @@ paths:
           description: Accepted
 ...
 ```
+
 As explained in the example section, you can use this annotation for parameters, record fields, and record types.
 
 #### Export example using `@openapi:Example` annotation
@@ -574,6 +590,7 @@ parameters:
       example: approved
 ...
 ```
+
 ##### Ballerina code sample for object property level example mapping
 
 ```ballerina
@@ -584,6 +601,7 @@ type User record {
    string name;
 }
 ```
+
 **Generated OpenAPI contract with the given details**
 
 ```yaml
@@ -652,6 +670,7 @@ components:
               name: Ron Stewart
 ...
 ```
+
 As explained in the example section, you can use this annotation for parameters, record fields, and record types.
 
 ## Generate Ballerina clients from OpenAPI definitions
@@ -669,6 +688,7 @@ For example,
 ```
 $ bal openapi -i hello.yaml --mode client
 ```
+
 This generates a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant utils methods related to the client stub, and a schemas file (`types.bal`) for the `hello.yaml` OpenAPI contract. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```
@@ -677,9 +697,11 @@ Client generated successfully. The following files were created.
 -- types.bal
 -- utils.bal
 ```
+
 ### Generate with boiler-plate tests
 
 Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote methods available in it.
+
 ```
 $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
 ```
@@ -689,6 +711,7 @@ For example,
 ```
 $ bal openapi -i hello.yaml --mode client --with-tests
 ```
+
 In addition to the above-mentioned generated file, this generates a `test.bal` file in the default client generation.
 
 ### Generate with nillable types
@@ -720,6 +743,7 @@ $ bal openapi -i <openapi-contract> --mode client --mock
 ```
 
 OpenAPI contract sample,
+
 ```yaml
 openapi: 3.0.1
 ...
@@ -763,6 +787,7 @@ components:
           type: integer
           format: int64
 ```
+
 **Generated mock client for the example provided under the response**
 
 ```ballerina
@@ -890,7 +915,7 @@ The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina O
     termsOfService: "http://mock-api-doc",
     licenseName: "ABC",
     licenseURL: "http://abc-license.com"
-    embed: true // (default value => true)
+    embed: true // (default value => false)
 }
 service /greet on new http:Listener(9090) {
    ...
@@ -916,4 +941,4 @@ The attributes of the annotation are optional and can be used for each particula
 | `termsOfService: string`    | You can use this to add the URL details to the terms of service for the API.                                                                                                                                                                                                                                                              | Optional          |
 | `licenseName: string`       | You can use this to add the name of the license under which the API is provided.                                                                                                                                                                                                                                                          | Optional          |
 | `licenseURL: string`        | You can use this to add the URL details regarding the full text of the license.                                                                                                                                                                                                                                                           | Optional          |
-| `embed: string`             | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                                                   | Optional          |
+| `embed: string`             | Turns on generating OpenAPI documentation for the service for [introspection endpoint](https://ballerina.io/spec/http/#236-openapi-specification-resources) support when used with `true` in the annotation.                                                                                                                                                                                               | Optional          |

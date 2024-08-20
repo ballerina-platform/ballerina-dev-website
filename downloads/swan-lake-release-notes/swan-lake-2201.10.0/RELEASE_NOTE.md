@@ -90,7 +90,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### `graphql` package
 
-- Added support for GraphQL query complexity analysis, which can be used to enhance the GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` record now includes a new field named `queryComplexityConfig` to configure the query complexity analysis.
+- Added support for GraphQL query complexity analysis, which can be used to enhance GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` annotation now includes a new field named `queryComplexityConfig` to configure query complexity analysis.
 
 ### Deprecations
 

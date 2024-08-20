@@ -119,10 +119,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
-#### `graphql` package
-
-- Added support for GraphQL query complexity analysis, which can be used to enhance GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` annotation now includes a new field named `queryComplexityConfig` to configure query complexity analysis.
-
 #### `data.yaml` package
 
 The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
@@ -160,6 +156,10 @@ public function main() returns error? {
     io:println(serverConfig);
 }
 ```
+
+#### `graphql` package
+
+- Added support for GraphQL query complexity analysis, which can be used to enhance GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` annotation now includes a new field named `queryComplexityConfig` to configure query complexity analysis.
 
 #### `http` package
 
@@ -273,13 +273,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 #### OpenAPI tool
 
 -  Added support to generate a mock client for OpenAPI specifications (OAS) that include examples. To generate a mock client, use the `--mock` flag in the OpenAPI client generation CLI command.
-  
+
     ```
      $ bal openapi -i <yml file> --mode client --mock
     ```
 
 -  Provided an option to generate a single Ballerina file with the client or the service code. To generate code in a single file, use the `--single-file` flag in the OpenAPI client/service generation CLI command.
-  
+
     ```
     $ bal openapi -i <yml file> --mode <client|service> --single-file
     ```
@@ -291,11 +291,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
     ```
 
 -  Introduced example annotations in the OpenAPI package. This feature will enable rendering example schemas in the generated OpenAPI specification.
-  
+
     For example,
 
     Using the `openapi:Example` annotation
-  
+
      ```ballerina
         @openapi:Example {
           value: {
@@ -308,9 +308,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
           string name
         }
      ```
-  
+
     Using the `openapi:Examples` annotation
-  
+
     ```ballerina
       @openapi:Examples {
         Jessica: { // Example 1
@@ -324,7 +324,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
              id: 11,
              name: "Ron Stewart"
           }
-        } 
+        }
       }
       type User record {
         int id;
@@ -333,11 +333,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
     ```
 
 - Provided a flag to generate the Ballerina client/service adhering to Ballerina naming conventions. To enable this feature, use the `--use-sanitized-oas` flag in the OpenAPI client/service CLI command. This an experimental feature.
-  
+
   ```
   $ bal openapi -i <yml file> --mode <client|service> --use-sanitized-oas
   ```
-  
+
 #### Persist tool
 
 - Introduced a new option to the `persist generate` command to provide a test datastore. This will generate a separate client which can be used to mock the actual client. The possible values are `h2` for SQL datastores and `inmemory` for non-SQL datastores.

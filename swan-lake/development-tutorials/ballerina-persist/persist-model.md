@@ -379,6 +379,8 @@ The `id` field will be auto-generated and the [`PersonInsert`](/learn/persist-cl
 |   `MySQL`    | `AUTO_INCREMENT` |
 |   `MSSQL`    | `IDENTITY(1,1)`  |
 | `PostgreSQL` |     `SERIAL`     |
+|     `H2`     | `AUTO_INCREMENT` |
+
 
 ### Declare custom foreign keys with `Relation` annotation
 

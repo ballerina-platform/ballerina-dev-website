@@ -5,43 +5,23 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/graphql;
+  `import ballerina/http;
 import ballerina/io;
 
-// User-defined data types to retrieve data from the service.
-type ProfileResponse record {|
-    *graphql:GenericResponseWithErrors;
-    record {|Profile profile;|} data;
-|};
-
-type Profile record {|
-    string name;
-    int age;
-|};
-
 public function main() returns error? {
-    // Defines the GraphQL client to call the APIs secured with basic authentication.
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-        auth = {
-            username: "ldclakmal",
-            password: "ldclakmal@123"
-        },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
-        }
-    );
-
-    // Defines the GraphQL document to be sent to the GraphQL service.
-    string document = "{ profile { name, age } }";
-
-    // Execute the document and retrieve the response from the GraphQL service.
-    ProfileResponse response = check graphqlClient->execute(document);
-    io:println(response.data.profile);
+    http:Client clientEp = check new ("localhost:9090");
+    // Make a GET request to the "/stocks" endpoint and receive a stream of \`http:SseEvent\`.
+    stream<http:SseEvent, error?> eventStream = check clientEp->/stocks;
+    // Iterate over the stream and handle each event.
+    check from http:SseEvent event in eventStream
+        do {
+            io:println("Stock price: ", event.data);
+        };
 }
 `,
 ];
 
-export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
+export function HttpSseClient({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -51,16 +31,14 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL client - Basic authentication</h1>
+      <h1>HTTP client - Server-sent events</h1>
 
       <p>
-        The <code>graphql:Client</code> can connect to a service that is secured
-        with basic authentication by adding the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header to each request.
-        The username and password for basic authentication can be specified in
-        the <code>auth</code> field of the{" "}
-        <code>graphql:ClientConfiguration</code>. Use this to communicate with
-        the service, which is secured with basic authentication.
+        The HTTP client supports receiving real-time data from services using
+        server-sent events (SSE). It allows payload-binding of a stream of{" "}
+        <code>http:SseEvent</code> when consuming SSE from a service. This
+        payload binding fails if the content type header is not present in the
+        response or does not have the value <code>text/event-stream</code>.
       </p>
 
       <Row
@@ -69,31 +47,9 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/graphql-client-security-basic-auth",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -153,10 +109,8 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Run the GraphQL service given in the{" "}
-            <a href="/learn/by-example/graphql-service-basic-auth-file-user-store">
-              Basic authentication file user store
-            </a>{" "}
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-sse-service/">Server-sent events</a>{" "}
             example.
           </span>
         </li>
@@ -217,8 +171,14 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run graphql_client_security_basic_auth.bal`}</span>
-              <span>{`{"name":"Walter White","age":51}`}</span>
+              <span>{`\$ bal run http_sse_client.bal`}</span>
+              <span>{`
+`}</span>
+              <span>{`Stock price: 249.9963321685791`}</span>
+              <span>{`Stock price: 56.58070945739746`}</span>
+              <span>{`Stock price: 571.2127494812012`}</span>
+              <span>{`Stock price: 217.98820853233337`}</span>
+              <span>{`Stock price: 21.891758739948273`}</span>
             </code>
           </pre>
         </Col>
@@ -230,8 +190,8 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest#CredentialsConfig">
-              <code>graphql:CredentialsConfig</code> record - API documentation
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -240,18 +200,8 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#821-basic-authentication">
-              GraphQL client basic authentication - Specification
+            <a href="/spec/http/#243-client-action-return-types">
+              Client action return types - Specification
             </a>
           </span>
         </li>
@@ -261,8 +211,8 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Mutual SSL"
-            href="/learn/by-example/graphql-client-security-mutual-ssl"
+            title="HTTP/2 server push"
+            href="/learn/by-example/http-2-0-client-server-push"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -289,7 +239,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Mutual SSL
+                  HTTP/2 server push
                 </span>
               </div>
             </div>
@@ -297,8 +247,8 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self-signed JWT authentication"
-            href="/learn/by-example/graphql-client-security-jwt-authentication"
+            title="Request interceptor"
+            href="/learn/by-example/http-request-interceptor"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -308,7 +258,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self-signed JWT authentication
+                  Request interceptor
                 </span>
               </div>
               <svg

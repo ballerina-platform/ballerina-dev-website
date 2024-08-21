@@ -17,7 +17,7 @@ public function main() returns error? {
 
     // Each remote method call on a client object is represented as a horizontal line
     // between the lifeline of the worker making the call and the remote system.
-    string payload = check cl->get("/v3/7240398e-0435-4457-91b0-0c862f10563f/");
+    string payload = check cl->get("/v3/55cf043f-f5d4-4005-af3c-cce4a955afc7/");
 
     io:println(payload);
     return;

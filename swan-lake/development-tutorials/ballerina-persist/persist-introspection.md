@@ -12,7 +12,7 @@ redirect_from:
 ---
 
 Introspection lets you use `bal persist` with existing databases without having to write a
-data model. Currently, introspection is only supported for MySQL databases and new data stores will be supported
+data model. Currently, introspection is supported for MySQL, MSSQL and PostgreSQL databases and new data stores will be supported
 in the future. [Advanced SQL annotations](/learn/persist-model/#advanced-sql-annotations) are used to annotate names, special types, declare generated fields, custom foreign
 keys, and indexes etc.
 
@@ -64,7 +64,7 @@ The types that are partially supported will be fully supported later along with 
 
 ## Limitations
 
-- Introspection currently supports only for MySQL data stores
+- Introspection currently supports for MySQL, MSSQL and PostgreSQL data stores
 - Cross-referring relations, where foreign keys are found in both sides of a couple of associated entities are not supported
 - Foreign keys occurring from unique keys are not supported
 - Some data types are unsupported, in which case the client API for those entities are not generated. However, you can still perform join queries that include those relations, without unsupported fields.

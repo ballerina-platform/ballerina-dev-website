@@ -308,8 +308,8 @@ export function Http20ServerPush({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Redirects"
-            href="/learn/by-example/http-client-redirects"
+            title="Server-sent events"
+            href="/learn/by-example/http-sse-service"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -319,7 +319,7 @@ export function Http20ServerPush({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Server-sent events
                 </span>
               </div>
               <svg

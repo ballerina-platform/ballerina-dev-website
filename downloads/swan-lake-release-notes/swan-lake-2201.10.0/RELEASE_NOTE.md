@@ -251,6 +251,18 @@ public function main() returns error? {
 New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
 All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
+#### `asb` package
+
+- Introduced support for listener-service-based async message consumption functionality.
+
+#### `dayforce` package
+
+- Introduced as a new connector with support for the Dayforce REST API v1.
+
+#### `discord` package
+
+- Introduced as a new connector with support for the Discord REST API v10.
+
 #### `salesforce` package
 
 - Added support for Salesforce listener with Streaming API for real-time data synchronization and event-driven workflows.
@@ -271,18 +283,6 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Provided a high-level interface for APIs related to Sales and Distribution (SD) in S/4HANA.
 - Provided operations for sales order management, delivery processing, and billing.
-
-#### `asb` package
-
-- Introduced support for listener-service-based async message consumption functionality.
-
-#### `dayforce` package
-
-- Introduced as a new connector with support for the Dayforce REST API v1.
-
-#### `discord` package
-
-- Introduced as a new connector with support for the Discord REST API v10.
 
 #### `slack` package
 

@@ -248,8 +248,8 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Cache invalidation"
-            href="/learn/by-example/graphql-service-cache-invalidation"
+            title="Query Complexity"
+            href="/learn/by-example/graphql-service-query-complexity"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cache invalidation
+                  Query Complexity
                 </span>
               </div>
             </div>

@@ -2256,6 +2256,14 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2323,6 +2331,14 @@
       {
         "name": "HTTP/2 server push",
         "url": "http-2-0-client-server-push",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": false,
@@ -2601,6 +2617,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2721,7 +2745,7 @@
       },
       {
         "name": "Self-signed JWT authentication",
-        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "url": "graphql-client-security-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

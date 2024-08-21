@@ -1084,6 +1084,10 @@ import {
   codeSnippetData as Http20ServerPushCodeSnippetData,
 } from "./http-2-0-server-push/content.jsx";
 import {
+  HttpSseService,
+  codeSnippetData as HttpSseServiceCodeSnippetData,
+} from "./http-sse-service/content.jsx";
+import {
   HttpClientRedirects,
   codeSnippetData as HttpClientRedirectsCodeSnippetData,
 } from "./http-client-redirects/content.jsx";
@@ -1115,6 +1119,10 @@ import {
   Http20ClientServerPush,
   codeSnippetData as Http20ClientServerPushCodeSnippetData,
 } from "./http-2-0-client-server-push/content.jsx";
+import {
+  HttpSseClient,
+  codeSnippetData as HttpSseClientCodeSnippetData,
+} from "./http-sse-client/content.jsx";
 import {
   HttpRequestInterceptor,
   codeSnippetData as HttpRequestInterceptorCodeSnippetData,
@@ -1244,6 +1252,10 @@ import {
   codeSnippetData as GraphqlServiceCacheInvalidationCodeSnippetData,
 } from "./graphql-service-cache-invalidation/content.jsx";
 import {
+  GraphqlServiceQueryComplexity,
+  codeSnippetData as GraphqlServiceQueryComplexityCodeSnippetData,
+} from "./graphql-service-query-complexity/content.jsx";
+import {
   GraphqlClientQueryEndpoint,
   codeSnippetData as GraphqlClientQueryEndpointCodeSnippetData,
 } from "./graphql-client-query-endpoint/content.jsx";
@@ -1292,9 +1304,9 @@ import {
   codeSnippetData as GraphqlClientSecurityBasicAuthCodeSnippetData,
 } from "./graphql-client-security-basic-auth/content.jsx";
 import {
-  GraphqlClientSecuritySelfSignedJwtAuthentication,
-  codeSnippetData as GraphqlClientSecuritySelfSignedJwtAuthenticationCodeSnippetData,
-} from "./graphql-client-security-self-signed-jwt-authentication/content.jsx";
+  GraphqlClientSecurityJwtAuthentication,
+  codeSnippetData as GraphqlClientSecurityJwtAuthenticationCodeSnippetData,
+} from "./graphql-client-security-jwt-authentication/content.jsx";
 import {
   GraphqlClientSecurityOauth2PasswordGrantType,
   codeSnippetData as GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData,
@@ -2609,6 +2621,8 @@ const BBEs = {
   Http2To11DowngradeServiceCodeSnippetData,
   Http20ServerPush,
   Http20ServerPushCodeSnippetData,
+  HttpSseService,
+  HttpSseServiceCodeSnippetData,
   HttpClientRedirects,
   HttpClientRedirectsCodeSnippetData,
   HttpClientFileUpload,
@@ -2625,6 +2639,8 @@ const BBEs = {
   Http2PriorKnowledgeClientCodeSnippetData,
   Http20ClientServerPush,
   Http20ClientServerPushCodeSnippetData,
+  HttpSseClient,
+  HttpSseClientCodeSnippetData,
   HttpRequestInterceptor,
   HttpRequestInterceptorCodeSnippetData,
   HttpResponseInterceptor,
@@ -2689,6 +2705,8 @@ const BBEs = {
   GraphqlServiceFieldLevelCachingCodeSnippetData,
   GraphqlServiceCacheInvalidation,
   GraphqlServiceCacheInvalidationCodeSnippetData,
+  GraphqlServiceQueryComplexity,
+  GraphqlServiceQueryComplexityCodeSnippetData,
   GraphqlClientQueryEndpoint,
   GraphqlClientQueryEndpointCodeSnippetData,
   GraphqlClientHandlePartialResponse,
@@ -2713,8 +2731,8 @@ const BBEs = {
   GraphqlClientSecurityMutualSslCodeSnippetData,
   GraphqlClientSecurityBasicAuth,
   GraphqlClientSecurityBasicAuthCodeSnippetData,
-  GraphqlClientSecuritySelfSignedJwtAuthentication,
-  GraphqlClientSecuritySelfSignedJwtAuthenticationCodeSnippetData,
+  GraphqlClientSecurityJwtAuthentication,
+  GraphqlClientSecurityJwtAuthenticationCodeSnippetData,
   GraphqlClientSecurityOauth2PasswordGrantType,
   GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData,
   WebsocketBasicSample,

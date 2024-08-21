@@ -225,8 +225,8 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication/">
-            GraphQL client - Self-signed JWT authentication
+          <a href="/learn/by-example/graphql-client-security-jwt-authentication/">
+            GraphQL client - JWT authentication
           </a>{" "}
           example.
         </p>

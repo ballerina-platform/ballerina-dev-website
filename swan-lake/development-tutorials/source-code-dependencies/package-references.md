@@ -440,7 +440,7 @@ version = "<version>"
 graalvmCompatible = true
 ```
 
-If the package uses only GraalVM compatible Java dependencies, The package is indicated as GraalVM compatible. 
+If all the Java dependencies used in the package are marked as GraalVM compatible, the package is considered GraalVM compatible. 
 
 
 ### Tools

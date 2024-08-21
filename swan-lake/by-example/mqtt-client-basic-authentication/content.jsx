@@ -353,8 +353,8 @@ export function MqttClientBasicAuthentication({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Consume message"
-            href="/learn/by-example/jms-service-consume-message"
+            title="Add/Remove entries"
+            href="/learn/by-example/ldap-add-remove-entry"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -364,7 +364,7 @@ export function MqttClientBasicAuthentication({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume message
+                  Add/Remove entries
                 </span>
               </div>
               <svg

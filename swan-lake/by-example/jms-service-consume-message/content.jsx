@@ -243,8 +243,8 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
-            href="/learn/by-example/mqtt-client-basic-authentication"
+            title="Search for an entry"
+            href="/learn/by-example/ldap-search-entry"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -271,7 +271,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Search for an entry
                 </span>
               </div>
             </div>

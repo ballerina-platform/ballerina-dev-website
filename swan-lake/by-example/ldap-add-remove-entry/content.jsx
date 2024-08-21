@@ -5,53 +5,37 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
-
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
-
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
-|};
+  `import ballerina/io;
+import ballerina/ldap;
 
 public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
+    // Initializes a new LDAP client with credentials.
+    ldap:Client ldapClient = check new (
+        hostName = "localhost",
+        port = 389,
+        domainName = "cn=admin,dc=example,dc=com",
+        password = "adminpassword"
+    );
+
+    // Creates an \`ldap:Entry\` record for the new entry.
+    ldap:Entry addEntry = {
+        "objectClass": ["top", "person"],
+        "sn": "user",
+        "cn": "user"
     };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    // Adds an entry to the directory server.
+    ldap:LdapResponse addResponse = check ldapClient->add("cn=user,dc=example,dc=com", addEntry);
+    io:println("Add Response: ", addResponse.resultCode);
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+    // Deletes an entry from the directory server.
+    ldap:LdapResponse deleteResponse = check ldapClient->delete("cn=user,dc=example,dc=com");
+    io:println("Delete Response: ", deleteResponse.resultCode);
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function LdapAddRemoveEntry({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,26 +45,30 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>LDAP client - Add/Remove entries</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
-      </p>
-
-      <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
-        </a>
+        The <code>ldap:Client</code> connects to a directory server and performs
+        various operations on directories. Currently, it supports the generic
+        LDAP operations; <code>add</code>, <code>modify</code>,{" "}
+        <code>modifyDN</code>, <code>compare</code>, <code>search</code>,{" "}
+        <code>searchWithType</code>, <code>delete</code>, and <code>close</code>
         .
+      </p>
+
+      <p>
+        The <code>add</code> operation creates a new entry in a directory
+        server. It requires a <code>DN</code> (Distinguished Name) for the entry
+        and the attributes to be included. The <code>objectClass</code>{" "}
+        attribute must be specified to define the object classes for the entry,
+        and any attributes required by these object classes should also be
+        included.
+      </p>
+
+      <p>
+        The <code>delete</code> operation removes an entry from a directory
+        server. It requires a <code>DN</code> (Distinguished Name) of the entry
+        to be deleted.
       </p>
 
       <Row
@@ -89,31 +77,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -131,7 +97,7 @@ export function ConstraintValidations({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -166,6 +132,25 @@ export function ConstraintValidations({ codeSnippets }) {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Ensure that an LDAP server is up and running locally on port 389
+            while running the example.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the example by executing the command below.</span>
+        </li>
+      </ul>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -220,18 +205,65 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run ldap_add_remove_entry.bal`}</span>
+              <span>{`Add Response: SUCCESS`}</span>
+              <span>{`Delete Response: SUCCESS`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerina/ldap/latest#Client-add">
+              <code>ldap:Client</code> <code>add</code> operation - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerina/ldap/latest#Client-delete">
+              <code>ldap:Client</code> <code>delete</code> operation - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/ldap/latest/">
+              <code>ldap</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/ldap/#2-ldap-client">
+              <code>ldap:Client</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialize to YAML string"
-            href="/learn/by-example/anydata-to-yaml-string"
+            title="Basic authentication"
+            href="/learn/by-example/mqtt-client-basic-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,14 +290,17 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialize to YAML string
+                  Basic authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link
+            title="Search for an entry"
+            href="/learn/by-example/ldap-search-entry"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +309,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Search for an entry
                 </span>
               </div>
               <svg

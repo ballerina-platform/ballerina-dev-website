@@ -95,7 +95,7 @@ export function GraphqlServiceQueryComplexity({ codeSnippets }) {
       <h1>GraphQL service - Query Complexity</h1>
 
       <p>
-        a <code>graphql:Service</code> can be secured by limiting the complexity
+        A <code>graphql:Service</code> can be secured by limiting the complexity
         of the operations that can be executed. This can be done by setting a
         maximum complexity threshold for a given service. The query complexity
         is calculated by assigning a complexity value to each field in the

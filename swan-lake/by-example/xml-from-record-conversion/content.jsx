@@ -25,7 +25,6 @@ type Invoice record {
 @xmldata:Namespace {
     uri: "http://example1.com"
 }
-
 type Item record {
     string itemCode;
     int count;
@@ -261,8 +260,8 @@ export function XmlFromRecordConversion({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations"
+            title="YAML to anydata"
+            href="/learn/by-example/yaml-to-anydata"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -272,7 +271,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  YAML to anydata
                 </span>
               </div>
               <svg

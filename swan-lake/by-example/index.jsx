@@ -1712,6 +1712,14 @@ import {
   codeSnippetData as MqttClientBasicAuthenticationCodeSnippetData,
 } from "./mqtt-client-basic-authentication/content.jsx";
 import {
+  LdapAddRemoveEntry,
+  codeSnippetData as LdapAddRemoveEntryCodeSnippetData,
+} from "./ldap-add-remove-entry/content.jsx";
+import {
+  LdapSearchEntry,
+  codeSnippetData as LdapSearchEntryCodeSnippetData,
+} from "./ldap-search-entry/content.jsx";
+import {
   JmsServiceConsumeMessage,
   codeSnippetData as JmsServiceConsumeMessageCodeSnippetData,
 } from "./jms-service-consume-message/content.jsx";
@@ -1920,6 +1928,10 @@ import {
   codeSnippetData as RecordToEdiCodeSnippetData,
 } from "./record-to-edi/content.jsx";
 import {
+  EnvironmentVariables,
+  codeSnippetData as EnvironmentVariablesCodeSnippetData,
+} from "./environment-variables/content.jsx";
+import {
   Filepaths,
   codeSnippetData as FilepathsCodeSnippetData,
 } from "./filepaths/content.jsx";
@@ -1968,10 +1980,6 @@ import {
   codeSnippetData as XsltTransformationCodeSnippetData,
 } from "./xslt-transformation/content.jsx";
 import {
-  EnvironmentVariables,
-  codeSnippetData as EnvironmentVariablesCodeSnippetData,
-} from "./environment-variables/content.jsx";
-import {
   XmlToJsonConversion,
   codeSnippetData as XmlToJsonConversionCodeSnippetData,
 } from "./xml-to-json-conversion/content.jsx";
@@ -1987,6 +1995,18 @@ import {
   XmlFromRecordConversion,
   codeSnippetData as XmlFromRecordConversionCodeSnippetData,
 } from "./xml-from-record-conversion/content.jsx";
+import {
+  YamlToAnydata,
+  codeSnippetData as YamlToAnydataCodeSnippetData,
+} from "./yaml-to-anydata/content.jsx";
+import {
+  YamlToAnydataWithProjection,
+  codeSnippetData as YamlToAnydataWithProjectionCodeSnippetData,
+} from "./yaml-to-anydata-with-projection/content.jsx";
+import {
+  AnydataToYamlString,
+  codeSnippetData as AnydataToYamlStringCodeSnippetData,
+} from "./anydata-to-yaml-string/content.jsx";
 import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
@@ -2935,6 +2955,10 @@ const BBEs = {
   MqttClientSslCodeSnippetData,
   MqttClientBasicAuthentication,
   MqttClientBasicAuthenticationCodeSnippetData,
+  LdapAddRemoveEntry,
+  LdapAddRemoveEntryCodeSnippetData,
+  LdapSearchEntry,
+  LdapSearchEntryCodeSnippetData,
   JmsServiceConsumeMessage,
   JmsServiceConsumeMessageCodeSnippetData,
   JmsProducerProduceMessage,
@@ -3039,6 +3063,8 @@ const BBEs = {
   EdiToRecordCodeSnippetData,
   RecordToEdi,
   RecordToEdiCodeSnippetData,
+  EnvironmentVariables,
+  EnvironmentVariablesCodeSnippetData,
   Filepaths,
   FilepathsCodeSnippetData,
   Directories,
@@ -3063,8 +3089,6 @@ const BBEs = {
   UuidOperationsCodeSnippetData,
   XsltTransformation,
   XsltTransformationCodeSnippetData,
-  EnvironmentVariables,
-  EnvironmentVariablesCodeSnippetData,
   XmlToJsonConversion,
   XmlToJsonConversionCodeSnippetData,
   XmlFromJsonConversion,
@@ -3073,6 +3097,12 @@ const BBEs = {
   XmlToRecordConversionCodeSnippetData,
   XmlFromRecordConversion,
   XmlFromRecordConversionCodeSnippetData,
+  YamlToAnydata,
+  YamlToAnydataCodeSnippetData,
+  YamlToAnydataWithProjection,
+  YamlToAnydataWithProjectionCodeSnippetData,
+  AnydataToYamlString,
+  AnydataToYamlStringCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
   DockerHelloWorld,

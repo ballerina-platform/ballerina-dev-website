@@ -5,53 +5,62 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/data.yaml;
+import ballerina/io;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
-
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
+type ServerConfig record {|
+    string host;
+    int port;
+    string protocol;
 |};
 
+final string yamlString = string
+        \`
+        host: "localhost"
+        port: 8080
+        protocol: "http"\`;
+
 public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
-    };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
+    // Parse the YAML string as a record.
+    ServerConfig serverConfig1 = check yaml:parseString(yamlString);
+    io:println(serverConfig1);
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    byte[] yamlByteArr = yamlString.toBytes();
+    // Parse the YAML byte array as a record.
+    ServerConfig serverConfig2 = check yaml:parseBytes(yamlByteArr);
+    io:println(serverConfig2);
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(yamlString));
+    // Parse the YAML byte block stream as a record.
+    ServerConfig serverConfig3 = check yaml:parseStream(byteBlockStream);
+    io:println(serverConfig3);
+}
+
+// Defines a class called \`ByteBlockGenerator\`, which is stream implementor with a \`next()\` method.
+// This \`next()\` method is called when iterating over a stream created with a \`ByteBlockGenerator\` value.
+class ByteBlockGenerator {
+    private int index = 0;
+    private final byte[] byteArr;
+    private final int arraySize;
+
+    public function init(string data) {
+        self.byteArr = data.toBytes();
+        self.arraySize = self.byteArr.length();
+    }
+
+    public isolated function next() returns record {|byte[] value;|}|error? {
+        if self.index >= self.arraySize {
+            return;
+        }
+        int startIndex = self.index;
+        self.index = startIndex + 4 > self.arraySize ? self.arraySize : startIndex + 3;
+        return {value: self.byteArr.slice(startIndex, self.index)};
+    }
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function YamlToAnydata({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,24 +70,18 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>YAML to anydata conversion</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
-      </p>
-
-      <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
+        The <code>data.yaml</code> library provides multiple functions to parse
+        YAML source, in the form of a string, byte array, or byte block stream,
+        as a value that belongs to a subtype of <code>anydata</code>.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
+        <a href="https://lib.ballerina.io/ballerina/data.yaml/latest/">
+          <code>data.yaml</code> module
         </a>
         .
       </p>
@@ -89,31 +92,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -220,8 +201,10 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run yaml_to_anydata.bal`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
             </code>
           </pre>
         </Col>
@@ -230,8 +213,8 @@ export function ConstraintValidations({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialize to YAML string"
-            href="/learn/by-example/anydata-to-yaml-string"
+            title="Record to XML conversion"
+            href="/learn/by-example/xml-from-record-conversion"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,14 +241,17 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialize to YAML string
+                  Record to XML conversion
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link
+            title="YAML to anydata with projection"
+            href="/learn/by-example/yaml-to-anydata-with-projection"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +260,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  YAML to anydata with projection
                 </span>
               </div>
               <svg

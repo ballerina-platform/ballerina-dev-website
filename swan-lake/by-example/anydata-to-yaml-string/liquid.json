@@ -1,0 +1,18 @@
+{
+  "title": "Serialize to YAML string",
+  "description": "This BBE demonstrates how to serialize a value belonging to `anydata` to a string in YAML format.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "yaml",
+    "yaml to string",
+    "record to yaml"
+  ],
+  "permalink": "/learn/by-example/anydata-to-yaml-string",
+  "active": "anydata-to-yaml-string",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/anydata-to-yaml-string",
+    "/swan-lake/learn/by-example/anydata-to-yaml-string.html"
+  ]
+}

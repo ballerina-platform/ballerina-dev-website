@@ -265,13 +265,13 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `salesforce` package
 
-- Added support for Salesforce listener with Streaming API for real-time data synchronization and event-driven workflows.
-- Added support for base types with `salesforce.types` submodule.
-- Reorganized salesforce clients for better usability.
+- Introduced the Salesforce listener with support for the Streaming API for real-time data synchronization and event-driven workflows.
+- Added support for base types with the `salesforce.types` submodule.
+- Reorganized Salesforce clients for better usability.
 
 #### `sap` package
 
-- Added support for invoking any OData endpoints in S/4HANA.
+- Added support for invoking any OData endpoint in S/4HANA.
 - Added support for automatic CSRF token authentication for enhanced security and usability.
 
 #### `sap.jco` package
@@ -286,18 +286,18 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `slack` package
 
-- Replaced existing remote function-based APIs with resource function-based APIs.
+- Replaced existing remote method-based APIs with resource method-based APIs.
 - Added support for the latest Slack REST API.
 
 #### `stripe` package
 
-- Replaced existing remote function-based APIs with resource function-based APIs.
-- Added support for the latest Stripe v1 REST API.
+- Replaced existing remote method-based APIs with resource method-based APIs.
+- Added support for the latest Stripe REST API v1.
 
-#### `twitter(X)` package
+#### `twitter (X)` package
 
-- Added support for the Twitter REST API v2.
-- Replaced existing remote function-based APIs with resource function-based APIs.
+- Added support for the Twitter (X) REST API v2.
+- Replaced existing remote method-based APIs with resource method-based APIs.
 
 ### Deprecations
 

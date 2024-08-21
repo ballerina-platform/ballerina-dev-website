@@ -430,7 +430,7 @@ The following example shows a platform dependency entry with the `scope`.
 
 **Mark a Java dependency as GraalVM compatible**
 
-A Java dependency can be marked as GraalVM compatible by passing `graalvmCompatible = true` property as follows:
+A Java dependency can be marked as GraalVM compatible by passing the `graalvmCompatible = true` property as follows:
 
 ```toml
 [[platform.java11.dependency]]

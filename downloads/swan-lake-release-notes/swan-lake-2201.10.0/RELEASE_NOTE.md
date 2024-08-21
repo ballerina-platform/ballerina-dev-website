@@ -28,10 +28,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
-### New features
-
-### Improvements
-
 ### Bug fixes
 
 - A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed.
@@ -121,7 +117,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### `data.yaml` package
 
-The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
+- The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
 
 ```ballerina
 import ballerina/data.yaml;
@@ -379,8 +375,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ## Ballerina packages updates
 
-### New features
-
 ### Improvements
 
 - Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level have to be moved from modules to the package root to continue to be identified as resources.
@@ -435,8 +429,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
     ```
     $ bal build --optimize-dependency-compilation
     ```
-
-### Bug fixes
 
 ## Backward-incompatible changes
 

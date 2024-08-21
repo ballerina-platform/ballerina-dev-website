@@ -1,6 +1,6 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
-title: Persist introspection (experimental)
+title: Persist introspection
 description: The section gives details on database introspection.
 keywords: ballerina, programming language, ballerina packages, persist, introspection
 permalink: /learn/ballerina-persist/persist-instrospection/

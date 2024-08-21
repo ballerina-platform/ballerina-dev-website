@@ -428,6 +428,21 @@ The following example shows a platform dependency entry with the `scope`.
 
 >**Note:** When the scope has been specified as `provided`, the values `groupId`, `artifactId`, and `version` will be considered mandatory fields for that dependency.
 
+**Mark a Java dependency as GraalVM compatible**
+
+A Java dependency can be marked as GraalVM compatible by passing the `graalvmCompatible = true` property as follows:
+
+```toml
+[[platform.java11.dependency]]
+groupId = "<group-id>"
+artifactId = "<artifact-id>"
+version = "<version>"
+graalvmCompatible = true
+```
+
+If all the Java dependencies used in the package are marked as GraalVM compatible, the package is considered GraalVM compatible. 
+
+
 ### Tools
 
 You can specify code generation tools to integrate with the package build. These tools execute before the package build and generate code that is essential for the build process.

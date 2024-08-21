@@ -943,6 +943,9 @@ sublinks:
           - title: HTTP/2 server push
             id: 19
             url: http-2-0-server-push
+          - title: Server-sent events
+            id: 20
+            url: http-sse-service
       - title: HTTP client advanced
         id: 7
         sublinks:
@@ -970,6 +973,9 @@ sublinks:
           - title: HTTP/2 server push
             id: 8
             url: http-2-0-client-server-push
+          - title: Server-sent events
+            id: 9
+            url: http-sse-client
       - title: HTTP service interceptors
         id: 8
         sublinks:
@@ -1075,6 +1081,9 @@ sublinks:
           - title: Cache invalidation
             id: 12
             url: graphql-service-cache-invalidation
+          - title: Query Complexity
+            id: 13
+            url: graphql-service-query-complexity
       - title: GraphQL client
         id: 11
         sublinks:
@@ -1122,7 +1131,7 @@ sublinks:
             url: graphql-client-security-basic-auth
           - title: Self-signed JWT authentication
             id: 4
-            url: graphql-client-security-self-signed-jwt-authentication
+            url: graphql-client-security-jwt-authentication
           - title: OAuth2 password grant type
             id: 5
             url: graphql-client-security-oauth2-password-grant-type

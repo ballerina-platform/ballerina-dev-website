@@ -274,7 +274,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Self-signed JWT authentication"
-            href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication"
+            href="/learn/by-example/graphql-client-security-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

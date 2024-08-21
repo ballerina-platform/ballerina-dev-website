@@ -242,6 +242,59 @@ public function main() returns error? {
 
 - Added parameter passing support for XSLT transformations.
 
+### Connector updates
+
+New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
+All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
+
+#### `asb` package
+
+- Introduced support for listener-service-based async message consumption functionality.
+
+#### `dayforce` package
+
+- Introduced as a new connector with support for the Dayforce REST API v1.
+
+#### `discord` package
+
+- Introduced as a new connector with support for the Discord REST API v10.
+
+#### `salesforce` package
+
+- Introduced the Salesforce listener with support for the Streaming API for real-time data synchronization and event-driven workflows.
+- Added support for base types with the `salesforce.types` submodule.
+- Reorganized Salesforce clients for better usability.
+
+#### `sap` package
+
+- Added support for invoking any OData endpoint in S/4HANA.
+- Added support for automatic CSRF token authentication for enhanced security and usability.
+
+#### `sap.jco` package
+
+- Enabled invocation of RFC modules with improved type binding.
+- Added support for sending and receiving iDocs.
+
+#### `sap.s4hana.sales` packages
+
+- Provided a high-level interface for APIs related to Sales and Distribution (SD) in S/4HANA.
+- Provided operations for sales order management, delivery processing, and billing.
+
+#### `slack` package
+
+- Replaced existing remote method-based APIs with resource method-based APIs.
+- Added support for the latest Slack REST API.
+
+#### `stripe` package
+
+- Replaced existing remote method-based APIs with resource method-based APIs.
+- Added support for the latest Stripe REST API v1.
+
+#### `twitter (X)` package
+
+- Added support for the Twitter (X) REST API v2.
+- Replaced existing remote method-based APIs with resource method-based APIs.
+
 ### Deprecations
 
 #### `xmldata` package

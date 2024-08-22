@@ -95,7 +95,7 @@ Update Tool <UPDATE_TOOL_VERSION>
 
 ## Build from source
 
-For instructions, see <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md" target="_blank">Build Ballerina from source</a>.
+For instructions, see [Build Ballerina from source](/downloads/installation-options/build-ballerina-from-source/).
 
 ## Update Ballerina
 

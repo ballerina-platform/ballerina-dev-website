@@ -24,26 +24,26 @@ import Image from "next-image-export-optimizer";
 import Head from "next/head";
 import { Liquid } from "liquidjs";
 
-import Layout from "../../layouts/LayoutOther";
-import MainContent from "../../components/common/main-content/MainContent";
-import { prefix } from "../../utils/prefix";
-import Toc from "../../components/common/pg-toc/Toc";
-import SwanLake from "../../_data/swanlake-latest/metadata.json";
+import Layout from "../../../layouts/LayoutOther";
+import MainContent from "../../../components/common/main-content/MainContent";
+import { prefix } from "../../../utils/prefix";
+import Toc from "../../../components/common/pg-toc/Toc";
+import SwanLake from "../../../_data/swanlake-latest/metadata.json";
 
 
 export async function getStaticProps() {
 
-    const fileName = fs.readFileSync(`downloads/installation-options.md`, "utf-8");
-  const { data: frontmatter, content } = matter(fileName);
-  const id = "installation-options";
+    const fileName = fs.readFileSync(`downloads/installation-options/installation-options.md`, "utf-8");
+    const { data: frontmatter, content } = matter(fileName);
+    const id = "installation-options";
 
-  return {
-    props: {
-      frontmatter,
-      content,
-      id,
-    },
-  };
+    return {
+        props: {
+            frontmatter,
+            content,
+            id,
+        },
+    };
 }
 
 export default function PostPage({ frontmatter, content, id }) {
@@ -56,32 +56,32 @@ export default function PostPage({ frontmatter, content, id }) {
     }
 
     // Update values in markdown files
-  const engine = new Liquid();
-  const AddLiquid = (content) => {
-    const [newContent, setNewContent] = React.useState("");
-    const md = engine.parse(content);
-    engine
-      .render(md, {
-        v: "Liquid",
-        "windows-installer-size": SwanLake["windows-installer-size"],
-        dist_server: process.env.distServer,
-        version: SwanLake.version,
-        "windows-installer": SwanLake["windows-installer"],
-        "linux-installer": SwanLake["linux-installer"],
-        "linux-installer-size": SwanLake["linux-installer-size"],
-        "rpm-installer": SwanLake["rpm-installer"],
-        "rpm-installer-size": SwanLake["rpm-installer-size"],
-        "macos-installer": SwanLake["macos-installer"],
-        "macos-installer-size": SwanLake["macos-installer-size"],
-        "macos-arm-installer": SwanLake["macos-arm-installer"],
-        "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
-        "other-artefacts": SwanLake["other-artefacts"],
-      })
-      .then((md) => {
-        setNewContent(md);
-      });
-    return newContent;
-  };
+    const engine = new Liquid();
+    const AddLiquid = (content) => {
+        const [newContent, setNewContent] = React.useState("");
+        const md = engine.parse(content);
+        engine
+            .render(md, {
+                v: "Liquid",
+                "windows-installer-size": SwanLake["windows-installer-size"],
+                dist_server: process.env.distServer,
+                version: SwanLake.version,
+                "windows-installer": SwanLake["windows-installer"],
+                "linux-installer": SwanLake["linux-installer"],
+                "linux-installer-size": SwanLake["linux-installer-size"],
+                "rpm-installer": SwanLake["rpm-installer"],
+                "rpm-installer-size": SwanLake["rpm-installer-size"],
+                "macos-installer": SwanLake["macos-installer"],
+                "macos-installer-size": SwanLake["macos-installer-size"],
+                "macos-arm-installer": SwanLake["macos-arm-installer"],
+                "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
+                "other-artefacts": SwanLake["other-artefacts"],
+            })
+            .then((md) => {
+                setNewContent(md);
+            });
+        return newContent;
+    };
 
     return (
         <>
@@ -112,7 +112,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 <meta property="og:title" content={`${frontmatter.title} - The Ballerina programming language`} />
 
                 {/* <!--TWITTER--> */}
-                <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`}/>
+                <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`} />
                 <meta
                     property="twitter:description"
                     content={frontmatter.description}

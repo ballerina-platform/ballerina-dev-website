@@ -7,100 +7,100 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/graphql;
 
-// Defines a \`record\` type to use as an object in the GraphQL service.
-type User readonly & record {|
-    int id;
-    string name;
-    int age;
-|};
+// Defines a service class to use as an object in the GraphQL service.
+service class Profile {
+    private final string name;
+    private final int age;
 
-// Defines an in-memory table to store the profiles.
-table<User> key(id) users = table [
-    {id: 1, name: "Walter White", age: 50},
-    {id: 2, name: "Jesse Pinkman", age: 25}
-];
-
-service /graphql on new graphql:Listener(9090) {
-
-    @graphql:ResourceConfig {
-        cacheConfig: {}
-    }
-    resource function get user(int id) returns User|error {
-        if users.hasKey(id) {
-            return users.get(id);
-        }
-        return error(string \`User with the \${id} not found\`);
+    function init(string name, int age) {
+        self.name = name;
+        self.age = age;
     }
 
     @graphql:ResourceConfig {
-        cacheConfig: {}
+        complexity: 1
     }
-    resource function get users() returns User[] {
-        return users.toArray();
-    }
-
-    // Updates a user.
-    remote function updateUser(graphql:Context context, int id, string name,
-                               int age) returns User|error {
-        // \`invalidate()\` is used to invalidate the cache for the given field.
-        check context.invalidate("user");
-        if users.hasKey(id) {
-            _ = users.remove(id);
-            User user = {id: id, name: name, age: age};
-            users.add(user);
-            return user;
-        }
-        return error(string \`User with the \${id} not found\`);
+    resource function get name() returns string {
+        return self.name;
     }
 
-    // Deletes a user.
-    remote function deleteUser(graphql:Context context, int id) returns User|error {
-        // \`invalidateAll()\` is used to invalidate all the caches in the service.
-        check context.invalidateAll();
-        if users.hasKey(id) {
-            User user = users.remove(id);
-            return user;
-        }
-        return error(string \`User with the \${id} not found\`);
+    @graphql:ResourceConfig {
+        complexity: 10
+    }
+    resource function get age() returns int {
+        return self.age;
+    }
+
+    // Default complexity will be applied
+    resource function get isAdult() returns boolean {
+        return self.age > 21;
+    }
+}
+
+@graphql:ServiceConfig {
+    // The queryComplexityConfig is used to define the values for the maximum query complexity,
+    // default field complexity, and whether to return an error or warning when the maximum
+    // complexity is exceeded.
+    queryComplexityConfig: {
+        maxComplexity: 50, // Maximum complexity allowed for a query
+        defaultFieldComplexity: 2 // Default complexity for a field
+    }
+}
+service graphql:Service /graphql on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        complexity: 20 // Assigning a complexity value to the \`profile\` field
+    }
+    resource function get profile(@graphql:ID int id) returns Profile {
+        // Return a dummy profile object
+        return new ("Walter White", 50);
     }
 }
 `,
-  `mutation updateUser {
-    updateUser(id: 1, name: "Heisenberg" age: 52) {
-        id
+  `query {
+    profile(id: 1) {
         name
+        age
+    }
+}
+`,
+  `query {
+    profile1: profile(id: 1) {
+        name
+        age
+    }
+    profile2: profile(id: 2) {
         age
     }
 }
 `,
 ];
 
-export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
+export function GraphqlServiceQueryComplexity({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
+  const [codeClick3, updateCodeClick3] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Cache invalidation</h1>
+      <h1>GraphQL service - Query Complexity</h1>
 
       <p>
-        The Ballerina <code>graphql</code> module provides functionality for
-        cache invalidation. The <code>invalidate()</code> and{" "}
-        <code>invalidateAll()</code> APIs in the <code>graphql:Context</code>{" "}
-        can be used to invalidate caches in a <code>graphql:Service</code>. The{" "}
-        <code>invalidate()</code> API supports the cache invalidation of a
-        specific field by providing the full path of the field separated by a
-        full stop(<code>.</code>). For example,{" "}
-        <code>invalidate(&quot;field.subfield.anotherSubfield&quot;)</code>.
-        Conversely, the <code>invalidateAll()</code> API invalidates all caches
-        within the <code>graphql:Service</code>.
+        A <code>graphql:Service</code> can be secured by limiting the complexity
+        of the operations that can be executed. This can be done by setting a
+        maximum complexity threshold for a given service. The query complexity
+        is calculated by assigning a complexity value to each field in the
+        GraphQL schema. The complexity of an operation is the sum of the
+        complexity values of the fields in the operation.
       </p>
 
       <Row
@@ -109,31 +109,9 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/graphql-service-cache-invalidation",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -151,7 +129,7 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -187,7 +165,7 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -242,13 +220,15 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run graphql_service_cache_invalidation.bal`}</span>
+              <span>{`\$ bal run graphql_service_query_complexity.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>Then, send the following document to update the user.</p>
+      <p>
+        Send the following document to the GraphQL endpoint to test the service.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -256,31 +236,9 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/graphql-service-cache-invalidation",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick2 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -298,7 +256,7 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick2(true);
                 copyToClipboard(codeSnippetData[1]);
@@ -334,7 +292,10 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>To send the document, execute the following cURL command.</p>
+      <p>
+        To send the document, execute the following cURL command in a separate
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -389,12 +350,149 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation updateUser { updateUser(id: 1, name: \\"Heisenberg\\", age: 52){id name age} }" }' 'http://localhost:9090/graphql'`}</span>
-              <span>{`{"data":{"updateUser":{"id":1, "name":"Heisenberg", "age":52}}}`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile(id: 1) { name age } }" }' 'http://localhost:9090/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "age":50}}}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        As shown in the output above, the query is executed without any issues.
+        Now, send the following document to the GraphQL endpoint.
+      </p>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          {codeClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateCodeClick3(true);
+                copyToClipboard(codeSnippetData[2]);
+                setTimeout(() => {
+                  updateCodeClick3(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[2] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[2]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <p>
+        To send the document, execute the following cURL command in a separate
+        terminal.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
+              <span>{`curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile1: profile(id: 1) { name age } profile2: profile(id: 2) { name age } }" }' 'http://localhost:9090/graphql'`}</span>
+              <span>{`{"errors":[{"message":"The operation exceeds the maximum query complexity threshold. Maximum allowed complexity: 50, actual complexity: 62", "locations":[{"line":1, "column":1}]}]}`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        This will result in an error as the query complexity exceeds the maximum
+        complexity threshold set for the service.
+      </p>
 
       <blockquote>
         <p>
@@ -412,8 +510,8 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
+              <code>graphql:ServiceConfig</code> record - API documentation
             </a>
           </span>
         </li>
@@ -422,8 +520,18 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#10713-cache-invalidation">
-              GraphQL Cache invalidation - Specification
+            <a href="/spec/graphql/#7110-query-complexity-configurations">
+              GraphQL <code>queryComplexityConfiguration</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#1091-query-complexity-validation">
+              GraphQL query complexity validation - Specification
             </a>
           </span>
         </li>
@@ -433,8 +541,8 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Field-level caching"
-            href="/learn/by-example/graphql-service-field-level-caching"
+            title="Cache invalidation"
+            href="/learn/by-example/graphql-service-cache-invalidation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -461,7 +569,7 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Field-level caching
+                  Cache invalidation
                 </span>
               </div>
             </div>
@@ -469,8 +577,8 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Query Complexity"
-            href="/learn/by-example/graphql-service-query-complexity"
+            title="Query GraphQL endpoint"
+            href="/learn/by-example/graphql-client-query-endpoint"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -480,7 +588,7 @@ export function GraphqlServiceCacheInvalidation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query Complexity
+                  Query GraphQL endpoint
                 </span>
               </div>
               <svg

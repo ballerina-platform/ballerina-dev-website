@@ -1,0 +1,18 @@
+{
+  "title": "Server-sent events",
+  "description": "This example demonstrates how server-sent events (SSE) can be consumed using an HTTP client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "SSE",
+    "client"
+  ],
+  "permalink": "/learn/by-example/http-sse-client",
+  "active": "http-sse-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-sse-client",
+    "/swan-lake/learn/by-example/http-sse-client.html"
+  ]
+}

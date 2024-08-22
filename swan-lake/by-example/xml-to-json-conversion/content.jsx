@@ -203,8 +203,8 @@ export function XmlToJsonConversion({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Environment variables"
-            href="/learn/by-example/environment-variables"
+            title="XSLT transformation"
+            href="/learn/by-example/xslt-transformation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -231,7 +231,7 @@ export function XmlToJsonConversion({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Environment variables
+                  XSLT transformation
                 </span>
               </div>
             </div>

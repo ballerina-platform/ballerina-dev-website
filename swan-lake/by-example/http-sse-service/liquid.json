@@ -1,0 +1,18 @@
+{
+  "title": "Server-sent events",
+  "description": "This example demonstrates how server-sent events (SSE) can be produced using an HTTP service.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "SSE",
+    "service"
+  ],
+  "permalink": "/learn/by-example/http-sse-service",
+  "active": "http-sse-service",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-sse-service",
+    "/swan-lake/learn/by-example/http-sse-service.html"
+  ]
+}

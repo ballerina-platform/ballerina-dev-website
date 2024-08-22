@@ -5,82 +5,62 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/http;
+import ballerina/lang.runtime;
+import ballerina/random;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
+service /stocks on new http:Listener(9090) {
+    // This resource method returns a stream of \`http:SseEvent\` (with stock prices)
+    // to push real-time data to clients using server-sent events (SSE).
+    resource function get .() returns stream<http:SseEvent, error?> {
+        // Create a new value of type \`StockPriceEventGenerator\` to generate stock price events.
+        StockPriceEventGenerator generator = new;
+        // Return a new stream that uses the generator to produce events.
+        return new (generator);
+    }
 }
-type Age int;
 
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
+// Define a stream implementor that can be used to create a stream 
+// of \`http:SseEvent\`, representing stock price events.
+class StockPriceEventGenerator {
+    int eventCounter = 0;
+
+    public isolated function next() returns record {|http:SseEvent value;|}|error? {
+        // If the eventCounter reaches 5, stop generating events by returning nil.
+        if self.eventCounter == 5 {
+            return ();
+        }
+        self.eventCounter += 1;
+        runtime:sleep(1);
+        // Generate a random stock price
+        float stockPrice = (check random:createIntInRange(1, 1000)) * random:createDecimal();
+        http:SseEvent event = {data: stockPrice.toString()};
+        return {value: event};
     }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
-|};
-
-public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
-    };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
-
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
-
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function HttpSseService({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>HTTP service - Server-sent events</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
-      </p>
-
-      <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
-        </a>
-        .
+        Ballerina HTTP services support pushing real-time data to clients using
+        server-sent events (SSE). A stream of type <code>http:SseEvent</code>{" "}
+        can be returned from service resource methods. This feature
+        automatically handles sending SSE and sets the content type to{" "}
+        <code>text/event-stream</code> and the transfer encoding to chunked.
       </p>
 
       <Row
@@ -89,31 +69,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -166,6 +124,8 @@ export function ConstraintValidations({ codeSnippets }) {
           )}
         </Col>
       </Row>
+
+      <p>Run the service program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -220,18 +180,146 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run http_sse_service.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl -v localhost:9090/stocks`}</span>
+              <span>{`*   Trying [::1]:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090`}</span>
+              <span>{`> GET /stocks/stockA HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/8.4.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> `}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: text/event-stream`}</span>
+              <span>{`< cache-control: no-cache,public`}</span>
+              <span>{`< transfer-encoding: chunked`}</span>
+              <span>{`< connection: keep-alive`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Fri, 2 Aug 2024 12:02:04 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`data: 76.6014928817749`}</span>
+              <span>{`
+`}</span>
+              <span>{`data: 789.1765828132629`}</span>
+              <span>{`
+`}</span>
+              <span>{`data: 241.89215344190598`}</span>
+              <span>{`
+`}</span>
+              <span>{`data: 494.8120536804199`}</span>
+              <span>{`
+`}</span>
+              <span>{`data: 234.36854779720306`}</span>
+              <span>{`
+`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-sse-client/">
+            Client server-sent events
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#235-return-types">
+              Resource return types - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialize to YAML string"
-            href="/learn/by-example/anydata-to-yaml-string"
+            title="HTTP/2 server push"
+            href="/learn/by-example/http-2-0-server-push"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,14 +346,17 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialize to YAML string
+                  HTTP/2 server push
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link
+            title="Redirects"
+            href="/learn/by-example/http-client-redirects"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +365,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Redirects
                 </span>
               </div>
               <svg

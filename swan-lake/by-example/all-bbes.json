@@ -2256,6 +2256,14 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2323,6 +2331,14 @@
       {
         "name": "HTTP/2 server push",
         "url": "http-2-0-client-server-push",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": false,
@@ -2601,6 +2617,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2721,7 +2745,7 @@
       },
       {
         "name": "Self-signed JWT authentication",
-        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "url": "graphql-client-security-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3814,6 +3838,29 @@
     ]
   },
   {
+    "title": "LDAP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Add/Remove entries",
+        "url": "ldap-add-remove-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Search for an entry",
+        "url": "ldap-search-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "JMS service",
     "column": 3,
     "category": "Network libraries",
@@ -4435,6 +4482,21 @@
     ]
   },
   {
+    "title": "OS",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Environment variables",
+        "url": "environment-variables",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "File",
     "column": 2,
     "category": "Common libraries",
@@ -4527,7 +4589,7 @@
   },
   {
     "title": "UUID",
-    "column": 3,
+    "column": 2,
     "category": "Common libraries",
     "samples": [
       {
@@ -4557,21 +4619,6 @@
         "url": "xslt-transformation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "OS",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Environment variables",
-        "url": "environment-variables",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes varying output",
         "isLearnByExample": false
       }
     ]
@@ -4608,6 +4655,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "YAML data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "YAML to anydata",
+        "url": "yaml-to-anydata",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "YAML to anydata with projection",
+        "url": "yaml-to-anydata-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Serialize to YAML string",
+        "url": "anydata-to-yaml-string",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },

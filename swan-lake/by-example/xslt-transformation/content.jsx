@@ -298,8 +298,8 @@ export function XsltTransformation({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Environment variables"
-            href="/learn/by-example/environment-variables"
+            title="XML to JSON conversion"
+            href="/learn/by-example/xml-to-json-conversion"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -309,7 +309,7 @@ export function XsltTransformation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Environment variables
+                  XML to JSON conversion
                 </span>
               </div>
               <svg

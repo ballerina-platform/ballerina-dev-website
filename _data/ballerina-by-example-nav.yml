@@ -943,6 +943,9 @@ sublinks:
           - title: HTTP/2 server push
             id: 19
             url: http-2-0-server-push
+          - title: Server-sent events
+            id: 20
+            url: http-sse-service
       - title: HTTP client advanced
         id: 7
         sublinks:
@@ -970,6 +973,9 @@ sublinks:
           - title: HTTP/2 server push
             id: 8
             url: http-2-0-client-server-push
+          - title: Server-sent events
+            id: 9
+            url: http-sse-client
       - title: HTTP service interceptors
         id: 8
         sublinks:
@@ -1075,6 +1081,9 @@ sublinks:
           - title: Cache invalidation
             id: 12
             url: graphql-service-cache-invalidation
+          - title: Query Complexity
+            id: 13
+            url: graphql-service-query-complexity
       - title: GraphQL client
         id: 11
         sublinks:
@@ -1122,7 +1131,7 @@ sublinks:
             url: graphql-client-security-basic-auth
           - title: Self-signed JWT authentication
             id: 4
-            url: graphql-client-security-self-signed-jwt-authentication
+            url: graphql-client-security-jwt-authentication
           - title: OAuth2 password grant type
             id: 5
             url: graphql-client-security-oauth2-password-grant-type
@@ -1519,14 +1528,23 @@ sublinks:
           - title: Basic authentication
             id: 2
             url: mqtt-client-basic-authentication
-      - title: JMS service
+      - title: LDAP client
         id: 45
+        sublinks:
+          - title: Add/Remove entries
+            id: 1
+            url: ldap-add-remove-entry
+          - title: Search for an entry
+            id: 2
+            url: ldap-search-entry
+      - title: JMS service
+        id: 46
         sublinks:
           - title: Consume message
             id: 1
             url: jms-service-consume-message
       - title: JMS message producer
-        id: 46
+        id: 47
         sublinks:
           - title: Produce message
             id: 1
@@ -1535,7 +1553,7 @@ sublinks:
             id: 2
             url: jms-producer-transaction
       - title: JMS message consumer
-        id: 47
+        id: 48
         sublinks:
           - title: Consume message
             id: 1
@@ -1544,37 +1562,37 @@ sublinks:
             id: 2
             url: jms-consumer-acknowledgement
       - title: TCP service
-        id: 48
+        id: 49
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 49
+        id: 50
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 50
+        id: 51
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 51
+        id: 52
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 52
+        id: 53
         sublinks:
           - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 53
+        id: 54
         sublinks:
           - title: Send/Receive datagram
             id: 1
@@ -1583,13 +1601,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 54
+        id: 55
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 55
+        id: 56
         sublinks:
           - title: Send email
             id: 1
@@ -1598,19 +1616,19 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: Email service security
-        id: 56
+        id: 57
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-service-ssl-tls
       - title: Email client security
-        id: 57
+        id: 58
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-client-ssl-tls
       - title: FTP Service
-        id: 58
+        id: 59
         sublinks:
           - title: Receive file
             id: 1
@@ -1619,7 +1637,7 @@ sublinks:
             id: 2
             url: ftp-service-send-file
       - title: FTP client
-        id: 59
+        id: 60
         sublinks:
           - title: Receive file
             id: 1
@@ -1628,7 +1646,7 @@ sublinks:
             id: 2
             url: ftp-client-send-file
       - title: SFTP Service
-        id: 60
+        id: 61
         sublinks:
           - title: Receive file
             id: 1
@@ -1637,7 +1655,7 @@ sublinks:
             id: 2
             url: sftp-service-send-file
       - title: SFTP client
-        id: 61
+        id: 62
         sublinks:
           - title: Receive file
             id: 1
@@ -1646,7 +1664,7 @@ sublinks:
             id: 2
             url: sftp-client-send-file
       - title: Database access
-        id: 62
+        id: 63
         sublinks:
           - title: Simple query
             id: 1
@@ -1756,8 +1774,14 @@ sublinks:
           - title: Record to EDI conversion
             id: 2
             url: record-to-edi
-      - title: File
+      - title: OS
         id: 9
+        sublinks:
+          - title: Environment variables
+            id: 1
+            url: environment-variables
+      - title: File
+        id: 10
         sublinks:
           - title: File paths
             id: 1
@@ -1775,13 +1799,13 @@ sublinks:
             id: 5
             url: directory-listener
       - title: Random
-        id: 10
+        id: 11
         sublinks:
           - title: Random numbers
             id: 1
             url: random-numbers
       - title: Task
-        id: 11
+        id: 12
         sublinks:
           - title: Schedule job recurrence by frequency
             id: 1
@@ -1793,7 +1817,7 @@ sublinks:
             id: 3
             url: manage-scheduled-jobs
       - title: UUID
-        id: 12
+        id: 13
         sublinks:
           - title: Generate UUID
             id: 1
@@ -1802,17 +1826,11 @@ sublinks:
             id: 2
             url: uuid-operations
       - title: XSLT
-        id: 13
+        id: 14
         sublinks:
           - title: XSLT transformation
             id: 1
             url: xslt-transformation
-      - title: OS
-        id: 14
-        sublinks:
-          - title: Environment variables
-            id: 1
-            url: environment-variables
       - title: XML data
         id: 15
         sublinks:
@@ -1828,8 +1846,20 @@ sublinks:
           - title: Record to XML conversion
             id: 4
             url: xml-from-record-conversion
-      - title: Constraint
+      - title: YAML data
         id: 16
+        sublinks:
+          - title: YAML to anydata
+            id: 1
+            url: yaml-to-anydata
+          - title: YAML to anydata with projection
+            id: 2
+            url: yaml-to-anydata-with-projection
+          - title: Serialize to YAML string
+            id: 3
+            url: anydata-to-yaml-string
+      - title: Constraint
+        id: 17
         sublinks:
           - title: Constraint validations
             id: 1

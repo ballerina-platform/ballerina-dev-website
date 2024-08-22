@@ -298,7 +298,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Self-signed JWT authentication"
-            href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication"
+            href="/learn/by-example/graphql-client-security-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -1,6 +1,6 @@
 {
     "events": [
-               {
+        {
             "date": "Sep 27, 2024",
             "expire": "2024-09-27T22:00:00.0000-00:00",
             "type": "Ballerina Hackathon",
@@ -11,6 +11,24 @@
             "location": "Namibia",
             "url": "https://docs.google.com/forms/d/e/1FAIpQLSf_2lnv9wZwmopnUJSvj3U9uJ0EsCjoDmecJ-1NnjjoYkiqHw/viewform",
             "buttonText": "Register today"
+        },
+        {
+            "date": "Sep 2, 2024",
+            "expire": "2024-09-2T22:00:00.0000-00:00",
+            "type": "Guest Lecture",
+            "university": "University of Colombo School of Computing (UCSC)",
+            "faculty": "",
+            "title": "Compiler Construction Insights from the Ballerina Language",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "twitter": "https://x.com/manurangaperera"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "June 6, 2024",

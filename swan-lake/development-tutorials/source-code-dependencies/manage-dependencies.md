@@ -112,7 +112,7 @@ For example, the minimum version of the `ballerinax/mysql` dependency can be spe
 [[dependency]]
 org = "ballerinax"
 name = "mysql"
-version = "1.5.0”
+version = "1.5.0"
 ```
 
 ### Upgrading packages to use new Swan Lake update distributions

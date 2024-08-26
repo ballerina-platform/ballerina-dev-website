@@ -1,0 +1,18 @@
+{
+  "title": "JSON to record with projection",
+  "description": "This BBE illustrates how to selectively convert fields from a JSON source, which can be provided as a string, byte array, byte block stream, or json, into a record in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "json",
+    "record",
+    "data projection"
+  ],
+  "permalink": "/learn/by-example/json-to-record-with-projection",
+  "active": "json-to-record-with-projection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/json-to-record-with-projection",
+    "/swan-lake/learn/by-example/json-to-record-with-projection.html"
+  ]
+}

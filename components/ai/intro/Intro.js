@@ -27,35 +27,35 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row className='pageContentRow integration'>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row className='pageContentRow integration'>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>
-                            AI is no longer only about training models but rather invoking APIs with AI available as a Service from OpenAI, Microsoft, Google, Facebook, and others.
-                        </p>
+                                <p className={styles.introText2}>
+                                    AI is no longer only about training models but rather invoking APIs with AI available as a Service from OpenAI, Microsoft, Google, Facebook, and others.
+                                </p>
 
-                        <p className={styles.introText3}>
-                            Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models.
-                        </p>
+                                <p className={styles.introText3}>
+                                    Ballerina is well-suited for integrating AI into your applications, especially for leveraging large language models and other generative technologies.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                    <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
-                </Col>
-            </Row>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+                            {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
+                            <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
+                        </Col>
+                    </Row>
 
-            {/* <Row className='pageContentRow integration'>
+                    {/* <Row className='pageContentRow integration'>
                 <Col xs={12}>
                     <div className={styles.introText3}>
                         <p>Just write the code using the only language with integration friendly abstractions</p>
@@ -73,7 +73,7 @@ export default function Intro() {
 
 
 
-            </Container>
+                </Container>
             </Col>
         </>
     );

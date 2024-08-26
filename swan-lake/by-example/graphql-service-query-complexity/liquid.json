@@ -1,0 +1,19 @@
+{
+  "title": "Query Complexity",
+  "description": "This example demonstrates securing a GraphQL service query complexity analysis.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "service",
+    "security",
+    "query complexity"
+  ],
+  "permalink": "/learn/by-example/graphql-service-query-complexity",
+  "active": "graphql-service-query-complexity",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-service-query-complexity",
+    "/swan-lake/learn/by-example/graphql-service-query-complexity.html"
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Security policy
-description: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
+description: Read our Security Policy to understand the measures we take to protect your data and ensure a secure experience with Ballerina.
 keywords: ballerina, programming language, security, security-policy, security advisories
 intro: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 permalink: /security-policy/

@@ -294,21 +294,32 @@ export default function MainContent(props) {
             </code>
             : match ?
               <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
-              : <pre className='default'>
-                <div style={{ display: "flex", justifyContent: "end" }}>
-                  { filteredText && <CopyToClipboard text={filteredText}
-                    onCopy={() => codeCopy(filteredText)} style={{ float: "right" }}>
-                    {
-                      copied && copiedText == filteredText ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard> }
+              : <>
+                <div style={{
+                  background: "#eeeeee", padding: "10px 10px 0px 0px",
+                  borderRadius: "5px",
+                  marginTop: "10px",
+                  backgroundColor: "#eeeeee !important"
+                }}>
+                  <div style={{ display: "flex", justifyContent: "end" }}>
+                    {filteredText && <CopyToClipboard text={filteredText}
+                      onCopy={() => codeCopy(filteredText)} style={{ float: "right" }}>
+                      {
+                        copied && copiedText == filteredText ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                      }
+                    </CopyToClipboard>}
+                  </div>
+                  <div>
+                    <pre className="shiki github-light" style={{ backgroundColor: "#ffffff", tabIndex: "0" }}>
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    </pre>
+                  </div>
                 </div>
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              </pre>
+              </>
         },
-        table({node, className, children, ...props}) { 
+        table({ node, className, children, ...props }) {
           return <div className='mdTable'><table {...props}>{children}</table></div>
         }
       }}

@@ -7,7 +7,7 @@ permalink: /learn/ballerina-persist/persist-client-api/
 active: persist_client_api
 intro: The generated client API is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. The CLI tool will generate the derived Entity Types and the Clients from the model definition.
 redirect_from:
-- /learn/ballerina-persist/persist-client-api
+  - /learn/ballerina-persist/persist-client-api
 ---
 
 ## Derived entity types
@@ -25,64 +25,77 @@ type Workspace record {|
 ```
 
 There are six derived entity types as follows
-### `Entity` types  
-    These are the types defined in the data model. They are used to indicate the data structure in the data source. The entity, which is the association parent will include the foreign key field(s).
-    ```ballerina
-    public type Workspace record {|
-        readonly string id;
-        string workspaceType;
-        string locationCode;
-    |};
-    ```
-    
+### `Entity` types
+
+These are the types defined in the data model. They are used to indicate the data structure in the data source. The entity, which is the association parent will include the foreign key field(s).
+
+```ballerina
+public type Workspace record {|
+    readonly string id;
+    string workspaceType;
+    string locationCode;
+|};
+```
+
 ### `Insert` types
-    These are the records used to insert data in the data source. This is the same as the entity type.
-    ```ballerina
-    public type WorkspaceInsert Workspace;
-    ```
+
+These are the records used to insert data in the data source. This is the same as the entity type, except when the readonly field has the [`@sql:Generated`](/learn/persist-model/#declare-generated-fields-with-generated-annotation) annotation. When the readonly field has the [`@sql:Generated`](/learn/persist-model/#declare-generated-fields-with-generated-annotation) annotation, the field will be removed from the insert type.
+
+```ballerina
+public type WorkspaceInsert Workspace;
+```
 
 ### `Update` types
-    These are the records used to update data in the data source. They are entity types without identity fields. All fields will be optional. Only the fields for which values are provided will be updated.
-    ```ballerina
-    public type WorkspaceUpdate record {|
-        string workspaceType?;
-        string locationCode?;
-    |};
-    ```
-   
+
+These are the records used to update data in the data source. They are entity types without identity fields. All fields will be optional. Only the fields for which values are provided will be updated.
+
+```ballerina
+public type WorkspaceUpdate record {|
+    string workspaceType?;
+    string locationCode?;
+|};
+```
+
 ### `Optionalized` types
-    These are the same as the entity types but all the fields are made optional. This type is not directly used in any operations.
-    ```ballerina
-    public type WorkspaceOptionalized record {|
-        readonly string id?;
-        string workspaceType?;
-        string locationCode?;
-    |};
-    ```
-   
+
+These are the same as the entity types but all the fields are made optional. This type is not directly used in any operations.
+
+```ballerina
+public type WorkspaceOptionalized record {|
+    readonly string id?;
+    string workspaceType?;
+    string locationCode?;
+|};
+```
+
 ### `With-relations` types
-    These types inherit all fields from the corresponding `optionalized` type and add the relation fields as optional. They are not directly used in any operations.
-    ```ballerina
-    public type WorkspaceWithRelations record {|
-        *WorkspaceOptionalized;
-        BuildingOptionalized location?;
-        EmployeeOptionalized employees?;
-    |};
-    ```
+
+These types inherit all fields from the corresponding `optionalized` type and add the relation fields as optional. They are not directly used in any operations.
+
+```ballerina
+public type WorkspaceWithRelations record {|
+    *WorkspaceOptionalized;
+    BuildingOptionalized location?;
+    EmployeeOptionalized employees?;
+|};
+```
 
 ### `Target` types
-    These types are used to retrieve data from the data source. If the entity contains a relation field, the target type 
-    will be a type description of the corresponding `WithRelations` type. Otherwise, the target type will be a 
-    type description of the corresponding `optionalized` type.
-    ```ballerina
-    public type WorkspaceTargetType typedesc<WorkspaceWithRelations>;
-    ```
-    
+
+These types are used to retrieve data from the data source. If the entity contains a relation field, the target type
+will be a type description of the corresponding `WithRelations` type. Otherwise, the target type will be a
+type description of the corresponding `optionalized` type.
+
+```ballerina
+public type WorkspaceTargetType typedesc<WorkspaceWithRelations>;
+```
+
 ## Client Object
 
-The client object is derived for each data model definition file, and it is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`.
+The client object is derived for each data model definition file, and it is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`. In addition, there are two `remote` functions to perform native SQL query and execute.
 
 The skeleton of the client object is as follows.
+
 ```ballerina
 public client class Client {
     *persist:AbstractPersistClient;
@@ -104,6 +117,12 @@ public client class Client {
 
     isolated resource function delete workspaces/[string id]() returns Workspace|persist:Error {
     };
+    
+    remote isolated function queryNativeSQL(sql:ParameterizedQuery sqlQuery, typedesc<record {}> rowType = <>) returns stream<rowType, persist:Error?> {
+    };
+
+    remote isolated function executeNativeSQL(sql:ParameterizedQuery sqlQuery) returns psql:ExecutionResult|persist:Error {
+    };
 
     public function close() returns persist:Error? {
     }
@@ -114,7 +133,7 @@ The conventions used in deriving the client object is as follows.
 1. Since there can be only one generated client in a Ballerina package, the client name is always `Client`.
 2. The client should be of the `persist:AbstractPersistClient` type.
 3. It should contain the `init()` and `close()` functions.
-4. It should contain five resource methods (i.e., `get`, `get(get by identity)`, `post`, `put`, and `delete` for each entity type defined in the data model. 
+4. It should contain five resource methods (i.e., `get`, `get(get by identity)`, `post`, `put`, and `delete` for each entity type defined in the data model and two remote functions to perform native queries directly.
 5. Resource names should be in the plural form of the entity names in lowercase.
 6. The resource method should return the derived entity types.
 7. Resource methods with path parameters will support composite identity fields by having multiple path parameters.
@@ -126,13 +145,15 @@ The conventions used in deriving the client object is as follows.
 The `init()` function is used to initialize the client. The client will be initialized with the data source configuration provided in the `Config.toml` file. The `init()` function will return an error if the client initialization fails.
 
 You can initialize the client as follows.
+
 ```ballerina
 Client sClient = check new();
 ```
 
 #### CRUD operations
 
-you can perform CRUD operations on the `Workspace` table in the data store using the client object as follows.
+You can perform CRUD operations on the `Workspace` table in the data store using the client object as follows.
+
 ```ballerina
 // Create a new workspace record.
 WorkspaceInsert workspace = {id: "WK001", workspaceType: "Host Desk", locationCode: "B001"};
@@ -156,6 +177,7 @@ stream<Workspace, error?> workspaces = sClient->/workspaces;
 You can perform relation operations on the `Workspace` table in the data store using the client object as follows.
 
 Let's extend the `Workspace` entity type with a relation field `employees` as follows.
+
 ```ballerina
 type Workspace record {|
     readonly string id;
@@ -197,6 +219,7 @@ type WorkspaceWithEmployee record {|
 ```
 
 This is the same as writing the following SQL query to retrieve data from a relational database,
+
 ```sql
 SELECT * 
 FROM workspace w
@@ -232,6 +255,7 @@ type WorkspaceWithRelations record {|
 ```
 
 This is the same as writing the following SQL query to retrieve data from a relational database.
+
 ```sql
 SELECT w.workspaceType, e.firstName, e.lastName, b.name, b.address
 FROM workspace w

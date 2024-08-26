@@ -18,13 +18,13 @@
 
 import * as React from 'react';
 import { Container, Row, Stack, Col } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
 
-import { prefix } from '../../../utils/prefix';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  
+  const copyYear = new Date().getFullYear();
 
   return (
     <Stack gap={0} className={styles.stack}>
@@ -38,32 +38,32 @@ export default function Footer() {
                     <ul>
                       <li>
                         <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={18} height={18} alt="GitHub" />
+                          <i className="bi bi-github"></i>
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
-                          <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={16} height={16} alt="X" />
+                          <i className="bi bi-twitter-x"></i>
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                          <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={17} height={17} alt="Discord" />
+                          <i className="bi bi-discord"></i>
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                          <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={15} height={18} alt="Stackoverflow" />
+                          <i className="bi bi-stack-overflow"></i>
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube">
-                          <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={15} height={18} alt="YouTube" />
+                          <i className="bi bi-youtube"></i>
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
-                          <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={16} height={16} alt="LinkedIn" />
+                          <i className="bi bi-linkedin"></i>
                         </a>
                       </li>
                     </ul>
@@ -102,7 +102,7 @@ export default function Footer() {
 
         <Row className={styles.policyLinks}>
           <Col xs={12} sm={2}>
-            <span className="footerLink">© 2023 WSO2 LLC</span>
+            <span className="footerLink">© {copyYear} WSO2 LLC</span>
           </Col>
           <Col xs={12} sm={10}>
             <ul>

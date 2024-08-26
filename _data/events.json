@@ -1,5 +1,101 @@
 {
     "events": [
+      {
+            "date": "Sep 18, 2024",
+            "day": "Wed.",
+            "time": "5:10 p.m. GMT-3",
+            "expire": "2024-09-18T21:10:00.0000-00:00",
+            "location": "São Paulo, Brazil",
+            "url": "https://thedevconf.com/tdc/2024/sao-paulo/trilha-microservices",
+            "eventType": "The Developer's Conference - São Paulo",
+            "eventName": "Building Cloud-Native Microservices with Ballerina",
+            "presenterTwitter": "https://www.linkedin.com/in/lianecafarate/?originalSubdomain=br",
+            "presenter": "Liane Cafarate",
+            "presenterDesignation": "Lead - Solutions Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Aug 14, 2024",
+            "day": "Wed.",
+            "time": "5:30 p.m. CDT",
+            "expire": "2024-08-14T23:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/graphql-chicago/events/301626581/",
+            "eventType": "GraphQL Chicago Meetup",
+            "eventName": "Streamlining GraphQL API Development with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "July 11, 2024",
+            "day": "Thurs.",
+            "time": "9:00 a.m. IST",
+            "expire": "2024-07-11T04:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/ballerinalang-community/events/301634546/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Beyond CLI Basics: Using Extended Ballerina CLI Tools for Powerful Integrations",
+            "presenterTwitter": "https://x.com/gcdassanayake",
+            "presenter": "Gayal Dassanayake",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "July 9, 2024",
+            "day": "Tue.",
+            "time": "7:00 p.m. IST",
+            "expire": "2024-07-09T14:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/coderrange-ai-bigdata-datascience/events/301637018/",
+            "eventType": "CoderRange Meetup",
+            "eventName": "Deep Dive into API Design with the Ballerina Programming Language",
+            "presenterTwitter": "https://x.com/manurangaperera",
+            "presenter": "Manuranga Perera",
+            "presenterDesignation": "Associate Director/Architect - Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "June 27, 2024",
+            "day": "Thur.",
+            "time": "10:00 a.m. CDT",
+            "expire": "2024-06-27T16:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/austin-developer-community/events/301626607/",
+            "eventType": "Austin Developer Community Meetup",
+            "eventName": "Modernizing Legacy Applications with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/hGTaZt9VaMQ?si=RgszyIIMQR6a8DjP",
+            "buttonText": "Watch reocording"
+        },
+        {
+            "date": "June 6, 2024",
+            "day": "Thur.",
+            "time": "8:00 p.m. IST",
+            "expire": "2024-06-07T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/devopedia-org/events/301290100/",
+            "eventType": "Devopedia Meetup",
+            "eventName": "Unlocking the Power of Ballerina for Modern Integration Challenges",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
         {
             "date": "May 8, 2024",
             "day": "Wed.",
@@ -13,8 +109,8 @@
             "presenter": "Chathura Ekanayake",
             "presenterDesignation": "Associate Director/Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/tdcN2flIvS8?si=P38A6eaVC6aUx6bf",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 8, 2024",
@@ -24,29 +120,13 @@
             "location": "Florida, USA",
             "url": "https://wso2.com/wso2con/2024/",
             "eventType": "WSO2Con 2024",
-            "eventName": "Low-Code Integration Tooling",
-            "presenterTwitter": "https://twitter.com/hevayo",
-            "presenter": "Joseph Fonseka",
-            "presenterDesignation": "Senior Director and Head of Developer Tooling, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
-        },
-        {
-            "date": "May 8, 2024",
-            "day": "Wed.",
-            "time": "",
-            "expire": "2024-05-09T00:00:00.0000-00:00",
-            "location": "Florida, USA",
-            "url": "https://wso2.com/wso2con/2024/",
-            "eventType": "WSO2Con 2024",
-            "eventName": "Ballerina Product Update",
+            "eventName": "Why Should You Consider Ballerina for Your Next Integration",
             "presenterTwitter": "https://twitter.com/sameerajayasoma",
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=X3IIkVdxwxo&t=1s",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 7, 2024",
@@ -81,8 +161,8 @@
                 }
             ],
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://wso2.com/library/conference/2024/05/utilizing-ballerina-for-cloud-native-integrations/",
+            "buttonText": "View slides"
         },
         {
             "date": "May 6-7, 2024",
@@ -97,8 +177,40 @@
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/0b8VbSd1zXA?si=jLhLo7uIdDd0zXXb",
+            "buttonText": "Watch recording"
+        },
+        {
+            "date": "April 24, 2024",
+            "day": "Wed.",
+            "time": "6.30 p.m. PDT",
+            "expire": "2024-04-26T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/300423848/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Level up your APIs: GraphQL with Ballerina",
+            "presenterTwitter": "https://twitter.com/ThisaruGuruge",
+            "presenter": "Thisaru Guruge",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/hkOMet6bF70?si=Em3PXueujsuz1Kdn",
+            "buttonText": "Watch recording"
+        },
+        {
+            "date": "March 28, 2024",
+            "day": "Thur.",
+            "time": "9.00 a.m. IST",
+            "expire": "2024-03-29T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "ETL with Ballerina: Batch and Event-driven ETL in a Single Platform",
+            "presenterTwitter": "https://www.linkedin.com/in/lakshan-weerasinghe/",
+            "presenter": "Lakshan Weerasinghe",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/wXWK3Zsk4Cc?si=IOIDYcHK3WFrOuwE",
+            "buttonText": "Watch recording"
         },
         {
             "date": "March 7, 2024",
@@ -122,8 +234,8 @@
                 }
             ],
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/I00MwlNpQuk?si=zw4u69RVmwdT7gDn",
+            "buttonText": "Watch recording"
         },
         {
             "date": "Feb 20, 2024",
@@ -138,8 +250,8 @@
             "presenter": "Nadheesh Jihan",
             "presenterDesignation": "Associate Technical Lead",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP today"
+            "videoURL": "https://youtu.be/_k8iqp2rXX0?si=82Tu6FtlRu6V5qax",
+            "buttonText": "Watch recording"
         },
         {
             "date": "Jan 31, 2024",

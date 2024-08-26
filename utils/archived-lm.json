@@ -23,6 +23,54 @@
                     "id": "swan-lake-api-docs"
                 },
                 {
+                    "dirName": "2201.9.3",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.9.3",
+                    "id": "2201.9.3v"
+                },
+                {
+                    "dirName": "2201.9.2",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.9.2",
+                    "id": "2201.9.2v"
+                },
+                {
+                    "dirName": "2201.9.1",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.9.1",
+                    "id": "2201.9.1v"
+                },
+                {
+                    "dirName": "2201.9.0",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.9.0",
+                    "id": "2201.9.0v"
+                },
+                {
+                    "dirName": "2201.8.7",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.8.7",
+                    "id": "2201.8.7v"
+                },
+                {
+                    "dirName": "2201.8.6",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.8.6",
+                    "id": "2201.8.6v"
+                },
+                {
                     "dirName": "2201.8.5",
                     "level": 2,
                     "position": 1,
@@ -560,6 +608,38 @@
                     "isDir": false,
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
+                },
+                {
+                    "dirName": "1.2.54",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.54",
+                    "id": "1.2.54v"
+                },
+                {
+                    "dirName": "1.2.53",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.53",
+                    "id": "1.2.53v"
+                },
+                {
+                    "dirName": "1.2.52",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.52",
+                    "id": "1.2.52v"
+                },
+                {
+                    "dirName": "1.2.51",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.51",
+                    "id": "1.2.51v"
                 },
                 {
                     "dirName": "1.2.50",

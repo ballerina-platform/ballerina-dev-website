@@ -75,7 +75,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/inter-worker-failure-propagation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/inter-worker-failure-propagation",
                 "_blank",
               );
             }}
@@ -213,8 +213,8 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Inter-worker message passing"
-            href="/learn/by-example/inter-worker-message-passing"
+            title="Conditional send"
+            href="/learn/by-example/conditional-send"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -241,7 +241,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Inter-worker message passing
+                  Conditional send
                 </span>
               </div>
             </div>
@@ -249,8 +249,8 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Synchronize message passing"
-            href="/learn/by-example/synchronize-message-passing"
+            title="Named worker with on fail clause"
+            href="/learn/by-example/named-worker-with-on-fail-clause"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -260,7 +260,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Synchronize message passing
+                  Named worker with on fail clause
                 </span>
               </div>
               <svg

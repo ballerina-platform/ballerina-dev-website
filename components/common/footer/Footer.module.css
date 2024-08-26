@@ -165,3 +165,12 @@
 .policyLinks ul {
     flex-wrap: wrap;
 }
+
+.footerLinkSM {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.footerLinkSM:hover {
+    color: #ffffff;
+}

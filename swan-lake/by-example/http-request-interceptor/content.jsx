@@ -108,7 +108,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/http-request-interceptor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-request-interceptor",
                 "_blank",
               );
             }}
@@ -358,8 +358,8 @@ export function HttpRequestInterceptor({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="HTTP/2 server push"
-            href="/learn/by-example/http-2-0-client-server-push"
+            title="Server-sent events"
+            href="/learn/by-example/http-sse-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -386,7 +386,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP/2 server push
+                  Server-sent events
                 </span>
               </div>
             </div>

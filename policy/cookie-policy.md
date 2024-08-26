@@ -2,13 +2,12 @@
 layout: ballerina-inner-page
 title: Cookie policy
 permalink: /cookie-policy/
-description: Cookie policy of the Ballerina website
-redirect_from:
-- /cookie-policy
+description: Learn about our use of cookies and how we ensure your privacy and data security on the Ballerina website in our Cookie Policy.
+keywords: ballerinalang, integration, microservices, programming language, cloud native, ballerina language, cookie policy
 
 ---
 
-Below is information about how <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://play.ballerina.io/">Ballerina Playground</a>, <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear, use cookies.
+Below is information about how <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear, use cookies.
 
 The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
 
@@ -74,7 +73,7 @@ These cookies are necessary for the website to function and cannot be switched o
   <tbody>
     <tr>
       <td rowspan="11" colspan="1">First party</div></td>
-      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="https://ballerina.io" target="_blank">ballerina.io</a></td>
       <td><code>OptanonConsent</code></td>
       <td rowspan="2" colspan="1">364 days</td>
     </tr>
@@ -82,7 +81,7 @@ These cookies are necessary for the website to function and cannot be switched o
       <td><code>OptanonAlertBoxClosed</code></td>
     </tr>
     <tr>
-      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="https://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
       <td><code>USER_EMAIL</code></td>
       <td rowspan="7" colspan="1">7.5 hours</td>
     </tr>
@@ -130,7 +129,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
   <tbody>
     <tr>
       <td rowspan="12" colspan="1">First party</td>
-      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="https://ballerina.io" target="_blank">ballerina.io</a></td>
       <td><code>_hjSessionUser_865786</code></td>
       <td>364</td>
     </tr>
@@ -161,20 +160,20 @@ These cookies allow us to count visits and traffic sources so we can measure and
       <td><code>_hjIncludedInSessionSample</code></td>
     </tr>
     <tr>
-      <td><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td><a class="in-cell-link" href="https://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
       <td><code>route</code></td>
     </tr>
     <tr>
-      <td><a class="in-cell-link" href="http://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
+      <td><a class="in-cell-link" href="https://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
       <td><code>route</code></td>
     </tr>
     <tr>
-      <td><a class="in-cell-link" href="http://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
+      <td><a class="in-cell-link" href="https://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
       <td><code>route</code></td>
     </tr>
     <tr>
       <td rowspan="3" colspan="1">Third party</td>
-      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://script.hotjar.com" target="_blank">script.hotjar.com</a></td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="https://script.hotjar.com" target="_blank">script.hotjar.com</a></td>
       <td><code>_hjIncludedInSessionSample</code></td>
     </tr>
     <tr>
@@ -202,7 +201,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
   <tbody>
     <tr>
       <td rowspan="2" colspan="1">First party</td>
-      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="https://ballerina.io" target="_blank">ballerina.io</a></td>
       <td><code>_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx</code></td>
       <td rowspan="3" colspan="1">0</td>
     </tr>
@@ -211,7 +210,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
     </tr>
     <tr>
       <td rowspan="10" colspan="1">Third party</td>
-      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://resources.wso2.com" target="_blank">resources.wso2.com</a></td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="https://resources.wso2.com" target="_blank">resources.wso2.com</a></td>
       <td><code>pardot</code></td>
     </tr>
     <tr>
@@ -222,19 +221,19 @@ These cookies allow us to count visits and traffic sources so we can measure and
       <td><code>visitor_id#####</code></td>
     </tr>
     <tr>
-      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://pardot.com" target="_blank">pardot.com</a></td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="https://pardot.com" target="_blank">pardot.com</a></td>
       <td><code>visitor_id#####</code></td>
     </tr>
     <tr>
       <td><code>visitor_id142131-hash</code></td>
     </tr>
     <tr>
-      <td><a class="in-cell-link" href="http://pi.pardot.com" target="_blank">pi.pardot.com</a></td>
+      <td><a class="in-cell-link" href="https://pi.pardot.com" target="_blank">pi.pardot.com</a></td>
       <td><code>pardot</code></td>
       <td>0</td>
     </tr>
     <tr>
-      <td rowspan="4" colspan="1"><a class="in-cell-link" href="http://youtube.com" target="_blank">youtube.com</a></td>
+      <td rowspan="4" colspan="1"><a class="in-cell-link" href="https://youtube.com" target="_blank">youtube.com</a></td>
       <td><code>CONSENT</code></td>
       <td>729</td>
     </tr>

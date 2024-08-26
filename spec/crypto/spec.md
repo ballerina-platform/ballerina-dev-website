@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @bhashinee  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2022/08/23  
-_Updated_: 2022/08/25  
+_Updated_: 2024/03/26  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -34,13 +34,24 @@ The conforming implementation of the specification is released and included in t
 4. [Decode private/public key](#4-decode-private-public-keys)
    * 4.1. [Decode RSA Private key from PKCS12 file](#41-rsa-decode-private-key-from-pkcs12-file)
    * 4.2. [Decode RSA Private key using Private key and Password](#42-decode-rsa-private-key-using-private-key-and-password)
-   * 4.3. [Decode RSA Public key from PKCS12 file](#43-decode-rsa-public-key-from-pkcs12-file)
-   * 4.4. [Decode RSA Public key from the certificate file](#44-decode-rsa-public-key-from-the-certificate-file)
-   * 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
-   * 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
-   * 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
-   * 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
-   * 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
+   * 4.3. [Decode RSA Private key using Private key content and Password](#43-decode-rsa-private-key-using-private-key-content-and-password)
+   * 4.4. [Decode RSA Public key from PKCS12 file](#44-decode-rsa-public-key-from-pkcs12-file)
+   * 4.5. [Decode RSA Public key from the certificate file](#45-decode-rsa-public-key-from-the-certificate-file)
+   * 4.6. [Decode RSA Public key from the certificate content](#46-decode-rsa-public-key-from-the-certificate-content)
+   * 4.7. [Decode EC Private key from PKCS12 file](#47-decode-ec-private-key-from-pkcs12-file)
+   * 4.8. [Decode EC Private key using Private key and Password](#48-decode-ec-private-key-using-private-key-and-password)
+   * 4.9. [Decode EC Public key from PKCS12 file](#49-decode-ec-public-key-from-pkcs12-file)
+   * 4.10. [Decode EC Public key from the certificate file](#410-decode-ec-public-key-from-the-certificate-file)
+   * 4.11. [Build RSA Public key from modulus and exponent parameters](#411-build-rsa-public-key-from-modulus-and-exponent-parameters)
+   * 4.12. [Decode ML-DSA-65 Private key from PKCS12 file](#412-decode-ml-dsa-65-private-key-from-pkcs12-file)
+   * 4.13. [Decode ML-DSA-65 Private key using Private key and Password](#413-decode-ml-dsa-65-private-key-using-private-key-and-password)
+   * 4.14. [Decode ML-DSA-65 Public key from PKCS12 file](#414-decode-ml-dsa-65-public-key-from-pkcs12-file)
+   * 4.15. [Decode ML-DSA-65 Public key from the certificate file](#415-decode-ml-dsa-65-public-key-from-the-certificate-file)
+   * 4.16. [Decode ML-KEM-768 Private key from PKCS12 file](#416-decode-ml-kem-768-private-key-from-pkcs12-file)
+   * 4.17. [Decode ML-KEM-768 Private key using Private key and Password](#417-decode-ml-kem-768-private-key-using-private-key-and-password)
+   * 4.18. [Decode ML-KEM-768 Public key from PKCS12 file](#418-decode-ml-kem-768-public-key-from-pkcs12-file)
+   * 4.19. [Decode ML-KEM-768 Public key from the certificate file](#419-decode-ml-kem-768-public-key-from-the-certificate-file)
+
 5. [Encrypt-Decrypt](#5-encrypt-decrypt)   
    * 5.1. [Encryption](#51-encryption)
      * 5.1.1. [RSA](#511-rsa)
@@ -61,6 +72,7 @@ The conforming implementation of the specification is released and included in t
       * 6.1.5. [RSA-SHA512](#615-rsa-sha512)
       * 6.1.6. [SHA384withECDSA](#616-sha384withecdsa)
       * 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
+      * 6.1.8. [ML-DSA-65](#618-mldsa65)
    * 6.2. [Verify signature](#62-verify-signature)
        * 6.2.1. [RSA-MD5](#621-rsa-md5)
        * 6.2.2. [RSA-SHA1](#622-rsa-sha1)
@@ -69,6 +81,26 @@ The conforming implementation of the specification is released and included in t
        * 6.2.5. [RSA-SHA512](#625-rsa-sha512)
        * 6.2.6. [SHA384withECDSA](#626-sha384withecdsa)
        * 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
+       * 6.2.8. [ML-DSA-65](#618-mldsa65)
+7. [Key Derivation Function (KDF)](#7-key-derivation-function-kdf)
+    * 7.1. [HKDF-SHA256](#71-hkdf-sha256)
+8. [Key Exchange Mechanism (KEM)](#8-key-exchange-mechanism-kem)
+    * 8.1 [Encapsulation](#81-encapsulation)
+       * 8.1.1 [RSA-KEM](#811-rsa-kem)
+       * 8.1.2 [ML-KEM-768](#812-ml-kem-768)
+       * 8.1.3 [RSA-KEM-ML-KEM-768](#813-rsa-kem-ml-kem-768)
+    * 8.2 [Decapsulation](#81-encapsulation)
+       * 8.2.1 [RSA-KEM](#821-rsa-kem)
+       * 8.2.2 [ML-KEM-768](#822-ml-kem-768)
+       * 8.2.3 [RSA-KEM-ML-KEM-768](#823-rsa-kem-ml-kem-768)
+9. [Hybrid Public Key Encryption (HPKE)](#9-hybrid-public-key-encryption-hpke)
+    * 9.1 [Encrypt](#91-encrypt)
+       * 9.1.1 [ML-KEM-768-HPKE](#911-ml-kem-768-hpke)
+       * 9.1.2 [RSA-KEM-ML-KEM-768-HPKE](#912-rsa-kem-ml-kem-768-hpke)
+    * 9.2 [Decrypt](#92-decrypt)
+       * 9.2.1 [ML-KEM-768-HPKE](#921-ml-kem-768-hpke)
+       * 9.2.2 [RSA-KEM-ML-KEM-768-HPKE](#922-rsa-kem-ml-kem-768-hpke)
+
        
 ## 1. [Overview](#1-overview)
 
@@ -221,7 +253,16 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.3. [Decode RSA Public key from PKCS12 file](#43-decode-rsa-public-key-from-pkcs12-file)
+4.3. [Decode RSA Private key using Private key content and Password](#43-decode-rsa-private-key-using-private-key-content-and-password)
+
+This API can be used to decode the RSA public key from the given public certificate content as a byte array.
+
+```ballerina
+byte[] keyContent = [45,45,45,45,45,66,69,71,73,78,...];
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromContent(keyContent);
+```
+
+### 4.4. [Decode RSA Public key from PKCS12 file](#44-decode-rsa-public-key-from-pkcs12-file)
 
 This API can be used to decode the RSA public key from the given PKCS#12 archive file.
 
@@ -233,7 +274,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.4. [Decode RSA Public key from the certificate file](#44-decode-rsa-public-key-from-the-certificate-file)
+### 4.5. [Decode RSA Public key from the certificate file](#45-decode-rsa-public-key-from-the-certificate-file)
 
 This API can be used to decode the RSA public key from the given public certificate file.
 
@@ -242,7 +283,16 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 ```
 
-### 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
+### 4.6. [Decode RSA Public key from the certificate content](#46-decode-rsa-public-key-from-the-certificate-content)
+
+This API can be used to decode the RSA public key from the given public certificate content as a byte array.
+
+```ballerina
+byte[] certFileContent = [45,45,45,45,45,66,69,71,73,78,...];
+crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromContent(certFileContent);
+```
+
+### 4.7. [Decode EC Private key from PKCS12 file](#47-decode-ec-private-key-from-pkcs12-file)
 
 This API can be used to decode the EC private key from the given PKCS#12 file.
 
@@ -254,7 +304,7 @@ crypto:KeyStore keyStore = {
 crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
 ```
 
-### 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
+### 4.8. [Decode EC Private key using Private key and Password](#48-decode-ec-private-key-using-private-key-and-password)
 
 This API can be used to decode the EC private key from the given private key and private key password.
 
@@ -263,7 +313,7 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
+### 4.9. [Decode EC Public key from PKCS12 file](#49-decode-ec-public-key-from-pkcs12-file)
 
 This API can be used to decode the RSA public key from the given PKCS#12 archive file.
 
@@ -275,7 +325,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
+### 4.10. [Decode EC Public key from the certificate file](#410-decode-ec-public-key-from-the-certificate-file)
 
 This API can be used to decode the EC public key from the given public certificate file.
 
@@ -284,7 +334,7 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromCertFile(certFile);
 ```
 
-### 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
+### 4.11. [Build RSA Public key from modulus and exponent parameters](#411-build-rsa-public-key-from-modulus-and-exponent-parameters)
 
 This API can be used to build the RSA public key from the given modulus and exponent parameters.
 
@@ -295,6 +345,90 @@ string modulus = "luZFdW1ynitztkWLC6xKegbRWxky-5P0p4ShYEOkHs30QI2VCuR6Qo4Bz5rTgL
         "T_9-zRxxQs7GurC4_C1nK3rI_0ySUgGEafO1atNjYmlFN-M3tZX6nEcA6g94IavyQ";
 string exponent = "AQAB";
 crypto:PublicKey publicKey = check crypto:buildRsaPublicKey(modulus, exponent);
+```
+
+### 4.12. [Decode ML-DSA-65 Private key from PKCS12 file](#412-decode-ml-dsa-65-private-key-from-pkcs12-file)
+
+This API can be used to decode the ML-DSA-65 private key from the given PKCS#12 file.
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password
+};
+crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+```
+
+### 4.13. [Decode ML-DSA-65 Private key using Private key and Password](#413-decode-ml-dsa-65-private-key-using-private-key-and-password)
+
+This API can be used to decode the ML-DSA-65 private key from the given private key and private key password.
+
+```ballerina
+string keyFile = "/path/to/private.key";
+crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyFile(keyFile, "keyPassword");
+```
+
+### 4.14. [Decode ML-DSA-65 Public key from PKCS12 file](#414-decode-ml-dsa-65-public-key-from-pkcs12-file)
+
+This API can be used to decode the ML-DSA-65 public key from the given PKCS#12 archive file.
+
+```ballerina
+crypto:TrustStore trustStore = {
+    path: "/path/tp/truststore.p12",
+    password: "truststorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlDsa65PublicKeyFromTrustStore(trustStore, "keyAlias");
+```
+
+### 4.15. [Decode ML-DSA-65 Public key from the certificate file](#415-decode-ml-dsa-65-public-key-from-the-certificate-file)
+
+This API can be used to decode the ML-DSA-65 public key from the given public certificate file.
+
+```ballerina
+string certFile = "/path/to/public.cert";
+crypto:PublicKey publicKey = check crypto:decodeMlDsa65PublicKeyFromCertFile(certFile);
+```
+
+### 4.16. [Decode ML-KEM-768 Private key from PKCS12 file](#416-decode-ml-kem-768-private-key-from-pkcs12-file)
+
+This API can be used to decode the ML-KEM-768 private key from the given PKCS#12 file.
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password
+};
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+```
+
+### 4.17. [Decode ML-KEM-768 Private key using Private key and Password](#417-decode-ml-kem-768-private-key-using-private-key-and-password)
+
+This API can be used to decode the ML-KEM-768 private key from the given private key and private key password.
+
+```ballerina
+string keyFile = "/path/to/private.key";
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyFile(keyFile, "keyPassword");
+```
+
+### 4.18. [Decode ML-KEM-768 Public key from PKCS12 file](#418-decode-ml-kem-768-public-key-from-pkcs12-file)
+
+This API can be used to decode the ML-KEM-768 public key from the given PKCS#12 archive file.
+
+```ballerina
+crypto:TrustStore trustStore = {
+    path: "/path/tp/truststore.p12",
+    password: "truststorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(trustStore, "keyAlias");
+```
+
+### 4.19. [Decode ML-KEM-768 Public key from the certificate file](#419-decode-ml-kem-768-public-key-from-the-certificate-file)
+
+This API can be used to decode the ML-KEM-768 public key from the given public certificate file.
+
+```ballerina
+string certFile = "/path/to/public.cert";
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromCertFile(certFile);
 ```
 
 ## 5. [Encrypt-Decrypt](#5-encrypt-decrypt) 
@@ -442,7 +576,7 @@ byte[] plainText = check crypto:decryptAesGcm(cipherText, key, initialVector);
 
 ## 6. [Sign and Verify](#6-sign-and-verify)
 
-The `crypto` library supports signing data using the RSA private key and verification of the signature using the RSA public key. This supports MD5, SHA1, SHA256, SHA384, and SHA512 digesting algorithms as well.
+The `crypto` library supports signing data using the RSA private key and verification of the signature using the RSA public key. This supports MD5, SHA1, SHA256, SHA384, and SHA512 digesting algorithms, and ML-DSA-65 post-quantum signature algorithm as well.
 
 ### 6.1. [Sign messages](#51-sign-messages)
 
@@ -549,6 +683,21 @@ crypto:KeyStore keyStore = {
 };
 crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
 byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
+```
+
+#### 6.1.8. [ML-DSA-65](#618-mldsa65)
+
+This API can be used to create the ML-DSA-65 based signature value for the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signMlDsa65(data, privateKey);
 ```
 
 ### 6.2. [Verify signature](#62-verify-signature)
@@ -670,4 +819,233 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keyStore, "keyAlias");
 boolean validity = check crypto:verifySha256withEcdsaSignature(data, signature, publicKey);
+```
+
+#### 6.2.8. [ML-DSA-65](#628-mldsa65)
+
+This API can be used to verify the ML-DSA-65 based signature.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signMlDsa65(data, privateKey);
+crypto:PublicKey publicKey = check crypto:decodeMlDsa65PublicKeyFromTrustStore(keyStore, "keyAlias");
+boolean validity = check crypto:verifyMlDsa65Signature(data, signature, publicKey);
+```
+
+
+## 7. [Key Derivation Function (KDF)](#7-key-derivation-function-kdf)
+
+The `crypto` module supports HMAC-based Key Derivation Function (HKDF). HKDF is a key derivation function that uses a Hash-based Message Authentication Code (HMAC) to derive keys.
+
+### 7.1. [HKDF-SHA256](#71-hkdf-sha256)
+
+This API can be used to create HKDF using the SHA256 hash function of the given data.
+
+```ballerina
+string secret = "some-secret";
+byte[] key = secret.toBytes();
+byte[] hash = crypto:hkdfSha256(key, 32);
+```
+
+## 8. [Key Exchange Mechanism (KEM)](#8-key-exchange-mechanism-kem)
+
+The `crypto` module supports Key Exchange Mechanisms (KEM). It includes RSA-KEM and post-quantum ML-KEM-768 for both encapsulation and decapsulation.
+
+### 8.1. [Encapsulation](#81-encapsulation)
+    
+#### 8.1.1. [RSA-KEM](#811-rsa-kem)
+
+This API can be used to create shared secret and its encapsulation using RSA-KEM function. 
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateRsaKem(publicKey);
+```
+    
+#### 8.1.2. [ML-KEM-768](#812-ml-kem-768)
+
+This API can be used to create shared secret and its encapsulation using ML-KEM-768 function. 
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateMlKem768(publicKey);
+```
+    
+#### 8.1.3. [RSA-KEM-ML-KEM-768](#813-rsa-kem-ml-kem-768)
+
+This API can be used to create shared secret and its encapsulation using RSA-KEM-ML-KEM-768 function. 
+
+```ballerina
+crypto:KeyStore mlkemKeyStore = {
+    path: "/path/to/mlkem/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:KeyStore rsaKeyStore = {
+    path: "/path/to/rsa/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
+crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateRsaKemMlKem768(rsaPublicKey, mlkemPublicKey);
+byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
+crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias", "keyStorePassword");
+crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias", "keyStorePassword");
+byte[] sharedSecret = check crypto:decapsulateRsaKemMlKem768(encapsulatedSecret, rsaPrivateKey, mlkemPrivateKey);
+```
+
+### 8.2. [Decapsulation](#81-encapsulation)
+    
+#### 8.2.1. [RSA-KEM](#821-rsa-kem)
+
+This API can be used to decapsulate shared secret using RSA-KEM function of the given data. 
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateRsaKem(publicKey);
+byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
+byte[] sharedSecret = check crypto:decapsulateRsaKem(encapsulatedSecret, privateKey);
+```
+    
+#### 8.2.2. [ML-KEM-768](#822-ml-kem-768)
+
+This API can be used to decapsulate shared secret using ML-KEM-768 function of the given data. 
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateMlKem768(publicKey);
+byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
+byte[] sharedSecret = check crypto:decapsulateMlKem768(encapsulatedSecret, privateKey);
+```
+    
+#### 8.2.3. [RSA-KEM-ML-KEM-768](#823-rsa-kem-ml-kem-768)
+
+This API can be used to decapsulate shared secret using RSA-KEM-ML-KEM-768 function of the given data. 
+
+```ballerina
+crypto:KeyStore mlkemKeyStore = {
+    path: "/path/to/mlkem/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:KeyStore rsaKeyStore = {
+    path: "/path/to/rsa/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
+crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
+crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateRsaKemMlKem768(rsaPublicKey, mlkemPublicKey);
+byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
+crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias", "keyStorePassword");
+crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias", "keyStorePassword");
+byte[] sharedSecret = check crypto:decapsulateRsaKemMlKem768(encapsulatedSecret, rsaPrivateKey, mlkemPrivateKey);
+```
+
+## 9. [Hybrid Public Key Encryption (HPKE)](#9-hybrid-public-key-encryption-hpke)
+
+The `crypto` module supports Hybrid Public Key Encryption (HPKE). It supports post-quantum ML-KEM-768-HPKE and RSA-KEM-ML-KEM-768-HPKE for encryption and decryption.
+
+### 9.1. [Encrypt](#91-encrypt)
+    
+#### 9.1.1. [ML-KEM-768-HPKE](#911-ml-kem-768-hpke)
+
+This API can be used to create the ML-KEM-768-hybrid-encrypted value of the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptMlKem768Hpke(data, publicKey);
+```
+    
+#### 9.1.2. [RSA-KEM-ML-KEM-768-HPKE](#912-rsa-kem-ml-kem-768-hpke)
+
+This API can be used to create the RSA-KEM-ML-KEM-768-hybrid-encrypted value of the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore mlkemKeyStore = {
+    path: "/path/to/mlkem/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:KeyStore rsaKeyStore = {
+    path: "/path/to/rsa/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
+crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
+```
+
+### 9.2. [Decrypt](#92-decrypt)
+    
+#### 9.2.1. [ML-KEM-768-HPKE](#921-ml-kem-768-hpke)
+
+This API can be used to create the ML-KEM-768-hybrid-decrypted value of the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptMlKem768Hpke(data, publicKey);
+byte[] cipherText = encryptionResult.cipherText;
+byte[] encapsulatedKey = encryptionResult.encapsulatedSecret;
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
+byte[] decryptedData = check crypto:decryptMlKem768Hpke(cipherText, encapsulatedKey, privateKey);
+```
+    
+#### 9.2.2. [RSA-KEM-ML-KEM-768-HPKE](#922-rsa-kem-ml-kem-768-hpke)
+
+This API can be used to create the RSA-KEM-ML-KEM-768-hybrid-decrypted value of the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore mlkemKeyStore = {
+    path: "/path/to/mlkem/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:KeyStore rsaKeyStore = {
+    path: "/path/to/rsa/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
+crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
+byte[] cipherText = encryptionResult.cipherText;
+byte[] encapsulatedKey = encryptionResult.encapsulatedSecret;
+crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias", "keyStorePassword");
+crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias", "keyStorePassword");
+byte[] decryptedData = check crypto:decryptRsaKemMlKem768Hpke(cipherText, encapsulatedKey, rsaPrivateKey, mlkemPrivateKey);
 ```

@@ -5,15 +5,31 @@ description: Learn how to do write data-driven tests using the ballerina test fr
 keywords: ballerina, programming language, testing, data-driven, data providers
 permalink: /learn/test-ballerina-code/define-data-driven-tests/
 active: define-data-driven-tests
-intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data-provider.
+intro: The Ballerina test Framework allows you to specify a function that returns a set of data values as a data provider for data-driven tests.
 ---
+
+## Set up data-driven tests
+
+A data-driven test can be configured to use a data provider with the `dataProvider` field of the `@test:Config` annotation. Unlike normal test cases, data-driven test cases take parameters that can be provided by a configured data provider.
+
+```ballerina
+import ballerina/test;
+
+@test:Config {
+    dataProvider: dataGen
+}
+function fruitsDataProviderTest(int value1, int value2, string fruit) returns error? {
+    test:assertEquals(value1, value2, msg = "The sum is not correct");
+    test:assertEquals(fruit.length(), 6);
+}
+```
 
 ## Use data providers
 
 A data provider is a function, which will be used to provide the data sets for a test function.
 A data provider function supports one of the following return types.
 
-### Map of tuple or error
+### Mapping of list or error
 
 The key to represent a specific data set can be specified using the key of an entry and data can be specified using the 
 value of an entry. The data provider function can return an error to indicate an issue with the data sets.
@@ -44,7 +60,7 @@ function dataGen() returns map<[int, int, string]>|error {
 
 ```
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 
@@ -57,7 +73,7 @@ Running Tests
 ```
 
 
-### Array of arrays or error
+### List of lists or error
 
 ***Example:***
 
@@ -75,7 +91,7 @@ function stringDataProviderTest(string fValue, string sValue, string result) ret
     return;
 }
 
-function dataGen() returns (string[][]) {
+function dataGen() returns string[][] {
     return [["1", "2", "3"], ["10", "20", "30"], ["5", "6", "11"]];
 }
 ```
@@ -84,7 +100,7 @@ function dataGen() returns (string[][]) {
 
 ```
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 
@@ -96,7 +112,7 @@ Running Tests
                 0 skipped
 ```
 
-## Execute specific data sets
+## Execute a specific case from the data set
 
 If you need to run only a specific case from the given data set, you can use the test name with the key to do that.
 You can make use of wild cards(`*`) to capture multiple cases as well.
@@ -110,7 +126,7 @@ The following is an example to execute map data sets.
 $ bal test --tests fruitsDataProviderTest#"banana"
 
 Compiling source
-	intg_tests/dataproviders:0.0.0
+	myTests/dataproviders:0.0.0
 
 Running Tests
 
@@ -130,7 +146,7 @@ The following is an example to execute array data sets.
 $ bal test --tests stringDataProviderTest#1
 
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 

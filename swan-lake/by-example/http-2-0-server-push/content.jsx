@@ -90,7 +90,7 @@ export function Http20ServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/http-2-0-server-push",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-2-0-server-push",
                 "_blank",
               );
             }}
@@ -308,8 +308,8 @@ export function Http20ServerPush({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Redirects"
-            href="/learn/by-example/http-client-redirects"
+            title="Server-sent events"
+            href="/learn/by-example/http-sse-service"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -319,7 +319,7 @@ export function Http20ServerPush({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Server-sent events
                 </span>
               </div>
               <svg

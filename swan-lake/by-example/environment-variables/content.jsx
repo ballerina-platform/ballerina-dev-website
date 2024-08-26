@@ -59,7 +59,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/environment-variables",
                 "_blank",
               );
             }}
@@ -202,8 +202,8 @@ export function EnvironmentVariables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="XSLT transformation"
-            href="/learn/by-example/xslt-transformation"
+            title="Record to EDI conversion"
+            href="/learn/by-example/record-to-edi"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -230,17 +230,14 @@ export function EnvironmentVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XSLT transformation
+                  Record to EDI conversion
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="XML to JSON conversion"
-            href="/learn/by-example/xml-to-json-conversion"
-          >
+          <Link title="File paths" href="/learn/by-example/filepaths">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -249,7 +246,7 @@ export function EnvironmentVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML to JSON conversion
+                  File paths
                 </span>
               </div>
               <svg

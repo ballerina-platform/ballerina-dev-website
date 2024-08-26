@@ -79,7 +79,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/filepaths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/filepaths",
                 "_blank",
               );
             }}
@@ -239,8 +239,8 @@ export function Filepaths({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Record to EDI conversion"
-            href="/learn/by-example/record-to-edi"
+            title="Environment variables"
+            href="/learn/by-example/environment-variables"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -267,7 +267,7 @@ export function Filepaths({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Record to EDI conversion
+                  Environment variables
                 </span>
               </div>
             </div>

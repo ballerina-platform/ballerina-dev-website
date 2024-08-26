@@ -1031,6 +1031,27 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record with projection",
+        "url": "json-to-record-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSONPath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1135,6 +1156,20 @@
       {
         "name": "XMLNS declarations",
         "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record",
+        "url": "xml-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record with projection",
+        "url": "xml-to-record-with-projection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1441,8 +1476,22 @@
         "isLearnByExample": true
       },
       {
+        "name": "Conditional send",
+        "url": "conditional-send",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1466,6 +1515,13 @@
         "url": "flush",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Fork",
+        "url": "fork",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -2200,6 +2256,14 @@
         "verifyOutput": false,
         "disablePlayground": false,
         "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2267,6 +2331,14 @@
       {
         "name": "HTTP/2 server push",
         "url": "http-2-0-client-server-push",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Server-sent events",
+        "url": "http-sse-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": false,
@@ -2545,6 +2617,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Query Complexity",
+        "url": "graphql-service-query-complexity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2665,7 +2745,7 @@
       },
       {
         "name": "Self-signed JWT authentication",
-        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "url": "graphql-client-security-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3485,6 +3565,52 @@
     ]
   },
   {
+    "title": "SOAP client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive",
+        "url": "soap-client-send-receive",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SOAP client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "soap-client-security-ssl-tsl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Inbound Security",
+        "url": "soap-client-security-inbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Outbound Security",
+        "url": "soap-client-security-outbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",
@@ -3706,6 +3832,29 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "LDAP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Add/Remove entries",
+        "url": "ldap-add-remove-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Search for an entry",
+        "url": "ldap-search-entry",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       }
@@ -4124,6 +4273,21 @@
     ]
   },
   {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Serialization/Deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "IO",
     "column": 0,
     "category": "Common libraries",
@@ -4318,6 +4482,21 @@
     ]
   },
   {
+    "title": "OS",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Environment variables",
+        "url": "environment-variables",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "File",
     "column": 2,
     "category": "Common libraries",
@@ -4410,7 +4589,7 @@
   },
   {
     "title": "UUID",
-    "column": 3,
+    "column": 2,
     "category": "Common libraries",
     "samples": [
       {
@@ -4440,21 +4619,6 @@
         "url": "xslt-transformation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "OS",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Environment variables",
-        "url": "environment-variables",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes varying output",
         "isLearnByExample": false
       }
     ]
@@ -4491,6 +4655,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "YAML data",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "YAML to anydata",
+        "url": "yaml-to-anydata",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "YAML to anydata with projection",
+        "url": "yaml-to-anydata-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Serialize to YAML string",
+        "url": "anydata-to-yaml-string",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },

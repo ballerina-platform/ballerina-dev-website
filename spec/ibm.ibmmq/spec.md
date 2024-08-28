@@ -408,7 +408,7 @@ public type Message record {|
 
 ## 4. Client Options
 
-- GetMessageOptions record represents client options which can be used when retrieving messages from an IBM MQ destination.
+- `GetMessageOptions` record represents client options which can be used when retrieving messages from an IBM MQ destination.
 
 ```ballerina
 public type GetMessageOptions record {|
@@ -416,6 +416,19 @@ public type GetMessageOptions record {|
     int options = MQGMO_NO_WAIT;
     # The maximum time (in seconds) that a `get` call waits for a suitable message to arrive. It is used in conjunction with `ibmmq.MQGMO_WAIT`.
     int waitInterval = 10;
+    # Message selection criteria
+    MatchOptions matchOptions?;
+|};
+```
+
+- `MatchOptions` record represents the selection criteria that determine which message is retrieved.
+
+```ballerina
+public type MatchOptions record {|
+    # The message identifier of the message which needs to be retrieved
+    byte[] messageId?;
+    # The Correlation identifier of the message which needs to be retrieved
+    byte[] correlationId?;
 |};
 ```
 

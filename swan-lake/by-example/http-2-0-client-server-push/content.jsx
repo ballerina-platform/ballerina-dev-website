@@ -84,7 +84,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/http-2-0-client-server-push",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-2-0-client-server-push",
                 "_blank",
               );
             }}
@@ -324,8 +324,8 @@ export function Http20ClientServerPush({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request interceptor"
-            href="/learn/by-example/http-request-interceptor"
+            title="Server-sent events"
+            href="/learn/by-example/http-sse-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -335,7 +335,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request interceptor
+                  Server-sent events
                 </span>
               </div>
               <svg

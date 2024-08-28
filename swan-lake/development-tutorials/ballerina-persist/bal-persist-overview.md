@@ -50,7 +50,9 @@ The `bal persist` CLI is used to generate the client API for the data model. Wit
 
 The `bal persist` has two built-in CLI commands: `persist init` and `persist add` to initialize `bal persist` in the Ballerina project. The `persist init` command solely establishes the persist directory and creates a data model file. Conversely, the `persist add` command not only creates the model file but also configures tools to integrate with `bal build`. If integration with `bal build` for code generation isn't desired, the `persist generate` command provides a one-time generation option.
 
-Furthermore, there are experimental commands: `persist pull` and `persist migrate`. The `persist pull` allows introspection of an existing database to generate the data model, while `persist migrate` generates SQL scripts to alter the table structure in the database when modifications are made to the data model.
+The `bal persist` CLI tool also provides `persist pull` command, which facilitates introspection of an existing database to generate the data model. Currently, introspection is supported for MySQL, MSSQL, and PostgreSQL databases.
+
+Furthermore, there is a experimental command: `persist migrate`. The `persist migrate` generates SQL scripts to alter the table structure in the database when modifications are made to the data model.
 
 Learn more about `bal persist` CLI in the [CLI tool](/learn/persist-cli-tool/) section.
 

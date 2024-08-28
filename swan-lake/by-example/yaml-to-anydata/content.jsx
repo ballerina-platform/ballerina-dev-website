@@ -5,56 +5,62 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/graphql;
+  `import ballerina/data.yaml;
 import ballerina/io;
 
-// User-defined data types to retrive data from the service.
-type ProfileResponse record {|
-    *graphql:GenericResponseWithErrors;
-    record {|Profile profile;|} data;
+type ServerConfig record {|
+    string host;
+    int port;
+    string protocol;
 |};
 
-type Profile record {|
-    string name;
-    int age;
-|};
-
+final string yamlString = string
+        \`
+        host: "localhost"
+        port: 8080
+        protocol: "http"\`;
 
 public function main() returns error? {
-    // Defines the GraphQL client to call the JWT Auth secured APIs.
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-        auth = {
-            username: "ballerina",
-            issuer: "wso2",
-            audience: ["ballerina", "ballerina.org", "ballerina.io"],
-            keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
-            jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
-            customClaims: { "scp": "admin" },
-            expTime: 3600,
-            signatureConfig: {
-                config: {
-                    keyFile: "../resource/path/to/private.key"
-                }
-            }
-        },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
+    // Parse the YAML string as a record.
+    ServerConfig serverConfig1 = check yaml:parseString(yamlString);
+    io:println(serverConfig1);
+
+    byte[] yamlByteArr = yamlString.toBytes();
+    // Parse the YAML byte array as a record.
+    ServerConfig serverConfig2 = check yaml:parseBytes(yamlByteArr);
+    io:println(serverConfig2);
+
+    stream<byte[], error?> byteBlockStream = new (new ByteBlockGenerator(yamlString));
+    // Parse the YAML byte block stream as a record.
+    ServerConfig serverConfig3 = check yaml:parseStream(byteBlockStream);
+    io:println(serverConfig3);
+}
+
+// Defines a class called \`ByteBlockGenerator\`, which is stream implementor with a \`next()\` method.
+// This \`next()\` method is called when iterating over a stream created with a \`ByteBlockGenerator\` value.
+class ByteBlockGenerator {
+    private int index = 0;
+    private final byte[] byteArr;
+    private final int arraySize;
+
+    public function init(string data) {
+        self.byteArr = data.toBytes();
+        self.arraySize = self.byteArr.length();
+    }
+
+    public isolated function next() returns record {|byte[] value;|}|error? {
+        if self.index >= self.arraySize {
+            return;
         }
-    );
-
-    // Defines the GraphQL document to be sent to the GraphQL service.
-    string document = "{ profile { name, age } }";
-
-    // Execute the document and retrieve the response from the GraphQL service.
-    ProfileResponse response = check graphqlClient->execute(document);
-    io:println(response.data.profile);
+        int startIndex = self.index;
+        self.index = startIndex + 4 > self.arraySize ? self.arraySize : startIndex + 3;
+        return {value: self.byteArr.slice(startIndex, self.index)};
+    }
 }
 `,
 ];
 
-export function GraphqlClientSecuritySelfSignedJwtAuthentication({
-  codeSnippets,
-}) {
+export function YamlToAnydata({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -64,15 +70,20 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL client - Self signed JWT authentication</h1>
+      <h1>YAML to anydata conversion</h1>
 
       <p>
-        The <code>graphql:Client</code> can connect to a service that is secured
-        with self-signed JWT by adding the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>graphql:JwtIssuerConfig</code> to the <code>auth</code>{" "}
-        configuration of the client. A self-signed JWT is issued before the
-        request is sent.
+        The <code>data.yaml</code> library provides multiple functions to parse
+        YAML source, in the form of a string, byte array, or byte block stream,
+        as a value that belongs to a subtype of <code>anydata</code>.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/data.yaml/latest/">
+          <code>data.yaml</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -85,7 +96,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-client-security-self-signed-jwt-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/yaml-to-anydata",
                 "_blank",
               );
             }}
@@ -159,23 +170,6 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the GraphQL service given in the{" "}
-            <a href="/learn/by-example/graphql-service-jwt-auth/">
-              JWT Auth service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the client program by executing the command below.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -229,52 +223,20 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run graphql_client_security_self_signed_jwt_authentication.bal`}</span>
-              <span>{`{"name":"Walter White","age":51}`}</span>
+              <span>{`\$ bal run yaml_to_anydata.bal`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
+              <span>{`{"host":"localhost","port":8080,"protocol":"http"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest#JwtIssuerConfig">
-              <code>graphql:JwtIssuerConfig</code> record - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> module - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#823-self-signed-jwt-authentication">
-              GraphQL client self signed JWT authentication - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
-            href="/learn/by-example/graphql-client-security-basic-auth"
+            title="Record to XML conversion"
+            href="/learn/by-example/xml-from-record-conversion"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -301,7 +263,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Record to XML conversion
                 </span>
               </div>
             </div>
@@ -309,8 +271,8 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 password grant type"
-            href="/learn/by-example/graphql-client-security-oauth2-password-grant-type"
+            title="YAML to anydata with projection"
+            href="/learn/by-example/yaml-to-anydata-with-projection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -320,7 +282,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 password grant type
+                  YAML to anydata with projection
                 </span>
               </div>
               <svg

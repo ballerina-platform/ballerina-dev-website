@@ -78,7 +78,7 @@ export function JsonToRecordWithProjection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/json-to-record-with-projection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/json-to-record-with-projection",
                 "_blank",
               );
             }}
@@ -205,44 +205,9 @@ export function JsonToRecordWithProjection({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`import ballerina/data.jsondata;`}</span>
-              <span>{`import ballerina/io;`}</span>
-              <span>{`
-`}</span>
-              <span>{`// Define a closed record type to capture the required fields from the JSON content.`}</span>
-              <span>{`type Book record {|`}</span>
-              <span>{`    string name;`}</span>
-              <span>{`    string author;`}</span>
-              <span>{`|};`}</span>
-              <span>{`
-`}</span>
-              <span>{`json jsonContent = {`}</span>
-              <span>{`    "name": "Clean Code",`}</span>
-              <span>{`    "author": "Robert C. Martin",`}</span>
-              <span>{`    "year": 2008,`}</span>
-              <span>{`    "publisher": "Prentice Hall"`}</span>
-              <span>{`};`}</span>
-              <span>{`
-`}</span>
-              <span>{`string jsonStr = string \``}</span>
-              <span>{`{`}</span>
-              <span>{`    "name": "The Pragmatic Programmer",`}</span>
-              <span>{`    "author": "Andrew Hunt, David Thomas",`}</span>
-              <span>{`    "year": 1999,`}</span>
-              <span>{`    "publisher": "Addison-Wesley"`}</span>
-              <span>{`}\`;`}</span>
-              <span>{`
-`}</span>
-              <span>{`public function main() returns error? {`}</span>
-              <span>{`    // Based on the expected type, it selectively converts the JSON content to the record type.`}</span>
-              <span>{`    Book book = check jsondata:parseAsType(jsonContent);`}</span>
-              <span>{`    io:println(book);`}</span>
-              <span>{`
-`}</span>
-              <span>{`    // Based on the expected type, it selectively converts the JSON string to the record type.`}</span>
-              <span>{`    Book book2 = check jsondata:parseString(jsonStr);`}</span>
-              <span>{`    io:println(book2);`}</span>
-              <span>{`}`}</span>
+              <span>{`\$ bal run json_to_record_with_projection.bal`}</span>
+              <span>{`{"name":"Clean Code","author":"Robert C. Martin"}`}</span>
+              <span>{`{"name":"The Pragmatic Programmer","author":"Andrew Hunt, David Thomas"}`}</span>
             </code>
           </pre>
         </Col>

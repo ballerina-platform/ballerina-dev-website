@@ -2,7 +2,8 @@
 layout: ballerina-inner-page
 title: Terms of service
 permalink: /terms-of-service/
-description: Terms of service of the Ballerina website
+description: The Terms of Service outline the rules and guidelines for using Ballerina's services. Ensure you're informed about your rights and obligations.
+keywords: ballerinalang, integration, microservices, programming language, cloud native, ballerina language, terms of service
 ---
 
 ## Overview

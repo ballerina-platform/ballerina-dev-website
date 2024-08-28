@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/test;
 
-@test:Config
+@test:Config { }
 function testAssertEquals() {
     json a = {name:"John Doe", age:25, address:{city:"Colombo", 
     country:"Sri Lanka"}};
@@ -17,7 +17,7 @@ function testAssertEquals() {
     test:assertEquals(a, b, msg = "JSON values are not equal");
 }
 
-@test:Config
+@test:Config { }
 function testAssertNotEquals() {
     string s1 = "abc";
     string s2 = "def";
@@ -25,21 +25,21 @@ function testAssertNotEquals() {
     test:assertNotEquals(s1, s2, msg = "String values are equal");
 }
 
-@test:Config
+@test:Config { }
 function testAssertTrue() {
     boolean value = true;
     // Asserts if the provided value is \`true\`.
     test:assertTrue(value, msg = "AssertTrue failed");
 }
 
-@test:Config
+@test:Config { }
 function testAssertFalse() {
     boolean value = false;
     // Asserts if the provided value is \`false\`.
     test:assertFalse(value, msg = "AssertFalse failed");
 }
 
-@test:Config
+@test:Config { }
 function testAssertFail() {
     boolean flag = true;
     if (flag) {
@@ -57,7 +57,7 @@ class Person {
     string address = "No 20, Palm grove";
 }
 
-@test:Config
+@test:Config { }
 function testAssertExactEquals() {
     Person person1 = new;
     Person person2 = person1;
@@ -66,7 +66,7 @@ function testAssertExactEquals() {
         msg = "Objects are not exactly equal");
 }
 
-@test:Config
+@test:Config { }
 function testAssertNotExactEquals() {
     Person person1 = new;
     Person person2 = new;
@@ -117,7 +117,7 @@ export function TesterinaAssertions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/testerina-assertions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/testerina-assertions",
                 "_blank",
               );
             }}
@@ -284,8 +284,9 @@ export function TesterinaAssertions({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[0] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -329,8 +330,9 @@ export function TesterinaAssertions({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[1] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

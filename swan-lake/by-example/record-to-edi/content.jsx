@@ -79,7 +79,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -169,7 +169,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -469,7 +469,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -646,7 +646,10 @@ export function RecordToEdi({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="File paths" href="/learn/by-example/filepaths">
+          <Link
+            title="Environment variables"
+            href="/learn/by-example/environment-variables"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -655,7 +658,7 @@ export function RecordToEdi({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File paths
+                  Environment variables
                 </span>
               </div>
               <svg

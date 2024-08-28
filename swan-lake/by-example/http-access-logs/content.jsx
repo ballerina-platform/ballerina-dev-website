@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-type Album readonly & record {|
+public type Album readonly & record {|
     string title;
     string artist;
 |};
@@ -27,6 +27,10 @@ service / on new http:Listener(9090) {
   `[ballerina.http.accessLogConfig]
 # Enable printing access logs on the Console. The default value is \`false\`.
 console = true
+# Specify the format of access logs. Options are \`flat\` or \`json\`. The default value is \`flat\`.
+format = "flat"
+# List of attributes to include in the access logs. This field is optional.
+attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
 # Specify the file path to save the access logs. This is optional.  
 path = "testAccessLog.txt"
 `,
@@ -54,7 +58,10 @@ export function HttpAccessLogs({ codeSnippets }) {
         <code>ballerina.http.accessLogConfig</code> in the{" "}
         <code>Config.toml</code> file to enable them. Additionally, the{" "}
         <code>path</code> field can be used to specify the file path to save the
-        access logs.
+        access logs. The log format can be specified as either <code>flat</code>{" "}
+        or <code>json</code> using the optional <code>format</code> field
+        (defaults to <code>flat</code>). Furthermore, you can customize the
+        logged attributes using the optional <code>attributes</code> field.
       </p>
 
       <Row
@@ -67,7 +74,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-access-logs",
                 "_blank",
               );
             }}
@@ -163,7 +170,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-access-logs",
                 "_blank",
               );
             }}
@@ -294,7 +301,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
-              <span>{`127.0.0.1 - - [15/Dec/2022:11:39:42 +0530] "GET /albums HTTP/1.1" 200 95 "-" "curl/7.79.1"`}</span>
+              <span>{`127.0.0.1 [11/Jul/2024:13:21:01.620 +0530] "GET /albums HTTP/1.1" 200 95 "-" "curl/8.4.0"`}</span>
             </code>
           </pre>
         </Col>

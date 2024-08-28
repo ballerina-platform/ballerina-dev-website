@@ -214,11 +214,16 @@ When writing the service, following configurations can be provided,
 # + maxFrameSize - The maximum payload size of a WebSocket frame in bytes.
 #                  If this is not set or is negative or zero, the default frame size which is 65536 will be used.
 # + auth - Listener authenticaton configurations
+# + dispatcherKey - The key which is going to be used for dispatching to custom remote functions.
+# + dispatcherStreamId - The identifier used to distinguish between requests and their corresponding responses in a multiplexing scenario.
 public type WSServiceConfig record {|
     string[] subProtocols = [];
     decimal idleTimeout = 0;
     int maxFrameSize = 65536;
     ListenerAuthConfig[] auth?;
+    boolean validation = true;
+    string dispatcherKey?;
+    string dispatcherStreamId?;
 |};
 ```
 
@@ -353,16 +358,21 @@ For example, if the message is `{"event": "heartbeat"}` it will get dispatched t
 1. The user can configure the field name(key) to identify the messages and the allowed values as message types.
 
 The `dispatcherKey` is used to identify the event type of the incoming message by its value. 
+The `dispatcherStreamId` is used to distinguish between requests and their corresponding responses in a multiplexing scenario.
+
+```ballerina
 
 Ex:
-incoming message = ` {"event": "heartbeat"}`
+incoming message = ` {"event": "heartbeat", "id": "1"}`
 dispatcherKey = "event"
+dispatcherStreamId = "id"
 event/message type = "heartbeat"
 dispatching to remote function = "onHeartbeat"
 
 ```ballerina
 @websocket:ServiceConfig {
-    dispatcherKey: "event"
+    dispatcherKey: "event",
+    dispatcherStreamId: "id"
 }
 service / on new websocket:Listener(9090) {}
 ```

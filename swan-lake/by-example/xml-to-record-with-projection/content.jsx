@@ -80,7 +80,7 @@ export function XmlToRecordWithProjection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/xml-to-record-with-projection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/xml-to-record-with-projection",
                 "_blank",
               );
             }}
@@ -207,45 +207,9 @@ export function XmlToRecordWithProjection({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`import ballerina/data.xmldata;`}</span>
-              <span>{`import ballerina/io;`}</span>
-              <span>{`
-`}</span>
-              <span>{`// Define a closed record type to capture the required elements and attributes from the XML data.`}</span>
-              <span>{`type Book record {|`}</span>
-              <span>{`    string name;`}</span>
-              <span>{`    string author;`}</span>
-              <span>{`|};`}</span>
-              <span>{`
-`}</span>
-              <span>{`xml xmlData = xml \``}</span>
-              <span>{`<book>`}</span>
-              <span>{`    <name>Clean Code</name>`}</span>
-              <span>{`    <author>Robert C. Martin</author>`}</span>
-              <span>{`    <year>2008</year>`}</span>
-              <span>{`    <publisher>Prentice Hall</publisher>`}</span>
-              <span>{`</book>\`;`}</span>
-              <span>{`
-`}</span>
-              <span>{`string xmlStr = string \``}</span>
-              <span>{`<book>`}</span>
-              <span>{`    <name>Clean Code</name>`}</span>
-              <span>{`    <author>Robert C. Martin</author>`}</span>
-              <span>{`    <year>2008</year>`}</span>
-              <span>{`    <publisher>Prentice Hall</publisher>`}</span>
-              <span>{`</book>\`;`}</span>
-              <span>{`
-`}</span>
-              <span>{`public function main() returns error? {`}</span>
-              <span>{`    // Based on the expected type, it selectively converts the XML data to the record type.`}</span>
-              <span>{`    Book book = check xmldata:parseAsType(xmlData);`}</span>
-              <span>{`    io:println(book);`}</span>
-              <span>{`
-`}</span>
-              <span>{`    // Based on the expected type, it selectively converts the XML string to the record type.`}</span>
-              <span>{`    Book book2 = check xmldata:parseString(xmlStr);`}</span>
-              <span>{`    io:println(book2);`}</span>
-              <span>{`}`}</span>
+              <span>{`\$ bal run xml_to_record_with_projection.bal`}</span>
+              <span>{`{"name":"Clean Code","author":"Robert C. Martin"}`}</span>
+              <span>{`{"name":"Clean Code","author":"Robert C. Martin"}`}</span>
             </code>
           </pre>
         </Col>

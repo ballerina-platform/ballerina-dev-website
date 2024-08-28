@@ -72,7 +72,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/inter-worker-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/inter-worker-message-passing",
                 "_blank",
               );
             }}
@@ -245,8 +245,8 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Inter-worker failure propagation"
-            href="/learn/by-example/inter-worker-failure-propagation"
+            title="Conditional send"
+            href="/learn/by-example/conditional-send"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -256,7 +256,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Inter-worker failure propagation
+                  Conditional send
                 </span>
               </div>
               <svg

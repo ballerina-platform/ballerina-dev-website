@@ -47,7 +47,7 @@ export default function StudentengagementProgram() {
           } catch (error) {
             console.error(`Failed to fetch contributors for ${project.title}:`, error);
           }
-          return { ...project, contributors: contributors.slice(0, 5) };
+          return { ...project, contributors: contributors.slice(0, 8) };
         })
       );
       setProjects(projectsWithContributors);
@@ -115,10 +115,14 @@ export default function StudentengagementProgram() {
       setFilteredTags([...projects]);
     }
   };
+// console.log(projects);
 
   const past = filteredTags.filter(project => project.status === "past");
   const ongoing = filteredTags.filter(project => project.status === "ongoing");
   const upcoming = filteredTags.filter(project => project.status === "upcoming");
+
+  // console.log(ongoing);
+  
 
   return (
     <>
@@ -202,7 +206,7 @@ export default function StudentengagementProgram() {
                 )}
 
                 {ongoing.length > 0 && (
-                  <Row style={{ marginTop: "4rem" }}>
+                  <Row style={upcoming.length > 0 ? { marginTop: "4rem" } : {}}>
                     <Col xs={12}>
                       <div style={{ background: "#ffffff", marginTop: "20px", paddingTop: "24px" }}>
                         <ProjectsGrid ref={childRefs.ongoing} propsData={ongoing} launcher="project-mentorship" section="Ongoing projects" getLink={getLink} handleSelectedTag={handleSelectedTag} />
@@ -212,7 +216,7 @@ export default function StudentengagementProgram() {
                 )}
 
                 {past.length > 0 && (
-                  <Row style={{ marginTop: "4rem" }}>
+                  <Row style={upcoming.length > 0 || ongoing.length > 0 ? { marginTop: "4rem" } : {}}>
                     <Col xs={12}>
                       <div style={{ background: "#ffffff", marginTop: "20px", paddingTop: "24px" }}>
                         <ProjectsGrid ref={childRefs.past} propsData={past} launcher="project-mentorship" section="Past projects" getLink={getLink} handleSelectedTag={handleSelectedTag} />

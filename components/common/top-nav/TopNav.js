@@ -61,10 +61,10 @@ const TopNav = (props) => {
         <Container fluid>
           {(launcher === "home") ?
             <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
+              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
             </Navbar.Brand>
             : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
             </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -75,7 +75,7 @@ const TopNav = (props) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>

@@ -14,8 +14,8 @@
 }
 
 .useCaseCard .cardWrapper:hover {
-   border: #20b6b0 solid 0.3px !important;
-   cursor: pointer;
+    border: #20b6b0 solid 0.3px !important;
+    cursor: pointer;
 }
 
 .wrapperLink {
@@ -40,19 +40,22 @@
     font-weight: 400;
 }
 
-.cardLinks, .repoLink {
+.cardLinks,
+.repoLink {
     font-weight: 400;
     font-style: italic;
 }
 
-.cardLinks a, .repoLink {
+.cardLinks a,
+.repoLink {
     color: #20b6b0;
     text-decoration: none;
     font-weight: 400;
     font-size: 16px;
 }
 
-.cardLinks a:hover, .repoLink:hover {
+.cardLinks a:hover,
+.repoLink:hover {
     color: #494949;
 }
 
@@ -105,7 +108,7 @@
     cursor: pointer;
 }
 
-.tag:hover{
+.tag:hover {
     opacity: 0.8;
     color: #ffffff;
 }
@@ -148,11 +151,44 @@ a.eventRegistration {
     border: none;
     font-family: "pragmatica", sans-serif;
     transition: all 0.3s;
-    width: 100%;
+    /* width: 100%; */
+    width: fit-content;
     font-style: normal;
 }
 
 a.eventRegistration:hover {
     background-color: #57595d;
     color: #ffffff !important;
+}
+
+.fillTile {
+    background: #000 !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 90px;
+    justify-content: center !important;
+    border: #20b6b0 solid 0.3px !important;
+}
+
+.fillTile:hover {
+    cursor: default !important;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        padding-top: 1rem;
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon {
+        padding-top: 0;
+        margin-left: 8px;
+        width: 75%;
+    }
+}
+
+.iconLink .icon:hover {
+    border: 1px solid #20b6b0;
 }

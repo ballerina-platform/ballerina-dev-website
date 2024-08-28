@@ -17,9 +17,37 @@
  */
 
 export async function fetchContributors(owner, repo) {
-  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contributors`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch contributors');
+  if (repo !== "") {
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contributors`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch contributors');
+    }
+    return response.json();
+  } else {
+
+    const response = await fetch(`https://api.github.com/orgs/${owner}/repos`);
+    const repos = await response.json();
+
+    let contributors = [];
+
+    for (const repo of repos) {
+      const contributorsResponse = await fetch(`https://api.github.com/repos/${owner}/${repo.name}/contributors`);
+      const repoContributors = await contributorsResponse.json();
+// contributors.push(repoContributors)
+      repoContributors.forEach(contributor => {
+        contributors.push(contributor);
+      });
+    }
+
+
+    const uniqueContributors = contributors.filter((obj, index, self) =>
+      index === self.findIndex((t) => (
+        t.id === obj.id && t.name === obj.name
+      ))
+    );
+
+
+    return uniqueContributors;
+
   }
-  return response.json();
 }

@@ -115,14 +115,10 @@ export default function StudentengagementProgram() {
       setFilteredTags([...projects]);
     }
   };
-// console.log(projects);
 
   const past = filteredTags.filter(project => project.status === "past");
   const ongoing = filteredTags.filter(project => project.status === "ongoing");
   const upcoming = filteredTags.filter(project => project.status === "upcoming");
-
-  // console.log(ongoing);
-  
 
   return (
     <>
@@ -167,7 +163,9 @@ export default function StudentengagementProgram() {
                   <img src="/images/mesh-1-row-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Project mentorship</h1>
-                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aims to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
+                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>
+                      This program connects university students with industry experts to foster innovation through guided project work. Our goal is to bridge the gap between academic learning and real-world challenges, empowering students to develop impactful solutions.
+                    </p>
                   </Col>
                   <Col xs={12} md={12} lg={6} className='introImg'>
                     <img src="/images/university/1.png" alt="University" />
@@ -176,7 +174,7 @@ export default function StudentengagementProgram() {
               </Container>
             </Col>
           </Row>
-          
+
           <Row className="pageContentRow communityRow slackRow">
             <Col xs={12}>
               <Container>

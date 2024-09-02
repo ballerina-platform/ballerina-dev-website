@@ -115,14 +115,10 @@ export default function StudentengagementProgram() {
       setFilteredTags([...projects]);
     }
   };
-  // console.log(projects);
 
   const past = filteredTags.filter(project => project.status === "past");
   const ongoing = filteredTags.filter(project => project.status === "ongoing");
   const upcoming = filteredTags.filter(project => project.status === "upcoming");
-
-  // console.log(ongoing);
-
 
   return (
     <>

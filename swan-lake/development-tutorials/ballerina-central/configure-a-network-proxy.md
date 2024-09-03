@@ -54,7 +54,7 @@ Following domains should be accessible from the network to work with Ballerina.
 
 1) Ballerina Central API - `https://api.central.ballerina.io/`
 2) Ballerina Central File Server - `https://fileserver.central.ballerina.io/`
-3) Maven Central Repository - https://repo.maven.apache.org/maven2`
+3) Maven Central Repository - https://repo.maven.apache.org/maven2
 4) Docker Hub (For Docker Image Pull) - https://hub.docker.com/u/ballerina 
 5) Alpine Linux Repository (For Docker Image Updates) - http://dl-cdn.alpinelinux.org/ 
 

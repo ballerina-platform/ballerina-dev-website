@@ -1,6 +1,22 @@
 {
     "events": [
-      {
+           {
+            "date": "Sep 26, 2024",
+            "day": "Thur.",
+            "time": "10:00 a.m. PDT",
+            "expire": "2024-09-26T21:10:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.conf42.com/Kube_Native_2024_Anupama_Pathirage_kubernetes_ballerina_deployments",
+            "eventType": "Conf42 Kube Native 2024",
+            "eventName": "From Code to Cloud: Mastering Kubernetes Deployments with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Sep 18, 2024",
             "day": "Wed.",
             "time": "5:10 p.m. GMT-3",
@@ -45,8 +61,8 @@
             "presenter": "Gayal Dassanayake",
             "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=TZQWfA0v4cw",
+            "buttonText": "Watch recording"
         },
         {
             "date": "July 9, 2024",
@@ -61,8 +77,8 @@
             "presenter": "Manuranga Perera",
             "presenterDesignation": "Associate Director/Architect - Engineering, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=5ub6wjyYUD0",
+            "buttonText": "Watch recording"
         },
         {
             "date": "June 27, 2024",
@@ -93,8 +109,8 @@
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director of Engineering - Integration",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=MkZaP8kT_Fk",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 8, 2024",

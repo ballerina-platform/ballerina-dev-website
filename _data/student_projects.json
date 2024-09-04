@@ -35,7 +35,7 @@
             "description": "A task management app that integrates with calendars, inspired by 'Make Time.' It helps users prioritize tasks and goals while providing a concise daily overview.",
             "tags": ["Node.js", "Ballerina", "MongoDB", "React.js", "Sketch", "PlantUML"],
             "status": "ongoing",
-            "icon": "/images/icon.png",
+            "icon": "/images/uni-projects/logo_text.png",
             "advisor": {
                 "name": "Nipuna Fernando",
                 "x": "https://x.com/NipunaFernando"

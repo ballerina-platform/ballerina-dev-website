@@ -5,7 +5,7 @@
             "slug": "https://wso2.com/library/conference/2024/05/less-is-more-utilizing-ballerina-to-architect-a-cloud-data-platform/",
             "frontmatter": {
                 "title": "Less Is More: Utilizing Ballerina to Architect a Cloud Data Platform",
-                "description": "At its core, the challenge of managing Human Resources data is an integration challenge: estimates range from 2-3 HR systems in use at a typical SMB, up to a few dozen systems implemented amongst enterprise HR departments, and these systems seldom integrate seamlessly between themselves. Providing a multi-tenant, cloud-native solution to integrate these hundreds of HR-related systems, normalize their disparate data models and then render that consolidated information for stakeholder decision making has been a substantial undertaking, but one significantly eased by leveraging Ballerina.",
+                "description": "Integrating disparate HR systems is a crucial challenge that enterprises face. VisualizeHR's Cloud Data Platform, powered by Ballerina, provides a multi-tenant, cloud native solution to normalize data and deliver consolidated insights to stakeholders.",
                 "logo": "/images/home-page/user-logos/visualize-hr.png"
             },
             "isExternal": true

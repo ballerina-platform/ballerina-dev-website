@@ -60,7 +60,6 @@ export async function getStaticProps() {
 
 
 export default function CaseStudies({ caseStudies }) {
-console.log(caseStudies);
 
   return (
     <>

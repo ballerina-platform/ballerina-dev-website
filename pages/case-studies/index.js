@@ -22,6 +22,7 @@ import Head from "next/head";
 
 import Layout from "../../layouts/LayoutUseCase";
 import UseCases from "../../components/common/use-cases/UseCases";
+import ExternalCaseStudies from '../../_data/external-case-studies.json';
 
 
 import fs from "fs";
@@ -31,16 +32,24 @@ export async function getStaticProps() {
 
   const files = fs.readdirSync('case-studies');
 
-  const caseStudies = files.map((fileName) => {
+  let caseStudies = files.map((fileName) => {
     const slug = fileName.replace('.md', '');
     const readFile = fs.readFileSync(`case-studies/${fileName}`, 'utf-8');
     const { data: frontmatter } = matter(readFile);
+    const isExternal = false;
 
     return {
+      id:slug,
       slug,
       frontmatter,
+      isExternal
     };
   });
+
+
+  caseStudies = [...caseStudies, ...ExternalCaseStudies.caseStudies];
+
+  caseStudies.sort((a, b) => a.id.localeCompare(b.id));
 
   return {
     props: {
@@ -51,6 +60,7 @@ export async function getStaticProps() {
 
 
 export default function CaseStudies({ caseStudies }) {
+console.log(caseStudies);
 
   return (
     <>

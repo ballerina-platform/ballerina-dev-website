@@ -3,7 +3,7 @@
         {
             "title": "SmartShopper",
             "description": "An app that compares prices across major supermarkets to optimize a user's shopping list. Key components include UI, data collection, and price comparison algorithms.",
-            "tags": ["React.js", "Ballerina", "PostgreSQL", "Stripe", "Tailwind", "Chakra UI", "Twillio", "Vercel", "Choeo"],
+            "tags": ["React.js", "Ballerina", "PostgreSQL", "Stripe", "Tailwind", "Chakra UI", "Twillio", "Vercel", "Choreo"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
             "advisor": {
@@ -33,7 +33,7 @@
         {
             "title": "Highlights",
             "description": "A task management app that integrates with calendars, inspired by 'Make Time.' It helps users prioritize tasks and goals while providing a concise daily overview.",
-            "tags": ["Node.js", "Ballerina", "MongoDB", "Sketch", "PlantUML"],
+            "tags": ["Node.js", "Ballerina", "MongoDB", "React.js", "Sketch", "PlantUML"],
             "status": "ongoing",
             "icon": "/images/icon.png",
             "advisor": {
@@ -41,8 +41,8 @@
                 "x": "https://x.com/NipunaFernando"
             },
             "repo": {
-                "org": "ballerina-platform",
-                "name": "ballerina-dev-website"
+                "org": "nipunayf",
+                "name": "highlights"
             }
         }
     ]

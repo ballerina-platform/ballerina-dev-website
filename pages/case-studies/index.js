@@ -46,7 +46,6 @@ export async function getStaticProps() {
     };
   });
 
-
   caseStudies = [...caseStudies, ...ExternalCaseStudies.caseStudies];
 
   caseStudies.sort((a, b) => a.id.localeCompare(b.id));

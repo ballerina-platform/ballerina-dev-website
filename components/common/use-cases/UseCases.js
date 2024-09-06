@@ -64,7 +64,7 @@ export default function UseCases(props) {
                                 <>
                                     {
                                         propsData.map((_, idx) => (
-                                            <Link key={idx} href={`/case-studies/${_.slug}`} className={styles.wrapperLink}>
+                                            <Link key={idx} href={_.isExternal ? `${_.slug}` :`/case-studies/${_.slug}`} className={styles.wrapperLink}>
                                                 <Col className={`${styles.useCaseCard} mt-4`}>
 
                                                     <div className={styles.cardWrapper}>
@@ -80,7 +80,7 @@ export default function UseCases(props) {
                                                         </div>
 
                                                         <div className={styles.cardLinks}>
-                                                            <a href={`/case-studies/${_.slug}`} className={styles.cDownload}>
+                                                            <a href={_.isExternal ? `${_.slug}` :`/case-studies/${_.slug}`} className={styles.cDownload}>
                                                                 View case study
                                                             </a>
                                                         </div>

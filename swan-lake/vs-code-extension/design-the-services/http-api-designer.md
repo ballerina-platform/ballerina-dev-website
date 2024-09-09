@@ -9,7 +9,7 @@ intro: The new HTTP API Designer enables you to design HTTP services interactive
 
 Use the source code below to create a HTTP service using the code editor and click on the **Visualize** codeLens, which is placed above the service.
 
-```bal
+```ballerina
 import ballerina/http;
 
 type Album readonly & record {|

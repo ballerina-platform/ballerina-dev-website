@@ -103,7 +103,7 @@ This model is used to set up the underlying datastore (e.g., set up the tables i
 
 Now, you can generate the client objects, types, and setup scripts(if needed) for your model by running the command in your terminal.
 
-> **Note:** The client APIs can be generated using the `bal persist generate` command which is one time generation and the generated client code is a part of the project. We can also integrate the client code generation with the build process of the project by executing the `bal persist add` command. This will add the client code generation as a build task in the `Ballerina.toml` file. For more information, see [Persist CLI Commands](learn/persist-cli-tool/).
+> **Note:** The client APIs can be generated using the `bal persist generate` command which is one time generation and the generated client code is a part of the project. We can also integrate the client code generation with the build process of the project by executing the `bal persist add` command. This will add the client code generation as a build task in the `Ballerina.toml` file. For more information, see [Persist CLI Commands](/learn/persist-cli-tool/).
 
 ```
 $ bal persist generate --datastore inmemory --module store

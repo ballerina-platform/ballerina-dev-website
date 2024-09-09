@@ -13,6 +13,28 @@
             "buttonText": "Register today"
         },
         {
+            "date": "Sep 5, 2024",
+            "expire": "2024-09-05T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "NIBM Galle Centre",
+            "faculty": "",
+            "title": "Modern-Software-Development-Practices",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Asma Jabir",
+                    "twitter": "https://www.linkedin.com/in/asma-jabir/"
+                },
+                {
+                    "name": "Fathima Dilhasha",
+                    "twitter": "https://twitter.com/dil_nazeer"
+                }
+            ],
+            "url": "Modern-Software-Development-Practices.pdf",
+            "buttonText": "View slides"
+        },
+        {
             "date": "Sep 2, 2024",
             "expire": "2024-09-02T04:30:00+00:00",
             "type": "Guest Lecture",
@@ -27,8 +49,8 @@
                     "twitter": "https://x.com/manurangaperera"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "UCSC-2024-09-Compiler-Construction-Insights-from-the-Ballerina-Language.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "June 6, 2024",
@@ -45,8 +67,8 @@
                     "twitter": "https://x.com/manurangaperera"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "UTDI-2024-06-Elegant-Integrations-with-Ballerina-Swan-Lake.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "May 2, 2024",

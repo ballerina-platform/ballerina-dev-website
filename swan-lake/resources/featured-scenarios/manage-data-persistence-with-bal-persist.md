@@ -2,7 +2,7 @@
 layout: ballerina-building-a-data-service-with-bal-persist-left-nav-pages-swanlake
 title: Manage data persistence with bal persist
 description: This guide describes how to model your application data and use a tool to generate client APIs to access the data store in Ballerina.
-keywords: Ballerina, data service, data store, database, in-memory, Google Sheets, REST, API
+keywords: Ballerina, data service, data store, database, SQL, in-memory, Google Sheets, REST, API
 permalink: /learn/manage_data_persistence-with-bal-persist/
 active: manage_data_persistence-with-bal-persist
 intro: This guide helps you understand the basics of the `bal persist` feature, which allows you to manage data persistence easily. This same data service can also be written using the Ballerina SQL connectors, which require you to write SQL queries to perform CRUD operations against the DB servers. With the `bal persist` feature, you only need to write the `data model`. Based on the model, the client object and record types are generated to interact with the data store.
@@ -18,7 +18,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.6.0 (Swan Lake)](/learn/get-started/) or greater
+1. [Ballerina 2201.9.0 (Swan Lake)](/learn/get-started/) or greater
 2. A text editor
 >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the
 <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
@@ -30,7 +30,7 @@ This guide describes how to interact with the data store and perform operations 
 
 ![Data Service Architecture](/learn/images/bal-persist-scenario-diagram.png "Data Service Architecture")
 
->**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL, MSSQL, and Google Sheets, as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL and MSSQL databases, and Google Sheets.
+>**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with all other supported data stores. For more information about other supported data stores, see [Supported Data Stores](/learn/supported-data-stores/).
 
 ## Create a Ballerina package
 
@@ -56,10 +56,10 @@ This creates a directory named `rainier` with the files below.
 The `bal persist` initialization takes care of the basics needed to start the development. In the terminal, execute the command below to initialize `bal persist` in the Ballerina package.
 
 ```
-$ bal persist init --module store
+$ bal persist init
 ```
 
-Along with the `bal persist init` command, you can specify the `datastore` that you are going to use in the application and also the `module` that you need to add the generated code to. Both these parameters are optional. If you don’t provide them, the datastore will be set to `inmemory`, and the module will be set to `root` module by default.
+With the `bal persist init` command, the `persist` directory is created in the Ballerina package. Inside the `persist` directory, an empty schema file named `model.bal` is also created. This file is used to define the application's data model.
 
 This changes the Ballerina package as follows.
 
@@ -71,16 +71,6 @@ This changes the Ballerina package as follows.
 │   └── main.bal
 
 ```
-it also adds the following configuration to the `Ballerina.toml` file.
-
-```toml
-[persist]
-datastore = "inmemory"
-module = "rainier.store"
-```
-
-
-These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change them, remove them from the `Ballerina.toml` file and reinitialize `bal persist`.
 
 The next step is to define your data model in the schema file in the`persist/model.bal` file.
 
@@ -113,15 +103,17 @@ This model is used to set up the underlying datastore (e.g., set up the tables i
 
 Now, you can generate the client objects, types, and SQL scripts for your model by running the command in your terminal.
 
+> **Note:** The client APIs can be generated using the `bal persist generate` command which is one time generation and the generated client code is a part of the project. We can also integrate the client code generation with the build process of the project by executing the `bal persist add` command. This will add the client code generation as a build task in the `Ballerina.toml` file. For more information, see [Persist CLI Commands](/learn/persist-cli-tool/).
+
 ```
-$ bal persist generate
+$ bal persist generate --datastore inmemory --module store
 ```
 
 This changes the Ballerina package as follows.
 
 ```
 ├── rainier
-│   ├── generated
+│   ├── modules
 │   │		└── store
 │   │		│	├── persist_client.bal
 │   │		│	└── persist_types.bal
@@ -141,9 +133,9 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 
 
-> Note: All of the above auto-generated BAL files should not be modified.
+> **Note:** All of the above generated BAL files should not be modified.
 
-> Note: If you use other data stores like MySQL, MSSQL, or Google Sheets, additional files will get created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need to do any configuration or setting-up before running the application.
+> **Note:** If you use other data stores, additional files will get created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need to do any configuration or setting-up before running the application.
 
 ## Query your database with client API
 
@@ -155,7 +147,9 @@ import rainier.store;
 store:Client sClient = check new();
 ```
 
-You can use this `sClient` as the client to query your database. It provides five resource methods to query. Let’s explore each of the methods of the client separately. You can use the `main.bal` file created inside your project to explore the functionalities.
+You can use this `sClient` as the client to manage data persistence. It provides five resource methods to manage data persistence. Let’s explore each of the methods of the client separately. You can use the `main.bal` file created inside your project to explore the functionalities.
+
+> **Note:** If you are using SQL database, additional two remote functions will be generated to perform native SQL queries. You can use these functions to perform complex queries that are not supported by the client API.
 
 ### Create a new `Employee` record
 

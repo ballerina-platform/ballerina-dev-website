@@ -72,7 +72,7 @@ This changes the Ballerina package as follows.
 
 ```
 
-The next step is to define your data model in the schema file in the`persist/model.bal` file.
+The next step is to define your data model in the schema file in the `persist/model.bal` file.
 
 ## Model your data
 
@@ -101,7 +101,7 @@ This model is used to set up the underlying datastore (e.g., set up the tables i
 
 ## Generate the client object, types, and scripts
 
-Now, you can generate the client objects, types, and SQL scripts for your model by running the command in your terminal.
+Now, you can generate the client objects, types, and setup scripts(if needed) for your model by running the command in your terminal.
 
 > **Note:** The client APIs can be generated using the `bal persist generate` command which is one time generation and the generated client code is a part of the project. We can also integrate the client code generation with the build process of the project by executing the `bal persist add` command. This will add the client code generation as a build task in the `Ballerina.toml` file. For more information, see [Persist CLI Commands](learn/persist-cli-tool/).
 

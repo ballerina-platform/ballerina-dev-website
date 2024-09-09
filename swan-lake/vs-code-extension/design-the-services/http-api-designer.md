@@ -5,11 +5,45 @@ keywords: ballerina, vs code extension, http, service, api, design
 intro: The new HTTP API Designer enables you to design HTTP services interactively. This feature allows you to design services rapidly without the need to have extensive knowledge of the HTTP service syntax of Ballerina. 
 ---
 
-The new HTTP API Designer enables you to design HTTP services interactively. This feature allows you to design services rapidly without the need to have extensive knowledge of the HTTP service syntax of Ballerina. 
-
 ## Open the service 
 
-To open the HTTP API Designer, add an HTTP service using the code or the **Add** button in the visual editor and then click the **Visualize** CodeLens, which is placed above the HTTP service.
+Use the source code below to create a HTTP service using the code editor and click on the **Visualize** codeLens, which is placed above the service.
+
+```bal
+import ballerina/http;
+
+type Album readonly & record {|
+    string id;
+    string title;
+    string artist;
+|};
+
+table<Album> key(id) albums = table [
+    {id: "1", title: "Blue Train", artist: "John Coltrane"},
+    {id: "2", title: "Jeru", artist: "Gerry Mulligan"},
+    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"}
+];
+
+service / on new http:Listener(9090) {
+
+    resource function get albums() returns Album[] {
+        return albums.toArray();
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound {
+        Album? album = albums[id];
+        if album is () {
+            return http:NOT_FOUND;
+        }
+        return album;
+    }
+
+    resource function post albums(Album album) returns Album {
+        albums.add(album);
+        return album;
+    }
+}
+```
 
 <img src="/learn/images/vs-code-extension/release-notes/v-4.0.0/service-design.gif" class="cInlineImage-full"/>
 

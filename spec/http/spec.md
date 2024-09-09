@@ -351,7 +351,7 @@ service AlbumService on new http:Listener(9090) {
 The service implemented via the service contract type has the following restrictions:
 - None of the service level, resource level and parameter level HTTP annotation are allowed.
 - The base path is not allowed in the service declaration, and it is inferred from the service contract type.
-- The service declaration cannot have additional resource functions which are not defined in the service contract type.
+- The service declaration cannot have additional resource methods which are not defined in the service contract type.
 
 ### 2.3. Resource
 

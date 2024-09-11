@@ -284,7 +284,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="RegExp type" href="/learn/by-example/regexp-type">
+          <Link title="Table" href="/learn/by-example/table">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -293,7 +293,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RegExp type
+                  Table
                 </span>
               </div>
               <svg

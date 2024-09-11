@@ -34,7 +34,7 @@ Follow the steps below to observe a sample Ballerina service.
 ### Step 1 - create a `Hello World` Ballerina service
  
 Create a new Ballerina project using the `bal new` command.
-```shell
+```
 $ bal new observability_demo
 
 Created new package 'observability_demo' at observability_demo.

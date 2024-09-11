@@ -183,8 +183,8 @@ export function Documentation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="XML to record with projection"
-            href="/learn/by-example/xml-to-record-with-projection"
+            title="RegExp operations"
+            href="/learn/by-example/regexp-operations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -211,7 +211,7 @@ export function Documentation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML to record with projection
+                  RegExp operations
                 </span>
               </div>
             </div>

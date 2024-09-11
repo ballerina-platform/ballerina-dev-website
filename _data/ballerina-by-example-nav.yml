@@ -331,17 +331,8 @@ sublinks:
           - title: Error binding pattern in match statement
             id: 15
             url: error-binding-pattern-in-match-statement
-      - title: Regular Expressions
-        id: 17
-        sublinks:
-          - title: RegExp type
-            id: 1
-            url: regexp-type
-          - title: RegExp operations
-            id: 2
-            url: regexp-operations
       - title: Tables
-        id: 18
+        id: 17
         sublinks:
           - title: Table
             id: 1
@@ -356,7 +347,7 @@ sublinks:
             id: 4
             url: structured-keys
       - title: Query expressions
-        id: 19
+        id: 18
         sublinks:
           - title: Query expressions
             id: 1
@@ -407,13 +398,13 @@ sublinks:
             id: 16
             url: aggregation
       - title: Query actions
-        id: 20
+        id: 19
         sublinks:
           - title: Query actions
             id: 1
             url: query-actions
       - title: JSON
-        id: 21
+        id: 20
         sublinks:
           - title: JSON type
             id: 1
@@ -455,7 +446,7 @@ sublinks:
             id: 13
             url: jsonpath-expressions
       - title: Backtick templates
-        id: 22
+        id: 21
         sublinks:
           - title: Raw templates
             id: 1
@@ -467,7 +458,7 @@ sublinks:
             id: 3
             url: xml-templates
       - title: XML
-        id: 23
+        id: 22
         sublinks:
           - title: XML data model
             id: 1
@@ -505,6 +496,15 @@ sublinks:
           - title: XML to record with projection
             id: 12
             url: xml-to-record-with-projection
+      - title: Regular Expressions
+        id: 23
+        sublinks:
+          - title: RegExp type
+            id: 1
+            url: regexp-type
+          - title: RegExp operations
+            id: 2
+            url: regexp-operations
       - title: Metadata
         id: 24
         sublinks:

@@ -1,6 +1,18 @@
 {
     "events": [
         {
+            "date": "Sep 30 - Oct 13, 2024",
+            "expire": "2024-10-13T22:00:00.0000-00:00",
+            "type": "Ballerina Hackathon",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "url": "https://innovatewithballerina.com/",
+            "buttonText": "Register today"
+        },
+        {
             "date": "Sep 27, 2024",
             "expire": "2024-09-27T22:00:00.0000-00:00",
             "type": "Ballerina Hackathon",
@@ -11,6 +23,42 @@
             "location": "Namibia",
             "url": "https://docs.google.com/forms/d/e/1FAIpQLSf_2lnv9wZwmopnUJSvj3U9uJ0EsCjoDmecJ-1NnjjoYkiqHw/viewform",
             "buttonText": "Register today"
+        },
+        {
+            "date": "Sep 19, 2024",
+            "expire": "2024-09-19T15:30:00+00:00",
+            "type": "Information session",
+            "university": "Universitas Teknologi Digital Indonesia",
+            "faculty": "Faculty of Information Technology",
+            "title": "Ballerina Developer Certification -  Walkthrough",
+            "isVirtual": true,
+            "location": "Indonesia",
+            "presenters": [
+                {
+                    "name": "Shafreen Anfar",
+                    "twitter": "https://twitter.com/shafreen101"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "Sep 18, 2024",
+            "expire": "2024-09-18T12:30:00+00:00",
+            "type": "Ballerina Hackathon",
+            "university": "Forging Integration Innovations - Hackathon Kick-off",
+            "faculty": "",
+            "title": "Explore the types of ideas and innovations for success",
+            "isVirtual": true,
+            "location": "Namibia",
+            "presenters": [
+                {
+                    "name": "Asma Jabir",
+                    "twitter": "https://www.linkedin.com/in/asma-jabir/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Sep 5, 2024",
@@ -37,7 +85,7 @@
         {
             "date": "Sep 2, 2024",
             "expire": "2024-09-02T04:30:00+00:00",
-            "type": "Guest Lecture",
+            "type": "Guest lecture",
             "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Compiler Construction Insights from the Ballerina Language",

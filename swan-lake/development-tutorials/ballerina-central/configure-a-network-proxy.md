@@ -47,3 +47,15 @@ If you encounter any certificate-related issues such as the one below when conne
     ```
 
 > **Note:** If you are using multiple Ballerina distributions, you may need to follow the above steps to all the JRE instances individually for each distribution.
+
+## Domain access 
+
+Following domains should be accessible from the network to work with Ballerina.
+
+1) Ballerina Central API - `https://api.central.ballerina.io/`
+2) Ballerina Central File Server - `https://fileserver.central.ballerina.io/`
+3) Maven Central Repository - `https://repo.maven.apache.org/maven2`
+4) Docker Hub (For Docker Image Pull) - `https://hub.docker.com/u/ballerina` 
+5) Alpine Linux Repository (For Docker Image Updates) - `http://dl-cdn.alpinelinux.org/`
+
+

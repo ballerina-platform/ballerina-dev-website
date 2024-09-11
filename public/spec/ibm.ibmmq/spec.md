@@ -447,8 +447,10 @@ An IBM MQ Queue enables applications to interact with an IBM MQ queue to exchang
 # ```
 # 
 # + message - IBM MQ message
+# + options - Options controlling the action of the put operation. Can be a combination of 
+              one or more `ibmmq:MQPMO_*` options and values can combined using either '+' or '|'
 # + return - An `ibmmq:Error` if the operation fails or else `()`
-isolated remote function put(ibmmq:Message message) returns ibmmq:Error?;
+isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO_SYNCPOINT) returns ibmmq:Error?;
 ```
 
 - To receive a message `get` function can be used.
@@ -492,8 +494,10 @@ An IBM MQ Topic enables applications to interact with an IBM MQ Topic to exchang
 #```
 # 
 # + message - IBM MQ message
+# + options - Options controlling the action of the put operation. Can be a combination of 
+              one or more `ibmmq:MQPMO_*` options and values can combined using either '+' or '|'
 # + return - An `ibmmq:Error` if the operation fails or else `()`
-isolated remote function put(ibmmq:Message message) returns ibmmq:Error?;
+isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO_SYNCPOINT) returns ibmmq:Error?;
 ```
 
 - To receive a message `get` function can be used.

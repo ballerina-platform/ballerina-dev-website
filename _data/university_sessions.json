@@ -1,6 +1,18 @@
 {
     "events": [
         {
+            "date": "Sep 30 - Oct 13, 2024",
+            "expire": "2024-10-13T22:00:00.0000-00:00",
+            "type": "Ballerina Hackathon",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "url": "https://innovatewithballerina.com/",
+            "buttonText": "Register today"
+        },
+        {
             "date": "Sep 27, 2024",
             "expire": "2024-09-27T22:00:00.0000-00:00",
             "type": "Ballerina Hackathon",
@@ -13,9 +25,67 @@
             "buttonText": "Register today"
         },
         {
+            "date": "Sep 19, 2024",
+            "expire": "2024-09-19T15:30:00+00:00",
+            "type": "Information session",
+            "university": "Universitas Teknologi Digital Indonesia",
+            "faculty": "Faculty of Information Technology",
+            "title": "Ballerina Developer Certification -  Walkthrough",
+            "isVirtual": true,
+            "location": "Indonesia",
+            "presenters": [
+                {
+                    "name": "Shafreen Anfar",
+                    "twitter": "https://twitter.com/shafreen101"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "Sep 18, 2024",
+            "expire": "2024-09-18T12:30:00+00:00",
+            "type": "Ballerina Hackathon",
+            "university": "Forging Integration Innovations - Hackathon Kick-off",
+            "faculty": "",
+            "title": "Explore the ideas and innovations for success",
+            "isVirtual": true,
+            "location": "Namibia",
+            "presenters": [
+                {
+                    "name": "Asma Jabir",
+                    "twitter": "https://www.linkedin.com/in/asma-jabir/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "Sep 5, 2024",
+            "expire": "2024-09-05T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "NIBM Galle Centre",
+            "faculty": "",
+            "title": "Modern-Software-Development-Practices",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Asma Jabir",
+                    "twitter": "https://www.linkedin.com/in/asma-jabir/"
+                },
+                {
+                    "name": "Fathima Dilhasha",
+                    "twitter": "https://twitter.com/dil_nazeer"
+                }
+            ],
+            "url": "Modern-Software-Development-Practices.pdf",
+            "buttonText": "View slides"
+        },
+        {
             "date": "Sep 2, 2024",
             "expire": "2024-09-02T04:30:00+00:00",
-            "type": "Guest Lecture",
+            "type": "Guest lecture",
             "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Compiler Construction Insights from the Ballerina Language",
@@ -27,8 +97,8 @@
                     "twitter": "https://x.com/manurangaperera"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "UCSC-2024-09-Compiler-Construction-Insights-from-the-Ballerina-Language.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "June 6, 2024",
@@ -45,8 +115,8 @@
                     "twitter": "https://x.com/manurangaperera"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "UTDI-2024-06-Elegant-Integrations-with-Ballerina-Swan-Lake.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "May 2, 2024",

@@ -38,19 +38,17 @@ Create a service as shown below and save it as `hello_world_service.bal`.
 ```ballerina
 import ballerina/http;
 import ballerina/log;
-import ballerinax/prometheus as _;
 import ballerinax/jaeger as _;
+import ballerinax/prometheus as _;
 
 service /hello on new http:Listener(9090) {
-    
-    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+
+    isolated resource function get sayHello() returns string {
         log:printInfo("This is a test Info log");
         log:printError("This is a test Error log");
-        http:Response res = new;
-        res.setPayload("Hello, World!");
-        check caller->respond(res);
+        return "Hello, World!";
     }
-    
+
 }
 ```
 
@@ -75,7 +73,7 @@ import ballerinax/prometheus as _;
 import ballerinax/jaeger as _;
 ```
 
-Observability is disabled by default at runtime as well and it can be enabled selectively for metrics and tracing by adding
+Observability is disabled by default at runtime as well, and it can be enabled selectively for metrics and tracing by adding
 the following runtime configurations to the `Config.toml` file.
 
 ```toml
@@ -96,7 +94,7 @@ ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing traces to Jaeger on localhost:55680
 ```
 
-When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint (/metrics) for
+When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint (`/metrics`) for
 metrics monitoring and traces will be published to Jaeger. Prometheus should be configured to scrape metrics from
 the metrics HTTP endpoint in Ballerina.
 

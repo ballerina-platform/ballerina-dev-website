@@ -92,213 +92,163 @@ const CardGrid = React.forwardRef((props, ref) => {
                         </Row>
                     )}
 
+                    {/* Commenting the below code block as it is not used in the current implementation.
+                    It will be used in the future when there are more than 3 projects in the project mentorship section. */}
+
                     {/* <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ?
                             propsData.length > 4 ? 4: propsData.length
                             : 
                             3
                             } className='g-4'> */}
                     {
-                        props.launcher !== "project-mentorship" ? 
-                    
-                    <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ? 1: 3} className='g-4 d-flex'>
-                        {props.launcher === "usecases" && (
-                            <>
-                                { propsData.map((_, idx) => (
-                                    <Col key={idx} style={{ display: "flex", flexFlow: "row wrap" }}>
-                                        <Link href={`/use-cases/${_.slug}`} className={styles.wrapperLink} passHref>
-                                            <Card className={`${styles.useCaseCard} mt-4`}>
-                                                <div className={styles.cardImgWrapper}>
-                                                    <Card.Img variant="top" src={_.frontmatter.logo} />
-                                                </div>
-                                                <Card.Body>
-                                                    <Card.Title>{_.frontmatter.title}</Card.Title>
-                                                    <Card.Text className={styles.cardDescription}>
-                                                        {_.frontmatter.description}
-                                                    </Card.Text>
-                                                </Card.Body>
-                                                <Card.Footer className={styles.footer}>
-                                                    <div className={styles.cardLinks}>
-                                                        <a href={`/use-cases/${_.slug}`} className={styles.cDownload}>
-                                                            Learn more
-                                                        </a>
-                                                    </div>
-                                                </Card.Footer>
-                                            </Card>
-                                        </Link>
-                                    </Col>
-                                ))}
-                            </>
-                        )}
+                        props.launcher !== "project-mentorship" ?
 
-                        {props.launcher === "case-studies" && (
-                            <>
-                                {propsData.map((_, idx) => (
-                                    <Link key={idx} href={`/case-studies/${_.slug}`} className={styles.wrapperLink} passHref>
-                                        <Col className={`${styles.useCaseCard} mt-4`}>
-                                            <div className={styles.cardWrapper}>
-                                                <div>
-                                                    <div className={styles.imageWrapper}>
-                                                        <img src={_.frontmatter.logo} className={_.slug === 'fat-tuesday' ? styles.vLogo : styles.centerLogo} alt='Automate anything' />
-                                                    </div>
-                                                    <h3>{_.frontmatter.title}</h3>
-                                                    <div className={styles.cardDescription}>
-                                                        <p>{_.frontmatter.description}</p>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.cardLinks}>
-                                                    <a href={`/case-studies/${_.slug}`} className={styles.cDownload}>
-                                                        View case study
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    </Link>
-                                ))}
-                            </>
-                        )}
-</Row>
-:
-<Row>
-                        {props.launcher === "project-mentorship" && (
-                            <>
-                                {propsData.slice(0, limit).map((_, idx) => {
-                                    const encodedEmail = _.advisor.email ? btoa(_.advisor.email) : '';
-                                    return (
-                                        <React.Fragment key={idx}>
-                                        {/* <Col className={`${styles.useCaseCard} mt-4`} key={_.title.replace(/ /g, '-').toLowerCase()}>
-                                            <div className={styles.cardWrapper}>
-                                                <div>
-                                                    <div className={styles.imageWrapper}>
-                                                        <img src={_.icon} className={_.slug !== 'fat-tuesday' ? styles.vLogo : styles.centerLogo} alt='Automate anything' />
-                                                    </div>
-                                                    <h3 id={_.title.replace(/ /g, '-').toLowerCase()} className='section' style={{ scrollMarginTop: "65px" }}>
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="22"
-                                                            height="22"
-                                                            fill="currentColor"
-                                                            className="bi bi-link-45deg mdButton"
-                                                            style={{ paddingRight: "0", marginLeft: "-18px", marginRight: "-4px" }}
-                                                            viewBox="0 0 18 18"
-                                                            onClick={(e) => props.getLink(e.target, _.title.replace(/ /g, '-').toLowerCase())}
-                                                        >
-                                                            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                                            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                                        </svg>
-                                                        {_.title}
-                                                    </h3>
-                                                    <div className={styles.cardDescription}>
-                                                        <p>{_.description} {props.section !== "Available projects" && <>&nbsp;<a href="#" className={styles.repoLink}>Learn more</a></>}</p>
-                                                    </div>
-                                                </div>
-                                                <div className={styles.cardLinks}>
-                                                    {getTechnologies(_.tags)}
-                                                    <p>Advisor: <a href={_.advisor.x} className={styles.cDownload}>
-                                                        {_.advisor.name}
-                                                    </a></p>
-                                                    {props.section === "Available projects" ? (
-                                                        <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={(e) => handleEmailClick(e, _.title, encodedEmail)}>
-                                                            Join the project
-                                                        </a>
-                                                    ) : (
-                                                        <p>Contributors:&nbsp;
-                                                            {_.contributors.map((contributor, index) => (
-                                                                <a href={contributor.html_url} className={styles.cDownload} style={{ marginRight: "5px" }} key={index}>
-                                                                    <Image src={contributor.avatar_url} roundedCircle width={30} height={30} />
+                            <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ? 1 : 3} className='g-4 d-flex'>
+                                {props.launcher === "usecases" && (
+                                    <>
+                                        {propsData.map((_, idx) => (
+                                            <Col key={idx} style={{ display: "flex", flexFlow: "row wrap" }}>
+                                                <Link href={`/use-cases/${_.slug}`} className={styles.wrapperLink} passHref>
+                                                    <Card className={`${styles.useCaseCard} mt-4`}>
+                                                        <div className={styles.cardImgWrapper}>
+                                                            <Card.Img variant="top" src={_.frontmatter.logo} />
+                                                        </div>
+                                                        <Card.Body>
+                                                            <Card.Title>{_.frontmatter.title}</Card.Title>
+                                                            <Card.Text className={styles.cardDescription}>
+                                                                {_.frontmatter.description}
+                                                            </Card.Text>
+                                                        </Card.Body>
+                                                        <Card.Footer className={styles.footer}>
+                                                            <div className={styles.cardLinks}>
+                                                                <a href={`/use-cases/${_.slug}`} className={styles.cDownload}>
+                                                                    Learn more
                                                                 </a>
-                                                            ))}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </Col> */}
+                                                            </div>
+                                                        </Card.Footer>
+                                                    </Card>
+                                                </Link>
+                                            </Col>
+                                        ))}
+                                    </>
+                                )}
 
-<Col xl={{ span: 12 }} style={{ display: "flex", flexWrap: "row wrap" }} key={idx}>
-
-        <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
-          <Row className="g-0 align-items-center">
-            
-                  <Col xs={12} md={2} className='text-center'>
-                  {
-                    _.repo ?
-                    <a href={`https://github.com/${_.repo.org}/${_.repo.name}`} className={styles.iconLink}>
-                      <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`}/>
-                    </a>
-                    :
-                    <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`}/>
-                    
-                  }
-                    
-                  </Col>
-                  <Col xs={12} md={10}>
-                  <Card.Body>
-    
-    <h3 id={_.title.replace(/ /g, '-').toLowerCase()} className='section' style={{ scrollMarginTop: "65px" }}>
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            width="22"
-                                                            height="22"
-                                                            fill="currentColor"
-                                                            className="bi bi-link-45deg mdButton"
-                                                            style={{ paddingRight: "0", marginLeft: "-18px", marginRight: "-4px" }}
-                                                            viewBox="0 0 18 18"
-                                                            onClick={(e) => props.getLink(e.target, _.title.replace(/ /g, '-').toLowerCase())}
-                                                        >
-                                                            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                                            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                                        </svg>
-                                                        {_.title}
-                                                    </h3>
-    
-                                                    <p>{_.description} {props.section !== "Available projects" && <>&nbsp;<a href={`https://github.com/${_.repo.org}/${_.repo.name}`} className={styles.repoLink}>Learn more</a></>}</p>
-
-
-    <div className={styles.cardLinks}>
-                                                    {getTechnologies(_.tags)}
-                                                    <p>Mentor: <a href={_.advisor.x} className={styles.cDownload}>
-                                                        {_.advisor.name}
-                                                    </a></p>
-                                                    {props.section === "Available projects" ? (
-                                                        <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={(e) => handleEmailClick(e, _.title, encodedEmail)}>
-                                                            Join the project
-                                                        </a>
-                                                    ) : (
-                                                        <p>Contributors:&nbsp;
-                                                            {_.contributors.map((contributor, index) => (
-                                                                <a href={contributor.html_url} className={styles.cDownload} style={{ marginRight: "5px" }} key={index}>
-                                                                    <Image src={contributor.avatar_url} roundedCircle width={30} height={30} />
-                                                                </a>
-                                                            ))}
-                                                        </p>
-                                                    )}
-                                                </div>
-  </Card.Body>
-                  </Col>
-          </Row>
-        </Card>
-
-      </Col>
-                                        </React.Fragment>
-                                    );
-                                })}
-
-                                {/* { 
-                                    propsData.length < 4 && (
-                                        <Col className={`${styles.useCaseCard} fillCol mt-4`}>
-                                            <div className={`${styles.cardWrapper} ${styles.fillTile}`}>
-                                            Join, Learn, Build!
-                                            </div>
-                                        </Col>
-                                    )
-                                } */}
-                            </>
-                        )}
+                                {props.launcher === "case-studies" && (
+                                    <>
+                                        {propsData.map((_, idx) => (
+                                            <Link key={idx} href={_.isExternal ? `${_.slug}` : `/case-studies/${_.slug}`} className={styles.wrapperLink} passHref>
+                                                <Col className={`${styles.useCaseCard} mt-4`}>
+                                                    <div className={styles.cardWrapper}>
+                                                        <div>
+                                                            <div className={styles.imageWrapper}>
+                                                                <img src={_.frontmatter.logo} className={_.slug === 'fat-tuesday' ? styles.vLogo : styles.centerLogo} alt='Automate anything' />
+                                                            </div>
+                                                            <h3>{_.frontmatter.title}</h3>
+                                                            <div className={styles.cardDescription}>
+                                                                <p>{_.frontmatter.description}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className={styles.cardLinks}>
+                                                            <a href={`/case-studies/${_.slug}`} className={styles.cDownload}>
+                                                                View case study
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                            </Link>
+                                        ))}
+                                    </>
+                                )}
+                            </Row>
+                            :
+                            <Row>
+                                {props.launcher === "project-mentorship" && (
+                                    <>
+                                        {propsData.slice(0, limit).map((_, idx) => {
+                                            const encodedEmail = _.advisor.email ? btoa(_.advisor.email) : '';
+                                            return (
+                                                <React.Fragment key={idx}>
 
 
+                                                    <Col xl={{ span: 12 }} style={{ display: "flex", flexWrap: "row wrap" }} key={idx}>
+
+                                                        <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+                                                            <Row className="g-0 align-items-center">
+
+                                                                <Col xs={12} md={2} className='text-center'>
+                                                                    {
+                                                                        _.repo ?
+                                                                            <a href={`https://github.com/${_.repo.org}/${_.repo.name}`} className={styles.iconLink}>
+                                                                                <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`} />
+                                                                            </a>
+                                                                            :
+                                                                            <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`} />
+
+                                                                    }
+
+                                                                </Col>
+                                                                <Col xs={12} md={10}>
+                                                                    <Card.Body>
+
+                                                                        <h3 id={_.title.replace(/ /g, '-').toLowerCase()} className='section' style={{ scrollMarginTop: "65px" }}>
+                                                                            <svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="22"
+                                                                                height="22"
+                                                                                fill="currentColor"
+                                                                                className="bi bi-link-45deg mdButton"
+                                                                                style={{ paddingRight: "0", marginLeft: "-18px", marginRight: "-4px" }}
+                                                                                viewBox="0 0 18 18"
+                                                                                onClick={(e) => props.getLink(e.target, _.title.replace(/ /g, '-').toLowerCase())}
+                                                                            >
+                                                                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                                                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                                                            </svg>
+                                                                            {_.title}
+                                                                        </h3>
+
+                                                                        <p>{_.description} {props.section !== "Available projects" && <>&nbsp;<a href={`https://github.com/${_.repo.org}/${_.repo.name}`} className={styles.repoLink}>Learn more</a></>}</p>
+
+
+                                                                        <div className={styles.cardLinks}>
+                                                                            {getTechnologies(_.tags)}
+                                                                            <p>Mentor: <a href={_.advisor.x} className={styles.cDownload}>
+                                                                                {_.advisor.name}
+                                                                            </a></p>
+                                                                            {props.section === "Available projects" ? (
+                                                                                <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={(e) => handleEmailClick(e, _.title, encodedEmail)}>
+                                                                                    Join the project
+                                                                                </a>
+                                                                            ) : (
+                                                                                <p>Contributors:&nbsp;
+                                                                                    {_.contributors.map((contributor, index) => (
+                                                                                        <a href={contributor.html_url} className={styles.cDownload} style={{ marginRight: "5px" }} key={index}>
+                                                                                            <Image src={contributor.avatar_url} roundedCircle width={30} height={30} />
+                                                                                        </a>
+                                                                                    ))}
+                                                                                </p>
+                                                                            )}
+                                                                        </div>
+                                                                    </Card.Body>
+                                                                </Col>
+                                                            </Row>
+                                                        </Card>
+
+                                                    </Col>
+                                                </React.Fragment>
+                                            );
+                                        })}
+
+                                    </>
+                                )}
 
 
 
-{/* {props.launcher === "project-mentorship" && (
+
+                                {/* Commenting the below code block as it is not used in the current implementation.
+                    It will be used in the future when there are more than 3 projects in the project mentorship section. */}
+
+                                {/* {props.launcher === "project-mentorship" && (
         <>
             {propsData.map((item, idx) => {
                 const encodedEmail = item.advisor.email ? btoa(item.advisor.email) : '';
@@ -365,8 +315,8 @@ const CardGrid = React.forwardRef((props, ref) => {
 
 
 
-                    </Row>
-}
+                            </Row>
+                    }
                     {props.launcher === "project-mentorship" && (
                         <Row className={length > 8 ? 'mt-5' : ''} style={{ paddingBottom: "24px" }}>
                             <Col>

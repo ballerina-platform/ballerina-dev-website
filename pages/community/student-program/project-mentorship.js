@@ -134,7 +134,7 @@ export default function StudentengagementProgram() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
         />
 
         {/* <!--LINKED IN  --> */}
@@ -142,7 +142,7 @@ export default function StudentengagementProgram() {
         <meta property="og:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
@@ -151,7 +151,7 @@ export default function StudentengagementProgram() {
         <meta property="twitter:text:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
         />
       </Head>
       <Layout>
@@ -168,7 +168,7 @@ export default function StudentengagementProgram() {
                     </p>
                   </Col>
                   <Col xs={12} md={12} lg={6} className='introImg'>
-                    <img src="/images/university/1.png" alt="University" />
+                    <img src="/images/university/ballerina-project-mentorship-image.png" alt="Project mentorship" />
                   </Col>
                 </Row>
               </Container>

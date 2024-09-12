@@ -115,7 +115,7 @@ The time library contains several conversion APIs to convert UTC to civil. The t
     ```ballerina
     public isolated function civilFromString(string dateTimeString) returns Civil|Error;
     ```
-4. Civil to an RFC timestamp string
+4. Civil to an RFC 3339 timestamp string (e.g., `2021-03-05T00:33:28.839564+05:30`).
     ```ballerina
     public isolated function civilToString(Civil civil) returns string|Error;
     ```

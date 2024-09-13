@@ -1,0 +1,49 @@
+{
+    "projects": [
+        {
+            "title": "SmartShopper",
+            "description": "An app that compares prices across major supermarkets to optimize a user's shopping list. Key components include UI, data collection, and price comparison algorithms.",
+            "tags": ["React.js", "Ballerina", "PostgreSQL", "Stripe", "Tailwind", "Chakra UI", "Twillio", "Vercel", "Choreo"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": {
+                "name": "Anuruddha Liyanarachchi",
+                "x": "https://www.linkedin.com/in/anuruddhal/"
+            },
+            "repo": {
+                "org": "UCSC-SmartShopper",
+                "name": ""
+            }
+        },
+        {
+            "title": "Mediphix",
+            "description": "A platform for managing and viewing patient visits, diagnoses, and prescriptions across medical institutions, aimed at reducing misdiagnosis through synchronized patient history.",
+            "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/mediphix.jpg",
+            "advisor": {
+                "name": "Dulaj Dilshan",
+                "x": "https://www.linkedin.com/in/dulajdilshan"
+            },
+            "repo": {
+                "org": "PlazerDev",
+                "name": ""
+            }
+        },
+        {
+            "title": "Highlights",
+            "description": "A task management app that integrates with calendars, inspired by 'Make Time.' It helps users prioritize tasks and goals while providing a concise daily overview.",
+            "tags": ["Node.js", "Ballerina", "MongoDB", "React.js", "Sketch", "PlantUML"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/logo_text.png",
+            "advisor": {
+                "name": "Nipuna Fernando",
+                "x": "https://www.linkedin.com/in/nipunayf"
+            },
+            "repo": {
+                "org": "nipunayf",
+                "name": "highlights"
+            }
+        }
+    ]
+}

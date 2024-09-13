@@ -94,7 +94,7 @@ export default function StudentengagementProgram() {
       <Layout>
         <Col sm={12}>
 
-          <Row className="pageHeader pageContentRow communityRow communityIntro">
+          <Row className="pageHeader pageContentRow communityRow communityIntro" style={{paddingBottom:"4rem"}}>
             <Col xs={12}>
               <Container>
                 <Row>
@@ -103,7 +103,7 @@ export default function StudentengagementProgram() {
                     <h1>Student engagement program</h1>
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aims to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
                   </Col>
-                  <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
+                  <Col xs={12} md={12} lg={6}>
                     <SECarousel images={images} />
                   </Col>
                 </Row>

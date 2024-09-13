@@ -61,7 +61,7 @@ export default function StudentengagementProgram() {
       <Head>
         <title>Student engagement program - The Ballerina programming language</title>
         <meta name="description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
-        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, student engagement program" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />

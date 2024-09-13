@@ -33,7 +33,6 @@ export async function fetchContributors(owner, repo) {
     for (const repo of repos) {
       const contributorsResponse = await fetch(`https://api.github.com/repos/${owner}/${repo.name}/contributors`);
       const repoContributors = await contributorsResponse.json();
-// contributors.push(repoContributors)
       repoContributors.forEach(contributor => {
         contributors.push(contributor);
       });

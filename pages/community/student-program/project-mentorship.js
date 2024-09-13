@@ -124,13 +124,13 @@ export default function StudentengagementProgram() {
     <>
       <Head>
         <title>Project mentorship - The Ballerina programming language</title>
-        <meta name="description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
-        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
+        <meta name="description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, tudent engagement program, project mentorship" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="og:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
+        <meta property="og:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
         <meta
           property="og:image"
           itemProp="image"
@@ -139,7 +139,7 @@ export default function StudentengagementProgram() {
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="og:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
+        <meta property="og:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
@@ -147,8 +147,8 @@ export default function StudentengagementProgram() {
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="twitter:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
-        <meta property="twitter:text:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
+        <meta property="twitter:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
+        <meta property="twitter:text:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
         <meta
           name="twitter:image"
           content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"

@@ -11,12 +11,14 @@
 }
 
 .hacktoberfestChallenges, .hacktoberfestRules, .hacktoberfestRewards {
-  padding-bottom: 6rem;
+  /* padding-bottom: 6rem; */
+  margin-bottom: 0 !important;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
 }
 
 .hacktoberfestChallenges h2, .hacktoberfestRules h2, .hacktoberfestRewards h2 {
   font-size: 32px;
-  margin-top: 40px;
   margin-bottom: 30px;
   font-weight: 600;
   color: #464646;
@@ -24,4 +26,11 @@
   display: inline-block;
   padding-bottom: 10px;
   scroll-margin-top: 65px;
+}
+
+.mesh {
+  background-image: url('/images/ballerina-mesh-grey-cropped.svg'); /* SVG image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: top; /* Positions the image in the center */
+  background-size:cover;
 }

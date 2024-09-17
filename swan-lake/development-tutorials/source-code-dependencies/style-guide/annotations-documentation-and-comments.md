@@ -144,6 +144,53 @@ intro: The sections below include the coding conventions with respect to annotat
     }
     ```
 
+* For record type declarations add the description above the type declaration.
+* Similarly for each field add description above the field declaration.
+* Don't leave spaces between description and the corresponding declaration.
+
+    **Example,**
+
+    ```ballerina
+    # Represents a user.
+    type User record {|
+        # Id of the user
+        int id;
+        # Name of the user
+        string name;
+        # Whether the user is a member
+        boolean isMember;
+    |};
+    ```
+
+* If the fields has attached metadata leave spaces between each field declaration to improve readability.
+
+    **Example,**
+
+    ```ballerina
+    # Represents a user with metadata.
+    type UserWithMetadata record {|
+        # Id of the user
+        @constraint:Int {
+            maxDigits: 10
+        }
+        int id;
+
+        # Name of the user
+        @constraint:String {
+            minLength: 5,
+            maxLength: 20
+        }
+        string name;
+
+        # Address of the user
+        @constraint:String {
+            minLength: 20,
+            maxLength: 100
+        }
+        string address;
+    |};
+    ```
+
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
 

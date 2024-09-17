@@ -144,9 +144,9 @@ intro: The sections below include the coding conventions with respect to annotat
     }
     ```
 
-* For record type declarations add the description above the type declaration.
-* Similarly for each field add description above the field declaration.
-* Don't leave spaces between description and the corresponding declaration.
+* For record type definitions add the description above the type definition.
+* Similarly, for each field add the description above the field definition.
+* Don't leave empty lines between the description and the corresponding definition.
 
     **Example,**
 
@@ -162,7 +162,7 @@ intro: The sections below include the coding conventions with respect to annotat
     |};
     ```
 
-* If the fields has attached metadata leave spaces between each field declaration to improve readability.
+* If the fields have annotations, you could introduce empty lines in between field definitions to improve readability.
 
     **Example,**
 

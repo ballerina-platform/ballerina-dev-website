@@ -72,7 +72,7 @@ export default function Intro(props) {
                   <h3>Round 2: Final Implementation and Demo Submission</h3>
 
 
-                  <p>Participants must submit their final implementations using the Ballerina language, along with a 15-minute demo on <b>Monday, 7 October 2024</b></p>
+                  <p>Participants must submit their final implementations using the Ballerina language, along with a 15-minute demo on or before <b>Monday, 7 October 2024</b></p>
 
 
                   <p style={{marginBottom:0}}>Winners will be announced on <b>Tuesday, 15 October 2024</b></p>

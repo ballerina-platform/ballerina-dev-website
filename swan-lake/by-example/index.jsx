@@ -368,14 +368,6 @@ import {
   codeSnippetData as ErrorBindingPatternInMatchStatementCodeSnippetData,
 } from "./error-binding-pattern-in-match-statement/content.jsx";
 import {
-  RegexpType,
-  codeSnippetData as RegexpTypeCodeSnippetData,
-} from "./regexp-type/content.jsx";
-import {
-  RegexpOperations,
-  codeSnippetData as RegexpOperationsCodeSnippetData,
-} from "./regexp-operations/content.jsx";
-import {
   Table,
   codeSnippetData as TableCodeSnippetData,
 } from "./table/content.jsx";
@@ -571,6 +563,14 @@ import {
   XmlToRecordWithProjection,
   codeSnippetData as XmlToRecordWithProjectionCodeSnippetData,
 } from "./xml-to-record-with-projection/content.jsx";
+import {
+  RegexpType,
+  codeSnippetData as RegexpTypeCodeSnippetData,
+} from "./regexp-type/content.jsx";
+import {
+  RegexpOperations,
+  codeSnippetData as RegexpOperationsCodeSnippetData,
+} from "./regexp-operations/content.jsx";
 import {
   Documentation,
   codeSnippetData as DocumentationCodeSnippetData,
@@ -2283,10 +2283,6 @@ const BBEs = {
   MappingBindingPatternInMatchStatementCodeSnippetData,
   ErrorBindingPatternInMatchStatement,
   ErrorBindingPatternInMatchStatementCodeSnippetData,
-  RegexpType,
-  RegexpTypeCodeSnippetData,
-  RegexpOperations,
-  RegexpOperationsCodeSnippetData,
   Table,
   TableCodeSnippetData,
   TableTypes,
@@ -2385,6 +2381,10 @@ const BBEs = {
   XmlToRecordCodeSnippetData,
   XmlToRecordWithProjection,
   XmlToRecordWithProjectionCodeSnippetData,
+  RegexpType,
+  RegexpTypeCodeSnippetData,
+  RegexpOperations,
+  RegexpOperationsCodeSnippetData,
   Documentation,
   DocumentationCodeSnippetData,
   Annotations,

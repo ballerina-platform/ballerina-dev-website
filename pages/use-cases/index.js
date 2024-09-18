@@ -21,7 +21,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../layouts/LayoutUseCase";
-import UseCases from "../../components/common/use-cases/UseCases";
+import UseCasesGrid from "../../components/common/card-grid/CardGrid";
 import UCData from '../../_data/use-cases.json';
 
 
@@ -108,7 +108,7 @@ export default function UseCasesPage() {
           </Row>
 
           <Row className="pageContentRow integration">
-            <UseCases propsData={useCases} launcher="usecases" />
+            <UseCasesGrid propsData={useCases} launcher="usecases" />
           </Row>
 
         </Col>

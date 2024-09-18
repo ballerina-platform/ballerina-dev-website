@@ -271,7 +271,7 @@ export function RegexpOperations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Table" href="/learn/by-example/table">
+          <Link title="Documentation" href="/learn/by-example/documentation">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -280,7 +280,7 @@ export function RegexpOperations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table
+                  Documentation
                 </span>
               </div>
               <svg

@@ -51,11 +51,11 @@ export default function Home({ }) {
     <><Head>
       <meta
         name="description"
-        content="Forging Integration Innovations - Ballerina Hackathon 2024"
+        content="Join the Forging Integration Innovations - Ballerina Hackathon 2024, organized by Namibia University of Science and Technology. Innovate with Ballerina, the next-gen programming language, and showcase your skills in building cutting-edge integration solutions."
       />
       <meta
         name="keywords"
-        content="ballerina, hackoberfest, integration"
+        content="ballerina, nust hackathon, integration, hackathon"
       />
       <title>Forging Integration Innovations - Ballerina Hackathon 2024 - The Ballerina programming language</title>
 
@@ -64,24 +64,24 @@ export default function Home({ }) {
       <meta property="og:title" content="Forging Integration Innovations - Ballerina Hackathon 2024 - The Ballerina programming language" />
       <meta
         property="og:description"
-        content="Forging Integration Innovations - Ballerina Hackathon 2024"
+        content="Join the Forging Integration Innovations - Ballerina Hackathon 2024, organized by Namibia University of Science and Technology. Innovate with Ballerina, the next-gen programming language, and showcase your skills in building cutting-edge integration solutions."
       />
       <meta
         property="og:image"
         itemProp="image"
-        content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
+        content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
       />
 
       {/* LINKED IN */}
       <meta property="og:title" content="Forging Integration Innovations - Ballerina Hackathon 2024 - The Ballerina programming language" />
       <meta
         property="og:image"
-        content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
+        content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
       />
       <meta
         property="og:description"
         itemProp="image"
-        content="Forging Integration Innovations - Ballerina Hackathon 2024."
+        content="Join the Forging Integration Innovations - Ballerina Hackathon 2024, organized by Namibia University of Science and Technology. Innovate with Ballerina, the next-gen programming language, and showcase your skills in building cutting-edge integration solutions."
       />
 
       {/* TWITTER */}
@@ -92,19 +92,19 @@ export default function Home({ }) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         property="twitter:description"
-        content="Forging Integration Innovations - Ballerina Hackathon 2024"
+        content="Join the Forging Integration Innovations - Ballerina Hackathon 2024, organized by Namibia University of Science and Technology. Innovate with Ballerina, the next-gen programming language, and showcase your skills in building cutting-edge integration solutions."
       />
       <meta
         name="twitter:image"
-        content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
+        content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
       />
       <meta
         property="twitter:text:description"
-        content="Forging Integration Innovations - Ballerina Hackathon 2024"
+        content="Join the Forging Integration Innovations - Ballerina Hackathon 2024, organized by Namibia University of Science and Technology. Innovate with Ballerina, the next-gen programming language, and showcase your skills in building cutting-edge integration solutions."
       />
       <meta
         property="twitter:image"
-        content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
+        content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
       />
 
     </Head>

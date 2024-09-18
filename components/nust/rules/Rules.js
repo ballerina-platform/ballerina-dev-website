@@ -50,7 +50,7 @@ export default function Rules(props) {
               <div className={styles.content}>
                 <ul className={styles.customUl}>
                   <li className={styles.customLi}>The applicant must be a legal resident or citizen in Namibia.</li>
-                  <li className={styles.customLi}>The Ballerina programming language should be used for the complete or part of the final implementation.</li>
+                  <li className={styles.customLi}>The Ballerina programming language should be used in the final implementation.</li>
                   <li className={styles.customLi}>The event is open to individuals above the age of 18 who reside in Namibia and any student of NUST even below the required age limit (with the written consent of the guardian/parent).</li>
                   <li className={styles.customLi}>Participants can join the event individually or with a team of up to 4 members. Each person can join only one team.</li>
                 </ul>

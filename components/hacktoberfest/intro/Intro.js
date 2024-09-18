@@ -27,25 +27,6 @@ import styles from './Intro.module.css';
 
 export default function Intro() {
 
-  const [hoverBtn, setHoverBtn] = React.useState(false);
-
-  let imagePath = prefix + '/images/main-right-arrow-home.svg';
-  let imagePathHover = prefix + '/images/main-right-arrow-home-hover.svg';
-
-  const buttonStyle = {
-    backgroundImage: 'url(' + imagePath + ')',
-    backgroundSize: '60px 60px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-  };
-
-  const buttonStyleHover = {
-    backgroundImage: 'url(' + imagePathHover + ')',
-    backgroundSize: '60px 60px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-  };
-
   return (
 
     <Col sm={12}>

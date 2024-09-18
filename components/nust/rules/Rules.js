@@ -51,8 +51,8 @@ export default function Rules(props) {
                 <ul className={styles.customUl}>
                   <li className={styles.customLi}>The applicant must be a legal resident or citizen in Namibia.</li>
                   <li className={styles.customLi}>The Ballerina programming language should be used in the final implementation.</li>
-                  <li className={styles.customLi}>Any legal resident or citizen in Namibia above the age of 18</li>
-                  <li className={styles.customLi}>Any student of NUST even below the required age limit (with the written consent of the guardian/parent)</li> 
+                  <li className={styles.customLi}>Any legal resident or citizen in Namibia above the age of 18.</li>
+                  <li className={styles.customLi}>Any student of NUST even below the required age limit (with the written consent of the guardian/parent).</li> 
                   <li className={styles.customLi}>Participants can join the event individually or with a team of up to 4 members. Each person can join only one team.</li>
                 </ul>
                 <p style={{ marginBottom: 0 }}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://ballerina.io/hackathons/ballerina-nust-hackathon-2024.pdf">Terms & Conditions</a>.</p>

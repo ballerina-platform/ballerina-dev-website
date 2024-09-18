@@ -36,7 +36,7 @@ function doSomething(int i) returns string = @java:Method {
 } external;
 ```
 
-The `@java:Method` annotation instructs the jBallerina compiler to link the `doSomethingInJava` static method in the `a.b.c.Foo` Java class. Please refer [Manage platform dependencies](/learn/manage-dependencies/#manage-platform-dependencies) to add Java class dependencies to a Ballerina package. There are a set of annotations and other utilities available in the `ballerina/jballerina.java` module to make Java interoperability work that is covered in this guide.
+The `@java:Method` annotation instructs the jBallerina compiler to link this function to the `doSomethingInJava` static method in the `a.b.c.Foo` Java class. Please refer [Manage platform dependencies](/learn/manage-dependencies/#manage-platform-dependencies) to add Java class dependencies to a Ballerina package. There are a set of annotations and other utilities available in the `ballerina/jballerina.java` module to make Java interoperability work that is covered in this guide.
 
 ## The handle type
 The handle type describes a reference to externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.

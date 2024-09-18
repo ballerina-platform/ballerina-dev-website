@@ -47,7 +47,7 @@ export default function Rewards(props) {
         <Row>
           <Col xs={12}>
             <p>
-              All participants whose proposals are accepted in Round 1 are eligible for a Ballerina branded T-shirt and sticker sheet.
+              All participants whose proposals are accepted in Round 1 are eligible for a Ballerina branded T-shirt and a sticker sheet.
             </p>
             <p>
               The winners of this hackathon will receive prizes as mentioned below.

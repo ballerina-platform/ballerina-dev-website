@@ -88,7 +88,7 @@ export default function Intro(props) {
           <Col xs={12} md={6} lg={6} className={styles.boxCol}>
             <div className={styles.cardWrapper}>
               <div>
-                <h3>Guidelines for the proposals:</h3>
+                <h3>Proposal selection and next steps:</h3>
                 <div className={styles.cardDescription}>
                   <ul>
                     <li className={styles.customLi}>Project proposals that demonstrate strong relevance to actual problems and align with the shared interests of the university or the country are better suited.</li>

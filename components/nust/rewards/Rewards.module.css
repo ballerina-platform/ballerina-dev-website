@@ -65,7 +65,9 @@
 }
 
 .swag {
-  width: 25%;
+  width: -moz-available !important;
+  width: -webkit-fill-available !important;
+  width: fill-available !important;
 }
 
 .cardWrapper li+li {

@@ -95,8 +95,8 @@ export default function Rewards(props) {
             </div>
           </Col>
 
-          <Col xs={12} md={4} lg={4} style={{ textAlign: "center" }}>
-            <img src="/images/ubuntu1.png" alt="Ubuntu" className={styles.swag} />
+          <Col xs={12} md={4} lg={4} style={{ textAlign: "center", marginTop: "20px" }}>
+            <img src="/images/swag.png" alt="Ubuntu" className={styles.swag} />
           </Col>
 
         </Row>

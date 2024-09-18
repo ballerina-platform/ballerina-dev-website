@@ -105,7 +105,7 @@ export default function Intro(props) {
                 <h3>Example technical areas to focus on (but not limited to):</h3>
                 <div className={styles.cardDescription}>
                   <ul>
-                    <li className={styles.customLi}><b>API Integration Challenge:</b><br /> Participants can choose an existing APIs (e.g., weather data, social media, university LMS) and demonstrate how they can integrate it into a useful application using Ballerina.</li>
+                    <li className={styles.customLi}><b>API Integration Challenge:</b><br /> Participants can choose existing APIs (e.g., weather data, social media, university LMS) and demonstrate how they can integrate them into a useful application using Ballerina.</li>
                     <li className={styles.customLi}><b>Microservices Orchestration:</b><br /> Participants can present scenarios where they need to orchestrate multiple microservices with Ballerina, showcasing its capabilities in a distributed system.</li>
                     <li className={styles.customLi}><b>Legacy System Integration:</b><br /> Participants can bring a legacy system and modernize and integrate it with newer technologies/applications to solve a real integration problem using Ballerina.</li>
                     <li className={styles.customLi}><b>Event-Driven Integration:</b><br /> Participants can propose a scenario of event-driven integration where they integrate different systems based on real-time events.</li>

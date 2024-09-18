@@ -36,7 +36,7 @@ export default function Intro() {
               <span style={{ fontSize: "47px", fontWeight: "300" }}>Ballerina Hackathon 2024</span>
             </h1>
             <p className={styles.desItem}>
-              Join the <a href="https://ballerina.io/" className={styles.introLinks}> Ballerina</a> Community and the <a href='https://www.nust.na/' target='_blank' rel='noreferrer' className={styles.introLinks}> Namibia University of Science and Technology</a> for an exciting Hackathon in <b> Namibia</b>.
+              Join the <a href="https://ballerina.io/" className={styles.introLinks}> Ballerina</a> Community and the <a href='https://www.nust.na/' target='_blank' rel='noreferrer' className={styles.introLinks}> Namibia University of Science and Technology</a> for an exciting Hackathon in Namibia.
             </p>
           </Col>
         </Row>

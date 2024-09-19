@@ -4917,15 +4917,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
@@ -4937,6 +4928,15 @@
       {
         "name": "Gauge-based metrics",
         "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

@@ -1951,12 +1951,12 @@ sublinks:
           - title: Distributed tracing
             id: 1
             url: tracing
-          - title: Counter-based metrics
-            id: 2
-            url: counter-metrics
       - title: Metrics
         id: 2
         sublinks:
           - title: Gauge-based metrics
             id: 1
             url: gauge-metrics
+          - title: Counter-based metrics
+            id: 2
+            url: counter-metrics

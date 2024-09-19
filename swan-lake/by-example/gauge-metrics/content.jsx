@@ -137,7 +137,7 @@ export function GaugeMetrics({ codeSnippets }) {
 
       <p>
         Ballerina supports Observability out of the box and Metrics is one of
-        the three important aspects of the bservability. To observe Ballerina
+        the three important aspects of the observability. To observe Ballerina
         code, the build time flag <code>--observability-included</code> should
         be given along with the <code>Config.toml</code> file when starting the
         service. The <code>Config.toml</code> file contains the required runtime

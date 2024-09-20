@@ -144,6 +144,53 @@ intro: The sections below include the coding conventions with respect to annotat
     }
     ```
 
+* For record type definitions add the description above the type definition.
+* Similarly, for each field add the description above the field definition.
+* Don't leave empty lines between the description and the corresponding definition.
+
+    **Example,**
+
+    ```ballerina
+    # Represents a user.
+    type User record {|
+        # Id of the user
+        int id;
+        # Name of the user
+        string name;
+        # Whether the user is a member
+        boolean isMember;
+    |};
+    ```
+
+* If the fields have annotations, you could introduce empty lines in between field definitions to improve readability.
+
+    **Example,**
+
+    ```ballerina
+    # Represents a user with metadata.
+    type UserWithMetadata record {|
+        # Id of the user
+        @constraint:Int {
+            maxDigits: 10
+        }
+        int id;
+
+        # Name of the user
+        @constraint:String {
+            minLength: 5,
+            maxLength: 20
+        }
+        string name;
+
+        # Address of the user
+        @constraint:String {
+            minLength: 20,
+            maxLength: 100
+        }
+        string address;
+    |};
+    ```
+
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 
 

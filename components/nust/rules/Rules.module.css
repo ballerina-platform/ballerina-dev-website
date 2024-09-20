@@ -37,6 +37,10 @@
   background-size: 32px;
 }
 
+.customUl {
+  padding-left: 0;
+}
+
 .customUl li+li {
   margin-top: 10px;
 }

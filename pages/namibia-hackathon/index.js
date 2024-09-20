@@ -22,7 +22,7 @@ import Head from 'next/head';
 
 import Layout from '../../layouts/LayoutHacktoberfest';
 import Intro from '../../components/nust/intro/Intro';
-import Challenges from '../../components/nust/challenges/challenges';
+import Contribute from '../../components/nust/contribute/Contribute';
 import Rewards from '../../components/nust/rewards/Rewards';
 import Rules from '../../components/nust/rules/Rules';
 import styles from '../../styles/Hacktoberfest.module.css';
@@ -116,7 +116,7 @@ export default function Home({ }) {
           </Row>
 
           <Row className={styles.hacktoberfestChallenges}>
-            <Challenges getLink={getLink} />
+            <Contribute getLink={getLink} />
           </Row>
 
           <Row className={styles.hacktoberfestRewards}>

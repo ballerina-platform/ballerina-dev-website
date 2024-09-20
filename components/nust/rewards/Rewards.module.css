@@ -70,6 +70,10 @@
   width: fill-available !important;
 }
 
+.cardWrapper ul {
+  padding-left: 0;
+}
+
 .cardWrapper li+li {
   margin-top: 10px;
 }

@@ -58,7 +58,7 @@ export default function Outline(props) {
 
         <Row>
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/guest-lectures-and-talks.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
@@ -76,7 +76,7 @@ export default function Outline(props) {
           </Col>
 
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/workshops-and-training-sessions.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
@@ -95,7 +95,7 @@ export default function Outline(props) {
 
 
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/hackathons-and-coding-challenges.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
@@ -113,7 +113,7 @@ export default function Outline(props) {
           </Col>
 
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/research-collaborations.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
@@ -131,7 +131,7 @@ export default function Outline(props) {
           </Col>
 
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/open-source-projects.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
@@ -150,7 +150,7 @@ export default function Outline(props) {
           </Col>
 
           <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+            <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
                   <Card.Img src={`${prefix}/images/industry-projects.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />

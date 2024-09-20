@@ -5,7 +5,7 @@ description: step-by-step guide to create Ballerina connectors using OpenAPI spe
 keywords: ballerina, connector, library, REST, API, openAPI, Ballerina Central
 permalink: /learn/create-your-first-connector-with-ballerina/
 active: create-your-first-connector-with-ballerina
-intro: Learn how to create your first Ballerina connector using an OpenAPI specification.
+intro: This guide walks you through creating your first Ballerina connector using an OpenAPI specification.
 ---
 
 ## Introduction

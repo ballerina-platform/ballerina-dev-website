@@ -57,6 +57,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
+        source: `/${redirectBase}learn/create-your-first-connector-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/create-your-first-connector-with-ballerina`,
+      },
+      {
         source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },

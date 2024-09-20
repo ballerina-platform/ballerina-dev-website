@@ -72,7 +72,8 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
     [central]
     accesstoken="<token>"
     ```
-    If you are working in a context where it is not possible to save the `Settings.toml` file (e.g., within a CI/CD pipeline) you can set the access token via environment variables by assigning it to `BALLERINA_CENTRAL_ACCESS_TOKEN`
+
+    If you are working in a context where it is not possible to save the `Settings.toml` file (e.g., within a CI/CD pipeline) you can set the access token via the `BALLERINA_CENTRAL_ACCESS_TOKEN` environment variable.
     
     ```
     export BALLERINA_CENTRAL_ACCESS_TOKEN="<token>"

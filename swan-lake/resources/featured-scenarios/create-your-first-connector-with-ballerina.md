@@ -160,9 +160,9 @@ Once you’ve completed the development and testing of your connector, it’s ti
 
 2. Follow the steps in the [Ballerina package publishing guide](https://ballerina.io/learn/publish-packages-to-ballerina-central/) to publish your connector to Ballerina Central under your organization.
 
----
+## Conclusion
 
-Congratulations! You've successfully created your first Ballerina connector using OpenAPI. This process allows you to quickly integrate external services and share your connector with the Ballerina community.
+If you’ve followed these steps, you’ve successfully created your first Ballerina connector! This process allows you to quickly integrate external services and share your connector with the Ballerina community.
 
 Remember to keep your connector up to date with any changes in the API’s OpenAPI specification and to test thoroughly whenever updates are made.
 

@@ -3,31 +3,31 @@
     color: #20b6b0;
     font-size: 16px;
     font-weight: 400;
-  }
-  
-  .titleLink:hover {
+}
+
+.titleLink:hover {
     color: #57595d;
-  }
-  
-  .title {
+}
+
+.title {
     margin-bottom: 0;
-  }
-  
-  .description {
+}
+
+.description {
     color: #57595d;
     font-size: 14px;
-  }
-  
-  .contentCol {
+}
+
+.contentCol {
     flex-direction: column;
     justify-content: space-between;
-  }
-  
-  .sub {
+}
+
+.sub {
     margin-left: 10px;
-  }
-  
-  .customLi {
+}
+
+.customLi {
     margin: 0;
     padding: 0 0 6px 40px;
     list-style: none;
@@ -35,13 +35,12 @@
     background-repeat: no-repeat;
     background-position: left top;
     background-size: 32px;
-  }
-  
-  .customUl {
+}
+
+.customUl {
     padding-left: 0;
-  }
-  
-  .customUl li+li {
+}
+
+.customUl li+li {
     margin-top: 10px;
-  }
-  
+}

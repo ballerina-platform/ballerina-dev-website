@@ -50,14 +50,14 @@ export default function Ambassadors() {
   return (
     <>
       <Head>
-        <title>Project mentorship - The Ballerina programming language</title>
-        <meta name="description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
-        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, tudent engagement program, project mentorship" />
+        <title>Ballerina ambassador program - The Ballerina programming language</title>
+        <meta name="description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, student engagement program, ambassadors" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="og:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
+        <meta property="og:title" content="Ballerina ambassador program - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
           itemProp="image"
@@ -65,17 +65,17 @@ export default function Ambassadors() {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="og:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
+        <meta property="og:title" content="Ballerina ambassador program - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content="Project mentorship - The Ballerina programming language" />
-        <meta property="twitter:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
-        <meta property="twitter:text:description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
+        <meta name="twitter:title" content="Ballerina ambassador program - The Ballerina programming language" />
+        <meta property="twitter:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="twitter:text:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           name="twitter:image"
           content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"

@@ -1,0 +1,35 @@
+.card {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cutomCard {
+    width: 100%;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon {
+        padding-left: 1rem;
+    }
+}
+
+.cardLinks {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.cardLinks:hover {
+    color: #494949;
+}

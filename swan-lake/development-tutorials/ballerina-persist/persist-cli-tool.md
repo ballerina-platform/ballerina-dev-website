@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, persist, persist 
 permalink: /learn/ballerina-persist/persist-cli/
 active: persist_cli
 intro: The CLI tool is used to initialize the project with the bal persist command and generate the required files.
-redirect_from:
-   - /learn/ballerina-persist/persist-cli/
 ---
 
 There are two ways that you can use the `bal persist` feature.

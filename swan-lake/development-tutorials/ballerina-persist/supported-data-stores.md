@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, persist, data sto
 permalink: /learn/ballerina-persist/supported-datastores/
 active: persist_supported_datastores
 intro: In the realm of the `bal persist` feature, selecting the right data store is crucial for ensuring reliable data storage and retrieval. Various data stores exist, each with its strengths and weaknesses. The `bal persist` currently supports four data stores. The configurations and supported types will vary depending on the data store you selected for your application.
-redirect_from:
-   - /learn/ballerina-persist/supported-datastores/
 ---
 
 Following are the supported data stores.

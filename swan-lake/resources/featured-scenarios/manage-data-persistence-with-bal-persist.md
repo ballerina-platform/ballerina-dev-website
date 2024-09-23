@@ -6,12 +6,6 @@ keywords: Ballerina, data service, data store, database, SQL, in-memory, Google 
 permalink: /learn/manage_data_persistence-with-bal-persist/
 active: manage_data_persistence-with-bal-persist
 intro: This guide helps you understand the basics of the `bal persist` feature, which allows you to manage data persistence easily. This same data service can also be written using the Ballerina SQL connectors, which require you to write SQL queries to perform CRUD operations against the DB servers. With the `bal persist` feature, you only need to write the `data model`. Based on the model, the client object and record types are generated to interact with the data store.
-redirect_from:
-- /learn/manage-data-persistence-with-bal-persist/
-- /learn/manage-data-persistence-with-bal-persist
-- /learn/manage-data-persistence-with-bal-persist
-- /learn/getting-started/manage-data-persistence-with-bal-persist/
-- /learn/getting-started/manage_data_persistence-with-bal-persist
 ---
 
 ## Set up the prerequisites

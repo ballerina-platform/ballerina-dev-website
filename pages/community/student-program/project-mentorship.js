@@ -125,7 +125,7 @@ export default function StudentengagementProgram() {
       <Head>
         <title>Project mentorship - The Ballerina programming language</title>
         <meta name="description" content="Explore Ballerina’s Project Mentorship Program, empowering students with hands-on guidance from expert mentors to enhance their open-source contributions." />
-        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, tudent engagement program, project mentorship" />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, student engagement program, project mentorship" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />

@@ -136,8 +136,6 @@ export default function Perks(props) {
             </Card>
           </Col>
 
-
-
         </Row>
 
       </Container>

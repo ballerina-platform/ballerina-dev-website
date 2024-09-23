@@ -1,0 +1,34 @@
+{
+    "ambassadors": [
+        {
+            "name": "John Doe",
+            "country": "United States",
+            "icon": "/images/ambassadors/profile_picture_1.png",
+            "link": "#"
+        },
+        {
+            "name": "Maria Lopez",
+            "country": "Spain",
+            "icon": "/images/ambassadors/profile_picture_2.png",
+            "link": "#"
+        },
+        {
+            "name": "Akira Tanaka",
+            "country": "Japan",
+            "icon": "/images/ambassadors/profile_picture_3.png",
+            "link": "#"
+        },
+        {
+            "name": "Liam O'Connor",
+            "country": "Ireland",
+            "icon": "/images/ambassadors/profile_picture_4.png",
+            "link": "#"
+        },
+        {
+            "name": "Amina Khan",
+            "country": "Pakistan",
+            "icon": "/images/ambassadors/profile_picture_5.png",
+            "link": "#"
+        }
+    ]
+}

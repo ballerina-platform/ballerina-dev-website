@@ -21,11 +21,11 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
 import Layout from '../../../layouts/LayoutCommunity';
-import Who from '../../../components/ambassadors/who/Who';
 import What from '../../../components/ambassadors/what/What';
-import Benefits from '../../../components/ambassadors/benefits/Benefits';
-import Selection from '../../../components/ambassadors/selection/Selection';
-import Journey from '../../../components/ambassadors/journey/Journey';
+import Perks from '../../../components/ambassadors/perks/Perks';
+import Meet from '../../../components/ambassadors/meet/Meet';
+import Apply from '../../../components/ambassadors/apply/Apply';
+
 
 export default function Ambassadors() {
 
@@ -95,7 +95,7 @@ export default function Ambassadors() {
                     </p>
                   </Col>
                   <Col xs={12} md={12} lg={5} className='introImg'>
-                    <img src="/images/university/ambassador.webp" alt="Project mentorship" />
+                    <img src="/images/ambassadors/banner1.png" alt="Project mentorship" />
                   </Col>
                 </Row>
               </Container>
@@ -103,24 +103,21 @@ export default function Ambassadors() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Who getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow">
             <What getLink={getLink} />
           </Row>
 
+          <Row className="pageContentRow communityRow">
+            <Perks getLink={getLink} />
+          </Row>
+
           <Row className="pageContentRow communityRow slackRow">
-            <Benefits getLink={getLink} />
+            <Meet getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Selection getLink={getLink} />
+            <Apply getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
-            <Journey getLink={getLink} />
-          </Row>
         </Col>
       </Layout>
     </>

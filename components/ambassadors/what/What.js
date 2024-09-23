@@ -17,9 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Card } from 'react-bootstrap';
-
-import { prefix } from '../../../utils/prefix';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './What.module.css';
 
@@ -49,98 +47,18 @@ export default function What(props) {
         </Row>
 
         <Row>
-          <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3 ${styles.cutomCard}`}>
-              <Row className="g-0 align-items-center">
-                <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/guest-lectures-and-talks.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
-                </Col>
-                <Col md={10}>
-                  <Card.Body>
-
-                    <h3 className="card-title">Promote Ballerina</h3>
-
-                    <p className="card-text">Actively promote Ballerina within their university and developer communities.</p>
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3 ${styles.cutomCard}`}>
-              <Row className="g-0 align-items-center">
-                <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/workshops-and-training-sessions.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
-                </Col>
-                <Col md={10}>
-                  <Card.Body>
-
-                    <h3 className="card-title">Organize events</h3>
-
-                    <p className="card-text">Host workshops, meetups, and hackathons to introduce Ballerina to fellow developers.</p>
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-
-          <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3 ${styles.cutomCard}`}>
-              <Row className="g-0 align-items-center">
-                <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/hackathons-and-coding-challenges.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
-                </Col>
-                <Col md={10}>
-                  <Card.Body>
-
-                    <h3 className="card-title">Content creation</h3>
-
-                    <p className="card-text">Develop tutorials, blogs, and videos showcasing Ballerina’s capabilities.</p>
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3 ${styles.cutomCard}`}>
-              <Row className="g-0 align-items-center">
-                <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/research-collaborations.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
-                </Col>
-                <Col md={10}>
-                  <Card.Body>
-
-                    <h3 className="card-title">Community engagement</h3>
-
-                    <p className="card-text">Engage with the Ballerina community, both locally and globally, to foster collaboration and knowledge sharing.</p>
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          <Col xl={{ span: 6 }} className={styles.card}>
-            <Card className={`mb-3 ${styles.cutomCard}`}>
-              <Row className="g-0 align-items-center">
-                <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/open-source-projects.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
-                </Col>
-                <Col md={10}>
-                  <Card.Body>
-
-                    <h3 className="card-title">Feedback and reporting</h3>
-
-                    <p className="card-text">Provide regular feedback on developer experiences with Ballerina and submit reports on their activities and achievements.</p>
-                  
-                  </Card.Body>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
+          <div>
+            <div className={styles.cardDescription}>
+              <div className={styles.content}>
+                <ul className={styles.customUl}>
+                  <li className={styles.customLi}>Build awareness about Ballerina through workshops and events.</li>
+                  <li className={styles.customLi}>Develop tutorials, blogs, and videos showcasing Ballerina&apos;s capabilities.</li>
+                  <li className={styles.customLi}>Build awareness about Ballerina through workshops and events.</li>
+                  <li className={styles.customLi}>Develop tutorials, blogs, and videos showcasing Ballerina&apos;s capabilities.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </Row>
 
       </Container>

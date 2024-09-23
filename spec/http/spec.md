@@ -800,7 +800,13 @@ resource function post album(@http:Header string referer) {
 resource function post product(@http:Header {name: "Accept"} string[] accept) {
     
 }
+```
 
+When the header parameter type is a record, the record fields represents each header values and the header name is 
+considered as the field name. However, the header annotation with a name field can be used to define the header 
+name whenever user needs some different variable name for the header. 
+
+```ballerina
 public type RateLimitHeaders record {|
     string x\-rate\-limit\-id;
     int x\-rate\-limit\-remaining;
@@ -809,6 +815,19 @@ public type RateLimitHeaders record {|
 
 //Populate selected headers to a record
 resource function get price(@http:Header RateLimitHeaders rateLimitHeaders) {
+}
+
+public type RateLimitHeadersWithName record {|
+    @http:Header {name: "X-RATE-LIMIT-ID"}
+    string rateLimitId;
+    @http:Header {name: "X-RATE-LIMIT-REMAINING"}
+    int rateLimitRemaining;
+    @http:Header {name: "X-RATE-LIMIT-TYPES"}
+    string[] rateLimitTypes;
+|};
+
+//Populate selected headers to a record. The header name is defined in the field level annotation
+resource function get price(@http:Header RateLimitHeadersWithName rateLimitHeaders) {
 }
 ```
 

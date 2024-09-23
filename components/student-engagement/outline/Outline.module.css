@@ -10,6 +10,14 @@
     flex-flow: row wrap;
 }
 
+.cutomCard {
+    width: 100%;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 .learnMore {
     transition: none !important;
     font-size: 18px;

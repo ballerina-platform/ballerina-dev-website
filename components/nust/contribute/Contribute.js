@@ -19,9 +19,9 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 
-import styles from './Challenges.module.css';
+import styles from './Contribute.module.css';
 
-export default function Intro(props) {
+export default function Contribute(props) {
 
   return (
 

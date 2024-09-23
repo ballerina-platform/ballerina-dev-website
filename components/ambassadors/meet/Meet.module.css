@@ -1,0 +1,33 @@
+.card {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.textLink {
+    text-decoration: none;
+    color: #20b6b0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.textLink:hover {
+    color: #57595d;
+}
+
+.profile {
+    width: 160px;
+    filter: grayscale(100%);
+}
+
+.link {
+    border: 3px solid #20b6b0;
+    border-radius: 50%;
+}
+
+.customCard {
+    text-align: center;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}

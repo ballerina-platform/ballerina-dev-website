@@ -50,11 +50,11 @@ export default function Meet(props) {
           </Col>
         </Row>
 
-        <Row>
+        <Row className='justify-content-md-center'>
           {
             ambassadors.map((ambassador, index) => {
               return (
-                <Col xl={{ span: 4 }} className='mb-3'>
+                <Col xl={{ span: 4 }} className='mb-3' key={index}>
                   <Card className={`h-100 ${styles.customCard}`}>
                     <a href={ambassador.link} target='_blank' rel='noreferrer' className={styles.link}>
                     <Card.Img src={ambassador.icon} alt={ambassador.name} className={`rounded-circle ${styles.profile}`}/>

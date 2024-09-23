@@ -33,3 +33,9 @@
 .textLink:hover {
     color: #57595d;
 }
+
+.swag {
+    width: -moz-available !important;
+    width: -webkit-fill-available !important;
+    width: fill-available !important;
+}

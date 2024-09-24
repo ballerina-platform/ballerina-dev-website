@@ -26,7 +26,7 @@ jobs:
       env:
         DEPLOYMENT: ${{ inputs.deployment }}
       run: |
-        npm install --global @deptagency/octopus
+        npm install --global @deptagency/octopus@latest
         
         URL=https://$DEPLOYMENT/
         echo "Checking links in $URL"

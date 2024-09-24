@@ -117,10 +117,6 @@ export default function Ambassadors() {
             <Meet getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
-            <Apply getLink={getLink} />
-          </Row>
-
         </Col>
       </Layout>
     </>

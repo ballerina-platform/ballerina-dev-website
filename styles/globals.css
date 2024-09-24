@@ -1766,22 +1766,38 @@ a.join {
   font-weight: 400;
   background-color: #57595d;
   color: #ffffff !important;
-  /* padding: 20px 20px 20px 60px; */
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   min-height: 60px;
   line-height: 35px;
-  /* background-image: url('/images/download-bg.svg');
-  background-repeat: no-repeat; */
-  /* background-position: left 20px top 22px; */
-  /* background-position: left 20px top 14px; */
   width: fit-content;
-  /* border-radius: 4px; */
 }
 
 a.join:hover {
-  /* background-image: url("/images/download-bg-white.svg"); */
   background-color: #20b6b0;
-  /* background-repeat: no-repeat; */
-  /* background-position: left 20px top 14px; */
+}
+
+.applyNow {
+  padding: 10px 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #464646;
+  color: #fff;
+  margin: 5px 0px;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.applyNow:hover {
+  background-color: #20b6b0;
+  color: #fff !important;
+}
+
+@media (min-width: 992px) {
+  .applyNow {
+      width: 50%;
+  }
 }

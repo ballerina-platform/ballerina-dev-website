@@ -20,11 +20,10 @@ import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
-import Layout from '../../../layouts/LayoutCommunity';
-import What from '../../../components/ambassadors/what/What';
-import Perks from '../../../components/ambassadors/perks/Perks';
-import Meet from '../../../components/ambassadors/meet/Meet';
-import Apply from '../../../components/ambassadors/apply/Apply';
+import Layout from '../../layouts/LayoutCommunity';
+import What from '../../components/ambassadors/what/What';
+import Perks from '../../components/ambassadors/perks/Perks';
+import Meet from '../../components/ambassadors/meet/Meet';
 
 
 export default function Ambassadors() {
@@ -93,6 +92,10 @@ export default function Ambassadors() {
                     <p style={{ fontSize: "22px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>
                       The Ballerina Ambassador Program aims to cultivate a network of enthusiastic and talented developers who are passionate about programming, cloud-native development, and microservices architecture. These ambassadors will act as representatives of the Ballerina within their academic/developer communities, promoting it, fostering engagement, and building a vibrant, supportive community of developers.
                     </p>
+
+                    <a href="#" className="applyNow">
+                    Apply now
+                    </a>
                   </Col>
                   <Col xs={12} md={12} lg={5} className='introImg'>
                     <img src="/images/ambassadors/banner1.png" alt="Project mentorship" />
@@ -112,10 +115,6 @@ export default function Ambassadors() {
 
           <Row className="pageContentRow communityRow slackRow">
             <Meet getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow">
-            <Apply getLink={getLink} />
           </Row>
 
         </Col>

@@ -36,8 +36,8 @@ export function TypeDefinitions({ codeSnippets }) {
       <h1>Type definitions</h1>
 
       <p>
-        A type definition gives a name for a type. Its name is just an alias for
-        the type, like <code>typedef</code> in C.
+        A type definition gives a name for a type. The name is just an alias for
+        the type.
       </p>
 
       <Row

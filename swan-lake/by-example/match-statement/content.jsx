@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-const switchStatus = "ON";
+const SWITCH_STATUS = "ON";
 
 function matchValue(any val) returns string {
     // The value of the \`val\` variable is matched against the given value match patterns.
@@ -22,7 +22,7 @@ function matchValue(any val) returns string {
         "STOP" => {
             return "STOP";
         }
-        switchStatus => {
+        SWITCH_STATUS => {
             return "Switch ON";
         }
         // Use \`_\` to match type \`any\`.
@@ -37,7 +37,7 @@ public function main() {
     io:println(matchValue(1));
     io:println(matchValue(2));
     io:println(matchValue("STOP"));
-    io:println(matchValue(switchStatus));
+    io:println(matchValue(SWITCH_STATUS));
     io:println(matchValue("default"));
 }
 `,
@@ -57,9 +57,9 @@ export function MatchStatement({ codeSnippets }) {
 
       <p>
         <code>match</code> statement is similar to <code>switch</code> statement
-        in <code>C</code> and <code>JavaScript</code>. It matches the value, not
-        the type. <code>==</code> is used to test whether left hand side matches
-        the value being matched. Left hand side can be a simple literal (
+        in some other languages. It matches the value, not the type.{" "}
+        <code>==</code> is used to test whether the left hand side matches the
+        value being matched. The left hand side can be a simple literal (
         <code>nil</code>, <code>boolean</code>, <code>int</code>,{" "}
         <code>float</code>, <code>string</code>) identifier referring to a
         constant.

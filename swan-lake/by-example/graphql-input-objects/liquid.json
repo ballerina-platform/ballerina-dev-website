@@ -9,9 +9,5 @@
     "input objects"
   ],
   "permalink": "/learn/by-example/graphql-input-objects",
-  "active": "graphql-input-objects",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-input-objects",
-    "/swan-lake/learn/by-example/graphql-input-objects.html"
-  ]
+  "active": "graphql-input-objects"
 }

@@ -10,9 +10,5 @@
     "accept"
   ],
   "permalink": "/learn/by-example/http-restrict-by-media-type",
-  "active": "http-restrict-by-media-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-restrict-by-media-type",
-    "/swan-lake/learn/by-example/http-restrict-by-media-type.html"
-  ]
+  "active": "http-restrict-by-media-type"
 }

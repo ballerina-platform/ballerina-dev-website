@@ -9,9 +9,5 @@
     "graphiql"
   ],
   "permalink": "/learn/by-example/graphql-graphiql",
-  "active": "graphql-graphiql",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-graphiql",
-    "/swan-lake/learn/by-example/graphql-graphiql.html"
-  ]
+  "active": "graphql-graphiql"
 }

@@ -11,9 +11,5 @@
     "iot"
   ],
   "permalink": "/learn/by-example/mqtt-service-basic-authentication",
-  "active": "mqtt-service-basic-authentication",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mqtt-service-basic-authentication",
-    "/swan-lake/learn/by-example/mqtt-service-basic-authentication.html"
-  ]
+  "active": "mqtt-service-basic-authentication"
 }

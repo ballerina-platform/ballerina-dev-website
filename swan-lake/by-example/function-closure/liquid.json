@@ -11,9 +11,5 @@
     "function value"
   ],
   "permalink": "/learn/by-example/function-closure",
-  "active": "function-closure",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/function-closure",
-    "/swan-lake/learn/by-example/function-closure.html"
-  ]
+  "active": "function-closure"
 }

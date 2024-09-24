@@ -11,9 +11,5 @@
     "delete"
   ],
   "permalink": "/learn/by-example/mysql-execute-operation",
-  "active": "mysql-execute-operation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mysql-execute-operation",
-    "/swan-lake/learn/by-example/mysql-execute-operation.html"
-  ]
+  "active": "mysql-execute-operation"
 }

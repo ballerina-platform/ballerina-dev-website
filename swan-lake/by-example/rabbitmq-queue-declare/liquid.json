@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/rabbitmq-queue-declare",
-  "active": "rabbitmq-queue-declare",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-queue-declare",
-    "/swan-lake/learn/by-example/rabbitmq-queue-declare.html"
-  ]
+  "active": "rabbitmq-queue-declare"
 }

@@ -11,9 +11,5 @@
     "GraphQL"
   ],
   "permalink": "/learn/by-example/resource-methods",
-  "active": "resource-methods",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/resource-methods",
-    "/swan-lake/learn/by-example/resource-methods.html"
-  ]
+  "active": "resource-methods"
 }

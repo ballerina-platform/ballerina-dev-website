@@ -12,9 +12,5 @@
     "resource"
   ],
   "permalink": "/learn/by-example/client-class",
-  "active": "client-class",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/client-class",
-    "/swan-lake/learn/by-example/client-class.html"
-  ]
+  "active": "client-class"
 }

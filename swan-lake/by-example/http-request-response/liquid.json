@@ -10,9 +10,5 @@
     "response"
   ],
   "permalink": "/learn/by-example/http-request-response",
-  "active": "http-request-response",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-request-response",
-    "/swan-lake/learn/by-example/http-request-response.html"
-  ]
+  "active": "http-request-response"
 }

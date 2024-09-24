@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/http-service-jwt-authentication",
-  "active": "http-service-jwt-authentication",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-jwt-authentication",
-    "/swan-lake/learn/by-example/http-service-jwt-authentication.html"
-  ]
+  "active": "http-service-jwt-authentication"
 }

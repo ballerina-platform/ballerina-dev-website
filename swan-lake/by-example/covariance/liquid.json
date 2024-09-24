@@ -10,9 +10,5 @@
     "maps"
   ],
   "permalink": "/learn/by-example/covariance",
-  "active": "covariance",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/covariance",
-    "/swan-lake/learn/by-example/covariance.html"
-  ]
+  "active": "covariance"
 }

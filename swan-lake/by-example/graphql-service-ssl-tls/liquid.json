@@ -12,9 +12,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/graphql-service-ssl-tls",
-  "active": "graphql-service-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-ssl-tls",
-    "/swan-lake/learn/by-example/graphql-service-ssl-tls.html"
-  ]
+  "active": "graphql-service-ssl-tls"
 }

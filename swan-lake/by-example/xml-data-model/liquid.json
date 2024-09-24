@@ -9,9 +9,5 @@
     "xml"
   ],
   "permalink": "/learn/by-example/xml-data-model",
-  "active": "xml-data-model",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-data-model",
-    "/swan-lake/learn/by-example/xml-data-model.html"
-  ]
+  "active": "xml-data-model"
 }

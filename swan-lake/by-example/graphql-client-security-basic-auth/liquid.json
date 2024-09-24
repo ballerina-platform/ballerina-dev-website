@@ -12,9 +12,5 @@
     "security"
   ],
   "permalink": "/learn/by-example/graphql-client-security-basic-auth",
-  "active": "graphql-client-security-basic-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-client-security-basic-auth",
-    "/swan-lake/learn/by-example/graphql-client-security-basic-auth.html"
-  ]
+  "active": "graphql-client-security-basic-auth"
 }

@@ -12,9 +12,5 @@
     "new"
   ],
   "permalink": "/learn/by-example/distinct-object-types",
-  "active": "distinct-object-types",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/distinct-object-types",
-    "/swan-lake/learn/by-example/distinct-object-types.html"
-  ]
+  "active": "distinct-object-types"
 }

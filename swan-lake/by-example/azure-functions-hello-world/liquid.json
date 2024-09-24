@@ -9,9 +9,5 @@
     "serverless"
   ],
   "permalink": "/learn/by-example/azure-functions-hello-world",
-  "active": "azure-functions-hello-world",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/azure-functions-hello-world",
-    "/swan-lake/learn/by-example/azure-functions-hello-world.html"
-  ]
+  "active": "azure-functions-hello-world"
 }

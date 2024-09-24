@@ -10,9 +10,5 @@
     "statusCode records"
   ],
   "permalink": "/learn/by-example/http-send-different-status-codes",
-  "active": "http-send-different-status-codes",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-send-different-status-codes",
-    "/swan-lake/learn/by-example/http-send-different-status-codes.html"
-  ]
+  "active": "http-send-different-status-codes"
 }

@@ -14,9 +14,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/email-service-ssl-tls",
-  "active": "email-service-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/email-service-ssl-tls",
-    "/swan-lake/learn/by-example/email-service-ssl-tls.html"
-  ]
+  "active": "email-service-ssl-tls"
 }

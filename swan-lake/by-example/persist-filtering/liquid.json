@@ -13,9 +13,5 @@
     "query"
   ],
   "permalink": "/learn/by-example/persist-filtering",
-  "active": "persist-filtering",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/persist-filtering",
-    "/swan-lake/learn/by-example/persist-filtering.html"
-  ]
+  "active": "persist-filtering"
 }

@@ -103,6 +103,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Byte type",
+        "url": "byte-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -409,6 +416,20 @@
       {
         "name": "Expression-oriented style",
         "url": "expression-oriented-style",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Equality",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Expression equality",
+        "url": "expression-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -4917,15 +4938,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
@@ -4937,6 +4949,15 @@
       {
         "name": "Gauge-based metrics",
         "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

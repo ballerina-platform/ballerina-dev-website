@@ -10,9 +10,5 @@
     "deserialization"
   ],
   "permalink": "/learn/by-example/avro-serdes",
-  "active": "avro-serdes",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/avro-serdes",
-    "/swan-lake/learn/by-example/avro-serdes.html"
-  ]
+  "active": "avro-serdes"
 }

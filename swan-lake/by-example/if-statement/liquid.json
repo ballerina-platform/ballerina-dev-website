@@ -12,9 +12,5 @@
     "else if"
   ],
   "permalink": "/learn/by-example/if-statement",
-  "active": "if-statement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/if-statement",
-    "/swan-lake/learn/by-example/if-statement.html"
-  ]
+  "active": "if-statement"
 }

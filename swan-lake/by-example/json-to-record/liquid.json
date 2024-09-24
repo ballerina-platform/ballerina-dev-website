@@ -11,9 +11,5 @@
     "byte array"
   ],
   "permalink": "/learn/by-example/json-to-record",
-  "active": "json-to-record",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/json-to-record",
-    "/swan-lake/learn/by-example/json-to-record.html"
-  ]
+  "active": "json-to-record"
 }

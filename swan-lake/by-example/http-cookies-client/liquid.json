@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/http-cookies-client",
-  "active": "http-cookies-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-cookies-client",
-    "/swan-lake/learn/by-example/http-cookies-client.html"
-  ]
+  "active": "http-cookies-client"
 }

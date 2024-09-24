@@ -11,9 +11,5 @@
     "caching"
   ],
   "permalink": "/learn/by-example/graphql-dataloader",
-  "active": "graphql-dataloader",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-dataloader",
-    "/swan-lake/learn/by-example/graphql-dataloader.html"
-  ]
+  "active": "graphql-dataloader"
 }

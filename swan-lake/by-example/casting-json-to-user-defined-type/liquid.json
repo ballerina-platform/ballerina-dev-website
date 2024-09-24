@@ -13,9 +13,5 @@
     "manipulate"
   ],
   "permalink": "/learn/by-example/casting-json-to-user-defined-type",
-  "active": "casting-json-to-user-defined-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/casting-json-to-user-defined-type",
-    "/swan-lake/learn/by-example/casting-json-to-user-defined-type.html"
-  ]
+  "active": "casting-json-to-user-defined-type"
 }

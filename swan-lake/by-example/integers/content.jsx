@@ -34,10 +34,9 @@ export function Integers({ codeSnippets }) {
       <h1>Integers</h1>
 
       <p>
-        The <code>int</code> type is 64-bit signed integers (same as{" "}
-        <code>long</code> in Java) and supports the usual arithmetic operators:{" "}
-        <code>+ - / %</code>. The operator precedence is same as C. Integer
-        overflow is a runtime error in Ballerina.
+        The <code>int</code> type is 64-bit signed integers and supports the
+        usual arithmetic operators: <code>+ - / %</code>. Integer overflow is a
+        runtime error in Ballerina.
       </p>
 
       <Row

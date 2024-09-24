@@ -8,9 +8,5 @@
     "backtick templates"
   ],
   "permalink": "/learn/by-example/backtick-templates",
-  "active": "backtick-templates",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/backtick-templates",
-    "/swan-lake/learn/by-example/backtick-templates.html"
-  ]
+  "active": "backtick-templates"
 }

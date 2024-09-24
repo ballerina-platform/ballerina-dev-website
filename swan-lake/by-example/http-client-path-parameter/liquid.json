@@ -10,9 +10,5 @@
     "path parameter"
   ],
   "permalink": "/learn/by-example/http-client-path-parameter",
-  "active": "http-client-path-parameter",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-path-parameter",
-    "/swan-lake/learn/by-example/http-client-path-parameter.html"
-  ]
+  "active": "http-client-path-parameter"
 }

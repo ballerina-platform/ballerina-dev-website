@@ -10,9 +10,5 @@
     "response"
   ],
   "permalink": "/learn/by-example/http-send-header",
-  "active": "http-send-header",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-send-header",
-    "/swan-lake/learn/by-example/http-send-header.html"
-  ]
+  "active": "http-send-header"
 }

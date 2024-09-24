@@ -10,9 +10,5 @@
     "accept-encoding"
   ],
   "permalink": "/learn/by-example/http-compression",
-  "active": "http-compression",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-compression",
-    "/swan-lake/learn/by-example/http-compression.html"
-  ]
+  "active": "http-compression"
 }

@@ -10,9 +10,5 @@
     "header parameter"
   ],
   "permalink": "/learn/by-example/http-client-header-parameter",
-  "active": "http-client-header-parameter",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-header-parameter",
-    "/swan-lake/learn/by-example/http-client-header-parameter.html"
-  ]
+  "active": "http-client-header-parameter"
 }

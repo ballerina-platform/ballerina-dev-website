@@ -10,9 +10,5 @@
     "interceptors"
   ],
   "permalink": "/learn/by-example/graphql-service-interceptors",
-  "active": "graphql-service-interceptors",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-interceptors",
-    "/swan-lake/learn/by-example/graphql-service-interceptors.html"
-  ]
+  "active": "graphql-service-interceptors"
 }

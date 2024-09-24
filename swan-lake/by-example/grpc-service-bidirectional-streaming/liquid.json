@@ -10,9 +10,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/grpc-service-bidirectional-streaming",
-  "active": "grpc-service-bidirectional-streaming",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-bidirectional-streaming",
-    "/swan-lake/learn/by-example/grpc-service-bidirectional-streaming.html"
-  ]
+  "active": "grpc-service-bidirectional-streaming"
 }

@@ -10,9 +10,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/http-access-logs",
-  "active": "http-access-logs",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-access-logs",
-    "/swan-lake/learn/by-example/http-access-logs.html"
-  ]
+  "active": "http-access-logs"
 }

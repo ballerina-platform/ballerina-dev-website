@@ -235,11 +235,20 @@ export function ListEquality({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/expression-equality">
+              Expression equality
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/list-subtyping">List sub typing</a>
           </span>
         </li>
       </ul>
-
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">

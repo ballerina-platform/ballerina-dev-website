@@ -10,9 +10,5 @@
     "transaction"
   ],
   "permalink": "/learn/by-example/rabbitmq-transaction-consumer",
-  "active": "rabbitmq-transaction-consumer",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-transaction-consumer",
-    "/swan-lake/learn/by-example/rabbitmq-transaction-consumer.html"
-  ]
+  "active": "rabbitmq-transaction-consumer"
 }

@@ -10,9 +10,5 @@
     "query expression"
   ],
   "permalink": "/learn/by-example/outer-join-clause",
-  "active": "outer-join-clause",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/outer-join-clause",
-    "/swan-lake/learn/by-example/outer-join-clause.html"
-  ]
+  "active": "outer-join-clause"
 }

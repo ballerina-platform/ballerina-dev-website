@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/rabbitmq-producer",
-  "active": "rabbitmq-producer",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-producer",
-    "/swan-lake/learn/by-example/rabbitmq-producer.html"
-  ]
+  "active": "rabbitmq-producer"
 }

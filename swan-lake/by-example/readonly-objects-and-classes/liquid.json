@@ -11,9 +11,5 @@
     "class"
   ],
   "permalink": "/learn/by-example/readonly-objects-and-classes",
-  "active": "readonly-objects-and-classes",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/readonly-objects-and-classes",
-    "/swan-lake/learn/by-example/readonly-objects-and-classes.html"
-  ]
+  "active": "readonly-objects-and-classes"
 }

@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/kafka-consumer-payload-data-binding",
-  "active": "kafka-consumer-payload-data-binding",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-consumer-payload-data-binding",
-    "/swan-lake/learn/by-example/kafka-consumer-payload-data-binding.html"
-  ]
+  "active": "kafka-consumer-payload-data-binding"
 }

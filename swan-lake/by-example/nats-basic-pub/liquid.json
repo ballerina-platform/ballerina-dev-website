@@ -12,9 +12,5 @@
     "subscribe"
   ],
   "permalink": "/learn/by-example/nats-basic-pub",
-  "active": "nats-basic-pub",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-basic-pub",
-    "/swan-lake/learn/by-example/nats-basic-pub.html"
-  ]
+  "active": "nats-basic-pub"
 }

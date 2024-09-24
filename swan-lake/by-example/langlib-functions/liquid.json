@@ -11,9 +11,5 @@
     "Library"
   ],
   "permalink": "/learn/by-example/langlib-functions",
-  "active": "langlib-functions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/langlib-functions",
-    "/swan-lake/learn/by-example/langlib-functions.html"
-  ]
+  "active": "langlib-functions"
 }

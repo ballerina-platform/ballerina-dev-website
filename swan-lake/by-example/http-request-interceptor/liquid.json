@@ -12,9 +12,5 @@
     "filter"
   ],
   "permalink": "/learn/by-example/http-request-interceptor",
-  "active": "http-request-interceptor",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-request-interceptor",
-    "/swan-lake/learn/by-example/http-request-interceptor.html"
-  ]
+  "active": "http-request-interceptor"
 }

@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/http-client-bearer-token-authentication",
-  "active": "http-client-bearer-token-authentication",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-bearer-token-authentication",
-    "/swan-lake/learn/by-example/http-client-bearer-token-authentication.html"
-  ]
+  "active": "http-client-bearer-token-authentication"
 }

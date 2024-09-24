@@ -11,9 +11,5 @@
     "integration"
   ],
   "permalink": "/learn/by-example/edi-to-record",
-  "active": "edi-to-record",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/edi-to-record",
-    "/swan-lake/learn/by-example/edi-to-record.html"
-  ]
+  "active": "edi-to-record"
 }

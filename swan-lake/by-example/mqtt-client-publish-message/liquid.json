@@ -10,9 +10,5 @@
     "iot"
   ],
   "permalink": "/learn/by-example/mqtt-client-publish-message",
-  "active": "mqtt-client-publish-message",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mqtt-client-publish-message",
-    "/swan-lake/learn/by-example/mqtt-client-publish-message.html"
-  ]
+  "active": "mqtt-client-publish-message"
 }

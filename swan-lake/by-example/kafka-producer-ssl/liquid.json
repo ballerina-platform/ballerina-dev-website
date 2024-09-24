@@ -11,9 +11,5 @@
     "SSL"
   ],
   "permalink": "/learn/by-example/kafka-producer-ssl",
-  "active": "kafka-producer-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-producer-ssl",
-    "/swan-lake/learn/by-example/kafka-producer-ssl.html"
-  ]
+  "active": "kafka-producer-ssl"
 }

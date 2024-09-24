@@ -9,9 +9,5 @@
     "types"
   ],
   "permalink": "/learn/by-example/structural-typing",
-  "active": "structural-typing",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/structural-typing",
-    "/swan-lake/learn/by-example/structural-typing.html"
-  ]
+  "active": "structural-typing"
 }

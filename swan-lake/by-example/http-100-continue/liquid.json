@@ -9,9 +9,5 @@
     "100-continue"
   ],
   "permalink": "/learn/by-example/http-100-continue",
-  "active": "http-100-continue",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-100-continue",
-    "/swan-lake/learn/by-example/http-100-continue.html"
-  ]
+  "active": "http-100-continue"
 }

@@ -13,9 +13,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/rabbitmq-client-constraint-validation",
-  "active": "rabbitmq-client-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-client-constraint-validation",
-    "/swan-lake/learn/by-example/rabbitmq-client-constraint-validation.html"
-  ]
+  "active": "rabbitmq-client-constraint-validation"
 }

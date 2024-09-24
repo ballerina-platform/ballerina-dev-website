@@ -9,9 +9,5 @@
     "message producer"
   ],
   "permalink": "/learn/by-example/jms-producer-produce-message",
-  "active": "jms-producer-produce-message",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/jms-producer-produce-message",
-    "/swan-lake/learn/by-example/jms-producer-produce-message.html"
-  ]
+  "active": "jms-producer-produce-message"
 }

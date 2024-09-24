@@ -10,9 +10,5 @@
     "get element"
   ],
   "permalink": "/learn/by-example/xml-access",
-  "active": "xml-access",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-access",
-    "/swan-lake/learn/by-example/xml-access.html"
-  ]
+  "active": "xml-access"
 }

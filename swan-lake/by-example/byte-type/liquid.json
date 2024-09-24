@@ -1,0 +1,15 @@
+{
+  "title": "Byte type",
+  "description": "This BBE introduces the Ballerina byte type.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "bytes",
+    "byte",
+    "byte type",
+    "unsigned8"
+  ],
+  "permalink": "/learn/by-example/byte-type",
+  "active": "byte-type"
+}

@@ -11,9 +11,5 @@
     "on fail"
   ],
   "permalink": "/learn/by-example/single-use-with-on-fail-clause",
-  "active": "single-use-with-on-fail-clause",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/single-use-with-on-fail-clause",
-    "/swan-lake/learn/by-example/single-use-with-on-fail-clause.html"
-  ]
+  "active": "single-use-with-on-fail-clause"
 }

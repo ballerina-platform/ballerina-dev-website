@@ -12,9 +12,5 @@
     "next"
   ],
   "permalink": "/learn/by-example/stream-type",
-  "active": "stream-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/stream-type",
-    "/swan-lake/learn/by-example/stream-type.html"
-  ]
+  "active": "stream-type"
 }

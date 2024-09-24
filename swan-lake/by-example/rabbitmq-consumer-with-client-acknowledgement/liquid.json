@@ -10,9 +10,5 @@
     "acknowledgment"
   ],
   "permalink": "/learn/by-example/rabbitmq-consumer-with-client-acknowledgement",
-  "active": "rabbitmq-consumer-with-client-acknowledgement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement",
-    "/swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html"
-  ]
+  "active": "rabbitmq-consumer-with-client-acknowledgement"
 }

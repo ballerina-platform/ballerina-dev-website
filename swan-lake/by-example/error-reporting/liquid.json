@@ -9,9 +9,5 @@
     "error reporting"
   ],
   "permalink": "/learn/by-example/error-reporting",
-  "active": "error-reporting",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/error-reporting",
-    "/swan-lake/learn/by-example/error-reporting.html"
-  ]
+  "active": "error-reporting"
 }

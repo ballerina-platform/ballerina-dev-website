@@ -9,9 +9,5 @@
     "data binding"
   ],
   "permalink": "/learn/by-example/http-service-data-binding",
-  "active": "http-service-data-binding",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-data-binding",
-    "/swan-lake/learn/by-example/http-service-data-binding.html"
-  ]
+  "active": "http-service-data-binding"
 }

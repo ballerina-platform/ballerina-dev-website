@@ -9,9 +9,5 @@
     "destructuring"
   ],
   "permalink": "/learn/by-example/binding-patterns",
-  "active": "binding-patterns",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/binding-patterns",
-    "/swan-lake/learn/by-example/binding-patterns.html"
-  ]
+  "active": "binding-patterns"
 }

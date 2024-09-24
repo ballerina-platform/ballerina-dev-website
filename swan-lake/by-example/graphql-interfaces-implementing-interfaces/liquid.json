@@ -10,9 +10,5 @@
     "interfaces implementing interfaces"
   ],
   "permalink": "/learn/by-example/graphql-interfaces-implementing-interfaces",
-  "active": "graphql-interfaces-implementing-interfaces",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-interfaces-implementing-interfaces",
-    "/swan-lake/learn/by-example/graphql-interfaces-implementing-interfaces.html"
-  ]
+  "active": "graphql-interfaces-implementing-interfaces"
 }

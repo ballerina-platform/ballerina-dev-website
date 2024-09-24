@@ -11,9 +11,5 @@
     "query"
   ],
   "permalink": "/learn/by-example/iterating-over-xml-with-query",
-  "active": "iterating-over-xml-with-query",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/iterating-over-xml-with-query",
-    "/swan-lake/learn/by-example/iterating-over-xml-with-query.html"
-  ]
+  "active": "iterating-over-xml-with-query"
 }

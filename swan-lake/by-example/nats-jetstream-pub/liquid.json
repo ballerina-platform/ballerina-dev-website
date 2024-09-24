@@ -12,9 +12,5 @@
     "subscribe"
   ],
   "permalink": "/learn/by-example/nats-jetstream-pub",
-  "active": "nats-jetstream-pub",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-jetstream-pub",
-    "/swan-lake/learn/by-example/nats-jetstream-pub.html"
-  ]
+  "active": "nats-jetstream-pub"
 }

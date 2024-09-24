@@ -12,9 +12,5 @@
     "authentication"
   ],
   "permalink": "/learn/by-example/nats-service-basic-auth",
-  "active": "nats-service-basic-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-service-basic-auth",
-    "/swan-lake/learn/by-example/nats-service-basic-auth.html"
-  ]
+  "active": "nats-service-basic-auth"
 }

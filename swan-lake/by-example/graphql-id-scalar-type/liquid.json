@@ -10,9 +10,5 @@
     "id"
   ],
   "permalink": "/learn/by-example/graphql-id-scalar-type",
-  "active": "graphql-id-scalar-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-id-scalar-type",
-    "/swan-lake/learn/by-example/graphql-id-scalar-type.html"
-  ]
+  "active": "graphql-id-scalar-type"
 }

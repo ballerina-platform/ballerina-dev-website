@@ -9,9 +9,5 @@
     "error subtypes"
   ],
   "permalink": "/learn/by-example/error-subtyping",
-  "active": "error-subtyping",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/error-subtyping",
-    "/swan-lake/learn/by-example/error-subtyping.html"
-  ]
+  "active": "error-subtyping"
 }

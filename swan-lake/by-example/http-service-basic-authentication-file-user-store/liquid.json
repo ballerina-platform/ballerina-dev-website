@@ -10,9 +10,5 @@
     "basic auth"
   ],
   "permalink": "/learn/by-example/http-service-basic-authentication-file-user-store",
-  "active": "http-service-basic-authentication-file-user-store",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-basic-authentication-file-user-store",
-    "/swan-lake/learn/by-example/http-service-basic-authentication-file-user-store.html"
-  ]
+  "active": "http-service-basic-authentication-file-user-store"
 }

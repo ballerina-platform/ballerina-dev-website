@@ -12,9 +12,5 @@
     "manipulate"
   ],
   "permalink": "/learn/by-example/convert-from-json-to-user-defined-type",
-  "active": "convert-from-json-to-user-defined-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/convert-from-json-to-user-defined-type",
-    "/swan-lake/learn/by-example/convert-from-json-to-user-defined-type.html"
-  ]
+  "active": "convert-from-json-to-user-defined-type"
 }

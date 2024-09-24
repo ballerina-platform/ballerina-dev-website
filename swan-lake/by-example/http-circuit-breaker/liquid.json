@@ -11,9 +11,5 @@
     "circuit break"
   ],
   "permalink": "/learn/by-example/http-circuit-breaker",
-  "active": "http-circuit-breaker",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-circuit-breaker",
-    "/swan-lake/learn/by-example/http-circuit-breaker.html"
-  ]
+  "active": "http-circuit-breaker"
 }

@@ -11,9 +11,5 @@
     "dynamic"
   ],
   "permalink": "/learn/by-example/logging-with-context",
-  "active": "logging-with-context",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/logging-with-context",
-    "/swan-lake/learn/by-example/logging-with-context.html"
-  ]
+  "active": "logging-with-context"
 }

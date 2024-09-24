@@ -10,9 +10,5 @@
     "NaN"
   ],
   "permalink": "/learn/by-example/floating-point-numbers",
-  "active": "floating-point-numbers",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/floating-point-numbers",
-    "/swan-lake/learn/by-example/floating-point-numbers.html"
-  ]
+  "active": "floating-point-numbers"
 }

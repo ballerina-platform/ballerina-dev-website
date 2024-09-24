@@ -9,9 +9,5 @@
     "http-headers"
   ],
   "permalink": "/learn/by-example/http-header-param",
-  "active": "http-header-param",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-header-param",
-    "/swan-lake/learn/by-example/http-header-param.html"
-  ]
+  "active": "http-header-param"
 }

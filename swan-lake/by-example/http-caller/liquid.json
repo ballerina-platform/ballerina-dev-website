@@ -9,9 +9,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/http-caller",
-  "active": "http-caller",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-caller",
-    "/swan-lake/learn/by-example/http-caller.html"
-  ]
+  "active": "http-caller"
 }

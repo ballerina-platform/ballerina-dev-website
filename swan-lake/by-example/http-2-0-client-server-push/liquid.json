@@ -10,9 +10,5 @@
     "http/2"
   ],
   "permalink": "/learn/by-example/http-2-0-client-server-push",
-  "active": "http-2-0-client-server-push",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-2-0-client-server-push",
-    "/swan-lake/learn/by-example/http-2-0-client-server-push.html"
-  ]
+  "active": "http-2-0-client-server-push"
 }

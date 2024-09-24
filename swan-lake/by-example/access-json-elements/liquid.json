@@ -13,9 +13,5 @@
     "access"
   ],
   "permalink": "/learn/by-example/access-json-elements",
-  "active": "access-json-elements",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/access-json-elements",
-    "/swan-lake/learn/by-example/access-json-elements.html"
-  ]
+  "active": "access-json-elements"
 }

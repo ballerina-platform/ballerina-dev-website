@@ -17,9 +17,5 @@
     "foreach"
   ],
   "permalink": "/learn/by-example/iterative-use-of-typed-binding",
-  "active": "iterative-use-of-typed-binding",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/iterative-use-of-typed-binding",
-    "/swan-lake/learn/by-example/iterative-use-of-typed-binding.html"
-  ]
+  "active": "iterative-use-of-typed-binding"
 }

@@ -11,9 +11,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/websocket-client-ssl-tls",
-  "active": "websocket-client-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-client-ssl-tls",
-    "/swan-lake/learn/by-example/websocket-client-ssl-tls.html"
-  ]
+  "active": "websocket-client-ssl-tls"
 }

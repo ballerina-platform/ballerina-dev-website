@@ -11,9 +11,5 @@
     "byte array"
   ],
   "permalink": "/learn/by-example/yaml-to-anydata",
-  "active": "yaml-to-anydata",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/yaml-to-anydata",
-    "/swan-lake/learn/by-example/yaml-to-anydata.html"
-  ]
+  "active": "yaml-to-anydata"
 }

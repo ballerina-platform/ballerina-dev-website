@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/websocket-service-jwt-auth",
-  "active": "websocket-service-jwt-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-jwt-auth",
-    "/swan-lake/learn/by-example/websocket-service-jwt-auth.html"
-  ]
+  "active": "websocket-service-jwt-auth"
 }

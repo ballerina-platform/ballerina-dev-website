@@ -11,9 +11,5 @@
     "byte array"
   ],
   "permalink": "/learn/by-example/xml-to-record",
-  "active": "xml-to-record",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-to-record",
-    "/swan-lake/learn/by-example/xml-to-record.html"
-  ]
+  "active": "xml-to-record"
 }

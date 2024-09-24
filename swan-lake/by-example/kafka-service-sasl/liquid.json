@@ -12,9 +12,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/kafka-service-sasl",
-  "active": "kafka-service-sasl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-sasl",
-    "/swan-lake/learn/by-example/kafka-service-sasl.html"
-  ]
+  "active": "kafka-service-sasl"
 }

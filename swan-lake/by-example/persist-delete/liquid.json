@@ -11,9 +11,5 @@
     "entity"
   ],
   "permalink": "/learn/by-example/persist-delete",
-  "active": "persist-delete",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/persist-delete",
-    "/swan-lake/learn/by-example/persist-delete.html"
-  ]
+  "active": "persist-delete"
 }

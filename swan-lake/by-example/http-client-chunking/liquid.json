@@ -10,9 +10,5 @@
     "transfer-encoding"
   ],
   "permalink": "/learn/by-example/http-client-chunking",
-  "active": "http-client-chunking",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-chunking",
-    "/swan-lake/learn/by-example/http-client-chunking.html"
-  ]
+  "active": "http-client-chunking"
 }

@@ -3,9 +3,5 @@
   "description": "This example demonstrates the HTTP service-level and resource-level CORS configurations.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "http", "cors"],
   "permalink": "/learn/by-example/http-cors",
-  "active": "http-cors",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-cors",
-    "/swan-lake/learn/by-example/http-cors.html"
-  ]
+  "active": "http-cors"
 }

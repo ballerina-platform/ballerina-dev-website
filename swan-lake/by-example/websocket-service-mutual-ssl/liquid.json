@@ -11,9 +11,5 @@
     "ciphers"
   ],
   "permalink": "/learn/by-example/websocket-service-mutual-ssl",
-  "active": "websocket-service-mutual-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-mutual-ssl",
-    "/swan-lake/learn/by-example/websocket-service-mutual-ssl.html"
-  ]
+  "active": "websocket-service-mutual-ssl"
 }

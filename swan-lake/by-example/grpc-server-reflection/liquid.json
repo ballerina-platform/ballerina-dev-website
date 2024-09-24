@@ -12,9 +12,5 @@
     "reflection"
   ],
   "permalink": "/learn/by-example/grpc-server-reflection",
-  "active": "grpc-server-reflection",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-server-reflection",
-    "/swan-lake/learn/by-example/grpc-server-reflection.html"
-  ]
+  "active": "grpc-server-reflection"
 }

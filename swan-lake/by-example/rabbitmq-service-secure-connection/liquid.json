@@ -11,9 +11,5 @@
     "credentials"
   ],
   "permalink": "/learn/by-example/rabbitmq-service-secure-connection",
-  "active": "rabbitmq-service-secure-connection",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-service-secure-connection",
-    "/swan-lake/learn/by-example/rabbitmq-service-secure-connection.html"
-  ]
+  "active": "rabbitmq-service-secure-connection"
 }

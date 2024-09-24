@@ -11,9 +11,5 @@
     "ciphers"
   ],
   "permalink": "/learn/by-example/http-client-mutual-ssl",
-  "active": "http-client-mutual-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-mutual-ssl",
-    "/swan-lake/learn/by-example/http-client-mutual-ssl.html"
-  ]
+  "active": "http-client-mutual-ssl"
 }

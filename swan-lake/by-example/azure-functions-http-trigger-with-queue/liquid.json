@@ -12,9 +12,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/azure-functions-http-trigger-with-queue",
-  "active": "azure-functions-http-trigger-with-queue",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/azure-functions-http-trigger-with-queue",
-    "/swan-lake/learn/by-example/azure-functions-http-trigger-with-queue.html"
-  ]
+  "active": "azure-functions-http-trigger-with-queue"
 }

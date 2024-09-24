@@ -12,9 +12,5 @@
     "tuple destructuring"
   ],
   "permalink": "/learn/by-example/list-binding-pattern",
-  "active": "list-binding-pattern",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/list-binding-pattern",
-    "/swan-lake/learn/by-example/list-binding-pattern.html"
-  ]
+  "active": "list-binding-pattern"
 }

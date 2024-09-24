@@ -11,9 +11,5 @@
     "range"
   ],
   "permalink": "/learn/by-example/int-range",
-  "active": "int-range",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/int-range",
-    "/swan-lake/learn/by-example/int-range.html"
-  ]
+  "active": "int-range"
 }

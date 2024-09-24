@@ -10,9 +10,5 @@
     "type"
   ],
   "permalink": "/learn/by-example/object-types",
-  "active": "object-types",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/object-types",
-    "/swan-lake/learn/by-example/object-types.html"
-  ]
+  "active": "object-types"
 }

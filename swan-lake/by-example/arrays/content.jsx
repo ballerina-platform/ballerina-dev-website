@@ -302,8 +302,8 @@ export function Arrays({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Expression-oriented style"
-            href="/learn/by-example/expression-oriented-style"
+            title="Expression equality"
+            href="/learn/by-example/expression-equality"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -330,7 +330,7 @@ export function Arrays({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Expression-oriented style
+                  Expression equality
                 </span>
               </div>
             </div>

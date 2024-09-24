@@ -10,9 +10,5 @@
     "data projection"
   ],
   "permalink": "/learn/by-example/yaml-to-anydata-with-projection",
-  "active": "yaml-to-anydata-with-projection",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/yaml-to-anydata-with-projection",
-    "/swan-lake/learn/by-example/yaml-to-anydata-with-projection.html"
-  ]
+  "active": "yaml-to-anydata-with-projection"
 }

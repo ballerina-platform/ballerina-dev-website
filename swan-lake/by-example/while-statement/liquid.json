@@ -11,9 +11,5 @@
     "iterate"
   ],
   "permalink": "/learn/by-example/while-statement",
-  "active": "while-statement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/while-statement",
-    "/swan-lake/learn/by-example/while-statement.html"
-  ]
+  "active": "while-statement"
 }

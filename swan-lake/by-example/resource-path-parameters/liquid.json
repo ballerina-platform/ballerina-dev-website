@@ -9,9 +9,5 @@
     "resources"
   ],
   "permalink": "/learn/by-example/resource-path-parameters",
-  "active": "resource-path-parameters",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/resource-path-parameters",
-    "/swan-lake/learn/by-example/resource-path-parameters.html"
-  ]
+  "active": "resource-path-parameters"
 }

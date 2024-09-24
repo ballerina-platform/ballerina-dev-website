@@ -11,9 +11,5 @@
     "key"
   ],
   "permalink": "/learn/by-example/table",
-  "active": "table",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/table",
-    "/swan-lake/learn/by-example/table.html"
-  ]
+  "active": "table"
 }

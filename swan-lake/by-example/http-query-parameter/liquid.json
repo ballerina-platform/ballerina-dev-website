@@ -9,9 +9,5 @@
     "query parameter"
   ],
   "permalink": "/learn/by-example/http-query-parameter",
-  "active": "http-query-parameter",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-query-parameter",
-    "/swan-lake/learn/by-example/http-query-parameter.html"
-  ]
+  "active": "http-query-parameter"
 }

@@ -10,9 +10,5 @@
     "on fail"
   ],
   "permalink": "/learn/by-example/named-worker-with-on-fail-clause",
-  "active": "named-worker-with-on-fail-clause",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/named-worker-with-on-fail-clause",
-    "/swan-lake/learn/by-example/named-worker-with-on-fail-clause.html"
-  ]
+  "active": "named-worker-with-on-fail-clause"
 }

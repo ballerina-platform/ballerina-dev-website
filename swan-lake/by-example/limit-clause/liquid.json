@@ -13,9 +13,5 @@
     "filter"
   ],
   "permalink": "/learn/by-example/limit-clause",
-  "active": "limit-clause",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/limit-clause",
-    "/swan-lake/learn/by-example/limit-clause.html"
-  ]
+  "active": "limit-clause"
 }

@@ -9,9 +9,5 @@
     "trace logs"
   ],
   "permalink": "/learn/by-example/http-trace-logs",
-  "active": "http-trace-logs",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-trace-logs",
-    "/swan-lake/learn/by-example/http-trace-logs.html"
-  ]
+  "active": "http-trace-logs"
 }

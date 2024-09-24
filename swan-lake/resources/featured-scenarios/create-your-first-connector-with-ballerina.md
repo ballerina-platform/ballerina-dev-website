@@ -20,8 +20,8 @@ In this guide, we'll walk you through how to generate your first Ballerina conne
 
 Before we begin, make sure you have:
 
-1. A basic understanding of Ballerina SwanLake and the [latest version installed](https://ballerina.io/downloads/).
-2. An OpenAPI specification of the API for which you’re building the connector, along with API credentials (e.g., Twitter Developer account).
+1. A basic understanding of Ballerina Swan Lake and the [latest version installed](https://ballerina.io/downloads/).
+2. An OpenAPI specification of the API for which you’re building the connector, along with the relevant API credentials where required (e.g., Twitter Developer account).
 3. A GitHub account, and Git installed locally.
 4. Visual Studio Code with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
@@ -92,16 +92,16 @@ With your OpenAPI spec ready, use the [Ballerina OpenAPI tool](https://ballerina
 
    This will generate the ballerina source code of the connector client in your `ballerina/` directory.
 
-> **Note:** Ballerina OpenAPI tool supports multiple customization options when generating clients. For more details, check the [Ballerina OpenAPI tool documentation](https://ballerina.io/learn/openapi-tool/).
+> **Note:** The Ballerina OpenAPI tool supports multiple customization options when generating clients. For more details, check the [Ballerina OpenAPI tool documentation](https://ballerina.io/learn/openapi-tool/).
 
-2. Make sure that the generated client consists of the following files:
+2. Make sure that the generated client implementation consists of the following files:
    - `client.bal`: Contains the client implementation with all the API operations.
    - `types.bal`: Contains the data types used in the client.
    - `utils.bal`: Contains utility functions used in the client.
 
 ## Step 4: Test the connector
 
-Now that your connector is generated, it’s important to write tests to ensure everything works as expected.
+Now that your connector is generated, it is important to write tests to ensure everything works as expected.
 
 1. In the `ballerina/tests` directory, add the required test files and write test cases for the key operations of your connector. Aim to cover as many API use cases as possible.
 
@@ -121,7 +121,7 @@ These files will be displayed on the Ballerina Central package landing page. Ens
 
 - **Overview**: Provide a concise introduction to the connector, explaining its purpose and key features.
 - **Setup**: Offer step-by-step instructions on configuring the connector and any necessary prerequisites, such as API keys or environment setup.
-- **Quickstart**: Include a simple, clear example that helps users start using the connector immediately.
+- **Quickstart**: Include a simple, clear example that enable users to start using the connector immediately.
 - **Examples**: Link to additional use cases, providing context on how the connector can be used in different scenarios.
 
 > For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/Module.md).
@@ -143,7 +143,7 @@ Providing practical examples helps users understand the connector better. These 
 
 ## Step 6: Publish the connector
 
-Once you’ve completed the development and testing of your connector, it’s time to publish it for others to use.
+Once you have completed the development and testing of your connector, you can publish it for others to use.
 
 1. Make sure to update the `Ballerina.toml` file with the following details:
    - `org`: Your organization name.
@@ -159,7 +159,7 @@ Once you’ve completed the development and testing of your connector, it’s ti
 
 ## Conclusion
 
-If you’ve followed these steps, you’ve successfully created your first Ballerina connector! This process allows you to quickly integrate external services and share your connector with the Ballerina community.
+You have successfully created your first Ballerina connector! This process allows you to quickly integrate external services and share your connector with the Ballerina community.
 
 Remember to keep your connector up to date with any changes in the API’s OpenAPI specification and to test thoroughly whenever updates are made.
 

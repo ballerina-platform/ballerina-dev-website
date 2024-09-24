@@ -3,11 +3,6 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake Update 9 (2201.9.3) 
 permalink: /downloads/swan-lake-release-notes/2201.9.3/
 active: 2201.9.3
-redirect_from: 
-    - /downloads/swan-lake-release-notes/2201.9.3
-    - /downloads/swan-lake-release-notes/2201.9.3/
-    - /downloads/swan-lake-release-notes/2201.9.3-swan-lake/
-    - /downloads/swan-lake-release-notes/2201.9.3-swan-lake
 ---
 
 ## Overview of Ballerina Swan Lake Update 9 (2201.9.3)

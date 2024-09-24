@@ -3,8 +3,6 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake Preview 2
 permalink: /downloads/swan-lake-release-notes/swan-lake-preview2/
 active: swan-lake-preview2
-redirect_from: 
-    - /downloads/swan-lake-release-notes/swan-lake-preview2
 ---
 ### Overview of Ballerina Swan Lake Preview 2
 This release is the second preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.

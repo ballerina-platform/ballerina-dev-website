@@ -3,11 +3,6 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake Update 7 (2201.7.5)
 permalink: /downloads/swan-lake-release-notes/2201.7.5/
 active: 2201.7.5
-redirect_from:
-- /downloads/swan-lake-release-notes/2201.7.5
-- /downloads/swan-lake-release-notes/2201.7.5/
-- /downloads/swan-lake-release-notes/2201.7.5-swan-lake/
-- /downloads/swan-lake-release-notes/2201.7.5-swan-lake
 ---
 
 ## Overview of Ballerina Swan Lake Update 7 (2201.7.5)

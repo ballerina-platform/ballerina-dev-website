@@ -92,7 +92,7 @@ With your OpenAPI spec ready, use the [Ballerina OpenAPI tool](https://ballerina
    bal openapi -i path/to/spec --mode client -o ballerina
    ```
 
-   This will generate the ballerina source code of the connector client in your `ballerina/` directory.
+   This will generate the ballerina source code of the client connector in your `ballerina/` directory.
 
 > **Note:** The Ballerina OpenAPI tool supports multiple customization options when generating clients. For more details, check the [Ballerina OpenAPI tool documentation](https://ballerina.io/learn/openapi-tool/).
 

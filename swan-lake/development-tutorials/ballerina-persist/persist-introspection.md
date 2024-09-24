@@ -7,8 +7,6 @@ permalink: /learn/ballerina-persist/persist-instrospection/
 active: persist_introspection
 intro: Bal persist can work with existing databases by providing the facility to introspect an existing database to 
  generate the persist data model.
-redirect_from:
-- /learn/ballerina-persist/persist-introspection
 ---
 
 Introspection lets you use `bal persist` with existing databases without having to write a

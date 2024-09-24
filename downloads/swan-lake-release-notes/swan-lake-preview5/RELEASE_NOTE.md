@@ -3,8 +3,6 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake Preview 5
 permalink: /downloads/swan-lake-release-notes/swan-lake-preview5/
 active: swan-lake-preview5
-redirect_from: 
-    - /downloads/swan-lake-release-notes/swan-lake-preview5
 ---
 ### Overview of Ballerina Swan Lake Preview 5 
 

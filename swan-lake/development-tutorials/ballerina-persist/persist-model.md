@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, persist, data mod
 permalink: /learn/ballerina-persist/persist-model/
 active: persist_model
 intro: The data model defines a mechanism to express the application's data using the Ballerina record type. Any record type that is a subtype of the `EntityType` will be an entity in the model.
-redirect_from:
- - /learn/ballerina-persist/persist-model/
 ---
 
 Within a Ballerina project, the data model should be defined in a separate BAL file under the `persist` directory. This file is not considered as a part of the Ballerina project and is used only for the data model definition.

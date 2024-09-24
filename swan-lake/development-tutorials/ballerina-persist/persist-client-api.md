@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, persist, type-saf
 permalink: /learn/ballerina-persist/persist-client-api/
 active: persist_client_api
 intro: The generated client API is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. The CLI tool will generate the derived Entity Types and the Clients from the model definition.
-redirect_from:
-  - /learn/ballerina-persist/persist-client-api
 ---
 
 ## Derived entity types

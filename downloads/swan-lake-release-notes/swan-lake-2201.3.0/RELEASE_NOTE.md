@@ -3,11 +3,6 @@ layout: ballerina-left-nav-release-notes
 title: 2201.3.0 (Swan Lake) 
 permalink: /downloads/swan-lake-release-notes/2201-3-0/
 active: 2201-3-0
-redirect_from: 
-    - /downloads/swan-lake-release-notes/2201-3-0
-    - /downloads/swan-lake-release-notes/2201.3.0/
-    - /downloads/swan-lake-release-notes/2201-3-0-swan-lake/
-    - /downloads/swan-lake-release-notes/2201-3-0-swan-lake
 ---
 
 ## Overview of Ballerina 2201.3.0 (Swan Lake)

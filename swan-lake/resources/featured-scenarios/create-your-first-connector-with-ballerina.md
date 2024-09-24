@@ -10,9 +10,9 @@ intro: This guide walks you through creating your first Ballerina connector usin
 
 ## Introduction
 
-Ballerina is a programming language designed for smooth integration, offering a large library of pre-built connectors. These connectors are special packages that make it easy to communicate with external services, usually through REST APIs. By using connectors, developers can quickly integrate third-party services into their Ballerina applications without having to worry about the technical details of API interactions.
+Ballerina is a programming language that simplifies integration by providing a large library of pre-built connectors. These connectors are special packages consisting of one or more [Ballerina clients](https://ballerina.io/learn/by-example/client-class/), which allows to communicate with external services, usually through REST APIs. By using connectors, developers can quickly integrate third-party services into their Ballerina applications without having to worry about the technical details of API interactions.
 
-Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage their own custom connectors. These connectors can be published on Ballerina Central, making them available for the entire community to use and reuse in their projects.
+Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage their own custom connectors. These connectors can be published on Ballerina Central, making them available for the entire community to use in their projects.
 
 In this guide, we'll walk you through how to generate your first Ballerina connector using an OpenAPI specification. This is one of the fastest and easiest ways to build connectors, helping you quickly integrate external services into your Ballerina projects.
 
@@ -29,7 +29,7 @@ Before we begin, make sure you have:
 
 1. Create a new GitHub repository with an appropriate name. For Ballerina official connectors, the repository name will follow the pattern: `module-ballerinax-<connector-name>` (e.g., `module-ballerinax-twitter`). But for custom connectors, you can choose a name that suits your connector.
 
-2. Clone your newly created empty repository to your local machine:
+2. Clone your newly created repository to your local machine:
    ```
    git clone https://github.com/<your-username>/<connector-repo-name>.git
    cd <connector-repo-name>
@@ -42,6 +42,7 @@ Before we begin, make sure you have:
    module-ballerinax-myconnector/
    ├── .github/
    ├── ballerina/
+   |   ├── tests/
    │   ├── Ballerina.toml
    │   ├── Module.md
    │   ├── Package.md
@@ -78,14 +79,15 @@ Detailed information on the Ballerina connector structure can be found in the [B
 2. Save the file as `spec.yaml` (or `spec.json`) in the `docs/spec` directory of your project.
 
 3. You may need to sanitize the OpenAPI specification to ensure compatibility with the Ballerina OpenAPI tool. This process may involve:
-   - Renaming schema names to comply with Ballerina naming conventions.
-   - Adding, removing, or modifying security schemes to customize authentication options.
+   - adding, removing, or modifying security schemes to customize authentication options.
+   - redefining inline schemas as named schemas to avoid duplication and improve readability.
 
 ## Step 3: Generate the Ballerina client code
 
 With your OpenAPI spec ready, use the [Ballerina OpenAPI tool](https://ballerina.io/learn/openapi-tool/) to generate the connector code.
 
 1. In your terminal, run the following command from the project root:
+      
    ```
    bal openapi -i path/to/spec --mode client -o ballerina
    ```
@@ -149,11 +151,11 @@ Once you have completed the development and testing of your connector, you can p
    - `org`: Your organization name.
    - `name`: The name of your connector.
    - `version`: The version of your connector.
-   - `license`: The license under which your connector is distributed.
-   - `authors`: Your name and email address.
-   - `keywords`: Keywords to help users find your connector.
-   - `icon`: The relative path to the icon file.
-   - `repository`: The URL of your GitHub repository.
+   - `license`: The license under which your connector is distributed (Optional).
+   - `authors`: Your name and email address (Optional).
+   - `keywords`: Keywords to help users find your connector (Optional).
+   - `icon`: The relative path to the icon file, which will be shown as the connector logo in the Ballerina central (Optional).
+   - `repository`: The URL of your GitHub repository (Optional).
 
 2. Follow the steps in the [Ballerina package publishing guide](https://ballerina.io/learn/publish-packages-to-ballerina-central/) to publish your connector to [Ballerina Central](https://central.ballerina.io/) under your organization.
 

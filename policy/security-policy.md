@@ -5,10 +5,6 @@ description: Read our Security Policy to understand the measures we take to prot
 keywords: ballerina, programming language, security, security-policy, security advisories
 intro: We take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 permalink: /security-policy/
-redirect_from:
-    - /security/
-    - /security
-    - /security-policy
 ---
 
 Thank you for taking the time to <a target="_blank" href="https://en.wikipedia.org/wiki/Responsible_disclosure">responsibly disclose</a> any vulnerabilities you find.

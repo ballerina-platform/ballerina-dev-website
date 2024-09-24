@@ -30,4 +30,13 @@ jobs:
         
         URL=https://$DEPLOYMENT/
         echo "Checking links in $URL"
-        octopus $URL
+
+        # Run octopus and catch errors for better logging
+        set -e
+        {
+          octopus $URL
+        } || {
+          echo "Error occurred while running octopus"
+          echo "Debugging info: URL=$URL, Deployment=$DEPLOYMENT"
+          exit 1
+        }

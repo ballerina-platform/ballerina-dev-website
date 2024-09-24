@@ -10,9 +10,5 @@
     "named workers"
   ],
   "permalink": "/learn/by-example/fork",
-  "active": "fork",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/fork",
-    "/swan-lake/learn/by-example/fork.html"
-  ]
+  "active": "fork"
 }

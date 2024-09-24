@@ -10,9 +10,5 @@
     "error handling"
   ],
   "permalink": "/learn/by-example/graphql-service-error-handling",
-  "active": "graphql-service-error-handling",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-error-handling",
-    "/swan-lake/learn/by-example/graphql-service-error-handling.html"
-  ]
+  "active": "graphql-service-error-handling"
 }

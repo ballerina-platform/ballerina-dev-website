@@ -13,9 +13,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/kafka-consumer-constraint-validation",
-  "active": "kafka-consumer-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation",
-    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation.html"
-  ]
+  "active": "kafka-consumer-constraint-validation"
 }

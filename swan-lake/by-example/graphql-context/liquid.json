@@ -9,9 +9,5 @@
     "context object"
   ],
   "permalink": "/learn/by-example/graphql-context",
-  "active": "graphql-context",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-context",
-    "/swan-lake/learn/by-example/graphql-context.html"
-  ]
+  "active": "graphql-context"
 }

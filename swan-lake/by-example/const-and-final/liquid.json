@@ -11,9 +11,5 @@
     "list const"
   ],
   "permalink": "/learn/by-example/const-and-final",
-  "active": "const-and-final",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/const-and-final",
-    "/swan-lake/learn/by-example/const-and-final.html"
-  ]
+  "active": "const-and-final"
 }

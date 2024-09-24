@@ -10,9 +10,5 @@
     "toml"
   ],
   "permalink": "/learn/by-example/configuring-via-toml",
-  "active": "configuring-via-toml",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/configuring-via-toml",
-    "/swan-lake/learn/by-example/configuring-via-toml.html"
-  ]
+  "active": "configuring-via-toml"
 }

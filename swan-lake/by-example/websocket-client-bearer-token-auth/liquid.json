@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/websocket-client-bearer-token-auth",
-  "active": "websocket-client-bearer-token-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-client-bearer-token-auth",
-    "/swan-lake/learn/by-example/websocket-client-bearer-token-auth.html"
-  ]
+  "active": "websocket-client-bearer-token-auth"
 }

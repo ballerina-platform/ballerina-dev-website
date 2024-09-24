@@ -11,9 +11,5 @@
     "Consuming services"
   ],
   "permalink": "/learn/by-example/consuming-services",
-  "active": "consuming-services",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/consuming-services",
-    "/swan-lake/learn/by-example/consuming-services.html"
-  ]
+  "active": "consuming-services"
 }

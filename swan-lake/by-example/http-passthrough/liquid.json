@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/http-passthrough",
-  "active": "http-passthrough",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-passthrough",
-    "/swan-lake/learn/by-example/http-passthrough.html"
-  ]
+  "active": "http-passthrough"
 }

@@ -13,9 +13,5 @@
     "computed name field"
   ],
   "permalink": "/learn/by-example/computed-field-key",
-  "active": "computed-field-key",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/computed-field-key",
-    "/swan-lake/learn/by-example/computed-field-key.html"
-  ]
+  "active": "computed-field-key"
 }

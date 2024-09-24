@@ -195,7 +195,7 @@ export function Strings({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Boolean" href="/learn/by-example/boolean">
+          <Link title="Byte type" href="/learn/by-example/byte-type">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +221,7 @@ export function Strings({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Boolean
+                  Byte type
                 </span>
               </div>
             </div>

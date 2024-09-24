@@ -11,9 +11,5 @@
     "refresh token grant type"
   ],
   "permalink": "/learn/by-example/websocket-client-oauth2-refresh-token-grant-type",
-  "active": "websocket-client-oauth2-refresh-token-grant-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-client-oauth2-refresh-token-grant-type",
-    "/swan-lake/learn/by-example/websocket-client-oauth2-refresh-token-grant-type.html"
-  ]
+  "active": "websocket-client-oauth2-refresh-token-grant-type"
 }

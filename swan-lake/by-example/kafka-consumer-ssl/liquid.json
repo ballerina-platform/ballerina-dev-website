@@ -11,9 +11,5 @@
     "SASL"
   ],
   "permalink": "/learn/by-example/kafka-consumer-ssl",
-  "active": "kafka-consumer-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-consumer-ssl",
-    "/swan-lake/learn/by-example/kafka-consumer-ssl.html"
-  ]
+  "active": "kafka-consumer-ssl"
 }

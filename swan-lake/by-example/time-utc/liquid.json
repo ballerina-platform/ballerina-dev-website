@@ -11,9 +11,5 @@
     "utc"
   ],
   "permalink": "/learn/by-example/time-utc",
-  "active": "time-utc",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/time-utc",
-    "/swan-lake/learn/by-example/time-utc.html"
-  ]
+  "active": "time-utc"
 }

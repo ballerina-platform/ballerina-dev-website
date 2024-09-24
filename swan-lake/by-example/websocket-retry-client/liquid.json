@@ -10,9 +10,5 @@
     "retry"
   ],
   "permalink": "/learn/by-example/websocket-retry-client",
-  "active": "websocket-retry-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-retry-client",
-    "/swan-lake/learn/by-example/websocket-retry-client.html"
-  ]
+  "active": "websocket-retry-client"
 }

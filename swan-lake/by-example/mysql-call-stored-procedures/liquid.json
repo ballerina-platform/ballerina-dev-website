@@ -12,9 +12,5 @@
     "procedure"
   ],
   "permalink": "/learn/by-example/mysql-call-stored-procedures",
-  "active": "mysql-call-stored-procedures",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mysql-call-stored-procedures",
-    "/swan-lake/learn/by-example/mysql-call-stored-procedures.html"
-  ]
+  "active": "mysql-call-stored-procedures"
 }

@@ -11,9 +11,5 @@
     "query complexity"
   ],
   "permalink": "/learn/by-example/graphql-service-query-complexity",
-  "active": "graphql-service-query-complexity",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-query-complexity",
-    "/swan-lake/learn/by-example/graphql-service-query-complexity.html"
-  ]
+  "active": "graphql-service-query-complexity"
 }

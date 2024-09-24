@@ -11,9 +11,5 @@
     "credentials"
   ],
   "permalink": "/learn/by-example/rabbitmq-service-basic-auth",
-  "active": "rabbitmq-service-basic-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-service-basic-auth",
-    "/swan-lake/learn/by-example/rabbitmq-service-basic-auth.html"
-  ]
+  "active": "rabbitmq-service-basic-auth"
 }

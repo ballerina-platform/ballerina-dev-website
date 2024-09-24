@@ -13,9 +13,5 @@
     "introspection"
   ],
   "permalink": "/learn/by-example/graphql-service-oauth2",
-  "active": "graphql-service-oauth2",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-oauth2",
-    "/swan-lake/learn/by-example/graphql-service-oauth2.html"
-  ]
+  "active": "graphql-service-oauth2"
 }

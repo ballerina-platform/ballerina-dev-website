@@ -10,9 +10,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/grpc-service-ssl-tls",
-  "active": "grpc-service-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-ssl-tls",
-    "/swan-lake/learn/by-example/grpc-service-ssl-tls.html"
-  ]
+  "active": "grpc-service-ssl-tls"
 }

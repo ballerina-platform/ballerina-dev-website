@@ -11,9 +11,5 @@
     "jwt bearer grant type"
   ],
   "permalink": "/learn/by-example/http-client-oauth2-jwt-bearer-grant-type",
-  "active": "http-client-oauth2-jwt-bearer-grant-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-oauth2-jwt-bearer-grant-type",
-    "/swan-lake/learn/by-example/http-client-oauth2-jwt-bearer-grant-type.html"
-  ]
+  "active": "http-client-oauth2-jwt-bearer-grant-type"
 }

@@ -12,9 +12,5 @@
     "listener"
   ],
   "permalink": "/learn/by-example/receive-email-using-service",
-  "active": "receive-email-using-service",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/receive-email-using-service",
-    "/swan-lake/learn/by-example/receive-email-using-service.html"
-  ]
+  "active": "receive-email-using-service"
 }

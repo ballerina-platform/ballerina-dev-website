@@ -15,9 +15,5 @@
     "json destructuring"
   ],
   "permalink": "/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern",
-  "active": "rest-binding-pattern-in-mapping-binding-pattern",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern",
-    "/swan-lake/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern.html"
-  ]
+  "active": "rest-binding-pattern-in-mapping-binding-pattern"
 }

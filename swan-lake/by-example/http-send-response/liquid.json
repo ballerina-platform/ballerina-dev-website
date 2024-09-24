@@ -10,9 +10,5 @@
     "anydata"
   ],
   "permalink": "/learn/by-example/http-send-response",
-  "active": "http-send-response",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-send-response",
-    "/swan-lake/learn/by-example/http-send-response.html"
-  ]
+  "active": "http-send-response"
 }

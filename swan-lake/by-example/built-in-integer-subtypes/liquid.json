@@ -11,9 +11,5 @@
     "unsigned"
   ],
   "permalink": "/learn/by-example/built-in-integer-subtypes",
-  "active": "built-in-integer-subtypes",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/built-in-integer-subtypes",
-    "/swan-lake/learn/by-example/built-in-integer-subtypes.html"
-  ]
+  "active": "built-in-integer-subtypes"
 }

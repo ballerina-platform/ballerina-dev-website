@@ -10,9 +10,5 @@
     "value match"
   ],
   "permalink": "/learn/by-example/match-statement",
-  "active": "match-statement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/match-statement",
-    "/swan-lake/learn/by-example/match-statement.html"
-  ]
+  "active": "match-statement"
 }

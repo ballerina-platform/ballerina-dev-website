@@ -368,8 +368,8 @@ export function Tracing({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Counter-based metrics"
-            href="/learn/by-example/counter-metrics"
+            title="Gauge-based metrics"
+            href="/learn/by-example/gauge-metrics"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -379,7 +379,7 @@ export function Tracing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Counter-based metrics
+                  Gauge-based metrics
                 </span>
               </div>
               <svg

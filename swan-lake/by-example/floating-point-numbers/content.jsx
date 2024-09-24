@@ -39,9 +39,8 @@ export function FloatingPointNumbers({ codeSnippets }) {
       <h1>Floating point numbers</h1>
 
       <p>
-        The <code>float</code> type is IEEE 64-bit binary floating point (same
-        as <code>double</code> in Java) and supports the same arithmetic
-        operators as <code>int</code>.
+        The <code>float</code> type is IEEE 64-bit binary floating point and
+        supports the same arithmetic operators as <code>int</code>.
       </p>
 
       <Row

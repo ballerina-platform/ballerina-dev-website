@@ -12,9 +12,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/graphql-service-jwt-auth",
-  "active": "graphql-service-jwt-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-jwt-auth",
-    "/swan-lake/learn/by-example/graphql-service-jwt-auth.html"
-  ]
+  "active": "graphql-service-jwt-auth"
 }

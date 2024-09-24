@@ -10,9 +10,5 @@
     "data projection"
   ],
   "permalink": "/learn/by-example/json-to-record-with-projection",
-  "active": "json-to-record-with-projection",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/json-to-record-with-projection",
-    "/swan-lake/learn/by-example/json-to-record-with-projection.html"
-  ]
+  "active": "json-to-record-with-projection"
 }

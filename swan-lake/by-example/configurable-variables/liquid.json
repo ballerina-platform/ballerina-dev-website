@@ -9,9 +9,5 @@
     "variable"
   ],
   "permalink": "/learn/by-example/configurable-variables",
-  "active": "configurable-variables",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/configurable-variables",
-    "/swan-lake/learn/by-example/configurable-variables.html"
-  ]
+  "active": "configurable-variables"
 }

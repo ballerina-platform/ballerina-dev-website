@@ -9,9 +9,5 @@
     "service endpoint"
   ],
   "permalink": "/learn/by-example/graphql-hello-world",
-  "active": "graphql-hello-world",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-hello-world",
-    "/swan-lake/learn/by-example/graphql-hello-world.html"
-  ]
+  "active": "graphql-hello-world"
 }

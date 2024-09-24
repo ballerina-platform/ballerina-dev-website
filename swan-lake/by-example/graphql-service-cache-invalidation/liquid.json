@@ -10,9 +10,5 @@
     "server-side caching"
   ],
   "permalink": "/learn/by-example/graphql-service-cache-invalidation",
-  "active": "graphql-service-cache-invalidation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-cache-invalidation",
-    "/swan-lake/learn/by-example/graphql-service-cache-invalidation.html"
-  ]
+  "active": "graphql-service-cache-invalidation"
 }

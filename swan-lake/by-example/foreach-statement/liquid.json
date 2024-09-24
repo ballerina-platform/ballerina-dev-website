@@ -12,9 +12,5 @@
     "collections"
   ],
   "permalink": "/learn/by-example/foreach-statement",
-  "active": "foreach-statement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/foreach-statement",
-    "/swan-lake/learn/by-example/foreach-statement.html"
-  ]
+  "active": "foreach-statement"
 }

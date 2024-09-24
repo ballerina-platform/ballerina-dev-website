@@ -10,9 +10,5 @@
     "http/2"
   ],
   "permalink": "/learn/by-example/http-2-to-1-1-downgrade-service",
-  "active": "http-2-to-1-1-downgrade-service",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-service",
-    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-service.html"
-  ]
+  "active": "http-2-to-1-1-downgrade-service"
 }

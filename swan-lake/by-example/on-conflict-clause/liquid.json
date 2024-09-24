@@ -12,9 +12,5 @@
     "query"
   ],
   "permalink": "/learn/by-example/on-conflict-clause",
-  "active": "on-conflict-clause",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/on-conflict-clause",
-    "/swan-lake/learn/by-example/on-conflict-clause.html"
-  ]
+  "active": "on-conflict-clause"
 }

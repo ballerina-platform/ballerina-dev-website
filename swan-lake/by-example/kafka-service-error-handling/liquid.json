@@ -12,9 +12,5 @@
     "error handling"
   ],
   "permalink": "/learn/by-example/kafka-service-error-handling",
-  "active": "kafka-service-error-handling",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-error-handling",
-    "/swan-lake/learn/by-example/kafka-service-error-handling.html"
-  ]
+  "active": "kafka-service-error-handling"
 }

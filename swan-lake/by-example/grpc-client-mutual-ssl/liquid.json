@@ -11,9 +11,5 @@
     "ciphers"
   ],
   "permalink": "/learn/by-example/grpc-client-mutual-ssl",
-  "active": "grpc-client-mutual-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-mutual-ssl",
-    "/swan-lake/learn/by-example/grpc-client-mutual-ssl.html"
-  ]
+  "active": "grpc-client-mutual-ssl"
 }

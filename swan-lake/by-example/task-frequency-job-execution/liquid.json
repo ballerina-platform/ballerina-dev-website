@@ -10,9 +10,5 @@
     "scheduler"
   ],
   "permalink": "/learn/by-example/task-frequency-job-execution",
-  "active": "task-frequency-job-execution",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/task-frequency-job-execution",
-    "/swan-lake/learn/by-example/task-frequency-job-execution.html"
-  ]
+  "active": "task-frequency-job-execution"
 }

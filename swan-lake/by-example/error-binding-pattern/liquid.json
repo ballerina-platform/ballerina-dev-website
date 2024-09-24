@@ -12,9 +12,5 @@
     "error destructuring"
   ],
   "permalink": "/learn/by-example/error-binding-pattern",
-  "active": "error-binding-pattern",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/error-binding-pattern",
-    "/swan-lake/learn/by-example/error-binding-pattern.html"
-  ]
+  "active": "error-binding-pattern"
 }

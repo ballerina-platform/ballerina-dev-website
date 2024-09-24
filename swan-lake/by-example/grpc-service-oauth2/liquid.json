@@ -11,9 +11,5 @@
     "introspection"
   ],
   "permalink": "/learn/by-example/grpc-service-oauth2",
-  "active": "grpc-service-oauth2",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-oauth2",
-    "/swan-lake/learn/by-example/grpc-service-oauth2.html"
-  ]
+  "active": "grpc-service-oauth2"
 }

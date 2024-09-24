@@ -11,9 +11,5 @@
     "deadline"
   ],
   "permalink": "/learn/by-example/grpc-service-check-deadline",
-  "active": "grpc-service-check-deadline",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-check-deadline",
-    "/swan-lake/learn/by-example/grpc-service-check-deadline.html"
-  ]
+  "active": "grpc-service-check-deadline"
 }

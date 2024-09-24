@@ -11,9 +11,5 @@
     "graphql client errors"
   ],
   "permalink": "/learn/by-example/graphql-client-error-handling",
-  "active": "graphql-client-error-handling",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-client-error-handling",
-    "/swan-lake/learn/by-example/graphql-client-error-handling.html"
-  ]
+  "active": "graphql-client-error-handling"
 }

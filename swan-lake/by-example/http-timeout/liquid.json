@@ -10,9 +10,5 @@
     "timeout"
   ],
   "permalink": "/learn/by-example/http-timeout",
-  "active": "http-timeout",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-timeout",
-    "/swan-lake/learn/by-example/http-timeout.html"
-  ]
+  "active": "http-timeout"
 }

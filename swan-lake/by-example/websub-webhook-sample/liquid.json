@@ -9,9 +9,5 @@
     "subscriber"
   ],
   "permalink": "/learn/by-example/websub-webhook-sample",
-  "active": "websub-webhook-sample",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websub-webhook-sample",
-    "/swan-lake/learn/by-example/websub-webhook-sample.html"
-  ]
+  "active": "websub-webhook-sample"
 }

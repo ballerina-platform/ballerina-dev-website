@@ -3,9 +3,5 @@
   "description": "This BBE introduces isolated methods in Ballerina.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "isolated methods"],
   "permalink": "/learn/by-example/isolated-methods",
-  "active": "isolated-methods",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/isolated-methods",
-    "/swan-lake/learn/by-example/isolated-methods.html"
-  ]
+  "active": "isolated-methods"
 }

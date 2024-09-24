@@ -13,9 +13,5 @@
     "http"
   ],
   "permalink": "/learn/by-example/resource-method-typing",
-  "active": "resource-method-typing",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/resource-method-typing",
-    "/swan-lake/learn/by-example/resource-method-typing.html"
-  ]
+  "active": "resource-method-typing"
 }

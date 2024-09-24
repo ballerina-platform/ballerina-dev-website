@@ -10,9 +10,5 @@
     "error handling"
   ],
   "permalink": "/learn/by-example/websocket-service-error-handling",
-  "active": "websocket-service-error-handling",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-error-handling",
-    "/swan-lake/learn/by-example/websocket-service-error-handling.html"
-  ]
+  "active": "websocket-service-error-handling"
 }

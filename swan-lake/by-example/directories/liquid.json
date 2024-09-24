@@ -10,9 +10,5 @@
     "path"
   ],
   "permalink": "/learn/by-example/directories",
-  "active": "directories",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/directories",
-    "/swan-lake/learn/by-example/directories.html"
-  ]
+  "active": "directories"
 }

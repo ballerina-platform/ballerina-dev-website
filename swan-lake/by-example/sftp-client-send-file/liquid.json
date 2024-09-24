@@ -9,9 +9,5 @@
     "FTP security"
   ],
   "permalink": "/learn/by-example/sftp-client-send-file",
-  "active": "sftp-client-send-file",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/sftp-client-send-file",
-    "/swan-lake/learn/by-example/sftp-client-send-file.html"
-  ]
+  "active": "sftp-client-send-file"
 }

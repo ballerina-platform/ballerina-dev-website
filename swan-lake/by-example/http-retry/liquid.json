@@ -10,9 +10,5 @@
     "retry"
   ],
   "permalink": "/learn/by-example/http-retry",
-  "active": "http-retry",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-retry",
-    "/swan-lake/learn/by-example/http-retry.html"
-  ]
+  "active": "http-retry"
 }

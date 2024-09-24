@@ -13,9 +13,5 @@
     "password grant type"
   ],
   "permalink": "/learn/by-example/graphql-client-security-oauth2-password-grant-type",
-  "active": "graphql-client-security-oauth2-password-grant-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-client-security-oauth2-password-grant-type",
-    "/swan-lake/learn/by-example/graphql-client-security-oauth2-password-grant-type.html"
-  ]
+  "active": "graphql-client-security-oauth2-password-grant-type"
 }

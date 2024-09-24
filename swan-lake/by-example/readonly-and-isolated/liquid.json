@@ -9,9 +9,5 @@
     "isolated"
   ],
   "permalink": "/learn/by-example/readonly-and-isolated",
-  "active": "readonly-and-isolated",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/readonly-and-isolated",
-    "/swan-lake/learn/by-example/readonly-and-isolated.html"
-  ]
+  "active": "readonly-and-isolated"
 }

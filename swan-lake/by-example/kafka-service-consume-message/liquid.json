@@ -12,9 +12,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/kafka-service-consume-message",
-  "active": "kafka-service-consume-message",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-consume-message",
-    "/swan-lake/learn/by-example/kafka-service-consume-message.html"
-  ]
+  "active": "kafka-service-consume-message"
 }

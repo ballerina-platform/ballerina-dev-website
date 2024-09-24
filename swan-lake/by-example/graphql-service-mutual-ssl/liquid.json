@@ -13,9 +13,5 @@
     "ciphers"
   ],
   "permalink": "/learn/by-example/graphql-service-mutual-ssl",
-  "active": "graphql-service-mutual-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-mutual-ssl",
-    "/swan-lake/learn/by-example/graphql-service-mutual-ssl.html"
-  ]
+  "active": "graphql-service-mutual-ssl"
 }

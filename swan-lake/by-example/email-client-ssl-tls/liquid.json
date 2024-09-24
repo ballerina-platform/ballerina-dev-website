@@ -13,9 +13,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/email-client-ssl-tls",
-  "active": "email-client-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/email-client-ssl-tls",
-    "/swan-lake/learn/by-example/email-client-ssl-tls.html"
-  ]
+  "active": "email-client-ssl-tls"
 }

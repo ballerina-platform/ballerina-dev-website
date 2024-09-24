@@ -10,9 +10,5 @@
     "change xml name"
   ],
   "permalink": "/learn/by-example/xml-mutation",
-  "active": "xml-mutation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-mutation",
-    "/swan-lake/learn/by-example/xml-mutation.html"
-  ]
+  "active": "xml-mutation"
 }

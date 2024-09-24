@@ -9,9 +9,5 @@
     "conditional send"
   ],
   "permalink": "/learn/by-example/conditional-send",
-  "active": "conditional-send",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/conditional-send",
-    "/swan-lake/learn/by-example/conditional-send.html"
-  ]
+  "active": "conditional-send"
 }

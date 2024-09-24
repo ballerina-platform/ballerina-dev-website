@@ -13,9 +13,5 @@
     "regexp langlib functions"
   ],
   "permalink": "/learn/by-example/regexp-operations",
-  "active": "regexp-operations",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/regexp-operations",
-    "/swan-lake/learn/by-example/regexp-operations.html"
-  ]
+  "active": "regexp-operations"
 }

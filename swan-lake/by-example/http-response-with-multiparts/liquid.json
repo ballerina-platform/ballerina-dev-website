@@ -10,9 +10,5 @@
     "entity"
   ],
   "permalink": "/learn/by-example/http-response-with-multiparts",
-  "active": "http-response-with-multiparts",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-response-with-multiparts",
-    "/swan-lake/learn/by-example/http-response-with-multiparts.html"
-  ]
+  "active": "http-response-with-multiparts"
 }

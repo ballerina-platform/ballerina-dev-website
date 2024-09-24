@@ -13,9 +13,5 @@
     "transaction"
   ],
   "permalink": "/learn/by-example/mysql-atomic-transaction",
-  "active": "mysql-atomic-transaction",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mysql-atomic-transaction",
-    "/swan-lake/learn/by-example/mysql-atomic-transaction.html"
-  ]
+  "active": "mysql-atomic-transaction"
 }

@@ -11,9 +11,5 @@
     "entity"
   ],
   "permalink": "/learn/by-example/persist-get-all",
-  "active": "persist-get-all",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/persist-get-all",
-    "/swan-lake/learn/by-example/persist-get-all.html"
-  ]
+  "active": "persist-get-all"
 }

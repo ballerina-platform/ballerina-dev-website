@@ -10,9 +10,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/http-service-payload-constraint-validation",
-  "active": "http-service-payload-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-payload-constraint-validation",
-    "/swan-lake/learn/by-example/http-service-payload-constraint-validation.html"
-  ]
+  "active": "http-service-payload-constraint-validation"
 }

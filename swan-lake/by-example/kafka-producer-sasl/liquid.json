@@ -11,9 +11,5 @@
     "SASL"
   ],
   "permalink": "/learn/by-example/kafka-producer-sasl",
-  "active": "kafka-producer-sasl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-producer-sasl",
-    "/swan-lake/learn/by-example/kafka-producer-sasl.html"
-  ]
+  "active": "kafka-producer-sasl"
 }

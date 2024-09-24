@@ -11,9 +11,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/jms-service-consume-message",
-  "active": "jms-service-consume-message",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/jms-service-consume-message",
-    "/swan-lake/learn/by-example/jms-service-consume-message.html"
-  ]
+  "active": "jms-service-consume-message"
 }

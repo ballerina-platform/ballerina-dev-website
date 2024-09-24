@@ -10,9 +10,5 @@
     "key"
   ],
   "permalink": "/learn/by-example/table-types",
-  "active": "table-types",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/table-types",
-    "/swan-lake/learn/by-example/table-types.html"
-  ]
+  "active": "table-types"
 }

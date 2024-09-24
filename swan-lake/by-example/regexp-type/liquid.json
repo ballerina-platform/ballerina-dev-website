@@ -10,9 +10,5 @@
     "regular expression"
   ],
   "permalink": "/learn/by-example/regexp-type",
-  "active": "regexp-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/regexp-type",
-    "/swan-lake/learn/by-example/regexp-type.html"
-  ]
+  "active": "regexp-type"
 }

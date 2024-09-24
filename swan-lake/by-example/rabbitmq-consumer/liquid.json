@@ -11,9 +11,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/rabbitmq-consumer",
-  "active": "rabbitmq-consumer",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-consumer",
-    "/swan-lake/learn/by-example/rabbitmq-consumer.html"
-  ]
+  "active": "rabbitmq-consumer"
 }

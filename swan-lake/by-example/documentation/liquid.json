@@ -10,9 +10,5 @@
     "BFM"
   ],
   "permalink": "/learn/by-example/documentation",
-  "active": "documentation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/documentation",
-    "/swan-lake/learn/by-example/documentation.html"
-  ]
+  "active": "documentation"
 }

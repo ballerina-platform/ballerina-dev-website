@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/http-client-self-signed-jwt-authentication",
-  "active": "http-client-self-signed-jwt-authentication",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-self-signed-jwt-authentication",
-    "/swan-lake/learn/by-example/http-client-self-signed-jwt-authentication.html"
-  ]
+  "active": "http-client-self-signed-jwt-authentication"
 }

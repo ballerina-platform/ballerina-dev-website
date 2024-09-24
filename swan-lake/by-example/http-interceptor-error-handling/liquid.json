@@ -12,9 +12,5 @@
     "filter"
   ],
   "permalink": "/learn/by-example/http-interceptor-error-handling",
-  "active": "http-interceptor-error-handling",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-interceptor-error-handling",
-    "/swan-lake/learn/by-example/http-interceptor-error-handling.html"
-  ]
+  "active": "http-interceptor-error-handling"
 }

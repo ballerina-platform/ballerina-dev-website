@@ -11,9 +11,5 @@
     "mutation"
   ],
   "permalink": "/learn/by-example/graphql-client-query-endpoint",
-  "active": "graphql-client-query-endpoint",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-client-query-endpoint",
-    "/swan-lake/learn/by-example/graphql-client-query-endpoint.html"
-  ]
+  "active": "graphql-client-query-endpoint"
 }

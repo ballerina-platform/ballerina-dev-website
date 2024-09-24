@@ -9,9 +9,5 @@
     "server streaming"
   ],
   "permalink": "/learn/by-example/grpc-client-server-streaming",
-  "active": "grpc-client-server-streaming",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-server-streaming",
-    "/swan-lake/learn/by-example/grpc-client-server-streaming.html"
-  ]
+  "active": "grpc-client-server-streaming"
 }

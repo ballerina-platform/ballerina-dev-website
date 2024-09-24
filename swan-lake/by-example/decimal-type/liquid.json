@@ -9,9 +9,5 @@
     "decimal"
   ],
   "permalink": "/learn/by-example/decimal-type",
-  "active": "decimal-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/decimal-type",
-    "/swan-lake/learn/by-example/decimal-type.html"
-  ]
+  "active": "decimal-type"
 }

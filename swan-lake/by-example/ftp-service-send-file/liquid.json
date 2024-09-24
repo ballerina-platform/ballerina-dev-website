@@ -10,9 +10,5 @@
     "listener"
   ],
   "permalink": "/learn/by-example/ftp-service-send-file",
-  "active": "ftp-service-send-file",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/ftp-service-send-file",
-    "/swan-lake/learn/by-example/ftp-service-send-file.html"
-  ]
+  "active": "ftp-service-send-file"
 }

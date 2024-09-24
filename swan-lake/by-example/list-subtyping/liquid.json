@@ -11,9 +11,5 @@
     "sub type"
   ],
   "permalink": "/learn/by-example/list-subtyping",
-  "active": "list-subtyping",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/list-subtyping",
-    "/swan-lake/learn/by-example/list-subtyping.html"
-  ]
+  "active": "list-subtyping"
 }

@@ -13,9 +13,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/nats-service-constraint-validation",
-  "active": "nats-service-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-service-constraint-validation",
-    "/swan-lake/learn/by-example/nats-service-constraint-validation.html"
-  ]
+  "active": "nats-service-constraint-validation"
 }

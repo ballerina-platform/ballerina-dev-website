@@ -9,9 +9,5 @@
     "directives"
   ],
   "permalink": "/learn/by-example/graphql-directives",
-  "active": "graphql-directives",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-directives",
-    "/swan-lake/learn/by-example/graphql-directives.html"
-  ]
+  "active": "graphql-directives"
 }

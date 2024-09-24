@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/http-sse-client",
-  "active": "http-sse-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-sse-client",
-    "/swan-lake/learn/by-example/http-sse-client.html"
-  ]
+  "active": "http-sse-client"
 }

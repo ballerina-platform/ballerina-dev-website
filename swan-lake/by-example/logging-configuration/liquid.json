@@ -10,9 +10,5 @@
     "format"
   ],
   "permalink": "/learn/by-example/logging-configuration",
-  "active": "logging-configuration",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/logging-configuration",
-    "/swan-lake/learn/by-example/logging-configuration.html"
-  ]
+  "active": "logging-configuration"
 }

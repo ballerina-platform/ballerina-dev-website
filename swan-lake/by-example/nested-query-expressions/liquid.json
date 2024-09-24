@@ -11,9 +11,5 @@
     "inner"
   ],
   "permalink": "/learn/by-example/nested-query-expressions",
-  "active": "nested-query-expressions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nested-query-expressions",
-    "/swan-lake/learn/by-example/nested-query-expressions.html"
-  ]
+  "active": "nested-query-expressions"
 }

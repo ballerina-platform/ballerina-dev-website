@@ -10,9 +10,5 @@
     "basic auth"
   ],
   "permalink": "/learn/by-example/http-client-basic-authentication",
-  "active": "http-client-basic-authentication",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-client-basic-authentication",
-    "/swan-lake/learn/by-example/http-client-basic-authentication.html"
-  ]
+  "active": "http-client-basic-authentication"
 }

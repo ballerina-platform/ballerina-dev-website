@@ -11,9 +11,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/grpc-service-simple",
-  "active": "grpc-service-simple",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-simple",
-    "/swan-lake/learn/by-example/grpc-service-simple.html"
-  ]
+  "active": "grpc-service-simple"
 }

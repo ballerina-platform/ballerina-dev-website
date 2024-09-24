@@ -11,9 +11,5 @@
     "file upload"
   ],
   "permalink": "/learn/by-example/http-service-file-upload",
-  "active": "http-service-file-upload",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-file-upload",
-    "/swan-lake/learn/by-example/http-service-file-upload.html"
-  ]
+  "active": "http-service-file-upload"
 }

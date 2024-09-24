@@ -9,9 +9,5 @@
     "mutation"
   ],
   "permalink": "/learn/by-example/graphql-mutations",
-  "active": "graphql-mutations",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-mutations",
-    "/swan-lake/learn/by-example/graphql-mutations.html"
-  ]
+  "active": "graphql-mutations"
 }

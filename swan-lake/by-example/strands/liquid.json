@@ -9,9 +9,5 @@
     "concurrency"
   ],
   "permalink": "/learn/by-example/strands",
-  "active": "strands",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/strands",
-    "/swan-lake/learn/by-example/strands.html"
-  ]
+  "active": "strands"
 }

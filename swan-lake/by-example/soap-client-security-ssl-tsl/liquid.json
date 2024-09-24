@@ -12,9 +12,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/soap-client-security-ssl-tsl",
-  "active": "soap-client-security-ssl-tsl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/soap-client-security-ssl-tsl",
-    "/swan-lake/learn/by-example/soap-client-security-ssl-tsl.html"
-  ]
+  "active": "soap-client-security-ssl-tsl"
 }

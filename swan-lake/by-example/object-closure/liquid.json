@@ -10,9 +10,5 @@
     "self"
   ],
   "permalink": "/learn/by-example/object-closure",
-  "active": "object-closure",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/object-closure",
-    "/swan-lake/learn/by-example/object-closure.html"
-  ]
+  "active": "object-closure"
 }

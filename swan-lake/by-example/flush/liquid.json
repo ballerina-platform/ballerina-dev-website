@@ -9,9 +9,5 @@
     "concurrency"
   ],
   "permalink": "/learn/by-example/flush",
-  "active": "flush",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/flush",
-    "/swan-lake/learn/by-example/flush.html"
-  ]
+  "active": "flush"
 }

@@ -12,9 +12,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/azure-functions-cosmosdb-trigger",
-  "active": "azure-functions-cosmosdb-trigger",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/azure-functions-cosmosdb-trigger",
-    "/swan-lake/learn/by-example/azure-functions-cosmosdb-trigger.html"
-  ]
+  "active": "azure-functions-cosmosdb-trigger"
 }

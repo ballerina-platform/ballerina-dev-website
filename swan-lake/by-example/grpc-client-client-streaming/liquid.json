@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/grpc-client-client-streaming",
-  "active": "grpc-client-client-streaming",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-client-streaming",
-    "/swan-lake/learn/by-example/grpc-client-client-streaming.html"
-  ]
+  "active": "grpc-client-client-streaming"
 }

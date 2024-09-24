@@ -12,9 +12,5 @@
     "SSL"
   ],
   "permalink": "/learn/by-example/mqtt-service-ssl",
-  "active": "mqtt-service-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mqtt-service-ssl",
-    "/swan-lake/learn/by-example/mqtt-service-ssl.html"
-  ]
+  "active": "mqtt-service-ssl"
 }

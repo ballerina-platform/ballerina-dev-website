@@ -10,9 +10,5 @@
     "basic auth"
   ],
   "permalink": "/learn/by-example/grpc-service-basic-auth-file-user-store",
-  "active": "grpc-service-basic-auth-file-user-store",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-basic-auth-file-user-store",
-    "/swan-lake/learn/by-example/grpc-service-basic-auth-file-user-store.html"
-  ]
+  "active": "grpc-service-basic-auth-file-user-store"
 }

@@ -10,9 +10,5 @@
     "subscription"
   ],
   "permalink": "/learn/by-example/graphql-subscriptions",
-  "active": "graphql-subscriptions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-subscriptions",
-    "/swan-lake/learn/by-example/graphql-subscriptions.html"
-  ]
+  "active": "graphql-subscriptions"
 }

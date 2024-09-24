@@ -10,9 +10,5 @@
     "http/2"
   ],
   "permalink": "/learn/by-example/http-2-to-1-1-downgrade-client",
-  "active": "http-2-to-1-1-downgrade-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-client",
-    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-client.html"
-  ]
+  "active": "http-2-to-1-1-downgrade-client"
 }

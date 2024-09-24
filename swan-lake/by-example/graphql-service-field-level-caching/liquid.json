@@ -9,9 +9,5 @@
     "server-side caching"
   ],
   "permalink": "/learn/by-example/graphql-service-field-level-caching",
-  "active": "graphql-service-field-level-caching",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-field-level-caching",
-    "/swan-lake/learn/by-example/graphql-service-field-level-caching.html"
-  ]
+  "active": "graphql-service-field-level-caching"
 }

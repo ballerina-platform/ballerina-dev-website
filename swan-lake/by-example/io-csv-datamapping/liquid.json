@@ -10,9 +10,5 @@
     "data binding"
   ],
   "permalink": "/learn/by-example/io-csv-datamapping",
-  "active": "io-csv-datamapping",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/io-csv-datamapping",
-    "/swan-lake/learn/by-example/io-csv-datamapping.html"
-  ]
+  "active": "io-csv-datamapping"
 }

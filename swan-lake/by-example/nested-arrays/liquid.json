@@ -16,9 +16,5 @@
     "matrix"
   ],
   "permalink": "/learn/by-example/nested-arrays",
-  "active": "nested-arrays",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nested-arrays",
-    "/swan-lake/learn/by-example/nested-arrays.html"
-  ]
+  "active": "nested-arrays"
 }

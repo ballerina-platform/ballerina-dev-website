@@ -9,9 +9,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/constraint-validations",
-  "active": "constraint-validations",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/constraint-validations",
-    "/swan-lake/learn/by-example/constraint-validations.html"
-  ]
+  "active": "constraint-validations"
 }

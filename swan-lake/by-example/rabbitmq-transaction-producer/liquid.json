@@ -10,9 +10,5 @@
     "transaction"
   ],
   "permalink": "/learn/by-example/rabbitmq-transaction-producer",
-  "active": "rabbitmq-transaction-producer",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-transaction-producer",
-    "/swan-lake/learn/by-example/rabbitmq-transaction-producer.html"
-  ]
+  "active": "rabbitmq-transaction-producer"
 }

@@ -3,9 +3,5 @@
   "description": "This example is on how to perform an HTTP redirect in a Ballerina HTTP service.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "http", "redirect"],
   "permalink": "/learn/by-example/http-service-redirects",
-  "active": "http-service-redirects",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-redirects",
-    "/swan-lake/learn/by-example/http-service-redirects.html"
-  ]
+  "active": "http-service-redirects"
 }

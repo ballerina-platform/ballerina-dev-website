@@ -199,11 +199,18 @@ export function BinaryData({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/byte-type">Byte type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/integers">Integers</a>
           </span>
         </li>
       </ul>
-
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">

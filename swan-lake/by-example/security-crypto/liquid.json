@@ -12,9 +12,5 @@
     "encrypt decrypt"
   ],
   "permalink": "/learn/by-example/security-crypto",
-  "active": "security-crypto",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/security-crypto",
-    "/swan-lake/learn/by-example/security-crypto.html"
-  ]
+  "active": "security-crypto"
 }

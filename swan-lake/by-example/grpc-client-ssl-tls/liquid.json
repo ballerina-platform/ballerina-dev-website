@@ -10,9 +10,5 @@
     "tls"
   ],
   "permalink": "/learn/by-example/grpc-client-ssl-tls",
-  "active": "grpc-client-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-ssl-tls",
-    "/swan-lake/learn/by-example/grpc-client-ssl-tls.html"
-  ]
+  "active": "grpc-client-ssl-tls"
 }

@@ -9,9 +9,5 @@
     "strand"
   ],
   "permalink": "/learn/by-example/run-strands-safely-on-separate-threads",
-  "active": "run-strands-safely-on-separate-threads",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/run-strands-safely-on-separate-threads",
-    "/swan-lake/learn/by-example/run-strands-safely-on-separate-threads.html"
-  ]
+  "active": "run-strands-safely-on-separate-threads"
 }

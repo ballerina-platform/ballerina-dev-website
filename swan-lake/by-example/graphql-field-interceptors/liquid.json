@@ -11,9 +11,5 @@
     "resolver functions"
   ],
   "permalink": "/learn/by-example/graphql-field-interceptors",
-  "active": "graphql-field-interceptors",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-field-interceptors",
-    "/swan-lake/learn/by-example/graphql-field-interceptors.html"
-  ]
+  "active": "graphql-field-interceptors"
 }

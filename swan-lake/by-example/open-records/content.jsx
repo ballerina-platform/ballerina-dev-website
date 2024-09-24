@@ -80,10 +80,20 @@ export function OpenRecords({ codeSnippets }) {
         A record type that uses either the <code>&#123;</code> and{" "}
         <code>&#125;</code> delimiters or the <code>&#123;|</code> and{" "}
         <code>|&#125;</code> delimiters with a rest descriptor is considered
-        open. They allow fields other than those specified. The type of
-        unspecified fields is <code>anydata</code>. Open records belong to{" "}
-        <code>map&lt;anydata&gt;</code>. Quoted keys can be used to specify
-        fields that are not mentioned in the record type.
+        open. Open records allow fields other than those explicitly specified.
+      </p>
+
+      <p>
+        When the record is open due to the use of the <code>&#123;</code> and{" "}
+        <code>&#125;</code> delimiters, the expected type for any additional
+        field is <code>anydata</code>. When the record is open due to the use of
+        a rest descriptor, the expected type for any additional field is the
+        type specified in the rest descriptor.
+      </p>
+
+      <p>
+        Quoted keys can be used to specify fields that are not explicitly
+        specified in an open record type.
       </p>
 
       <Row
@@ -261,6 +271,14 @@ export function OpenRecords({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/anydata-type/">Anydata type</a>
           </span>
         </li>
       </ul>

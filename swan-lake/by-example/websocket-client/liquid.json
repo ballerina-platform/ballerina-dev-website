@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/websocket-client",
-  "active": "websocket-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-client",
-    "/swan-lake/learn/by-example/websocket-client.html"
-  ]
+  "active": "websocket-client"
 }

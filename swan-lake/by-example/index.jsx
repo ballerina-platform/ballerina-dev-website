@@ -44,6 +44,10 @@ import {
   codeSnippetData as BooleanCodeSnippetData,
 } from "./boolean/content.jsx";
 import {
+  ByteType,
+  codeSnippetData as ByteTypeCodeSnippetData,
+} from "./byte-type/content.jsx";
+import {
   Strings,
   codeSnippetData as StringsCodeSnippetData,
 } from "./strings/content.jsx";
@@ -191,6 +195,10 @@ import {
   ExpressionOrientedStyle,
   codeSnippetData as ExpressionOrientedStyleCodeSnippetData,
 } from "./expression-oriented-style/content.jsx";
+import {
+  ExpressionEquality,
+  codeSnippetData as ExpressionEqualityCodeSnippetData,
+} from "./expression-equality/content.jsx";
 import {
   Arrays,
   codeSnippetData as ArraysCodeSnippetData,
@@ -2088,13 +2096,13 @@ import {
   codeSnippetData as TracingCodeSnippetData,
 } from "./tracing/content.jsx";
 import {
-  CounterMetrics,
-  codeSnippetData as CounterMetricsCodeSnippetData,
-} from "./counter-metrics/content.jsx";
-import {
   GaugeMetrics,
   codeSnippetData as GaugeMetricsCodeSnippetData,
 } from "./gauge-metrics/content.jsx";
+import {
+  CounterMetrics,
+  codeSnippetData as CounterMetricsCodeSnippetData,
+} from "./counter-metrics/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -2121,6 +2129,8 @@ const BBEs = {
   NilCodeSnippetData,
   Boolean,
   BooleanCodeSnippetData,
+  ByteType,
+  ByteTypeCodeSnippetData,
   Strings,
   StringsCodeSnippetData,
   IfStatement,
@@ -2195,6 +2205,8 @@ const BBEs = {
   NeverTypeCodeSnippetData,
   ExpressionOrientedStyle,
   ExpressionOrientedStyleCodeSnippetData,
+  ExpressionEquality,
+  ExpressionEqualityCodeSnippetData,
   Arrays,
   ArraysCodeSnippetData,
   NestedArrays,
@@ -3143,10 +3155,10 @@ const BBEs = {
   PersistDeleteCodeSnippetData,
   Tracing,
   TracingCodeSnippetData,
-  CounterMetrics,
-  CounterMetricsCodeSnippetData,
   GaugeMetrics,
   GaugeMetricsCodeSnippetData,
+  CounterMetrics,
+  CounterMetricsCodeSnippetData,
 };
 
 export default BBEs;

@@ -12,9 +12,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/kafka-service-ssl",
-  "active": "kafka-service-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-ssl",
-    "/swan-lake/learn/by-example/kafka-service-ssl.html"
-  ]
+  "active": "kafka-service-ssl"
 }

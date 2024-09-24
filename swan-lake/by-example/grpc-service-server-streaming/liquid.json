@@ -10,9 +10,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/grpc-service-server-streaming",
-  "active": "grpc-service-server-streaming",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-server-streaming",
-    "/swan-lake/learn/by-example/grpc-service-server-streaming.html"
-  ]
+  "active": "grpc-service-server-streaming"
 }

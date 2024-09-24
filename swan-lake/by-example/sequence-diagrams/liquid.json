@@ -9,9 +9,5 @@
     "diagram"
   ],
   "permalink": "/learn/by-example/sequence-diagrams",
-  "active": "sequence-diagrams",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/sequence-diagrams",
-    "/swan-lake/learn/by-example/sequence-diagrams.html"
-  ]
+  "active": "sequence-diagrams"
 }

@@ -10,9 +10,5 @@
     "jsonpath expressions"
   ],
   "permalink": "/learn/by-example/jsonpath-expressions",
-  "active": "jsonpath-expressions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/jsonpath-expressions",
-    "/swan-lake/learn/by-example/jsonpath-expressions.html"
-  ]
+  "active": "jsonpath-expressions"
 }

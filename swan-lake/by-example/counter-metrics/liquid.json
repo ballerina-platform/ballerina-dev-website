@@ -11,9 +11,5 @@
     "counter"
   ],
   "permalink": "/learn/by-example/counter-metrics",
-  "active": "counter-metrics",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/counter-metrics",
-    "/swan-lake/learn/by-example/counter-metrics.html"
-  ]
+  "active": "counter-metrics"
 }

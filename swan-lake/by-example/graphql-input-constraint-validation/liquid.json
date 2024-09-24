@@ -10,9 +10,5 @@
     "graphql constraint validation"
   ],
   "permalink": "/learn/by-example/graphql-input-constraint-validation",
-  "active": "graphql-input-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-input-constraint-validation",
-    "/swan-lake/learn/by-example/graphql-input-constraint-validation.html"
-  ]
+  "active": "graphql-input-constraint-validation"
 }

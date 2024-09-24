@@ -13,9 +13,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/kafka-service-constraint-validation",
-  "active": "kafka-service-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-constraint-validation",
-    "/swan-lake/learn/by-example/kafka-service-constraint-validation.html"
-  ]
+  "active": "kafka-service-constraint-validation"
 }

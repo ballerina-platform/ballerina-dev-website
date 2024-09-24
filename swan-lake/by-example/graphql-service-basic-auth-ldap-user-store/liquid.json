@@ -13,9 +13,5 @@
     "ldap"
   ],
   "permalink": "/learn/by-example/graphql-service-basic-auth-ldap-user-store",
-  "active": "graphql-service-basic-auth-ldap-user-store",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-service-basic-auth-ldap-user-store",
-    "/swan-lake/learn/by-example/graphql-service-basic-auth-ldap-user-store.html"
-  ]
+  "active": "graphql-service-basic-auth-ldap-user-store"
 }

@@ -53,17 +53,14 @@ export default function Perks(props) {
             <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/guest-lectures-and-talks.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/ambassadors/exclusive-learning-opportunities.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title"> Exclusive learning opportunities</h3>
 
-                    <ul className={styles.customUl}>
-                      <li className={styles.customLi}>Free vouchers for WSO2 certifications.</li>
-                      <li className={styles.customLi}>One-on-one mentorship with seasoned Ballerina developers.</li>
-                    </ul>
+                    <p className="card-text">Get access to exclusive learning resources and mentorship.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -74,17 +71,14 @@ export default function Perks(props) {
             <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/workshops-and-training-sessions.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/ambassadors/professional-development.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Professional development</h3>
 
-                    <ul className={styles.customUl}>
-                      <li className={styles.customLi}>Opportunity to enhance skills in public speaking, technical writing, and community management.</li>
-                      <li className={styles.customLi}>Leadership opportunities in open-source projects within the Ballerina community.</li>
-                    </ul>
+                    <p className="card-text">Enhance your skills in public speaking, writing, and leading open-source projects.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -96,19 +90,14 @@ export default function Perks(props) {
             <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/hackathons-and-coding-challenges.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/ambassadors/rewards-and-recognition.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Rewards and recognition</h3>
 
-                    <ul className={styles.customUl}>
-                      <li className={styles.customLi}>Recognition of the role as an ambassador with exclusive certificates and digital badges.</li>
-                      <li className={styles.customLi}>Public acknowledgment on Ballerina Social Media and Community channels.</li>
-                      <li className={styles.customLi}>Free <a className={styles.textLink} href="https://wso2.com/choreo/" target='_blank' rel='noreferrer'>Choreo</a> credits.</li>
-                      <li className={styles.customLi}>Exclusive Ballerina and WSO2 branded swags.</li>
-                    </ul>
+                    <p className="card-text">Earn recognition with certificates, badges, and more exclusive rewards.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -119,17 +108,14 @@ export default function Perks(props) {
             <Card className={`mb-3 ${styles.cutomCard}`}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/research-collaborations.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/ambassadors/community-influence.svg`} className={`${styles.icon} pt-3 pt-sm-0`} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Community Influence</h3>
 
-                    <ul className={styles.customUl}>
-                      <li className={styles.customLi}>Opportunities to create and share content (blogs, tutorials, videos) about Ballerina, with the potential to be featured on official Ballerina channels.</li>
-                      <li className={styles.customLi}>Support for organizing and hosting Ballerina-related events for their local communities/universities.</li>
-                    </ul>
+                    <p className="card-text">Create content and organize events to inspire and engage your local developer community.</p>
                   </Card.Body>
                 </Col>
               </Row>

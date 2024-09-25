@@ -56,7 +56,7 @@ export default function Contact(props) {
 
         <Row>
           <Col sm={12} md={6} lg={6}>
-            <a href="mailto:contact@ballerina.io">
+            <a href="https://forms.gle/i3g6Km3NTWRZMyqa8" target="_blank" rel="noreferrer">
               <button type="button" className={styles.sendEmail}>Apply now</button>
             </a>
           </Col>

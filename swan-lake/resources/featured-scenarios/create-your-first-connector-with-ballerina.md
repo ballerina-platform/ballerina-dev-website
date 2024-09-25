@@ -12,7 +12,7 @@ intro: This guide walks you through creating your first Ballerina connector usin
 
 Ballerina is a programming language that simplifies integration by providing a large library of pre-built connectors. These connectors are special packages consisting of one or more [Ballerina clients](https://ballerina.io/learn/by-example/client-class/), which allow communication with external services, usually via REST APIs. By using connectors, developers can quickly integrate third-party services into their Ballerina applications without having to worry about the technical details of API interactions.
 
-Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage custom connectors. These connectors can be published on Ballerina Central, making them available for the entire community to use in their projects.
+Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage client connectors. These connectors are typically published on Ballerina Central as public connectors, available to the entire community, but you can also publish them as private connectors for internal use within your organization.
 
 In this guide, we'll walk you through how to generate your first Ballerina connector using an OpenAPI specification. This is one of the fastest and easiest ways to build connectors, enabling you to quickly integrate external services into your Ballerina projects.
 
@@ -30,6 +30,7 @@ Before we begin, make sure you have:
 1. Create a new GitHub repository with an appropriate name. For Ballerina official connectors, the repository name follows the pattern: `module-ballerinax-<connector-name>` (e.g., `module-ballerinax-twitter`). But for custom connectors, you can choose a name that suits your connector.
 
 2. Clone your newly created repository to your local machine:
+
    ```
    git clone https://github.com/<your-username>/<connector-repo-name>.git
    cd <connector-repo-name>
@@ -38,6 +39,7 @@ Before we begin, make sure you have:
 3. Visit the [Ballerina generated connector template on GitHub](https://github.com/ballerina-platform/ballerina-library/tree/main/library-templates/generated-connector-template/files) and copy the entire project structure and content to your local repository folder, making sure to include all files and directories.
 
 4. Your local project structure should now look similar to this:
+
    ```
    module-ballerinax-myconnector/
    ├── .github/
@@ -119,29 +121,29 @@ Follow these steps to ensure your connector is well-documented:
 
 1. Update `Module.md` and `Package.md` files
 
-These files will be displayed on the Ballerina Central package landing page. Ensure they introduce and explain the connector package clearly and comprehensively. Each file should include the following sections:
+   These files will be displayed on the Ballerina Central package landing page. Ensure they introduce and explain the connector package clearly and comprehensively. Each file should include the following sections:
+   
+   - **Overview**: Provide a concise introduction to the connector, explaining its purpose and key features.
+   - **Setup**: Offer step-by-step instructions on configuring the connector and any necessary prerequisites, such as API keys or environment setup.
+   - **Quickstart**: Include a simple, clear example that enable users to start using the connector immediately.
+   - **Examples**: Link to additional use cases, providing context on how the connector can be used in different scenarios.
 
-- **Overview**: Provide a concise introduction to the connector, explaining its purpose and key features.
-- **Setup**: Offer step-by-step instructions on configuring the connector and any necessary prerequisites, such as API keys or environment setup.
-- **Quickstart**: Include a simple, clear example that enable users to start using the connector immediately.
-- **Examples**: Link to additional use cases, providing context on how the connector can be used in different scenarios.
-
-> For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/Module.md).
+   > For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/Module.md).
 
 2. Update the `README.md` file
 
-This file will be displayed on the GitHub repository landing page. Therefore, it should include the same information as `Module.md` with a few additional sections such as `Building from Source`, `Contributing`, `License`, etc.
-
-> For reference, check the [Twitter connector README](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/README.md).
+   This file will be displayed on the GitHub repository landing page. Therefore, it should include the same information as `Module.md` with a few additional sections such as `Building from Source`, `Contributing`, `License`, etc.
+   
+   > For reference, check the [Twitter connector README](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/README.md).
 
 3. Write example use cases (optional)
 
-Providing practical examples helps users understand the connector better. These examples should show how the connector is used in real-world scenarios.
+   Providing practical examples helps users understand the connector better. These examples should show how the connector is used in real-world scenarios.
 
-- All the examples should be added under the `examples/` directory.
-- Each example should be added as a Ballerina package with its own `README.md` file, explaining the use case and how to run the example.
+   - All the examples should be added under the `examples/` directory.
+   - Each example should be added as a Ballerina package with its own `README.md` file, explaining the use case and how to run the example.
 
-> For reference, check the [Twitter connector examples](https://github.com/ballerina-platform/module-ballerinax-twitter/tree/main/examples).
+   > For reference, check the [Twitter connector examples](https://github.com/ballerina-platform/module-ballerinax-twitter/tree/main/examples).
 
 ## Step 6: Publish the connector
 

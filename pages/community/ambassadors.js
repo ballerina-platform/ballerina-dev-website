@@ -23,7 +23,8 @@ import Head from 'next/head';
 import Layout from '../../layouts/LayoutCommunity';
 import What from '../../components/ambassadors/what/What';
 import Perks from '../../components/ambassadors/perks/Perks';
-import Meet from '../../components/ambassadors/meet/Meet';
+// import Meet from '../../components/ambassadors/meet/Meet';
+import Apply from '../../components/ambassadors/apply/Apply';
 
 
 export default function Ambassadors() {
@@ -50,34 +51,34 @@ export default function Ambassadors() {
     <>
       <Head>
         <title>Ballerina ambassador program - The Ballerina programming language</title>
-        <meta name="description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta name="description" content="Join the Ballerina Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, student engagement program, ambassadors" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Ballerina ambassador program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="og:description" content="Join the Ballerina Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-ambassador-program-sm-banner.png"
         />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Ballerina ambassador program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="og:description" content="Join the Ballerina Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-ambassador-program-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Ballerina ambassador program - The Ballerina programming language" />
-        <meta property="twitter:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
-        <meta property="twitter:text:description" content="Join the Ballerina Student Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="twitter:description" content="Join the Ballerina Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="twitter:text:description" content="Join the Ballerina Ambassador Program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-project-mentorship-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-ambassador-program-sm-banner.png"
         />
       </Head>
       <Layout>
@@ -87,18 +88,18 @@ export default function Ambassadors() {
               <Container>
                 <Row>
                   <img src="/images/mesh-1-row-cropped.svg" className="background-image" alt="Background" />
-                  <Col xs={12} md={12} lg={7}>
+                  <Col xs={12} md={12} lg={6}>
                     <h1>Ballerina ambassador program</h1>
                     <p style={{ fontSize: "22px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>
-                      The Ballerina Ambassador Program aims to cultivate a network of enthusiastic and talented developers who are passionate about programming, cloud-native development, and microservices architecture. These ambassadors will act as representatives of the Ballerina within their academic/developer communities, promoting it, fostering engagement, and building a vibrant, supportive community of developers.
+                      Empower the developer community or represent Ballerina on campus to solve real-world integration challenges, and unlock unique opportunities to showcase your skills while building a vibrant developer network.
                     </p>
 
-                    <a href="#" className="applyNow">
-                    Apply now
-                    </a>
+                    {/* <a href="#" className="applyNow">
+                      Apply now
+                    </a> */}
                   </Col>
-                  <Col xs={12} md={12} lg={5} className='introImg'>
-                    <img src="/images/ambassadors/banner1.png" alt="Project mentorship" />
+                  <Col xs={12} md={12} lg={6} className='introImg'>
+                    <img src="/images/ambassadors/ballerina-ambassador-program-image.png" alt="Project mentorship" />
                   </Col>
                 </Row>
               </Container>
@@ -113,8 +114,12 @@ export default function Ambassadors() {
             <Perks getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          {/* <Row className="pageContentRow communityRow slackRow">
             <Meet getLink={getLink} />
+          </Row> */}
+
+          <Row className="pageContentRow communityRow slackRow">
+            <Apply getLink={getLink} />
           </Row>
 
         </Col>

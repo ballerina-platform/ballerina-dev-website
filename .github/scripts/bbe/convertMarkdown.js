@@ -386,6 +386,10 @@ const generateContent = (
             .map((k) => k.trim()),
     permalink: `/learn/by-example/${bbeName}`,
     active: bbeName,
+    redirect_from: [
+      `/swan-lake/learn/by-example/${bbeName}`,
+      `/swan-lake/learn/by-example/${bbeName}.html`,
+    ],
   };
 
   // buttons

@@ -91,7 +91,7 @@ export default function Ambassadors() {
                   <Col xs={12} md={12} lg={6}>
                     <h1>Ballerina ambassador program</h1>
                     <p style={{ fontSize: "22px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>
-                      Empower the developer community or represent Ballerina on campus to solve real-world integration challenges, and unlock unique opportunities to showcase your skills while building a vibrant developer network.
+                      Empower the developer community or represent Ballerina in your university to solve real-world integration challenges, and unlock unique opportunities to showcase your skills while building a vibrant developer network.
                     </p>
 
                     {/* <a href="#" className="applyNow">

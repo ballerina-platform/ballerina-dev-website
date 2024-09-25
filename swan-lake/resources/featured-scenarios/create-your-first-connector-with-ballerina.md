@@ -10,24 +10,24 @@ intro: This guide walks you through creating your first Ballerina connector usin
 
 ## Introduction
 
-Ballerina is a programming language that simplifies integration by providing a large library of pre-built connectors. These connectors are special packages consisting of one or more [Ballerina clients](https://ballerina.io/learn/by-example/client-class/), which allows to communicate with external services, usually through REST APIs. By using connectors, developers can quickly integrate third-party services into their Ballerina applications without having to worry about the technical details of API interactions.
+Ballerina is a programming language that simplifies integration by providing a large library of pre-built connectors. These connectors are special packages consisting of one or more [Ballerina clients](https://ballerina.io/learn/by-example/client-class/), which allow communication with external services, usually via REST APIs. By using connectors, developers can quickly integrate third-party services into their Ballerina applications without having to worry about the technical details of API interactions.
 
-Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage their own custom connectors. These connectors can be published on Ballerina Central, making them available for the entire community to use in their projects.
+Along with its powerful library ecosystem, Ballerina also allows developers to easily create, share, and manage custom connectors. These connectors can be published on Ballerina Central, making them available for the entire community to use in their projects.
 
-In this guide, we'll walk you through how to generate your first Ballerina connector using an OpenAPI specification. This is one of the fastest and easiest ways to build connectors, helping you quickly integrate external services into your Ballerina projects.
+In this guide, we'll walk you through how to generate your first Ballerina connector using an OpenAPI specification. This is one of the fastest and easiest ways to build connectors, enabling you to quickly integrate external services into your Ballerina projects.
 
 ## Set up the prerequisites
 
 Before we begin, make sure you have:
 
 1. A basic understanding of Ballerina Swan Lake and the [latest version installed](https://ballerina.io/downloads/).
-2. An OpenAPI specification of the API for which you’re building the connector, along with the relevant API credentials where required (e.g., Twitter Developer account).
+2. An OpenAPI specification of the API for which you’re building the connector, along with the relevant API credentials where required (e.g., Twitter Developer account keys).
 3. A GitHub account, and Git installed locally.
-4. Visual Studio Code with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
+4. Visual Studio Code with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 
 ## Step 1: Set the project structure
 
-1. Create a new GitHub repository with an appropriate name. For Ballerina official connectors, the repository name will follow the pattern: `module-ballerinax-<connector-name>` (e.g., `module-ballerinax-twitter`). But for custom connectors, you can choose a name that suits your connector.
+1. Create a new GitHub repository with an appropriate name. For Ballerina official connectors, the repository name follows the pattern: `module-ballerinax-<connector-name>` (e.g., `module-ballerinax-twitter`). But for custom connectors, you can choose a name that suits your connector.
 
 2. Clone your newly created repository to your local machine:
    ```

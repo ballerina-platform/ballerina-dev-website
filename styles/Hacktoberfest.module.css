@@ -2,6 +2,11 @@
   padding: 80px 0 80px 0;
 }
 
+.hacktoberfestIntro2024 {
+  padding: 80px 0 80px 0;
+  background: #000;
+}
+
 .hacktoberfestChallenges, .hacktoberfestRules {
   background: #fff;
 }

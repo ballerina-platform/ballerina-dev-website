@@ -280,7 +280,7 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
 
 ## String templates
 
-* If it is needed to split a single line string template to ensure that the number of characters in a line does not exceed a character limit one of the following approaches can be used. In addition to this string concatenation can also be used.
+* To split a single-line string template and ensure that the number of characters in a line does not exceed the character limit, use one of the following approaches. You can also use string concatenation as an additional option.
 
     ```ballerina
     string message1 = string `Hello ${

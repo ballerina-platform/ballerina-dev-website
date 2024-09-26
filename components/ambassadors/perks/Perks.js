@@ -58,7 +58,7 @@ export default function Perks(props) {
                 <Col md={10}>
                   <Card.Body>
 
-                    <h3 className="card-title"> Exclusive learning opportunities</h3>
+                    <h3 className="card-title">Exclusive learning opportunities</h3>
 
                     <p className="card-text">Get access to exclusive learning resources and mentorship.</p>
                   </Card.Body>
@@ -78,7 +78,7 @@ export default function Perks(props) {
 
                     <h3 className="card-title">Professional development</h3>
 
-                    <p className="card-text">Enhance your skills in public speaking, writing, and leading open-source projects.</p>
+                    <p className="card-text">Enhance your skills in public speaking, content writing, and contributing to open-source projects.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -97,7 +97,7 @@ export default function Perks(props) {
 
                     <h3 className="card-title">Rewards and recognition</h3>
 
-                    <p className="card-text">Earn recognition with certificates, badges, and more exclusive rewards.</p>
+                    <p className="card-text">Earn recognition with certificates, badges, swags, and many more exclusive rewards.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -113,7 +113,7 @@ export default function Perks(props) {
                 <Col md={10}>
                   <Card.Body>
 
-                    <h3 className="card-title">Community Influence</h3>
+                    <h3 className="card-title">Community influence</h3>
 
                     <p className="card-text">Create content and organize events to inspire and engage your local developer community.</p>
                   </Card.Body>

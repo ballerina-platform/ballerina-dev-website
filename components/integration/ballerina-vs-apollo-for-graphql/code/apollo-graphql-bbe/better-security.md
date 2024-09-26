@@ -1,6 +1,6 @@
 ---
 title: 'Better security'
-description: 'Ballerina provides robust security features, including encryption, authentication, and authorization, which are crucial for businesses handling sensitive data. Moreover, it ensures the integrity of queries through query depth validation and query complexity analysis.'
+description: 'Ballerina offers robust security features like encryption, authentication, and authorization, essential for businesses handling sensitive data. It also ensures query integrity with depth validation and complexity analysis.'
 url: 'https://github.com/ballerina-guides/integration-samples/blob/graphql-security/graphql-social-media-service/service.bal'
 ---
 ```
@@ -30,17 +30,17 @@ listener graphql:Listener graphqlListener = new (9090,
             scopes: ["admin"]
         }
     ],
-    // Validate the query depth
+    // Validate the query depth.
     maxQueryDepth: 5,
     queryComplexityConfig: {
-        // Limit the complexity of query execute
+        // Limit the complexity of the query being executed.
         maxComplexity: 50
     }
 }
 service /graphql on graphqlListener {
 
     @graphql:ResourceConfig {
-        // Define complexity for the field
+        // Define complexity for the field.
         complexity: 10
     }
     resource function get users() returns User[] {
@@ -52,7 +52,7 @@ service /graphql on graphqlListener {
 }
 
 public type NewPost readonly & record {|
-    // Validate user inputs
+    // Validate user inputs.
     @constraint:String {
         maxLength: 25,
         minLength: 5

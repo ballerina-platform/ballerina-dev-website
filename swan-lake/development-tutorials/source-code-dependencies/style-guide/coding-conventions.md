@@ -278,4 +278,16 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
     };
     ```
 
+## String templates
+
+* If it is needed to split a single line string template to ensure that the number of characters in a line does not exceed a character limit one of the following approaches can be used. In addition to this string concatenation can also be used.
+
+    ```ballerina
+    string message1 = string `Hello ${
+    name}, Welcome to Ballerina!`;
+
+    string message2 = string `Hello ${name}, ${
+    ""}Welcome to Ballerina!`;
+    ```
+
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

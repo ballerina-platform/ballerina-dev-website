@@ -51,10 +51,10 @@ export default function What(props) {
             <div className={styles.cardDescription}>
               <div className={styles.content}>
                 <ul className={styles.customUl}>
-                  <li className={styles.customLi}>Lead workshops, meetups, and other exciting events to introduce Ballerina to fellow developers.</li>
-                  <li className={styles.customLi}>Develop tutorials, blogs, and videos showcasing Ballerina’s capabilities.</li>
+                  <li className={styles.customLi}>Organize or conduct workshops, meetups, and other exciting events to introduce Ballerina to fellow developers.</li>
+                  <li className={styles.customLi}>Develop tutorials, blogs, and videos showcasing Ballerina&apos;s capabilities.</li>
                   <li className={styles.customLi}>Engage with the Ballerina community to foster collaboration and knowledge sharing.</li>
-                  <li className={styles.customLi}>Provide valuable feedback on developer experiences with Ballerina.</li>
+                  <li className={styles.customLi}>Provide feedback on developer experience with Ballerina.</li>
                 </ul>
               </div>
             </div>

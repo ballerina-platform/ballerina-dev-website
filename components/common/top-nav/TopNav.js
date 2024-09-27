@@ -57,9 +57,9 @@ const TopNav = (props) => {
 
   return (
     <>
-      <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
+      <Navbar key={expand} expand={expand} className={(launcher === 'home' || launcher === "hack") ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
         <Container fluid>
-          {(launcher === "home") ?
+          {(launcher === "home" || launcher === "hack") ?
             <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
               <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
             </Navbar.Brand>

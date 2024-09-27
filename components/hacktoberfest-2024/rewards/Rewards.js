@@ -17,11 +17,14 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Card } from 'react-bootstrap';
 
 import styles from './Rewards.module.css';
 
 export default function Rewards(props) {
+
+  const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
+
   return (
     <Col sm={12}>
       <Container>
@@ -47,35 +50,52 @@ export default function Rewards(props) {
 
         <Row>
 
-          <Col xs={12} md={6} lg={6} className={styles.boxCol}>
+          <Col xs={12} md={6} lg={4} className={styles.boxCol}>
             <div className={styles.cardWrapper}>
               <div>
                 <div className={styles.cardDescription}>
                   <div className={styles.content}>
                     <p className={styles.msg}>The contributors who make the most significant contributions to Ballerina during Hacktoberfest will be rewarded with the following prizes:</p>
                     <ul>
+                      <li className={styles.customLi}>Redeem your points to purchase exclusive Ballerina-branded items from the <a className={styles.titleLink} target="_blank" rel="noreferrer" href="#">swag store</a></li>
                       <li className={styles.customLi}>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                       <li className={styles.customLi}><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
-                      <li className={styles.customLi}>Ballerina branded swags</li>
-
-
                     </ul>
-
                   </div>
                 </div>
               </div>
             </div>
           </Col>
 
-          <Col xs={12} md={6} lg={6} style={{ textAlign: "center", marginTop: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <h4 className='mb-5'>Redeem credits for Ballerina swag.</h4>
-            <img src="/images/hacktoberfest/swags.png" alt="swags" className={`mb-5 ${styles.swag}`} />
+          <Col xs={12} md={6} lg={8} style={{ textAlign: "center", marginTop: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
-            <p><a href="#" target="_blank" rel="noreferrer" className={styles.visit}>Visit store</a></p>
+<Row xs={1} sm={2} md={2} lg={5} className="g-4 align-items-stretch">
+  {swags.map((_, idx) => (
+    <Col key={idx} style={{ height: "fit-content", display: "flex" }}>
+      <Card className={`${styles.cutomCard} flex-grow-1`}>
+        <Card.Img variant="top" src={`/images/hacktoberfest/swags-2024/${_}.jpeg`} />
+      </Card>
+    </Col>
+  ))}
+
+<Col style={{ display: "flex" }}>
+  <a href="#" target="_blank" rel="noreferrer" className={styles.storeLink}>
+    <Card className={`${styles.cutomCard} flex-grow-1`}>
+      <Card.Body className={`${styles.store} d-flex flex-column`}>
+        <p className={styles.msg}>Visit store</p>
+        <img
+          src="/images/arrow-right-white.svg"
+          alt="swags"
+          className={`${styles.swag} flex-grow-1`}
+        />
+      </Card.Body>
+    </Card>
+  </a>
+</Col>
+
+</Row>
+
           </Col>
-
-
-
         </Row>
       </Container>
     </Col>

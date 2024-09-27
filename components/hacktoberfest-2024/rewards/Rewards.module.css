@@ -84,13 +84,13 @@
 }
 
 .msg {
-  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .swag {
-  width: -moz-available !important;
-  width: -webkit-fill-available !important;
-  width: fill-available !important;
+  object-fit: contain;
+  max-width: 100%;
 }
 
 a.visit {
@@ -113,4 +113,39 @@ a.visit {
 a.visit:hover {
   background-color: #57595d;
   color: #ffffff !important;
+}
+
+
+.cutomCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.store {
+  background: #20b6b0;
+  width: 100%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 15px; */
+  border: none;
+  border-radius: 0;
+}
+
+.store:hover {
+  background: #57595d;
+}
+
+.storeLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-grow: 1;
 }

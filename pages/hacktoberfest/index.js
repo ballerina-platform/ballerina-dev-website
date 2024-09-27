@@ -124,7 +124,7 @@ export default function Home({ }) {
               <Rewards getLink={getLink}/>
             </Row>
 
-            <Row className={styles.hacktoberfestRules}>
+            <Row className={styles.hacktoberfestRules2024}>
               <Rules getLink={getLink}/>
             </Row>
           </Col>

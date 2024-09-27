@@ -2,6 +2,7 @@
   text-decoration: none;
   color: #20b6b0;
   font-size: 16px;
+  font-weight: 400;
 }
 
 .titleLink:hover {
@@ -24,4 +25,35 @@
 
 .sub {
   margin-left: 10px;
+}
+
+.cardDescription {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.content ul {
+  list-style-type: disc;
+}
+
+.content ul li::marker {
+  color: #20b6b0;
+}
+
+.customUL {
+  padding-left: 0;
+}
+
+.customUL li+li {
+  margin-top: 10px;
+}
+
+.customLi {
+  margin: 0;
+  padding: 0 0 6px 40px;
+  list-style: none;
+  background-image: url("/images/main-right-arrow-home-hover.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 32px;
 }

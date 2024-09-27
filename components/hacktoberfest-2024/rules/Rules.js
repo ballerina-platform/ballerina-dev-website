@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2024, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -32,7 +32,7 @@ export default function Rules(props) {
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
-                fill="currentColor"
+                fill="#20b6b0"
                 className="bi bi-link-45deg mdButton pe-2"
                 viewBox="0 0 16 16"
                 onClick={(e) => props.getLink(e.target, 'rules')}
@@ -48,25 +48,25 @@ export default function Rules(props) {
                 <div>
                   <div className={styles.cardDescription}>
                     <div className={styles.content}>
-                    <ol>
-                      <li>For all code contributions,
-                          <ol type="a">
+                    <ul className={styles.customUL}>
+                    <li className={styles.customLi}>For all code contributions,
+                          <ul>
                               <li>Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">project board</a> and pick issues to work on.</li>
                               <li>Once you start on the issue, leave a comment saying you are working on the issue. Then, that issue will be reserved for you.</li>
                               <li>Once ready, submit the PR, address the review comments if there are any, and get it merged.</li>
-                              <li>If your PR is merged, submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> with the PR details and other information.</li>
-                          </ol>
+                              <li>If your PR is merged, submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> with the PR details and other information.</li>
+                          </ul>
                       </li>
-                      <li>For low-code/no-code contributions,
-                          <ol type="a">
+                      <li className={styles.customLi}>For low-code/no-code contributions,
+                          <ul>
                               <li>Any type of written or video content is accepted. E.g., Tutorials, comparisons, introductory content, etc.</li>
-                              <li>Publish your content and share the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a>.</li>
-                          </ol>
+                              <li>Publish your content and share the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a>.</li>
+                          </ul>
                       </li>
-                      <li>The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> is October 31, 2023, 11:59 PM PST.</li>
-                      <li>All the announcements and discussions will be done via Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> in order not to miss any important updates.</li>
-                      <li>All decisions made by the Ballerina Hacktoberfest panel shall be deemed final, conclusive, and binding.</li>
-                    </ol>
+                      <li className={styles.customLi}>The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> is October 31, 2023, 11:59 PM PST.</li>
+                      <li className={styles.customLi}>All the announcements and discussions will be done via Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> in order not to miss any important updates.</li>
+                      <li className={styles.customLi}>All decisions made by the Ballerina Hacktoberfest panel shall be deemed final, conclusive, and binding.</li>
+                    </ul>
                     </div>
                     <p className={styles.content}>By participating in this competition, you agree to our  <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">Terms & Conditions</a>.</p>
                   </div>

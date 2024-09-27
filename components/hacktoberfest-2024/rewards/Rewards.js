@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2024, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -32,7 +32,7 @@ export default function Rewards(props) {
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
-                fill="currentColor"
+                fill="#20b6b0"
                 className="bi bi-link-45deg mdButton pe-2"
                 viewBox="0 0 16 16"
                 onClick={(e) => props.getLink(e.target, 'rewards')}
@@ -44,58 +44,38 @@ export default function Rewards(props) {
             </h2>
           </Col>
         </Row>
+
         <Row>
-          <p className={styles.title}>
-          We will carefully evaluate all your contributions during Hacktoberfest, and you&apos;ll be rewarded accordingly. You will not only gain recognition for your work but also contribute to the growth and improvement of Ballerina.
-          </p>
-        </Row>
-        <Row>
+
           <Col xs={12} md={6} lg={6} className={styles.boxCol}>
-                <div className={styles.cardWrapper}>
-                  <div>
-                    <h3>Code contributions</h3>
-                    <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.content}>Any accepted PR fixing a Hacktoberfest Issue will receive; </p>
-                        <ul>
-                          <li>A $25 Amazon voucher</li>
-                          <li>A Ballerina branded sticker pack</li>
-                          <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
-                          <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
-                        </ul>
-                      </div>
-                    </div>
+            <div className={styles.cardWrapper}>
+              <div>
+                <div className={styles.cardDescription}>
+                  <div className={styles.content}>
+                    <p className={styles.msg}>The contributors who make the most significant contributions to Ballerina during Hacktoberfest will be rewarded with the following prizes:</p>
+                    <ul>
+                      <li className={styles.customLi}>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
+                      <li className={styles.customLi}><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
+                      <li className={styles.customLi}>Ballerina branded swags</li>
+
+
+                    </ul>
+
                   </div>
                 </div>
+              </div>
+            </div>
           </Col>
-          <Col xs={12} md={6} lg={6} className={styles.boxCol}>
-                <div className={styles.cardWrapper}>
-                  <div>
-                    <h3>Low/No Code contributions</h3>
-                    <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                        </p>
-                        <p className={styles.content}>The top 3 contributions will receive Amazon vouchers, valued at:</p>
-                        <ul>
-                          <li>1st Place : $300</li>
-                          <li>2nd Place : $200</li>
-                          <li>3rd Place : $100</li>
-                        </ul>
-                        <p>6 more winners will get Amazon vouchers valued at $50 USD.</p>
-                        <p>Additionally, all of the above will receive:</p>
-                        <ul>
-                          <li>A Ballerina T-shirt</li>
-                          <li>A Ballerina branded sticker pack</li>
-                          <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
-                          <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+          <Col xs={12} md={6} lg={6} style={{ textAlign: "center", marginTop: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <h4 className='mb-5'>Redeem credits for Ballerina swag.</h4>
+            <img src="/images/hacktoberfest/swags.png" alt="swags" className={`mb-5 ${styles.swag}`} />
+
+            <p><a href="#" target="_blank" rel="noreferrer" className={styles.visit}>Visit store</a></p>
           </Col>
-        
+
+
+
         </Row>
       </Container>
     </Col>

@@ -26,12 +26,13 @@
 
 .description {
     color: #ffffff;
+    margin-top: 30px;
 }
 
 .description h1 {
     color: #000000;
     font-size: 3.45rem;
-    margin: 0; 
+    margin: 0 0 30px 0; 
     background-color: #eff0f1; 
     width: fit-content;
 }
@@ -76,7 +77,7 @@
     display: flex;
     flex-flow: row wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 

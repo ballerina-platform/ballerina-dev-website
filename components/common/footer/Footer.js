@@ -22,13 +22,13 @@ import Link from 'next/link';
 
 import styles from './Footer.module.css';
 
-export default function Footer() {
+export default function Footer(props) {
   
   const copyYear = new Date().getFullYear();
 
   return (
-    <Stack gap={0} className={styles.stack}>
-      <Container className={styles.footer}>
+    <Stack gap={0} className={styles.stack} style={props.year==="2024"? {background:"#000000"}: {}}>
+      <Container className={styles.footer} style={props.year==="2024"? {background:"#000000"}: {}}>
         <Row>
           <Col xs={12} sm={12} md={6} lg={6}>
             <Row>

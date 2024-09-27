@@ -51,6 +51,10 @@
   width: fit-content;
 }
 
+.hacktoberfestRules2024 {
+  padding-bottom: 120px;
+}
+
 .mesh {
   background-image: url('/images/ballerina-mesh-grey-cropped.svg'); /* SVG image */
   background-repeat: no-repeat; /* Prevents the image from repeating */

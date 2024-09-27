@@ -52,7 +52,7 @@ export default function Layout({ children }) {
           </Row>
         </div>
 
-        <Footer />
+        <Footer year="2024"/>
 
       </Stack>
 

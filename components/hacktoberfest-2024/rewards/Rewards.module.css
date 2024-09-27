@@ -5,10 +5,13 @@
 }
 
 .boxCol .cardWrapper {
-  border: #a7a8ab solid 0.3px;
+  border: none;
+  border-radius: 0;
+  /* background-color: #ffffff;
+  color: #000000; */
+  font-weight: 400;
   width: 100%;
-  padding: 20px;
-  border-radius: 4px;
+  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -60,4 +63,54 @@
 
 .sub {
   margin-left: 10px;
+}
+
+.cardWrapper ul {
+  padding-left: 0;
+}
+
+.cardWrapper li+li {
+  margin-top: 10px;
+}
+
+.customLi {
+  margin: 0;
+  padding: 0 0 6px 40px;
+  list-style: none;
+  background-image: url("/images/main-right-arrow-home-hover.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 32px;
+}
+
+.msg {
+  margin-bottom: 30px;
+}
+
+.swag {
+  width: -moz-available !important;
+  width: -webkit-fill-available !important;
+  width: fill-available !important;
+}
+
+a.visit {
+  margin: 0;
+  transition: none !important;
+  font-size: 16px;
+  text-align: center;
+  background-color: #20b6b0;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: left 25px top 18px;
+  text-decoration: none;
+  border: none;
+  font-family: "pragmatica", sans-serif;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+a.visit:hover {
+  background-color: #57595d;
+  color: #ffffff !important;
 }

@@ -27,8 +27,8 @@ export default function Footer(props) {
   const copyYear = new Date().getFullYear();
 
   return (
-    <Stack gap={0} className={styles.stack} style={props.year==="2024"? {background:"#000000"}: {}}>
-      <Container className={styles.footer} style={props.year==="2024"? {background:"#000000"}: {}}>
+    <Stack gap={0} className={styles.stack} style={props.year && props.year==="2024"? {background:"#000000"}: {}}>
+      <Container className={styles.footer} style={props.year && props.year==="2024"? {background:"#000000"}: {}}>
         <Row>
           <Col xs={12} sm={12} md={6} lg={6}>
             <Row>
@@ -83,11 +83,11 @@ export default function Footer(props) {
               </Col>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className={styles.subscription}>
-                  <div className={styles.subscribe}>
-                    <Link className={styles.subscribeBtn} href={`/community/#subscribe-to-our-newsletter`}>Subscribe to our newsletter</Link>
+                  <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
+                    <Link className={props.year && props.year === "2024" ? styles.subscribeBtn2024 : styles.subscribeBtn} href={`/community/#subscribe-to-our-newsletter`}>Subscribe to our newsletter</Link>
                   </div>
-                  <div className={styles.subscribe}>
-                    <a className={styles.subRss} href="https://blog.ballerina.io/feed.xml" target="_blank" rel="noreferrer">Subscribe via RSS</a>
+                  <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
+                    <a className={props.year && props.year === "2024" ? styles.subRss2024 : styles.subRss} href="https://blog.ballerina.io/feed.xml" target="_blank" rel="noreferrer">Subscribe via RSS</a>
                   </div>
                 </div>
 

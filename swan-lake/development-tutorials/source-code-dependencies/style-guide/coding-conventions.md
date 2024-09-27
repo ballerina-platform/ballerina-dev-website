@@ -11,6 +11,15 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
 ## Indentation and line length
 * Use four spaces (not tabs) for each level of indentation.
 * Keep the maximum length of a line to 120 characters. 
+* To split a single-line string template and ensure that the number of characters in a line does not exceed the character limit, use one of the following approaches. Alternatively, you can use string concatenation with strings on multiple lines.
+
+    ```ballerina
+    string message1 = string `Hello ${
+        name}, Welcome to Ballerina!`;
+
+    string message2 = string `Hello ${name}, ${
+        ""}Welcome to Ballerina!`;
+    ```
 
     > **Note:** You can configure tools and plugins to use spaces when indenting and to change the maximum number of characters in a line.
 
@@ -276,18 +285,6 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
     map<int|string> registry = {
         name: "marcus"
     };
-    ```
-
-## String templates
-
-* To split a single-line string template and ensure that the number of characters in a line does not exceed the character limit, use one of the following approaches. You can also use string concatenation as an additional option.
-
-    ```ballerina
-    string message1 = string `Hello ${
-    name}, Welcome to Ballerina!`;
-
-    string message2 = string `Hello ${name}, ${
-    ""}Welcome to Ballerina!`;
     ```
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

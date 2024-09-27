@@ -15,13 +15,13 @@
 .introLinks {
     color: #20b6b0;
     text-decoration: none;
-    margin-top: 20px !important;
-    padding-top: 20px;
     cursor: pointer;
+    font-weight: 400;
 }
 
 .introLinks:hover {
     color: #20b6b0;
+    text-decoration: underline;
 }
 
 .description {
@@ -47,30 +47,6 @@
 .desItem {
     display: flex;
     flex-direction: row;
-}
-
-@media (max-width: 576px) {
-    .btnCol {
-        margin-top: 20px;
-    }
-}
-
-@media (min-width: 576px) {
-    .btnCol {
-        margin-top: 20px;
-    }
-}
-
-@media (min-width: 768px) {
-    .btnCol {
-        margin-top: 20px;
-    }
-}
-
-@media (min-width: 992px) {
-    .btnCol {
-        margin-top: 0px;
-    }
 }
 
 .iconBlock {

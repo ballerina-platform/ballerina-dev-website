@@ -6,7 +6,8 @@
 }
 
 .titleLink:hover {
-  color: #57595d;
+  color: #20b6b0;
+  text-decoration: underline;
 }
 
 .title {

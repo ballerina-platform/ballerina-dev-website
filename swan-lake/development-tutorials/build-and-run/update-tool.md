@@ -269,4 +269,4 @@ Distribution '2201.4.0' successfully removed
 ```
 
 ### Configure proxy settings (optional)
-If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the Ballerina Central to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).
+If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the [Ballerina Central](https://central.ballerina.io/) to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).

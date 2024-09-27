@@ -94,9 +94,9 @@ export default function Ambassadors() {
                       Empower the developer community or represent Ballerina in your university to solve real-world integration challenges, and unlock unique opportunities to showcase your skills while building a vibrant developer network.
                     </p>
 
-                    {/* <a href="#" className="applyNow">
+                    <a href="https://forms.gle/i3g6Km3NTWRZMyqa8" target="_blank" rel="noreferrer" className="applyNow">
                       Apply now
-                    </a> */}
+                    </a>
                   </Col>
                   <Col xs={12} md={12} lg={6} className='introImg'>
                     <img src="/images/ambassadors/ballerina-ambassador-program-image.png" alt="Project mentorship" />

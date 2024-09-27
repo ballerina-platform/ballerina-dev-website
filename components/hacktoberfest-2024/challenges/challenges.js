@@ -50,7 +50,7 @@ export default function Intro(props) {
 
           <Row>
 
-          <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+            <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
                   <h3>Code contributions</h3>
@@ -91,7 +91,7 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th  className={styles.reward}>Reward</th>
+                        <th className={styles.reward}>Reward</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -131,7 +131,7 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th  className={styles.reward}>Reward</th>
+                        <th className={styles.reward}>Reward</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -163,7 +163,11 @@ export default function Intro(props) {
 
                     <Card.Body className={styles.stack}>
                       <Card.Title className={styles.title}>Stack Oveflow</Card.Title>
-                      <p className={styles.msg}>Got a technical question?</p>
+                      <p className={styles.msg}>
+                        Got a technical question?
+                        <br />
+                        Then get help from experts
+                      </p>
 
                       <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.ask} title="Stack Overflow">Ask on Stack Oveflow</a>
                     </Card.Body>
@@ -177,7 +181,7 @@ export default function Intro(props) {
                     <Card.Body className={styles.discord}>
                       <Card.Title className={styles.title}>Discord</Card.Title>
 
-                      <p className={styles.msg}>Join our community and get help.</p>
+                      <p className={styles.msg}>Join our Discord community</p>
 
                       <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={styles.join} title='Discord'>Join Ballerina Discord</a>
                     </Card.Body>

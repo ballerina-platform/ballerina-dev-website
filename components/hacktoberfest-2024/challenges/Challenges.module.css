@@ -132,6 +132,7 @@ a.issues:hover {
 .stack p {
   margin-bottom: 0;
   font-weight: 400;
+  text-align: center;
 }
 
 .titleLink {

@@ -32,7 +32,7 @@ export default function Intro() {
 
         <Row className={styles.introBottomRow}>
           <Col xs={12} sm={12} md={12} lg={6} className={`${styles.description} ${styles.introText}`}>
-            <h1>Hacktoberfest 2024</h1>
+            <h1>Hacktoberf&shy;est 2024</h1>
 
             <p className={styles.desItem} style={{ fontSize: "25px", lineHeight: "normal" }}>
               <span>We&apos;re thrilled to have you on board for <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" className={styles.introLinks} title='Hacktoberfest'>Hacktoberfest</a> and have some fantastic opportunities lined up for you. 
@@ -49,8 +49,8 @@ export default function Intro() {
             <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" className={styles.join} title='Hacktoberfest'>
               <img src={`${prefix}/images/hacktoberfest/vertical_beige.svg`} alt="Hacktoberfest" title="Hacktoberfest" height={250} />
             </a>
-            <img src={`${prefix}/img/body-bg.svg`} alt="divider" title="divider" height={250} />
-            <img src={`${prefix}/images/hacktoberfest/ballerina-icon-teal.svg`} alt="Ballerina" title="Ballerina" height={250} />
+            <img src={`${prefix}/img/body-bg.svg`} alt="divider" title="divider" height={250} className={styles.divider}/>
+            <img src={`${prefix}/images/hacktoberfest/ballerina-icon-teal.svg`} alt="Ballerina" title="Ballerina" height={250} className={styles.balLogo}/>
           </Col>
 
         </Row>

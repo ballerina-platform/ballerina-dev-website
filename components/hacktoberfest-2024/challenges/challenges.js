@@ -50,6 +50,38 @@ export default function Intro(props) {
 
           <Row>
 
+          <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+              <div className={styles.challengeType}>
+                <div>
+                  <h3>Code contributions</h3>
+
+                  <Table hover variant="dark" className={styles.customDarkTable}>
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Reward</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Easy</td>
+                        <td className={styles.reward}>+10</td>
+                      </tr>
+                      <tr>
+                        <td>Medium</td>
+                        <td className={styles.reward}>+20</td>
+                      </tr>
+                      <tr>
+                        <td>Hard</td>
+                        <td className={styles.reward}>+30</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+                <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+              </div>
+            </Col>
+
             <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
@@ -82,39 +114,6 @@ export default function Intro(props) {
                       <tr>
                         <td>Video tutorial</td>
                         <td className={styles.reward}>+40</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
-                <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
-              </div>
-            </Col>
-
-
-            <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
-              <div className={styles.challengeType}>
-                <div>
-                  <h3>Code contributions</h3>
-
-                  <Table hover variant="dark" className={styles.customDarkTable}>
-                    <thead>
-                      <tr>
-                        <th>Type</th>
-                        <th>Reward</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Easy</td>
-                        <td className={styles.reward}>+10</td>
-                      </tr>
-                      <tr>
-                        <td>Medium</td>
-                        <td className={styles.reward}>+20</td>
-                      </tr>
-                      <tr>
-                        <td>Hard</td>
-                        <td className={styles.reward}>+30</td>
                       </tr>
                     </tbody>
                   </Table>

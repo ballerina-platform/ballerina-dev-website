@@ -54,7 +54,7 @@ a.issues {
   transition: none !important;
   font-size: 16px;
   text-align: center;
-  background-color: #20b6b0;
+  background-color: #000000;
   color: #ffffff !important;
   padding: 10px 20px;
   background-repeat: no-repeat;
@@ -87,15 +87,16 @@ a.ask {
 
 
 a.join:hover,
-a.ask:hover {
-  background-color: #57595d;
-  color: #ffffff !important;
+a.ask:hover,
+a.issues:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
 }
 
-a.issues:hover {
+/* a.issues:hover {
   background-color: #000000;
   color: #ffffff !important;
-}
+} */
 
 .cutomCard {
   width: 100%;

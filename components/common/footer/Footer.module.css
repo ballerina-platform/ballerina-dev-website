@@ -47,7 +47,8 @@
     display: block;
 }
 
-.subscribe + .subscribe {
+.subscribe + .subscribe, 
+.subscribe2024 + .subscribe2024 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -71,21 +72,37 @@
     text-decoration: none;
 }
 
-.subRss {
-    /* padding: 10px 20px 10px 50px !important; */
+.subscribeBtn2024, .subscribe2024 a, .subRss2024 {
+    background-color: #57595d;
+    color: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    /* width: 100%; */
+    text-align: center;
+    text-decoration: none;
+}
+
+.subRss, .subRss2024 {
     padding: 10px 52px 10px 54px !important;
-    /* margin-bottom: 2px;*/
     display: inline-block; 
     background-image: url(/images/sm-icons/rss-white.svg);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 20px;
+}
+
+.subRss {
     background-color: #20b6b0;
     color: #fff;
     /* font-weight: 500; */
 }
 
-.subRss:hover {
+.subRss2024 {
+    background-color: #57595d;
+    color: #fff;
+}
+
+.subRss:hover, .subRss2024:hover {
     /* padding: 10px 20px 10px 50px !important; */
     padding: 10px 52px 10px 54px !important;
     /* margin-bottom: 2px;*/
@@ -99,7 +116,8 @@
     /* font-weight: 500; */
 }
 
-.subscribeBtn:hover, .subscribe a:hover {
+.subscribeBtn:hover, .subscribe a:hover, 
+.subscribeBtn2024:hover, .subscribe2024 a:hover {
     /* background-color: #57595d;
     color: #fff !important; */
     color: #20b6b0 !important;

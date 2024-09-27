@@ -4,47 +4,22 @@
   margin-top: 20px !important;
 }
 
-.boxCol .cardWrapper {
-  border: none;
-  border-radius: 0;
-  /* background-color: #ffffff;
-  color: #000000; */
-  font-weight: 400;
-  width: 100%;
-  /* padding: 20px; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .pGroup {
   border: #a7a8ab solid 0.3px;
   padding: 25px;
   margin-bottom: 30px;
 }
 
-.cardWrapper h3 {
-  font-size: 22px;
-  color: #585a5e;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.cardWrapper h4 {
-  font-size: 18px;
-  color: #585a5e;
-  height: auto;
-  margin-bottom: 10;
-}
-
 .titleLink {
   text-decoration: none;
   color: #20b6b0;
   font-size: 16px;
+  font-weight: 400;
 }
 
 .titleLink:hover {
-  color: #57595d;
+  color: #20b6b0;
+  text-decoration: underline;
 }
 
 .title {
@@ -63,14 +38,6 @@
 
 .sub {
   margin-left: 10px;
-}
-
-.cardWrapper ul {
-  padding-left: 0;
-}
-
-.cardWrapper li+li {
-  margin-top: 10px;
 }
 
 .customLi {
@@ -114,7 +81,6 @@ a.visit:hover {
   background-color: #57595d;
   color: #ffffff !important;
 }
-
 
 .cutomCard {
   width: 100%;

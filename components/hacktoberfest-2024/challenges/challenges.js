@@ -59,7 +59,7 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th>Reward</th>
+                        <th className={styles.reward}>Reward</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -78,7 +78,7 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+                <a className={styles.issues} href="#" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 
@@ -91,7 +91,7 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th>Reward</th>
+                        <th  className={styles.reward}>Reward</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -118,7 +118,7 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+                <a className={styles.issues} href="#" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 
@@ -131,7 +131,7 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th>Reward</th>
+                        <th  className={styles.reward}>Reward</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -150,7 +150,7 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+                <a className={styles.issues} href="#" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 
@@ -165,7 +165,7 @@ export default function Intro(props) {
                       <Card.Title className={styles.title}>Stack Oveflow</Card.Title>
                       <p className={styles.msg}>Got a technical question?</p>
 
-                      <a href="#" target="_blank" rel="noreferrer" className={styles.ask}>Ask on Stack Oveflow</a>
+                      <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.ask} title="Stack Overflow">Ask on Stack Oveflow</a>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -179,7 +179,7 @@ export default function Intro(props) {
 
                       <p className={styles.msg}>Join our community and get help.</p>
 
-                      <a href="#" target="_blank" rel="noreferrer" className={styles.join}>Join Ballerina Discord</a>
+                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={styles.join} title='Discord'>Join Ballerina Discord</a>
                     </Card.Body>
                   </Card>
                 </Col>

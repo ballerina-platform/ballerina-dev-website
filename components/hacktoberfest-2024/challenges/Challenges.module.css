@@ -6,13 +6,9 @@
 }
 
 .challengeType {
-  /* background: #000000;
-    box-shadow: rgba(32, 182, 176, 1) 0px 2px 8px 0px; */
   background: #494949;
-  /* padding: 0 10px; */
   padding: 15px;
   width: 100%;
-  /* align-items: center; */
 }
 
 .challengeType h3 {
@@ -37,8 +33,6 @@
 }
 
 .customDarkTable {
-  /* --bs-table-striped-bg: #2c3034 !important; */
-  /* --bs-table-bg: #000000 !important; */
   --bs-table-bg: none !important;
   font-size: 15px !important;
 }
@@ -93,11 +87,6 @@ a.issues:hover {
   color: #000000 !important;
 }
 
-/* a.issues:hover {
-  background-color: #000000;
-  color: #ffffff !important;
-} */
-
 .cutomCard {
   width: 100%;
   display: flex;
@@ -105,7 +94,6 @@ a.issues:hover {
   justify-content: space-between;
   border: none;
   border-radius: 0;
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .btnCol {
@@ -138,53 +126,12 @@ a.issues:hover {
   padding: 15px;
   border: none;
   border-radius: 0;
-  /* margin: 20px 0; */
 }
 
 .discord p,
 .stack p {
   margin-bottom: 0;
   font-weight: 400;
-}
-
-.boxCol .cardWrapper {
-  border: #a7a8ab solid 0.3px;
-  width: 100%;
-  padding: 20px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.pGroup {
-  border: #a7a8ab solid 0.3px;
-  padding: 25px;
-  margin-bottom: 30px;
-}
-
-.cardWrapper h3 {
-  font-size: 22px;
-  color: #585a5e;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.cardWrapper h4 {
-  font-size: 18px;
-  color: #585a5e;
-  height: auto;
-  margin-bottom: 10;
-}
-
-.pGroup h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #585a5e;
-}
-
-.pGroup:hover {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .titleLink {
@@ -198,7 +145,6 @@ a.issues:hover {
 }
 
 .title {
-  /* font-size: 20px; */
   margin-bottom: 0;
 }
 

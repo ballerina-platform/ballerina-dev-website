@@ -52,7 +52,7 @@ export default function Rules(props) {
                     <li className={styles.customLi}><h5>For Code Contributions:</h5>
                           <ul>
                               <li><b>Explore and Pick Issues:</b> Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">project board</a> and select an issue to work on.</li>
-                              <li><b>Reserve Your Issue:</b> Once you start working on an issue, leave a comment stating that you're working on it to reserve it for yourself.</li>
+                              <li><b>Reserve Your Issue:</b> Once you start working on an issue, leave a comment stating that you&apos;re working on it to reserve it for yourself.</li>
                               <li><b>Submit Your Work:</b> When your work is ready, submit a pull request (PR). Address any review comments if needed and get your PR merged.</li>
                               <li><b>Submit the Form:</b> After your PR is merged, fill out the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> with the PR details and other relevant information.</li>
                           </ul>

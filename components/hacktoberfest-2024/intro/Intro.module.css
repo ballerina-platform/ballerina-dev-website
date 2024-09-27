@@ -1,38 +1,3 @@
-img.homePageLogo {
-    width: 330px;
-}
-
-.homeIntro h1 {
-    color: #ffffff;
-    font-size: 50px;
-    font-weight: 100;
-    line-height: 60px;
-    margin: 40px 0;
-}
-
-.descriptionMain {
-    color: #c0c0c0;
-    font-size: 31px;
-    line-height: 40px;
-    font-weight: 300;
-}
-
-.descriptionSub {
-    color: #c0c0c0;
-    font-size: 16px;
-    line-height: 40px;
-    font-weight: 300;
-}
-
-.introTopRow,
-.introBottomRow {
-    padding: 0;
-}
-
-.introTopRow {
-    padding-bottom: 60px;
-}
-
 .introBottomRow ul {
     padding: 0;
     margin: 10px 0;
@@ -47,53 +12,7 @@ img.homePageLogo {
     margin-right: 30px;
 }
 
-a.homeIntroButton {
-    font-size: 25px;
-    background-color: #20b6b0;
-    color: #fff;
-    padding: 20px 70px 20px 20px;
-    display: inline-block;
-    float: right;
-    font-weight: 500;
-    text-decoration: none;
-    margin-bottom: 10px;
-    border: 1px solid #20b6b0;
-    /* margin-top: 8px; */
-    width: 100%;
-}
-
-.homeIntroButton p {
-    padding: 0;
-    margin: 0;
-    font-family: monaco, Consolas, "Lucida Console", monospace;
-    font-size: 11px;
-    margin-left: 1px;
-    line-height: 15px;
-}
-
-a.playButton {
-    background-color: transparent;
-}
-
-a.homeIntroButton:hover {
-    background-color: #eeeeee;
-    color: #494949;
-}
-
-.socialMediaIcons {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.socialMediaPanel {
-    margin-top: 30px;
-    /* margin-bottom: 0.5rem; */
-    text-align: center;
-}
-
 .introLinks {
-    /* color: #ffffff; */
     color: #20b6b0;
     text-decoration: none;
     margin-top: 20px !important;
@@ -111,29 +30,17 @@ a.homeIntroButton:hover {
 
 .description h1 {
     color: #000000;
-    margin-bottom: 1.5rem;
     font-size: 3.45rem;
-    margin: 0 0 1.5em; 
+    margin: 0; 
     background-color: #eff0f1; 
-    display: inline-block;
+    width: fit-content;
 }
 
 .description p {
     line-height: 1.3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     font-size: 16px;
-    /* color: #c0c0c0; */
     color: #ffffff;
-}
-
-.btnCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between
-}
-
-.check {
-    margin-right: 5px;
 }
 
 .desItem {
@@ -163,4 +70,19 @@ a.homeIntroButton:hover {
     .btnCol {
         margin-top: 0px;
     }
+}
+
+.iconBlock {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.introText {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: column;
+    justify-content: space-between;
 }

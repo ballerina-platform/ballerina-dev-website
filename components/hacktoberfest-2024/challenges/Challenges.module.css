@@ -4,6 +4,111 @@
     margin-top: 20px !important;
     margin-bottom: 20px;
   }
+
+  .challengeType {
+    /* background: #000000;
+    box-shadow: rgba(32, 182, 176, 1) 0px 2px 8px 0px; */
+    background: #494949;
+    /* padding: 0 10px; */
+    padding: 15px;
+    width: 100%;
+    /* align-items: center; */
+  }
+
+  .challengeType h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .desc, .challengeType {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+  }
+
+  .desc h2 {
+    margin-bottom: 0 !important;
+  }
+
+  .categories {
+    margin: 30px 0 !important;
+  }
+
+  .customDarkTable {
+    /* --bs-table-striped-bg: #2c3034 !important; */
+    /* --bs-table-bg: #000000 !important; */
+    --bs-table-bg: none !important;
+    font-size: 15px !important;
+  }
+
+  .reward {
+    text-align: center;
+  }
+
+
+ a.issues {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+a.join {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+a.join:hover {
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+
+a.issues:hover {
+  background-color: #000000;
+  color: #ffffff !important;
+}
+
+
+.discord {
+  background: #ffffff;
+  width: 100%;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+.discord p {
+  margin-bottom: 0;
+  font-weight: 400;
+}
   
   .boxCol .cardWrapper {
     border: #a7a8ab solid 0.3px;
@@ -56,7 +161,11 @@
   }
   
   .title {
-    margin-bottom: 0;
+    font-size: 20px;
+  }
+
+  .msg {
+    margin: 15px 0 !important;
   }
   
   .description {
@@ -73,3 +182,4 @@
     margin-left: 10px;
   }
   
+

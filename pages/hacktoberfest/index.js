@@ -116,11 +116,11 @@ export default function Home({ }) {
               <Intro />
             </Row>
 
-            <Row className={styles.hacktoberfestChallenges}>
+            <Row className={styles.hacktoberfestChallenges2024}>
               <Challenges getLink={getLink}/>
             </Row>
 
-            <Row className={styles.hacktoberfestRewards}>
+            <Row className={styles.hacktoberfestRewards2024}>
               <Rewards getLink={getLink}/>
             </Row>
 

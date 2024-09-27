@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Table, Card } from 'react-bootstrap';
 
 import styles from './Challenges.module.css';
 
@@ -28,7 +28,11 @@ export default function Intro(props) {
         <Col xs={12}>
             <Container>
             <Row>
-          <Col sm={12} className='sectionTitle'>
+
+
+
+          <Col xs={12} sm={12} md={12} lg={3} className={`sectionTitle ${styles.boxCol}`}>
+          <div className={styles.desc}>
             <h2 id="how-to-contribute" className='section'>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,50 +48,129 @@ export default function Intro(props) {
               </svg>
               How to contribute?
             </h2>
+
+            <p className={styles.categories}>
+            We have prepared several categories of open issues that are ideal for first-time developers and low-code/no-code contributors. They fall into the following categories:
+            </p>
+
+            <div className={styles.discord}>
+              <p className={styles.title}>Discord</p>
+<p className={styles.msg}>Join our community and get help.</p>
+
+<a href="#" target="_blank" rel="noreferrer" className={styles.join}>Join Ballerina discord</a>
+            </div>
+
+            </div>
+          </Col>
+
+
+          <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+          <div className={styles.challengeType}>
+            <div>
+            <h3>No/Low Code contributions</h3>
+
+            <Table hover variant="dark" className={styles.customDarkTable}>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Reward</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Difficulty easy doc issue</td>
+          <td className={styles.reward}>+5</td>
+        </tr>
+        <tr>
+          <td>Difficulty medium doc issue</td>
+          <td className={styles.reward}>+10</td>
+        </tr>
+        <tr>
+          <td>Difficulty hard doc issue</td>
+          <td className={styles.reward}>+15</td>
+        </tr>
+        <tr>
+          <td>Blog/article</td>
+          <td className={styles.reward}>+20</td>
+        </tr>
+        <tr>
+          <td>Video tutorial</td>
+          <td className={styles.reward}>+40</td>
+        </tr>
+      </tbody>
+    </Table>
+    </div>
+    <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+    </div>
+          </Col>
+
+
+          <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+          <div className={styles.challengeType}>
+            <div>
+            <h3>Code contributions</h3>
+
+            <Table hover variant="dark" className={styles.customDarkTable}>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Reward</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Difficulty easy source code issue</td>
+          <td className={styles.reward}>+10</td>
+        </tr>
+        <tr>
+          <td>Difficulty medium source code issue</td>
+          <td className={styles.reward}>+20</td>
+        </tr>
+        <tr>
+          <td>Difficulty hard source code issue</td>
+          <td className={styles.reward}>+30</td>
+        </tr>
+      </tbody>
+    </Table>
+    </div>
+    <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+    </div>
+          </Col>
+
+          <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+          <div className={styles.challengeType}>
+            <div>
+            <h3>Connectors</h3>
+
+            <Table hover variant="dark" className={styles.customDarkTable}>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Reward</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generated from a defined OpenAPI spec</td>
+          <td className={styles.reward}>+50</td>
+        </tr>
+        <tr>
+          <td>OpenAPI spec has to be defined</td>
+          <td className={styles.reward}>+75</td>
+        </tr>
+        <tr>
+          <td>Handwritten connector</td>
+          <td className={styles.reward}>+100</td>
+        </tr>
+      </tbody>
+    </Table>
+    </div>
+    <a className={styles.issues} href="#" target="_blank" rel="noreferrer">View issues</a>
+    </div>
           </Col>
           </Row>
-          <Row>
-            <div>
-              <p className={styles.introText2}>We have prepared several categories of open issues that are ideal for first-time developers and low-code/no-code contributors. They fall into the following categories:</p>
-            </div>
-          </Row>
 
-          <Row>
-              <Col xs={12} md={6} lg={6} className={styles.boxCol}>
-                  <div className={styles.cardWrapper}>
-                    <div>
-                      <h3>Code contributions</h3>
-                      <div className={styles.cardDescription}>
-                          <p className={styles.content}>If you&apos;re up for a coding challenge. Take on tasks labeled with <code className="highlighter-rouge language-plaintext">Hacktoberfest<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> from our <a className={styles.titleLink} target='_blank' rel='noreferrer' href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Ballerina Hacktoberfest 2023 project</a>.</p>
-                          <p className={styles.content}>Refer to the <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started, and leave a comment on the issue when you start working on it.</p>
-                      </div>
-                    </div>
-                  </div>
-              </Col>
-              <Col xs={12} md={6} lg={6} className={styles.boxCol}>
-                  <div className={styles.cardWrapper}>
-                    <div>
-                      <h3>Low/No Code contributions</h3>
-                      <div className={styles.cardDescription}>
-                          <p className={styles.content}>
-                            Are you a content creator? Do you love sharing your knowledge and helping others learn? This is your chance to shine! 
-                          </p>
-                          <p className={styles.content}>
-                          Create informative and engaging videos(tutorials, introductory or comparison videos) or written content (articles/blogs) about Ballerina.
-                          </p>
-                          <p className={styles.content}>
-                          Whether you&apos;re a seasoned expert or just getting started, your insights can make a difference in someone else&apos;s journey. Plus, you&apos;ll be helping more developers adopt Ballerina.
-                          </p>
-                      </div>
-                    </div>
-                  </div>
-              </Col>
-            </Row>
-
-            <Row>
-              <p className={styles.introText2}>Join the <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> server to connect with the Ballerina community.</p>
-            </Row>
-
+          
             </Container>
             </Col>
         </>

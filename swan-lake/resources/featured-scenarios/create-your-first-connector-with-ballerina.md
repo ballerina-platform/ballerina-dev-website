@@ -16,7 +16,7 @@ Along with its powerful library ecosystem, Ballerina also allows developers to e
 
 In this guide, we'll walk you through how to generate your first Ballerina connector using an OpenAPI specification. This is one of the fastest and easiest ways to build connectors, enabling you to quickly integrate external services into your Ballerina projects.
 
-## Set up the prerequisites
+## Prerequisites
 
 Before we begin, make sure you have:
 
@@ -27,7 +27,9 @@ Before we begin, make sure you have:
 
 ## Step 1: Set the project structure
 
-1. Create a new GitHub repository with an appropriate name. For Ballerina official connectors, the repository name follows the pattern: `module-ballerinax-<connector-name>` (e.g., `module-ballerinax-twitter`). But for custom connectors, you can choose a name that suits your connector.
+> **Important**:If you'd like to contribute your project as an official Ballerina connector, you can skip the steps below and, reach out to the Ballerina team to create a new repository (under [`ballerina-platform`](https://github.com/ballerina-platform/) organization) and to set up the initial project structure. 
+
+1. Create a new GitHub repository to host your connector. Ballerina official connector repositories follow the naming pattern: `module-ballerinax-<connector-name>` (e.g., module-ballerinax-twitter). But for other connectors, you can choose a name that best represents your connector.
 
 2. Clone your newly created repository to your local machine:
 
@@ -78,11 +80,15 @@ Detailed information on the Ballerina connector structure can be found in the [B
 1. Find the OpenAPI specification for the API you want to create a connector for. This is usually available in the API documentation.
    Example: For Twitter, you can get the latest API specification from the [Twitter OpenAPI endpoint](https://api.twitter.com/2/openapi.json).
 
-2. Save the file as `spec.yaml` (or `spec.json`) in the `docs/spec` directory of your project.
+2. Save the file as `openapi.yaml` (or `openapi.json`) in the `docs/spec` directory of your project.
 
 3. You may need to sanitize the OpenAPI specification to ensure compatibility with the Ballerina OpenAPI tool. This process may involve:
    - adding, removing, or modifying security schemes to customize authentication options.
    - redefining inline schemas as named schemas to avoid duplication and improve readability.
+
+4. Update the `sanitations.md` file (under `docs/spec/`) with the details of any changes made to the original OpenAPI specification.
+
+> **Note:** You may need to perform additional sanitization after generating the client code (Step 3) and testing the connector (Step 4) to address any compile-time or runtime issues. Make sure to update the `sanitations.md` file accordingly.
 
 ## Step 3: Generate the Ballerina client code
 

@@ -921,6 +921,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Write, build, and deploy a Ballerina service on Kubernetes.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/create-your-first-connector-with-ballerina/`} className={styles.titleLink}>
+                            Create your first connector with Ballerina
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate custom connectors using the Ballerina OpenAPI tool.</p>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ active: 2201.10.1
 
 ## Update Ballerina
 
-Run the command below to update your current Ballerina installation directly to 2201.10.1 by using the [Ballerina Update Tool](/learn/update-tool/).
+Run the command below to update your current Ballerina installation directly to 2201.10.1 using the [Ballerina Update Tool](/learn/update-tool/).
 
 ```
 $ bal dist pull 2201.10.1
@@ -20,8 +20,6 @@ $ bal dist pull 2201.10.1
 ## Install Ballerina
 
 If you have not installed Ballerina, then, download the [installers](/downloads/#swanlake) to install.
-
-<!-- ADD ONLY THE APPLICABLE SECTIONS FROM THE BELOW -->
 
 ## Runtime updates
 

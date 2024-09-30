@@ -28,9 +28,11 @@ public function main() returns error? {
     if (hl7msg is hl7v23:ADT_A01) {
         // if you want to work with HL7v2 segments directly.
         // Transform HL7v2 PID to FHIR R4 Patient Name.
-        r4:HumanName[] patientName = v2tofhirr4:pidToPatientName(hl7msg.pid.pid5,
-        hl7msg.pid.pid9);
-        io:println("HL7v23 PID Patient Name: ", patientName[0].toString());
+        r4:HumanName[]? patientName = v2tofhirr4:pidToPatientName(hl7msg.pid.pid5,
+                hl7msg.pid.pid9);
+        if patientName is r4:HumanName[] {
+            io:println("HL7v23 PID Patient Name: ", patientName[0].toString());
+        }
     }
 }
 ```

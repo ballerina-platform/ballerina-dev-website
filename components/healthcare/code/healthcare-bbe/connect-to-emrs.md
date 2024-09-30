@@ -1,6 +1,6 @@
 ---
 title: 'Connect to EMRs, EHRs, data sources and more'
-description: Ballerina has 100s of connectors to well-known Health Systems such as Epic, Cerner, athenahealth, and non-health systems such as Salesforce, and can connect to any backend that has a FHIR, HL7, or Open API interface. Go below the hood and connect directly to a database as well if that is the only way to fetch data.
+description: Ballerina has 100s of connectors for well-known Health Systems such as Epic, Cerner, athenahealth, and non-healthcare systems such as Salesforce, and can connect to any backend that has a FHIR, HL7, or Open API interface. Additionally, Ballerina allows you to go below the hood and connect directly to a database if that's the only way to fetch data.
 url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-fhir-connector/working_with_fhir_connector.bal'
 ---
 ```

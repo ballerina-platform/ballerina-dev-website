@@ -35,7 +35,7 @@ export default function Intro() {
                                 <p className={styles.introText2}>Ballerina is the only integration language built for healthcare.  With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
                                 </p>
 
-                                <p className={styles.introText3}>Build with Ballerina and make a difference in the world today.
+                                <p className={styles.introText3}>Develop your healthcare solutions with Ballerina and make a difference in the healthcare sector today.
                                 </p>
 
                                 <p className={styles.dVersion}>

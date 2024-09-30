@@ -21,6 +21,11 @@ To complete this tutorial, you need:
 1. <a href="https://www.docker.com/" target="_blank">Docker</a> installed and configured in your machine
 2. <a href="https://kubernetes.io/docs/tasks/tools/" target="_blank">Kubectl</a> installed and configured in a <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">Kubernetes cluster</a>
 
+>**Note:** The macOS users with Apple silicon chip need set an environment variable `DOCKER_DEFAULT_PLATFORM` to `linux/amd64`, before building the image. This is because the Ballerina Docker image is not supported on Apple silicon chips yet.
+> ```
+> export DOCKER_DEFAULT_PLATFORM=linux/amd64
+> ```
+
 ## How Code to Cloud works
 
 Code to cloud builds the containers and required artifacts by deriving the required values from the code. This process happens when the package is being compiled. To override the default values given by the compiler, the `Cloud.toml` file needs to be created in the package directory. 

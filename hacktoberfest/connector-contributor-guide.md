@@ -1,13 +1,11 @@
 ---
 title: Connector Contributor Guide - Ballerina Hacktoberfest 2024
-description: This guide will walk you through the process of participating in the Ballerina Hacktoberfest connector hackathon.
+description: This guide will walk you through the process of participating in the Ballerina Hacktoberfest connector event.
 keywords: ballerina, hacktoberfest, connector, contribution, guide, hackathon
-intro: This provides a step-by-step guide for contributing to the Ballerina Hacktoberfest connector hackathon.
+intro: This provides a step-by-step guide for contributing to the Ballerina Hacktoberfest connector event.
 ---
 
-# Connector Contributor Guide - Ballerina Hacktoberfest 2024
-
-Welcome to the Ballerina Hacktoberfest connector hackathon! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in the hackathon and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
+Welcome to the Ballerina Hacktoberfest connector event! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in the hacktoberfest and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
 
 ## Connector Categories & Rewards
 

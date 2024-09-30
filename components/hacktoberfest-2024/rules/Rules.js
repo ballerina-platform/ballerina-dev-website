@@ -49,34 +49,34 @@ export default function Rules(props) {
             <div className={styles.cardDescription}>
               <div className={styles.content}>
                 <ul className={styles.customUL}>
-                  <li className={styles.customLi}><h5>For Code Contributions:</h5>
+                  <li className={styles.customLi}><h5>For Code and connector contributions:</h5>
                     <ul>
-                      <li><b>Explore and Pick Issues:</b> Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/376">project board</a> and select an issue to work on.</li>
-                      <li><b>Reserve Your Issue:</b> Once you start working on an issue, leave a comment stating that you&apos;re working on it to reserve it for yourself.</li>
-                      <li><b>Submit Your Work:</b> When your work is ready, submit a pull request (PR). Address any review comments if needed and get your PR merged.</li>
-                      <li><b>Submit the Form:</b> After your PR is merged, fill out the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> with the PR details and other relevant information.</li>
+                      <li><b>Explore and pick issues:</b> Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/376">project board</a> and select an issue to work on.</li>
+                      <li><b>Reserve your issue:</b> Once you start working on an issue, leave a comment stating that you&apos;re working on it to reserve it for yourself.</li>
+                      <li><b>Submit your work:</b> When your work is ready, submit a pull request (PR). Address any review comments if needed and get your PR merged.</li>
+                      <li><b>Submit the form:</b> After your PR is merged, fill out the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> with the PR details and other relevant information.</li>
                     </ul>
                   </li>
-                  <li className={styles.customLi}><h5>For Low-Code/No-Code Contributions:</h5>
+                  <li className={styles.customLi}><h5>For Low-code/No-code contributions:</h5>
                     <ul>
-                      <li><b>Create Content:</b> We accept any type of written or video content, such as tutorials, comparisons, introductory articles, and more.</li>
-                      <li><b>Share Your Work:</b> Publish your content and submit the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a>.</li>
+                      <li><b>Create content:</b> We accept any type of written or video content, such as tutorials, comparisons, introductory articles, and more.</li>
+                      <li><b>Share your work:</b> Publish your content and submit the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a>.</li>
                     </ul>
                   </li>
 
-                  <li className={styles.customLi}><h5>Important Details:</h5>
+                  <li className={styles.customLi}><h5>Important details:</h5>
                     <ul>
-                      <li><b>Submission Deadline:</b> The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> is October 31, 2023, at 11:59 PM PST.</li>
-                      <li><b>Ask Questions on Stack Overflow:</b> Need any technical help? Raise all your questions in <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.titleLink} title="Stack Overflow">Stack Overflow</a>.</li>
-                      <li><b>Stay Updated on Discord:</b> All announcements will be held on Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> to stay updated on important information.</li>
-                      <li><b>Contributor Recognition:</b> Extra credits may be granted for exceptional contributions.</li>
-                      <li><b>Final Decisions:</b> All decisions made by the Ballerina Hacktoberfest panel are final, conclusive, and binding.</li>
+                      <li><b>Submission deadline:</b> The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> is October 31, 2023, at 11:59 PM PST.</li>
+                      <li><b>Ask questions on Stack Overflow:</b> Need any technical help? Raise all your questions in <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.titleLink} title="Stack Overflow">Stack Overflow</a>.</li>
+                      <li><b>Stay updated on Discord:</b> All announcements will be held on Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> to stay updated on important information.</li>
+                      <li><b>Contributor recognition:</b> Extra credits may be granted for exceptional contributions.</li>
+                      <li><b>Final decisions:</b> All decisions made by the Ballerina Hacktoberfest panel are final, conclusive, and binding.</li>
                     </ul>
                   </li>
 
                 </ul>
               </div>
-              <p className={styles.content}>By participating in this competition, you agree to our  <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">Terms & Conditions</a>.</p>
+              <p className={styles.content}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">terms & conditions</a>.</p>
             </div>
           </div>
         </Row>

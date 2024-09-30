@@ -11,11 +11,11 @@ Welcome to the Ballerina Hacktoberfest connector event! We're excited to have yo
 
 You can contribute to one of the following categories:
 
-1. Category 1: Connectors generated via existing OpenAPI specification
+1. Category 1: Connectors generated via existing OpenAPI specifications
    - Contribution involves creating a connector using a pre-defined OpenAPI spec.
    - Reward: 50 Credits
 
-2. Category 2: Connectors generated via manually-written OpenAPI specification
+2. Category 2: Connectors generated via manually-written OpenAPI specifications
    - Contribution requires defining the OpenAPI spec first, followed by generating the connector.
    - Reward: 75 Credits
 

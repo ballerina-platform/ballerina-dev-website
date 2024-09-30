@@ -57,7 +57,7 @@ export default function Rewards(props) {
                   <div className={styles.content}>
                     <p className={styles.msg}>The contributors who make the most significant contributions to Ballerina during Hacktoberfest will be rewarded with the following prizes:</p>
                     <ul>
-                      <li className={styles.customLi}>Redeem your points to purchase exclusive Ballerina-branded items from the <a className={styles.titleLink} target="_blank" rel="noreferrer" href="#">swag store</a></li>
+                      <li className={styles.customLi}>Redeem your points to purchase exclusive Ballerina-branded items from the <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://store.covver.io/wso2/collections/ballerina-swag-store">swag store</a></li>
                       <li className={styles.customLi}>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                       <li className={styles.customLi}><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                     </ul>
@@ -79,7 +79,7 @@ export default function Rewards(props) {
   ))}
 
 <Col style={{ display: "flex" }}>
-  <a href="#" target="_blank" rel="noreferrer" className={styles.storeLink}>
+  <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.storeLink}>
     <Card className={`${styles.cutomCard} flex-grow-1`}>
       <Card.Body className={`${styles.store} d-flex flex-column`}>
         <p className={styles.msg}>Visit store</p>

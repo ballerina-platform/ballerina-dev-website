@@ -151,8 +151,8 @@ export default function Intro(props) {
                   </Table>
                 </div>
                 <div>
-                  <a className={styles.issues} href="https://ballerina.io/learn/create-your-first-connector-with-ballerina/" target="_blank" rel="noreferrer" title='View issues' style={{marginBottom: "10px"}}>Read the guide</a>
-                  <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
+                  <a className={styles.issues} href="https://ballerina.io/learn/create-your-first-connector-with-ballerina/" target="_blank" rel="noreferrer" title='Read the guide' style={{marginBottom: "10px"}}>Read the guide</a>
+                  <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
                 </div>
               </div>
             </Col>

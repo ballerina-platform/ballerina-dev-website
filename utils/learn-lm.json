@@ -849,14 +849,6 @@
                             "isDir": false,
                             "url": "/learn/manage-data-persistence-with-bal-persist",
                             "id": "manage-data-persistence-with-bal-persist"
-                        },
-                        {
-                            "dirName": "Create your first connector with Ballerina",
-                            "level": 3,
-                            "position": 8,
-                            "isDir": false,
-                            "url": "/learn/create-your-first-connector-with-ballerina",
-                            "id": "create-your-first-connector-with-ballerina"
                         }
                     ]
                 },

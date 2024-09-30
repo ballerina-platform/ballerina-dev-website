@@ -76,7 +76,7 @@ export default function Rules(props) {
 
                 </ul>
               </div>
-              <p className={styles.content}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">terms & conditions</a>.</p>
+              <p className={styles.content}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/Hacktoberfest_2024-Terms_and_Conditions.pdf">terms & conditions</a>.</p>
             </div>
           </div>
         </Row>

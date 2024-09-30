@@ -156,20 +156,25 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 .hackathonBanner {
     text-align: center;
     color: #fff;
+    /* color: #000000; */
     /* background-color: #20b6b0 !important; */
+    background-color: #000000 !important;
     padding: 10px 0 10px 0;
     font-weight: 400;
     font-size: 20px;
-    background-image: linear-gradient(to right, #000000 , #20b6b0);
+    /* background-image: linear-gradient(to right, #000000 , #20b6b0); */
 }
 
 .hackathonBanner a {
-    color: #fff;
+    /* color: #fff; */
+    color: #20b6b0 !important;
+    text-decoration: none;
 }
 
-/* .hackathonBanner a:hover{
-    color: #545454 !important;
-} */
+.hackathonBanner a:hover{
+    /* color: #545454 !important; */
+    text-decoration: underline;
+}
 
 a.dropDownItem:focus, a.dropDownItem:hover {
     /* background-color: #20b6b0 !important;

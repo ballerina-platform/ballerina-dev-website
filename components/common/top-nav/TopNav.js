@@ -40,6 +40,13 @@ const TopNav = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const now = new Date();
+  let showBanner = false;
+
+  if (now < Date.parse('2024-11-01T00:00:00.00-00:00')) {
+    showBanner = true;
+  }
+
   const MenuItems = [
     <Dropdown.Item category='usecases' href={`${prefix}/use-cases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
     <Dropdown.Item category='comparisons' href={`${prefix}/use-cases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
@@ -57,14 +64,21 @@ const TopNav = (props) => {
 
   return (
     <>
+      {
+        (showBanner && launcher !== "hack") ?
+          <div className={styles.hackathonBanner}>
+            Ballerina Hacktoberfest is happening now. <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>!
+          </div>
+          : null
+      }
       <Navbar key={expand} expand={expand} className={(launcher === 'home' || launcher === "hack") ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
         <Container fluid>
           {(launcher === "home" || launcher === "hack") ?
             <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
+              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
             </Navbar.Brand>
             : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
+              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
             </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -75,7 +89,7 @@ const TopNav = (props) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true}/>
+                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2024, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -22,20 +22,18 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { Liquid } from "liquidjs";
 
 import Layout from "../../layouts/LayoutOther";
 import MainContent from "../../components/common/main-content/MainContent";
 import { prefix } from "../../utils/prefix";
 import Toc from "../../components/common/pg-toc/Toc";
-import SwanLake from "../../_data/swanlake-latest/metadata.json";
 
 
 export async function getStaticProps() {
 
-    const fileName = fs.readFileSync(`downloads/verify-ballerina-artifacts.md`, "utf-8");
+    const fileName = fs.readFileSync(`hacktoberfest/connector-contributor-guide.md`, "utf-8");
     const { data: frontmatter, content } = matter(fileName);
-    const id = "installation-options";
+    const id = "connector-contributor-guide";
 
     return {
         props: {
@@ -54,48 +52,6 @@ export default function PostPage({ frontmatter, content, id }) {
     const handleToc = (data) => {
         setShowToc(data)
     }
-
-    function replaceAfterSecondPeriod(str) {
-        const regex = /^(\d+\.\d+\.)/;
-        const match = str.match(regex);
-
-        if (match && match[1]) {
-            return match[1] + 'x';
-        }
-        
-        return '';
-    }
-
-    const branch = replaceAfterSecondPeriod(SwanLake.version);
-
-    // Update values in markdown files
-    const engine = new Liquid();
-    const AddLiquid = (content) => {
-        const [newContent, setNewContent] = React.useState("");
-        const md = engine.parse(content);
-        engine
-            .render(md, {
-                v: "Liquid",
-                "windows-installer-size": SwanLake["windows-installer-size"],
-                dist_server: process.env.distServer,
-                version: SwanLake.version,
-                branch: branch,
-                "windows-installer": SwanLake["windows-installer"],
-                "linux-installer": SwanLake["linux-installer"],
-                "linux-installer-size": SwanLake["linux-installer-size"],
-                "rpm-installer": SwanLake["rpm-installer"],
-                "rpm-installer-size": SwanLake["rpm-installer-size"],
-                "macos-installer": SwanLake["macos-installer"],
-                "macos-installer-size": SwanLake["macos-installer-size"],
-                "macos-arm-installer": SwanLake["macos-arm-installer"],
-                "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
-                "other-artefacts": SwanLake["other-artefacts"],
-            })
-            .then((md) => {
-                setNewContent(md);
-            });
-        return newContent;
-    };
 
     return (
         <>
@@ -144,7 +100,7 @@ export default function PostPage({ frontmatter, content, id }) {
                         </Col>
                         <Col xs={1} className="gitIcon">
                             <a
-                                href={`${process.env.gitHubPath}downloads/${id}.md`}
+                                href={`${process.env.gitHubPath}hacktoberfest/${id}.md`}
                                 target="_blank"
                                 rel="noreferrer"
                                 title="Edit in GitHub"
@@ -163,7 +119,7 @@ export default function PostPage({ frontmatter, content, id }) {
                         <Col xs={12}>
                             <p className="intro">{frontmatter.intro}</p>
                             <MainContent
-                                content={AddLiquid(content)}
+                                content={content}
                                 handleToc={handleToc} />
                         </Col>
                     </Row>

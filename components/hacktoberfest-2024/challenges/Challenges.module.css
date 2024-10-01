@@ -1,0 +1,172 @@
+.boxCol {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 20px !important;
+  margin-bottom: 20px;
+}
+
+.challengeType {
+  background: #494949;
+  padding: 15px;
+  width: 100%;
+}
+
+.challengeType h3 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.desc,
+.challengeType {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.desc h2 {
+  margin-bottom: 0 !important;
+}
+
+.categories {
+  margin: 30px 0 !important;
+}
+
+.customDarkTable {
+  --bs-table-bg: none !important;
+  font-size: 15px !important;
+}
+
+.reward {
+  text-align: center;
+}
+
+
+a.issues {
+  display: block;
+  margin: 0;
+  transition: none !important;
+  font-size: 16px;
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: left 25px top 18px;
+  text-decoration: none;
+  border: none;
+  font-family: "pragmatica", sans-serif;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+a.join,
+a.ask {
+  display: block;
+  margin: 0;
+  transition: none !important;
+  font-size: 16px;
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: left 25px top 18px;
+  text-decoration: none;
+  border: none;
+  font-family: "pragmatica", sans-serif;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+
+a.join:hover,
+a.ask:hover,
+a.issues:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
+}
+
+.cutomCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0;
+}
+
+.btnCol {
+  width: -moz-available !important;
+  width: -webkit-fill-available !important;
+  width: fill-available !important;
+}
+
+.discord {
+  background: #5865F2;
+  width: 100%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border: none;
+  border-radius: 0;
+}
+
+.stack {
+  background: #F48024;
+  width: 100%;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border: none;
+  border-radius: 0;
+}
+
+.discord p,
+.stack p {
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: #20b6b0;
+  font-size: 16px;
+}
+
+.titleLink:hover {
+  color: #57595d;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.cardText {
+  text-align: center !important;
+}
+
+.msg {
+  margin: 30px 0 !important;
+}
+
+.description {
+  color: #57595d;
+  font-size: 14px;
+}
+
+.contentCol {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sub {
+  margin-left: 10px;
+}

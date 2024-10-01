@@ -37,7 +37,7 @@ You can contribute to one of the following categories:
 
 ### Step 3: Follow the Connector Development Guide
 
-- Start working on your connector by following the steps in the [Create Your First Ballerina Connector](https://ballerina.io/learn/how-to-create-your-first-ballerina-connector/) guide.
+- Start working on your connector by following the steps in the [Create Your First Ballerina Connector](https://ballerina.io/learn/create-your-first-connector-with-ballerina/) guide.
 
 > Note on Handwritten Connectors (Category 3): Since the guide primarily covers generated connectors, steps related to client generation won't apply. However, the steps for testing, documentation, and examples are the same.
 
@@ -68,6 +68,6 @@ Ensure all PRs reference the related connector issue in the description to prope
 - Follow the [Connector Development Process](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/connector-development-process.md) for a detailed guide on building connectors.
 - Review [Ballerina Best Practices](https://learn-ballerina.github.io/index.html) to write clean, efficient code.
 - Need help? Comment on the GitHub issue or ask in the [Ballerina Discord](https://discord.gg/ballerinalang).
-- Ensure your contributions follow the [Ballerina Code of Conduct](https://ballerina.io/community/code-of-conduct/).
+- Ensure your contributions follow the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct/).
 
 We can't wait to see your contributions!

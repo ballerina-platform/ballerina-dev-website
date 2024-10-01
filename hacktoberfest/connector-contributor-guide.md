@@ -5,7 +5,7 @@ keywords: ballerina, hacktoberfest, connector, contribution, guide, hackathon
 intro: This provides a step-by-step guide for contributing to the Ballerina Hacktoberfest connector event.
 ---
 
-Welcome to the Ballerina Hacktoberfest connector event! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in the hacktoberfest and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
+Welcome to the [Ballerina Hacktoberfest]( https://ballerina.io/hacktoberfest/) connector event! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in the [Hacktoberfest](https://hacktoberfest.com/) and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
 
 ## Connector Categories & Rewards
 
@@ -13,11 +13,11 @@ You can contribute to one of the following categories:
 
 1. Category 1: Connectors generated via existing OpenAPI specifications
    - Contribution involves creating a connector using a pre-defined OpenAPI spec.
-   - Reward: 50 Credits
+   - Reward: 60 Credits
 
-2. Category 2: Connectors generated via manually-written OpenAPI specifications
+2. Category 2: Connectors generated via manually written OpenAPI specifications
    - Contribution requires defining the OpenAPI spec first, followed by generating the connector.
-   - Reward: 75 Credits
+   - Reward: 80 Credits
 
 3. Category 3: Manually developed (handwritten) connectors
    - Contribution involves building a connector from scratch without relying on an OpenAPI spec, typically for APIs that don’t provide one.
@@ -33,7 +33,7 @@ You can contribute to one of the following categories:
 
 ### Step 2: Repository Setup
 
-- After confirmation, the Ballerina team will create a new repository for the connector under the ballerina-platform organization and set up the initial project structure.
+- After confirmation, the Ballerina team will create a new repository for the connector under the [ballerina-platform](https://github.com/ballerina-platform/) GitHub organization and, set up the initial project structure.
 
 ### Step 3: Follow the Connector Development Guide
 
@@ -64,7 +64,7 @@ Ensure all PRs reference the related connector issue in the description to prope
 ## Additional Resources
 
 - New to Ballerina? Start with [Ballerina By Example](https://ballerina.io/learn/by-example/) to get familiar with the language.
-- For technical questions, ask on [StackOverflow](https://stackoverflow.com/) using the "ballerina" tag, and the team will be notified.
+- For technical questions, ask on [StackOverflow](https://stackoverflow.com/) using the [ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag, and the team will be notified.
 - Follow the [Connector Development Process](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/connector-development-process.md) for a detailed guide on building connectors.
 - Review [Ballerina Best Practices](https://learn-ballerina.github.io/index.html) to write clean, efficient code.
 - Need help? Comment on the GitHub issue or ask in the [Ballerina Discord](https://discord.gg/ballerinalang).

@@ -27,7 +27,7 @@ Before we begin, make sure you have:
 
 ## Step 1: Set the project structure
 
-> **Important**:If you'd like to contribute your project as an official Ballerina connector, you can skip the steps below and, reach out to the Ballerina team to create a new repository (under [`ballerina-platform`](https://github.com/ballerina-platform/) organization) and to set up the initial project structure. 
+**Important**: If you'd like to contribute your project as an official Ballerina connector, you can skip the steps below and contact the Ballerina team through the [Discord community](https://discord.com/invite/ballerinalang). In this case, the repository will be created under the [`ballerina-platform`](https://github.com/ballerina-platform/) organization, and the team will set up the initial project structure for you.
 
 1. Create a new GitHub repository to host your connector. Ballerina official connector repositories follow the naming pattern: `module-ballerinax-<connector-name>` (e.g., module-ballerinax-twitter). But for other connectors, you can choose a name that best represents your connector.
 
@@ -75,9 +75,9 @@ Before we begin, make sure you have:
 
 Detailed information on the Ballerina connector structure can be found in the [Ballerina module contribution guide](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/adding-a-new-ballerina-module.md#directory-structure).
 
-## Step 2: Prepare the OpenAPI Specification
+## Step 2: Prepare the OpenAPI specification
 
-1. Find the OpenAPI specification for the API you want to create a connector for. This is usually available in the API documentation.
+1. Find the OpenAPI specification for the API you want to create a connector. This is usually available in the API documentation.
    Example: For Twitter, you can get the latest API specification from the [Twitter OpenAPI endpoint](https://api.twitter.com/2/openapi.json).
 
 2. Save the file as `openapi.yaml` (or `openapi.json`) in the `docs/spec` directory of your project.
@@ -125,24 +125,24 @@ Now that your connector is generated, it is important to write tests to ensure e
 
 Follow these steps to ensure your connector is well-documented:
 
-1. Update `Module.md` and `Package.md` files
+1. Update `Module.md` and `Package.md` files.
 
    These files will be displayed on the Ballerina Central package landing page. Ensure they introduce and explain the connector package clearly and comprehensively. Each file should include the following sections:
    
    - **Overview**: Provide a concise introduction to the connector, explaining its purpose and key features.
    - **Setup**: Offer step-by-step instructions on configuring the connector and any necessary prerequisites, such as API keys or environment setup.
-   - **Quickstart**: Include a simple, clear example that enable users to start using the connector immediately.
+   - **Quickstart**: Include a basic and clear example that helps users to start using the connector immediately.
    - **Examples**: Link to additional use cases, providing context on how the connector can be used in different scenarios.
 
    > For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/Module.md).
 
-2. Update the `README.md` file
+2. Update the `README.md` file.
 
    This file will be displayed on the GitHub repository landing page. Therefore, it should include the same information as `Module.md` with a few additional sections such as `Building from Source`, `Contributing`, `License`, etc.
    
    > For reference, check the [Twitter connector README](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/README.md).
 
-3. Write example use cases (optional)
+3. Write example use cases (optional).
 
    Providing practical examples helps users understand the connector better. These examples should show how the connector is used in real-world scenarios.
 
@@ -162,7 +162,7 @@ Once you have completed the development and testing of your connector, you can p
    - `license`: The license under which your connector is distributed (Optional).
    - `authors`: Your name and email address (Optional).
    - `keywords`: Keywords to help users find your connector (Optional).
-   - `icon`: The relative path to the icon file, which will be shown as the connector logo in the Ballerina central (Optional).
+   - `icon`: The relative path to the icon file, which will be shown as the connector logo in the [Ballerina Central](https://central.ballerina.io/) (Optional).
    - `repository`: The URL of your GitHub repository (Optional).
 
 2. Follow the steps in the [Ballerina package publishing guide](https://ballerina.io/learn/publish-packages-to-ballerina-central/) to publish your connector to [Ballerina Central](https://central.ballerina.io/) under your organization.

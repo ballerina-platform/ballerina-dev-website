@@ -152,14 +152,14 @@ export default function Intro(props) {
                   <Card className={`${styles.cutomCard}`}>
 
                     <Card.Body className={styles.stack}>
-                      <Card.Title className={styles.title}>Stack Oveflow</Card.Title>
+                      <Card.Title className={styles.title}>Stack Overflow</Card.Title>
                       <p className={styles.msg}>
                         Got a technical question?
                         <br />
-                        Then get help from experts
+                        Get expert help
                       </p>
 
-                      <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.ask} title="Stack Overflow">Ask on Stack Oveflow</a>
+                      <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.ask} title="Stack Overflow">Ask on Stack Overflow today</a>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -173,7 +173,7 @@ export default function Intro(props) {
 
                       <p className={styles.msg}>Join our Discord community</p>
 
-                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={styles.join} title='Discord'>Join Ballerina Discord</a>
+                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={styles.join} title='Discord'>Join the Ballerina Server</a>
                     </Card.Body>
                   </Card>
                 </Col>

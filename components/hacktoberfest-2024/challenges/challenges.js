@@ -59,21 +59,21 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th className={styles.reward}>Reward</th>
+                        <th className={styles.reward}>Credits</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Easy</td>
-                        <td className={styles.reward}>+10</td>
-                      </tr>
-                      <tr>
-                        <td>Medium</td>
                         <td className={styles.reward}>+20</td>
                       </tr>
                       <tr>
-                        <td>Hard</td>
+                        <td>Medium</td>
                         <td className={styles.reward}>+30</td>
+                      </tr>
+                      <tr>
+                        <td>Hard</td>
+                        <td className={styles.reward}>+45</td>
                       </tr>
                     </tbody>
                   </Table>
@@ -91,22 +91,10 @@ export default function Intro(props) {
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th className={styles.reward}>Reward</th>
+                        <th className={styles.reward}>Credits</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Documentation - Easy</td>
-                        <td className={styles.reward}>+5</td>
-                      </tr>
-                      <tr>
-                        <td>Documentation - Medium</td>
-                        <td className={styles.reward}>+10</td>
-                      </tr>
-                      <tr>
-                        <td>Documentation - Hard</td>
-                        <td className={styles.reward}>+15</td>
-                      </tr>
                       <tr>
                         <td>Blog/article</td>
                         <td className={styles.reward}>+20</td>
@@ -118,30 +106,29 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/6" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 
             <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
-                  <h3>Connectors</h3>
+                  <h3>Connector projects</h3>
 
                   <Table hover variant="dark" className={styles.customDarkTable}>
                     <thead>
                       <tr>
                         <th>Type</th>
-                        <th className={styles.reward}>Reward</th>
+                        <th className={styles.reward}>Credits</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Easy</td>
-                        <td className={styles.reward}>+50</td>
+                        <td className={styles.reward}>+60</td>
                       </tr>
                       <tr>
                         <td>Medium</td>
-                        <td className={styles.reward}>+75</td>
+                        <td className={styles.reward}>+80</td>
                       </tr>
                       <tr>
                         <td>Hard</td>
@@ -151,7 +138,7 @@ export default function Intro(props) {
                   </Table>
                 </div>
                 <div>
-                  <a className={styles.issues} href="https://ballerina.io/learn/create-your-first-connector-with-ballerina/" target="_blank" rel="noreferrer" title='Read the guide' style={{marginBottom: "10px"}}>Read the guide</a>
+                  <a className={styles.issues} href="/hacktoberfest/connector-contributor-guide" target="_blank" rel="noreferrer" title='Read the guide' style={{marginBottom: "10px"}}>Read the guide</a>
                   <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
                 </div>
               </div>

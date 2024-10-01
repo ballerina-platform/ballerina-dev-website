@@ -63,10 +63,16 @@ export default function Rules(props) {
                       <li><b>Share your work:</b> Publish your content and submit the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a>.</li>
                     </ul>
                   </li>
+                  <li className={styles.customLi}><h5>Extra contributions:</h5>
+                    <ul>
+                      <li><b>Bug reporting credits:</b> Earn 5 extra credits for reporting valid bugs, subject to the panel's review and approval.</li>
+                      <li><b>Ambassador tasks:</b> Complete tasks from the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://ballerina.io/community/ambassadors/">Ballerina Ambassador Program</a> to earn credits, with final points decided by the panel.</li>
+                    </ul>
+                  </li>
 
                   <li className={styles.customLi}><h5>Important details:</h5>
                     <ul>
-                      <li><b>Submission deadline:</b> The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> is October 31, 2023, at 11:59 PM PST.</li>
+                      <li><b>Submission deadline:</b> The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/517ebK579YwmPfRY6">form</a> is October 31, 2024, at 11:59 PM PST.</li>
                       <li><b>Ask questions on Stack Overflow:</b> Need any technical help? Raise all your questions in <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.titleLink} title="Stack Overflow">Stack Overflow</a>.</li>
                       <li><b>Stay updated on Discord:</b> All announcements will be held on Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> to stay updated on important information.</li>
                       <li><b>Contributor recognition:</b> Extra credits may be granted for exceptional contributions.</li>

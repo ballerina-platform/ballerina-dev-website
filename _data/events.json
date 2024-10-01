@@ -1,6 +1,22 @@
 {
     "events": [
            {
+            "date": "October 1-31, 2024",
+            "day": "Ready, Set, Hack!",
+            "time": "",
+            "expire": "2024-11-01T17:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://ballerina.io/hacktoberfest/",
+            "eventType": "Hacktoberf­est 2024",
+            "eventName": "A month-long celebration of all things open-source",
+            "presenterTwitter": "https://ballerina.io/hacktoberfest/#rewards",
+            "presenter": "Exciting prizes to be won!",
+            "presenterDesignation": "",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Sep 26, 2024",
             "day": "Thur.",
             "time": "10:00 a.m. PDT",

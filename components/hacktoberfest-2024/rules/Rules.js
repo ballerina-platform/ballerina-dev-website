@@ -65,7 +65,7 @@ export default function Rules(props) {
                   </li>
                   <li className={styles.customLi}><h5>Extra contributions:</h5>
                     <ul>
-                      <li><b>Bug reporting credits:</b> Earn 5 extra credits for reporting valid bugs, subject to the panel's review and approval.</li>
+                      <li><b>Bug reporting credits:</b> Earn 5 extra credits for reporting valid bugs, subject to the panel&apos;s review and approval.</li>
                       <li><b>Ambassador tasks:</b> Complete tasks from the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://ballerina.io/community/ambassadors/">Ballerina Ambassador Program</a> to earn credits, with final points decided by the panel.</li>
                     </ul>
                   </li>

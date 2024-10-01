@@ -27,7 +27,7 @@ Before we begin, make sure you have:
 
 ## Step 1: Set the project structure
 
-**Important**: If you'd like to contribute your project as an official Ballerina connector, you can skip the steps below and contact the Ballerina team through the [Discord community](https://discord.com/invite/wAJYFbMrG2). In this case, the repository will be created under the [`ballerina-platform`](https://github.com/ballerina-platform/) organization, and the team will set up the initial project structure for you.
+**Important**: If you'd like to contribute your project as an official Ballerina connector, you can skip the steps below and contact the Ballerina team through the [Discord community](https://discord.com/invite/ballerinalang). In this case, the repository will be created under the [`ballerina-platform`](https://github.com/ballerina-platform/) organization, and the team will set up the initial project structure for you.
 
 1. Create a new GitHub repository to host your connector. Ballerina official connector repositories follow the naming pattern: `module-ballerinax-<connector-name>` (e.g., module-ballerinax-twitter). But for other connectors, you can choose a name that best represents your connector.
 

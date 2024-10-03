@@ -33,7 +33,7 @@ import EventsData from '../_data/events.json';
 
 import fs from "fs";
 import matter from "gray-matter";
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -61,10 +61,9 @@ export function getUpcomingEvents(now) {
 }
 
 export async function getStaticProps() {
-
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
   const files = traverseFolder("components/home-page/bal-action/action-bbe");
   var samples = {};
   var codeSamples = {};
@@ -73,7 +72,7 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' });
+    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' });
     codeSamples[sampleName] = content.replaceAll('```','');
   });
 

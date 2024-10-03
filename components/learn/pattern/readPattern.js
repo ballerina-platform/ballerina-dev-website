@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 import { load } from "js-yaml";
 
 
@@ -42,11 +42,12 @@ function split(content){
     return [content.slice(0, i), content.slice(i)];
 }
 
-const highlighterPromise = getHighlighter({ theme: 'github-light' });
-
 async function highlight(src){
   if (!src) {
     return "";
   }
-  return (await highlighterPromise).codeToHtml(src, { lang: 'ballerina' });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
+  return highlighter.codeToHtml(src, { lang: 'ballerina', theme: 'github-light' });
 }

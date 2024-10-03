@@ -25,14 +25,12 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { getHighlighter, setCDN } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
 import remarkStringify from "remark-stringify";
-
-setCDN("https://unpkg.com/shiki/");
 
 import Layout from "../../../layouts/LayoutRN";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -122,20 +120,10 @@ export default function PostPage({ frontmatter, content, id }) {
 
     React.useEffect(() => {
       async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: [
-            "bash",
-            "ballerina",
-            "toml",
-            "yaml",
-            "sh",
-            "json",
-            "graphql",
-            "sql",
-          ],
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
+        getSingletonHighlighter().then(async (highlighter) => {
+          await highlighter.loadTheme('github-light');
+          await highlighter.loadLanguage(language);
+          setCodeSnippet(highlighter.codeToHtml(code, {lang: language, theme: 'github-light'}));
         });
       }
       fetchData();

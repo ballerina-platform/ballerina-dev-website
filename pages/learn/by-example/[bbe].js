@@ -25,7 +25,7 @@ import Head from "next/head";
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
 import Link from "next/link";
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
 export async function getStaticPaths() {
   const bbes = fs.readdirSync("swan-lake/by-example");
@@ -59,9 +59,9 @@ export async function getStaticProps({ params: { bbe } }) {
   const navContent = load(navContentString);
   const frontmatter = JSON.parse(frontmatterString);
 
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
 
   const splitUrl = bbe
     .split("-")
@@ -70,7 +70,7 @@ export async function getStaticProps({ params: { bbe } }) {
   const codeSnippetData = (BBEs[`${bbeComponentName}CodeSnippetData`]);
   const codes = [];
   for (let snippet of codeSnippetData) {
-    codes.push(highlighter.codeToHtml(snippet, { lang: 'ballerina' }));
+    codes.push(highlighter.codeToHtml(snippet, { lang: 'ballerina', theme: 'github-light' }));
   }
 
   return {

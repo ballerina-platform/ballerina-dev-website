@@ -26,7 +26,7 @@ import Code from "../../../components/data-oriented-programming/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -39,9 +39,9 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
   const files = traverseFolder("components/data-oriented-programming/code/java-bbe");
   var samples = {};
 
@@ -70,7 +70,7 @@ export async function getStaticProps() {
         image: frontmatter.image ? frontmatter.image : '',
       },
       content: content,
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang, theme: 'github-light' }) : ''
     };
   });
 

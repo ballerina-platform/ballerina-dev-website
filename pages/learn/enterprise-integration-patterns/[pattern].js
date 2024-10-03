@@ -26,7 +26,6 @@ import Head from "next/head";
 import { Row, Container, Col, Badge, Table } from "react-bootstrap";
 import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
-import { getHighlighter } from "shiki";
 import styles from './Patterns.module.css';
 import ReactMarkdown from 'react-markdown';
 import { FaExternalLinkAlt } from 'react-icons/fa';

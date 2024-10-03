@@ -29,6 +29,7 @@ import Contact from '../../components/community/contact/Contact';
 import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
 import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 import Certification from '../../components/community/certification/Certification';
+import Ambassador from '../../components/common/ambassador/Ambassador';
 
 export default function Community() {
 
@@ -119,22 +120,26 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
+            <Ambassador getLink={getLink} />
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <Resources getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <UniversitySessions getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Certification getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>
 

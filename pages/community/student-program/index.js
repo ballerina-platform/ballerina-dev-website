@@ -25,6 +25,7 @@ import Outline from '../../../components/student-engagement/outline/Outline';
 import Events from '../../../components/student-engagement/events/Events';
 import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
 import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';
+import Ambassador from '../../../components/common/ambassador/Ambassador';
 
 export default function StudentengagementProgram() {
 
@@ -120,6 +121,10 @@ export default function StudentengagementProgram() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
+            <Ambassador getLink={getLink} />
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <GetInvolved getLink={getLink} />
           </Row>
 

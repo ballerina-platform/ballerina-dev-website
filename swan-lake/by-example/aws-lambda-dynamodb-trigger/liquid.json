@@ -11,9 +11,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/aws-lambda-dynamodb-trigger",
-  "active": "aws-lambda-dynamodb-trigger",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/aws-lambda-dynamodb-trigger",
-    "/swan-lake/learn/by-example/aws-lambda-dynamodb-trigger.html"
-  ]
+  "active": "aws-lambda-dynamodb-trigger"
 }

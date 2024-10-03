@@ -10,9 +10,5 @@
     "var"
   ],
   "permalink": "/learn/by-example/object-constructor",
-  "active": "object-constructor",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/object-constructor",
-    "/swan-lake/learn/by-example/object-constructor.html"
-  ]
+  "active": "object-constructor"
 }

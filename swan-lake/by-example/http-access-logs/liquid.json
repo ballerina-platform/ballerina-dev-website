@@ -1,6 +1,6 @@
 {
   "title": "Access logs",
-  "description": "This BBE demonstrates the access logs for HTTP services in Ballerina.",
+  "description": "This example demonstrates the access logs for HTTP services in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "service"
   ],
   "permalink": "/learn/by-example/http-access-logs",
-  "active": "http-access-logs",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-access-logs",
-    "/swan-lake/learn/by-example/http-access-logs.html"
-  ]
+  "active": "http-access-logs"
 }

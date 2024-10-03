@@ -14,9 +14,5 @@
     "access"
   ],
   "permalink": "/learn/by-example/tuples",
-  "active": "tuples",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/tuples",
-    "/swan-lake/learn/by-example/tuples.html"
-  ]
+  "active": "tuples"
 }

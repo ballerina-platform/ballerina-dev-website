@@ -10,9 +10,5 @@
     "bbe"
   ],
   "permalink": "/learn/by-example/jms-consumer-acknowledgement",
-  "active": "jms-consumer-acknowledgement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/jms-consumer-acknowledgement",
-    "/swan-lake/learn/by-example/jms-consumer-acknowledgement.html"
-  ]
+  "active": "jms-consumer-acknowledgement"
 }

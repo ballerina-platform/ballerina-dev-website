@@ -88,7 +88,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/json-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/json-type",
                 "_blank",
               );
             }}
@@ -243,8 +243,8 @@ export function JsonType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/">
-              Converting from JSON to user defined type with langlib functions
+            <a href="/learn/by-example/convert-from-json-to-user-defined-type/">
+              Convert from JSON to user-defined type
             </a>
           </span>
         </li>
@@ -254,7 +254,7 @@ export function JsonType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/converting-from-user-defined-type-to-json/">
-              Converting from user-defined type to JSON
+              Convert from user-defined type to JSON
             </a>
           </span>
         </li>

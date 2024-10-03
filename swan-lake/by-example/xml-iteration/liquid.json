@@ -9,9 +9,5 @@
     "forEach"
   ],
   "permalink": "/learn/by-example/xml-iteration",
-  "active": "xml-iteration",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-iteration",
-    "/swan-lake/learn/by-example/xml-iteration.html"
-  ]
+  "active": "xml-iteration"
 }

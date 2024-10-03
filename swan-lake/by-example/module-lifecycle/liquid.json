@@ -9,9 +9,5 @@
     "listener"
   ],
   "permalink": "/learn/by-example/module-lifecycle",
-  "active": "module-lifecycle",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/module-lifecycle",
-    "/swan-lake/learn/by-example/module-lifecycle.html"
-  ]
+  "active": "module-lifecycle"
 }

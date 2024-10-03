@@ -26,7 +26,7 @@ public function main() returns error? {
     io:println("Converted civil value: " + civil1.toString());
 
     // Converts a given \`time:Civil\` value to a RFC 3339
-    // (e.g. \`2007-12-03T10:15:30.00Z\`) formatted string.
+    // (e.g. \`2021-04-12T23:20:50.520+05:30\`) formatted string.
     string civilString = check time:civilToString(civil1);
     io:println(\`Civil string representation: \${civilString}\`);
 
@@ -86,7 +86,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/time-formatting-and-parsing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/time-formatting-and-parsing",
                 "_blank",
               );
             }}
@@ -221,7 +221,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
               <span>{`UTC value: [1196676930,0.12]`}</span>
               <span>{`UTC string representation: 2007-12-03T10:15:30.120Z`}</span>
               <span>{`Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}`}</span>
-              <span>{`Civil string representation: 2021-04-12T17:50:50.520Z`}</span>
+              <span>{`Civil string representation: 2021-04-12T23:20:50.520+05:30`}</span>
               <span>{`Email formatted string: Mon, 3 Dec 2007 10:15:30 Z`}</span>
               <span>{`Civil record of the email string: {"utcOffset":{"hours":-8,"minutes":0},"timeAbbrev":"America/Los_Angeles","dayOfWeek":3,"year":2021,"month":3,"day":10,"hour":19,"minute":51,"second":55}`}</span>
               <span>{`Email string of the civil record: Wed, 10 Mar 2021 19:51:55 -0800`}</span>

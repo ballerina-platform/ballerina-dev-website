@@ -9,9 +9,5 @@
     "query"
   ],
   "permalink": "/learn/by-example/xml-templates-and-query",
-  "active": "xml-templates-and-query",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-templates-and-query",
-    "/swan-lake/learn/by-example/xml-templates-and-query.html"
-  ]
+  "active": "xml-templates-and-query"
 }

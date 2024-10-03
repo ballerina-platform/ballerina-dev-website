@@ -11,9 +11,5 @@
     "match guard"
   ],
   "permalink": "/learn/by-example/match-guard-in-match-statement",
-  "active": "match-guard-in-match-statement",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/match-guard-in-match-statement",
-    "/swan-lake/learn/by-example/match-guard-in-match-statement.html"
-  ]
+  "active": "match-guard-in-match-statement"
 }

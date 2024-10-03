@@ -2,26 +2,62 @@
   padding: 80px 0 80px 0;
 }
 
+.hacktoberfestIntro2024 {
+  padding: 80px 0 80px 0;
+  background: #000;
+}
+
 .hacktoberfestChallenges, .hacktoberfestRules {
   background: #fff;
+}
+
+.hacktoberfestChallenges2024, .hacktoberfestRules2024, .hacktoberfestRewards2024 {
+  background: #000000;
+  color: #fff;
 }
 
 .hacktoberfestRewards {
   background: #f5f5f5;
 }
 
-.hacktoberfestChallenges, .hacktoberfestRules, .hacktoberfestRewards {
-  padding-bottom: 6rem;
+.hacktoberfestChallenges, .hacktoberfestChallenges2024, 
+.hacktoberfestRules, .hacktoberfestRules2024,
+.hacktoberfestRewards, .hacktoberfestRewards2024 {
+  margin-bottom: 0 !important;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.hacktoberfestChallenges h2, .hacktoberfestRules h2, .hacktoberfestRewards h2,
+.hacktoberfestChallenges2024 h2, .hacktoberfestRules2024 h2, .hacktoberfestRewards2024 h2 {
+  
+  margin-bottom: 30px;
+  display: inline-block;
+  scroll-margin-top: 65px;
 }
 
 .hacktoberfestChallenges h2, .hacktoberfestRules h2, .hacktoberfestRewards h2 {
   font-size: 32px;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  font-weight: 600;
   color: #464646;
   border-bottom: 2px solid #464646;
-  display: inline-block;
   padding-bottom: 10px;
-  scroll-margin-top: 65px;
+  font-weight: 600;
+}
+
+.hacktoberfestChallenges2024 h2, .hacktoberfestRules2024 h2, .hacktoberfestRewards2024 h2 {
+  font-size: 45px;
+  color: #000000;
+  background: #20b6b0;
+  width: fit-content;
+}
+
+.hacktoberfestRules2024 {
+  padding-bottom: 120px;
+}
+
+.mesh {
+  background-image: url('/images/ballerina-mesh-grey-cropped.svg'); /* SVG image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: top; /* Positions the image in the center */
+  background-size:cover;
 }

@@ -11,9 +11,5 @@
     "rfc5322"
   ],
   "permalink": "/learn/by-example/time-formatting-and-parsing",
-  "active": "time-formatting-and-parsing",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/time-formatting-and-parsing",
-    "/swan-lake/learn/by-example/time-formatting-and-parsing.html"
-  ]
+  "active": "time-formatting-and-parsing"
 }

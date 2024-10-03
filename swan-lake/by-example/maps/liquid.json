@@ -11,9 +11,5 @@
     "keys"
   ],
   "permalink": "/learn/by-example/maps",
-  "active": "maps",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/maps",
-    "/swan-lake/learn/by-example/maps.html"
-  ]
+  "active": "maps"
 }

@@ -138,7 +138,7 @@ export default function Boxes(props) {
                             GraphQL tool
                           </a>
                         </p>
-                        <p className={styles.description}>Generate GraphQL client skeletons in Ballerina.</p>
+                        <p className={styles.description}>Generate GraphQL service skeleton for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -364,6 +364,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Best practices to follow when formatting Ballerina code.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/customize-formatting`} className={styles.titleLink}>
+                            Customize formatting
+                          </a>
+                        </p>
+                        <p className={styles.description}>Provide custom formatting options to Ballerina formatter.</p>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -759,6 +767,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Publish your library package to Ballerina Central.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/configure-a-network-proxy`} className={styles.titleLink}>
+                            Configure a network proxy
+                          </a>
+                        </p>
+                        <p className={styles.description}>Perform operations with the Ballerina Central over an HTTP proxy.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -904,6 +920,14 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Write, build, and deploy a Ballerina service on Kubernetes.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/create-your-first-connector-with-ballerina/`} className={styles.titleLink}>
+                            Create your first connector with Ballerina
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate custom connectors using the Ballerina OpenAPI tool.</p>
                       </div>
                     </div>
                   </div>

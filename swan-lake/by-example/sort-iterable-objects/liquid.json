@@ -15,9 +15,5 @@
     "collection"
   ],
   "permalink": "/learn/by-example/sort-iterable-objects",
-  "active": "sort-iterable-objects",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/sort-iterable-objects",
-    "/swan-lake/learn/by-example/sort-iterable-objects.html"
-  ]
+  "active": "sort-iterable-objects"
 }

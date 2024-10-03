@@ -35,20 +35,20 @@ Elasticsearch and Kibana are provided as <a href="https://www.elastic.co/cloud" 
 
     ```
     # Elasticsearch Image
-    $ docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+    $ docker pull docker.elastic.co/elasticsearch/elasticsearch:8.15.2
     # Kibana Image
-    $ docker pull docker.elastic.co/kibana/kibana:6.5.1
+    $ docker pull docker.elastic.co/kibana/kibana:8.15.2
     # Filebeat Image
-    $ docker pull docker.elastic.co/beats/filebeat:6.5.1
+    $ docker pull docker.elastic.co/beats/filebeat:8.15.2
     # Logstash Image
-    $ docker pull docker.elastic.co/logstash/logstash:6.5.1
+    $ docker pull docker.elastic.co/logstash/logstash:8.15.2
     ```
 
 2. Start Elasticsearch and Kibana containers by executing the following commands.
 
     ```
-    $ docker run -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:6.5.1
-    $ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
+    $ docker run -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:8.15.2
+    $ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:8.15.2
     ```
     
     If you are using Linux, you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
@@ -87,7 +87,7 @@ Elasticsearch and Kibana are provided as <a href="https://www.elastic.co/cloud" 
 4. Start the Logstash container by executing the following command.
 
     ```
-    $ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
+    $ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:8.15.2
     ```
 
 5. Configure Filebeat to ship the Ballerina logs. Create a `filebeat.yml` file in the `/tmp/` directory and include the following content in the file.
@@ -104,7 +104,7 @@ Elasticsearch and Kibana are provided as <a href="https://www.elastic.co/cloud" 
 6. Start the Filebeat container with the following command.
 
     ```
-    $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
+    $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:8.15.2
     ```
     
     The `-v` flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the `ballerina.log` file to be bind-mounted to the filebeat container.

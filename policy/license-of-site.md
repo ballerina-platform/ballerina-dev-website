@@ -2,7 +2,8 @@
 layout: ballerina-inner-page
 title: Ballerina website license
 permalink: /license-of-site/
-description: License of the Ballerina website
+description: Review the License of Site to understand the terms and conditions governing the use of Ballerina's website and its content.
+keywords: ballerinalang, integration, microservices, programming language, cloud native, ballerina language, license of site
 ---
 
 Except as detailed below, the content on this website is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/us/).
@@ -18,7 +19,7 @@ In some cases, a page may include content consisting of images, audio or video m
 
 
 ## Attribution
-Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/legalcode">Creative Commons legal code</a>.
+Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/legalcode">Creative Commons legal code</a>.
 
 In practice we ask that you provide attribution to Ballerina to the best of the ability of the medium in which you are producing the work.
 

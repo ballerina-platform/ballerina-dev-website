@@ -10,9 +10,5 @@
     "basic auth"
   ],
   "permalink": "/learn/by-example/grpc-client-basic-auth",
-  "active": "grpc-client-basic-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-basic-auth",
-    "/swan-lake/learn/by-example/grpc-client-basic-auth.html"
-  ]
+  "active": "grpc-client-basic-auth"
 }

@@ -1,6 +1,6 @@
 {
   "title": "Publish message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates producing a message to a subject in the NATS basic server.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "subscribe"
   ],
   "permalink": "/learn/by-example/nats-basic-pub",
-  "active": "nats-basic-pub",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-basic-pub",
-    "/swan-lake/learn/by-example/nats-basic-pub.html"
-  ]
+  "active": "nats-basic-pub"
 }

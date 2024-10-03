@@ -12,9 +12,5 @@
     "access"
   ],
   "permalink": "/learn/by-example/destructure-records-using-query",
-  "active": "destructure-records-using-query",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/destructure-records-using-query",
-    "/swan-lake/learn/by-example/destructure-records-using-query.html"
-  ]
+  "active": "destructure-records-using-query"
 }

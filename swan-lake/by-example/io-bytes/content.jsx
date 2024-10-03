@@ -66,7 +66,7 @@ export function IoBytes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/io-bytes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/io-bytes",
                 "_blank",
               );
             }}
@@ -211,11 +211,23 @@ export function IoBytes({ codeSnippets }) {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/binary-data/">Binary data</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Call stored procedures"
-            href="/learn/by-example/mysql-call-stored-procedures"
+            title="Serialization/Deserialization"
+            href="/learn/by-example/avro-serdes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -242,7 +254,7 @@ export function IoBytes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Call stored procedures
+                  Serialization/Deserialization
                 </span>
               </div>
             </div>

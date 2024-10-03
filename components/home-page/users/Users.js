@@ -50,9 +50,9 @@ export default function Users(props) {
           <Col sm={18} md={12} className={styles.logo}>
               <a href={`${prefix}/case-studies/wso2`}><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
               <a href="https://choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
-              <a href="https://fattuesday.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
+              <a href={`${prefix}/case-studies/fat-tuesday`}><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
               <a href={`${prefix}/case-studies/mosip`}><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
-              <a href="https://quantil.readthedocs.io/en/latest/user-guide/qhana/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>
+              <a href={`${prefix}/case-studies/qhana`}><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>
 
           </Col>
         </Row>
@@ -66,6 +66,7 @@ export default function Users(props) {
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
               <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
+              <a href={`https://wso2.com/library/conference/2024/05/less-is-more-utilizing-ballerina-to-architect-a-cloud-data-platform/`} target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/visualize-hr.png`}  width={230} alt="Visualize HR" title="Visualize HR" /></a>
               <a href={`${prefix}/case-studies/avinya-foundation`}><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
           </Col>
         </Row>

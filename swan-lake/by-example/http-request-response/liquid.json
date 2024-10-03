@@ -1,6 +1,6 @@
 {
   "title": "Request/Response object",
-  "description": "BBE on HTTP request and its usage with client in ballerina.",
+  "description": "This example is on the HTTP request and response usage in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "response"
   ],
   "permalink": "/learn/by-example/http-request-response",
-  "active": "http-request-response",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-request-response",
-    "/swan-lake/learn/by-example/http-request-response.html"
-  ]
+  "active": "http-request-response"
 }

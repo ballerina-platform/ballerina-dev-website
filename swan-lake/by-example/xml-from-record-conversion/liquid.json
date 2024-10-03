@@ -3,9 +3,5 @@
   "description": "This BBE demonstrates the conversion from record to XML in Ballerina.",
   "keywords": ["ballerina", "ballerina by example", "BBE", "record", "xml"],
   "permalink": "/learn/by-example/xml-from-record-conversion",
-  "active": "xml-from-record-conversion",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xml-from-record-conversion",
-    "/swan-lake/learn/by-example/xml-from-record-conversion.html"
-  ]
+  "active": "xml-from-record-conversion"
 }

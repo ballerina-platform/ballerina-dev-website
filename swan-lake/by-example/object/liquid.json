@@ -10,9 +10,5 @@
     "new"
   ],
   "permalink": "/learn/by-example/object",
-  "active": "object",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/object",
-    "/swan-lake/learn/by-example/object.html"
-  ]
+  "active": "object"
 }

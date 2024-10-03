@@ -12,9 +12,5 @@
     "error"
   ],
   "permalink": "/learn/by-example/check-semantics",
-  "active": "check-semantics",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/check-semantics",
-    "/swan-lake/learn/by-example/check-semantics.html"
-  ]
+  "active": "check-semantics"
 }

@@ -57,6 +57,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
+        source: `/${redirectBase}learn/create-your-first-connector-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/create-your-first-connector-with-ballerina`,
+      },
+      {
         source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },
@@ -153,10 +157,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/health-tool`,
       },
       {
-        source: `/${redirectBase}learn/ballerina-shell`,
-        destination: `/${redirectBase}learn/integration-tools/ballerina-shell`,
-      },
-      {
         source: `/${redirectBase}learn/bal-persist-overview`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/bal-persist-overview`,
       },
@@ -171,6 +171,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/persist-client-api`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-client-api`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-introspection`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-introspection`,
       },
       {
         source: `/${redirectBase}learn/supported-data-stores`,
@@ -237,6 +241,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
+        source: `/${redirectBase}learn/configure-a-network-proxy`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/configure-a-network-proxy`,
+      },
+      {
         source: `/${redirectBase}learn/code-to-cloud-deployment`,
         destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/code-to-cloud-deployment`,
       },
@@ -255,6 +263,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/package-references`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
+      },
+      {
+        source: `/${redirectBase}learn/customize-formatting`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/customize-formatting`,
       },
       {
         source: `/${redirectBase}learn/cli-commands/`,

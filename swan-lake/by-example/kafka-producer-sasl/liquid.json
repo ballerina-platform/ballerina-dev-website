@@ -1,6 +1,6 @@
 {
   "title": "SASL authentication",
-  "description": "BBE on how to configure a Kafka producer to use SASL/PLAIN authentication.",
+  "description": "This example is on how to configure a Kafka producer to use SASL/PLAIN authentication.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -11,9 +11,5 @@
     "SASL"
   ],
   "permalink": "/learn/by-example/kafka-producer-sasl",
-  "active": "kafka-producer-sasl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-producer-sasl",
-    "/swan-lake/learn/by-example/kafka-producer-sasl.html"
-  ]
+  "active": "kafka-producer-sasl"
 }

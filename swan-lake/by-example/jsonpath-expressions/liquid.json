@@ -1,0 +1,14 @@
+{
+  "title": "JSONPath expressions",
+  "description": "This BBE demonstrates JSON path expressions with Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json",
+    "jsonpath",
+    "jsonpath expressions"
+  ],
+  "permalink": "/learn/by-example/jsonpath-expressions",
+  "active": "jsonpath-expressions"
+}

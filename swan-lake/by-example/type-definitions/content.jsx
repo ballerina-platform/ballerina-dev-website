@@ -36,8 +36,8 @@ export function TypeDefinitions({ codeSnippets }) {
       <h1>Type definitions</h1>
 
       <p>
-        A type definition gives a name for a type. Its name is just an alias for
-        the type, like <code>typedef</code> in C.
+        A type definition gives a name for a type. The name is just an alias for
+        the type.
       </p>
 
       <Row
@@ -50,7 +50,7 @@ export function TypeDefinitions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/type-definitions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/type-definitions",
                 "_blank",
               );
             }}

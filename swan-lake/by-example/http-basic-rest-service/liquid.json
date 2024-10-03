@@ -1,6 +1,6 @@
 {
   "title": "Basic REST service",
-  "description": "BBE on basic REST service in ballerina.",
+  "description": "This example demonstrates creating a basic REST service in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -11,9 +11,5 @@
     "rest"
   ],
   "permalink": "/learn/by-example/http-basic-rest-service",
-  "active": "http-basic-rest-service",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-basic-rest-service",
-    "/swan-lake/learn/by-example/http-basic-rest-service.html"
-  ]
+  "active": "http-basic-rest-service"
 }

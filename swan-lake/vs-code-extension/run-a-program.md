@@ -37,33 +37,13 @@ Follow the steps below to use the code view to run a Ballerina program.
 
 Follow the steps below to use the code view to run a Ballerina program.
   
-1. View the diagram using one of the options below.
-
-    - **Option 1**
-
-        Click **Show Diagram** on the title bar of the editor to view the graphical representation of the program.
+1. Click **Show Diagram** on the title bar of the editor to view the graphical representation of the program.
         
-        <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/show-diagram-button.png" class="cInlineImage-full"/>
+   <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/show-diagram-button.png" class="cInlineImage-full"/>
+   
+2. Click **Run** on the title bar of the editor.
 
-    - **Option 2**
-
-        Click the Ballerina icon in the VS Code side menu to open the diagram explorer tree.
-        
-        <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/diagram-explorer.png" class="cInlineImage-full"/>
-
-2. Run the program using one of the options below.
-
-    - **Option 1**
-
-        Click **Run** in the diagram options menu.
-
-        <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/run-diagram-button.png" class="cInlineImage-full"/>
-
-    - **Option 2**
-    
-        Click **Run** on the title bar of the editor.
-
-        <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/run-diagram-header-button.png" class="cInlineImage-full"/>
+   <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/run-diagram-header-button.png" class="cInlineImage-full"/>
 
 The integrated terminal will open automatically and run the program.
 

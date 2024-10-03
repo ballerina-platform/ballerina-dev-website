@@ -11,9 +11,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/aws-lambda-execution-context",
-  "active": "aws-lambda-execution-context",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/aws-lambda-execution-context",
-    "/swan-lake/learn/by-example/aws-lambda-execution-context.html"
-  ]
+  "active": "aws-lambda-execution-context"
 }

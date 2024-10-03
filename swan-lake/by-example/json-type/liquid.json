@@ -13,9 +13,5 @@
     "cloneWithType"
   ],
   "permalink": "/learn/by-example/json-type",
-  "active": "json-type",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/json-type",
-    "/swan-lake/learn/by-example/json-type.html"
-  ]
+  "active": "json-type"
 }

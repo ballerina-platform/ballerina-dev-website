@@ -10,9 +10,5 @@
     "int type"
   ],
   "permalink": "/learn/by-example/integers",
-  "active": "integers",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/integers",
-    "/swan-lake/learn/by-example/integers.html"
-  ]
+  "active": "integers"
 }

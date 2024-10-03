@@ -12,9 +12,5 @@
     "returns"
   ],
   "permalink": "/learn/by-example/functions",
-  "active": "functions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/functions",
-    "/swan-lake/learn/by-example/functions.html"
-  ]
+  "active": "functions"
 }

@@ -1,6 +1,6 @@
 {
   "title": "Consume message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates consuming messages from a NATS subject in a basic NATS server.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "subscribe"
   ],
   "permalink": "/learn/by-example/nats-basic-sub",
-  "active": "nats-basic-sub",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-basic-sub",
-    "/swan-lake/learn/by-example/nats-basic-sub.html"
-  ]
+  "active": "nats-basic-sub"
 }

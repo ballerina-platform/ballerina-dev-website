@@ -10,9 +10,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/aws-lambda-hello-world",
-  "active": "aws-lambda-hello-world",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/aws-lambda-hello-world",
-    "/swan-lake/learn/by-example/aws-lambda-hello-world.html"
-  ]
+  "active": "aws-lambda-hello-world"
 }

@@ -10,9 +10,5 @@
     "tcp client"
   ],
   "permalink": "/learn/by-example/tcp-client-ssl-tls",
-  "active": "tcp-client-ssl-tls",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/tcp-client-ssl-tls",
-    "/swan-lake/learn/by-example/tcp-client-ssl-tls.html"
-  ]
+  "active": "tcp-client-ssl-tls"
 }

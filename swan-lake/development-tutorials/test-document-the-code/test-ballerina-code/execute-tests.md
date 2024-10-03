@@ -108,12 +108,6 @@ Use `#` as the separator and append the case identifier to the end of the test f
 $ bal test --tests <test_function>#Case1
 ```
 
-Run only the previously-failed cases in a data set.
-
-```
-$ bal test --rerun-failed
-```
-
 ### Generate test report and code coverage
 
 Generate an HTML test report without code coverage information.
@@ -166,6 +160,12 @@ The formats below can be used for excluding.
 
 ```
 $ bal test --test-report --code-coverage --coverage-format=xml --excludes='./generated'
+```
+
+Execute the below command to enable parallel execution of tests.
+
+```
+$ bal test --parallel
 ```
 
 For more options of the test command, run the following.

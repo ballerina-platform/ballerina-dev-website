@@ -47,10 +47,15 @@ export default function Contact(props) {
         </Row>
 
         <Row>
-          <Col sm={12} md={6} lg={6}>
+          <Col sm={12}>
             <p>
-              Got any questions? Want to get involved but not sure how? Need help with your first use case? Our team is here to support you. Email us today, and we will be in touch soon.
+              Got any questions? Want to get involved but not sure how? Need help with your first use case? Our team is here to support you. Email us, and we will be in touch with you soon.
             </p>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col sm={12} md={6} lg={6}>
             <a href="mailto:contact@ballerina.io">
               <button type="button" className={styles.sendEmail}>Email contact@ballerina.io</button>
             </a>

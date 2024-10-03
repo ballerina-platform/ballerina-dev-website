@@ -11,9 +11,5 @@
     "introspection"
   ],
   "permalink": "/learn/by-example/websocket-service-oauth2",
-  "active": "websocket-service-oauth2",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-oauth2",
-    "/swan-lake/learn/by-example/websocket-service-oauth2.html"
-  ]
+  "active": "websocket-service-oauth2"
 }

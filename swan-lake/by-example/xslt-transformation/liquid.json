@@ -12,9 +12,5 @@
     "transformation"
   ],
   "permalink": "/learn/by-example/xslt-transformation",
-  "active": "xslt-transformation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/xslt-transformation",
-    "/swan-lake/learn/by-example/xslt-transformation.html"
-  ]
+  "active": "xslt-transformation"
 }

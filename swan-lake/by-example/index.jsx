@@ -44,6 +44,10 @@ import {
   codeSnippetData as BooleanCodeSnippetData,
 } from "./boolean/content.jsx";
 import {
+  ByteType,
+  codeSnippetData as ByteTypeCodeSnippetData,
+} from "./byte-type/content.jsx";
+import {
   Strings,
   codeSnippetData as StringsCodeSnippetData,
 } from "./strings/content.jsx";
@@ -191,6 +195,10 @@ import {
   ExpressionOrientedStyle,
   codeSnippetData as ExpressionOrientedStyleCodeSnippetData,
 } from "./expression-oriented-style/content.jsx";
+import {
+  ExpressionEquality,
+  codeSnippetData as ExpressionEqualityCodeSnippetData,
+} from "./expression-equality/content.jsx";
 import {
   Arrays,
   codeSnippetData as ArraysCodeSnippetData,
@@ -368,14 +376,6 @@ import {
   codeSnippetData as ErrorBindingPatternInMatchStatementCodeSnippetData,
 } from "./error-binding-pattern-in-match-statement/content.jsx";
 import {
-  RegexpType,
-  codeSnippetData as RegexpTypeCodeSnippetData,
-} from "./regexp-type/content.jsx";
-import {
-  RegexpOperations,
-  codeSnippetData as RegexpOperationsCodeSnippetData,
-} from "./regexp-operations/content.jsx";
-import {
   Table,
   codeSnippetData as TableCodeSnippetData,
 } from "./table/content.jsx";
@@ -500,6 +500,18 @@ import {
   codeSnippetData as JsonNumbersCodeSnippetData,
 } from "./json-numbers/content.jsx";
 import {
+  JsonToRecord,
+  codeSnippetData as JsonToRecordCodeSnippetData,
+} from "./json-to-record/content.jsx";
+import {
+  JsonToRecordWithProjection,
+  codeSnippetData as JsonToRecordWithProjectionCodeSnippetData,
+} from "./json-to-record-with-projection/content.jsx";
+import {
+  JsonpathExpressions,
+  codeSnippetData as JsonpathExpressionsCodeSnippetData,
+} from "./jsonpath-expressions/content.jsx";
+import {
   RawTemplates,
   codeSnippetData as RawTemplatesCodeSnippetData,
 } from "./raw-templates/content.jsx";
@@ -551,6 +563,22 @@ import {
   XmlnsDeclarations,
   codeSnippetData as XmlnsDeclarationsCodeSnippetData,
 } from "./xmlns-declarations/content.jsx";
+import {
+  XmlToRecord,
+  codeSnippetData as XmlToRecordCodeSnippetData,
+} from "./xml-to-record/content.jsx";
+import {
+  XmlToRecordWithProjection,
+  codeSnippetData as XmlToRecordWithProjectionCodeSnippetData,
+} from "./xml-to-record-with-projection/content.jsx";
+import {
+  RegexpType,
+  codeSnippetData as RegexpTypeCodeSnippetData,
+} from "./regexp-type/content.jsx";
+import {
+  RegexpOperations,
+  codeSnippetData as RegexpOperationsCodeSnippetData,
+} from "./regexp-operations/content.jsx";
 import {
   Documentation,
   codeSnippetData as DocumentationCodeSnippetData,
@@ -688,9 +716,17 @@ import {
   codeSnippetData as InterWorkerMessagePassingCodeSnippetData,
 } from "./inter-worker-message-passing/content.jsx";
 import {
+  ConditionalSend,
+  codeSnippetData as ConditionalSendCodeSnippetData,
+} from "./conditional-send/content.jsx";
+import {
   InterWorkerFailurePropagation,
   codeSnippetData as InterWorkerFailurePropagationCodeSnippetData,
 } from "./inter-worker-failure-propagation/content.jsx";
+import {
+  NamedWorkerWithOnFailClause,
+  codeSnippetData as NamedWorkerWithOnFailClauseCodeSnippetData,
+} from "./named-worker-with-on-fail-clause/content.jsx";
 import {
   SynchronizeMessagePassing,
   codeSnippetData as SynchronizeMessagePassingCodeSnippetData,
@@ -703,6 +739,10 @@ import {
   Flush,
   codeSnippetData as FlushCodeSnippetData,
 } from "./flush/content.jsx";
+import {
+  Fork,
+  codeSnippetData as ForkCodeSnippetData,
+} from "./fork/content.jsx";
 import {
   TransactionStatement,
   codeSnippetData as TransactionStatementCodeSnippetData,
@@ -1052,6 +1092,10 @@ import {
   codeSnippetData as Http20ServerPushCodeSnippetData,
 } from "./http-2-0-server-push/content.jsx";
 import {
+  HttpSseService,
+  codeSnippetData as HttpSseServiceCodeSnippetData,
+} from "./http-sse-service/content.jsx";
+import {
   HttpClientRedirects,
   codeSnippetData as HttpClientRedirectsCodeSnippetData,
 } from "./http-client-redirects/content.jsx";
@@ -1083,6 +1127,10 @@ import {
   Http20ClientServerPush,
   codeSnippetData as Http20ClientServerPushCodeSnippetData,
 } from "./http-2-0-client-server-push/content.jsx";
+import {
+  HttpSseClient,
+  codeSnippetData as HttpSseClientCodeSnippetData,
+} from "./http-sse-client/content.jsx";
 import {
   HttpRequestInterceptor,
   codeSnippetData as HttpRequestInterceptorCodeSnippetData,
@@ -1127,6 +1175,10 @@ import {
   GraphqlInputObjects,
   codeSnippetData as GraphqlInputObjectsCodeSnippetData,
 } from "./graphql-input-objects/content.jsx";
+import {
+  GraphqlIdScalarType,
+  codeSnippetData as GraphqlIdScalarTypeCodeSnippetData,
+} from "./graphql-id-scalar-type/content.jsx";
 import {
   GraphqlInterfaces,
   codeSnippetData as GraphqlInterfacesCodeSnippetData,
@@ -1196,6 +1248,22 @@ import {
   codeSnippetData as CustomPrefetchMethodsCodeSnippetData,
 } from "./custom-prefetch-methods/content.jsx";
 import {
+  GraphqlServiceOperationLevelCaching,
+  codeSnippetData as GraphqlServiceOperationLevelCachingCodeSnippetData,
+} from "./graphql-service-operation-level-caching/content.jsx";
+import {
+  GraphqlServiceFieldLevelCaching,
+  codeSnippetData as GraphqlServiceFieldLevelCachingCodeSnippetData,
+} from "./graphql-service-field-level-caching/content.jsx";
+import {
+  GraphqlServiceCacheInvalidation,
+  codeSnippetData as GraphqlServiceCacheInvalidationCodeSnippetData,
+} from "./graphql-service-cache-invalidation/content.jsx";
+import {
+  GraphqlServiceQueryComplexity,
+  codeSnippetData as GraphqlServiceQueryComplexityCodeSnippetData,
+} from "./graphql-service-query-complexity/content.jsx";
+import {
   GraphqlClientQueryEndpoint,
   codeSnippetData as GraphqlClientQueryEndpointCodeSnippetData,
 } from "./graphql-client-query-endpoint/content.jsx";
@@ -1244,9 +1312,9 @@ import {
   codeSnippetData as GraphqlClientSecurityBasicAuthCodeSnippetData,
 } from "./graphql-client-security-basic-auth/content.jsx";
 import {
-  GraphqlClientSecuritySelfSignedJwtAuthentication,
-  codeSnippetData as GraphqlClientSecuritySelfSignedJwtAuthenticationCodeSnippetData,
-} from "./graphql-client-security-self-signed-jwt-authentication/content.jsx";
+  GraphqlClientSecurityJwtAuthentication,
+  codeSnippetData as GraphqlClientSecurityJwtAuthenticationCodeSnippetData,
+} from "./graphql-client-security-jwt-authentication/content.jsx";
 import {
   GraphqlClientSecurityOauth2PasswordGrantType,
   codeSnippetData as GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData,
@@ -1560,6 +1628,22 @@ import {
   codeSnippetData as KafkaConsumerSaslCodeSnippetData,
 } from "./kafka-consumer-sasl/content.jsx";
 import {
+  SoapClientSendReceive,
+  codeSnippetData as SoapClientSendReceiveCodeSnippetData,
+} from "./soap-client-send-receive/content.jsx";
+import {
+  SoapClientSecuritySslTsl,
+  codeSnippetData as SoapClientSecuritySslTslCodeSnippetData,
+} from "./soap-client-security-ssl-tsl/content.jsx";
+import {
+  SoapClientSecurityInboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-inbound-security-config/content.jsx";
+import {
+  SoapClientSecurityOutboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-outbound-security-config/content.jsx";
+import {
   RabbitmqConsumer,
   codeSnippetData as RabbitmqConsumerCodeSnippetData,
 } from "./rabbitmq-consumer/content.jsx";
@@ -1635,6 +1719,14 @@ import {
   MqttClientBasicAuthentication,
   codeSnippetData as MqttClientBasicAuthenticationCodeSnippetData,
 } from "./mqtt-client-basic-authentication/content.jsx";
+import {
+  LdapAddRemoveEntry,
+  codeSnippetData as LdapAddRemoveEntryCodeSnippetData,
+} from "./ldap-add-remove-entry/content.jsx";
+import {
+  LdapSearchEntry,
+  codeSnippetData as LdapSearchEntryCodeSnippetData,
+} from "./ldap-search-entry/content.jsx";
 import {
   JmsServiceConsumeMessage,
   codeSnippetData as JmsServiceConsumeMessageCodeSnippetData,
@@ -1764,6 +1856,10 @@ import {
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
 import {
+  AvroSerdes,
+  codeSnippetData as AvroSerdesCodeSnippetData,
+} from "./avro-serdes/content.jsx";
+import {
   IoBytes,
   codeSnippetData as IoBytesCodeSnippetData,
 } from "./io-bytes/content.jsx";
@@ -1840,6 +1936,10 @@ import {
   codeSnippetData as RecordToEdiCodeSnippetData,
 } from "./record-to-edi/content.jsx";
 import {
+  EnvironmentVariables,
+  codeSnippetData as EnvironmentVariablesCodeSnippetData,
+} from "./environment-variables/content.jsx";
+import {
   Filepaths,
   codeSnippetData as FilepathsCodeSnippetData,
 } from "./filepaths/content.jsx";
@@ -1888,10 +1988,6 @@ import {
   codeSnippetData as XsltTransformationCodeSnippetData,
 } from "./xslt-transformation/content.jsx";
 import {
-  EnvironmentVariables,
-  codeSnippetData as EnvironmentVariablesCodeSnippetData,
-} from "./environment-variables/content.jsx";
-import {
   XmlToJsonConversion,
   codeSnippetData as XmlToJsonConversionCodeSnippetData,
 } from "./xml-to-json-conversion/content.jsx";
@@ -1907,6 +2003,18 @@ import {
   XmlFromRecordConversion,
   codeSnippetData as XmlFromRecordConversionCodeSnippetData,
 } from "./xml-from-record-conversion/content.jsx";
+import {
+  YamlToAnydata,
+  codeSnippetData as YamlToAnydataCodeSnippetData,
+} from "./yaml-to-anydata/content.jsx";
+import {
+  YamlToAnydataWithProjection,
+  codeSnippetData as YamlToAnydataWithProjectionCodeSnippetData,
+} from "./yaml-to-anydata-with-projection/content.jsx";
+import {
+  AnydataToYamlString,
+  codeSnippetData as AnydataToYamlStringCodeSnippetData,
+} from "./anydata-to-yaml-string/content.jsx";
 import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
@@ -1988,13 +2096,13 @@ import {
   codeSnippetData as TracingCodeSnippetData,
 } from "./tracing/content.jsx";
 import {
-  CounterMetrics,
-  codeSnippetData as CounterMetricsCodeSnippetData,
-} from "./counter-metrics/content.jsx";
-import {
   GaugeMetrics,
   codeSnippetData as GaugeMetricsCodeSnippetData,
 } from "./gauge-metrics/content.jsx";
+import {
+  CounterMetrics,
+  codeSnippetData as CounterMetricsCodeSnippetData,
+} from "./counter-metrics/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -2021,6 +2129,8 @@ const BBEs = {
   NilCodeSnippetData,
   Boolean,
   BooleanCodeSnippetData,
+  ByteType,
+  ByteTypeCodeSnippetData,
   Strings,
   StringsCodeSnippetData,
   IfStatement,
@@ -2095,6 +2205,8 @@ const BBEs = {
   NeverTypeCodeSnippetData,
   ExpressionOrientedStyle,
   ExpressionOrientedStyleCodeSnippetData,
+  ExpressionEquality,
+  ExpressionEqualityCodeSnippetData,
   Arrays,
   ArraysCodeSnippetData,
   NestedArrays,
@@ -2183,10 +2295,6 @@ const BBEs = {
   MappingBindingPatternInMatchStatementCodeSnippetData,
   ErrorBindingPatternInMatchStatement,
   ErrorBindingPatternInMatchStatementCodeSnippetData,
-  RegexpType,
-  RegexpTypeCodeSnippetData,
-  RegexpOperations,
-  RegexpOperationsCodeSnippetData,
   Table,
   TableCodeSnippetData,
   TableTypes,
@@ -2249,6 +2357,12 @@ const BBEs = {
   ResourceMethodTypingCodeSnippetData,
   JsonNumbers,
   JsonNumbersCodeSnippetData,
+  JsonToRecord,
+  JsonToRecordCodeSnippetData,
+  JsonToRecordWithProjection,
+  JsonToRecordWithProjectionCodeSnippetData,
+  JsonpathExpressions,
+  JsonpathExpressionsCodeSnippetData,
   RawTemplates,
   RawTemplatesCodeSnippetData,
   BacktickTemplates,
@@ -2275,6 +2389,14 @@ const BBEs = {
   XmlNamespacesCodeSnippetData,
   XmlnsDeclarations,
   XmlnsDeclarationsCodeSnippetData,
+  XmlToRecord,
+  XmlToRecordCodeSnippetData,
+  XmlToRecordWithProjection,
+  XmlToRecordWithProjectionCodeSnippetData,
+  RegexpType,
+  RegexpTypeCodeSnippetData,
+  RegexpOperations,
+  RegexpOperationsCodeSnippetData,
   Documentation,
   DocumentationCodeSnippetData,
   Annotations,
@@ -2343,14 +2465,20 @@ const BBEs = {
   NamedWorkersAndFuturesCodeSnippetData,
   InterWorkerMessagePassing,
   InterWorkerMessagePassingCodeSnippetData,
+  ConditionalSend,
+  ConditionalSendCodeSnippetData,
   InterWorkerFailurePropagation,
   InterWorkerFailurePropagationCodeSnippetData,
+  NamedWorkerWithOnFailClause,
+  NamedWorkerWithOnFailClauseCodeSnippetData,
   SynchronizeMessagePassing,
   SynchronizeMessagePassingCodeSnippetData,
   AsynchronizeMessagePassing,
   AsynchronizeMessagePassingCodeSnippetData,
   Flush,
   FlushCodeSnippetData,
+  Fork,
+  ForkCodeSnippetData,
   TransactionStatement,
   TransactionStatementCodeSnippetData,
   CheckSemantics,
@@ -2525,6 +2653,8 @@ const BBEs = {
   Http2To11DowngradeServiceCodeSnippetData,
   Http20ServerPush,
   Http20ServerPushCodeSnippetData,
+  HttpSseService,
+  HttpSseServiceCodeSnippetData,
   HttpClientRedirects,
   HttpClientRedirectsCodeSnippetData,
   HttpClientFileUpload,
@@ -2541,6 +2671,8 @@ const BBEs = {
   Http2PriorKnowledgeClientCodeSnippetData,
   Http20ClientServerPush,
   Http20ClientServerPushCodeSnippetData,
+  HttpSseClient,
+  HttpSseClientCodeSnippetData,
   HttpRequestInterceptor,
   HttpRequestInterceptorCodeSnippetData,
   HttpResponseInterceptor,
@@ -2563,6 +2695,8 @@ const BBEs = {
   GraphqlSubscriptionsCodeSnippetData,
   GraphqlInputObjects,
   GraphqlInputObjectsCodeSnippetData,
+  GraphqlIdScalarType,
+  GraphqlIdScalarTypeCodeSnippetData,
   GraphqlInterfaces,
   GraphqlInterfacesCodeSnippetData,
   GraphqlInterfacesImplementingInterfaces,
@@ -2597,6 +2731,14 @@ const BBEs = {
   GraphqlDataloaderCodeSnippetData,
   CustomPrefetchMethods,
   CustomPrefetchMethodsCodeSnippetData,
+  GraphqlServiceOperationLevelCaching,
+  GraphqlServiceOperationLevelCachingCodeSnippetData,
+  GraphqlServiceFieldLevelCaching,
+  GraphqlServiceFieldLevelCachingCodeSnippetData,
+  GraphqlServiceCacheInvalidation,
+  GraphqlServiceCacheInvalidationCodeSnippetData,
+  GraphqlServiceQueryComplexity,
+  GraphqlServiceQueryComplexityCodeSnippetData,
   GraphqlClientQueryEndpoint,
   GraphqlClientQueryEndpointCodeSnippetData,
   GraphqlClientHandlePartialResponse,
@@ -2621,8 +2763,8 @@ const BBEs = {
   GraphqlClientSecurityMutualSslCodeSnippetData,
   GraphqlClientSecurityBasicAuth,
   GraphqlClientSecurityBasicAuthCodeSnippetData,
-  GraphqlClientSecuritySelfSignedJwtAuthentication,
-  GraphqlClientSecuritySelfSignedJwtAuthenticationCodeSnippetData,
+  GraphqlClientSecurityJwtAuthentication,
+  GraphqlClientSecurityJwtAuthenticationCodeSnippetData,
   GraphqlClientSecurityOauth2PasswordGrantType,
   GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData,
   WebsocketBasicSample,
@@ -2779,6 +2921,14 @@ const BBEs = {
   KafkaConsumerSslCodeSnippetData,
   KafkaConsumerSasl,
   KafkaConsumerSaslCodeSnippetData,
+  SoapClientSendReceive,
+  SoapClientSendReceiveCodeSnippetData,
+  SoapClientSecuritySslTsl,
+  SoapClientSecuritySslTslCodeSnippetData,
+  SoapClientSecurityInboundSecurityConfig,
+  SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+  SoapClientSecurityOutboundSecurityConfig,
+  SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
   RabbitmqConsumer,
   RabbitmqConsumerCodeSnippetData,
   RabbitmqConsumerWithClientAcknowledgement,
@@ -2817,6 +2967,10 @@ const BBEs = {
   MqttClientSslCodeSnippetData,
   MqttClientBasicAuthentication,
   MqttClientBasicAuthenticationCodeSnippetData,
+  LdapAddRemoveEntry,
+  LdapAddRemoveEntryCodeSnippetData,
+  LdapSearchEntry,
+  LdapSearchEntryCodeSnippetData,
   JmsServiceConsumeMessage,
   JmsServiceConsumeMessageCodeSnippetData,
   JmsProducerProduceMessage,
@@ -2881,6 +3035,8 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
+  AvroSerdes,
+  AvroSerdesCodeSnippetData,
   IoBytes,
   IoBytesCodeSnippetData,
   IoStrings,
@@ -2919,6 +3075,8 @@ const BBEs = {
   EdiToRecordCodeSnippetData,
   RecordToEdi,
   RecordToEdiCodeSnippetData,
+  EnvironmentVariables,
+  EnvironmentVariablesCodeSnippetData,
   Filepaths,
   FilepathsCodeSnippetData,
   Directories,
@@ -2943,8 +3101,6 @@ const BBEs = {
   UuidOperationsCodeSnippetData,
   XsltTransformation,
   XsltTransformationCodeSnippetData,
-  EnvironmentVariables,
-  EnvironmentVariablesCodeSnippetData,
   XmlToJsonConversion,
   XmlToJsonConversionCodeSnippetData,
   XmlFromJsonConversion,
@@ -2953,6 +3109,12 @@ const BBEs = {
   XmlToRecordConversionCodeSnippetData,
   XmlFromRecordConversion,
   XmlFromRecordConversionCodeSnippetData,
+  YamlToAnydata,
+  YamlToAnydataCodeSnippetData,
+  YamlToAnydataWithProjection,
+  YamlToAnydataWithProjectionCodeSnippetData,
+  AnydataToYamlString,
+  AnydataToYamlStringCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
   DockerHelloWorld,
@@ -2993,10 +3155,10 @@ const BBEs = {
   PersistDeleteCodeSnippetData,
   Tracing,
   TracingCodeSnippetData,
-  CounterMetrics,
-  CounterMetricsCodeSnippetData,
   GaugeMetrics,
   GaugeMetricsCodeSnippetData,
+  CounterMetrics,
+  CounterMetricsCodeSnippetData,
 };
 
 export default BBEs;

@@ -14,9 +14,5 @@
     "check"
   ],
   "permalink": "/learn/by-example/query-actions",
-  "active": "query-actions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/query-actions",
-    "/swan-lake/learn/by-example/query-actions.html"
-  ]
+  "active": "query-actions"
 }

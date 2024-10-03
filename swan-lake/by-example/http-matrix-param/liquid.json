@@ -1,6 +1,6 @@
 {
   "title": "Matrix parameter",
-  "description": "BBE on how to extract values using the `PathParam` and `MatrixParam` parameters in Ballerina.",
+  "description": "This example is on how to extract values using the matrix path parameters in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -9,9 +9,5 @@
     "matrix param"
   ],
   "permalink": "/learn/by-example/http-matrix-param",
-  "active": "http-matrix-param",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-matrix-param",
-    "/swan-lake/learn/by-example/http-matrix-param.html"
-  ]
+  "active": "http-matrix-param"
 }

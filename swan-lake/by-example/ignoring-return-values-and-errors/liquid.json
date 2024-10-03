@@ -9,9 +9,5 @@
     "ignore value"
   ],
   "permalink": "/learn/by-example/ignoring-return-values-and-errors",
-  "active": "ignoring-return-values-and-errors",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/ignoring-return-values-and-errors",
-    "/swan-lake/learn/by-example/ignoring-return-values-and-errors.html"
-  ]
+  "active": "ignoring-return-values-and-errors"
 }

@@ -10,9 +10,5 @@
     "directory listener"
   ],
   "permalink": "/learn/by-example/directory-listener",
-  "active": "directory-listener",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/directory-listener",
-    "/swan-lake/learn/by-example/directory-listener.html"
-  ]
+  "active": "directory-listener"
 }

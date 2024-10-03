@@ -10,9 +10,5 @@
     "jwt auth"
   ],
   "permalink": "/learn/by-example/grpc-client-bearer-token-auth",
-  "active": "grpc-client-bearer-token-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-bearer-token-auth",
-    "/swan-lake/learn/by-example/grpc-client-bearer-token-auth.html"
-  ]
+  "active": "grpc-client-bearer-token-auth"
 }

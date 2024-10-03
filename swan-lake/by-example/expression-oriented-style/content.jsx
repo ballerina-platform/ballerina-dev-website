@@ -72,7 +72,7 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/expression-oriented-style",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/expression-oriented-style",
                 "_blank",
               );
             }}
@@ -244,7 +244,10 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Arrays" href="/learn/by-example/arrays">
+          <Link
+            title="Expression equality"
+            href="/learn/by-example/expression-equality"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -253,7 +256,7 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Arrays
+                  Expression equality
                 </span>
               </div>
               <svg

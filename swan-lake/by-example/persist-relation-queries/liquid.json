@@ -14,9 +14,5 @@
     "relations"
   ],
   "permalink": "/learn/by-example/persist-relation-queries",
-  "active": "persist-relation-queries",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/persist-relation-queries",
-    "/swan-lake/learn/by-example/persist-relation-queries.html"
-  ]
+  "active": "persist-relation-queries"
 }

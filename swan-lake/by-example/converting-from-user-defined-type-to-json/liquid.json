@@ -11,9 +11,5 @@
     "toJson"
   ],
   "permalink": "/learn/by-example/converting-from-user-defined-type-to-json",
-  "active": "converting-from-user-defined-type-to-json",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/converting-from-user-defined-type-to-json",
-    "/swan-lake/learn/by-example/converting-from-user-defined-type-to-json.html"
-  ]
+  "active": "converting-from-user-defined-type-to-json"
 }

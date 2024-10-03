@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/04/17   
+_Updated_: 2024/06/13   
 _Edition_: Swan Lake
 
 
@@ -28,6 +28,8 @@ The conforming implementation of the specification is released and included in t
         * 2.2.2. [Service-base-path](#222-service-base-path)
         * 2.2.3. [Service declaration](#223-service-declaration)
         * 2.2.4. [Service class declaration](#224-service-class-declaration)
+        * 2.2.5. [Service constructor expression](#225-service-constructor-expression)
+        * 2.2.6. [Service contract type](#226-service-contract-type)
     * 2.3. [Resource](#23-resource)
         * 2.3.1. [Accessor](#231-accessor)
         * 2.3.2. [Resource-name](#232-resource-name)
@@ -41,8 +43,11 @@ The conforming implementation of the specification is released and included in t
         * 2.3.5. [Return types](#235-return-types)
             * 2.3.5.1. [Status Code Response](#2351-status-code-response)
             * 2.3.5.2. [Return nil](#2352-return-nil)
-            * 2.3.5.3. [Default response status codes](#2353-default-response-status-codes)
-        * 2.3.6. [Introspection resource](#236-introspection-resource)
+            * 2.3.5.3. [Return SSE stream](#2353-return-sse-stream)
+            * 2.3.5.4. [Default response status codes](#2354-default-response-status-codes)
+        * 2.3.6. [OpenAPI specification resources](#236-openapi-specification-resources)
+            * 2.3.6.1. [Introspection resource](#2361-introspection-resource)
+            * 2.3.6.2. [SwaggerUI resource](#2362-swaggerui-resource)
     * 2.4. [Client](#24-client)
         * 2.4.1. [Client types](#241-client-types)
             * 2.4.1.1. [Security](#2411-security)
@@ -53,6 +58,7 @@ The conforming implementation of the specification is released and included in t
             * 2.4.1.6. [Cookie](#2416-cookie)
             * 2.4.1.7. [Load balance](#2417-load-balance)
             * 2.4.1.8. [Failover](#2418-failover)
+            * 2.4.1.9. [Status code binding client](#2419-status-code-binding-client)
         * 2.4.2. [Client actions](#242-client-action)
             * 2.4.2.1. [Entity body methods](#2421-entity-body-methods)
             * 2.4.2.2. [Non entity body methods](#2422-non-entity-body-methods)
@@ -94,10 +100,9 @@ The conforming implementation of the specification is released and included in t
         * 8.1.2. [Response interceptor](#812-response-interceptor)
             * 8.1.2.1. [Return to respond](#8121-return-to-respond)
         * 8.1.3. [Request error interceptor and response error interceptor](#813-request-error-interceptor-and-response-error-interceptor)
-        * 8.1.4. [Engaging interceptor](#814-engaging-interceptors)
+        * 8.1.4. [Engaging interceptors](#814-engaging-interceptors)
             * 8.1.4.1. [Service level](#8141-service-level)
-            * 8.1.4.2. [Listener level](#8142-listener-level)
-            * 8.1.4.3. [Execution order of interceptors](#8143-execution-order-of-interceptors)
+            * 8.1.4.2. [Execution order of interceptors](#8142-execution-order-of-interceptors)
         * 8.1.5. [Data binding](#815-data-binding)
     * 8.2. [Error handling](#82-error-handling)
       * 8.2.1. [Error interceptors](#821-error-interceptors)
@@ -162,6 +167,8 @@ public type ListenerConfiguration record {|
     string? server = ();
     RequestLimitConfigs requestLimits = {};
     int http2InitialWindowSize = 65535;
+    decimal minIdleTimeInStaleState = 300;
+    decimal timeBetweenStaleEviction = 30;
 |};
 ```
 
@@ -220,7 +227,7 @@ validate the services.
 #### 2.2.2. Service base path
 
 The base path is considered during the request dispatching to discover the service. Identifiers and string literals
-are allowed to be stated as base path and it should be started with `/`. The base path is optional and it will be 
+are allowed to be stated as base path, and it should be started with `/`. The base path is optional, and it will be 
 defaulted to `/` when not defined. If the base path contains any special characters, those should be escaped or defined
 as string literals
 
@@ -240,7 +247,7 @@ A service can be declared in three ways upon the requirement.
 
 #### 2.2.3. Service declaration
 The [Service declaration](https://ballerina.io/spec/lang/2021R1/#section_8.3.2) is a syntactic sugar for creating a
-service and it is the mostly used approach for creating a service. The declaration gets desugared into creating a 
+service and, it is the mostly used approach for creating a service. The declaration gets desugared into creating a 
 listener object, creating a service object, attaching the service object to the listener object.
 
 ```ballerina
@@ -290,6 +297,62 @@ public function main() {
 }
 ```
 
+### 2.2.6. Service contract type
+
+The service contract type is a distinct type which is used to represent the service contract. This service contract
+type can be used along with the service declaration to implement a service which ensures that the service is compliant
+with the contract. Additionally, all the metadata related to the service can be defined within the service contract 
+type which makes the service declaration clean and readable.
+
+Following is an example of a service contract type:
+
+```ballerina
+@http:ServiceConfig {basePath: "/v1"}
+public type AlbumService service object {
+    *http:ServiceContract;
+
+    @openapi:ResourceInfo {
+        summary: "Get all albums"
+    }
+    resource function get albums() returns Album[];
+
+    @openapi:ResourceInfo {
+        summary: "Add a new album"
+    }
+    resource function post albums(@openapi:Example {
+                value: {
+                    title: "Blue Train",
+                    artist: "John Coltrane"
+                }
+            } Album album) returns Album|ErrorPayloadBadRequest;
+};
+```
+
+The service contract type can have the annotations which are supported on the service declaration. Additionally, a 
+`basePath` can be defined in the `ServiceConfig` annotation to define the base path of the service. This field is 
+optional and if not defined, the base path will be defaulted to `/`.
+
+Following is an example of a service implemented with the above service contract type:
+
+```ballerina
+service AlbumService on new http:Listener(9090) {
+
+    resource function get albums() returns Album[] {
+        return albums.toArray();
+    }
+
+    resource function post albums(Album album) returns Album|ErrorPayloadBadRequest {
+        albums.add(album);
+        return album;
+    }
+}
+```
+
+The service implemented via the service contract type has the following restrictions:
+- None of the service level, resource level and parameter level HTTP annotation are allowed.
+- The base path is not allowed in the service declaration, and it is inferred from the service contract type.
+- The service declaration cannot have additional resource methods which are not defined in the service contract type.
+
 ### 2.3. Resource
 
 A method of a service can be declared as a [resource method](https://ballerina.io/spec/lang/2021R1/#resources) 
@@ -297,7 +360,7 @@ which is associated with configuration data that is invoked by a network message
 business logic inside a resource and expose it over the network.
 
 #### 2.3.1. Accessor
-The accessor-name of the resource represents the HTTP method and it can be get, post, put, delete, head, patch, options 
+The accessor-name of the resource represents the HTTP method, and it can be get, post, put, delete, head, patch, options 
 and default. If the accessor is unmatched, 405 Method Not Allowed response is returned. When the accessor name is 
 stated as default, any HTTP method can be matched to it in the absence of an exact match. Users can define custom 
 methods such as copy, move based on their requirement. A resource which can handle any method would look like as 
@@ -333,7 +396,7 @@ resource function post hello\-world() {
 
 #### 2.3.3. Path parameter
 The path parameter segment is also a part of the resource name which is declared within brackets along with the type. 
-As per the following resource name, baz is the path param segment and it’s type is string. Like wise users can define 
+As per the following resource name, baz is the path param segment, and it’s type is string. Like wise users can define 
 string, int, boolean, float, and decimal typed path parameters. If the paths are unmatched, 404 NOT FOUND response 
 is returned. If the segment failed to parse into the expected type, 500 Internal Server Error response is returned.
 
@@ -451,7 +514,7 @@ See section [Request and Response](#6-request-and-response) to find out more.
 
 ##### 2.3.4.3. Query parameter
 
-The query param is a URL parameter which is available as a resource method parameter and it's not associated 
+The query param is a URL parameter which is available as a resource method parameter, and it's not associated 
 with any annotation or additional detail unless any default payload param is defined. This parameter is not compulsory 
 and not ordered. The type of query param are as follows
 
@@ -613,11 +676,11 @@ without the @http:Payload annotation:
 - If there's more than one structured type, the ambiguity must be resolved using either @http:Payload or @http:Query
   annotation.
     - `resource function post path(Student p, map<json> q) {}` -> ambiguous types for payload
-    - `resource function post path(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
-    - `resource function post path(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query parameter
+    - `resource function post path(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is query parameter
 - If there are no structured types, all parameters are considered query parameters.
     - `resource function post path(string p, string q) {}` -> `p` and `q` are query params
-    - `resource function post path(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query parameter
 - If the query parameter is structured, then the @http:Query annotation is required.
     - `resource function post path(Student p) {}` -> `p` is payload param type
     - `resource function post path(@http:Query Student p) {}` -> `p` is query param type
@@ -737,7 +800,13 @@ resource function post album(@http:Header string referer) {
 resource function post product(@http:Header {name: "Accept"} string[] accept) {
     
 }
+```
 
+When the header parameter type is a record, the record fields represents each header values and the header name is 
+considered as the field name. However, the header annotation with a name field can be used to define the header 
+name whenever user needs some different variable name for the header. 
+
+```ballerina
 public type RateLimitHeaders record {|
     string x\-rate\-limit\-id;
     int x\-rate\-limit\-remaining;
@@ -746,6 +815,19 @@ public type RateLimitHeaders record {|
 
 //Populate selected headers to a record
 resource function get price(@http:Header RateLimitHeaders rateLimitHeaders) {
+}
+
+public type RateLimitHeadersWithName record {|
+    @http:Header {name: "X-RATE-LIMIT-ID"}
+    string rateLimitId;
+    @http:Header {name: "X-RATE-LIMIT-REMAINING"}
+    int rateLimitRemaining;
+    @http:Header {name: "X-RATE-LIMIT-TYPES"}
+    string[] rateLimitTypes;
+|};
+
+//Populate selected headers to a record. The header name is defined in the field level annotation
+resource function get price(@http:Header RateLimitHeadersWithName rateLimitHeaders) {
 }
 ```
 
@@ -823,13 +905,13 @@ service /headerparamservice on HeaderBindingIdealEP {
 
 
 #### 2.3.5. Return types
-The resource method supports anydata, error?, http:Response and http:StatusCodeResponse as return types. 
+The resource method supports `anydata`, `error?`, `http:Response`, `http:StatusCodeResponse` and `stream<http:SseEvent, error?>` as return types. 
 Whenever user returns a particular output, that will result in an HTTP response to the caller who initiated the 
 call. Therefore, user does not necessarily depend on the `http:Caller` and its remote methods to proceed with the 
 response. 
 
 ```ballerina
-resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|http:Error? {
+resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|stream<http:SseEvent, error?>|http:Error? {
 }
 ```
 
@@ -853,6 +935,7 @@ Based on the return types respective header value is added as the `Content-type`
 | int, float, decimal, boolean                                          | application/json            |
 | map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json            |
 | http:StatusCodeResponse                                               | derived from the body field |
+| stream<http:SseEvent, error?>                                         | text/event-stream           |
 
 ##### 2.3.5.1. Status Code Response
 
@@ -929,7 +1012,19 @@ Return nil from the resource has few meanings.
     }
     ```
 
-##### 2.3.5.3. Default response status codes
+##### 2.3.5.3. Return SSE stream
+
+When an `http:SseEvent` stream is returned from the service, it's considered a server-sent event. By default, the service will add the following headers: 
+
+- For HTTP 2.0: 
+  - `Content-Type: text/event-stream`
+  - `Cache-Control: no-cache`
+
+- For HTTP 1.1, in addition to the previously mentioned headers, the following headers will also be included in the response: 
+  - `Transfer-Encoding: chunked`
+  - `Connection: keep-alive`
+
+##### 2.3.5.4. Default response status codes
 
 To improve the developer experience for RESTful API development, following default status codes will be used in outbound 
 response when returning `anydata` directly from a resource method.
@@ -944,18 +1039,20 @@ response when returning `anydata` directly from a resource method.
 | HEAD              | Retrieve headers                                              | 200 OK                  |
 | OPTIONS           | Retrieve permitted communication options                      | 200 OK                  |
 
-#### 2.3.6. Introspection resource
+#### 2.3.6. OpenAPI specification resources
 
-The introspection resource is internally generated for each service and host the openAPI doc can be generated 
-(or retrieved) at runtime when requested from the hosted service itself. In order to get the openAPI doc hosted
-resource path, user can send an OPTIONS request either to one of the resources or the service. The link header
-in the 204 response specifies the location. Then user can send a GET request to the dynamically generated URL in the 
-link header with the relation openapi to get the openAPI definition for the service.
+OAS resources are internally generated for each service and host the generated OpenAPI specification for the service in
+different formats. In order to access these resources user can send an OPTIONS request either to one of the resources or
+the service base-path. The link header in the 204 response specifies the location for the OAS resources.
 
 Sample service
 ```ballerina
 import ballerina/http;
+import ballerina/openapi;
 
+@openapi:ServiceInfo {
+    embed: true
+}
 service /hello on new http:Listener(9090) {
     resource function get greeting() returns string {
         return "Hello world";
@@ -963,97 +1060,95 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-Output of OPTIONS call to usual resource
-```ballerina
-curl -v localhost:9090/hello/greeting -X OPTIONS
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> OPTIONS /hello/greeting HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 204 No Content
-< allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:09:40 +0530
-< 
-```
-
-Output of GET call to introspection resource
-```ballerina
-curl -v localhost:9090/hello/openapi-doc-dygixywsw
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> GET /hello/openapi-doc-dygixywsw HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 200 OK
-< content-type: application/json
-< content-length: 634
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:22:29 +0530
-< 
-{
-  "openapi": "3.0.1",
-  "info": {
-     "title": " hello",
-     "version": "1.0.0"
-  },
-  "servers": [
-     {
-        "url": "localhost:9090/hello"
-     }
-  ],
-  "paths": {
-     "/greeting": {
-        "get": {
-           "operationId": "operation1_get_/greeting",
-           "responses": {
-              "200": {
-                 "description": "Ok",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
-                          "type": "string"
-                       }
-                    }
-                 }
-              }
-           }
-        }
-     }
-  },
-  "components": {}
-}
-```
-
 Output of OPTIONS call to service base path
-
 ```ballerina
 curl -v localhost:9090/hello -X OPTIONS 
-*   Trying ::1...
+*   Trying 127.0.0.1:9090...
 * TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 > OPTIONS /hello HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.64.1
+> User-Agent: curl/7.68.0
 > Accept: */*
-> 
+>
 < HTTP/1.1 204 No Content
 < allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Thu, 19 Aug 2021 13:47:29 +0530
+< link: </hello/openapi-doc-dygixywsw>;rel="service-desc", </hello/swagger-ui-dygixywsw>;rel="swagger-ui"
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:04:11 +0530
 < 
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
+
+##### 2.3.6.1. Introspection resource
+
+The introspection resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service 
+in JSON format. The user can send a GET request to the resource path specified in the link header with the relation 
+attribute set to `service-desc`.
+
+Output of GET call to introspection resource
+```ballerina
+curl -v localhost:9090/hello/openapi-doc-dygixywsw
+*   Trying 127.0.0.1:9090...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> GET /hello/openapi-doc-dygixywsw HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.68.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 675
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:05:03 +0530
+< 
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Hello",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "{server}:{port}/hello",
+    "variables" : {
+      "server" : {
+        "default" : "http://localhost"
+      },
+      "port" : {
+        "default" : "9090"
+      }
+    }
+  } ],
+  "paths" : {
+    "/greeting" : {
+      "get" : {
+        "operationId" : "getGreeting",
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+##### 2.3.6.2. SwaggerUI resource
+
+The swagger-ui resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service in 
+HTML format. The user can view it in a web browser by accessing the URL specified in the HTTP link header, which has 
+relation attribute set to `swagger-ui`.
 
 ### 2.4. Client
 A client allows the program to send network messages to a remote process according to the HTTP protocol. The fixed 
@@ -1065,7 +1160,7 @@ http:Client clientEP = check new ("http://localhost:9090", { httpVersion: "2.0" 
 ```
 
 #### 2.4.1 Client types
-The client configuration can be used to enhance the client behaviour. By default HTTP client supports HTTP2 version.
+The client configuration can be used to enhance the client behaviour. By default, HTTP client supports HTTP2 version.
 
 ```ballerina
 public type ClientConfiguration record {|
@@ -1232,6 +1327,28 @@ http:FailoverClient foBackendEP00 = check new (
     ]
 )
 ```
+
+##### 2.4.1.9 Status code binding client
+
+An HTTP status code binding client can be used to bind the response to the status code response records.
+
+```ballerina
+final http:StatusCodeClient albumClient = check new ("localhost:9090");
+
+public type AlbumsOk record {|
+    *http:Ok;
+    Album[] body;
+|};
+
+public function main() {
+    // Status code response binding with generic type 
+    http:Ok|error response1 = albumClient->/v1/albums;
+    
+    // Status code response binding with specific body type
+    AlbumsOk|error response2 = albumClient->/v1/albums;
+}
+```
+
 ##### 2.4.2. Client action
 
 The HTTP client contains separate remote method representing each HTTP method such as `get`, `put`, `post`,
@@ -1442,7 +1559,7 @@ string response = check httpClient->/addPerson.post(payload, headers, "applicati
 
 In addition to the standard HTTP methods, `forward` function can be used to proxy an inbound request using the incoming 
 HTTP request method. Also `execute` remote method is useful to send request with custom HTTP verbs such as `move`, 
-`copy`, ..etc.
+`copy` and etc.
 
 
 ```ballerina
@@ -1488,52 +1605,55 @@ remote isolated function rejectPromise(PushPromise promise);
 The HTTP client remote method supports the contextually expected return types. The client operation is able to 
 infer the expected payload type from the LHS variable type. This is called as client payload binding support where the 
 inbound response payload is accessed and parse to the expected type in the method signature. It is easy to access the
-payload directly rather manipulation `http:Response` using its support methods such as `getTextPayload()`, ..etc.
+payload directly rather manipulation `http:Response` using its support methods such as `getTextPayload()`, 
+`getJsonPayload()` and etc.
 
-Client data binding supports `anydata` where the payload is deserialized based on the media type before binding it 
+Client data binding supports `anydata` and `stream<http:SseEvent>` where the payload is deserialized based on the media type before binding it 
 to the required type. Similar to the service data binding following table explains the compatible `anydata` types with 
 each common media type. In the absence of a standard media type, the binding type is inferred by the payload parameter 
 type itself. If the type is not compatible with the media type, error is returned.
 
-| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
-|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
-| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
-|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
-| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| Ballerina Type | Structure                     | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" | "event-stream" |
+|----------------|-------------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|:--------------:|
+| boolean        |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | boolean[]                     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<boolean\>                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<boolean\>\>       |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| int            |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | int[]                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<int\>                    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<int\>\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| float          |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | float[]                       |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<float\>                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<float\>\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| decimal        |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | decimal[]                     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<decimal\>                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<decimal\>\>       |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| byte[]         |                               |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |       ❌        |
+|                | byte[][]                      |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<byte[]\>                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<byte[]\>\>        |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| string         |                               |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | string[]                      |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<string\>                 |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | table\<map\<string\>\>        |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| xml            |                               |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |       ❌        |
+| json           |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | json[]                        |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<json\>                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<json\>\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| map            |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map[]                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<map\>                    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<map\>\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| record         |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | record[]                      |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<record\>                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<record\>               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| stream         |                               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | stream<http:SseEvent, error?> |   ❌    |   ❌   |   ❌    |            ❌            |       ❌        |       ✅        |
 
 ```ballerina
 http:Client httpClient = check new ("https://person.free.beeceptor.com");
@@ -1707,7 +1827,7 @@ resource function post person(@http:Payload {mediaType:["application/json", "app
 
 During the runtime, the request content-type header is matched against the mediaType field value to validate. If the 
 validation fails, the listener returns an error response with the status code of 415 Unsupported Media Type. 
-Otherwise the dispatching moves forward. 
+Otherwise, the dispatching moves forward. 
 
 #### 4.3.2. Anydata return value info
 
@@ -1890,7 +2010,7 @@ to Web pages REST APIs becomes self-descriptive and dynamic along with this prin
 
 As an initial support to HATEOAS, HTTP package has the ability to statically record the connectedness of resources 
 through `Links` object. `Links` is a map of `Link` objects which represent the connectedness between resources. The 
-`Link` record is defines as follows :
+`Link` record is defined as follows :
 ```ballerina
 public type Link record {
     # Names the relationship of the linked target to the current representation
@@ -2090,7 +2210,7 @@ service class RequestInterceptor {
  
    resource function 'default [string… path](http:RequestContext ctx, http:Request req) returns http:NextService|error? {
        req.setHeader("X-requestHeader", "RequestInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2108,7 +2228,7 @@ service class RequestInterceptor {
  
    resource function 'default foo(http:RequestContext ctx, http:Request req) returns http:NextService|error? {
        req.setHeader("X-requestHeader", "RequestInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2211,7 +2331,7 @@ service class ResponseInterceptor {
  
    remote function interceptResponse(http:RequestContext ctx, http:Response res) returns http:NextService|error? {
        res.setHeader("X-responseHeader", "ResponseInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2234,7 +2354,7 @@ be placed anywhere in the request or response interceptor chain. The framework a
 `RequestErrorInterceptor` and `ResponseErrorInterceptor` which basically prints the error message to the console.
 
 Users can override these interceptors by defining their own ones as follows. Users don’t have to specifically engage 
-these interceptors as they only have fixed positions and they are always executed. The only additional and mandatory 
+these interceptors as they only have fixed positions, and they are always executed. The only additional and mandatory 
 argument in this case is error `err`. Moreover, the `RequestErrorInterceptor` resource method can only have
 the `default` method and default path.
 
@@ -2297,9 +2417,9 @@ When handling `http:ServiceNotFound` scenarios,
 1. If there is a service in `/`, the error will be handled by the interceptors in that service.
 2. If there is only a single service, the error will be handled by the interceptors in that service.
 3. If there are multiple services including a service in `/`, the error will be handled by the interceptors in `/`.
-   Otherwise it will be handled by the `http:DefaultErrorInterceptor`.
+   Otherwise, it will be handled by the `http:DefaultErrorInterceptor`.
 
-##### 8.1.4.3 Execution order of interceptors
+##### 8.1.4.2 Execution order of interceptors
 
 ![img.png](_resources/img.png)
 In the above example blue dashed box represents the `RequestErrorInterceptor` and blue boxes simply represent the 
@@ -2317,13 +2437,6 @@ ResponseInterceptor : 5, 3
 However, if the user decides to respond at 4 and terminate the cycle, only the `ResponseInterceptor` at 3 gets executed.
 Also, when the `RequestInterceptor` at 2 returns an error, the execution jumps from 2 to 6 as the nearest Error Interceptor
 is at 6. The same goes to the response path.
-
-The execution order when interceptors are engaged at both service and listener levels is as follows:
-
-```
-ListenerLevel : RequestInterceptors -> ServiceLevel : RequestInterceptors -> TargetService -> 
-ServiceLevel : ResponseInterceptors -> ListenerLevel : ResponseInterceptors
-```
 
 Execution of interceptors does not depend on the existence of the end service i.e. the interceptors are executed in the
 relevant order even though the end service does not exist.
@@ -2503,24 +2616,52 @@ path = "testTraceLog.txt"   # Optional
 host = "localhost"          # Optional
 port = 8080                 # Optional
 ```
-#### 8.2.4 Access log
 
-Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format.
-The HTTP access logs are **disabled as default**.
-To enable access logs, set console=true under the ballerina.http.accessLogConfig in the Config.toml file. Also, 
-the path field can be used to specify the file path to save the access logs.
+#### 8.2.4 Access log
+Ballerina supports HTTP access logs for HTTP services, providing insights into web traffic and request handling.
+The access log feature is **disabled by default** to allow users to opt-in as per their requirements.
+
+To enable access logs, configuration settings are provided under `ballerina.http.accessLogConfig` in the
+`Config.toml` file. Users can specify whether logs should be output to the console, a file, or both, 
+and can select the format and specific attributes to log.
 
 ```toml
 [ballerina.http.accessLogConfig]
 # Enable printing access logs in console
 console = true              # Default is false
-# Specify the file path to save the access logs  
-path = "testAccessLog.txt"  # Optional
+# Specify the file path to save the access logs
+path = "testAccessLog.txt"  # Optional, omit to disable file logging
+# Select the format of the access logs
+format = "json"             # Options: "flat", "json"; Default is "flat". Omit to stick to the default.
+# Specify which attributes to log. Omit to stick to the default set.
+attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
+# Default attributes: ip, date_time, request, status, response_body_size, http_referrer, http_user_agent
 ```
+
+##### Configurable Attributes
+Users can customize which parts of the access data are logged by specifying attributes in the configuration.
+This allows for tailored logging that can focus on particular details relevant to the users' needs.
+
+|       Attribute        |                                                    Description                                                     |
+|:----------------------:|:------------------------------------------------------------------------------------------------------------------:|
+|           ip           |                                                Client's IP address                                                 |
+|       date_time        |                                             HTTP request received time                                             |
+|        request         |                                   Full HTTP request line (method, URI, protocol)                                   |
+|     request_method     |                                             HTTP method of the request                                             |
+|      request_uri       |                                      URI of the request, including parameters                                      |
+|         scheme         |                                       Scheme of the request and HTTP version                                       |
+|         status         |                                      HTTP status code returned to the client                                       |
+|   request_body_size    |                                         Size of the request body in bytes                                          |
+|   response_body_size   |                                      Size of the HTTP response body in bytes                                       |
+|      request_time      |                                      Total time taken to process the request                                       |
+|     http_referrer      |                                 HTTP Referer header, indicating the previous page                                  |
+|    http_user_agent     |                                 User-Agent header, identifying the client software                                 |
+|  http_x_forwarded_for  |                                      Originating IP address if using a proxy                                       |
+| http_(X-Custom-Header) | Header fields. Referring to them with `http` followed by the header name. (`x-request-id` ->; `http_x-request-id`) |
 
 #### 8.2.5 Panic inside resource
 
-Ballerina consider panic as a catastrophic error and non recoverable. Hence immediate application termination is 
+Ballerina consider panic as a catastrophic error and non-recoverable. Hence, immediate application termination is 
 performed to fail fast after responding to the request. This behaviour will be more useful in cloud environments as 
 well.
 

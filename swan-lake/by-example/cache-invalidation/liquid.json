@@ -12,9 +12,5 @@
     "invalidateAll"
   ],
   "permalink": "/learn/by-example/cache-invalidation",
-  "active": "cache-invalidation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/cache-invalidation",
-    "/swan-lake/learn/by-example/cache-invalidation.html"
-  ]
+  "active": "cache-invalidation"
 }

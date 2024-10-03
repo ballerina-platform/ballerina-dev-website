@@ -9,9 +9,5 @@
     "rollback transaction"
   ],
   "permalink": "/learn/by-example/rollback",
-  "active": "rollback",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rollback",
-    "/swan-lake/learn/by-example/rollback.html"
-  ]
+  "active": "rollback"
 }

@@ -6,16 +6,6 @@ keywords: ballerina, programming language, release, update
 permalink: /learn/build-and-run/update-tool/
 active: update-tool
 intro: This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases.
-redirect_from:
-  - /learn/how-to-keep-ballerina-up-to-date
-  - /learn/how-to-keep-ballerina-up-to-date/
-  - /learn/keeping-ballerina-up-to-date/
-  - /learn/keeping-ballerina-up-to-date
-  - /swan-lake/learn/keeping-ballerina-up-to-date/
-  - /swan-lake/learn/keeping-ballerina-up-to-date
-  - /learn/tooling-guide/cli-tools/update-tool
-  - /learn/tooling-guide/cli-tools/update-tool/
-  - /learn/update-tool
 ---
 
 ## Understand Ballerina distributions 
@@ -267,3 +257,7 @@ You view the output below.
 ```
 Distribution '2201.4.0' successfully removed
 ```
+
+### Configure proxy settings (optional)
+
+If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access [Ballerina Central](https://central.ballerina.io/) to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).

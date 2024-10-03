@@ -20,32 +20,23 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Row, Stack } from 'react-bootstrap';
 
-import Footer from '../components/common/footer/Footer';
 
 export default function Layout({ children }) {
   const TopNav = dynamic(() => import('../components/common/top-nav/TopNav'), { ssr: false });
   const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });
+  const Footer = dynamic(() => import('../components/common/footer/Footer'), { ssr: false });
 
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* <!--FB--> */}
-        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
-
-        {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
-        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
-
         {/* <!--TWITTER--> */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
-        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        
 
         
         {/* Google Tag Manager */}
@@ -69,7 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
       <Meta />
       <Stack gap={0} className='main-wrapper community'>
         <TopNav launcher='community' />
-        <div className='wrap-page-content'>
+        <div className='wrap-page-content' style={{paddingBottom:"0"}}>
           <Row className='community-wrap-row'>
             {children}
           </Row>

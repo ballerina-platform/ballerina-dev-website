@@ -11,6 +11,14 @@ nav.home {
     box-shadow: 0 0.0625rem 0.125rem rgb(171 171 171 / 30%);
 }
 
+nav.hack {
+    background-color: #000;
+    /* background-color: #20b6b0; */
+    color: #fff;
+    /* border-bottom: 0.1px solid #ebedf0; */
+    /* box-shadow: 0 0.0625rem 0.125rem rgb(171 171 171 / 30%); */
+}
+
 nav.docs, nav.downloads, nav.other, nav.docs-learn, nav.usecases, nav.other-learn,
 nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     background-color: #fff;
@@ -41,11 +49,13 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     justify-content: end !important;
 }
 
-.home .topNav a.navItem, .home .topNav #navbarScrollingDropdown {
+.home .topNav a.navItem, .home .topNav #navbarScrollingDropdown,
+.hack .topNav a.navItem, .hack .topNav #navbarScrollingDropdown {
     color: #fff !important;
 }
 
-.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
+.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover,
+.hack .topNav a.navItem:hover, .hack .topNav #navbarScrollingDropdown:hover {
     color: #20b6b0 !important;
 }
 
@@ -53,7 +63,8 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     color: #57595d !important;
 }
 
-.home .topNav #navbarScrollingDropdown::after {
+.home .topNav #navbarScrollingDropdown::after,
+.hack .topNav #navbarScrollingDropdown::after {
     /* color: #20b6b0; */
     color: inherit !important;
     vertical-align: middle !important;
@@ -65,7 +76,8 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     vertical-align: middle !important;
 }
 
-.home .topNav #navbarScrollingDropdown::after {
+.home .topNav #navbarScrollingDropdown::after,
+.hack .topNav #navbarScrollingDropdown::after {
     color: #ffffff;
 }
 
@@ -144,20 +156,25 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 .hackathonBanner {
     text-align: center;
     color: #fff;
+    /* color: #000000; */
     /* background-color: #20b6b0 !important; */
+    background-color: #000000 !important;
     padding: 10px 0 10px 0;
     font-weight: 400;
     font-size: 20px;
-    background-image: linear-gradient(to right, #000000 , #20b6b0);
+    /* background-image: linear-gradient(to right, #000000 , #20b6b0); */
 }
 
 .hackathonBanner a {
-    color: #fff;
+    /* color: #fff; */
+    color: #20b6b0 !important;
+    text-decoration: none;
 }
 
-/* .hackathonBanner a:hover{
-    color: #545454 !important;
-} */
+.hackathonBanner a:hover{
+    /* color: #545454 !important; */
+    text-decoration: underline;
+}
 
 a.dropDownItem:focus, a.dropDownItem:hover {
     /* background-color: #20b6b0 !important;
@@ -284,4 +301,14 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     transition: none !important;
     background-repeat: no-repeat;
     background-position: right 20px top 13px;
+}
+
+.seeMoreMobile {
+    list-style: none;
+    padding: 0.25rem 1rem;
+}
+
+.seeMore a, .seeMoreMobile a {
+    color: #20b6b0;
+    text-decoration: none;
 }

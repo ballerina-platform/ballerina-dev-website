@@ -1,0 +1,45 @@
+.homeIntro h1 {
+    color: #ffffff;
+    line-height: 60px;
+    margin: 40px 0;
+}
+
+.introTopRow,
+.introBottomRow {
+    padding: 0;
+}
+
+.introLinks {
+    color: #20b6b0;
+    text-decoration: none;
+    margin-top: 20px !important;
+    padding-top: 20px;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.introLinks:hover {
+    color: #20b6b0;
+}
+
+.description {
+    color: #ffffff;
+}
+
+.description h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.45rem;
+}
+
+.description p {
+    line-height: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.desItem {
+    margin-top: 60px;
+}
+
+

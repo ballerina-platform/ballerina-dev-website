@@ -18,7 +18,6 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
@@ -27,31 +26,31 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row className='pageContentRow integration'>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. It enables real-time processing, integration, and autonomy, making it ideal for complex systems.
-                        </p>
+                                <p className={styles.introText2}>Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. It enables real-time processing, integration, and autonomy, making it ideal for complex systems.
+                                </p>
 
-                        <p className={styles.introText3}>Remarkably, Ballerina can produce and consume events like no other.
-                        </p>
+                                <p className={styles.introText3}>Remarkably, Ballerina can produce and consume events like no other.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/eda1.png`} alt="Position Ballerina" />
-                </Col>
-            </Row>
-            </Container>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+                            <img src={`${prefix}/images/eda1.png`} alt="Position Ballerina" />
+                        </Col>
+                    </Row>
+                </Container>
             </Col>
         </>
     );

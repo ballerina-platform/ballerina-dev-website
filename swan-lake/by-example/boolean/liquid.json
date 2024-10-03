@@ -11,9 +11,5 @@
     "false"
   ],
   "permalink": "/learn/by-example/boolean",
-  "active": "boolean",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/boolean",
-    "/swan-lake/learn/by-example/boolean.html"
-  ]
+  "active": "boolean"
 }

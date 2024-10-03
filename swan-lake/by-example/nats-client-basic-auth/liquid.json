@@ -1,6 +1,6 @@
 {
   "title": "Basic authentication",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates producing a message to a NATS subject using a connection with basic authentication.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "authentication"
   ],
   "permalink": "/learn/by-example/nats-client-basic-auth",
-  "active": "nats-client-basic-auth",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-client-basic-auth",
-    "/swan-lake/learn/by-example/nats-client-basic-auth.html"
-  ]
+  "active": "nats-client-basic-auth"
 }

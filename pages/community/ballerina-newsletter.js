@@ -90,7 +90,6 @@ export default function BallerinaNewsLetter({ posts }) {
             <Row className="pageContentRow communityRow">
               <Col xs={12} md={6}>
                 <p>This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.</p>
-                <NewsletterSubscription />
               </Col>
             </Row>
 

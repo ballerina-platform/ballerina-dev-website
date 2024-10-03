@@ -1,17 +1,15 @@
 {
   "title": "Field interceptors",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates using interceptors on GraphQL remote and resource methods to execute custom logic.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql service"
+    "service",
+    "interceptors",
+    "resolver functions"
   ],
   "permalink": "/learn/by-example/graphql-field-interceptors",
-  "active": "graphql-field-interceptors",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-field-interceptors",
-    "/swan-lake/learn/by-example/graphql-field-interceptors.html"
-  ]
+  "active": "graphql-field-interceptors"
 }

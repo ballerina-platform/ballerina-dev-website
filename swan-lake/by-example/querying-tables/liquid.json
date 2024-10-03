@@ -17,9 +17,5 @@
     "where"
   ],
   "permalink": "/learn/by-example/querying-tables",
-  "active": "querying-tables",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/querying-tables",
-    "/swan-lake/learn/by-example/querying-tables.html"
-  ]
+  "active": "querying-tables"
 }

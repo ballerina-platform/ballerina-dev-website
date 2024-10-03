@@ -53,11 +53,11 @@ public function main() {
     s2["credits"] = 120.5;
     io:println(s2);
 
-    // You can assign a \`PartTimeStudent\` type value to a \`Student\`.
+    // A variable of type \`PartTimeStudent\` can be used where a \`Student\` value is expected.
     Student s3 = s2;
     io:println(s3);
 
-    // You can assign a \`Person\` type value to a \`map\`.
+    // A variable of type \`Student\` can be used where a \`map<anydata>\` value is expected.
     map<anydata> s4 = s3;
     io:println(s4);
 }
@@ -80,10 +80,20 @@ export function OpenRecords({ codeSnippets }) {
         A record type that uses either the <code>&#123;</code> and{" "}
         <code>&#125;</code> delimiters or the <code>&#123;|</code> and{" "}
         <code>|&#125;</code> delimiters with a rest descriptor is considered
-        open. They allow fields other than those specified. The type of
-        unspecified fields is <code>anydata</code>. Open records belong to{" "}
-        <code>map&lt;anydata&gt;</code>. Quoted keys can be used to specify
-        fields that are not mentioned in the record type.
+        open. Open records allow fields other than those explicitly specified.
+      </p>
+
+      <p>
+        When the record is open due to the use of the <code>&#123;</code> and{" "}
+        <code>&#125;</code> delimiters, the expected type for any additional
+        field is <code>anydata</code>. When the record is open due to the use of
+        a rest descriptor, the expected type for any additional field is the
+        type specified in the rest descriptor.
+      </p>
+
+      <p>
+        Quoted keys can be used to specify fields that are not explicitly
+        specified in an open record type.
       </p>
 
       <Row
@@ -96,7 +106,7 @@ export function OpenRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/open-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/open-records",
                 "_blank",
               );
             }}
@@ -261,6 +271,14 @@ export function OpenRecords({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/anydata-type/">Anydata type</a>
           </span>
         </li>
       </ul>

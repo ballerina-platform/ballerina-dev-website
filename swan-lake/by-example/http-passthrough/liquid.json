@@ -1,6 +1,6 @@
 {
   "title": "Passthrough",
-  "description": "This BBE demonstrates the process of an HTTP client connector in Ballerina.",
+  "description": "This example demonstrates the process of an HTTP passthrough service in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/http-passthrough",
-  "active": "http-passthrough",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-passthrough",
-    "/swan-lake/learn/by-example/http-passthrough.html"
-  ]
+  "active": "http-passthrough"
 }

@@ -1,6 +1,6 @@
 {
   "title": "SASL authentication",
-  "description": "BBE on how to configure a Kafka listener to use SASL/PLAIN authentication.",
+  "description": "This example is on how to configure a Kafka listener to use SASL/PLAIN authentication.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "asynchronous"
   ],
   "permalink": "/learn/by-example/kafka-service-sasl",
-  "active": "kafka-service-sasl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service-sasl",
-    "/swan-lake/learn/by-example/kafka-service-sasl.html"
-  ]
+  "active": "kafka-service-sasl"
 }

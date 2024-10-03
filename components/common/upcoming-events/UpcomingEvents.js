@@ -59,7 +59,13 @@ export default function UpcomingEvents() {
               <Row className={styles.eventRows} key={index}>
                 <Col sm={12} md={2} className={styles.eventDateContainer}>
                   <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
-                  {item.day ? <p className={styles.eventDate}>{item.day}, {item.time}</p> : null}
+                  {
+                    item.day && item.time ?
+                      <p className={styles.eventDate}>{item.day}, {item.time}</p>
+                      : item.day && !item.time ?
+                        <p className={styles.eventDate}>{item.day}</p>
+                        : null
+                  }
                   <p className="eventLocation">{item.location}</p>
                 </Col>
                 <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
@@ -68,8 +74,29 @@ export default function UpcomingEvents() {
                   </a>
                   <h5>{item.eventName}</h5>
                   {
-                    (item.presenter !== '') ?
-                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</>: null }</>
+                    item.presenters && item.presenters.length > 0 ?
+                      <>
+                        {
+                          item.presenters.map((presenter, index) => {
+                            return (
+                              <React.Fragment key={index}>
+                                <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>{presenter.designation ? <> - {presenter.designation}</> : null}
+                                {
+                                  index + 1 < item.presenters.length ?
+                                    <>, </>
+                                    : null
+                                }
+                              </React.Fragment>
+                            )
+                          }
+                          )
+                        }
+                      </>
+                      : null
+                  }
+                  {
+                    (item.presenter && item.presenter !== '') ?
+                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</> : null}</>
                       : <>{item.otherInfo}</>
                   }
                 </Col>

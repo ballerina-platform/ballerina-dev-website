@@ -10,9 +10,5 @@
     "record"
   ],
   "permalink": "/learn/by-example/optional-fields",
-  "active": "optional-fields",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/optional-fields",
-    "/swan-lake/learn/by-example/optional-fields.html"
-  ]
+  "active": "optional-fields"
 }

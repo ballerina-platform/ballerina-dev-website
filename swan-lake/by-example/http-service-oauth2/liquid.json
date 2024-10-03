@@ -1,6 +1,6 @@
 {
   "title": "OAuth2",
-  "description": "BBE on how to secure HTTP service with OAuth2 in Ballerina.",
+  "description": "This example is on how to secure an HTTP service with OAuth2 in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -11,9 +11,5 @@
     "introspection"
   ],
   "permalink": "/learn/by-example/http-service-oauth2",
-  "active": "http-service-oauth2",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-service-oauth2",
-    "/swan-lake/learn/by-example/http-service-oauth2.html"
-  ]
+  "active": "http-service-oauth2"
 }

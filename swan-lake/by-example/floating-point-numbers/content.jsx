@@ -39,9 +39,8 @@ export function FloatingPointNumbers({ codeSnippets }) {
       <h1>Floating point numbers</h1>
 
       <p>
-        The <code>float</code> type is IEEE 64-bit binary floating point (same
-        as <code>double</code> in Java) and supports the same arithmetic
-        operators as <code>int</code>.
+        The <code>float</code> type is IEEE 64-bit binary floating point and
+        supports the same arithmetic operators as <code>int</code>.
       </p>
 
       <Row
@@ -54,7 +53,7 @@ export function FloatingPointNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/floating-point-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/floating-point-numbers",
                 "_blank",
               );
             }}

@@ -10,9 +10,5 @@
     "server"
   ],
   "permalink": "/learn/by-example/websocket-basic-sample",
-  "active": "websocket-basic-sample",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-basic-sample",
-    "/swan-lake/learn/by-example/websocket-basic-sample.html"
-  ]
+  "active": "websocket-basic-sample"
 }

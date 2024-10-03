@@ -1,6 +1,6 @@
 {
   "title": "Produce message",
-  "description": "BBE on producing messages to a RabbitMQ queue using Ballerina.",
+  "description": "This example demonstrates producing messages to a RabbitMQ queue.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/rabbitmq-producer",
-  "active": "rabbitmq-producer",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-producer",
-    "/swan-lake/learn/by-example/rabbitmq-producer.html"
-  ]
+  "active": "rabbitmq-producer"
 }

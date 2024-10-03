@@ -10,9 +10,5 @@
     "opentracing"
   ],
   "permalink": "/learn/by-example/tracing",
-  "active": "tracing",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/tracing",
-    "/swan-lake/learn/by-example/tracing.html"
-  ]
+  "active": "tracing"
 }

@@ -14,9 +14,5 @@
     "condition"
   ],
   "permalink": "/learn/by-example/query-expressions",
-  "active": "query-expressions",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/query-expressions",
-    "/swan-lake/learn/by-example/query-expressions.html"
-  ]
+  "active": "query-expressions"
 }

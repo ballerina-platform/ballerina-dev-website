@@ -1,6 +1,6 @@
 {
   "title": "Send reply to request message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates sending a reply message to a request received by a NATS subject.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "reply"
   ],
   "permalink": "/learn/by-example/nats-basic-reply",
-  "active": "nats-basic-reply",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/nats-basic-reply",
-    "/swan-lake/learn/by-example/nats-basic-reply.html"
-  ]
+  "active": "nats-basic-reply"
 }

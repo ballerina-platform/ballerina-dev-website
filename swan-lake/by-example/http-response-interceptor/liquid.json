@@ -1,6 +1,6 @@
 {
   "title": "Response interceptor",
-  "description": "This BBE demonstrates the HTTP Interceptors in Ballerina.",
+  "description": "This example demonstrates the HTTP response interceptors in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -12,9 +12,5 @@
     "filter"
   ],
   "permalink": "/learn/by-example/http-response-interceptor",
-  "active": "http-response-interceptor",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-response-interceptor",
-    "/swan-lake/learn/by-example/http-response-interceptor.html"
-  ]
+  "active": "http-response-interceptor"
 }

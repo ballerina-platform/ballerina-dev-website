@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/constraint-validations",
                 "_blank",
               );
             }}
@@ -230,8 +230,8 @@ export function ConstraintValidations({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Record to XML conversion"
-            href="/learn/by-example/xml-from-record-conversion"
+            title="Serialize to YAML string"
+            href="/learn/by-example/anydata-to-yaml-string"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +258,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Record to XML conversion
+                  Serialize to YAML string
                 </span>
               </div>
             </div>

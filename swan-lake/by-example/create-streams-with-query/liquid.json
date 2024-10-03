@@ -12,9 +12,5 @@
     "while"
   ],
   "permalink": "/learn/by-example/create-streams-with-query",
-  "active": "create-streams-with-query",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/create-streams-with-query",
-    "/swan-lake/learn/by-example/create-streams-with-query.html"
-  ]
+  "active": "create-streams-with-query"
 }

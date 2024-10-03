@@ -9,9 +9,5 @@
     "message passing"
   ],
   "permalink": "/learn/by-example/inter-worker-message-passing",
-  "active": "inter-worker-message-passing",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/inter-worker-message-passing",
-    "/swan-lake/learn/by-example/inter-worker-message-passing.html"
-  ]
+  "active": "inter-worker-message-passing"
 }

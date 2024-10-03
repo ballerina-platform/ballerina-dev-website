@@ -10,9 +10,5 @@
     "cli"
   ],
   "permalink": "/learn/by-example/configuring-via-cli",
-  "active": "configuring-via-cli",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/configuring-via-cli",
-    "/swan-lake/learn/by-example/configuring-via-cli.html"
-  ]
+  "active": "configuring-via-cli"
 }

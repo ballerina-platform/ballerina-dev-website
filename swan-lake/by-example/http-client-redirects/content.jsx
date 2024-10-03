@@ -58,7 +58,7 @@ export function HttpClientRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/http-client-redirects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/http-client-redirects",
                 "_blank",
               );
             }}
@@ -236,8 +236,8 @@ export function HttpClientRedirects({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="HTTP/2 server push"
-            href="/learn/by-example/http-2-0-server-push"
+            title="Server-sent events"
+            href="/learn/by-example/http-sse-service"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -264,7 +264,7 @@ export function HttpClientRedirects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP/2 server push
+                  Server-sent events
                 </span>
               </div>
             </div>

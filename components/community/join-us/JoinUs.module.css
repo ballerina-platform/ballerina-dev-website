@@ -1,0 +1,47 @@
+.cardCol {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.joinCard {
+  border: none !important;
+  background: transparent !important;
+  justify-content: center;
+}
+
+.imageWrap {
+  text-align: center;
+}
+
+.centerLogo {
+  width: 18%;
+  margin: 0 auto;
+}
+
+.centerWideLogo {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.centerExtraWideLogo {
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.btnStyle {
+  text-decoration: none !important;
+}
+
+.btnStyle p {
+  padding: 0.5rem 0;
+  border: 2px solid #57595d;
+  color: #57595d;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.btnStyle p:hover {
+  background-color: #57595d;
+  color: #ffffff !important;
+}

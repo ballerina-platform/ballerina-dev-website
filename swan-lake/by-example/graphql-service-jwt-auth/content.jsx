@@ -87,7 +87,7 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/graphql-service-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/graphql-service-jwt-auth",
                 "_blank",
               );
             }}
@@ -225,8 +225,8 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication/">
-            GraphQL client - Self-signed JWT authentication
+          <a href="/learn/by-example/graphql-client-security-jwt-authentication/">
+            GraphQL client - JWT authentication
           </a>{" "}
           example.
         </p>

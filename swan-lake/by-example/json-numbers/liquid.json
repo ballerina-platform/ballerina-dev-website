@@ -12,9 +12,5 @@
     "ensureType"
   ],
   "permalink": "/learn/by-example/json-numbers",
-  "active": "json-numbers",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/json-numbers",
-    "/swan-lake/learn/by-example/json-numbers.html"
-  ]
+  "active": "json-numbers"
 }

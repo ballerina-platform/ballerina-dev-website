@@ -1,6 +1,6 @@
 {
   "title": "Enable caching",
-  "description": "BBE on how the HTTP caching is configured and performed in Ballerina.",
+  "description": "This example is on how HTTP caching is configured and performed in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "caching"
   ],
   "permalink": "/learn/by-example/http-caching-client",
-  "active": "http-caching-client",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/http-caching-client",
-    "/swan-lake/learn/by-example/http-caching-client.html"
-  ]
+  "active": "http-caching-client"
 }

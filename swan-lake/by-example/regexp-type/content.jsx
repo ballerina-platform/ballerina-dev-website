@@ -96,7 +96,7 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/regexp-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/regexp-type",
                 "_blank",
               );
             }}
@@ -283,8 +283,8 @@ export function RegexpType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error binding pattern in match statement"
-            href="/learn/by-example/error-binding-pattern-in-match-statement"
+            title="XML to record with projection"
+            href="/learn/by-example/xml-to-record-with-projection"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -311,7 +311,7 @@ export function RegexpType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error binding pattern in match statement
+                  XML to record with projection
                 </span>
               </div>
             </div>

@@ -119,7 +119,7 @@ export function Tracing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/tracing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/tracing",
                 "_blank",
               );
             }}
@@ -368,8 +368,8 @@ export function Tracing({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Counter-based metrics"
-            href="/learn/by-example/counter-metrics"
+            title="Gauge-based metrics"
+            href="/learn/by-example/gauge-metrics"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -379,7 +379,7 @@ export function Tracing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Counter-based metrics
+                  Gauge-based metrics
                 </span>
               </div>
               <svg

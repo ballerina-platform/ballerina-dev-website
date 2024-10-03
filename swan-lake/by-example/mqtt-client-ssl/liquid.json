@@ -11,9 +11,5 @@
     "SSL"
   ],
   "permalink": "/learn/by-example/mqtt-client-ssl",
-  "active": "mqtt-client-ssl",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/mqtt-client-ssl",
-    "/swan-lake/learn/by-example/mqtt-client-ssl.html"
-  ]
+  "active": "mqtt-client-ssl"
 }

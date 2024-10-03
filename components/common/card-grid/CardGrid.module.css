@@ -1,0 +1,194 @@
+.useCaseCard {
+    display: flex;
+}
+
+.useCaseCard .cardWrapper {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: #a7a8ab solid 0.3px !important;
+}
+
+.useCaseCard .cardWrapper:hover {
+    border: #20b6b0 solid 0.3px !important;
+    cursor: pointer;
+}
+
+.wrapperLink {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cardWrapper h3 {
+    font-size: 22px;
+    color: #585a5e;
+    height: auto;
+}
+
+.cardDescription {
+    font-size: 16px;
+}
+
+.cardWrapper .cardDescription {
+    height: auto;
+    margin-top: 20px;
+    color: #585a5e;
+    font-weight: 400;
+}
+
+.cardLinks,
+.repoLink {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cardLinks a,
+.repoLink {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.cardLinks a:hover,
+.repoLink:hover {
+    color: #494949;
+}
+
+.imageWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    height: 120px;
+}
+
+.vLogo {
+    width: 30% !important;
+}
+
+.centerLogo {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.cardImgWrapper {
+    height: fit-content;
+}
+
+.cardImgWrapper img {
+    object-position: 50% 50%;
+    object-fit: cover;
+    aspect-ratio: 2 / 1;
+}
+
+.footer {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.cardLinks .technologies a {
+    color: #ffffff;
+    font-style: normal;
+    font-size: 0.75em;
+    font-weight: 700;
+}
+
+.tag {
+    margin-right: 5px;
+    margin-top: 5px;
+    background-color: #888 !important;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tag:hover {
+    opacity: 0.8;
+    color: #ffffff;
+}
+
+.seeMore {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.seeMore:hover {
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+
+a.eventRegistration {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    /* width: 100%; */
+    width: fit-content;
+    font-style: normal;
+}
+
+a.eventRegistration:hover {
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+
+.fillTile {
+    background: #000 !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 90px;
+    justify-content: center !important;
+    border: #20b6b0 solid 0.3px !important;
+}
+
+.fillTile:hover {
+    cursor: default !important;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        padding-top: 1rem;
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon {
+        padding-top: 0;
+        margin-left: 8px;
+        width: 75%;
+    }
+}
+
+.iconLink .icon:hover {
+    border: 1px solid #20b6b0;
+}

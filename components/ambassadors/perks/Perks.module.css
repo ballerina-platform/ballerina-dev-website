@@ -1,0 +1,41 @@
+.card {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cutomCard {
+    width: 100%;
+    justify-content: center;
+    border: none;
+    border-radius: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon {
+        padding-left: 1rem;
+    }
+}
+
+.textLink {
+    text-decoration: none;
+    color: #20b6b0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.textLink:hover {
+    color: #57595d;
+}
+
+.swag {
+    width: -moz-available !important;
+    width: -webkit-fill-available !important;
+    width: fill-available !important;
+}

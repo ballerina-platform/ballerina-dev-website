@@ -12,9 +12,5 @@
     "validation"
   ],
   "permalink": "/learn/by-example/websocket-service-payload-constraint-validation",
-  "active": "websocket-service-payload-constraint-validation",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-payload-constraint-validation",
-    "/swan-lake/learn/by-example/websocket-service-payload-constraint-validation.html"
-  ]
+  "active": "websocket-service-payload-constraint-validation"
 }

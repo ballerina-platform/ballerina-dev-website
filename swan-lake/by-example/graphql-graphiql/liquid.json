@@ -1,6 +1,6 @@
 {
   "title": "GraphiQL client",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates enabling the built-in GraphiQL client for a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -9,9 +9,5 @@
     "graphiql"
   ],
   "permalink": "/learn/by-example/graphql-graphiql",
-  "active": "graphql-graphiql",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-graphiql",
-    "/swan-lake/learn/by-example/graphql-graphiql.html"
-  ]
+  "active": "graphql-graphiql"
 }

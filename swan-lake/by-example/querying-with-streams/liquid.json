@@ -13,9 +13,5 @@
     "check"
   ],
   "permalink": "/learn/by-example/querying-with-streams",
-  "active": "querying-with-streams",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/querying-with-streams",
-    "/swan-lake/learn/by-example/querying-with-streams.html"
-  ]
+  "active": "querying-with-streams"
 }

@@ -12,9 +12,5 @@
     "function as a service"
   ],
   "permalink": "/learn/by-example/aws-lambda-s3-trigger",
-  "active": "aws-lambda-s3-trigger",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/aws-lambda-s3-trigger",
-    "/swan-lake/learn/by-example/aws-lambda-s3-trigger.html"
-  ]
+  "active": "aws-lambda-s3-trigger"
 }

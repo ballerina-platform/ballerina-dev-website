@@ -11,9 +11,5 @@
     "entity"
   ],
   "permalink": "/learn/by-example/persist-get-by-key",
-  "active": "persist-get-by-key",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/persist-get-by-key",
-    "/swan-lake/learn/by-example/persist-get-by-key.html"
-  ]
+  "active": "persist-get-by-key"
 }

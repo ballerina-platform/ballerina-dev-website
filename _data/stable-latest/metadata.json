@@ -1,18 +1,18 @@
 {
-	"version":"1.2.48",
-	"release-date":"2023-12-13",
-	"windows-installer":"ballerina-windows-installer-x64-1.2.48.msi",
+	"version":"1.2.49",
+	"release-date":"2024-02-14",
+	"windows-installer":"ballerina-windows-installer-x64-1.2.49.msi",
 	"windows-installer-size":"148mb",
-	"linux-installer":"ballerina-linux-installer-x64-1.2.48.deb",
+	"linux-installer":"ballerina-linux-installer-x64-1.2.49.deb",
 	"linux-installer-size":"145mb",
-	"macos-installer":"ballerina-macos-installer-x64-1.2.48.pkg",
+	"macos-installer":"ballerina-macos-installer-x64-1.2.49.pkg",
 	"macos-installer-size":"165mb",
-	"rpm-installer":"ballerina-linux-installer-x64-1.2.48.rpm",
-	"rpm-installer-size":"167mb",
-	"other-artefacts":[  
-		"ballerina-1.2.48.zip",
-		"ballerina-1.2.48.vsix"
- 	],
-	"api-docs":"ballerina-api-docs-1.2.48.zip",
-	"release-notes":"ballerina-release-notes-1.2.48.md"
+	"rpm-installer":"ballerina-linux-installer-x64-1.2.49.rpm",
+	"rpm-installer-size":"168mb",
+	"other-artefacts":[
+		"ballerina-1.2.49.zip",
+		"ballerina-1.2.49.vsix"
+	],
+	"api-docs":"ballerina-api-docs-1.2.49.zip",
+	"release-notes":"ballerina-release-notes-1.2.49.md"
 }

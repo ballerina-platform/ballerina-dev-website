@@ -1,6 +1,6 @@
 {
   "title": "File upload",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates implementing a GraphQL service with the file uploading capability.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -9,9 +9,5 @@
     "file upload"
   ],
   "permalink": "/learn/by-example/graphql-file-upload",
-  "active": "graphql-file-upload",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-file-upload",
-    "/swan-lake/learn/by-example/graphql-file-upload.html"
-  ]
+  "active": "graphql-file-upload"
 }

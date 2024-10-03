@@ -15,9 +15,5 @@
     "exact"
   ],
   "permalink": "/learn/by-example/list-equality",
-  "active": "list-equality",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/list-equality",
-    "/swan-lake/learn/by-example/list-equality.html"
-  ]
+  "active": "list-equality"
 }

@@ -11,9 +11,5 @@
     "map"
   ],
   "permalink": "/learn/by-example/multiple-key-fields",
-  "active": "multiple-key-fields",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/multiple-key-fields",
-    "/swan-lake/learn/by-example/multiple-key-fields.html"
-  ]
+  "active": "multiple-key-fields"
 }

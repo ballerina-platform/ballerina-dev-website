@@ -10,9 +10,5 @@
     "basic auth"
   ],
   "permalink": "/learn/by-example/websocket-service-basic-auth-ldap-user-store",
-  "active": "websocket-service-basic-auth-ldap-user-store",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/websocket-service-basic-auth-ldap-user-store",
-    "/swan-lake/learn/by-example/websocket-service-basic-auth-ldap-user-store.html"
-  ]
+  "active": "websocket-service-basic-auth-ldap-user-store"
 }

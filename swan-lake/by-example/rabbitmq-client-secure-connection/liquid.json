@@ -1,6 +1,6 @@
 {
   "title": "SSL/TLS",
-  "description": "BBE on consuming messages using a secured connection.",
+  "description": "This example demonstrates consuming messages from a RabbitMQ queue using a secured connection.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -11,9 +11,5 @@
     "credentials"
   ],
   "permalink": "/learn/by-example/rabbitmq-client-secure-connection",
-  "active": "rabbitmq-client-secure-connection",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/rabbitmq-client-secure-connection",
-    "/swan-lake/learn/by-example/rabbitmq-client-secure-connection.html"
-  ]
+  "active": "rabbitmq-client-secure-connection"
 }

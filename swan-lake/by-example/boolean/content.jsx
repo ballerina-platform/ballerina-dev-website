@@ -35,9 +35,11 @@ export function Boolean({ codeSnippets }) {
       <p>
         The <code>boolean</code> type has two values: <code>true</code>,{" "}
         <code>false</code>. The <code>!</code> operator works on booleans only.{" "}
-        <code>&amp;&amp;</code> and <code>||</code> operators short-circuit as
-        in C. Usual comparison operators (<code>==</code>, <code>!=</code>,{" "}
-        <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and{" "}
+        <code>&amp;&amp;</code> and <code>||</code> operators short-circuit -
+        the second operand is not evaluated if the result of evaluating the
+        first operand is sufficient to identify the result of the logical
+        expression. Usual comparison operators (<code>==</code>, <code>!=</code>
+        , <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and{" "}
         <code>&gt;=</code>) produce boolean values.
       </p>
 
@@ -51,7 +53,7 @@ export function Boolean({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/boolean",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/boolean",
                 "_blank",
               );
             }}
@@ -243,7 +245,7 @@ export function Boolean({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Strings" href="/learn/by-example/strings">
+          <Link title="Byte type" href="/learn/by-example/byte-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -252,7 +254,7 @@ export function Boolean({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Strings
+                  Byte type
                 </span>
               </div>
               <svg

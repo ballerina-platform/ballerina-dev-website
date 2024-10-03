@@ -9,9 +9,5 @@
     "concurrency"
   ],
   "permalink": "/learn/by-example/named-workers",
-  "active": "named-workers",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/named-workers",
-    "/swan-lake/learn/by-example/named-workers.html"
-  ]
+  "active": "named-workers"
 }

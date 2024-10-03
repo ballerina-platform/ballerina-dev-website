@@ -61,7 +61,7 @@ export function TcpClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/tcp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/tcp-client",
                 "_blank",
               );
             }}
@@ -227,6 +227,14 @@ export function TcpClient({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/tcp/#4-client">TCP Client - Specification</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/binary-data/">Binary data</a>
           </span>
         </li>
       </ul>

@@ -240,6 +240,24 @@ These types can be used to retrieve values from SQL stored procedures using the 
    ```
    Type of the returned value is inferred from LHS of the expression.
 
+In addition to the above parameters, it has `CursorOutParameter` to retrieve the result set from the SQL stored procedure.
+
+   ```ballerina
+   # Parses returned SQL result set values to a ballerina stream value.
+   #
+   # + typeDesc - The `typedesc` of the record to which the result needs to be returned
+   # + return - Stream of records in the `rowType` type
+   public isolated function get(typedesc<record {}> typeDesc = <>) returns stream<record {}, Error?>;
+   ```
+
+   ```ballerina
+   CursorOutParameter cursor = new;
+   
+   // Execute the DB call method
+   
+   stream<record{}, sql:Error?> resultStream = cursor.get();
+   ```
+
 ## 3.3. Query concatenation
 
 `sql:ParameterizedQuery` can be concatenated using util methods such as `sql:queryConcat()` and 

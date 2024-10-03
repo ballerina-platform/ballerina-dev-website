@@ -1,6 +1,6 @@
 {
   "title": "Payload data binding",
-  "description": "BBE on how to use a `kafka:Consumer` as a payload consumer.",
+  "description": "This example demonstrates how to use a kafka:Consumer as a payload consumer.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "client"
   ],
   "permalink": "/learn/by-example/kafka-consumer-payload-data-binding",
-  "active": "kafka-consumer-payload-data-binding",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-consumer-payload-data-binding",
-    "/swan-lake/learn/by-example/kafka-consumer-payload-data-binding.html"
-  ]
+  "active": "kafka-consumer-payload-data-binding"
 }

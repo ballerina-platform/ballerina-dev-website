@@ -3,9 +3,5 @@
   "description": "BBE on how to read/write from/to an XML file.",
   "keywords": ["ballerina", "ballerina by examples", "bbe", "xml"],
   "permalink": "/learn/by-example/io-xml",
-  "active": "io-xml",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/io-xml",
-    "/swan-lake/learn/by-example/io-xml.html"
-  ]
+  "active": "io-xml"
 }

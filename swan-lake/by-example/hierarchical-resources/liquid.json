@@ -10,9 +10,5 @@
     "services"
   ],
   "permalink": "/learn/by-example/hierarchical-resources",
-  "active": "hierarchical-resources",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/hierarchical-resources",
-    "/swan-lake/learn/by-example/hierarchical-resources.html"
-  ]
+  "active": "hierarchical-resources"
 }

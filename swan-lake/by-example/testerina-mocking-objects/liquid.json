@@ -3,9 +3,5 @@
   "description": "BBE on how to mock objects for unit testing.",
   "keywords": ["ballerina", "programming language", "testing", "mocking"],
   "permalink": "/learn/by-example/testerina-mocking-objects",
-  "active": "testerina-mocking-objects",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/testerina-mocking-objects",
-    "/swan-lake/learn/by-example/testerina-mocking-objects.html"
-  ]
+  "active": "testerina-mocking-objects"
 }

@@ -1,0 +1,14 @@
+{
+  "title": "Named worker with on fail clause",
+  "description": "This BBE demonstrates the use of `on fail` clause with named workers",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "worker",
+    "named workers",
+    "on fail"
+  ],
+  "permalink": "/learn/by-example/named-worker-with-on-fail-clause",
+  "active": "named-worker-with-on-fail-clause"
+}

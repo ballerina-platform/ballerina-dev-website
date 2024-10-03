@@ -75,11 +75,14 @@ export function XmlAccess({ codeSnippets }) {
           <span>
             <code>x?.id</code> accesses an optional attribute named{" "}
             <code>id</code>: the result is <code>()</code> if there is no such
-            attribute. The <code>lang.xml</code> langlib provides the other
-            operations.
+            attribute.
           </span>
         </li>
       </ul>
+
+      <p>
+        The <code>lang.xml</code> langlib provides the other operations.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -91,7 +94,7 @@ export function XmlAccess({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/xml-access",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/xml-access",
                 "_blank",
               );
             }}

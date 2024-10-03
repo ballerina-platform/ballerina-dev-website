@@ -9,9 +9,5 @@
     "worker"
   ],
   "permalink": "/learn/by-example/multiple-wait",
-  "active": "multiple-wait",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/multiple-wait",
-    "/swan-lake/learn/by-example/multiple-wait.html"
-  ]
+  "active": "multiple-wait"
 }

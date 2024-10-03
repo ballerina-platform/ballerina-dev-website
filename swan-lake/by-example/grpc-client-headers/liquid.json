@@ -13,9 +13,5 @@
     "metadata"
   ],
   "permalink": "/learn/by-example/grpc-client-headers",
-  "active": "grpc-client-headers",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-client-headers",
-    "/swan-lake/learn/by-example/grpc-client-headers.html"
-  ]
+  "active": "grpc-client-headers"
 }

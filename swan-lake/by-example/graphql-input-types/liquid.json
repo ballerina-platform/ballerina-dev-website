@@ -1,6 +1,6 @@
 {
   "title": "Input types",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates defining input parameters for the fields of a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -9,9 +9,5 @@
     "input types"
   ],
   "permalink": "/learn/by-example/graphql-input-types",
-  "active": "graphql-input-types",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/graphql-input-types",
-    "/swan-lake/learn/by-example/graphql-input-types.html"
-  ]
+  "active": "graphql-input-types"
 }

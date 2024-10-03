@@ -10,9 +10,5 @@
     "java interoperability"
   ],
   "permalink": "/learn/by-example/interface-to-external-code",
-  "active": "interface-to-external-code",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/interface-to-external-code",
-    "/swan-lake/learn/by-example/interface-to-external-code.html"
-  ]
+  "active": "interface-to-external-code"
 }

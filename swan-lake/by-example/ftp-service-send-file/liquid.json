@@ -1,6 +1,6 @@
 {
   "title": "Send file",
-  "description": "This BBE is about receiving file/directory changes that occur in a remote FTP server and using the `ftp:Caller` to interact with the FTP server.",
+  "description": "This example demonstrates receiving file/directory changes that occur in a remote FTP server and using an ftp:Caller to append a file to the newly added files.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,9 +10,5 @@
     "listener"
   ],
   "permalink": "/learn/by-example/ftp-service-send-file",
-  "active": "ftp-service-send-file",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/ftp-service-send-file",
-    "/swan-lake/learn/by-example/ftp-service-send-file.html"
-  ]
+  "active": "ftp-service-send-file"
 }

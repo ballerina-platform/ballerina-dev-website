@@ -10,9 +10,5 @@
     "prefetch method"
   ],
   "permalink": "/learn/by-example/custom-prefetch-methods",
-  "active": "custom-prefetch-methods",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/custom-prefetch-methods",
-    "/swan-lake/learn/by-example/custom-prefetch-methods.html"
-  ]
+  "active": "custom-prefetch-methods"
 }

@@ -8,18 +8,19 @@ active: configure-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.
 ---
 
-## Set up and tearing down
+## Set up and tear down
 
 The following test annotations can be used to set up and tear down the instructions. These configuration annotations 
 enable executing instructions at various levels.
 
 ### Suite level
 
-#### The `@test:BeforeSuite {}` annotation
-The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. 
-This can be used for initializing the test suite level pre-requisites.
+#### The `@test:BeforeSuite` annotation
+
+The function annotated with the `BeforeSuite` annotation will be run once before any of the tests in the test suite. This can be used for initializing the test suite level prerequisites.
 
 ***Example:***
+
 ```ballerina
 import ballerina/io;
 import ballerina/test;
@@ -32,38 +33,39 @@ function beforeFunc() {
 }
 
 // Test function.
-@test:Config {}
+@test:Config
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // Test function.
-@test:Config {}
+@test:Config
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed");
 }
 ```
 
-#### The `@test:AfterSuite {}` annotation
-The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for 
-cleaning up the test suite level aspects. A test suite covers tests related to a module.
+#### The `@test:AfterSuite` annotation
+
+The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for cleaning up at the test suite level. A test suite covers tests related to a module.
 
 ***Example:***
+
 ```ballerina
 import ballerina/io;
 import ballerina/test;
 
 // Test function.
-@test:Config {}
+@test:Config
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // The `AfterSuite` function is executed after all the test functions in this module.
-@test:AfterSuite {}
+@test:AfterSuite
 function afterFunc() {
     io:println("I'm the after suite function!");
 }
@@ -71,9 +73,9 @@ function afterFunc() {
 
 ### Group level
 
-#### The `@test:BeforeGroups {}` annotation
-For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of 
-the tests belonging to the group.
+#### The `@test:BeforeGroups` annotation
+
+For each group specified in this annotation, the `BeforeGroups` annotated function will be executed once before any of the tests belonging to the group.
 
 ***Example:***
 
@@ -110,11 +112,12 @@ function testFunction2() {
 }
 ```
 
-#### The `@test:AfterGroups {}` annotation
-For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the 
-tests belonging to the group is executed.
+#### The `@test:AfterGroups` annotation
+
+For each group specified in this annotation, the `AfterGroups` annotated function will be executed once after all the tests belonging to the group is executed.
 
 ***Example:***
+
 ```ballerina
 import ballerina/io;
 import ballerina/test;
@@ -151,8 +154,8 @@ function afterGroupsFunc2() {
 ### Test case level
 
 #### The `@test:BeforeEach` annotation
-The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the 
-test-level prerequisites repeatedly before every test function.
+
+The `BeforeEach` annotated function will be run before each test in the test suite. This can be used to initialize the test-level prerequisites repeatedly before every test function.
 
 ***Example:***
 
@@ -167,21 +170,21 @@ function beforeFunc() {
 }
 
 // The first test function.
-@test:Config {}
+@test:Config
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
 // The second test function.
-@test:Config {}
+@test:Config
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
 // The third test function.
-@test:Config {}
+@test:Config
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
@@ -189,8 +192,8 @@ function testFunction3() {
 ```
 
 #### The `@test:AfterEach` annotation
-The `AfterEach` annotated function will be run after each test within the test suite. This can be used to clean up the 
-test-level aspects repeatedly after every test function.
+
+The `AfterEach` annotated function will be run after each test within the test suite. This can be used to clean up the test-level aspects repeatedly after every test function.
 
 ***Example:***
 
@@ -205,21 +208,21 @@ function afterFunc() {
 }
 
 // The first test function.
-@test:Config {}
+@test:Config
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
 // The second test function.
-@test:Config {}
+@test:Config
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
 // The third test function.
-@test:Config {}
+@test:Config
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
@@ -228,9 +231,9 @@ function testFunction3() {
 
 ### Each test case
 
-#### The `before` attribute of the `@test:Config {}` annotation
-The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular 
-test is run.
+#### The `before` attribute of the `@test:Config` annotation
+
+The ‘before’ field in the test config annotation can be used to specify the function to execute before the particular test is run.
 
 ***Example:***
 
@@ -242,9 +245,9 @@ function testFunction3() {
 }
 ```
 
-#### The `after` attribute of the `@test:Config {}` annotation
-The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular 
-test is run.
+#### The `after` attribute of the `@test:Config` annotation
+
+The ‘after’ field in the test config annotation can be used to specify the function to execute after the particular test is run.
 
 ***Example:***
 
@@ -258,9 +261,7 @@ function testFunction2() {
 
 ## Ensure test execution order
 
-The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
-upon.
-This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies upon. This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
 
 ***Example:***
 
@@ -273,11 +274,12 @@ function testFunction5() {
 ```
 
 ## Define test-specific configurations
+
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
 
-Configurable variables can also be provided as command line arguments when running the tests. The configurable values can be passed with `bal test` in the format `-Ckey=value` where `key` is the configurable variable name and `value` is the value to be assigned to the configurable variable.
+Configurable variables can also be provided as command-line arguments when running the tests. The configurable values can be passed with `bal test` in the format `-Ckey=value` where `key` is the configurable variable name and `value` is the value to be assigned to the configurable variable.
 
 ***Example:***
 
@@ -291,6 +293,7 @@ are trying to test the service or client.
 
 
 ## Define test-only dependencies
+
 Dependencies are meant to be resolved only during testing and can be specified in the `Ballerina.toml` file by specifying the 
 scope.
 

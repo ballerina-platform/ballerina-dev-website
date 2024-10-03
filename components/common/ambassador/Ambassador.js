@@ -24,7 +24,7 @@ import styles from './Ambassador.module.css';
 import { prefix } from '../../../utils/prefix';
 
 
-export default function UniversitySessions(props) {
+export default function Ambassador(props) {
 
     const [hoverBtn, setHoverBtn] = React.useState(false);
 

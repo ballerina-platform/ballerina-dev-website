@@ -73,7 +73,7 @@ export function AnydataToYamlString({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/anydata-to-yaml-string",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/anydata-to-yaml-string",
                 "_blank",
               );
             }}
@@ -250,8 +250,8 @@ export function AnydataToYamlString({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations"
+            title="Convert CSV string to records"
+            href="/learn/by-example/csv-string-to-record-array"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -261,7 +261,7 @@ export function AnydataToYamlString({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  Convert CSV string to records
                 </span>
               </div>
               <svg

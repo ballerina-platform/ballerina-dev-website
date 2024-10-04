@@ -1,0 +1,21 @@
+{
+  "title": "Unary operators",
+  "description": "This BBE introduces unary operators in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "operators",
+    "unary operators",
+    "bitwise operators",
+    "int",
+    "float",
+    "boolean",
+    "+",
+    "-",
+    "~",
+    "!"
+  ],
+  "permalink": "/learn/by-example/unary-operators",
+  "active": "unary-operators"
+}

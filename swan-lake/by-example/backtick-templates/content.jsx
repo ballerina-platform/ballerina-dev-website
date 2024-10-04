@@ -17,6 +17,12 @@ public function main() {
     // Concatenates \`Backtick:\` strings with \`.
     string s2 = string \`Backtick:\${"\`"}\`;
     io:println(s2);
+
+    // If required, a single-line string template can be split into a multiline string template by breaking
+    // at an interpolation point or using string concatenation.
+    string s3 = string \`A string-template-expr is evaluated by evaluating the expression in each interpolation in \${
+        ""}the order in which they occur.\`;
+    io:println(s3);
 }
 `,
 ];
@@ -73,7 +79,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/backtick-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/backtick-templates",
                 "_blank",
               );
             }}
@@ -203,6 +209,7 @@ export function BacktickTemplates({ codeSnippets }) {
               <span>{`\$ bal run backtick_templates.bal`}</span>
               <span>{`Hello, James`}</span>
               <span>{`Backtick:\``}</span>
+              <span>{`A string-template-expr is evaluated by evaluating the expression in each interpolation in the order in which they occur.`}</span>
             </code>
           </pre>
         </Col>

@@ -5,53 +5,40 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/data.csv;
+import ballerina/io;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
-
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
+type Book record {
     string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
+    string author;
+    decimal price;
+    string publishedDate;
+};
+
+type BookMinimal record {|
+    string name;
+    string author;
 |};
 
-public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
-    };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
+public function main() {
+    string csvString = string \`name,author,price,publishedDate
+                               Effective Java,Joshua Bloch,45.99,2018-01-01
+                               Clean Code,Robert C. Martin,37.50,2008-08-01\`;
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    // Parse CSV string to a array of records.
+    Book[]|csv:Error bookRecords = csv:parseString(csvString);
+    io:println(bookRecords);
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+    // Parse CSV string to a array of records with data projection.
+    // Here only the fields specified in the target record type (\`name\` and \`author\` fields)  
+    // are included in the constructed value. 
+    BookMinimal[]|csv:Error briefBookRecords = csv:parseString(csvString);
+    io:println(briefBookRecords);
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function CsvStringToRecordArray({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,26 +48,13 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>Parse CSV string to array of records</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
-      </p>
-
-      <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
-        </a>
-        .
+        The ballerina <code>data.csv</code> library offers a range of functions
+        for parsing CSV strings to array of records, enabling developers to
+        parse CSV string data to structured records while allowing for the
+        selection of specific fields within the expected record array.
       </p>
 
       <Row
@@ -89,31 +63,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -220,8 +172,9 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run csv_string_to_record_array.bal`}</span>
+              <span>{`[{"name":"Effective Java","author":"Joshua Bloch","price":45.99,"publishedDate":"2018-01-01"},{"name":"Clean Code","author":"Robert C. Martin","price":37.5,"publishedDate":"2008-08-01"}]`}</span>
+              <span>{`[{"name":"Effective Java","author":"Joshua Bloch"},{"name":"Clean Code","author":"Robert C. Martin"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -265,7 +218,10 @@ export function ConstraintValidations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link
+            title="Convert CSV string to arrays"
+            href="/learn/by-example/csv-string-to-anydata-array"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +230,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Convert CSV string to arrays
                 </span>
               </div>
               <svg

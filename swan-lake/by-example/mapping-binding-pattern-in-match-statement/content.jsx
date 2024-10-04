@@ -50,6 +50,21 @@ function matchTime3(Day day) {
     }
 }
 
+function matchTime4(Time time) {
+    match time {
+        // The binding pattern below has a rest binding pattern to capture the additional 
+        // fields that may be specified in the open record value assigned to the \`time\` variable.
+        // The condition here checks whether the open record has the field \`meridiem\`.
+        var {hours, minutes, ...rest}
+                if rest["meridiem"] !is () && rest["meridiem"] == "PM" => {
+            io:println(hours + 12, ", ", minutes);
+        }
+        _ => {
+            io:println(time.hours, ", ", time.minutes);
+        }
+    }
+}
+
 public function main() {
     Time time = {hours: 3, minutes: 20, "seconds": 40, "milli-seconds": 500};
     matchTime1(time);
@@ -57,6 +72,10 @@ public function main() {
 
     Day day = {t: time};
     matchTime3(day);
+
+    Time time2 = {hours: 11, minutes: 21, "seconds": 52, "meridiem": "PM"};
+    matchTime4(time2);
+    matchTime4(time);
 }
 `,
 ];
@@ -91,7 +110,7 @@ export function MappingBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/mapping-binding-pattern-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/mapping-binding-pattern-in-match-statement",
                 "_blank",
               );
             }}
@@ -221,6 +240,8 @@ export function MappingBindingPatternInMatchStatement({ codeSnippets }) {
               <span>{`\$ bal run mapping_binding_pattern_in_match_statement.bal`}</span>
               <span>{`3, 20`}</span>
               <span>{`3, 20, {"seconds":40,"milli-seconds":500}`}</span>
+              <span>{`3, 20`}</span>
+              <span>{`23, 21`}</span>
               <span>{`3, 20`}</span>
             </code>
           </pre>

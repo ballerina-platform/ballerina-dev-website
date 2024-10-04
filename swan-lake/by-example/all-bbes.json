@@ -128,27 +128,6 @@
     ]
   },
   {
-    "title": "Operators",
-    "column": 0,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Binary operators",
-        "url": "binary-operators",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Unary operators",
-        "url": "unary-operators",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
     "title": "Conditional statements",
     "column": 0,
     "category": "Language concepts",
@@ -4724,55 +4703,6 @@
         "url": "anydata-to-yaml-string",
         "verifyBuild": true,
         "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "CSV data",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Convert CSV string to records",
-        "url": "csv-string-to-record-array",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert CSV string to arrays",
-        "url": "csv-string-to-anydata-array",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Parse CSV byte streams to records",
-        "url": "csv-streams-to-record-array",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Parse CSV lists to custom types",
-        "url": "parse-csv-lists",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Transform CSV records to custom types",
-        "url": "transform-csv-records-to-custom-types",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Handle CSV with custom configurations",
-        "url": "csv-user-configurations",
-        "verifyBuild": true,
-        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]

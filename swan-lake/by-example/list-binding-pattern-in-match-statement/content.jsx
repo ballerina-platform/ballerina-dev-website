@@ -12,14 +12,9 @@ function matchCommand(any commands) {
         var [show] => {
             io:println(show);
         }
-        // The list binding pattern below binds lists that contain three list items
-        // where the third element in the list is the boolean value \`true\`.
-        var [remove, all, isDir] if isDir is true => {
-            io:println(remove, " directories ", all);
-        }
         // The list binding pattern below binds lists that contain three list items.
         var [remove, all, _] => {
-            io:println(remove, " files ", all);
+            io:println(remove, " ", all);
         }
         // The list binding pattern below binds lists that contain two list items,
         // in which the second list item is also a list of two items.
@@ -32,11 +27,9 @@ function matchCommand(any commands) {
     }
 }
 
-
 public function main() {
     matchCommand(["Show"]);
     matchCommand(["Remove", "*", true]);
-    matchCommand(["Remove", "f.txt", false]);
     matchCommand(["Copy", ["a.bal", "b.bal"]]);
     matchCommand(1);
 }
@@ -72,7 +65,7 @@ export function ListBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/list-binding-pattern-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/list-binding-pattern-in-match-statement",
                 "_blank",
               );
             }}
@@ -201,8 +194,7 @@ export function ListBindingPatternInMatchStatement({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run list_binding_pattern_in_match_statement.bal`}</span>
               <span>{`Show`}</span>
-              <span>{`Remove directories *`}</span>
-              <span>{`Remove files f.txt`}</span>
+              <span>{`Remove *`}</span>
               <span>{`Copy a.bal into b.bal`}</span>
               <span>{`Unrecognized command.`}</span>
             </code>

@@ -58,17 +58,8 @@ sublinks:
           - title: Strings
             id: 1
             url: strings
-      - title: Operators
-        id: 5
-        sublinks:
-          - title: Binary operators
-            id: 1
-            url: binary-operators
-          - title: Unary operators
-            id: 2
-            url: unary-operators
       - title: Conditional statements
-        id: 6
+        id: 5
         sublinks:
           - title: If statement
             id: 1
@@ -83,7 +74,7 @@ sublinks:
             id: 4
             url: binding-patterns-in-match-statement
       - title: Functions
-        id: 7
+        id: 6
         sublinks:
           - title: Functions
             id: 1
@@ -116,7 +107,7 @@ sublinks:
             id: 10
             url: function-closure
       - title: Iteration
-        id: 8
+        id: 7
         sublinks:
           - title: Foreach statement
             id: 1
@@ -134,13 +125,13 @@ sublinks:
             id: 5
             url: int-range
       - title: Lang library
-        id: 9
+        id: 8
         sublinks:
           - title: Langlib functions
             id: 1
             url: langlib-functions
       - title: Types and typing
-        id: 10
+        id: 9
         sublinks:
           - title: Structural typing
             id: 1
@@ -188,19 +179,19 @@ sublinks:
             id: 15
             url: never-type
       - title: Expression-oriented style
-        id: 11
+        id: 10
         sublinks:
           - title: Expression-oriented style
             id: 1
             url: expression-oriented-style
       - title: Equality
-        id: 12
+        id: 11
         sublinks:
           - title: Expression equality
             id: 1
             url: expression-equality
       - title: Lists
-        id: 13
+        id: 12
         sublinks:
           - title: Arrays
             id: 1
@@ -227,7 +218,7 @@ sublinks:
             id: 8
             url: binary-data
       - title: Mappings
-        id: 14
+        id: 13
         sublinks:
           - title: Maps
             id: 1
@@ -239,7 +230,7 @@ sublinks:
             id: 3
             url: computed-field-key
       - title: Records
-        id: 15
+        id: 14
         sublinks:
           - title: Optional fields
             id: 1
@@ -257,13 +248,13 @@ sublinks:
             id: 5
             url: default-values-for-record-fields
       - title: Array/Map symmetry
-        id: 16
+        id: 15
         sublinks:
           - title: Array/Map symmetry
             id: 1
             url: array-map-symmetry
       - title: Objects
-        id: 17
+        id: 16
         sublinks:
           - title: Object
             id: 1
@@ -302,7 +293,7 @@ sublinks:
             id: 12
             url: start-service-from-service-class-definition
       - title: Binding patterns
-        id: 18
+        id: 17
         sublinks:
           - title: Binding patterns
             id: 1
@@ -350,7 +341,7 @@ sublinks:
             id: 15
             url: error-binding-pattern-in-match-statement
       - title: Tables
-        id: 19
+        id: 18
         sublinks:
           - title: Table
             id: 1
@@ -365,7 +356,7 @@ sublinks:
             id: 4
             url: structured-keys
       - title: Query expressions
-        id: 20
+        id: 19
         sublinks:
           - title: Query expressions
             id: 1
@@ -416,13 +407,13 @@ sublinks:
             id: 16
             url: aggregation
       - title: Query actions
-        id: 21
+        id: 20
         sublinks:
           - title: Query actions
             id: 1
             url: query-actions
       - title: JSON
-        id: 22
+        id: 21
         sublinks:
           - title: JSON type
             id: 1
@@ -464,7 +455,7 @@ sublinks:
             id: 13
             url: jsonpath-expressions
       - title: Backtick templates
-        id: 23
+        id: 22
         sublinks:
           - title: Raw templates
             id: 1
@@ -476,7 +467,7 @@ sublinks:
             id: 3
             url: xml-templates
       - title: XML
-        id: 24
+        id: 23
         sublinks:
           - title: XML data model
             id: 1
@@ -515,7 +506,7 @@ sublinks:
             id: 12
             url: xml-to-record-with-projection
       - title: Regular Expressions
-        id: 25
+        id: 24
         sublinks:
           - title: RegExp type
             id: 1
@@ -524,7 +515,7 @@ sublinks:
             id: 2
             url: regexp-operations
       - title: Metadata
-        id: 26
+        id: 25
         sublinks:
           - title: Documentation
             id: 1
@@ -533,7 +524,7 @@ sublinks:
             id: 2
             url: annotations
       - title: Network interaction
-        id: 27
+        id: 26
         sublinks:
           - title: 'Consume services: client objects'
             id: 1
@@ -557,7 +548,7 @@ sublinks:
             id: 7
             url: resource-path-parameters
       - title: Configurability
-        id: 28
+        id: 27
         sublinks:
           - title: Configurable variables
             id: 1
@@ -569,7 +560,7 @@ sublinks:
             id: 3
             url: configuring-via-cli
       - title: Error handling
-        id: 29
+        id: 28
         sublinks:
           - title: Error handling
             id: 1
@@ -593,13 +584,13 @@ sublinks:
             id: 7
             url: error-cause
       - title: Ignore return values and errors
-        id: 30
+        id: 29
         sublinks:
           - title: Ignore return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
-        id: 31
+        id: 30
         sublinks:
           - title: Identity
             id: 1
@@ -614,7 +605,7 @@ sublinks:
             id: 4
             url: immutability
       - title: Concurrency
-        id: 32
+        id: 31
         sublinks:
           - title: Asynchronous function calls
             id: 1
@@ -668,7 +659,7 @@ sublinks:
             id: 17
             url: fork
       - title: Transactions
-        id: 33
+        id: 32
         sublinks:
           - title: Transaction statement
             id: 1
@@ -692,7 +683,7 @@ sublinks:
             id: 7
             url: commit-rollback-handlers
       - title: Concurrency safety
-        id: 34
+        id: 33
         sublinks:
           - title: Lock statement
             id: 1
@@ -728,13 +719,13 @@ sublinks:
             id: 11
             url: run-strands-safely-on-separate-threads
       - title: Interface to external code
-        id: 35
+        id: 34
         sublinks:
           - title: Interface to external code
             id: 1
             url: interface-to-external-code
       - title: Testing
-        id: 36
+        id: 35
         sublinks:
           - title: Assertions
             id: 1
@@ -1876,29 +1867,8 @@ sublinks:
           - title: Serialize to YAML string
             id: 3
             url: anydata-to-yaml-string
-      - title: CSV data
-        id: 17
-        sublinks:
-          - title: Convert CSV string to records
-            id: 1
-            url: csv-string-to-record-array
-          - title: Convert CSV string to arrays
-            id: 2
-            url: csv-string-to-anydata-array
-          - title: Parse CSV byte streams to records
-            id: 3
-            url: csv-streams-to-record-array
-          - title: Parse CSV lists to custom types
-            id: 4
-            url: parse-csv-lists
-          - title: Transform CSV records to custom types
-            id: 5
-            url: transform-csv-records-to-custom-types
-          - title: Handle CSV with custom configurations
-            id: 6
-            url: csv-user-configurations
       - title: Constraint
-        id: 18
+        id: 17
         sublinks:
           - title: Constraint validations
             id: 1

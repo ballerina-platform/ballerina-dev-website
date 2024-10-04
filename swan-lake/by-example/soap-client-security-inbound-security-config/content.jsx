@@ -62,7 +62,7 @@ export function SoapClientSecurityInboundSecurityConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/soap-client-security-inbound-security-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/soap-client-security-inbound-security-config",
                 "_blank",
               );
             }}

@@ -52,6 +52,14 @@ import {
   codeSnippetData as StringsCodeSnippetData,
 } from "./strings/content.jsx";
 import {
+  BinaryOperators,
+  codeSnippetData as BinaryOperatorsCodeSnippetData,
+} from "./binary-operators/content.jsx";
+import {
+  UnaryOperators,
+  codeSnippetData as UnaryOperatorsCodeSnippetData,
+} from "./unary-operators/content.jsx";
+import {
   IfStatement,
   codeSnippetData as IfStatementCodeSnippetData,
 } from "./if-statement/content.jsx";
@@ -2016,6 +2024,30 @@ import {
   codeSnippetData as AnydataToYamlStringCodeSnippetData,
 } from "./anydata-to-yaml-string/content.jsx";
 import {
+  CsvStringToRecordArray,
+  codeSnippetData as CsvStringToRecordArrayCodeSnippetData,
+} from "./csv-string-to-record-array/content.jsx";
+import {
+  CsvStringToAnydataArray,
+  codeSnippetData as CsvStringToAnydataArrayCodeSnippetData,
+} from "./csv-string-to-anydata-array/content.jsx";
+import {
+  CsvStreamsToRecordArray,
+  codeSnippetData as CsvStreamsToRecordArrayCodeSnippetData,
+} from "./csv-streams-to-record-array/content.jsx";
+import {
+  ParseCsvLists,
+  codeSnippetData as ParseCsvListsCodeSnippetData,
+} from "./parse-csv-lists/content.jsx";
+import {
+  TransformCsvRecordsToCustomTypes,
+  codeSnippetData as TransformCsvRecordsToCustomTypesCodeSnippetData,
+} from "./transform-csv-records-to-custom-types/content.jsx";
+import {
+  CsvUserConfigurations,
+  codeSnippetData as CsvUserConfigurationsCodeSnippetData,
+} from "./csv-user-configurations/content.jsx";
+import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
@@ -2133,6 +2165,10 @@ const BBEs = {
   ByteTypeCodeSnippetData,
   Strings,
   StringsCodeSnippetData,
+  BinaryOperators,
+  BinaryOperatorsCodeSnippetData,
+  UnaryOperators,
+  UnaryOperatorsCodeSnippetData,
   IfStatement,
   IfStatementCodeSnippetData,
   MatchStatement,
@@ -3115,6 +3151,18 @@ const BBEs = {
   YamlToAnydataWithProjectionCodeSnippetData,
   AnydataToYamlString,
   AnydataToYamlStringCodeSnippetData,
+  CsvStringToRecordArray,
+  CsvStringToRecordArrayCodeSnippetData,
+  CsvStringToAnydataArray,
+  CsvStringToAnydataArrayCodeSnippetData,
+  CsvStreamsToRecordArray,
+  CsvStreamsToRecordArrayCodeSnippetData,
+  ParseCsvLists,
+  ParseCsvListsCodeSnippetData,
+  TransformCsvRecordsToCustomTypes,
+  TransformCsvRecordsToCustomTypesCodeSnippetData,
+  CsvUserConfigurations,
+  CsvUserConfigurationsCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
   DockerHelloWorld,

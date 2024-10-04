@@ -73,7 +73,7 @@ export function IfStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/if-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/if-statement",
                 "_blank",
               );
             }}
@@ -222,7 +222,10 @@ export function IfStatement({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Strings" href="/learn/by-example/strings">
+          <Link
+            title="Unary operators"
+            href="/learn/by-example/unary-operators"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +251,7 @@ export function IfStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Strings
+                  Unary operators
                 </span>
               </div>
             </div>

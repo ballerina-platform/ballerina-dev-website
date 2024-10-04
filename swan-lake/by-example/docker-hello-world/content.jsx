@@ -67,7 +67,7 @@ export function DockerHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/docker-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/docker-hello-world",
                 "_blank",
               );
             }}
@@ -166,7 +166,7 @@ export function DockerHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/docker-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/docker-hello-world",
                 "_blank",
               );
             }}
@@ -244,6 +244,15 @@ export function DockerHelloWorld({ codeSnippets }) {
         Execute the <code>bal build</code> command to build the Ballerina
         package. Code to Cloud generates only one container per package.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> For Mac users with Apple Silicon chips, run{" "}
+          <code>export DOCKER_DEFAULT_PLATFORM=linux/amd64</code> before
+          building the image. This is necessary because the Ballerina base image
+          doesn't yet support the M1 chip.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "

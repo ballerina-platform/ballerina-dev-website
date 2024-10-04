@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.0/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/constraint-validations",
                 "_blank",
               );
             }}
@@ -230,8 +230,8 @@ export function ConstraintValidations({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialize to YAML string"
-            href="/learn/by-example/anydata-to-yaml-string"
+            title="Handle CSV with custom configurations"
+            href="/learn/by-example/csv-user-configurations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +258,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialize to YAML string
+                  Handle CSV with custom configurations
                 </span>
               </div>
             </div>

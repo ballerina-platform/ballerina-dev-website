@@ -7,17 +7,11 @@ active: observe-metrics
 intro: Metrics help to monitor the runtime behavior of a service. Therefore, metrics are a vital part of monitoring Ballerina services.
 ---
 
-However, metrics are not the same as analytics. For example, it should not be used to perform
-per-request billing or similar use cases. Metrics are used to measure what a Ballerina service does at runtime to make
-better decisions using the numbers. The code generates business value when it continuously runs in production.
-Therefore, it is imperative to continuously measure the code in production.
-
 To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context
 of `/metrics` in default port 9797 when starting the Ballerina service.
 
 ### Configure advanced metrics 
-This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
-and the sample configuration is provided below.
+You can set up prometheus for your Ballerina project using the following config values in your `Config.toml` file.
 
 ```toml
 [ballerina.observe]
@@ -28,8 +22,6 @@ metricsReporter="prometheus"
 port=9797
 host="0.0.0.0"
 ```
-
-The descriptions of each configuration option are provided below with possible values.
 
 Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
@@ -76,7 +68,7 @@ Prometheus.
 3.  Start the Prometheus server in a Docker container with the command below.
 
     ```
-    $ docker run -p 19090:9090 -v <path_to_prometheus.yml>:/etc/prometheus/prometheus.yml prom/prometheus
+    $ docker run -p 19090:9090 -v <path_to_prometheus.yml>:/etc/prometheus/ prom/prometheus
     ```
     
 4.  Go to <http://localhost:19090/> and check whether you can see the Prometheus graph.

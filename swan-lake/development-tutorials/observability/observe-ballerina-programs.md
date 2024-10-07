@@ -15,7 +15,7 @@ It consists of the three major pillars below.
 
 ## Provide observability in Ballerina
 
-Metrics, distributed tracing, and logging are key methods that reveal the internal state of the system to provide observability. Ballerina becomes fully observable by exposing itself via these three methods to various external systems allowing metrics such as request count and response time statistics to be monitored, perform distributed tracing, and analyze logs.
+Metrics, distributed tracing, and logging are key methods that reveal the internal state of the system to provide observability. Ballerina achieves full observability by exposing itself to various external systems through three methods: monitoring metrics such as request count and response time statistics, performing distributed tracing, and analyzing logs.
 
 Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client
 connectors use semantic tags to make tracing and metrics monitoring more informative.

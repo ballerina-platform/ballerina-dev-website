@@ -1,0 +1,68 @@
+name: Spell Check
+
+on:
+  # Run on-demand using workflow_dispatch
+  workflow_dispatch:
+  # Schedule to run once a week
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight UTC
+
+jobs:
+  spelling:
+    name: Spell check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install spell checker
+        run: |
+          pip install check-spelling
+
+      - name: Run spell checker
+        uses: check-spelling/check-spelling@master
+        with:
+          # Include only the _data folder
+          paths: |
+            _data/**
+          exclude: |
+            *.lock
+            *.json
+            *.yaml
+            *.yml
+            *.png
+            *.jpg
+            *.svg
+          # Optionally, set a custom dictionary file to ignore certain words
+          extra_dictionaries: .spelling
+
+      # Generate a report of spelling mistakes
+      - name: Create spell check report
+        id: spellcheck_report
+        run: |
+          echo "### Spell Check Report" > report.md
+          echo "Found spelling issues in the following files:" >> report.md
+          cat .github/actions/spellcheck_output.txt >> report.md
+
+      # Send email to code owners with the spell check report
+      - name: Send email with spell check report
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.example.com
+          server_port: 587
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Weekly Spell Check Report"
+          body: |
+            Hello Code Owners,
+            Please find below the spell check report for your repository:
+            ${{ steps.spellcheck_report.outputs.spellcheck_output }}
+          to: |
+            codeowners@example.com
+          from: noreply@example.com
+

@@ -1,6 +1,20 @@
 {
     "articles": [
         {
+            "url": "https://www.analyticsinsight.net/programming/will-there-be-a-new-dominant-programming-language-by-2030",
+            "title": "Will There Be a New Dominant Programming Language by 2030?",
+            "author": "Monica",
+            "source": "Analytics Insight",
+            "date": "Oct 4, 2024"
+        },
+        {
+            "url": "https://redmonk.com/sogrady/2024/09/12/language-rankings-6-24/",
+            "title": "The RedMonk Programming Language Rankings: June 2024",
+            "author": "Stephen O'Grady",
+            "source": "RedMonk",
+            "date": "Sep 12, 2024"
+        },
+        {
             "url": "https://thearabianpost.com/innovation-in-programming-5-emerging-open-source-languages-catching-attention/",
             "title": "Innovation in Programming: 5 Emerging Open Source Languages Catching Attention",
             "author": "",

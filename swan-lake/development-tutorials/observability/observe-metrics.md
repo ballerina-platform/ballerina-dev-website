@@ -11,7 +11,7 @@ To support Prometheus as the metrics reporter, an HTTP endpoint starts with the 
 of `/metrics` in default port 9797 when starting the Ballerina service.
 
 ### Configure advanced metrics 
-You can set up prometheus for your Ballerina project using the following config values in your `Config.toml` file.
+You can set up prometheus for your Ballerina project using configuration similar to the following in your `Config.toml` file.
 
 ```toml
 [ballerina.observe]

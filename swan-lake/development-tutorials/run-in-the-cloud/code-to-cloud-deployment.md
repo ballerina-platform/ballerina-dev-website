@@ -21,7 +21,8 @@ To complete this tutorial, you need:
 1. <a href="https://www.docker.com/" target="_blank">Docker</a> installed and configured in your machine
 2. <a href="https://kubernetes.io/docs/tasks/tools/" target="_blank">Kubectl</a> installed and configured in a <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">Kubernetes cluster</a>
 
->**Note:** The macOS users with Apple silicon chip need set an environment variable `DOCKER_DEFAULT_PLATFORM` to `linux/amd64`, before building the image. This is because the Ballerina Docker image is not supported on Apple silicon chips yet.
+>**Note:** macOS users with Apple Silicon chips need to set an environment variable named `DOCKER_DEFAULT_PLATFORM` to `linux/amd64`, before building the image. This is because the Ballerina Docker image is not supported on Apple Silicon chips yet.
+
 > ```
 > export DOCKER_DEFAULT_PLATFORM=linux/amd64
 > ```

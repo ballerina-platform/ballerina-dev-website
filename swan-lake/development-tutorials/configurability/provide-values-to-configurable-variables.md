@@ -24,6 +24,8 @@ program.
 
 ## Provide via environment variables
 
+>**Note** This feature was introduced with Ballerina Swan Lake Update 9 (2201.9.0). If you are using an older version, consider [providing TOML content via environment variables](#provide-via-environment-variables-1).
+
 Use the syntax below to provide values for the variables through environment variables.
 
 ```

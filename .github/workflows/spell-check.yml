@@ -13,41 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3 # Using a specific version of checkout
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install spell checker
+      - name: Install pyspellchecker
         run: |
-          pip install check-spelling
+          pip install pyspellchecker
 
       - name: Run spell checker
-        uses: check-spelling/check-spelling@main
-        with:
-          paths: |
-            _data/**
-          exclude: |
-            *.lock
-            *.json
-            *.yaml
-            *.yml
-            *.png
-            *.jpg
-            *.svg
-          extra_dictionaries: .spelling
-
-      - name: Create spell check report
-        id: spellcheck_report
         run: |
-          echo "### Spell Check Report" > report.md
-          echo "Found spelling issues in the following files:" >> report.md
-          cat .github/actions/spellcheck_output.txt >> report.md
+          python .github/scripts/spellcheck.py
 
       - name: Archive the spell check report
-        uses: actions/upload-artifact@v3 # Pin the upload-artifact action to a specific version
+        uses: actions/upload-artifact@v3
         with:
           name: spell-check-report
-          path: report.md
+          path: spellcheck_report.txt

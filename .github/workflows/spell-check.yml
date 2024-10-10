@@ -22,10 +22,10 @@ jobs:
 
       - name: Install spell checker
         run: |
-          pip install check-spelling==0.0.20 # Use a specific version of the spell checker
+          pip install check-spelling==0.0.20
 
       - name: Run spell checker
-        uses: check-spelling/check-spelling@0.0.19 # Pin the check-spelling action to a specific version
+        uses: check-spelling/check-spelling@0.0.20 # Pin the check-spelling action to a specific version
         with:
           paths: |
             _data/**

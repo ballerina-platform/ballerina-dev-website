@@ -7,7 +7,7 @@ intro: The Ballerina VS Code extension provides the ability to run the tests you
 
 Tests are written in Ballerina programs by annotating them with `@test:Config`. 
 
-Click the **Run** CodeLens, which appears when you hover over the `@test:Config` annotation to execute the tests. Also, click the **Debug** CodeLens to add breakpoints and debug the tests.
+Click the **Run** icon, which appears next to the `@test:Config` annotation to execute the tests. Also, right-click the icon to add breakpoints and debug the tests.
 
 <img src="/learn/images/vs-code-extension/test-the-code/write-tests.png" class="cInlineImage-full"/>
 

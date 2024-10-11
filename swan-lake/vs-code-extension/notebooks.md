@@ -15,7 +15,8 @@ You can create Ballerina notebooks in the VS Code editor (by adding the `.balnot
 
 ## Execute the code
 
-Click the **Run** button available at the left-hand side of the cell or press the `shift` + `enter` keys to execute the Notebook cells. 
+Click the **Run** button available on the left-hand side of the cell to execute the Notebook cells.
+Alternatively, you can use the `Shift` + `Enter` keyboard shortcut to execute the cells.
 
 >**Tip:** Additionally, the `Run All`, `Execute Above Cells`, `Execute Cell and Below`, `Clear outputs of All Cells`, and `Restart Notebook` actions are available in the user interface.
 

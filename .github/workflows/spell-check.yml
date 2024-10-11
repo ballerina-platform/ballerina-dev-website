@@ -1,11 +1,9 @@
 name: Spell Check
 
 on:
-  # Run on-demand using workflow_dispatch
   workflow_dispatch:
-  # Schedule to run once a week
   schedule:
-    - cron: '0 0 * * 1' # Runs every Monday at midnight UTC
+    - cron: '0 0 * * 1'
 
 jobs:
   spelling:
@@ -28,8 +26,9 @@ jobs:
         run: |
           python .github/scripts/spellcheck.py
 
+      # Upload artifact using latest version (v4)
       - name: Archive the spell check report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Upgraded to version 4
         with:
           name: spell-check-report
           path: spellcheck_report.txt

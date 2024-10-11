@@ -97,7 +97,7 @@ export default function Perks(props) {
 
                     <h3 className="card-title">Rewards and recognition</h3>
 
-                    <p className="card-text">Earn recognition with certificates, badges, swags, and many more exclusive rewards.</p>
+                    <p className="card-text">Earn recognition with certificates, badges, swag, and many more exclusive rewards.</p>
                   </Card.Body>
                 </Col>
               </Row>

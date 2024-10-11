@@ -21,8 +21,6 @@ $ bal dist pull 2201.9.4
 
 If you have not installed Ballerina, then, download the [installers](/downloads/#swanlake) to install.
 
-<!-- ADD ONLY THE APPLICABLE SECTIONS FROM THE BELOW -->
-
 ## Language updates
 
 ### Bug fixes

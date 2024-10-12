@@ -27,6 +27,7 @@ import Code from "../../../components/etl/code/Code";
 import fs from "fs";
 import matter from "gray-matter";
 import { getSingletonHighlighter } from "shiki";
+import {transformerCopyButton} from "../../../utils/copy-button-transformer";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -56,7 +57,13 @@ export async function getStaticProps() {
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina', theme: 'github-light' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), {
+        lang: 'ballerina',
+        theme: 'github-light',
+        transformers: [
+          transformerCopyButton()
+        ]
+      }) : ''
     };
   });
 

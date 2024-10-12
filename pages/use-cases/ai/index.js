@@ -23,6 +23,7 @@ import Head from "next/head";
 import Layout from "../../../layouts/LayoutUseCase";
 import Intro from "../../../components/ai/intro/Intro";
 import Code from "../../../components/ai/code/Code";
+import {transformerCopyButton} from "../../../utils/copy-button-transformer";
 
 
 import fs from "fs";
@@ -57,7 +58,13 @@ export async function getStaticProps() {
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina', theme: 'github-light' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), {
+        lang: 'ballerina',
+        theme: 'github-light',
+        transformers: [
+            transformerCopyButton()
+        ]
+      }) : ''
     };
   });
 

@@ -27,6 +27,7 @@ import Code from "../../../../components/integration/ballerina-vs-apollo-for-gra
 import fs from "fs";
 import matter from "gray-matter";
 import { getSingletonHighlighter } from "shiki";
+import {transformerCopyButton} from "../../../../utils/copy-button-transformer";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -66,7 +67,8 @@ export async function getStaticProps() {
         image: frontmatter.image ? frontmatter.image : '',
       },
       content: content,
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang, theme: 'github-light' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(),
+          { lang: lang, theme: 'github-light', transformers: [transformerCopyButton()] }) : ''
     };
   });
 

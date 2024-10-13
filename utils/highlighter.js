@@ -1,5 +1,19 @@
 import { getSingletonHighlighter } from "shiki";
 
+const supportedLangs = [
+    "bash",
+    "ballerina",
+    "toml",
+    "yaml",
+    "sh",
+    "json",
+    "graphql",
+    "sql",
+    "java",
+    "xml",
+    "cmd"
+];
+
 String.prototype.hashCode = function () {
     var hash = 0,
         i, chr;
@@ -26,8 +40,11 @@ const highlight = async (content) => {
         const key = code.trim().split(/\r?\n/).map(row => row.trim()).join('\n');
         code = code.split(/\r?\n/).map(row => row.substring(indent - 1)).join('\n');
         const lang = (match[1]).toLowerCase();
-        await highlighter.loadLanguage(lang)
-        codes.set(key.hashCode(), highlighter.codeToHtml(code.trim(), { lang: lang, theme: 'github-light' }));
+        if (supportedLangs.includes(lang)) {
+            await highlighter.loadLanguage(lang)
+        }
+
+        codes.set(key.hashCode(), highlighter.codeToHtml(code.trim(), { lang: supportedLangs.includes(lang) ? lang : '', theme: 'github-light' }));
     }
     return JSON.stringify([...codes]);
 }

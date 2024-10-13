@@ -43,6 +43,8 @@ export async function getStaticProps() {
   const highlighter = await getSingletonHighlighter();
   await highlighter.loadTheme('github-light');
   await highlighter.loadLanguage('ballerina');
+  await highlighter.loadLanguage('javascript');
+  await highlighter.loadLanguage('graphql');
   const files = traverseFolder("components/integration/ballerina-vs-apollo-for-graphql/code/apollo-graphql-bbe");
   var samples = {};
 

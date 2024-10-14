@@ -100,6 +100,9 @@ function copyButtonStyle({
         display: none; background-image: var(--success-icon);
       }
     }
+    .Code_codeSnippet__ayQ3y button.rehype-pretty-copy {
+      margin-top: -10px;
+    }
     &.rehype-pretty-copied { 
       & .success { 
         display: block;

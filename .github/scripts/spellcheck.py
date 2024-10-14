@@ -6,7 +6,7 @@ import json
 spell = SpellChecker()
 
 # List of directories to scan for files
-directories = ["_data", "utils"]  # Scan only _data and utils directories
+directories = ["_data", "case-studies", "community", "components", "downloads", "hacktoberfest", "pages", "policy", "spec", "swan-lake", "utils"]
 
 # File extensions to check
 file_extensions = ['.txt', '.md', '.html', '.js', '.py', '.json']  # Include .json files

@@ -1,0 +1,34 @@
+name: Spell Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  spelling:
+    name: Spell check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install pyspellchecker
+        run: |
+          pip install pyspellchecker
+
+      - name: Run spell checker
+        run: |
+          python .github/scripts/spellcheck.py
+
+      # Upload artifact using latest version (v4)
+      - name: Archive the spell check report
+        uses: actions/upload-artifact@v4  # Upgraded to version 4
+        with:
+          name: spell-check-report
+          path: spellcheck_report.txt

@@ -14,8 +14,8 @@ function transformerCopyButton(options = {
                 tagName: "button",
                 properties: {
                     type: "button",
-                    title: "Copy code",
-                    "aria-label": "Copy code",
+                    title: "Copy",
+                    "aria-label": "Copy",
                     data: this.source,
                     class: "rehype-pretty-copy",
                     onclick: trimWhitespace(

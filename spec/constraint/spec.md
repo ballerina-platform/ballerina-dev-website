@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 ## Introduction
 This is the specification for the Constraint standard library of [Ballerina language](https://ballerina.io/), which 
-provides APIs to validate the values that have been assigned to Ballerina types.
+provides annotations to add constraints to Ballerina types and an API to validate the values with respect to the constraints defined in the respective types.
 
 The Constraint library specification has evolved and may continue to evolve in the future. The released versions of the 
 specification can be found under the relevant GitHub tag.
@@ -80,13 +80,14 @@ type User record {|
 
 The following table illustrates all the supported annotations with respect to the Ballerina types.
 
-| Ballerina Type                    | Annotation           |
-|-----------------------------------|----------------------|
-| `int`                             | `@constraint:Int`    |
-| `float`                           | `@constraint:Float`  |
-| `int`&#124;`float`&#124;`decimal` | `@constraint:Number` |
-| `string`                          | `@constraint:String` |
-| `any[]`                           | `@constraint:Array`  |
+| Annotation           | Associated Ballerina Type(s) |
+|----------------------|------------------------------|
+| `@constraint:Int`    | `int`                        |
+| `@constraint:Float`  | `float`                      |
+| `@constraint:Number` | `int`, `float`, `decimal`    |
+| `@constraint:String` | `string`                     |
+| `@constraint:Array`  | `any[]`                      |
+| `@constraint:Date`   | `constraint:Date`            |
 
 ### 2.1. Constraint annotation on number types
 
@@ -135,9 +136,9 @@ All the supported constraints on number types are illustrated in the following t
 | maxValue          |                                v <= c                                |
 | minValueExclusive |                                v > c                                 |
 | maxValueExclusive |                                v < c                                 |
-|maxDigits          |                      Number of digits in v <= c                      |
-|maxIntegerDigits   |                Number of integer digits in v <= c                    |
-|maxFractionDigits  |               Number of fraction digits in v <= c                    |
+| maxDigits         |                      Number of digits in v <= c                      |
+| maxIntegerDigits  |                Number of integer digits in v <= c                    |
+| maxFractionDigits |               Number of fraction digits in v <= c                    |
 
 When defining constraints on number types, either `minValue` or `minValueExclusive` can be present. Similarly, either 
 `maxValue` or `maxValueExclusive` can be present.

@@ -22,7 +22,13 @@ function transformerCopyButton(options = {
                         `
             navigator.clipboard.writeText(this.attributes.data.value);
             this.classList.add('rehype-pretty-copied');
-            window.setTimeout(() => this.classList.remove('rehype-pretty-copied'), ${options.feedbackDuration});
+            this.setAttribute('title', 'Copied');
+            this.setAttribute('aria-label', 'Copied');
+            window.setTimeout(() => {
+                this.classList.remove('rehype-pretty-copied');
+                this.setAttribute('title', 'Copy');
+                this.setAttribute('aria-label', 'Copy');
+            }, ${options.feedbackDuration});
           `
                     )
                 },

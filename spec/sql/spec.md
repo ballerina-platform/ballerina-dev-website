@@ -257,6 +257,7 @@ In addition to the above parameters, it has `CursorOutParameter` to retrieve the
    
    stream<record{}, sql:Error?> resultStream = cursor.get();
    ```
+> **_Note:_** In the case of a stored procedure query that returns a result set along with the mentioned parameters, the `get()` method of these parameters should only be invoked after consuming the result set. Otherwise, consuming the result set fails with a 'Error when iterating the SQL result. The result set is closed.' error.
 
 ## 3.3. Query concatenation
 

@@ -7,47 +7,35 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type InputErrorDetail record {|
-    int|string value;
-|};
+function hereBeDragons() returns int {
+    // Trigger a panic deep within the call stack. 
+    alwaysPanic();
+}
 
-type NumericErrorDetail record {|
-    int|float value;
-|};
-
-type InputError error<InputErrorDetail>;
-
-type NumericError error<NumericErrorDetail>;
-
-// \`NumericInputError\` has detail type, \`record {| int value |}\`.
-type NumericInputError InputError & NumericError;
-
-type DistinctInputError distinct error<InputErrorDetail>;
-
-type DistinctNumericError distinct error<NumericErrorDetail>;
-
-// \`DistinctNumericInputError\` has type IDs of both \`DistinctInputError\` and \`DistinctNumericError\`.
-type DistinctNumericInputError DistinctInputError & DistinctNumericError;
+// Return type \`never\` indicate that this function will never return normally. I.e., it will always panic.
+function alwaysPanic() returns never {
+    panic error("deep down in the code");
+}
 
 public function main() {
-    NumericInputError e1 = error("Numeric input error", value = 5);
-    // \`e1\` belongs to \`InputError\` since its detail type is a subtype of \`InputErrorDetail\`.
-    io:println(e1 is InputError);
-
-    // \`e1\` doesn't belong to \`DistinctInputError\` since it doesn't have the type ID of \`DistinctInputError\`.
-    io:println(e1 is DistinctInputError);
-
-    DistinctNumericInputError e2 = error("Distinct numeric input error", value = 5);
-    // \`e2\` belongs to \`InputError\` since its detail type is a subtype of \`InputErrorDetail\`.
-    io:println(e2 is InputError);
-
-    // \`e2\` belongs to \`DistinctInputError\` since its type ID set includes the type id of \`DistinctInputError\`.
-    io:println(e2 is DistinctInputError);
+    // Division by 0 triggers a panic. 
+    int|error result = trap 1 / 0;
+    if result is error {
+        io:println("Error: ", result);
+    }
+    // Calling the \`hereBeDragons\` function triggers a panic deep within the call stack, which is trapped here.
+    int|error result2 = trap hereBeDragons();
+    if result2 is error {
+        io:println("Error: ", result2);
+    }
+    // This will trigger a panic which is not trapped. Thus it will terminate the program.
+    int result3 = hereBeDragons();
+    io:println("Result: ", result3);
 }
 `,
 ];
 
-export function ErrorTypeIntersection({ codeSnippets }) {
+export function TrapExpression({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -57,16 +45,14 @@ export function ErrorTypeIntersection({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Type intersection for error types</h1>
+      <h1>Trap expression</h1>
 
       <p>
-        If you intersect two <code>error</code> types, the resulting type's
-        detail type is the intersection of the detail types of both types.
-        Furthermore, if any of the types being intersected is a distinct type,
-        then the resultant type's type ID set includes all the type IDs of that
-        type. Thus it is a subtype of both types. This way, you can create an
-        error type that is a subtype of multiple distinct types and also use a
-        more specific detail type.
+        If you have an expression such as a function call that can potentially
+        trigger a panic you can use a <code>trap</code> expression to prevent
+        further unwinding of the stack. Then if the evaluation of the expression
+        triggers a panic you will get the <code>error</code> value associated
+        with the panic. Otherwise, you will get the result of the expression.
       </p>
 
       <Row
@@ -75,31 +61,9 @@ export function ErrorTypeIntersection({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/error-type-intersection",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -206,11 +170,13 @@ export function ErrorTypeIntersection({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run error_type_intersection.bal`}</span>
-              <span>{`true`}</span>
-              <span>{`false`}</span>
-              <span>{`true`}</span>
-              <span>{`true`}</span>
+              <span>{`\$ bal run trap_expression.bal`}</span>
+              <span>{`Error: error("{ballerina}DivisionByZero",message=" / by zero")`}</span>
+              <span>{`Error: error("deep down in the code")`}</span>
+              <span>{`error: deep down in the code`}</span>
+              <span>{`	at trap_expression:alwaysPanic(trap_expression.bal:10)`}</span>
+              <span>{`	   trap_expression:hereBeDragons(trap_expression.bal:5)`}</span>
+              <span>{`	   trap_expression:main(trap_expression.bal:25)`}</span>
             </code>
           </pre>
         </Col>
@@ -218,18 +184,13 @@ export function ErrorTypeIntersection({ codeSnippets }) {
 
       <ul>
         <li>
-          <a href="https://ballerina.io/learn/by-example/error-subtyping/">
-            Error subtyping
-          </a>
+          <a href="https://ballerina.io/learn/by-example/panics/">Panics</a>
         </li>
       </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Trap expression"
-            href="/learn/by-example/trap-expression"
-          >
+          <Link title="Panics" href="/learn/by-example/panics">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -255,14 +216,17 @@ export function ErrorTypeIntersection({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Trap expression
+                  Panics
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Error detail" href="/learn/by-example/error-detail">
+          <Link
+            title="Type intersection for error types"
+            href="/learn/by-example/error-type-intersection"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -271,7 +235,7 @@ export function ErrorTypeIntersection({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error detail
+                  Type intersection for error types
                 </span>
               </div>
               <svg

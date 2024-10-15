@@ -51,14 +51,14 @@ export function Panics({ codeSnippets }) {
 
       <p>
         Ballerina distinguishes normal errors from abnormal errors. Normal
-        errors are handled by returning error values. Abnormal errors are
-        handled using the panic statement. Abnormal errors should typically
-        result in immediate program termination.
-      </p>
-
-      <p>
-        E.g., A programming bug or out of memory. A panic has an associated
-        error value.
+        errors are handled by returning error values. This signals to the caller
+        that they must handle the error. In contrast, abnormal errors such as
+        division by 0 and out-of-memory are typically unrecoverable errors and
+        we need to terminate the execution of the program. This is achieved by a
+        panic statement with an expression that results in an error value such
+        as the error constructor. At runtime, evaluating a panic statement first
+        creates the error value by evaluating the expression and then starts
+        stack unwinding, unless it encounters a <code>trap</code> expression.
       </p>
 
       <Row
@@ -247,8 +247,8 @@ export function Panics({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Type intersection for error types"
-            href="/learn/by-example/error-type-intersection"
+            title="Trap expression"
+            href="/learn/by-example/trap-expression"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -258,7 +258,7 @@ export function Panics({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Type intersection for error types
+                  Trap expression
                 </span>
               </div>
               <svg

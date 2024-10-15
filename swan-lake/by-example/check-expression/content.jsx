@@ -9,19 +9,26 @@ export const codeSnippetData = [
 
 // Convert \`bytes\` to a \`string\` value and then to an \`int\` value.
 function intFromBytes(byte[] bytes) returns int|error {
+    string|error res = string:fromBytes(bytes);
+    // Explicitly check if the result is an error and 
+    // immediately return if so.
+    if res is error {
+        return res;
+    }
+    return int:fromString(res);
+}
 
-    // Use \`check\` with an expression that may return \`error\`.
-    // If \`string:fromBytes(bytes)\` returns an \`error\` value, \`check\`
-    // makes the function return the \`error\` value here.
-    // If not, the returned \`string\` value is used as the value of the \`str\` variable.
+// Same as \`intFromBytes\` but with \`check\` instead of explicitly checking for error and returning.
+function intFromBytesWithCheck(byte[] bytes) returns int|error {
     string str = check string:fromBytes(bytes);
-
     return int:fromString(str);
 }
 
 public function main() {
-    int|error res = intFromBytes([104, 101, 108, 108, 111]);
-    io:println(res);
+    int|error res1 = intFromBytesWithCheck([104, 101, 108, 108, 111]);
+    io:println(res1);
+    int|error res2 = intFromBytes([104, 101, 108, 108, 111]);
+    io:println(res2);
 }
 `,
 ];
@@ -39,15 +46,13 @@ export function CheckExpression({ codeSnippets }) {
       <h1>Check expression</h1>
 
       <p>
-        <code>check E</code> is used with an expression <code>E</code> that
-        might result in an <code>error</code> value. If <code>E</code> results
-        in an <code>error</code> value , then, <code>check</code> makes the
-        function return that <code>error</code> value immediately.
-      </p>
-
-      <p>
-        The type of <code>check E</code> does not include <code>error</code>.
-        The control flow remains explicit.
+        If an expression can evaluate to an error value, you can use the{" "}
+        <code>check</code> expression to indicate that you want the execution of
+        the current block to terminate with that error as the result. This
+        results in the error value being returned from the current
+        function/worker, unless the <code>check</code> expression is used in a
+        failure-handling statement (e.g., statement with on fail, retry
+        statement).
       </p>
 
       <Row
@@ -189,10 +194,19 @@ export function CheckExpression({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run check_expression.bal`}</span>
               <span>{`error("{ballerina/lang.int}NumberParsingError",message="'string' value 'hello' cannot be converted to 'int'")`}</span>
+              <span>{`error("{ballerina/lang.int}NumberParsingError",message="'string' value 'hello' cannot be converted to 'int'")`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <ul>
+        <li>
+          <a href="https://ballerina.io/learn/concurrency/#check-semantics">
+            <code>check</code> semantics
+          </a>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

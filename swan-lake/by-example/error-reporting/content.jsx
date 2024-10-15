@@ -7,34 +7,62 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// Parses a \`string\` value to convert to an \`int\` value. This function may return error values.
-// The return type is a union with \`error\`.
-function parse(string s) returns int|error {
+type Person record {
+    string name;
+    int age;
+};
 
-    int n = 0;
-    int[] cps = s.toCodePointInts();
-    foreach int cp in cps {
-        int p = cp - 0x30;
-        if p < 0 || p > 9 {
-            // If \`p\` is not a digit construct, it returns an \`error\` value with \`not a digit\` as the error message.
-            return error("not a digit");
-
-        }
-        n = n * 10 + p;
+function validatePeople(Person[] people) returns error? {
+    if people.length() == 0 {
+        // Create an error value specifying only the error message.
+        return error("Expected a non-empty array");
     }
-    return n;
+
+    foreach Person p in people {
+        io:println("Validating ", p.name);
+        error? err = validatePerson(p);
+        if err is error {
+            // Create a new error value with the validation error as the cause
+            // and the \`Person\` value for which validation failed in the detail mapping.
+            return error("Validation failed for a person", err, person = p);
+        }
+    }
+}
+
+function validatePerson(Person person) returns error? {
+    int age = person.age;
+    if age < 0 {
+        // If validation fails for age, create a new error value specifying
+        // an error message and the age value for which validation failed.
+        return error("Age cannot be negative", age = age);
+    }
 }
 
 public function main() {
-    // An \`int\` value is returned when the argument is a \`string\` value, which can be parsed as an integer.
-    int|error x = parse("123");
+    Person[] people = [
+        {name: "Alice", age: 25},
+        {name: "Bob", age: -1},
+        {name: "Charlie", age: 30}
+    ];
+    // Note how the \`Person\` value after the value for which validation fails is
+    // not processed.
+    error? err = validatePeople(people);
+    if err is error {
+        printError(err);
+    }
+}
 
-    io:println(x);
+// Helper function to print internals of error value.
+function printError(error err) {
+    io:println("Message: ", err.message());
+    io:println("Detail: ", err.detail());
+    io:println("Stack trace: ", err.stackTrace());
 
-    // An \`error\` value is returned when the argument is a \`string\` value, which has a character that is not a digit.
-    int|error y = parse("1h");
-
-    io:println(y);
+    error? cause = err.cause();
+    if cause is error {
+        io:println("Cause:");
+        printError(cause);
+    }
 }
 `,
 ];
@@ -52,21 +80,56 @@ export function ErrorReporting({ codeSnippets }) {
       <h1>Errors</h1>
 
       <p>
-        Ballerina does not have exceptions. Errors are reported by functions
-        returning <code>error</code> values.
+        Ballerina does not have exceptions. Instead functions report invalid
+        states by returning error values. Each error value has,
       </p>
 
-      <p>
-        <code>error</code> is its own basic type. The return type of a function
-        that may return an <code>error</code> value will be a union with{" "}
-        <code>error</code>.
-      </p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Message, a human-readable <code>string</code> value describing the
+            error.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Cause, which is an <code>error</code> value if this error was caused
+            due to another error, which needs to be propagated, otherwise nil.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Detail, a mapping value consisting of additional information about
+            the error.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Stack trace, a snapshot of the state of the execution stack when the
+            error value was created.
+          </span>
+        </li>
+      </ul>
+
+      <p>Error values are immutable.</p>
 
       <p>
-        An <code>error</code> value includes a <code>string</code> message. An{" "}
-        <code>error</code> value includes the stack trace from the point at
-        which the error is constructed (i.e., <code>error(msg)</code> is
-        called). Error values are immutable.
+        You can create a new error value using an error constructor. As the
+        first argument to the error constructor, it expects the message string.
+        As the second argument, you can optionally pass in an{" "}
+        <code>error?</code> value for cause. Subsequent named arguments, if
+        specified, will be used to create the detail mapping. The stack trace is
+        provided by the runtime.
       </p>
 
       <Row
@@ -207,12 +270,53 @@ export function ErrorReporting({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run error_reporting.bal`}</span>
-              <span>{`123`}</span>
-              <span>{`error("not a digit")`}</span>
+              <span>{`Validating Alice`}</span>
+              <span>{`Validating Bob`}</span>
+              <span>{`Message: Validation failed for a person`}</span>
+              <span>{`Detail: {"person":{"name":"Bob","age":-1}}`}</span>
+              <span>{`Stack trace: [callableName: validatePeople  fileName: error_reporting.bal lineNumber: 20,callableName: main  fileName: error_reporting.bal lineNumber: 42]`}</span>
+              <span>{`Cause:`}</span>
+              <span>{`Message: Age cannot be negative`}</span>
+              <span>{`Detail: {"age":-1}`}</span>
+              <span>{`Stack trace: [callableName: validatePerson  fileName: error_reporting.bal lineNumber: 30,callableName: validatePeople  fileName: error_reporting.bal lineNumber: 16,callableName: main  fileName: error_reporting.bal lineNumber: 42]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/error-subtyping/">
+              Error subtyping
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/error-cause/">
+              Error cause
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/error-detail/">
+              Error detail
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

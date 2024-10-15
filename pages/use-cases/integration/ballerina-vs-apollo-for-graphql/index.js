@@ -26,7 +26,8 @@ import Code from "../../../../components/integration/ballerina-vs-apollo-for-gra
 
 import fs from "fs";
 import matter from "gray-matter";
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
+import {transformerCopyButton} from "../../../../utils/copy-button-transformer";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -39,9 +40,11 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
+  await highlighter.loadLanguage('javascript');
+  await highlighter.loadLanguage('graphql');
   const files = traverseFolder("components/integration/ballerina-vs-apollo-for-graphql/code/apollo-graphql-bbe");
   var samples = {};
 
@@ -66,7 +69,8 @@ export async function getStaticProps() {
         image: frontmatter.image ? frontmatter.image : '',
       },
       content: content,
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(),
+          { lang: lang, theme: 'github-light', transformers: [transformerCopyButton()] }) : ''
     };
   });
 

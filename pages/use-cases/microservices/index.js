@@ -27,7 +27,8 @@ import { prefix } from '../../../utils/prefix';
 
 import fs from "fs";
 import matter from "gray-matter";
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
+import {transformerCopyButton} from "../../../utils/copy-button-transformer";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -40,9 +41,9 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
   const files = traverseFolder("components/microservices/code/microservices-bbe");
   var samples = {};
 
@@ -57,7 +58,8 @@ export async function getStaticProps() {
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(),
+          { lang: 'ballerina', theme: 'github-light', transformers: [transformerCopyButton()] }) : ''
     };
   });
 

@@ -1,4 +1,4 @@
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 
 const supportedLangs = [
     "bash",
@@ -27,10 +27,8 @@ String.prototype.hashCode = function () {
 }
 
 const highlight = async (content) => {
-    const highlighter = await getHighlighter({
-        theme: 'github-light',
-        langs: supportedLangs,
-    });
+    const highlighter = await getSingletonHighlighter();
+    await highlighter.loadTheme('github-light');
 
     let codes = new Map();
     const regex = /```(\w+)([\s\S]*?)\n\s*```/g;
@@ -42,8 +40,11 @@ const highlight = async (content) => {
         const key = code.trim().split(/\r?\n/).map(row => row.trim()).join('\n');
         code = code.split(/\r?\n/).map(row => row.substring(indent - 1)).join('\n');
         const lang = (match[1]).toLowerCase();
+        if (supportedLangs.includes(lang)) {
+            await highlighter.loadLanguage(lang)
+        }
 
-        codes.set(key.hashCode(), highlighter.codeToHtml(code.trim(), { lang: supportedLangs.includes(lang) ? lang : '' }));
+        codes.set(key.hashCode(), highlighter.codeToHtml(code.trim(), { lang: supportedLangs.includes(lang) ? lang : '', theme: 'github-light' }));
     }
     return JSON.stringify([...codes]);
 }

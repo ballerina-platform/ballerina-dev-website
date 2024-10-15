@@ -25,13 +25,13 @@ import { FaRegCopy, FaCheck, FaGithub } from 'react-icons/fa';
 
 import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
-import { getHighlighter } from "shiki";
+import { getSingletonHighlighter } from "shiki";
 import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
 
 export async function getStaticProps() {
-  const highlighter = await getHighlighter({
-    theme: 'github-light'
-  });
+  const highlighter = await getSingletonHighlighter();
+  await highlighter.loadTheme('github-light');
+  await highlighter.loadLanguage('ballerina');
   const content = `
 import ballerina/file;
 import ballerina/ftp;
@@ -169,7 +169,7 @@ function streamToString(stream<byte[] & readonly, io:Error?> inStream) returns s
 }
     
 `;
-  var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
+  var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina', theme: 'github-light' }) };
 
   return {
     props: {

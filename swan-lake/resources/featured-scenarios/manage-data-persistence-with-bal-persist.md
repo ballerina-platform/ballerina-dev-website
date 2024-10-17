@@ -461,7 +461,22 @@ Running executable
 Invoke the defined resource method by sending the POST request below to http://localhost:8080/employees with the required data as a JSON payload.
 
 ```
-$ curl -X POST http://localhost:8080/employees/ -H "Content-Type: application/json" -d "{ \"id\": \"6\", \"firstName\": \"test\", \"lastName\": \"test\", \"email\": \"test@test.com\", \"phone\": \"882 771 110\", \"hireDate\": { \"year\": 2021, \"month\": 12, \"day\": 16 }, \"managerId\": \"1\", \"jobTitle\": \"Sales Manager\" }"
+$ curl -X POST http://localhost:8080/employees/
+    -H 'Content-Type: application/json'
+    -d '{
+        "id": "6",
+        "firstName": "test",
+        "lastName": "test",
+        "email": "test@test.com",
+        "phone": "882 771 110",
+        "hireDate": {
+            "year": 2021,
+            "month": 12,
+            "day": 16
+        },
+        "managerId": "mng_01",
+        "jobTitle": "Sales Manager"
+    }'
 ```
  
 The entered employee ID `6` will be returned as the response.

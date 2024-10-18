@@ -1,6 +1,7 @@
 import os
 from spellchecker import SpellChecker
 import json
+import re
 
 # Initialize spell checker
 spell = SpellChecker()
@@ -10,6 +11,13 @@ directories = ["_data", "case-studies", "community", "components", "downloads", 
 
 # File extensions to check
 file_extensions = ['.txt', '.md', '.html', '.js', '.py', '.json']  # Include .json files
+
+# Function to remove inline and block code snippets from the text
+def remove_code_snippets(text):
+    # Remove block code (triple backticks) and inline code (single backticks)
+    text = re.sub(r'```[\s\S]*?```', '', text)  # Remove triple backtick blocks
+    text = re.sub(r'`[^`]*`', '', text)  # Remove inline code (single backticks)
+    return text
 
 # Function to check spelling in a file
 def check_spelling_in_file(file_path):
@@ -25,6 +33,11 @@ def check_spelling_in_file(file_path):
         else:
             text = file.read()
 
+    # Remove code snippets from markdown or text before spell checking
+    if file_path.endswith('.md'):
+        text = remove_code_snippets(text)
+
+    # Split text into words and check for misspelled words
     words = text.split()
     misspelled = spell.unknown(words)
 

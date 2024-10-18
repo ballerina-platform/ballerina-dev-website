@@ -583,14 +583,17 @@ sublinks:
           - title: Panics
             id: 4
             url: panics
-          - title: Type intersection for error types
+          - title: Trap expression
             id: 5
+            url: trap-expression
+          - title: Type intersection for error types
+            id: 6
             url: error-type-intersection
           - title: Error detail
-            id: 6
+            id: 7
             url: error-detail
           - title: Error cause
-            id: 7
+            id: 8
             url: error-cause
       - title: Ignore return values and errors
         id: 30

@@ -1,0 +1,14 @@
+{
+  "title": "Trap expression",
+  "description": "This BBE demonstrates how the trap expression is used in Ballerina to handle panics",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "panic",
+    "trap"
+  ],
+  "permalink": "/learn/by-example/trap-expression",
+  "active": "trap-expression"
+}

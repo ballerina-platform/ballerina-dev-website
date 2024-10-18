@@ -75,7 +75,7 @@ export function KubernetesHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/kubernetes-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/kubernetes-hello-world",
                 "_blank",
               );
             }}
@@ -174,7 +174,7 @@ export function KubernetesHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/kubernetes-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/kubernetes-hello-world",
                 "_blank",
               );
             }}
@@ -255,10 +255,12 @@ export function KubernetesHelloWorld({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Note:</strong> For Mac users with Apple Silicon chips, run{" "}
-          <code>export DOCKER_DEFAULT_PLATFORM=linux/amd64</code> before
-          building the image. This is necessary because the Ballerina base image
-          doesn't yet support the M1 chip.
+          <strong>Note:</strong> macOS users with Apple Silicon chips need to
+          set an environment variable named <code>DOCKER_DEFAULT_PLATFORM</code>{" "}
+          to <code>linux/amd64</code>, before building the image. This is
+          because the Ballerina Docker image is not supported on Apple Silicon
+          chips yet. Run <code>export DOCKER_DEFAULT_PLATFORM=linux/amd64</code>{" "}
+          to set the environment variable.
         </p>
       </blockquote>
 

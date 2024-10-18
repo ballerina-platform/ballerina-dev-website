@@ -652,6 +652,10 @@ import {
   codeSnippetData as PanicsCodeSnippetData,
 } from "./panics/content.jsx";
 import {
+  TrapExpression,
+  codeSnippetData as TrapExpressionCodeSnippetData,
+} from "./trap-expression/content.jsx";
+import {
   ErrorTypeIntersection,
   codeSnippetData as ErrorTypeIntersectionCodeSnippetData,
 } from "./error-type-intersection/content.jsx";
@@ -2465,6 +2469,8 @@ const BBEs = {
   ErrorSubtypingCodeSnippetData,
   Panics,
   PanicsCodeSnippetData,
+  TrapExpression,
+  TrapExpressionCodeSnippetData,
   ErrorTypeIntersection,
   ErrorTypeIntersectionCodeSnippetData,
   ErrorDetail,

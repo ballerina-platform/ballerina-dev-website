@@ -7,36 +7,42 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type IOError distinct error;
+type InputErrorDetail record {|
+    int|string value;
+|};
 
-type FileErrorDetail record {
-    string filename;
-};
+type NumericErrorDetail record {|
+    int|float value;
+|};
 
-// The \`FileIOError\` type is defined as an intersection type using the \`&\` notation.
-// It is the intersection of two error types: \`IOError\` and \`error<FileErrorDetail>\`.
-// An error value belongs to this type if and only if it belongs to both \`IOError\` 
-// and \`error<FileErrorDetail>\`.
-type FileIOError IOError & error<FileErrorDetail>;
+type InputError error<InputErrorDetail>;
+
+type NumericError error<NumericErrorDetail>;
+
+// \`NumericInputError\` has detail type, \`record {| int value |}\`.
+type NumericInputError InputError & NumericError;
+
+type DistinctInputError distinct error<InputErrorDetail>;
+
+type DistinctNumericError distinct error<NumericErrorDetail>;
+
+// \`DistinctNumericInputError\` has type IDs of both \`DistinctInputError\` and \`DistinctNumericError\`.
+type DistinctNumericInputError DistinctInputError & DistinctNumericError;
 
 public function main() {
-    // In order to create an error value that belongs to \`FileIOError\`, the \`filename\`
-    // detail field must be provided.
-    FileIOError fileIOError = error("file not found", filename = "test.txt");
+    NumericInputError e1 = error("Numeric input error", value = 5);
+    // \`e1\` belongs to \`InputError\` since its detail type is a subtype of \`InputErrorDetail\`.
+    io:println(e1 is InputError);
 
-    // \`fileIOError\` belongs to both \`IOError\` and \`error<FileErrorDetail>\`.
-    io:println(fileIOError is IOError);
-    io:println(fileIOError is error<FileErrorDetail>);
+    // \`e1\` doesn't belong to \`DistinctInputError\` since it doesn't have the type ID of \`DistinctInputError\`.
+    io:println(e1 is DistinctInputError);
 
-    // An \`IOError\` value will not belong to \`FileIOError\` if it doesn't belong to
-    // \`error<FileErrorDetail>\`.
-    IOError ioError = error("invalid input");
-    io:println(ioError is FileIOError);
+    DistinctNumericInputError e2 = error("Distinct numeric input error", value = 5);
+    // \`e2\` belongs to \`InputError\` since its detail type is a subtype of \`InputErrorDetail\`.
+    io:println(e2 is InputError);
 
-    // Similarly, an error value belonging to \`error<FileErrorDetail>\` will not belong 
-    // to \`FileIOError\` if it doesn't belong to \`IOError\`.
-    error<FileErrorDetail> fileError = error("cannot remove file", filename = "test.txt");
-    io:println(fileError is FileIOError);
+    // \`e2\` belongs to \`DistinctInputError\` since its type ID set includes the type id of \`DistinctInputError\`.
+    io:println(e2 is DistinctInputError);
 }
 `,
 ];
@@ -54,9 +60,13 @@ export function ErrorTypeIntersection({ codeSnippets }) {
       <h1>Type intersection for error types</h1>
 
       <p>
-        You can define an error type that is both a subtype of a{" "}
-        <code>distinct</code> error type and has additional constraints on the
-        detail fields using intersection types.
+        If you intersect two <code>error</code> types, the resulting type's
+        detail type is the intersection of the detail types of both types.
+        Furthermore, if any of the types being intersected is a distinct type,
+        then the resultant type's type ID set includes all the type IDs of that
+        type. Thus it is a subtype of both types. This way, you can create an
+        error type that is a subtype of multiple distinct types and also use a
+        more specific detail type.
       </p>
 
       <Row
@@ -69,7 +79,7 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.1/examples/error-type-intersection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/error-type-intersection",
                 "_blank",
               );
             }}
@@ -198,17 +208,28 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run error_type_intersection.bal`}</span>
               <span>{`true`}</span>
+              <span>{`false`}</span>
               <span>{`true`}</span>
-              <span>{`false`}</span>
-              <span>{`false`}</span>
+              <span>{`true`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <ul>
+        <li>
+          <a href="https://ballerina.io/learn/by-example/error-subtyping/">
+            Error subtyping
+          </a>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Panics" href="/learn/by-example/panics">
+          <Link
+            title="Trap expression"
+            href="/learn/by-example/trap-expression"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +255,7 @@ export function ErrorTypeIntersection({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Panics
+                  Trap expression
                 </span>
               </div>
             </div>

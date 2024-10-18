@@ -95,10 +95,17 @@ export default function MainContent(props) {
   const filterText = (children) => {
     var filteredText = '';
     var arr = children.split(/\r?\n/);
+    let command = false;
     React.Children.toArray(arr).filter(
       (child, index) => {
         if (child.toLowerCase().startsWith('$')) {
+          command = true;
           filteredText += child.replace('$ ', '') + '\n';
+        } else if (child.startsWith('  ') && command) {
+          filteredText = filteredText.slice(0, -1);
+          filteredText += ' ' + child.trim() + '\n';
+        } else {
+            command = false;
         }
       }
     )

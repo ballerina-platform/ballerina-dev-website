@@ -42,8 +42,8 @@ export default function LeftNav(props) {
     }
 
     if (sub && sub !== eventKey) {
-      document.querySelectorAll('[item-id=' + sub + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.querySelectorAll('[item-id=' + sub + ']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id=' + "'" + sub + "'" + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id=' + "'" + sub + "'" + ']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
 
     if (third && third !== eventKey) {

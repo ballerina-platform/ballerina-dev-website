@@ -118,6 +118,14 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
   // Show page toc
   const [showToc, setShowToc] = React.useState(false);
 
+  // Get the sub id based on id
+  const getSubId = () => {
+    if (id.includes("preview") || id.includes("beta") || id.includes("alpha")) {
+      return id.substring(0, id.length - 1);
+    }
+    return id.substring(0, id.lastIndexOf("."));
+  };
+
   return (
     <>
       <Head>
@@ -163,6 +171,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
             launcher="rn"
             id={id}
             mainDir="swan-lake-release-notes"
+            sub={getSubId()}
             Toc={RNToc}
           />
         </Col>
@@ -177,6 +186,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
                 launcher="rn"
                 id={id}
                 mainDir="swan-lake-release-notes"
+                sub={getSubId()}
                 Toc={RNToc}
               />
             </Offcanvas.Body>

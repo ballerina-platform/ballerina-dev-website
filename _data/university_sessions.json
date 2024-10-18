@@ -1,8 +1,8 @@
 {
     "events": [
         {
-            "date": "Sep 30 - Oct 13, 2024",
-            "expire": "2024-10-13T22:00:00.0000-00:00",
+            "date": "Sep 30 - Nov 02, 2024",
+            "expire": "2024-11-02T04:30:00+00:00",
             "type": "Ballerina Hackathon",
             "university": "Innovate with Ballerina",
             "faculty": "",
@@ -10,7 +10,29 @@
             "isVirtual": true,
             "location": "Sri Lanka",
             "url": "https://innovatewithballerina.com/",
-            "buttonText": "Register today"
+            "buttonText": "View details"
+        },
+        {
+            "date": "Oct 14, 2024",
+            "expire": "2024-10-14T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "University of Kelaniya",
+            "faculty": "Department of Industrial Management",
+            "title": "Data Integrations with ETL",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Lakshan Weerasinghe",
+                    "twitter": "https://www.linkedin.com/in/lakshan-weerasinghe/"
+                },
+                {
+                    "name": "Gayal Dassanayake",
+                    "twitter": "https://www.linkedin.com/in/gayal-dassanayake/"
+                }
+            ],
+            "url": "Data-Integration-with-ETL.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Sep 27, 2024",
@@ -21,8 +43,8 @@
             "title": "Forging Integration Innovations",
             "isVirtual": true,
             "location": "Namibia",
-            "url": "https://docs.google.com/forms/d/e/1FAIpQLSf_2lnv9wZwmopnUJSvj3U9uJ0EsCjoDmecJ-1NnjjoYkiqHw/viewform",
-            "buttonText": "Register today"
+            "url": "https://ballerina.io/namibia-hackathon/",
+            "buttonText": "View details"
         },
         {
             "date": "Sep 19, 2024",

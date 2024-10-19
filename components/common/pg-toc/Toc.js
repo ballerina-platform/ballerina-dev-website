@@ -27,50 +27,97 @@ export default function Toc(props) {
   let hash = false;
 
   const clickMe = (triggerElement, sectionId, unique) => {
-    if (triggerElement.tagName.toLowerCase() === "code")
+    if (triggerElement.tagName.toLowerCase() === "code") {
       triggerElement = triggerElement.parentElement;
-
-    let id, sectionNumber;
-
-    if (unique) {
-      id = sectionId;
-    } else {
-      const match = sectionId.match(/(?<id>(?:\w|-)+)-(?<count>\d+)$/);
-      id = match.groups.id;
-      sectionNumber = match.groups.count;
     }
-
-    const elements = document.querySelectorAll(`#${id}`);
-    let element;
-
-    if (sectionNumber == undefined) {
-      element = elements[0];
-    } else {
-      element = elements[sectionNumber];
-    }
-
+  
+    const { id, sectionNumber } = extractIdAndSection(sectionId, unique);
+    const element = getElementToScroll(id, sectionNumber);
+  
     const tocItems = document.querySelectorAll(".title-anchor");
     tocItems.forEach(function (el) {
       el.classList.remove("active");
     });
-
+  
     triggerElement.classList.add("active");
     location.hash = "#" + sectionId;
-    element.scrollIntoView();
-  };
+    scrollToElement(element);
+  };  
 
   //Highlight toc on scroll
   React.useEffect(() => {
     window.addEventListener("hashchange", () => {
       hash = true;
       setTimeout(() => (hash = false), 1000);
+      scrollToHash();
     });
+  
+    if (window.location.hash) {
+      scrollToHash();
+    }
+  
+    function scrollToHash() {
+      const hashId = window.location.hash.substring(1); // Remove the "#" from hash
+      const { id, sectionNumber } = extractIdAndSection(hashId);
+  
+      const element = getElementToScroll(id, sectionNumber);
+      scrollToElement(element);
+    }
+  
     window.addEventListener("scroll", () => {
       if (!hash) {
         checkVisibleSection();
       }
     });
+  
   }, []);
+  
+
+  // Extracts the base ID and section number from sectionId
+const extractIdAndSection = (sectionId, unique) => {
+  let id, sectionNumber;
+  
+  if (unique) {
+    // If unique, just return the whole sectionId as ID
+    id = sectionId;
+  } else {
+    // Try to match and extract base id and section number
+    const match = sectionId.match(/(?<id>(?:\w|-)+)-(?<count>\d+)$/);
+    if (match) {
+      id = match.groups.id;
+      sectionNumber = match.groups.count;
+    } else {
+      // No suffix, return sectionId as is
+      id = sectionId;
+      sectionNumber = undefined;
+    }
+  }
+
+  return { id, sectionNumber };
+};
+
+// Gets the element based on the base ID and section number
+const getElementToScroll = (id, sectionNumber) => {
+  const elements = document.querySelectorAll(`#${id}`);
+  
+  if (elements.length === 0) return null;
+
+  if (sectionNumber === undefined) {
+    // If no section number, return the first matching element
+    return elements[0];
+  } else {
+    // If there's a section number, return the specific subsection
+    return elements[sectionNumber];
+  }
+};
+
+// Scrolls to the element if it exists
+const scrollToElement = (element) => {
+  if (element) {
+    element.scrollIntoView();
+  }
+};
+  
 
   //---Check the visible section
   function checkVisibleSection() {

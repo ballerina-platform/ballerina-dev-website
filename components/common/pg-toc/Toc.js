@@ -102,7 +102,10 @@ export default function Toc(props) {
         location.hash = "#" + sectionId;
       }
     
-      scrollToElement(element);
+      setTimeout(() => {
+        const element = getElementToScroll(id, sectionNumber);
+        scrollToElement(element);
+      }, 100);
     };
 
     // Highlight section while scrolling
@@ -157,17 +160,20 @@ export default function Toc(props) {
   function checkVisibleSection() {
     let nav = document.getElementById("markdown-navigation"),
       sections = document.querySelectorAll(".section"),
-      minor = window.innerHeight,
       section = null;
-
+  
+    // Set a smaller threshold (reduce from window.innerHeight to a smaller value like 100)
+    let threshold = 100;
+  
+    // Iterate over each section to find the one closest to the top
     [].forEach.call(sections, (item) => {
       let offset = item.getBoundingClientRect();
-      if (Math.abs(offset.top) < minor + 25) {
-        minor = Math.abs(offset.top);
+      if (offset.top >= 0 && offset.top < threshold) {
         section = item;
       }
     });
-
+  
+    // If a section is found that matches the threshold criteria, highlight it in TOC
     if (section) {
       let sectionName = section.dataset.section,
         similarSections = Array.prototype.slice.call(
@@ -179,13 +185,15 @@ export default function Toc(props) {
         link = nav.querySelector(
           `[data-section="${sectionName}${index > 0 ? `-${index}` : ""}"]`
         );
-
+  
+      // Update the TOC highlighting
       if (!link.classList.contains("active")) {
         nav.querySelector("div.active").classList.remove("active");
         link.classList.add("active");
       }
     }
   }
+  
 
   // Generate TOC items dynamically
   const getArrayCount = (array, value) => {

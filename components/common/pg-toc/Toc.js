@@ -26,69 +26,154 @@ export default function Toc(props) {
   let uniqueHeadingList = [];
   let hash = false;
 
-  const clickMe = (triggerElement, sectionId, unique) => {
-    if (triggerElement.tagName.toLowerCase() === "code")
+  // Updated clickMe function to handle both TOC click and URL-based section navigation
+  const clickMe = (triggerElement, sectionId, unique, fromUrl = false) => {
+    if (triggerElement && triggerElement.tagName.toLowerCase() === "code") {
       triggerElement = triggerElement.parentElement;
+    }
 
+    const { id, sectionNumber } = extractIdAndSection(sectionId, unique);
+    const element = getElementToScroll(id, sectionNumber);
+
+    if (!fromUrl) {
+      const tocItems = document.querySelectorAll(".title-anchor");
+      tocItems.forEach(function (el) {
+        el.classList.remove("active");
+      });
+
+      if (triggerElement) {
+        triggerElement.classList.add("active");
+      }
+      
+      // Update hash when clicked from TOC
+      location.hash = "#" + sectionId;
+    }
+
+    scrollToElement(element);
+  };
+
+  //Highlight toc on scroll
+  React.useEffect(() => {
+    // Add event listener for hash changes
+    window.addEventListener("hashchange", () => {
+      hash = true;
+      setTimeout(() => (hash = false), 1000);
+      scrollToHash();
+    });
+
+    // If a hash exists in the URL on load, scroll to it
+    if (window.location.hash) {
+      setTimeout(() => {
+        scrollToHash();
+      }, 300);  // Add a delay to ensure the content is fully loaded
+    }
+
+    function scrollToHash() {
+      const hashId = window.location.hash.substring(1); // Remove the "#" from hash
+      const { id, sectionNumber } = extractIdAndSection(hashId);
+    
+      const element = getElementToScroll(id, sectionNumber);
+    
+      // Find the matching TOC item and simulate a click event for it
+      const tocElement = document.querySelector(`[data-section="${hashId}"]`);
+      clickMe(tocElement, hashId, false, true); // Pass fromUrl = true to skip hash update
+    }
+    
+    // Updated clickMe function to skip hash update when coming from URL
+    const clickMe = (triggerElement, sectionId, unique, fromUrl = false) => {
+      if (triggerElement && triggerElement.tagName.toLowerCase() === "code") {
+        triggerElement = triggerElement.parentElement;
+      }
+    
+      const { id, sectionNumber } = extractIdAndSection(sectionId, unique);
+      const element = getElementToScroll(id, sectionNumber);
+    
+      if (!fromUrl) {
+        const tocItems = document.querySelectorAll(".title-anchor");
+        tocItems.forEach(function (el) {
+          el.classList.remove("active");
+        });
+    
+        if (triggerElement) {
+          triggerElement.classList.add("active");
+        }
+        
+        // Update hash when clicked from TOC
+        location.hash = "#" + sectionId;
+      }
+    
+      setTimeout(() => {
+        const element = getElementToScroll(id, sectionNumber);
+        scrollToElement(element);
+      }, 100);
+    };
+
+    // Highlight section while scrolling
+    window.addEventListener("scroll", () => {
+      if (!hash) {
+        checkVisibleSection();
+      }
+    });
+
+  }, []);
+
+  // Extract base ID and section number from sectionId
+  const extractIdAndSection = (sectionId, unique) => {
     let id, sectionNumber;
 
     if (unique) {
       id = sectionId;
     } else {
       const match = sectionId.match(/(?<id>(?:\w|-)+)-(?<count>\d+)$/);
-      id = match.groups.id;
-      sectionNumber = match.groups.count;
+      if (match) {
+        id = match.groups.id;
+        sectionNumber = match.groups.count;
+      } else {
+        id = sectionId;
+        sectionNumber = undefined;
+      }
     }
 
-    const elements = document.querySelectorAll(`#${id}`);
-    let element;
-
-    if (sectionNumber == undefined) {
-      element = elements[0];
-    } else {
-      element = elements[sectionNumber];
-    }
-
-    const tocItems = document.querySelectorAll(".title-anchor");
-    tocItems.forEach(function (el) {
-      el.classList.remove("active");
-    });
-
-    triggerElement.classList.add("active");
-    location.hash = "#" + sectionId;
-    element.scrollIntoView();
+    return { id, sectionNumber };
   };
 
-  //Highlight toc on scroll
-  React.useEffect(() => {
-    window.addEventListener("hashchange", () => {
-      hash = true;
-      setTimeout(() => (hash = false), 1000);
-    });
-    window.addEventListener("scroll", () => {
-      if (!hash) {
-        checkVisibleSection();
-      }
-    });
-  }, []);
+  // Get the element to scroll to based on the base ID and section number
+  const getElementToScroll = (id, sectionNumber) => {
+    const elements = document.querySelectorAll(`#${id}`);
+    if (elements.length === 0) return null;
 
-  //---Check the visible section
+    if (sectionNumber === undefined) {
+      return elements[0];
+    } else {
+      return elements[sectionNumber];
+    }
+  };
+
+  // Scroll to the target element
+  const scrollToElement = (element) => {
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Check which section is visible and highlight the corresponding TOC item
   function checkVisibleSection() {
     let nav = document.getElementById("markdown-navigation"),
       sections = document.querySelectorAll(".section"),
-      minor = window.innerHeight,
       section = null;
-
-    //---Select the section closest to the top
+  
+    // Set a smaller threshold (reduce from window.innerHeight to a smaller value like 100)
+    let threshold = 100;
+  
+    // Iterate over each section to find the one closest to the top
     [].forEach.call(sections, (item) => {
       let offset = item.getBoundingClientRect();
-      if (Math.abs(offset.top) < minor + 25) {
-        minor = Math.abs(offset.top);
+      if (offset.top >= 0 && offset.top < threshold) {
         section = item;
       }
     });
-
-    //---If the section exists
+  
+    // If a section is found that matches the threshold criteria, highlight it in TOC
     if (section) {
       let sectionName = section.dataset.section,
         similarSections = Array.prototype.slice.call(
@@ -100,19 +185,17 @@ export default function Toc(props) {
         link = nav.querySelector(
           `[data-section="${sectionName}${index > 0 ? `-${index}` : ""}"]`
         );
-
-      //---If the link is not already active
+  
+      // Update the TOC highlighting
       if (!link.classList.contains("active")) {
-        //---Remove the active class
         nav.querySelector("div.active").classList.remove("active");
-
-        //---Add the active class
         link.classList.add("active");
       }
     }
   }
+  
 
-  // get the count of an element in an array
+  // Generate TOC items dynamically
   const getArrayCount = (array, value) => {
     return array.filter((item) => item === value).length;
   };
@@ -120,7 +203,6 @@ export default function Toc(props) {
   const NavGen = (count, source) => {
     const [data, setData] = React.useState({});
 
-    // declare the async data fetching function
     const fetchData = React.useCallback(async () => {
       const file = await unified()
         .use(remarkParse)
@@ -173,11 +255,8 @@ export default function Toc(props) {
       setData(myObj);
     }, [count, source]);
 
-    // the useEffect is only there to call `fetchData` at the right time
     React.useEffect(() => {
-      fetchData()
-        // make sure to catch any error
-        .catch(console.error);
+      fetchData().catch(console.error);
     }, [fetchData]);
 
     return data;
@@ -211,9 +290,7 @@ export default function Toc(props) {
           <div
             key={item.sectionId}
             data-section={item.sectionId}
-            className={`title-anchor ${item.level}${
-              item.active ? " active" : ""
-            }`}
+            className={`title-anchor ${item.level}${item.active ? " active" : ""}`}
             onClick={(e) => clickMe(e.target, item.sectionId, item.unique)}
             dangerouslySetInnerHTML={{ __html: item.text }}
           />

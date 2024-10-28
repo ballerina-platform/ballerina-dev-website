@@ -10,10 +10,16 @@ import ballerina/lang.regexp;
 
 public function main() returns error? {
     
-    // Declare a RegExp using regular expression literal.
-    string:RegExp _ = re \`[a-zA-Z0-9]\`;
+    // Declare a \`RegExp\` value using a regular expression literal.
+    regexp:RegExp alphanumericPattern = re \`[a-zA-Z0-9]\`;
+    // Matches any string that is a single alphanumeric character.
+    io:println("Pattern \`[a-zA-Z0-9]\` matches \`a\`: ", alphanumericPattern.isFullMatch("a"));
 
-    // Declare a RegExp using the \`fromString\` constructor method.
+    // \`string:RegExp\` is an alias for \`regexp:RegExp\`.
+    string:RegExp alphanumericPattern2 = re \`[a-zA-Z0-9]\`;
+    io:println("Pattern \`[a-zA-Z0-9]\` matches \`a1\`: ", alphanumericPattern2.isFullMatch("a1"));
+
+    // Construct a \`RegExp\` value from a string using the \`fromString\` langlib function.
     string:RegExp pattern = check regexp:fromString("HELLO*");
     // Matches any string that starts with "HELLO" and ends with zero or more characters.
     io:println("Pattern \`HELLO*\` matches \`HELLO\`: ", pattern.isFullMatch("HELLO"));
@@ -22,13 +28,13 @@ public function main() returns error? {
     boolean result = re \`a+\`.isFullMatch("aaa");
     io:println("Pattern \`a+\` matches \`aaa\`: ", result);
 
-    // Interpolation can be used to change the pattern dynamically.
+    // Interpolations can be used to construct the pattern dynamically.
     string literal = "xyz";
     string:RegExp pattern2 = re \`abc|\${literal}\`;
     // Matches any string that starts with "abc" or "XYZ".
     io:println("Pattern \`abc|\${\\"xyz\\"}\` matches \`xyz\`: ", pattern2.isFullMatch("xyz"));
 
-    // RegExp supports writing Unicode general category patterns. 
+    // The \`RegExp\` type supports Unicode general category patterns.
     // Characters are matched based on their Unicode properties.
     string:RegExp pattern3 = re \`\\p{Ll}\`;
     io:println("Pattern \`\\\\p{Ll}\` matches \`a\`: ", "a".matches(pattern3));
@@ -38,12 +44,15 @@ public function main() returns error? {
     string:RegExp pattern4 = re \`\\P{P}\`;
     io:println("Pattern \`\\\\p{P}\` matches \`0\`: ", "0".matches(pattern4));
 
-    // RegExp supports matching characters according to the script using Unicode script patterns.
+    // The \`RegExp\` type supports matching characters according to the script using Unicode script patterns.
     string:RegExp pattern5 = re \`\\p{sc=Latin}\`;
-    regexp:Span? latinValue = pattern5.find("aεЛ");
-    io:println("Pattern \`\\\\p{sc=Latin}\` matches \`aεЛ\`: ", (<regexp:Span>latinValue).substring());
+    regexp:Span? findResult = pattern5.find("aεЛ");
+    // The \`find\` function returns nil if no match is found. Since we know a 
+    // match is found here, use the \`ensureType\` function to narrow the type down to \`regexp:Span\`.
+    regexp:Span latinValue = check findResult.ensureType();
+    io:println("Pattern \`\\\\p{sc=Latin}\` matches \`aεЛ\`: ", latinValue.substring());
 
-    // RegExp supports non-capturing groups to control the behavior of regular expression patterns.
+    // The \`RegExp\` type supports non-capturing groups to control the behavior of regular expression patterns.
     // The \`i\` flag will ignore the case of the pattern.
     string:RegExp pattern6 = re \`(?i:BalleRINA)\`;
     io:println("Pattern \`(?i:BalleRINA)\` matches \`Ballerina\`: ", "Ballerina".matches(pattern6));
@@ -79,9 +88,9 @@ export function RegexpType({ codeSnippets }) {
 
       <p>
         A <code>RegExp</code> value can be created by using the regexp template
-        expression or calling the <code>fromString</code> method of the{" "}
+        expression or calling the{" "}
         <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest#fromString">
-          lang.regexp
+          <code>fromString</code> method of the lang.regexp
         </a>{" "}
         module.
       </p>
@@ -224,6 +233,8 @@ export function RegexpType({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run regexp_type.bal`}</span>
+              <span>{`Pattern \`[a-zA-Z0-9]\` matches \`a\`: true`}</span>
+              <span>{`Pattern \`[a-zA-Z0-9]\` matches \`a1\`: false`}</span>
               <span>{`Pattern \`HELLO*\` matches \`HELLO\`: true`}</span>
               <span>{`Pattern \`a+\` matches \`aaa\`: true`}</span>
               <span>{`Pattern \`abc|\${"xyz"}\` matches \`xyz\`: true`}</span>
@@ -263,7 +274,7 @@ export function RegexpType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/lang.regexp">
-              RegExp API Docs
+              <code>regexp</code> langlib API Docs
             </a>
           </span>
         </li>
@@ -273,7 +284,17 @@ export function RegexpType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/lang.string">
-              string API Docs
+              <code>string</code> langlib API Docs
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ensureType-function/">
+              The <code>ensureType</code> function
             </a>
           </span>
         </li>

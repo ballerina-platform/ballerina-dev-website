@@ -35,6 +35,7 @@ jobs:
     - name: Rearrange files for prod
       run: |
         cd ballerina-platform.github.io
+        cp -r ./spec/lang/draft/index.html ./lang-bk/draft/index.html
         rm -rf ./spec/lang/*
         cp -r ./lang-bk/* ./spec/lang/
         rm -rf CNAME robots.txt

@@ -57,9 +57,15 @@ export default function RedirectMessage(props) {
   let redirectLink = '';
 
   if (global.location.pathname.indexOf('by-example') > 0) {
+
     let redirectTo = '/learn/by-example/'
+    
     if (global.location.pathname.indexOf('.html') > 0) {
       redirectTo = global.location.pathname.replace('.html', '');
+    }
+
+    if (global.location.pathname ==='/learn/by-example/regexp-operations/') {
+      redirectTo = window.location.pathname.replace('/learn/by-example/regexp-operations/', '/learn/by-example/regexp_operations_overview/');
     }
 
     pageBody = <>

@@ -65,7 +65,7 @@ export default function RedirectMessage(props) {
     }
 
     if (global.location.pathname ==='/learn/by-example/regexp-operations/') {
-      redirectTo = window.location.pathname.replace('/learn/by-example/regexp-operations/', '/learn/by-example/regexp_operations_overview/');
+      redirectTo = window.location.pathname.replace('/learn/by-example/regexp-operations/', '/learn/by-example/regexp-operations-overview/');
     }
 
     pageBody = <>

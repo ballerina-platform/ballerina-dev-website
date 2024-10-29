@@ -1210,8 +1210,15 @@
         "isLearnByExample": true
       },
       {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
+        "name": "RegExp operations overview",
+        "url": "regexp_operations_overview",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp replace operations",
+        "url": "regexp-replace-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

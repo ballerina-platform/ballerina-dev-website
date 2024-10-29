@@ -183,8 +183,8 @@ export function Documentation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="RegExp operations"
-            href="/learn/by-example/regexp-operations"
+            title="RegExp replace operations"
+            href="/learn/by-example/regexp-replace-operations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -211,7 +211,7 @@ export function Documentation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RegExp operations
+                  RegExp replace operations
                 </span>
               </div>
             </div>

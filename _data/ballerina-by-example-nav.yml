@@ -520,9 +520,12 @@ sublinks:
           - title: RegExp type
             id: 1
             url: regexp-type
-          - title: RegExp operations
+          - title: RegExp operations overview
             id: 2
-            url: regexp-operations
+            url: regexp_operations_overview
+          - title: RegExp replace operations
+            id: 3
+            url: regexp-replace-operations
       - title: Metadata
         id: 26
         sublinks:

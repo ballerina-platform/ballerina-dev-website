@@ -5,43 +5,28 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/lang.regexp;
-import ballerina/io;
+  `import ballerina/io;
 
-public function main() returns error? {
+public function main() {
+    string creditCardNumber = "1234-5678-9876-5432";
+    string:RegExp pattern = re \`\\d{4}-\\d{4}-\\d{4}\`;
+    // Replace the first occurrence of the credit card pattern with a masked representation.
+    string maskedCardNumber = pattern.replace(creditCardNumber, "****-****-****");
+    io:println(maskedCardNumber);
 
-    string data = "bob@example.net,alice@example.com,charlie@example.org,david@example.xyz,invalid#@example.n%t";
-
-    // Split the comma-separated email list.
-    string[] emails = re \`,\`.split(data);
-    io:println(emails);
-
-    // Define a RegExp pattern to match valid email addresses.
-    string:RegExp validEmailPattern = re \`([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})\`;
-
-    // Extract usernames and domains from valid email addresses.
-    string[] usernames = [];
-    string[] domains = [];
-    foreach string email in emails {
-        // Check if the email is valid.
-        if validEmailPattern.isFullMatch(email) { 
-            // Extract the username and domain from the email.
-            regexp:Groups? emailGroups = validEmailPattern.findGroups(email);
-            if emailGroups is regexp:Groups {
-                // 0th element contains the entire match
-                usernames.push((<regexp:Span>emailGroups[1]).substring());
-                domains.push((<regexp:Span>emailGroups[2]).substring());
-            }
-        }
-    }
-
-    io:println(usernames);
-    io:println(domains);
+    xml xmlString = 
+            xml \`<root><!--comment 1 --><e1>value1</e1><e2>value2</e2><!--comment 2-->></root>\`;
+    
+    // Regular expression to match XML comments.
+    string:RegExp commentPattern = re \`<!--.*?-->\`;
+    // Replace all occurrences of XML comments with an empty string, effectively removing them.
+    string commentsRemovedXml = commentPattern.replaceAll(xmlString.toString(), "");
+    io:println("XML string with comments removed: ", commentsRemovedXml);
 }
 `,
 ];
 
-export function RegexpOperations({ codeSnippets }) {
+export function RegexpReplaceOperations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -55,7 +40,7 @@ export function RegexpOperations({ codeSnippets }) {
 
       <p>
         The <code>RegExp</code> type supports a set of langlib functions to
-        search and manipulate string values.
+        replace parts of strings that match specific patterns.
       </p>
 
       <Row
@@ -64,31 +49,9 @@ export function RegexpOperations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/regexp-operations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -195,10 +158,9 @@ export function RegexpOperations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run regexp_operations.bal`}</span>
-              <span>{`["bob@example.net","alice@example.com","charlie@example.org","david@example.xyz","invalid#@example.n%t"]`}</span>
-              <span>{`["bob","alice","charlie","david"]`}</span>
-              <span>{`["example.net","example.com","example.org","example.xyz"]`}</span>
+              <span>{`\$ bal run regexp_replace_operations.bal`}</span>
+              <span>{`****-****-****-5432`}</span>
+              <span>{`XML string with comments removed: <root><e1>value1</e1><e2>value2</e2>&gt;</root>`}</span>
             </code>
           </pre>
         </Col>
@@ -238,7 +200,10 @@ export function RegexpOperations({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="RegExp type" href="/learn/by-example/regexp-type">
+          <Link
+            title="RegExp operations overview"
+            href="/learn/by-example/regexp_operations_overview"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +229,7 @@ export function RegexpOperations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RegExp type
+                  RegExp operations overview
                 </span>
               </div>
             </div>

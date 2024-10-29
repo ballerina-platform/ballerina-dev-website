@@ -584,9 +584,13 @@ import {
   codeSnippetData as RegexpTypeCodeSnippetData,
 } from "./regexp-type/content.jsx";
 import {
-  RegexpOperations,
-  codeSnippetData as RegexpOperationsCodeSnippetData,
-} from "./regexp-operations/content.jsx";
+  Regexp_operations_overview,
+  codeSnippetData as Regexp_operations_overviewCodeSnippetData,
+} from "./regexp_operations_overview/content.jsx";
+import {
+  RegexpReplaceOperations,
+  codeSnippetData as RegexpReplaceOperationsCodeSnippetData,
+} from "./regexp-replace-operations/content.jsx";
 import {
   Documentation,
   codeSnippetData as DocumentationCodeSnippetData,
@@ -2435,8 +2439,10 @@ const BBEs = {
   XmlToRecordWithProjectionCodeSnippetData,
   RegexpType,
   RegexpTypeCodeSnippetData,
-  RegexpOperations,
-  RegexpOperationsCodeSnippetData,
+  Regexp_operations_overview,
+  Regexp_operations_overviewCodeSnippetData,
+  RegexpReplaceOperations,
+  RegexpReplaceOperationsCodeSnippetData,
   Documentation,
   DocumentationCodeSnippetData,
   Annotations,

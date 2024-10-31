@@ -190,7 +190,7 @@ md.use(container, "code", {
           : ""
     }
     {codeClick${env.codeCount} ? (
-      <button className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink !== "" ? "" : " ms-auto"}" 
+      <button className="bg-transparent border-0 m-0 p-2 ${env.editOnGithubLink !== '' ? '' : ' ms-auto'}" 
         disabled aria-label="Copy to Clipboard Check">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@ md.use(container, "code", {
       </button>
     ) : (
       <button
-        className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink === "" && env.playgroundLink === undefined  ? " ms-auto" : ""}"
+        className="bg-transparent border-0 m-0 p-2 ${env.editOnGithubLink !== '' ? '' : ' ms-auto'}"
         onClick={() => {
           updateCodeClick${env.codeCount}(true);
           copyToClipboard(codeSnippetData[${env.codeCount - 1}]);

@@ -41,7 +41,7 @@ public function main() returns error? {
 `,
 ];
 
-export function Regexp_operations_overview({ codeSnippets }) {
+export function RegexpOperationsOverview({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +66,7 @@ export function Regexp_operations_overview({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -84,7 +84,7 @@ export function Regexp_operations_overview({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

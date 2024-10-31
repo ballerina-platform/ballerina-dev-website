@@ -522,10 +522,16 @@ sublinks:
             url: regexp-type
           - title: RegExp operations overview
             id: 2
-            url: regexp_operations_overview
+            url: regexp-operations-overview
           - title: RegExp replace operations
             id: 3
             url: regexp-replace-operations
+          - title: RegExp find operations
+            id: 4
+            url: regexp-find-operations
+          - title: RegExp match operations
+            id: 5
+            url: regexp-match-operations
       - title: Metadata
         id: 26
         sublinks:

@@ -36,7 +36,7 @@ export function RegexpReplaceOperations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RegExp operations</h1>
+      <h1>RegExp replace operations</h1>
 
       <p>
         The <code>RegExp</code> type supports a set of langlib functions to

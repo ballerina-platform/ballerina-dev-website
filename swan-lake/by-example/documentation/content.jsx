@@ -67,7 +67,7 @@ export function Documentation({ codeSnippets }) {
           </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -85,7 +85,7 @@ export function Documentation({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -183,8 +183,8 @@ export function Documentation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="RegExp replace operations"
-            href="/learn/by-example/regexp-replace-operations"
+            title="RegExp match operations"
+            href="/learn/by-example/regexp-match-operations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -211,7 +211,7 @@ export function Documentation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RegExp replace operations
+                  RegExp match operations
                 </span>
               </div>
             </div>

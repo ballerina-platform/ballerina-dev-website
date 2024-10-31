@@ -6,45 +6,38 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-import ballerinax/java.jdbc;
-import ballerina/sql;
 
-jdbc:Client dbClient = check new (url = "jdbc:h2:file:./master/orderdb",
-                           user = "test", password = "test");
-
-public function main() returns error? {
-    // Uses a raw template to create the \`Orders\` table.
-    _ = check dbClient->execute(\`CREATE TABLE IF NOT EXISTS Orders
-                                (orderId INTEGER NOT NULL, customerId INTEGER, noOfItems INTEGER,
-                                PRIMARY KEY (orderId))\`);
-    // Uses a raw template to insert values to the \`Orders\` table.
-    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (1, 1, 20)\`);
-    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId, noOfItems)
-                                 VALUES (2, 1, 15)\`);
-
-    stream<record {| anydata...; |}, sql:Error?> strm = getOrders(1);
-    record {|record {} value;|}|sql:Error? v = strm.next();
-    while (v is record {|record {} value;|}) {
-        record {} value = v.value;
-        io:println(value);
-        v = strm.next();
-    }
+function col3() returns boolean {
+    return false;
 }
 
-function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:Error?> {
-    // In this raw template, the \`customerId\` variable is interpolated in the literal.
-    return dbClient->query(\`SELECT * FROM orders WHERE customerId = \${customerId}\`);
+type MyCSVRawTemplate object {
+    *object:RawTemplate;
+    public (string[] & readonly) strings;
+    public [int, int, boolean] insertions;
+};
+
+public function main() {
+    int col1 = 5;
+    int col2 = 10;
+
+    // Any value is allowed as an interpolation when defining a value of the \`object:RawTemplate\` type 
+    // since it has \`(any|error)[]\` as the \`insertions\` type.
+    object:RawTemplate rawTemplate = \`\${col1}, fixed_string1,  \${col2}, \${col3()}, fixed_string3\`;
+    io:println(rawTemplate.strings);
+    io:println(rawTemplate.insertions);
+
+    // With the custom \`MyCSVRawTemplate \` raw template type, the compiler 
+    // expects two integers followed by a boolean value as interpolations.
+    MyCSVRawTemplate myCSVRawTemplate = \`fixed_string4, \${col1}, \${col2}, fixed_string_5, \${col3()}\`;
+    io:println(myCSVRawTemplate.strings);
+    io:println(myCSVRawTemplate.insertions);
 }
-`,
-  `[[platform.java17.dependency]]
-path = "h2-2.1.210.jar"
 `,
 ];
 
 export function RawTemplates({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
-  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -56,54 +49,30 @@ export function RawTemplates({ codeSnippets }) {
       <h1>Raw templates</h1>
 
       <p>
-        A raw template is a backtick template without a tag. Exposes result of
-        phase 1 without further processing. Raw template is evaluated by
-        evaluating each expression and creating an object containing.
+        Raw template expressions are backtick templates without a tag (such as{" "}
+        <code>string</code> or <code>xml</code>). This is a sequence of
+        characters interleaved with interpolations within a pair of backticks
+        (in the form <code>$&#123;expression&#125;</code>). The result of
+        evaluating such a raw template is an <code>object:RawTemplate</code>{" "}
+        object that has two fields{" "}
+        <code>(readonly &amp; string[]) strings</code> and{" "}
+        <code>(any|error)[] insertions</code>. The <code>strings</code> array
+        will have string literals in the backtick string broken at
+        interpolations and the <code>insertions</code> array will have the
+        resultant values of evaluating each interpolation.
       </p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            an <code>array</code> of the <code>strings</code> separated by
-            insertions
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            an <code>array</code> of the results of expression evaluation and an{" "}
-            <code>array</code> of <code>strings</code> separating
-          </span>
-        </li>
-      </ul>
-
-      <blockquote>
-        <p>
-          <strong>Important use case:</strong> SQL parameters.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The relevant database driver JAR should be
-          defined in the <code>Ballerina.toml</code> file as a dependency. This
-          sample is based on an H2 database and the H2 database driver JAR need
-          to be added to <code>Ballerina.toml</code> file. This sample is
-          written using H2 2.1.210 and it is recommended to use H2 JAR with
-          versions higher than 2.1.210.
-        </p>
-      </blockquote>
+      <p>
+        If you want to control the type of the strings or the interpolations
+        more precisely, you can define an object type that includes the{" "}
+        <code>object:RawTemplate</code> type and override the relevant field(s)
+        with narrower types. Then, the compiler will statically validate the
+        values against the expected type(s).
+      </p>
 
       <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          <code>jdbc</code> module
-        </a>
-        .
+        An important use case of custom raw templates is SQL parameterized
+        queries.
       </p>
 
       <Row
@@ -136,7 +105,7 @@ export function RawTemplates({ codeSnippets }) {
           </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -154,7 +123,7 @@ export function RawTemplates({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -189,99 +158,6 @@ export function RawTemplates({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <p>
-        Add the relevant database driver JAR details to the{" "}
-        <code>Ballerina.toml</code> file.
-      </p>
-
-      <Row
-        className="bbeCode mx-0 py-0 rounded 
-      "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/raw-templates",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              onClick={() => {
-                updateCodeClick2(true);
-                copyToClipboard(codeSnippetData[1]);
-                setTimeout(() => {
-                  updateCodeClick2(false);
-                }, 3000);
-              }}
-              aria-label="Copy to Clipboard"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#000"
-                className="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-      </Row>
-
-      <p>
-        Build and run the project using the <code>bal run</code> command.
-      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -337,12 +213,48 @@ export function RawTemplates({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run`}</span>
-              <span>{`{"ORDERID":1,"CUSTOMERID":1,"NOOFITEMS":20}`}</span>
-              <span>{`{"ORDERID":2,"CUSTOMERID":1,"NOOFITEMS":15}`}</span>
+              <span>{`["",", fixed_string1,  ",", ",", fixed_string3"]`}</span>
+              <span>{`[5,10,false]`}</span>
+              <span>{`["fixed_string4, ",", ",", fixed_string_5, ",""]`}</span>
+              <span>{`[5,10,false]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/backtick-templates/">
+              Backtick templates
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/object-type-inclusion/">
+              Object type inclusion
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/mysql-query-operation/">
+              Database Access - Simple query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

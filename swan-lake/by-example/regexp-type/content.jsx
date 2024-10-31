@@ -125,7 +125,7 @@ export function RegexpType({ codeSnippets }) {
           </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -143,7 +143,7 @@ export function RegexpType({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -263,7 +263,7 @@ export function RegexpType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/regexp_operations_overview">
+            <a href="/learn/by-example/regexp-operations-overview">
               RegExp langlib functions overview
             </a>
           </span>
@@ -331,7 +331,7 @@ export function RegexpType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="RegExp operations overview"
-            href="/learn/by-example/regexp_operations_overview"
+            href="/learn/by-example/regexp-operations-overview"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

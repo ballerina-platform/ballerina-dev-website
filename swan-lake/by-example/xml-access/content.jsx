@@ -114,7 +114,7 @@ export function XmlAccess({ codeSnippets }) {
           </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -132,7 +132,7 @@ export function XmlAccess({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 "
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

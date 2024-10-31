@@ -1,0 +1,21 @@
+{
+  "title": "RegExp match operations",
+  "description": "This BBE demonstrates how to use the regexp langlib functions relevant to regex match operations.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "regexp",
+    "RegExp",
+    "regex",
+    "regular expressions",
+    "ballerina regex functions",
+    "regexp langlib functions",
+    "fullMatchGroups",
+    "isFullMatch",
+    "matchAt",
+    "matchGroupsAt"
+  ],
+  "permalink": "/learn/by-example/regexp-match-operations",
+  "active": "regexp-match-operations"
+}

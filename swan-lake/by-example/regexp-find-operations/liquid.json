@@ -1,0 +1,21 @@
+{
+  "title": "RegExp find operations",
+  "description": "This BBE demonstrates how to use the regexp langlib functions relevant to regex find operations.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "regexp",
+    "RegExp",
+    "regex",
+    "regular expressions",
+    "ballerina regex functions",
+    "regexp langlib functions",
+    "find",
+    "findAll",
+    "findGroups",
+    "findAllGroups"
+  ],
+  "permalink": "/learn/by-example/regexp-find-operations",
+  "active": "regexp-find-operations"
+}

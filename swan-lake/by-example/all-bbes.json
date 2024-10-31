@@ -1211,7 +1211,7 @@
       },
       {
         "name": "RegExp operations overview",
-        "url": "regexp_operations_overview",
+        "url": "regexp-operations-overview",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1219,6 +1219,20 @@
       {
         "name": "RegExp replace operations",
         "url": "regexp-replace-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp find operations",
+        "url": "regexp-find-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp match operations",
+        "url": "regexp-match-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

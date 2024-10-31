@@ -445,6 +445,18 @@ In the above code example, the function **``update()``** has a transactional con
 
 This is particularly useful when the **``update()``** function is called from a remote or resource transactional method, in a service object, and is invoked by another remote Ballerina program as a result of a service invocation. The transaction manager of the Ballerina program that initiated the transaction, will send a message to the Ballerina program in which this function is running. The two transaction managers follow a two-phase commit, such that when the remote Ballerina program knows that commit is successful, it will then arrange for the transaction manager of the Ballerina program running the **``update()``** function to call the commit handler.
 
+### Configuring Transaction Timeouts in Ballerina
+
+When working with transactions, configuring timeouts helps ensure efficient commit handling and resource management.
+The `transactionAutoCommitTimeout` and `transactionCleanupTimeout` configurations provide control over transaction handling by setting timeouts for automatic commit and resource cleanup. The `transactionAutoCommitTimeout` specifies the duration (in seconds) after which a transaction will be auto-committed if not manually completed within that time. Similarly, `transactionCleanupTimeout` defines the timeout period (in seconds) after which resources linked to a transaction are cleaned up if the transaction remains unfinished. 
+These configurations are added in the `Config.toml` file as follows.
+
+```toml
+[ballerina.lang.transaction]
+transactionAutoCommitTimeout = 120
+transactionCleanupTimeout = 600
+```
+
 ## Concurrency safety
 
 ### ``lock`` statement

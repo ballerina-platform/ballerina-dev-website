@@ -136,9 +136,9 @@ service / on httpListener {
 Let's take a moment to understand the new constructs in this code:
 
 - The <a href="https://lib.ballerina.io/ballerina/http/latest" target="_blank">`http`</a> module provides high-level abstractions to work with the HTTP protocol. 
-- The listener declaration creates a new HTTP listener that will listen on port `8080`. The `listener` is the entity which receives network input and routes it to the attached service(s).
-- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods: `resource` methods and `remote` methods. Services use `remote` methods to expose services in a procedural style and they are named using verbs, whereas `resource` methods are used for data-oriented protocols and they are named using nouns.
-- In this example, there are two `resource` methods: the first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
+- The listener declaration creates a new HTTP listener that will listen on port `8080`. The `listener` is the entity that receives network input and routes it to the attached service(s).
+- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods: `resource` methods and `remote` methods. Services use `remote` methods to expose services in a procedural style and are named using verbs, whereas `resource` methods are used for data-oriented protocols and are named using nouns.
+- In this example, there are two `resource` methods: the first one responds to HTTP GET requests with the `/greeting` path, and the other one responds to `GET` requests with the `/greeting/{name}` path.
 - These `resource` methods return a `string` value, which maps to the `text/plain` content-type in the HTTP response.
 
 >**Info:** To learn more about services, see [Network interaction](/learn/network-interaction/). 

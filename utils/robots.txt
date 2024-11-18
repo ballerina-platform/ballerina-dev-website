@@ -12,6 +12,31 @@ Disallow: /1.0/
 Disallow: /1.1/
 Disallow: /1.2/
 
+# Disallow specific URL
+Disallow: /swan-lake/learn/by-example/
+Disallow: /downloads/swan-lake-release-notes/2201.2.3-swan-lake
+Disallow: /downloads/swan-lake-release-notes/2201.8.8/
+Disallow: /downloads/swan-lake-release-notes/2201-6-2-swan-lake/
+Disallow: /learn/service-orchestration/
+Disallow: /album
+Disallow: /learn/api-docs/
+Disallow: /community/slack/
+Disallow: /data
+Disallow: /date?id=123
+Disallow: /data/ContactChangeEvent
+Disallow: /deployment/aws-lambda
+Disallow: /deployment/aws-lambda/
+Disallow: /docs/
+Disallow: /downloads/1.2.x-archived
+Disallow: /downloads/1.2.x-release-notes/1.2.0/conf/ballerina.conf
+Disallow: /downloads/1.2.x-release-notes/conf/ballerina.conf
+Disallow: /downloads/1.2.x-release-notes/release-note-1-2-*
+Disallow: /downloads/swan-lake-archived
+Disallow: /downloads/swan-lake-archived/
+Disallow: /downloads/swan-lake-release-notes/resource/path/to/private.key
+Disallow: /v1-1/
+Disallow: /v1-2/
+
 User-agent: Algolia Crawler
 Allow: * 
      

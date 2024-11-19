@@ -51,18 +51,19 @@ The conforming implementation of the specification is released and included in t
    * 4.17. [Decode ML-KEM-768 Private key using Private key and Password](#417-decode-ml-kem-768-private-key-using-private-key-and-password)
    * 4.18. [Decode ML-KEM-768 Public key from PKCS12 file](#418-decode-ml-kem-768-public-key-from-pkcs12-file)
    * 4.19. [Decode ML-KEM-768 Public key from the certificate file](#419-decode-ml-kem-768-public-key-from-the-certificate-file)
-
 5. [Encrypt-Decrypt](#5-encrypt-decrypt)   
    * 5.1. [Encryption](#51-encryption)
      * 5.1.1. [RSA](#511-rsa)
      * 5.1.2. [AES-CBC](#512-aes-cbc)
      * 5.1.3. [AES-ECB](#513-aes-ecb)
      * 5.1.4. [AES-GCM](#514-aes-gcm)
+     * 5.1.5. [PGP](#515-pgp)
    * 5.2. [Decryption](#52-decryption)
      * 5.2.1. [RSA-ECB](#521-rsa-ecb)
      * 5.2.2. [AES-CBC](#522-aes-cbc)
      * 5.2.3. [AES-ECB](#523-aes-ecb)
      * 5.2.4. [AES-GCM](#524-aes-gcm)
+     * 5.2.5. [PGP](#525-pgp)
 6. [Sign and Verify](#6-sign-and-verify)
     * 6.1. [Sign messages](#61-sign-messages)
       * 6.1.1. [RSA-MD5](#611-rsa-md5)
@@ -502,6 +503,43 @@ foreach int i in 0...15 {
 byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
 ```
 
+#### 5.1.5. [PGP](#515-pgp)
+
+This API can be used to create the PGP-encrypted value for the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+string publicKeyPath = "/path/to/publickey.asc";
+
+byte[] cipherText = check crypto:encryptPgp(data, publicKeyPath);
+```
+
+The following encryption options can be configured in the PGP encryption.
+
+| Option                | Description                                                       | Default Value |
+|-----------------------|-------------------------------------------------------------------|---------------|
+| compressionAlgorithm  | Specifies the compression algorithm used for PGP encryption       | ZIP           |
+| symmetricKeyAlgorithm | Specifies the symmetric key algorithm used for encryption         | AES_256       |
+| armor                 | Indicates whether ASCII armor is enabled for the encrypted output | true          |
+| withIntegrityCheck    | Indicates whether integrity check is included in the encryption   | true          |
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+string publicKeyPath = "/path/to/publickey.asc";
+
+byte[] cipherText = check crypto:encryptPgp(data, publicKeyPath, armor = false);
+```
+
+In addition to the above, the following API can be used to read a content from a stream, encrypt it using the PGP public
+key and return an encrypted stream
+
+```ballerina
+stream<byte[], error?> inputStream = check io:fileReadBlocksAsStream("input.txt");
+stream<byte[], crypto:Error?>|crypto:Error encryptedStream = crypto:encryptStreamAsPgp(inputStream, "public_key.asc");
+```
+
 ### 5.2. [Decryption](#52-decryption)
 
 #### 5.2.1. [RSA-ECB](#521-rsa-ecb)
@@ -572,6 +610,29 @@ foreach int i in 0...15 {
 }
 byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
 byte[] plainText = check crypto:decryptAesGcm(cipherText, key, initialVector);
+```
+
+#### 5.2.5. [PGP](#525-pgp)
+
+This API can be used to create the PGP-decrypted value for the given PGP-encrypted data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+string publicKeyPath = "/path/to/publickey.asc";
+string privateKeyPath = "/path/to/privatekey.asc";
+string passPhrase = "passphrase";
+
+byte[] cipherText = check crypto:encryptPgp(data, publicKeyPath);
+byte[] plainText = check crypto:decryptPgp(cipherText, privateKeyPath, passPhrase.toBytes());
+```
+
+In addition to the above, the following API can be used to read an encrypted content from a stream, decrypt it using the
+PGP private key and passphrase and return a decrypted stream.
+
+```ballerina
+stream<byte[], error?> inputStream = check io:fileReadBlocksAsStream("pgb_encrypted.txt");
+stream<byte[], crypto:Error?>|crypto:Error decryptedStream = crypto:decryptStreamFromPgp(inputStream, "private_key.asc", passphrase);
 ```
 
 ## 6. [Sign and Verify](#6-sign-and-verify)

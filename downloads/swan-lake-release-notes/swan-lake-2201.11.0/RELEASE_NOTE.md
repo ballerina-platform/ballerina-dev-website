@@ -63,6 +63,60 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 #### CLI
 
 #### OpenAPI tool
+- Introduced the `flatten` sub-command, which flattens the OpenAPI contract file by moving 
+  all the inline schemas to the components section. The output is a modified OpenAPI contract.
+
+  ```bash
+  $ bal openapi flatten <openapi.yaml>
+  ```
+- Introduced the `sanitize` sub-command, which sanitizes the OpenAPI contract file according to Ballerina's best 
+  naming practices. The Ballerina name extensions are added to the schemas which can not be modified directly.
+  The output is a modified OpenAPI contract.
+
+  ```bash
+  $ bal openpai sanitize <openapi.yaml>
+  ```
+- Add code generation support with the new Ballerina name extensions. These extensions are mapped as relevant 
+annotations in the generated types, parameters and record fields.
+  For example,
+  ```yaml
+  ...
+  paths:
+    /albums:
+      get:
+        tags:
+          - albums
+        operationId: getAlbums
+        parameters:
+          - name: _artists_
+            in: query
+            schema:
+              type: array
+              items:
+                type: string
+              default: []
+            x-ballerina-name: artists  --->// Ballerina name extension
+        responses:
+          "200":
+            description: Ok
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Album"
+  ```
+  Generated Ballerina service type code,
+  ```ballerina
+  ...
+  resource function get albums(@http:Query {name: "_artists_"} string[] artists = []) returns Album[];
+  ...
+  ```
+  This code generation support is available for client, service implementation, and service type code generation.
+
+
+- Added support for relaxed data binding on the client side payload. This enables, `nil` values are treated as optional,
+  and absent fields are handled as `nilable` types.
 
 ### Improvements
 
@@ -73,7 +127,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.11.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.11.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=milestone%3A2201.11.0+is%3Aclosed+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

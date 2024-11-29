@@ -942,3 +942,201 @@ The attributes of the annotation are optional and can be used for each particula
 | `licenseName: string`       | You can use this to add the name of the license under which the API is provided.                                                                                                                                                                                                                                                          | Optional          |
 | `licenseURL: string`        | You can use this to add the URL details regarding the full text of the license.                                                                                                                                                                                                                                                           | Optional          |
 | `embed: string`             | Turns on generating OpenAPI documentation for the service for [introspection endpoint](https://ballerina.io/spec/http/#236-openapi-specification-resources) support when used with `true` in the annotation.                                                                                                                                                                                               | Optional          |
+
+## OpenAPI Contract Modifier
+
+### Modify the OpenAPI Contract Using Ballerina-Friendly Naming Conventions
+
+The `sanitize` subcommand sanitizes the OpenAPI contract file according to the best practices of Ballerina. The Ballerina-specific name extension x-ballerina-name is added to the schemas, including query names and object property names, which cannot be modified directly.
+
+```
+bal openapi sanitize [-i | --input] <openapi-contract-file-path>
+                     [-o | --output] <output-file-path>
+                     [-n | --name] <generated-file-name>
+                     [-f | --format] [json|yaml]
+                     [-t | --tags] <tag-names>
+                     [--operations] <operation-names>
+```
+The command-line arguments below can be used with the command for each particular purpose as described below.
+
+| Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-o \| --output`          | The modified openapi file is generated at the same location from which the `bal openapi sanitize` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                   | Optional           |
+| `-n \| --name`            | The given name will be used to save the sanitized OpenAPI contract. The default name is `sanitized_openapi`.                                                                                                              | Optional           |
+| `-f \| --format`          | The sanitized OpenAPI contract will be saved in the given format. The format can be either JSON or YAML.The default format is same as the input file format.                                                              | Optional           |
+| `-t \| --tags`            | The sanitized OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The sanitized OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
+
+For example,
+
+**Input OpenAPI contract file:**
+```yaml
+paths:
+  /albums:
+    get:
+      tags:
+        - albums
+      operationId: getAlbums
+      parameters:
+        - name: _artists_
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/album"
+components:
+  schemas:
+    album:
+      required:
+        - _id
+        - artist
+        - title
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        artist:
+          type: string
+      additionalProperties: false
+```
+**Output OpenAPI contract file:**
+```yaml
+paths:
+  /albums:
+    get:
+      tags:
+        - albums
+      operationId: getAlbums
+      parameters:
+        - name: _artists_
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          x-ballerina-name: artists   -->//Ballerina name extension
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Album"
+components:
+  schemas:
+    Album:
+      required:
+        - _id\-
+        - artist
+        - title
+      type: object
+      properties:
+        _id\-:
+          type: string
+          x-ballerina-name: id
+        artist:
+          type: string
+        title:
+          type: string
+      additionalProperties: false
+```
+
+### Modify the OpenAPI Contract by defining named objects for inline object
+
+The `fallten` subcommand makes the OpenAPI contract more readable by relocating all inline embedded schemas to the components section.
+
+```
+bal openapi flatten [-i | --input] <openapi-contract-file-path>
+                    [-o | --output] <output-file-path>
+                    [-n | --name] <generated-file-name>
+                    [-f | --format] [json|yaml]
+                    [-t | --tags] <tag-names>
+                    [--operations] <operation-names>
+```
+The command-line arguments below can be used with the command for each particular purpose as described below.
+
+| Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-o \| --output`          | The modified openapi file is generated at the same location from which the `bal openapi flatten` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                   | Optional           |
+| `-n \| --name`            | The given name will be used to save the flattened OpenAPI contract. The default name is `flattened_openapi`.                                                                                                              | Optional           |
+| `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML.The default format is same as the input file format.                                                              | Optional           |
+| `-t \| --tags`            | The falttened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The falltened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
+
+For example,
+
+**Input OpenAPI contract file:**
+```yaml
+...
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      operationId: listPets
+      tags:
+        - pets
+      responses:
+        '200':
+          description: An paged array of pets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    name:
+                      type: string
+                    tag:
+                      type: string
+```
+**Output OpenAPI contract file:**
+```yaml
+...
+paths:
+  /pets:
+    get:
+      tags:
+        - pets
+      summary: List all pets
+      operationId: listPets
+      responses:
+        "200":
+          description: An paged array of pets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InlineResponse200"
+components:
+  schemas:
+    InlineResponse200:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: string
+```

@@ -551,6 +551,15 @@ export default function Boxes(props) {
                         <p className={styles.description}>Write AWS Lambda-compatible packages.</p>
                       </div>
 
+                    <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/deployment-guide/ballerina-deployment-guidelines`} className={styles.titleLink}>
+                            Ballerina deployment guide
+                          </a>
+                        </p>
+                        <p className={styles.description}>Guidelines for Ballerina deployment in production.</p>
+                      </div>
+
                     </div>
                   </div>
                 </div>

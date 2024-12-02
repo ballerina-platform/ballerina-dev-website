@@ -1,10 +1,9 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Virtual Machine Deployment
+title: Virtual machine deployment guide
 description: If you prefer to execute Ballerina services directly on virtual machines (VMs) or bare metal servers without using containerization, you can follow these steps to set up and run your services in a production environment, 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
-permalink: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
-active: code-to-cloud-deployment
+active: ballerina-deployment-guideLines
 intro: If you prefer to execute Ballerina services directly on virtual machines (VMs) or bare metal servers without using containerization, you can follow these steps to set up and run your services in a production environment, 
 ---
 

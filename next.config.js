@@ -265,6 +265,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/aws-lambda`,
       },
       {
+        source: `/${redirectBase}learn/deployment-guide/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/deployment-guide/:slug`,
+      },
+      {
         source: `/${redirectBase}learn/test-ballerina-code/:slug`,
         destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/test-ballerina-code/:slug`,
       },

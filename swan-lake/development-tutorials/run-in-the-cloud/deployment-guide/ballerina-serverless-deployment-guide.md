@@ -1,15 +1,14 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Ballerina Serverless Deployment Guide
+title: Serverless deployment guide
 description: Serverless architecture allows developers to focus on writing application logic without worrying about managing servers or infrastructure. AWS Lambda automatically handles provisioning, scaling, and maintaining resources, letting you concentrate solely on your code. Following are the  Ballerina functions in a serverless environment, 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
-permalink: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
-active: code-to-cloud-deployment
+active: ballerina-deployment-guideLines
 intro: Serverless architecture allows developers to focus on writing application logic without worrying about managing servers or infrastructure. AWS Lambda automatically handles provisioning, scaling, and maintaining resources, letting you concentrate solely on your code. Following are the  Ballerina functions in a serverless environment, 
 ---
 
-1. AWS Lambda
-2. Azure Functions
+1. [AWS Lambda](#aws-lambda)
+2. [Azure Functions](#azure-function)
 
 ## AWS Lambda
 
@@ -65,13 +64,13 @@ $ cat echo-response.txt{"MESSAGE":"HELLO"}
 
 ```
 More examples can be found here,
-- AWS Lambda - Execution context
-- AWS Lambda - S3 trigger
-- AWS Lambda - DynamoDB trigger
+- [AWS Lambda - Execution context](https://ballerina.io/learn/by-example/aws-lambda-execution-context/)
+- [AWS Lambda - S3 trigger](https://ballerina.io/learn/by-example/aws-lambda-s3-trigger/)
+- [AWS Lambda - DynamoDB trigger](https://ballerina.io/learn/by-example/aws-lambda-dynamodb-trigger/)
 
 ### CI/CD deployment with AWS Lambda
 This GitHub Action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project. 
-It triggers every push to the repository, builds the project, and pushes the package to Ballerina Central.
+It triggers every push to the repository, and builds the project.
 ```yaml
 name: Ballerina CI/CD with AWS Lambda
 
@@ -178,7 +177,7 @@ $ curl https://<function_app_name>.azurewebsites.net/hello\?name\=Jack
 ### CI/CD with Azure Function
 
 This GitHub Action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project.
-It triggers every push to the repository, builds the project, and pushes the package to Ballerina Central.
+It triggers every push to the repository, and builds the project.
 
 ```yaml
 name: Ballerina CI/CD with Azure Functions

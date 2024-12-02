@@ -593,6 +593,48 @@
                             "isDir": false,
                             "url": "/learn/aws-lambda",
                             "id": "aws-lambda"
+                        },
+                        {
+                            "dirName": "Ballerina deployment guide",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": true,
+                            "url": "/learn/deployment-guide",
+                            "id": "deployment-guide",
+                            "subDirectories": [
+                                {
+                                    "dirName": "Ballerina production deployment guidelines",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/deployment-guide/ballerina-deployment-guidelines",
+                                    "id": "ballerina-deployment-guidelines"
+                                },
+                                {
+                                    "dirName": "Virtual machine deployment guide",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/deployment-guide/ballerina-virtual-machine-deployment-guide",
+                                    "id": "ballerina-virtual-machine-deployment-guide"
+                                },
+                                {
+                                    "dirName": "Kubernetes deployment guide",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/deployment-guide/ballerina-k8s-deployment-guide",
+                                    "id": "ballerina-k8s-deployment-guide"
+                                },
+                                {
+                                    "dirName": "Serverless deployment guide",
+                                    "level": 4,
+                                    "position": 4,
+                                    "isDir": false,
+                                    "url": "/learn/deployment-guide/ballerina-serverless-deployment-guide",
+                                    "id": "ballerina-serverless-deployment-guide"
+                                }
+                            ]
                         }
                     ]
                 },

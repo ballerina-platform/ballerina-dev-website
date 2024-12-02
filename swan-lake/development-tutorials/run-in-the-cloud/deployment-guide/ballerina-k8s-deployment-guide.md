@@ -1,18 +1,17 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Ballerina Kubernetes Deployment Guide
+title: Kubernetes deployment guide
 description: When deploying Ballerina services in a Kubernetes environment, it is essential to focus on high availability and scalability. Key considerations include determining the appropriate number of worker nodes and replicas. These decisions help scale the deployment and ensure that the system remains available and responsive under load. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
-permalink: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
-active: code-to-cloud-deployment
+active: ballerina-deployment-guideLines
 intro: When deploying Ballerina services in a Kubernetes environment, it is essential to focus on high availability and scalability. Key considerations include determining the appropriate number of worker nodes and replicas. These decisions help scale the deployment and ensure that the system remains available and responsive under load. 
 ---
 
-## Simple Application Deployment in Kubernetes
+## Simple application deployment in Kubernetes
 
 Ballerina simplifies Kubernetes artifact generation by deriving configurations directly from your code, which allows developers to focus on business logic while automating containerization and Kubernetes deployment. Below is a guide to deploying Ballerina applications in Kubernetes using Ballerina’s Code to Cloud capabilities.
 
-### Ballerina Application Code
+### Ballerina application code
 Here is an example of a Ballerina service that serves a simple "Hello from Kubernetes!" message on an HTTP request:
 ```ballerina
 import ballerina/http;
@@ -33,7 +32,7 @@ generates the Kubernetes deployment artifacts.
 > **Note:** If you are using Ballerina cache in a Kubernetes environment, note that the cache is local to each pod. 
 > Consider using a Redis server to manage the cache if your application requires a distributed caching solution.
 
-### Overriding Default Kubernetes Configurations
+### Overriding default Kubernetes configurations
 Create a `Cloud.toml` file in the project directory to customize the deployment parameters. This file will allow you to override the compiler's default values.
 
 **Sample Cloud.toml**
@@ -47,7 +46,7 @@ tag="v0.1.0" # Tag of the container. Default Value: "latest"
 See [Ballerina Code to Cloud Specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md#containerimage) for more information.
 
 
-### Building the Kubernetes Artifacts
+### Building the Kubernetes artifacts
 
 Use the bal build command to build the Ballerina package. This will generate Kubernetes YAML files and Docker container artifacts:
 >**Note:** macOS users with Apple Silicon chips need to set an environment variable named `DOCKER_DEFAULT_PLATFORM` to `linux/amd64`, before building the image. This is because the Ballerina Docker image is not supported on Apple Silicon chips yet.
@@ -80,7 +79,7 @@ Generating artifacts...
 Once the build is complete, Ballerina generates the Kubernetes artifacts, including the Service, Deployment, HorizontalPodAutoscaler, and Docker image configuration.
 The artifacts are located in `target/kubernetes/hello`.
 
-### Deploying the Application to Kubernetes
+### Deploying the application to Kubernetes
 
 Push the Docker image to Docker Hub:
 ```
@@ -122,7 +121,7 @@ Test the service using curl
 $ curl http://<EXTERNAL-IP>:<NODE-PORT>/helloWorld/sayHello
 ```
 
-## Kubernetes Deployment With Config Maps and Autoscaling
+## Kubernetes deployment with config maps and autoscaling
 
 For a more complex deployment, this demonstrates a Ballerina app that reads a greeting from a config map and responds to HTTP requests. It covers Kubernetes deployment with resource limits, autoscaling, config maps, and health probes using Code to Cloud. 
 
@@ -274,7 +273,7 @@ See [Build the GraalVM executable in a container](https://ballerina.io/learn/bui
   - [Deploy Ballerina on Kubernetes](https://ballerina.io/learn/deploy-ballerina-on-kubernetes/)
   - [Kubernetes - Hello world](https://ballerina.io/learn/by-example/kubernetes-hello-world/)
 
-## Ballerina Deployment with Kubernetes Kustomize
+## Ballerina deployment with Kubernetes Kustomize
 
 [Kustomize](https://kustomize.io/) is a tool that allows you to modify Kubernetes YAML files without altering 
 the original files. It can enhance the generated YAML from code-to-cloud deployments by applying additional 
@@ -297,7 +296,7 @@ See [Kustomize](https://github.com/ballerina-guides/gcp-microservices-demo?tab=r
 
 ## CI/CD with Kubernetes
 This GitHub Action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project. 
-It triggers every push to the repository, builds the project, and pushes the package to Ballerina Central.
+It triggers every push to the repository, and builds the project.
 
 ```yaml
 

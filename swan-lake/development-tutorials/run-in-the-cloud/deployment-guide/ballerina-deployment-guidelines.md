@@ -1,10 +1,9 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Ballerina Production Deployment Guidelines
+title: Ballerina production deployment guidelines
 description: This guideline is intended to provide a comprehensive overview of best practices and considerations when deploying Ballerina in a production environment. It covers deployment patterns, recommended configurations, Java compatibility, and security hardening tips to ensure your Ballerina applications run efficiently and securely. 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
-permalink: /learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/
-active: code-to-cloud-deployment
+active: ballerina-deployment-guidelines
 intro: This guideline is intended to provide a comprehensive overview of best practices and considerations when deploying Ballerina in a production environment. It covers deployment patterns, recommended configurations, Java compatibility, and security hardening tips to ensure your Ballerina applications run efficiently and securely. 
 ---
 
@@ -12,11 +11,11 @@ intro: This guideline is intended to provide a comprehensive overview of best pr
 When deploying Ballerina applications in production, you can choose from several deployment types depending on your needs.
 Each option balances flexibility, control, and operational overhead based on your specific deployment types:
 
-1. Virtual Machines or Bare Metal: Provides full control over the infrastructure, making it suitable for high-performance or legacy systems requiring custom configurations or direct hardware access.
-2. Kubernetes/Docker: Ideal for containerized, cloud-native microservices, offering scalability and orchestration with Ballerina’s built-in support for Kubernetes and Docker artifacts.
-3. Serverless: Suitable for event-driven, cost-critical applications, where cloud providers manage the infrastructure, such as AWS Lambda.
+1. [Virtual Machines or Bare Metal](/learn/deployment-guide/ballerina-virtual-machine-deployment-guide): Provides full control over the infrastructure, making it suitable for high-performance or legacy systems requiring custom configurations or direct hardware access.
+2. [Kubernetes/Docker](/learn/deployment-guide/ballerina-k8s-deployment-guide): Ideal for containerized, cloud-native microservices, offering scalability and orchestration with Ballerina’s built-in support for Kubernetes and Docker artifacts.
+3. [Serverless](/learn/deployment-guide/ballerina-serverless-deployment-guide): Suitable for event-driven, cost-critical applications, where cloud providers manage the infrastructure, such as AWS Lambda.
 
-## Compatible  Java Versions
+## Compatible  Java versions
 
 The Ballerina distribution always includes the JDK, the supported Java versions can be found in the table below,
 

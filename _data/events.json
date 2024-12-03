@@ -1,6 +1,22 @@
 {
     "events": [
            {
+            "date": "Dec 6, 2024",
+            "day": "Fri.",
+            "time": "2:30 p.m. CST",
+            "expire": "2024-12-07T00:00:00.00-00:00",
+            "location": "Dallas, Texas",
+            "url": "https://www.commityourcode.com/",
+            "eventType": "The Commit Your Code Conference",
+            "eventName": "Seamless Enterprise Integration in the Cloud: The Ballerina Way",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "October 1-31, 2024",
             "day": "Ready, Set, Hack!",
             "time": "",

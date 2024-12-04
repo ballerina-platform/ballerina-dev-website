@@ -7,7 +7,8 @@ active: ballerina-deployment-guidelines
 intro: This guideline is intended to provide a comprehensive overview of best practices and considerations when deploying Ballerina in a production environment. It covers deployment patterns, recommended configurations, Java compatibility, and security hardening tips to ensure your Ballerina applications run efficiently and securely. 
 ---
 
-## Introduction 
+## Introduction
+
 When deploying Ballerina applications in production, you can choose from several deployment types depending on your needs.
 Each option balances flexibility, control, and operational overhead based on your specific deployment types:
 
@@ -17,11 +18,10 @@ Each option balances flexibility, control, and operational overhead based on you
 
 ## Compatible  Java versions
 
-The Ballerina distribution always includes the JDK, the supported Java versions can be found in the table below,
+The Ballerina distribution always includes the JRE. The supported Java versions can be found in the table below,
 
-| Ballerina Swan Lake Version                                         | Compatible Java Version |
-|---------------------------------------------------------------------|-------------------------|
-| 2201.0.0 (Ballerina SwanLake) up to 2201.7.0 (Ballerina SwanLakeUpdate 7)  | JDK temurin 11.         |
-| 2201.8.0 (Ballerina SwanLake Update 8) up to 2201.10.0 (Ballerina SwanLake Update 10) | JDK temurin 17.0.7      |
-| 2201.11.0 (Ballerina SwanLake Update 11)                            | JDK temurin 21.0.3      |
-
+| Ballerina Swan Lake Version                                                             | Compatible Java Version |
+|-----------------------------------------------------------------------------------------|-------------------------|
+| 2201.0.0 (Ballerina Swan Lake) up to 2201.7.0 (Ballerina Swan Lake Update 7)            | JDK Temurin 11.         |
+| 2201.8.0 (Ballerina Swan Lake Update 8) up to 2201.10.0 (Ballerina Swan Lake Update 10) | JDK Temurin 17.0.7      |
+| 2201.11.0 (Ballerina Swan Lake Update 11)                                               | JDK Temurin 21.0.3      |

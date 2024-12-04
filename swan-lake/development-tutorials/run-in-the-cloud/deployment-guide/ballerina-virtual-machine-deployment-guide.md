@@ -31,9 +31,7 @@ intro: If you prefer to execute Ballerina services directly on virtual machines 
              }
          }
       ```
-    - Organize the Project: Follow the standard Ballerina Project structure, with a `Ballerina.toml` file and 
-      source organized in modules if needed. You can visit the [Organize Ballerina code](https://ballerina.io/learn/organize-ballerina-code/) for 
-      detailed information about packages and how you can manage the growth of your source code.
+    - Organize the Project: Follow the standard Ballerina project structure, with a `Ballerina.toml` file and source organized in modules if needed. You can visit the [Organize Ballerina code](https://ballerina.io/learn/organize-ballerina-code/) for detailed information about packages and how you can manage the growth of your source code.
    
 5. Build the Ballerina Service
     
@@ -50,8 +48,7 @@ intro: If you prefer to execute Ballerina services directly on virtual machines 
 
 ## CI/CD integration with VMs
 
-The [Ballerina Github](https://github.com/ballerina-platform/ballerina-action) action can automate the continuous integration 
-and continuous deployment (CI/CD) process for a Ballerina project. Refer to the following sample workflow file. It is triggered on every push to the repository, and on each trigger, builds the project.
+The [Ballerina Github](https://github.com/ballerina-platform/ballerina-action) action can automate the continuous integration and continuous deployment (CI/CD) process for a Ballerina project. Refer to the following sample workflow file. It is triggered on every push to the repository, and on each trigger, builds the project.
 ```yaml
 name: Ballerina example
 

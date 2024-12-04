@@ -69,6 +69,7 @@ More examples can be found here,
 - [AWS Lambda - DynamoDB trigger](https://ballerina.io/learn/by-example/aws-lambda-dynamodb-trigger/)
 
 ### CI/CD deployment with AWS Lambda
+
 This GitHub Action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project. 
 It triggers every push to the repository, and builds the project.
 ```yaml
@@ -134,7 +135,8 @@ jobs:
 - **Step 05:** Deploy the packaged Ballerina function to AWS Lambda by uploading the ZIP file.
 - **Step 06:** Test the deployed Lambda function by invoking it and outputting the response to confirm that the function works as expected.
 
-## Azure Function
+## Azure Functions
+
 In this guide, we'll walk through deploying a serverless application using Azure Functions with Ballerina. 
 You'll learn how to set up, deploy, and manage your application, leveraging the power of Azure's serverless platform 
 to simplify your workflows and eliminate the overhead of server management.

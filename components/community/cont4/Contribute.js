@@ -17,19 +17,15 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Table, Card } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
+import { Row, Col, Container } from 'react-bootstrap';
 import { FaCode } from "react-icons/fa6";
 import { MdOutlineArticle } from "react-icons/md";
 import { FaConnectdevelop } from "react-icons/fa";
 
 import styles from './Contribute.module.css';
-import { prefix } from '../../../utils/prefix';
 
 
 export default function Contribute(props) {
-
-    const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
 
     return (
         <Col xs={12}>
@@ -54,17 +50,13 @@ export default function Contribute(props) {
                     </Col>
                 </Row>
 
-
-
-
-
                 <Row className={styles.category}>
                     <div className={styles.customSeparator}>
                         <Row>
                             <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                     <FaCode style={{ fontSize: "44px", marginRight: "20px" }} />
-                                    <p style={{ marginBottom: 0 }}>Code contributions</p>
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Code contributions</p>
                                 </div>
                             </Col>
 
@@ -118,7 +110,7 @@ export default function Contribute(props) {
                             <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                     <MdOutlineArticle style={{ fontSize: "44px", marginRight: "20px" }} />
-                                    <p style={{ marginBottom: 0 }}>No/Low Code contributions</p>
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }} className={styles.scale}>No/Low Code contributions</p>
                                 </div>
                             </Col>
 
@@ -154,7 +146,7 @@ export default function Contribute(props) {
                             <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                     <FaConnectdevelop style={{ fontSize: "44px", marginRight: "20px" }} />
-                                    <p style={{ marginBottom: 0 }}>Connector projects</p>
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Connector projects</p>
                                 </div>
                             </Col>
 
@@ -206,66 +198,30 @@ export default function Contribute(props) {
 
 
 
-                <Row style={{ marginTop: "60px", background: "#20b6b0", padding: "30px 20px" }}>
+                <Row style={{ marginTop: "60px", background: "#20b6b0", padding: "20px" }}>
 
-                    <Col xs={12} md={6} lg={6} className={styles.boxCol} style={{ border: "none" }}>
+                    <Col xs={12} md={12} lg={7} className={styles.boxCol} style={{ border: "none" }}>
                         <div className={styles.cardWrapper}>
                             <div>
-                            <div className={styles.cardDescription}>
+                                <div className={styles.cardDescription}>
                                     <div className={styles.content}>
                                         <p className={styles.msgCredits}>
                                             Redeem points to purchase exclusive Ballerina-branded items from the <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.visit}>swag store</a>.
                                         </p>
-                                    {/* <div style={{display:"flex"}}>
-                                    <a href="#" className={styles.claim}>Claim your swag credits</a>
-                                    <a href="#" className={styles.claim}>Visit store</a>
-                                    </div> */}
-                                    <a href="#" className={styles.claim}>Claim your swag credits</a>
-                                    <p className={styles.tnc}>*<a href="#">Terms and conditions</a> apply</p>
+                                        <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfMm4jUFszfAtG0ykPX0LvvkHU7Y8Y95uJiZG1xnZqGnsuKrA/viewform" className={styles.claim}>Claim your swag credits</a>
+                                        <p className={styles.tnc}>*<a target="_blank" rel="noreferrer" href="/rewards/ballerina-rewards-program -terms-and-conditions.pdf">Terms and conditions</a> apply</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </Col>
 
-                    <Col xs={12} md={6} lg={6} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                    <Col xs={12} md={12} lg={5} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-                        {/* <Row xs={1} sm={2} md={2} lg={5} className="g-4 align-items-stretch">
-                            {swags.map((_, idx) => (
-                                <Col key={idx} style={{ height: "fit-content", display: "flex" }}>
-                                    <Card className={`${styles.cutomCard} flex-grow-1`}>
-                                        <Card.Img variant="top" src={`/images/hacktoberfest/swags-2024/${_}.jpeg`} />
-                                    </Card>
-                                </Col>
-                            ))}
-
-                            <Col style={{ display: "flex" }}>
-                                <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.storeLink}>
-                                    <Card className={`${styles.cutomCard} flex-grow-1`}>
-                                        <Card.Body className={`${styles.store} d-flex flex-column`}>
-                                            <p className={styles.msg}>Visit store</p>
-                                            <img
-                                                src="/images/arrow-right-white.svg"
-                                                alt="swags"
-                                                className={`${styles.swag} flex-grow-1`}
-                                            />
-                                        </Card.Body>
-                                    </Card>
-                                </a>
-                            </Col>
-
-                        </Row> */}
-
-<img src="/images/ballerina-swag.png" alt="swags" style={{ width: "60%" }} />
+                        <img src="/images/ballerina-swag.png" alt="swags" style={{ width: "75%" }} />
 
                     </Col>
                 </Row>
-
-
-
-
-
-
 
             </Container>
         </Col>

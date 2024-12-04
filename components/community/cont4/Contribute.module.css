@@ -87,7 +87,19 @@ a.visit:hover {
     padding-bottom: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+    .scale {
+        width: auto;
+    }
+}
+
 @media only screen and (max-width: 768px) {
+    .scale {
+        width: min-content;
+    }
+}
+
+@media only screen and (max-width: 992px) {
     .category {
         padding: 20px;
     }
@@ -159,7 +171,7 @@ a.issues:hover {
 }
 
 .msgCredits {
-    font-size: 46px;
+    font-size: 55px;
     font-weight: 500;
     margin-bottom: 0;
 }
@@ -193,10 +205,14 @@ a.claim:hover {
     margin-top: 20px;
 }
 
-.tnc a, .tnc a:visited, .tnc a:hover {
+.tnc a,
+.tnc a:visited,
+.tnc a:hover {
     color: #57595d;
 }
 
-a.visit, a.visit:visited, a.visit:hover {
+a.visit,
+a.visit:visited,
+a.visit:hover {
     color: #000000;
 }

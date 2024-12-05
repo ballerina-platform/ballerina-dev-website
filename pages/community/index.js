@@ -30,10 +30,7 @@ import CommunityCarousel from '../../components/common/image-carousel/ImageCarou
 import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 import Certification from '../../components/community/certification/Certification';
 import Ambassador from '../../components/common/ambassador/Ambassador';
-// import Contribute from '../../components/community/contribute/Contribute';
-// import Contribute from '../../components/community/cont2/Contribute';
-// import Contribute from '../../components/community/cont3/Contribute';
-import Contribute from '../../components/community/cont4/Contribute';
+import Contribute from '../../components/community/contribute/Contribute';
 
 export default function Community() {
 

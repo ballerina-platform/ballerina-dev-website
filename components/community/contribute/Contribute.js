@@ -17,25 +17,15 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Table, Card } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
+import { Row, Col, Container } from 'react-bootstrap';
 import { FaCode } from "react-icons/fa6";
 import { MdOutlineArticle } from "react-icons/md";
 import { FaConnectdevelop } from "react-icons/fa";
 
 import styles from './Contribute.module.css';
-import { prefix } from '../../../utils/prefix';
 
 
 export default function Contribute(props) {
-
-    // const [hoverBtn, setHoverBtn] = React.useState(false);
-
-    // let linkArrowPath = prefix + '/images/toc-bg.svg';
-    // let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
-
-
-    const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
 
     return (
         <Col xs={12}>
@@ -60,140 +50,147 @@ export default function Contribute(props) {
                     </Col>
                 </Row>
 
-
-
-
-
                 <Row className={styles.category}>
-                    <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                            <FaCode style={{ fontSize: "44px", marginRight: "20px" }} />
-                            <p style={{ marginBottom: 0 }}>Code contributions</p>
-                        </div>
-                    </Col>
+                    <div className={styles.customSeparator}>
+                        <Row>
+                            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                    <FaCode style={{ fontSize: "44px", marginRight: "20px" }} />
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Code contributions</p>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Easy
-                            </div>
-                            <div className={styles.points}>
-                                +20 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Easy
+                                    </div>
+                                    <div className={styles.points}>
+                                        +20 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Medium
-                            </div>
-                            <div className={styles.points}>
-                                +30 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Medium
+                                    </div>
+                                    <div className={styles.points}>
+                                        +30 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Hard
-                            </div>
-                            <div className={styles.points}>
-                                +45 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Hard
+                                    </div>
+                                    <div className={styles.points}>
+                                        +45 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/1" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/1" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
                 </Row>
 
 
 
                 <Row className={styles.category}>
-                    <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                            <MdOutlineArticle style={{ fontSize: "44px", marginRight: "20px" }} />
-                            <p style={{ marginBottom: 0 }}>No/Low Code contributions</p>
-                        </div>
-                    </Col>
+                    <div className={styles.customSeparator}>
+                        <Row>
+                            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                    <MdOutlineArticle style={{ fontSize: "44px", marginRight: "20px" }} />
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }} className={styles.scale}>No/Low Code contributions</p>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Blog/article
-                            </div>
-                            <div className={styles.points}>
-                                +20 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Blog/article
+                                    </div>
+                                    <div className={styles.points}>
+                                        +20 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Video tutorial
-                            </div>
-                            <div className={styles.points}>
-                                +40 points
-                            </div>
-                        </div>
-                    </Col>
-
+                            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Video tutorial
+                                    </div>
+                                    <div className={styles.points}>
+                                        +40 points
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
                 </Row>
 
 
                 <Row className={styles.category}>
-                    <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                            <FaConnectdevelop style={{ fontSize: "44px", marginRight: "20px" }} />
-                            <p style={{ marginBottom: 0 }}>Connector projects</p>
-                        </div>
-                    </Col>
+                    <div className={styles.customSeparator}>
+                        <Row>
+                            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                    <FaConnectdevelop style={{ fontSize: "44px", marginRight: "20px" }} />
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Connector projects</p>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Easy
-                            </div>
-                            <div className={styles.points}>
-                                +60 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Easy
+                                    </div>
+                                    <div className={styles.points}>
+                                        +60 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Medium
-                            </div>
-                            <div className={styles.points}>
-                                +80 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Medium
+                                    </div>
+                                    <div className={styles.points}>
+                                        +80 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                            <div>
-                                Hard
-                            </div>
-                            <div className={styles.points}>
-                                +100 points
-                            </div>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <div>
+                                        Hard
+                                    </div>
+                                    <div className={styles.points}>
+                                        +100 points
+                                    </div>
+                                </div>
+                            </Col>
 
-                    <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
-                        <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                        <a className={styles.issues} href="/hacktoberfest/connector-contributor-guide" target="_blank" rel="noreferrer" title='Read the guide' style={{marginBottom: "10px"}}>Read the guide</a>
-                        <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
-                        </div>
-                    </Col>
+                            <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
+                                <div className={`${styles.detailBlocks} ${styles.subCat}`}>
+                                    <a className={styles.issues} href="/hacktoberfest/connector-contributor-guide" target="_blank" rel="noreferrer" title='Read the guide' style={{ marginBottom: "10px" }}>Read the guide</a>
+                                    <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
                 </Row>
 
 
@@ -201,56 +198,30 @@ export default function Contribute(props) {
 
 
 
-                <Row style={{marginTop:"60px", background: "#20b6b0", padding: "30px 20px"}}>
+                <Row style={{ marginTop: "60px", background: "#20b6b0", padding: "20px" }}>
 
-<Col xs={12} md={6} lg={4} className={styles.boxCol} style={{border:"none"}}>
-  <div className={styles.cardWrapper}>
-    <div>
-      <div className={styles.cardDescription}>
-        <div className={styles.content}>
-          <p className={styles.msgCredits}>Redeem points to purchase exclusive Ballerina-branded items from the swag store</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</Col>
+                    <Col xs={12} md={12} lg={7} className={styles.boxCol} style={{ border: "none" }}>
+                        <div className={styles.cardWrapper}>
+                            <div>
+                                <div className={styles.cardDescription}>
+                                    <div className={styles.content}>
+                                        <p className={styles.msgCredits}>
+                                            Redeem points to purchase exclusive Ballerina-branded items from the <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.visit}>swag store</a>.
+                                        </p>
+                                        <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfMm4jUFszfAtG0ykPX0LvvkHU7Y8Y95uJiZG1xnZqGnsuKrA/viewform" className={styles.claim}>Claim your swag credits</a>
+                                        <p className={styles.tnc}>*<a target="_blank" rel="noreferrer" href="/rewards/ballerina-rewards-program -terms-and-conditions.pdf">Terms and conditions</a> apply</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Col>
 
-<Col xs={12} md={6} lg={8} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <Col xs={12} md={12} lg={5} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-  <Row xs={1} sm={2} md={2} lg={5} className="g-4 align-items-stretch">
-    {swags.map((_, idx) => (
-      <Col key={idx} style={{ height: "fit-content", display: "flex" }}>
-        <Card className={`${styles.cutomCard} flex-grow-1`}>
-          <Card.Img variant="top" src={`/images/hacktoberfest/swags-2024/${_}.jpeg`} />
-        </Card>
-      </Col>
-    ))}
+                        <img src="/images/ballerina-swag.png" alt="swags" style={{ width: "75%" }} />
 
-    <Col style={{ display: "flex" }}>
-      <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.storeLink}>
-        <Card className={`${styles.cutomCard} flex-grow-1`}>
-          <Card.Body className={`${styles.store} d-flex flex-column`}>
-            <p className={styles.msg}>Visit store</p>
-            <img
-              src="/images/arrow-right-white.svg"
-              alt="swags"
-              className={`${styles.swag} flex-grow-1`}
-            />
-          </Card.Body>
-        </Card>
-      </a>
-    </Col>
-
-  </Row>
-
-</Col>
-</Row>
-
-
-
-
-
-
+                    </Col>
+                </Row>
 
             </Container>
         </Col>

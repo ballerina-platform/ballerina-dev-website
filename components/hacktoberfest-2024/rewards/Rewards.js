@@ -69,31 +69,31 @@ export default function Rewards(props) {
 
           <Col xs={12} md={6} lg={8} style={{ textAlign: "center", marginTop: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
-<Row xs={1} sm={2} md={2} lg={5} className="g-4 align-items-stretch">
-  {swags.map((_, idx) => (
-    <Col key={idx} style={{ height: "fit-content", display: "flex" }}>
-      <Card className={`${styles.cutomCard} flex-grow-1`}>
-        <Card.Img variant="top" src={`/images/hacktoberfest/swags-2024/${_}.jpeg`} />
-      </Card>
-    </Col>
-  ))}
+            <Row xs={1} sm={2} md={2} lg={5} className="g-4 align-items-stretch">
+              {swags.map((_, idx) => (
+                <Col key={idx} style={{ height: "fit-content", display: "flex" }}>
+                  <Card className={`${styles.cutomCard} flex-grow-1`}>
+                    <Card.Img variant="top" src={`/images/hacktoberfest/swags-2024/${_}.jpeg`} />
+                  </Card>
+                </Col>
+              ))}
 
-<Col style={{ display: "flex" }}>
-  <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.storeLink}>
-    <Card className={`${styles.cutomCard} flex-grow-1`}>
-      <Card.Body className={`${styles.store} d-flex flex-column`}>
-        <p className={styles.msg}>Visit store</p>
-        <img
-          src="/images/arrow-right-white.svg"
-          alt="swags"
-          className={`${styles.swag} flex-grow-1`}
-        />
-      </Card.Body>
-    </Card>
-  </a>
-</Col>
+              <Col style={{ display: "flex" }}>
+                <a href="https://store.covver.io/wso2/collections/ballerina-swag-store" target="_blank" rel="noreferrer" className={styles.storeLink}>
+                  <Card className={`${styles.cutomCard} flex-grow-1`}>
+                    <Card.Body className={`${styles.store} d-flex flex-column`}>
+                      <p className={styles.msg}>Visit store</p>
+                      <img
+                        src="/images/arrow-right-white.svg"
+                        alt="swags"
+                        className={`${styles.swag} flex-grow-1`}
+                      />
+                    </Card.Body>
+                  </Card>
+                </a>
+              </Col>
 
-</Row>
+            </Row>
 
           </Col>
         </Row>

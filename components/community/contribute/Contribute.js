@@ -103,7 +103,6 @@ export default function Contribute(props) {
                 </Row>
 
 
-
                 <Row className={styles.category}>
                     <div className={styles.customSeparator}>
                         <Row>
@@ -192,10 +191,6 @@ export default function Contribute(props) {
                         </Row>
                     </div>
                 </Row>
-
-
-
-
 
 
                 <Row style={{ marginTop: "60px", background: "#20b6b0", padding: "20px" }}>

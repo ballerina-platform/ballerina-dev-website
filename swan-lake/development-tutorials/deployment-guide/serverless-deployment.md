@@ -1,6 +1,6 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Serverless deployment guide
+title: Serverless deployment
 description: Serverless architecture allows developers to focus on writing application logic without worrying about managing servers or infrastructure. AWS Lambda automatically handles provisioning, scaling, and maintaining resources, letting you concentrate solely on your code. Following are the  Ballerina functions in a serverless environment, 
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
 active: ballerina-deployment-guideLines
@@ -135,6 +135,8 @@ jobs:
 - **Step 05:** Deploy the packaged Ballerina function to AWS Lambda by uploading the ZIP file.
 - **Step 06:** Test the deployed Lambda function by invoking it and outputting the response to confirm that the function works as expected.
 
+See [AWS Lambda](https://ballerina.io/learn/aws-lambda/) for more information.
+
 ## Azure Functions
 
 In this guide, we'll walk through deploying a serverless application using Azure Functions with Ballerina. 
@@ -221,3 +223,5 @@ jobs:
 - **Step 02:** This step compiles the Ballerina application to generate an executable JAR file. The `bal build` command compiles the code and packages it, making it ready for deployment.
 - **Step 03:** Install the Azure Functions Core Tools, which are necessary for deploying and testing Azure Functions in this GitHub Actions environment.
 - **Step 04:** Deploy the built Ballerina application to an Azure Function App. This step uploads the packaged function to Azure and configures it for serverless execution.
+
+See [Azure Functions](https://ballerina.io/learn/azure-functions/) for information about deployment options can be used in Azure Functions.

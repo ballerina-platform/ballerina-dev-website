@@ -563,78 +563,44 @@
                     ]
                 },
                 {
-                    "dirName": "Run in the cloud",
+                    "dirName": "Deployment guidelines",
                     "level": 2,
                     "position": 5,
                     "isDir": true,
-                    "url": "/learn/run-in-the-cloud",
-                    "id": "run-in-the-cloud",
+                    "url": "/learn/deployment-guide",
+                    "id": "deployment-guide",
                     "subDirectories": [
                         {
-                            "dirName": "Code to cloud deployment",
+                            "dirName": "Deployment guidelines overview",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/code-to-cloud-deployment",
-                            "id": "code-to-cloud-deployment"
+                            "url": "/learn/deployment-guidelines-overview",
+                            "id": "deployment-guidelines-overview"
                         },
                         {
-                            "dirName": "Azure Functions",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/azure-functions",
-                            "id": "azure-functions"
-                        },
-                        {
-                            "dirName": "AWS Lambda",
+                            "dirName": "Kubernetes deployment",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/aws-lambda",
-                            "id": "aws-lambda"
+                            "url": "/learn/k8s-deployment",
+                            "id": "k8s-deployment"
                         },
                         {
-                            "dirName": "Ballerina deployment guide",
+                            "dirName": "Serverless deployment ",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/serverless-deployment",
+                            "id": "serverless-deployment"
+                        },
+                        {
+                            "dirName": "Virtual machine deployment",
                             "level": 3,
                             "position": 4,
-                            "isDir": true,
-                            "url": "/learn/deployment-guide",
-                            "id": "deployment-guide",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Ballerina production deployment guidelines",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/deployment-guide/ballerina-deployment-guidelines",
-                                    "id": "ballerina-deployment-guidelines"
-                                },
-                                {
-                                    "dirName": "Virtual machine deployment guide",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/deployment-guide/ballerina-virtual-machine-deployment-guide",
-                                    "id": "ballerina-virtual-machine-deployment-guide"
-                                },
-                                {
-                                    "dirName": "Kubernetes deployment guide",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/deployment-guide/ballerina-k8s-deployment-guide",
-                                    "id": "ballerina-k8s-deployment-guide"
-                                },
-                                {
-                                    "dirName": "Serverless deployment guide",
-                                    "level": 4,
-                                    "position": 4,
-                                    "isDir": false,
-                                    "url": "/learn/deployment-guide/ballerina-serverless-deployment-guide",
-                                    "id": "ballerina-serverless-deployment-guide"
-                                }
-                            ]
+                            "isDir": false,
+                            "url": "/learn/virtual-machine-deployment",
+                            "id": "virtual-machine-deployment"
                         }
                     ]
                 },

@@ -30,7 +30,7 @@ import CommunityCarousel from '../../components/common/image-carousel/ImageCarou
 import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 import Certification from '../../components/community/certification/Certification';
 import Ambassador from '../../components/common/ambassador/Ambassador';
-import Contribute from '../../components/community/contribute/Contribute';
+// import Contribute from '../../components/community/contribute/Contribute';
 
 export default function Community() {
 
@@ -120,31 +120,31 @@ export default function Community() {
             <JoinUs getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          {/* <Row className="pageContentRow communityRow slackRow">
             <Contribute getLink={getLink} />
-          </Row>
+          </Row> */}
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Ambassador getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <Resources getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <UniversitySessions getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Certification getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>
 

@@ -32,8 +32,9 @@ health:2.0.0 successfully set as the active version.
 
 The Ballerina Health tool supports two main usages as follows.
 
-- [**Package generation:**](#package-generation) generate a Ballerina package from a given FHIR implementation guide.
-- [**Template generation:**](#template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
+- [**FHIR package generation:**](#fhir-package-generation) generate a Ballerina package from a given FHIR implementation guide.
+- [**FHIR template generation:**](#fhir-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
+- [**CDS template generation:**](#cds-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
 
 The general usage of the tool is as follows.
 
@@ -64,7 +65,7 @@ The parameters that are available with the tool are listed below.
 | `--included-profile`     | Generate one or more specific FHIR profiles as Ballerina templates for FHIR APIs.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `--excluded-profile`     | Skip one or more specific FHIR profiles when generating Ballerina templates for FHIR APIs.                                                                                                                                                                                                                                                                                                                                      | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 
-## Package generation
+## FHIR package generation
 
 The FHIR resources in the implementation guide will be represented as Ballerina records including the correct cardinality constraints and metadata. FHIR integration developers can leverage the generated package when transforming custom health data into FHIR format without referring to the specification.
 
@@ -216,7 +217,7 @@ Follow the steps below to use the generated package by running the cloned Baller
     }
     ```
 
-## Template generation
+## FHIR template generation
 
 The tool can also be used to generate Ballerina templates for FHIR APIs for the FHIR resources in an implementation guide. FHIR integration developers can utilize these API templates by customizing them to align with their specific business logic and subsequently exposing them as standard FHIR APIs.
 
@@ -420,5 +421,226 @@ Follow the steps below to use the generated API templates by running the cloned 
         }
     ],
     "id":"1"
+   }
+   ```
+
+## CDS template generation
+
+Generate a Ballerina service template from the given CDS hook definitions. This template will also include basic functionalities such as validation, prefetch, etc., and it will facilitate the developers' implementation of the required connection with the external decision support system to run the CDS server. The generated Ballerina service project will be written into the provided output location.
+
+Supported CDS version: [2.0] https://cds-hooks.hl7.org/2.0
+
+### Template generation usage
+
+```
+$ bal health fhir
+            [--org-name] <template-organization-name>
+            [--package-name] <fully-qualified-name-of-package>
+            [--package-version] <version-of-the-package>
+            [-o | --output] <output-location>
+            [-i | --input] <cds-hook-definitions-file-path>
+```
+
+### CDS template generation command options
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                                                                           | Mandatory/Optional |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `--org-name`        | Organization name of the Ballerina template to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                                                         | Optional           |
+| `--package-name`    | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name `health.fhir.templates.crd` will be taken to construct the name of the package.                                                                                                                                                                                                         | Optional           |
+| `--package-version` | The version of the Ballerina template to be generated.                                                                                                                                                                                                                                                                                                                                                                                | Optional           |
+| `-i, --input`       | Only the TOML file type is acceptable. Users need to define the CDS hook definitions in the input file. The given CDS hooks input will be used to generate the Ballerina service. | Mandatory          |
+| `-o, --output`      | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                                                                         | Optional           |
+
+### Template generation example
+
+Follow the steps below to try out an example CDS template generation use case of the Health tool.
+
+#### Create CDS definition file
+
+Create a TOML file with the CDS hook definitions. Refer to CDS specifications for more information about the attributes: https://cds-hooks.hl7.org/2.0/#response.
+
+For example `cds-definitions.toml`
+
+```
+[[cds_services]]
+id = "static-patient-greeter"
+hook = "patient-view"
+title = "Static CDS Service Example"
+description = "An example of a CDS Service that returns a static set of cards"
+usageRequirements = "Note: functionality of this CDS Service is degraded without access to a FHIR Restful API as part of CDS recommendation generation."
+[cds_services.prefetch]
+patientToGreet = "Patient/{{context.patientId}}"
+
+[[cds_services]]
+id = "book-imaging-center"
+hook = "order-dispatch"
+title = "Book an imaging center"
+description = "This hook can be used when booking imaging center"
+```
+
+#### Generate the templates
+
+Follow the steps below to run the Health tool and generate the Ballerina templates for CDS for the given hook definitions.
+
+1. Navigate to the working directory that contains CDS hook definitions file.
+
+2. Run the tool with the [required command options](#cds-template-generation-command-options) to generate the Ballerina template.
+
+```
+$ bal health cds --org-name wso2 --package-name cds_service  --package-version 1.0.0 -i cds-conf.toml
+[INFO] Ballerina CDS service template generation completed successfully. The generated project can be found at /Users/tom/Desktop/working_directory/generated-template/cds_service
+
+```
+
+The generated folder (i.e., working_directory/template-generation/cds_service) will contain the following directory structure.
+
+```
+.
+├── Ballerina.toml
+├── Config.toml
+├── Package.md
+├── decision_engine_connector.bal
+├── interceptor.bal
+├── service.bal
+└── utils.bal
+```
+
+#### Use the generated templates
+
+Follow the steps below to use the generated CDS service template.
+1. Navigate to the generated working_directory/template-generation/cds_service/ directory.
+
+2. Complete the decision system connectivity implementation. The `decision_engine_connector` file contains placeholder functions that must be implemented to connect with external decision systems. Please follow the instructions in that file itself.
+
+> **Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
+
+Sample implementation for a placeholder functions.
+
+```
+isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRequest, string hookId) returns cds:CdsResponse|cds:CdsError {
+    cds:CdsResponse cdsResponse = {
+        cards: [],
+        systemActions: []
+    };
+
+    cds:Card card1 = {
+        summary: "Prior authorization",
+        indicator: "critical",
+        'source: {
+            label: "Static CDS Service Example",
+            url: "https://example.com",
+            icon: "https://example.com/img/icon-100px.png"
+        },
+        detail: "Obtain prior authorization to avoid claim denials and patient financial liability. Contact: For questions,reach out to the insurance provider or billing department.",
+        suggestions: [{label: "Kindly get pri-authorization"}],
+        selectionBehavior: "at-most-one",
+        links: [{label: "Prior-auth", url: "https://www.acmehealth.com/policies/lab-coverage", 'type: cds:ABSOLUTE}]
+    };
+
+    cds:Card card2 = {
+        summary: "Alternative centers",
+        indicator: "info",
+        'source: {
+            label: "Static CDS Service Example",
+            url: "https://example.com",
+            icon: "https://example.com/img/icon-100px.png"
+        },
+        detail: "Discuss alternative imaging centers with patients to enhance access and affordability. For assistance, reach out to the facility's scheduling department or insurance provider.",
+        suggestions: [
+            {label: "The selected imaging center is far away from your location. Please select nearby one. Suggested: Asiri labs : Col - 3"}
+        ],
+        selectionBehavior: "any"
+    };
+
+    cdsResponse.cards.push(card1);
+    cdsResponse.cards.push(card2);
+    return cdsResponse;
+}
+```
+
+3. Run the service and verify the output response.
+
+   ```
+   $ bal run
+   Compiling source
+           healthcare_samples/health.fhir.r4.uscore501.practitioner:1.0.0
+
+   Running executable
+   ```
+
+4. Invoke the API to try it out.
+
+   ```
+   curl --location 'http://localhost:8080/cds-services/book-imaging-center' \
+   --header 'Content-Type: application/json' \
+   --data '{
+    "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+    "hook": "order-dispatch",
+    "context": {
+        "patientId": "12345",
+        "dispatchedOrders": [
+            "ServiceRequest/proc002"
+        ],
+        "performer": "Organization/O12345",
+        "fulfillmentTasks": [
+            {
+                "resourceType": "Task",
+                "status": "draft",
+                "intent": "order",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/CodeSystem/task-code",
+                            "code": "fulfill"
+                        }
+                    ]
+                },
+                "focus": {
+                    "reference": "ServiceRequest/proc002"
+                },
+                "for": {
+                    "reference": "Patient/12345"
+                },
+                "authoredOn": "2016-03-10T22:39:32-04:00",
+                "lastModified": "2016-03-10T22:39:32-04:00",
+                "requester": {
+                    "reference": "Practitioner/wdwdwd"
+                },
+                "owner": {
+                    "reference": "Organization/some-performer"
+                }
+            }
+        ]
     }
-    ```
+   }'
+   ```
+
+   You can view the response shown below.
+
+   ```json
+   {
+     "resourceType": "Practitioner",
+     "identifier": [
+       {
+         "system": "http://hl7.org/fhir/sid/us-npi",
+         "use": "official",
+         "value": "1234567890"
+       }
+     ],
+     "meta": {
+       "lastUpdated": "2021-08-24T10:10:10Z",
+       "profile": [
+         "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
+       ]
+     },
+     "name": [
+       {
+         "given": ["John", "Jacob"],
+         "prefix": ["Dr."],
+         "use": "official",
+         "family": "Smith"
+       }
+     ],
+     "id": "1"
+   }
+   ```

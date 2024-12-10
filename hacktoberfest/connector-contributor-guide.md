@@ -1,13 +1,13 @@
 ---
-title: Connector Contributor Guide - Ballerina Hacktoberfest 2024
-description: This guide will walk you through the process of participating in the Ballerina Hacktoberfest connector event.
-keywords: ballerina, hacktoberfest, connector, contribution, guide, hackathon
-intro: This provides a step-by-step guide for contributing to the Ballerina Hacktoberfest connector event.
+title: Connector contributor guide
+description: This guide will walk you through the process of participating in the Ballerina rewards program - Connector conribution event.
+keywords: ballerina, connector, contribution, guide, rewards program
+intro: This provides a step-by-step guide for contributing to the Ballerina rewards program - Connector conribution event event.
 ---
 
-Welcome to the [Ballerina Hacktoberfest]( https://ballerina.io/hacktoberfest/) connector event! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in the [Hacktoberfest](https://hacktoberfest.com/) and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
+Welcome to the [Ballerina rewards program](/community/#contribute-and-get-rewarded) - Connector conribution event! We're excited to have you contribute to the Ballerina ecosystem. This guide will walk you through the process of participating in this event and contributing your connector. Please follow the instructions carefully to ensure your contribution is eligible for rewards.
 
-## Connector Categories & Rewards
+## Connector categories & rewards
 
 You can contribute to one of the following categories:
 
@@ -23,25 +23,25 @@ You can contribute to one of the following categories:
    - Contribution involves building a connector from scratch without relying on an OpenAPI spec, typically for APIs that don’t provide one.
    - Reward: 100 Credits
 
-## Contribution Process
+## Contribution process
 
-### Step 1: Select a Connector
+### Step 1: Select a connector
 
-- Browse the project ideas listed in the [Ballerina Hacktoberfest 2024 Project Board](https://github.com/orgs/ballerina-platform/projects/376/views/5) and choose a connector to work on.
+- Browse the project ideas listed in the [Connector project board](https://github.com/orgs/ballerina-platform/projects/376/views/5) and choose a connector to work on.
 - After selecting a connector, leave a comment on its GitHub issue to indicate your interest in contributing.
 - Ballerina team will review your comment and confirm your request. Once confirmed, the connector will be officially assigned to you.
 
-### Step 2: Repository Setup
+### Step 2: Repository setup
 
 - After confirmation, the Ballerina team will create a new repository for the connector under the [ballerina-platform](https://github.com/ballerina-platform/) GitHub organization and, set up the initial project structure.
 
-### Step 3: Follow the Connector Development Guide
+### Step 3: Follow the connector development guide
 
-- Start working on your connector by following the steps in the [Create Your First Ballerina Connector](https://ballerina.io/learn/create-your-first-connector-with-ballerina/) guide.
+- Start working on your connector by following the steps in the [Create your first Ballerina connector](https://ballerina.io/learn/create-your-first-connector-with-ballerina/) guide.
 
-> Note on Handwritten Connectors (Category 3): Since the guide primarily covers generated connectors, steps related to client generation won't apply. However, the steps for testing, documentation, and examples are the same.
+> Note on Handwritten connectors (Category 3): Since the guide primarily covers generated connectors, steps related to client generation won't apply. However, the steps for testing, documentation, and examples are the same.
 
-### Step 4: Contribution Workflow
+### Step 4: Contribution workflow
 
 For each area of your contribution, create individual pull requests (PRs):
 - Client generation with required sanitization (if applicable)
@@ -51,22 +51,22 @@ For each area of your contribution, create individual pull requests (PRs):
 
 Ensure all PRs reference the related connector issue in the description to properly track your contributions.
 
-### Step 5: Code Reviews & Improvements
+### Step 5: Code reviews & improvements
 
 - Ballerina team will review your PRs and may request changes or improvements. Address the feedback and resubmit the PRs as needed.
 
-### Step 6: Completion & Rewards
+### Step 6: Completion & rewards
 
 - Once all tasks (client, tests, docs, examples) are completed and merged, the Ballerina team will arrange for the rewards.
 
 - **Important**: You must complete all the required steps to be eligible for the full reward. Partial submissions are not eligible for rewards.
 
-## Additional Resources
+## Additional resources
 
 - New to Ballerina? Start with [Ballerina By Example](https://ballerina.io/learn/by-example/) to get familiar with the language.
 - For technical questions, ask on [StackOverflow](https://stackoverflow.com/) using the [ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag, and the team will be notified.
-- Follow the [Connector Development Process](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/connector-development-process.md) for a detailed guide on building connectors.
-- Review [Ballerina Best Practices](https://learn-ballerina.github.io/index.html) to write clean, efficient code.
+- Follow the [Connector development process](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/connector-development-process.md) for a detailed guide on building connectors.
+- Review [Ballerina best practices](https://learn-ballerina.github.io/index.html) to write clean, efficient code.
 - Need help? Comment on the GitHub issue or ask in the [Ballerina Discord](https://discord.gg/ballerinalang).
 - Ensure your contributions follow the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct/).
 

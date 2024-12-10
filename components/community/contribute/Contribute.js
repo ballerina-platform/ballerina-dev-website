@@ -50,6 +50,14 @@ export default function Contribute(props) {
                     </Col>
                 </Row>
 
+                <Row>
+                    <Col xs={12}>
+                        <p className={styles.description} style={{ marginBottom: "60px" }}>
+                            Join the Ballerina community and make an impact! Whether you enhance features, improve documentation, or share knowledge, your contributions help shape the future of this cloud-native language. As a token of appreciation, we offer rewards to celebrate your efforts. Start contributing today!
+                        </p>
+                    </Col>
+                </Row>
+
                 <Row className={styles.category}>
                     <div className={styles.customSeparator}>
                         <Row>
@@ -145,14 +153,14 @@ export default function Contribute(props) {
                             <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.title}`} style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                     <FaConnectdevelop style={{ fontSize: "44px", marginRight: "20px" }} />
-                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Connector projects</p>
+                                    <p style={{ marginBottom: 0, fontSize: "25px" }}>Connector contributions</p>
                                 </div>
                             </Col>
 
                             <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.subCat}`}>
                                     <div>
-                                        Easy
+                                        Category 1
                                     </div>
                                     <div className={styles.points}>
                                         +60 points
@@ -163,7 +171,7 @@ export default function Contribute(props) {
                             <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.subCat}`}>
                                     <div>
-                                        Medium
+                                        Category 2
                                     </div>
                                     <div className={styles.points}>
                                         +80 points
@@ -174,7 +182,7 @@ export default function Contribute(props) {
                             <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.subCat}`}>
                                     <div>
-                                        Hard
+                                        Category 3
                                     </div>
                                     <div className={styles.points}>
                                         +100 points

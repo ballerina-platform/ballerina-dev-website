@@ -192,7 +192,7 @@ export default function Contribute(props) {
 
                             <Col xs={12} sm={12} md={12} lg={2} className={styles.boxCol}>
                                 <div className={`${styles.detailBlocks} ${styles.subCat}`}>
-                                    <a className={styles.issues} href="/hacktoberfest/connector-contributor-guide" target="_blank" rel="noreferrer" title='Read the guide' style={{ marginBottom: "10px" }}>Read the guide</a>
+                                    <a className={styles.issues} href="/contributions/connector-contributor-guide" title='Read the guide' style={{ marginBottom: "10px" }}>Read the guide</a>
                                     <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
                                 </div>
                             </Col>

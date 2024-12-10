@@ -107,6 +107,20 @@ export default function RedirectMessage(props) {
       <br /><br /><br />
       <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
     </>
+  } else if (global.location.href.indexOf('connector-contributor-guide') > 0) {
+    let redirectTo = '/contributions/connector-contributor-guide/'
+
+    pageBody = <>
+      <meta charSet="utf-8" />
+      <title>Redirecting&hellip;</title>
+      <link rel="canonical" href={redirectTo} />
+      <script>location=&quot;{redirectTo}&quot;</script>
+      <meta httpEquiv="refresh" content={"0; url=\"" + redirectTo + '"'} />
+      <meta name="robots" content="noindex" />
+      <h2>Redirecting&hellip;</h2>
+      <br /><br /><br />
+      <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
+    </>
   } else if (global.location.pathname.indexOf('learn') > 0) {
     redirectLink = <Link href='/learn'>Learn</Link>
     pageBody = <PageContent redirectLink={redirectLink} />

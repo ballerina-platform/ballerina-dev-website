@@ -36,12 +36,12 @@ import GenerateHeadingComponent from "../../../components/common/heading/RenderH
 
 String.prototype.hashCode = function () {
   var hash = 0,
-      i, chr;
+    i, chr;
   if (this.length === 0) return hash;
   for (i = 0; i < this.length; i++) {
-      chr = this.charCodeAt(i);
-      hash = ((hash << 5) - hash) + chr;
-      hash |= 0;
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
   }
   return hash;
 }
@@ -63,7 +63,9 @@ var traverseFolder = function (dir) {
       filex = filex
         .replace(/downloads\/swan-lake-release-notes\//g, "")
         .replace(/\/RELEASE_NOTE.md/g, "");
-      results.push(filex);
+      if (filex.indexOf("template") === -1) {
+        results.push(filex);
+      }
     }
   });
 
@@ -242,7 +244,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
                         </code>
                       </pre>
                 },
-                table({node, className, children, ...props}) { 
+                table({ node, className, children, ...props }) {
                   return <div className='mdTable'><table {...props}>{children}</table></div>
                 }
               }}

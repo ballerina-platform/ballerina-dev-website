@@ -947,7 +947,7 @@ The attributes of the annotation are optional and can be used for each particula
 
 ### Modify the OpenAPI Contract Using Ballerina-Friendly Naming Conventions
 
-The `sanitize` subcommand sanitizes the OpenAPI contract file according to the best practices of Ballerina. The Ballerina-specific name extension x-ballerina-name is added to the schemas, including query names and object property names, which cannot be modified directly.
+The `sanitize` subcommand sanitizes the OpenAPI contract file according to the naming conventions of Ballerina. The Ballerina-specific name extension `x-ballerina-name` is added to the schemas, including query names and object property names, which cannot be modified directly.
 
 ```
 bal openapi sanitize [-i | --input] <openapi-contract-file-path>
@@ -1040,12 +1040,12 @@ components:
   schemas:
     Album:
       required:
-        - _id\-
+        - _id
         - artist
         - title
       type: object
       properties:
-        _id\-:
+        _id:
           type: string
           x-ballerina-name: id
         artist:

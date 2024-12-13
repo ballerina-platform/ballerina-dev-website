@@ -45,8 +45,18 @@ If you encounter any certificate-related issues such as the one below when conne
     ```
     <BALLERINA_JRE>/bin/keytool.exe -import -trustcacerts -file <CERTS_PATH> -alias <ALIAS_NAME> -keystore <BALLERINA_JRE>/lib/security/cacerts
     ```
-
 > **Note:** If you are using multiple Ballerina distributions, you may need to follow the above steps to all the JRE instances individually for each distribution.
+
+## Configure proxy settings via environment variables
+
+Proxy settings can also be configured via environment variables. This is useful when you want to configure the proxy settings for all the Ballerina distributions in your system.
+Following are the environment variables that can be used to configure the proxy settings.
+
+```
+BALLERINA_CA_BUNDLE # Path to the CA bundle file
+BALLERINA_CA_PASSWORD # Password for the CA bundle file
+BALLERINA_CA_CERT # Path to the CA certificate file
+```
 
 ## Domain access 
 

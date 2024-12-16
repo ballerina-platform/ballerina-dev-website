@@ -48,23 +48,22 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ## Ballerina library updates
 
-### Features
+### New Features
 
 #### `http` package
 
-- Added static code rules 
-- Added relax data binding support for service and client data binding
+- Added relaxed binding support for service and client payload-binding. This provides the flexibility to handle `nil` values as optional and absent fields as `nilable` types in the data projection.
 
 ### Improvements
 
 #### `http` package
 
-- Added `anydata` support for `setPayload` methods in the request and response objects
-- Improved `@http:Query` annotation to overwrite the query parameter name in client
-- Improved `@http:Query` annotation to overwrite the query parameter name in service
-- Added header name mapping support in record fields
-- Migrated client and service data binding lang utils usage into `data.jsondata` module utils `toJson` and `parserAsType`
-- Added support for configuring server name to be used in the SSL SNI extension
+- Added `anydata` support for `setPayload` methods in the request and response objects.
+- Improved the `@http:Query` annotation to overwrite query parameter names in clients.
+- Improved the `@http:Query` annotation to overwrite query parameter names in services.
+- Added header name mapping support in record fields.
+- Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module, to support flexible data binding.
+- Added support to configure the server name to be used in the SSL SNI extension.
 
 ### Deprecations
 

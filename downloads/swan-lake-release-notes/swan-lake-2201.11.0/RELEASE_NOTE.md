@@ -62,7 +62,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 - Improved the `@http:Query` annotation to overwrite query parameter names in clients.
 - Improved the `@http:Query` annotation to overwrite query parameter names in services.
 - Added header name mapping support in record fields.
-- Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module, to support flexible data binding.
+- Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module.
 - Added support to configure the server name to be used in the SSL SNI extension.
 
 ### Deprecations

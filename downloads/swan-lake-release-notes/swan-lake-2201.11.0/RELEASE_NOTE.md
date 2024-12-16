@@ -52,7 +52,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 #### `http` package
 
-- Added relaxed binding support for service and client data binding
+- Added relaxed binding support for service and client data binding.
 
 ### Improvements
 

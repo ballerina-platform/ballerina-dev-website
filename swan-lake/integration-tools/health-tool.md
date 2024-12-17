@@ -30,11 +30,11 @@ health:2.0.0 successfully set as the active version.
 
 ## Usage
 
-The Ballerina Health tool supports two main usages as follows.
+The Ballerina Health tool has two primary usages.
 
 - [**FHIR package generation:**](#fhir-package-generation) generate a Ballerina package from a given FHIR implementation guide.
 - [**FHIR template generation:**](#fhir-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
-- [**CDS template generation:**](#cds-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
+- [**CDS template generation:**](#cds-template-generation) generate Ballerina templates for CDS services based on the [CDS specification 2.0](https://cds-hooks.hl7.org/2.0/).
 
 The general usage of the tool is as follows.
 
@@ -433,7 +433,7 @@ Supported CDS version: [2.0] https://cds-hooks.hl7.org/2.0
 ### Template generation usage
 
 ```
-$ bal health fhir
+$ bal health cds
             [--org-name] <template-organization-name>
             [--package-name] <fully-qualified-name-of-package>
             [--package-version] <version-of-the-package>
@@ -448,8 +448,9 @@ $ bal health fhir
 | `--org-name`        | Organization name of the Ballerina template to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                                                         | Optional           |
 | `--package-name`    | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name `health.fhir.templates.crd` will be taken to construct the name of the package.                                                                                                                                                                                                         | Optional           |
 | `--package-version` | The version of the Ballerina template to be generated.                                                                                                                                                                                                                                                                                                                                                                                | Optional           |
-| `-i, --input`       | Only the TOML file type is acceptable. Users need to define the CDS hook definitions in the input file. The given CDS hooks input will be used to generate the Ballerina service. | Mandatory          |
 | `-o, --output`      | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                                                                         | Optional           |
+| `-i, --input`       | Only the TOML file type is acceptable. Users need to define the CDS hook definitions in the input file. The given CDS hooks input will be used to generate the Ballerina service. | Mandatory          |
+
 
 ### Template generation example
 

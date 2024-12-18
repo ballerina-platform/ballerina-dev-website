@@ -957,20 +957,22 @@ bal openapi sanitize [-i | --input] <openapi-contract-file-path>
                      [-t | --tags] <tag-names>
                      [--operations] <operation-names>
 ```
-The command-line arguments below can be used with the command for each particular purpose as described below.
+
+The command-line options are as follows.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
-| `-o \| --output`          | The modified openapi file is generated at the same location from which the `bal openapi sanitize` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                   | Optional           |
+| `-o \| --output`          | The modified OpenAPI file is generated at the same location from which the `bal openapi sanitize` command is executed. You can point to another directory using the `(-o\|--output)` option.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the sanitized OpenAPI contract. The default name is `sanitized_openapi`.                                                                                                              | Optional           |
-| `-f \| --format`          | The sanitized OpenAPI contract will be saved in the given format. The format can be either JSON or YAML.The default format is same as the input file format.                                                              | Optional           |
+| `-f \| --format`          | The sanitized OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
 | `-t \| --tags`            | The sanitized OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
 | `--operations`            | The sanitized OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
 For example,
 
 **Input OpenAPI contract file:**
+
 ```yaml
 paths:
   /albums:
@@ -1011,7 +1013,9 @@ components:
           type: string
       additionalProperties: false
 ```
+
 **Output OpenAPI contract file:**
+
 ```yaml
 paths:
   /albums:
@@ -1055,9 +1059,9 @@ components:
       additionalProperties: false
 ```
 
-### Modify the OpenAPI Contract by defining named objects for inline object
+### Modify the OpenAPI Contract by defining named objects for inline objects
 
-The `fallten` subcommand makes the OpenAPI contract more readable by relocating all inline embedded schemas to the components section.
+The `flatten` subcommand makes the OpenAPI contract more readable by relocating all inline embedded schemas to the components section.
 
 ```
 bal openapi flatten [-i | --input] <openapi-contract-file-path>
@@ -1067,7 +1071,8 @@ bal openapi flatten [-i | --input] <openapi-contract-file-path>
                     [-t | --tags] <tag-names>
                     [--operations] <operation-names>
 ```
-The command-line arguments below can be used with the command for each particular purpose as described below.
+
+The command-line options are as follows.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -1081,6 +1086,7 @@ The command-line arguments below can be used with the command for each particula
 For example,
 
 **Input OpenAPI contract file:**
+
 ```yaml
 ...
 paths:

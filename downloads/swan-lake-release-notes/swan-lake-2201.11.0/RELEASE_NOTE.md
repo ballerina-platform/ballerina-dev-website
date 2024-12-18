@@ -52,7 +52,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 #### `http` package
 
-- Added relaxed binding support for service and client data binding.
+- Added relaxed binding support for service and client data binding. This provides the flexibility to bind nil values to optional fields and absent values to nilable fields.
+
+  ```ballerina
+  // Enable relaxed data binding on the client side.
+  http:Client httpClient = check new("http://localhost:9090", laxDataBinding = true);
+  
+  // Enable relaxed data binding on the server side.
+  @http:ServiceConfig {laxDataBinding: true}
+  service /api on new http:Listener(9090) {
+  }
+  ```
 
 ### Improvements
 
@@ -62,7 +72,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 - Improved the `@http:Query` annotation to overwrite query parameter names in clients.
 - Improved the `@http:Query` annotation to overwrite query parameter names in services.
 - Added header name mapping support in record fields.
-- Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module.
+- Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module. This allows integrating the `jsondata:Name` annotation in the JSON to Ballerina record conversion.
 - Added support to configure the server name to be used in the SSL SNI extension.
 
 ### Deprecations

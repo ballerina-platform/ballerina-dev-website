@@ -46,17 +46,43 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
             [-o | --output] <output-location>
 ```
 
+### Sanitize OpenAPI
+
+The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
+
+```
+bal openapi sanitize [-i | --input] <openapi-contract-file-path>
+                     [-o | --output] <output-file-path>
+                     [-n | --name] <generated-file-name>
+                     [-f | --format] [json|yaml]
+                     [-t | --tags] <tag-names>
+                     [--operations] <operation-names>
+```
+
+### Flatten OpenAPI
+
+The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
+
+```
+bal openapi flatten [-i | --input] <openapi-contract-file-path>
+                    [-o | --output] <output-file-path>
+                    [-n | --name] <generated-file-name>
+                    [-f | --format] [json|yaml]
+                    [-t | --tags] <tag-names>
+                    [--operations] <operation-names>
+```
+
 ## Command options
 
 The below command-line arguments can be used with the command.
 
-### OpenAPI to Ballerina command options
+### OpenAPI to Ballerina
 
 The command-line arguments below can be used with the command for each particular purpose as described below. 
 
 | Command option            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Mandatory/Optional |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                                | Mandatory          |
+| `-i \| --input`           | This specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                                | Mandatory          |
 | `-o \| --output`          | The Ballerina files are generated at the same location from which the `bal openapi` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                                                                                                                                                                                                                                                                         | Optional           |
 | `--mode`                  | Mode type can be either a service or client. The Ballerina service and client are generated according to the mode. Without the `--mode`, it generates both service and client stubs for the given OpenAPI contract.                                                                                                                                                                                                                                               | Optional           |
 | `--tags`                  | To generate the Ballerina client or service stub with a subset of tags defined in the OpenAPI contract, use the `--tags` option and specify the tags you need as specified in the OpenAPI definition.<br><br>**E.g.,** `bal openapi -i <openapi-contract>  [--tags < "tag1","tag2">]`                                                                                                                                                                             | Optional           |
@@ -71,16 +97,42 @@ The command-line arguments below can be used with the command for each particula
 | `--single-file`           | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
 | `--use-sanitized-oas`     | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow Ballerina language best practices. | Optional |
 
-### Ballerina to OpenAPI command options
+### Ballerina to OpenAPI
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
 | Command option    | Description                                                                                                                                                                                               | Mandatory/Optional |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i \|--input`    | The `ballerina-service-file-path` command option specifies the path of the Ballerina service file (e.g., `my-service.bal`).                                                                               | Mandatory          |
+| `-i \|--input`    | This specifies the path of the Ballerina service file (e.g., `my-service.bal`).                                                                               | Mandatory          |
 | `--json`          | Generate the Ballerina service to OpenAPI output as JSON. The default is YAML.                                                                                                                            | Optional           |
 | `-s \| --service` | This service name is used to identify the service that needs to be documented as an OpenAPI contract.                                                                                                | Optional           |
 | `-o\|--output`    | Location of the generated OpenAPI contract. If this path is not specified, the output is written to the same directory from which the command is run.                                                | Optional           |
+
+### Sanitize OpenAPI
+
+The command-line arguments below can be used with the command for each particular purpose as described below.
+
+| Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i \| --input`           | This specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-o \| --output`          | The modified OpenAPI file is generated at the same location from which the `bal openapi sanitize` command is executed. You can point to another directory using the `(-o\|--output)` option.                   | Optional           |
+| `-n \| --name`            | The given name will be used to save the sanitized OpenAPI contract. The default name is `sanitized_openapi`.                                                                                                              | Optional           |
+| `-f \| --format`          | The sanitized OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
+| `-t \| --tags`            | The sanitized OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The sanitized OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
+
+### Flatten OpenAPI
+
+The command-line arguments below can be used with the command for each particular purpose as described below.
+
+| Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i \| --input`           | This specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-o \| --output`          | The modified openapi file is generated at the same location from which the `bal openapi flatten` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                   | Optional           |
+| `-n \| --name`            | The given name will be used to save the flattened OpenAPI contract. The default name is `flattened_openapi`.                                                                                                              | Optional           |
+| `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML.The default format is same as the input file format.                                                              | Optional           |
+| `-t \| --tags`            | The falttened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The falltened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
 ## Generate Ballerina services from OpenAPI Contracts 
 
@@ -962,7 +1014,7 @@ The command-line options are as follows.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-i \| --input`           | This specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
 | `-o \| --output`          | The modified OpenAPI file is generated at the same location from which the `bal openapi sanitize` command is executed. You can point to another directory using the `(-o\|--output)` option.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the sanitized OpenAPI contract. The default name is `sanitized_openapi`.                                                                                                              | Optional           |
 | `-f \| --format`          | The sanitized OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
@@ -1076,7 +1128,7 @@ The command-line options are as follows.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i \| --input`           | The `openapi-contract-path` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
+| `-i \| --input`           | This specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
 | `-o \| --output`          | The modified openapi file is generated at the same location from which the `bal openapi flatten` command is executed. You can point to another directory location by using the `(-o\|--output).` flag.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the flattened OpenAPI contract. The default name is `flattened_openapi`.                                                                                                              | Optional           |
 | `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML.The default format is same as the input file format.                                                              | Optional           |

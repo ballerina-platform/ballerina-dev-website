@@ -428,7 +428,7 @@ Follow the steps below to use the generated API templates by running the cloned 
 
 Generate a Ballerina service template from the given CDS hook definitions. This template will also include basic functionalities such as validation, prefetch, etc., and it will facilitate the developers' implementation of the required connection with the external decision support system to run the CDS server. The generated Ballerina service project will be written into the provided output location.
 
-Supported CDS version: [2.0] https://cds-hooks.hl7.org/2.0
+Supported CDS version: [2.0](https://cds-hooks.hl7.org/2.0)
 
 ### Template generation usage
 

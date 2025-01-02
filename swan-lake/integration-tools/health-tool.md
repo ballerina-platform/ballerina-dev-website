@@ -460,7 +460,7 @@ Follow the steps below to try out an example CDS template generation use case of
 
 Create a TOML file with the CDS hook definitions. Refer to [CDS specifications](https://cds-hooks.hl7.org/2.0/#response) for more information about the attributes.
 
-For example `cds-definitions.toml`
+Sample `cds-definitions.toml` file:
 
 ```
 [[cds_services]]

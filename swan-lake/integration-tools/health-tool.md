@@ -30,7 +30,7 @@ health:2.0.0 successfully set as the active version.
 
 ## Usage
 
-The Ballerina Health tool has two primary usages.
+The Ballerina Health tool has three primary usages.
 
 - [**FHIR package generation:**](#fhir-package-generation) generate a Ballerina package from a given FHIR implementation guide.
 - [**FHIR template generation:**](#fhir-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.

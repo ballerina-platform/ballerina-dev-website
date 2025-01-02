@@ -483,7 +483,7 @@ description = "This hook can be used when booking imaging center"
 
 Follow the steps below to run the Health tool and generate the Ballerina templates for CDS for the given hook definitions.
 
-1. Navigate to the working directory that contains CDS hook definitions file.
+1. Navigate to the working directory that contains the CDS hook definitions file.
 
 2. Run the tool with the [required command options](#cds-template-generation-command-options) to generate the Ballerina template.
 

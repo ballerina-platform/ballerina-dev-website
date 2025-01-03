@@ -25,5 +25,4 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-To view bug fix, see the GitHub milestone for Swan Lake Update 8 (2201.8.9) of the repositories below.
-- [Compiler](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.9+is%3Aclosed+label%3ALang%2FExpressions%2FQuery+label%3AType%2FBug)
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 8 (2201.8.9)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.9+is%3Aclosed+label%3ALang%2FExpressions%2FQuery+label%3AType%2FBug).

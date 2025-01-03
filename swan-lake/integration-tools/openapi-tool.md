@@ -46,9 +46,9 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
             [-o | --output] <output-location>
 ```
 
-### Sanitize OpenAPI
+### Sanitize OpenAPI contract usage
 
-The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
+The Sanitize OpenAPI command supports several options in the Ballerina OpenAPI tool as follows.
 
 ```
 bal openapi sanitize [-i | --input] <openapi-contract-file-path>
@@ -59,9 +59,9 @@ bal openapi sanitize [-i | --input] <openapi-contract-file-path>
                      [--operations] <operation-names>
 ```
 
-### Flatten OpenAPI
+### Flatten OpenAPI contract usage
 
-The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
+The Flatten OpenAPI command supports several options in the Ballerina OpenAPI tool as follows.
 
 ```
 bal openapi flatten [-i | --input] <openapi-contract-file-path>
@@ -108,9 +108,9 @@ The command-line arguments below can be used with the command for each particula
 | `-s \| --service` | This service name is used to identify the service that needs to be documented as an OpenAPI contract.                                                                                                | Optional           |
 | `-o\|--output`    | Location of the generated OpenAPI contract. If this path is not specified, the output is written to the same directory from which the command is run.                                                | Optional           |
 
-### Sanitize OpenAPI
+### Sanitize OpenAPI contract
 
-The command-line arguments below can be used with the command for each particular purpose as described below.
+The following command-line options are available.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -121,9 +121,9 @@ The command-line arguments below can be used with the command for each particula
 | `-t \| --tags`            | The sanitized OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
 | `--operations`            | The sanitized OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
-### Flatten OpenAPI
+### Flatten OpenAPI contract
 
-The command-line arguments below can be used with the command for each particular purpose as described below.
+The following command-line options are available.
 
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -997,7 +997,7 @@ The attributes of the annotation are optional and can be used for each particula
 
 ## OpenAPI Contract Modifier
 
-### Modify the OpenAPI Contract Using Ballerina-Friendly Naming Conventions
+### Modify the OpenAPI contract using Ballerina-Preferred naming conventions
 
 The `sanitize` subcommand sanitizes the OpenAPI contract file according to the naming conventions of Ballerina. The Ballerina-specific name extension `x-ballerina-name` is added to the schemas, including query names and object property names, which cannot be modified directly.
 

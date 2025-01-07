@@ -519,11 +519,6 @@ Sample implementation for a placeholder function:
 
 ```
 isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRequest, string hookId) returns cds:CdsResponse|cds:CdsError {
-    cds:CdsResponse cdsResponse = {
-        cards: [],
-        systemActions: []
-    };
-
     cds:Card card1 = {
         summary: "Prior authorization",
         indicator: "critical",
@@ -532,7 +527,7 @@ isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRe
             url: "https://example.com",
             icon: "https://example.com/img/icon-100px.png"
         },
-        detail: "Obtain prior authorization to avoid claim denials and patient financial liability. Contact: For questions,reach out to the insurance provider or billing department.",
+        detail: "Obtain prior authorization to avoid claim denials and patient financial liability. Contact: For questions, reach out to the insurance provider or billing department.",
         suggestions: [{label: "Kindly get pri-authorization"}],
         selectionBehavior: "at-most-one",
         links: [{label: "Prior-auth", url: "https://www.acmehealth.com/policies/lab-coverage", 'type: cds:ABSOLUTE}]
@@ -553,8 +548,10 @@ isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRe
         selectionBehavior: "any"
     };
 
-    cdsResponse.cards.push(card1);
-    cdsResponse.cards.push(card2);
+    cds:CdsResponse cdsResponse = {
+        cards: [card1, card2],
+        systemActions: []
+    };
     return cdsResponse;
 }
 ```

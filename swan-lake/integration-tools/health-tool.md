@@ -511,7 +511,7 @@ The generated folder (i.e., working_directory/template-generation/cds_service) w
 Follow the steps below to use the generated CDS service template.
 1. Navigate to the generated working_directory/template-generation/cds_service/ directory.
 
-2. Complete the decision system connectivity implementation. The `decision_engine_connector` file contains placeholder functions that must be implemented to connect with external decision systems. Please follow the instructions in that file itself.
+2. Complete the decision system connectivity implementation. The `decision_engine_connector` file contains placeholder functions that must be implemented to connect with external decision systems. Please follow the instructions in the file.
 
 > **Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
 

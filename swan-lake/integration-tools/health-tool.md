@@ -34,7 +34,7 @@ The Ballerina Health tool has three primary usages.
 
 - [**FHIR package generation:**](#fhir-package-generation) generate a Ballerina package from a given FHIR implementation guide.
 - [**FHIR template generation:**](#fhir-template-generation) generate Ballerina templates for FHIR APIs from a given FHIR implementation guide.
-- [**CDS template generation:**](#cds-template-generation) generate Ballerina templates for CDS services based on the [CDS specification 2.0](https://cds-hooks.hl7.org/2.0/).
+- [**CDS template generation:**](#cds-template-generation) generate Ballerina templates for Clinical Decision Support (CDS) services based on the [CDS specification 2.0](https://cds-hooks.hl7.org/2.0/).
 
 The general usage of the tool is as follows.
 

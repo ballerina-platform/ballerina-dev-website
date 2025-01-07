@@ -456,7 +456,7 @@ $ bal health cds
 
 Follow the steps below to try out a sample CDS template generation use case of the Health tool.
 
-#### Create CDS definition file
+#### Create the CDS definition file
 
 Create a TOML file with the CDS hook definitions. Refer to [CDS specifications](https://cds-hooks.hl7.org/2.0/#response) for more information about the attributes.
 

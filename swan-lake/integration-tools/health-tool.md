@@ -559,7 +559,7 @@ isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRe
 }
 ```
 
-3. Run the service and verify the output response.
+3. Run the service.
 
    ```
    $ bal run

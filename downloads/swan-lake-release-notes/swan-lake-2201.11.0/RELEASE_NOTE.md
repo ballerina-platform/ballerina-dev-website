@@ -33,10 +33,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 #### `data.xmldata` module
 
 - Introduced XML schema definition (XSD) Sequence and Choice support for the `data.xmldata` module.
-- Introduced union type support for `xml` operations in the `data.xmldata` package.
-- Introduced singleton, union of singletons, and enum support for `xml` operations in the `data.xmldata` package.
+- Introduced union type support for `xml` operations in the `data.xmldata` module.
+- Introduced singleton, union of singletons, and enum support for `xml` operations in the `data.xmldata` module.
 
-#### `data.csv` packages
+#### `data.csv` module
 
 - Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
 - Introduced support for parsing CSV with union types as expected types.

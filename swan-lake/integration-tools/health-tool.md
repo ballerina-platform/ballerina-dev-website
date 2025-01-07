@@ -426,7 +426,7 @@ Follow the steps below to use the generated API templates by running the cloned 
 
 ## CDS template generation
 
-Generate a Ballerina service template from the given CDS hook definitions. This template will also include basic functionalities such as validation, prefetch, etc., and it will facilitate the developers' implementation of the required connection with the external decision support system to run the CDS server. The generated Ballerina service project will be written into the provided output location.
+A Ballerina service template can be generated from the given CDS hook definitions. This template will also include basic functionalities such as validation, prefetch, etc., and it will facilitate the developers' implementation of the required connection with the external decision support system to run the CDS server. The generated Ballerina service project will be written into the provided output location.
 
 Supported CDS version: [2.0](https://cds-hooks.hl7.org/2.0)
 
@@ -435,7 +435,7 @@ Supported CDS version: [2.0](https://cds-hooks.hl7.org/2.0)
 ```
 $ bal health cds
             [--org-name] <template-organization-name>
-            [--package-name] <fully-qualified-name-of-package>
+            [--package-name] <name-of-the-package>
             [--package-version] <version-of-the-package>
             [-o | --output] <output-location>
             [-i | --input] <cds-hook-definitions-file-path>
@@ -445,7 +445,7 @@ $ bal health cds
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                                                                           | Mandatory/Optional |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `-i, --input`       | Only the TOML file type is acceptable. Users need to define the CDS hook definitions in the input file. The given CDS hooks input will be used to generate the Ballerina service. | Mandatory          |
+| `-i, --input`       | Users need to define the CDS hook definitions in the input file. The given CDS hooks input will be used to generate the Ballerina service. Only the TOML file type is acceptable.  | Mandatory          |
 | `--org-name`        | Organization name of the Ballerina template to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                                                         | Optional           |
 | `--package-name`    | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. If not specified, the default name `health.fhir.templates.crd` will be used to construct the name of the package.                                                                                                                                                                                                         | Optional           |
 | `--package-version` | The version of the Ballerina template to be generated.                                                                                                                                                                                                                                                                                                                                                                                | Optional           |
@@ -513,7 +513,7 @@ Follow the steps below to use the generated CDS service template.
 
 2. Complete the decision system connectivity implementation. The `decision_engine_connector` file contains placeholder functions that must be implemented to connect with external decision systems. Please follow the instructions in the file.
 
-> **Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
+> **Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an [extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina), which assists on both syntactic and semantic aspects.
 
 Sample implementation for a placeholder function:
 

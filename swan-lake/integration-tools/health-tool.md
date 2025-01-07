@@ -454,7 +454,7 @@ $ bal health cds
 
 ### Template generation example
 
-Follow the steps below to try out an example CDS template generation use case of the Health tool.
+Follow the steps below to try out a sample CDS template generation use case of the Health tool.
 
 #### Create CDS definition file
 

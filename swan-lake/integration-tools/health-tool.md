@@ -515,7 +515,7 @@ Follow the steps below to use the generated CDS service template.
 
 > **Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
 
-Sample implementation for a placeholder functions.
+Sample implementation for a placeholder function:
 
 ```
 isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRequest, string hookId) returns cds:CdsResponse|cds:CdsError {

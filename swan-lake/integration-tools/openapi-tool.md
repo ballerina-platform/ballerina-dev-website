@@ -19,7 +19,7 @@ The Ballerina OpenAPI tool support provides the following capabilities.
  3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
   >**Info:** The OpenAPI compiler plugin allows you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
-### OpenAPI to Ballerina usage
+### OpenAPI to Ballerina CLI usage
 
 The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.
 
@@ -36,7 +36,7 @@ $ bal openapi [-i | --input] <openapi-contract-file-path>
               [--single-file] [--use-sanitized-oas]
 ```
 
-### Ballerina to OpenAPI usage
+### Ballerina to OpenAPI CLI usage
 
 The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
 
@@ -46,7 +46,7 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
               [-o | --output] <output-location>
 ```
 
-### Align OpenAPI contract usage
+### Align OpenAPI contract CLI usage
 
 The `align` subcommand of the Ballerina OpenAPI tool supports the following options.
 
@@ -59,7 +59,7 @@ bal openapi align [-i | --input] <openapi-contract-file-path>
                   [--operations] <operation-names>
 ```
 
-### Flatten OpenAPI contract usage
+### Flatten OpenAPI contract CLI usage
 
 The `flatten` subcommand of the Ballerina OpenAPI tool supports the following options.
 
@@ -76,7 +76,7 @@ bal openapi flatten [-i | --input] <openapi-contract-file-path>
 
 The below command-line arguments can be used with the command.
 
-### OpenAPI to Ballerina
+### OpenAPI to Ballerina command options
 
 The command-line arguments below can be used with the command for each particular purpose as described below. 
 
@@ -97,7 +97,7 @@ The command-line arguments below can be used with the command for each particula
 | `--single-file`           | This option can be used to generate the Ballerina service or client with related types and utility functions in a single file. | Optional |
 | `--use-sanitized-oas`     | This is an experimental feature. This option enables service/client code generation by modifying the given OAS to follow Ballerina language best practices. | Optional |
 
-### Ballerina to OpenAPI
+### Ballerina to OpenAPI command options
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
@@ -108,7 +108,7 @@ The command-line arguments below can be used with the command for each particula
 | `-s \| --service` | This service name is used to identify the service that needs to be documented as an OpenAPI contract.                                                                                                | Optional           |
 | `-o\|--output`    | Location of the generated OpenAPI contract. If this path is not specified, the output is written to the same directory from which the command is run.                                                | Optional           |
 
-### Align OpenAPI contract
+### Align OpenAPI contract command options
 
 The `align` subcommand of the Ballerina OpenAPI tool supports the following options.
 
@@ -121,7 +121,7 @@ The `align` subcommand of the Ballerina OpenAPI tool supports the following opti
 | `-t \| --tags`            | The aligned OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
 | `--operations`            | The aligned OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
-### Flatten OpenAPI contract
+### Flatten OpenAPI contract command options
 
 The `flatten` subcommand of the Ballerina OpenAPI tool supports the following options.
 

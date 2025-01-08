@@ -488,7 +488,7 @@ Follow the steps below to run the Health tool and generate the Ballerina templat
 2. Run the tool with the [required command options](#cds-template-generation-command-options) to generate the Ballerina template.
 
 ```
-$ bal health cds --org-name wso2 --package-name cds_service  --package-version 1.0.0 -i cds-conf.toml
+$ bal health cds --org-name wso2 --package-name cds_service  --package-version 1.0.0 -i cds-definitions.toml
 [INFO] Ballerina CDS service template generation completed successfully. The generated project can be found at /Users/tom/Desktop/working_directory/generated-template/cds_service
 
 ```

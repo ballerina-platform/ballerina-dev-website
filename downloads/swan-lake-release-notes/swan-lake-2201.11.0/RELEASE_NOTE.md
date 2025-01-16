@@ -11,7 +11,7 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina Swan Lake Update 10 (2201.11.0)
+## Overview of Ballerina Swan Lake Update 11 (2201.11.0)
 
 <em> Swan Lake Update 11 (2201.11.0) is the eleventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em> 
 
@@ -168,6 +168,10 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 ### New features
 
 ### Improvements
+
+- Replaced `Package.md` with `README.md` as the primary documentation for packages, ensuring a unified documentation format across Ballerina Central and version control platforms. The default `README.md` can be overridden by specifying a preferred file using the `readme` field in the [package] table of the `Ballerina.toml`.
+- Introduced the `[[package.modules]]` array in the Ballerina.toml to define module-specific metadata, such as export and readme.
+- Upgraded the version of BALA archives to 3.0.0 to accommodate these changes.
 
 ### Bug fixes
 

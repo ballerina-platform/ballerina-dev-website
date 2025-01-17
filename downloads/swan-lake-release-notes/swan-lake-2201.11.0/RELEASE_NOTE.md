@@ -106,10 +106,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   ```
   $ bal openapi flatten <openapi.yaml>
   ```
-- Introduced the `sanitize` sub-command, which sanitizes the OpenAPI contract file according to Ballerina's best naming practices. The Ballerina name extensions are added to the schemas which can not be modified directly. The output is a modified OpenAPI contract.
+- Introduced the `align` sub-command, which alignes the OpenAPI contract file according to Ballerina's best naming practices. The Ballerina name extensions are added to the schemas which can not be modified directly. The output is a modified OpenAPI contract.
 
   ```
-  $ bal openpai sanitize <openapi.yaml>
+  $ bal openpai align <openapi.yaml>
   ```
 - Add code generation support with the new Ballerina name extensions. These extensions are mapped as relevant annotations in the generated types, parameters and record fields.
 

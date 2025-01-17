@@ -121,7 +121,7 @@ visibility = "private"
 
 ### The `readme` field
 
-The readme field allows you to specify the primary documentation file for your package. By default, the README.md file located in the root directory of the package serves as the primary documentation. However, you can override this behavior by providing a custom path to a Markdown file in the readme field. This enables you to use a different file as the primary documentation.
+The readme field allows you to specify the primary documentation file for your package. By default, the README.md file located at the package's root directory serves as the primary documentation. However, you can override this behavior by providing a custom path to a Markdown file in the readme field. This enables you to use a different file as the primary documentation.
 
 ``` toml
 [package]
@@ -268,7 +268,7 @@ graalvmBuildOptions = "--option1 --option2"        # Additional native-image opt
 
 ### Modules
 
-The [[package.modules]] array allows you to define metadata for individual modules. The following example demonstrates how to specify this information:
+The `[[package.modules]]` array allows you to define metadata for individual modules. The following example demonstrates how to specify this information:
 
 ``` toml
 [[package.modules]]
@@ -286,7 +286,7 @@ The optional export field indicates whether the module is public. Only public mo
 
 The optional readme field specifies the path to the module's documentation file in Markdown. If this field not provided, `README.md` is assumed to be the documentation file if it is available.
 
-Note that metadata for the default module is defined under the [package] table. Therefore, the name field in the [[package.modules]] array cannot match the default module name.
+>**Note:** Metadata for the default module is defined under the `[package]` table. Therefore, the name field in the `[[package.modules]]` array cannot match the default module name.
 
 ### Dependencies
 

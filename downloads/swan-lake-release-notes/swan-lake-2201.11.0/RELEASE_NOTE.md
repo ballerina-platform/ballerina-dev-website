@@ -34,7 +34,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 #### Support for XML Step Extensions in XML Step Expression
 
-The XML step expression in Ballerina supports step extensions, including method invocation, index access, filtering, and their combinations.
+The XML step expression now supports step extensions, including method invocation, member access, filtering, and combinations of these.
 
 ```ballerina
 public function main() {
@@ -42,20 +42,16 @@ public function main() {
     `<item><!--comment--><name>T-shirt</name><price>19.99</price><brand><name>nike</name></brand></item>
       <item><?data?><name>Backpack</name><price>34.99</price><brand><name>adidas</name></brand></item>`;
 
-    // Indexed step extension.
-    // Results in: `<name>nike</name><name>adidas</name>`
+    // Evaluates to `<name>nike</name><name>adidas</name>`
     xml x1 = x/**/<name>[1];
 
-    // Method call step extension. 
-    // Results in: `<name>nike</name><name>adidas</name>`
+    // Evaluates to `<name>nike</name><name>adidas</name>`
     xml x2 = x/<brand>.children();
 
-    // Filter step extension.
-    // Results in: `<price>19.99</price><price>34.99</price>`
+    // Evaluates to `<price>19.99</price><price>34.99</price>`
     xml x3 = x/*.<price>;
 
-    // Indexed and method call step extension.
-    // Results in: `<!--comment--><?data?>`
+    // Evaluates to `<!--comment--><?data?>`
     xml x4 = x/*[0].filter(y => y is xml:Comment || y is xml:ProcessingInstruction);
 }
 ```

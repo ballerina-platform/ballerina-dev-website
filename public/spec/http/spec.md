@@ -353,6 +353,23 @@ The service implemented via the service contract type has the following restrict
 - The base path is not allowed in the service declaration, and it is inferred from the service contract type.
 - The service declaration cannot have additional resource methods which are not defined in the service contract type.
 
+### 2.2.7. Relaxed data binding
+
+Enables relaxed data binding for the JSON payload binding process, allowing graceful handling of null values and absent fields 
+to reduce type conversion errors and better align with inconsistent API requests.
+
+The following additional rules applies to data projection used for the relaxed data binding,
+
+- For fields that are marked as optional but non-nullable, null values in the response are treated as absent fields instead of causing
+runtime failures.
+- For required fields that are absent in the response are treated as null values instead of causing runtime failures.
+
+```ballerina
+@http:ServiceConfig {
+    laxDataBinding: true
+}
+```
+
 ### 2.3. Resource
 
 A method of a service can be declared as a [resource method](https://ballerina.io/spec/lang/2021R1/#resources) 
@@ -1181,6 +1198,7 @@ public type ClientConfiguration record {|
     ClientSecureSocket? secureSocket = ();
     ProxyConfig? proxy = ();
     boolean validation = true;
+    laxDataBinding = false;
 |};
 
 public type ClientHttp1Settings record {|
@@ -1347,6 +1365,21 @@ public function main() {
     // Status code response binding with specific body type
     AlbumsOk|error response2 = albumClient->/v1/albums;
 }
+```
+
+##### 2.4.1.10 Relaxed data binding client
+
+Enables relaxed data binding for the JSON payload binding process, allowing graceful handling of null values and absent fields 
+to reduce type conversion errors and better align with inconsistent API responses.
+
+The following additional rules applies to data projection used for the relaxed data binding,
+
+- For fields that are marked as optional but non-nullable, null values in the response are treated as absent fields instead of causing
+runtime failures.
+- For required fields that are absent in the response are treated as null values instead of causing runtime failures.
+
+```ballerina
+final http:Client relaxedClientEP = check new ("http://localhost:9090", laxDataBinding = true);
 ```
 
 ##### 2.4.2. Client action

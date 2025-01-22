@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @bhashinee  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2022/08/23  
-_Updated_: 2024/03/26  
+_Updated_: 2025/01/20  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -25,6 +25,7 @@ The conforming implementation of the specification is released and included in t
    * 2.4. [SHA384](#24-sha384)
    * 2.5. [SHA512](#25-sha512)
    * 2.6. [CRC32B](#26-crc32b)
+   * 2.7. [KECCAK256](#27-keccak256)
 3. [HMAC](#3-hmac)
    * 3.1. [MD5](#31-md5)
    * 3.2. [SHA1](#32-sha1)
@@ -166,6 +167,15 @@ This API can be used to create the Hex-encoded CRC32B value of the given data.
 string stringData = "Hello Ballerina";
 byte[] data = stringData.toBytes();
 string checksum = crypto:crc32b(data);
+```
+
+### 2.7. [KECCAK256](#27-keccak256)
+
+This API can be used to create the Hex-encoded KECCAK-256 value of the given data.
+```ballerina
+string stringData = "Hello Ballerina";
+byte[] data = stringData.toBytes();
+string checksum = crypto:hashKeccak256(data);
 ```
 
 ## 3. [HMAC](#3-hmac)

@@ -32,7 +32,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Improvements
 
-#### Support for XML Step Extensions in XML Step Expression
+#### Support for XML step extensions in XML step expressions
 
 The XML step expression now supports step extensions, including method invocation, member access, filtering, and combinations of these.
 

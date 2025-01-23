@@ -657,7 +657,7 @@
                                 {
                                     "dirName": "Zipkin",
                                     "level": 4,
-                                    "position": 4,
+                                    "position": 3,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/zipkin",
                                     "id": "zipkin"
@@ -673,7 +673,7 @@
                                 {
                                     "dirName": "New Relic",
                                     "level": 4,
-                                    "position": 4,
+                                    "position": 5,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/new-relic",
                                     "id": "new-relic"
@@ -681,7 +681,7 @@
                                 {
                                     "dirName": "Elastic Stack",
                                     "level": 4,
-                                    "position": 4,
+                                    "position": 6,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
                                     "id": "elastic-stack"

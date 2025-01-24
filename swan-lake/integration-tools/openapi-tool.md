@@ -115,9 +115,9 @@ The `align` subcommand of the Ballerina OpenAPI tool supports the following opti
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `-i \| --input`           | The path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
-| `-o \| --output`          | The directory location where the aligned OpenAPI contract will be generated. The default location is same as the location from which the `bal openapi align` command is executed.                   | Optional           |
+| `-o \| --output`          | The directory location where the aligned OpenAPI contract will be generated. The default location is the same as the location from which the `bal openapi align` command is executed.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the aligned OpenAPI contract. The default name is `aligned_ballerina_openapi`.                                                                                                              | Optional           |
-| `-f \| --format`          | The aligned OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
+| `-f \| --format`          | The aligned OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is the same as the input file format.                                                              | Optional           |
 | `-t \| --tags`            | The aligned OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
 | `--operations`            | The aligned OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
@@ -128,11 +128,11 @@ The `flatten` subcommand of the Ballerina OpenAPI tool supports the following op
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `-i \| --input`           | The path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
-| `-o \| --output`          | The directory location where the flattened OpenAPI contract will be generated. The default location is same as the location from which the `bal openapi flatten` command is executed.                   | Optional           |
+| `-o \| --output`          | The directory location where the flattened OpenAPI contract will be generated. The default location is the same as the location from which the `bal openapi flatten` command is executed.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the flattened OpenAPI contract. The default name is `flattened_openapi`.                                                                                                              | Optional           |
-| `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
-| `-t \| --tags`            | The falttened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
-| `--operations`            | The falltened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
+| `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is the same as the input file format.                                                              | Optional           |
+| `-t \| --tags`            | The flattened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The flattened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
 ## Generate Ballerina services from OpenAPI Contracts 
 
@@ -999,7 +999,7 @@ The attributes of the annotation are optional and can be used for each particula
 
 ### Modify the OpenAPI contract using Ballerina-Preferred naming conventions
 
-The `align` subcommand alignes the OpenAPI contract file according to the naming conventions of Ballerina. The Ballerina-specific name extension `x-ballerina-name` is added to the schemas, including query names and object property names, which cannot be modified directly.
+The `align` subcommand aligns the OpenAPI contract file according to Ballerina's naming conventions. The Ballerina-specific name extension `x-ballerina-name` is added to the schemas, including query and object property names, which cannot be modified directly.
 
 ```
 bal openapi align [-i | --input] <openapi-contract-file-path>
@@ -1015,9 +1015,9 @@ The command-line options are as follows.
 | Command option            | Description                                                                                                                                                                                                               | Mandatory/Optional |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `-i \| --input`           | The path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                        | Mandatory          |
-| `-o \| --output`          | The directory location where the aligned OpenAPI contract will be generated. The default location is same as the location from which the `bal openapi align` command is executed.                   | Optional           |
+| `-o \| --output`          | The directory location where the aligned OpenAPI contract will be generated. The default location is the same as the location from which the `bal openapi align` command is executed.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the aligned OpenAPI contract. The default name is `aligned_ballerina_openapi`.                                                                                                              | Optional           |
-| `-f \| --format`          | The aligned OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
+| `-f \| --format`          | The aligned OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is the same as the input file format.                                                              | Optional           |
 | `-t \| --tags`            | The aligned OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
 | `--operations`            | The aligned OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 

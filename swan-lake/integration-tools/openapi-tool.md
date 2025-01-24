@@ -1132,8 +1132,8 @@ The command-line options are as follows.
 | `-o \| --output`          | The directory location where the flattened OpenAPI contract will be generated. The default location is same as the location from which the `bal openapi flatten ` command is executed.                   | Optional           |
 | `-n \| --name`            | The given name will be used to save the flattened OpenAPI contract. The default name is `flattened_openapi`.                                                                                                              | Optional           |
 | `-f \| --format`          | The flattened OpenAPI contract will be saved in the given format. The format can be either JSON or YAML. The default format is same as the input file format.                                                              | Optional           |
-| `-t \| --tags`            | The falttened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
-| `--operations`            | The falltened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
+| `-t \| --tags`            | The flattened OpenAPI contract will only have the operations with the given tags.                                                                                                                                         | Optional           |
+| `--operations`            | The flattened OpenAPI contract will only have the given operations.                                                                                                                                                       | Optional           |
 
 For example,
 

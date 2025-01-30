@@ -153,7 +153,7 @@ This is modified as follows.
 ```
 
 ##### Strand Dump tool
-The strand dump tool has been enhanced to support virtual threads. The report includes the total number of strands, with distinct sections for isolated and non-isolated strands, each showing their respective stack traces. With the new concurrency model, each strand is directly mapped to a Java virtual thread and the tool uses virtual threads to dump the strand information. However, since the thread dump does not provide any information about the state of the threads, the state of the strands will not be included in the strand dump report.
+The strand dump tool has been updated to support virtual threads. The report now includes the total number of strands, with separate sections for isolated and non-isolated strands, each displaying their respective stack traces. Under the new concurrency model, each strand is directly mapped to a Java virtual thread, and the tool uses the virtual thread dump to extract strand related information. However, since the thread dump does not provide information about the state of virtual threads, the current version of the strand dump report does not include the state of the strands.
 
 #### New Runtime Java APIs
 

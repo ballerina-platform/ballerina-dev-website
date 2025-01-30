@@ -434,3 +434,4 @@ public void invokeMethodAsync(String functionName, Callback callback, Object... 
  Strand getStrand();
  Throwable getPanic();
  Callback getCallback();
+```

@@ -281,6 +281,18 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 `--operations`: (Optional) Comma-separated list of operation URIs to generate client functions for specific operations. If not provided, methods for all operations in the WSDL will be generated.
 `-m, --module`: The name of the module in which the Ballerina client and record types will be generated. If not provided, output files will be saved to the same Ballerina project.
 
+#### XSD tool
+
+- Introduced a new tool to generate Ballerina record types from an XSD file.
+- This helps define structured data models in Ballerina based on the provided XML schema.
+
+```
+  $ bal xsd <xsd-file-path> [--module <output-module-name>]
+```
+
+`xsd-file-path`: Path to the XSD file.
+`-m, --module`: The name of the module in which the Ballerina record types will be generated. If not provided, the output file will be saved to the same Ballerina project.
+
 #### Language Server
 
 #### CLI

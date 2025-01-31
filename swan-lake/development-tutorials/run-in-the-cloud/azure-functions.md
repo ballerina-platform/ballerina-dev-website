@@ -48,7 +48,7 @@ Follow the steps below to create the Azure function app.
 1. Execute the `az login` command on the CLI to log in to the Azure CLI.
 2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the default option of creating a resource group automatically and the requirements below.
 
-      - Runtime stack - `Java 17`
+      - Runtime stack - `Java 21`
       - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
 
 ## Create the function
@@ -87,7 +87,7 @@ Follow the steps below to set up the prerequisites, which are specifically requi
 ### Create the app 
 
 Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
-   - Runtime stack - `Java 17`
+   - Runtime stack - `Java 21`
    - Hosting operating system - `Linux` (As of now, Ballerina Azure functions native support is only available for Linux.)
 
 ### Create the function 

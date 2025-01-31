@@ -56,7 +56,13 @@ $ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 
 ## Install via the Ballerina language ZIP file
 
-> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net" target="_blank">AdoptOpenJRE</a> version 11 for Ballerina Update 7 or below and version 17 for Ballerina Update 8 or above.
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net" target="_blank">AdoptOpenJRE</a> for Ballerina. The required Java version depends on the update version, as shown below.
+
+**Update Versions**|**Java version**
+:-----:|:-----:
+Update 7 or below| 11
+Update 8, 9 and 10| 17
+Update 11 and above| 21
 
 1. <a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ zip-installer }}"> Download the Ballerina language ZIP file </a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
 

@@ -23,6 +23,7 @@ The conforming implementation of the specification is released and included in t
     * 2.1. [Listener](#21-listener)
         * 2.1.1. [Automatically starting the service](#211-automatically-starting-the-service)
         * 2.1.2. [Programmatically starting the service](#212-programmatically-starting-the-service)
+        * 2.1.3. [Default listener](#213-default-listener)
     * 2.2. [Service](#22-service)
         * 2.2.1. [Service type](#221-service-type)
         * 2.2.2. [Service-base-path](#222-service-base-path)
@@ -210,6 +211,40 @@ public function main() {
 http:Service s = service object {
     resource function get greeting() returns string {}
 };
+```
+
+#### 2.1.3. Default listener
+
+The default listener can be created by calling the `getDefaultListener()` method. Once the default listener is created,
+the subsequent calls to the `getDefaultListener()` method will return the same listener object. With this approach,
+the user can attach multiple services to the same listener and configure the listener as required. The default listener
+port is 9090.
+
+```ballerina
+import ballerina/http;
+
+listener http:Listener httpListener = http:getDefaultListener();
+
+service /api/v1 on httpListener {
+
+    resource function get greeting() returns string {
+        return "Hello, World from Service 1!";
+    }
+}
+```
+
+The port and listener configuration of the default listener can be changed in the `Config.toml` as follows:
+
+```toml
+[ballerina.http]
+defaultListenerPort = 8080
+
+[ballerina.http.defaultListenerConfig]
+httpVersion = "1.1"
+
+[ballerina.http.defaultListenerConfig.secureSocket.key]
+path = "resources/certs/ballerinaKeystore.p12"
+password = "ballerina"
 ```
 
 ### 2.2. Service

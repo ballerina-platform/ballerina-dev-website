@@ -85,6 +85,24 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ### New features
 
+#### `ldap` package
+
+- Added support for secure LDAP (LDAPS) connections with SSL/TLS. This allows applications to securely authenticate and interact with LDAP directories using encrypted connections.
+
+  ```ballerina
+  Client ldap =  check new ({
+        port: 636,
+        hostName,
+        password,
+        domainName,
+        clientSecureSocket: {
+          cert: "tests/resources/server/certs/server.crt",
+          enable: true
+        }
+    }
+  );
+  ```
+
 #### `http` package
 
 - Added relaxed binding support for service and client data binding. This provides the flexibility to bind nil values to optional fields and absent values to nilable fields.

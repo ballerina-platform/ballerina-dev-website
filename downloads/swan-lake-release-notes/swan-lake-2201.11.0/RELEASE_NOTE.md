@@ -274,12 +274,15 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 - This simplifies the integration with SOAP-based web services by automatically generating necessary types and client functions.
 
 ```
-  $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>]
+  $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>] [--port <port-name>]
 ```
 
-`wsdl-file-path`: Path to the WSDL file.
-`--operations`: (Optional) Comma-separated list of operation URIs to generate client functions for specific operations. If not provided, methods for all operations in the WSDL will be generated.
-`-m, --module`: The name of the module in which the Ballerina client and record types will be generated. If not provided, output files will be saved to the same Ballerina project.
+| Option | Description |
+|--------|-------------|
+| `<wsdl-file-path>` | (Required) The path to the WSDL file. |
+| `--operations <operation-uris>` | (Optional) A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. |
+| `-m, --module <output-module-name>` | (Optional) The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the current Ballerina project. |
+| `-p, --port <port-name>` | (Optional) The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. |
 
 #### XSD tool
 

@@ -1,7 +1,0 @@
-{
-  "title": "Add/Remove entries",
-  "description": "This example is on how to create/delete entries in a directory server using LDAP in Ballerina.",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "ldap", "add"],
-  "permalink": "/learn/by-example/ldap-add-remove-entry",
-  "active": "ldap-add-remove-entry"
-}

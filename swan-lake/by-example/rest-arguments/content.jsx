@@ -5,36 +5,80 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
+  `import ballerina/http;
+import ballerina/io;
 
-class Engineer {
-    string name;
-
-    function init(string name) {
-        self.name = name;
+// A function to print the sum of two or more integers.
+function sum(int first, int second, int... others) {
+    int sum = first + second;
+    foreach int othVal in others {
+        sum += othVal;
     }
+    io:println(sum);
+}
 
-    function getName() returns string {
-        return self.name;
+// A record with some HTTP client configuration values.
+type Configuration record {|
+    string url;
+    decimal timeout;
+    http:HttpVersion httpVersion;
+|};
+
+// A function that initializes an HTTP client using some configuration.
+function initializeHttpClient(string url, decimal timeout, http:HttpVersion httpVersion) {
+    // Intialize the client just for demonstration.
+    http:Client|error cl = new (url, {timeout, httpVersion});
+    if cl is error {
+        io:println("Failed to initialize an HTTP client", cl);
+        return;
     }
+    io:println(
+        string \`Initialized client with URL: \${url}, timeout: \${timeout}, HTTP version: \${httpVersion}\`);
 }
 
 public function main() {
-    // Apply the \`new\` operator with a \`class\` to get an \`object\` value.
-    Engineer engineer = new Engineer("Alice");
+    // Call the \`sum\` function using an array of length 4 as a rest argument.
+    int[4] ints1 = [1, 2, 3, 4];
+    sum(...ints1);
 
-    // Call the \`getName\` method using the \`obj.method(args)\` syntax.
-    string engineerName = engineer.getName();
-    io:println(engineerName);
+    // Since the \`sum\` function has two required parameters, when providing only a list rest 
+    // argument, the length of the list should be guaranteed by the static type to be at
+    // least 2.
+    // Call the \`sum\` function using a tuple with at least two members.
+    [int, int, int...] ints2 = [5, 6];
+    sum(...ints2);
 
-    // Accessing the \`name\`  field using the \`obj.field\` syntax.
-    engineerName = engineer.name;
-    io:println(engineerName);
+    // A rest argument can be used along with positional arguments, 
+    // providing only some of the arguments.
+    // Call the \`sum\` function with a rest argument after two positional arguments.
+    sum(5, 6, ...ints1);
+
+    // Call the \`sum\` function with a rest argument after one positonal argument.
+    // Note how the rest argument provides arguments for both a required parameter
+    // and the rest parameter. Since only one positional argument is provided, the list
+    // type of the expression used in the rest argument should guarantee the presence of 
+    // at least one member in the list to provide an argument for the second required parameter.
+    [int, int...] ints3 = [5, 6, 7];
+    sum(4, ...ints3);
+
+    // Call the \`initializeHttpClient\` function using a record value in the rest argument
+    // providing values for all the parameters.
+    Configuration config1 = {httpVersion: http:HTTP_2_0, url: "http://localhost:8080", timeout: 60};
+    initializeHttpClient(...config1);
+
+    // Call the \`initializeHttpClient\` function using a positional argument and a rest argument with 
+    // a record value. The positional argument provides the argument for the first parameter (\`url\`) and the 
+    // rest argument provides values for the other two parameters. 
+    record {|
+        decimal timeout;
+        http:HttpVersion httpVersion;
+    |} config2 = {httpVersion: http:HTTP_1_1, timeout: 15};
+    initializeHttpClient("http://localhost:8080", ...config2);
 }
 `,
 ];
 
-export function Object({ codeSnippets }) {
+export function RestArguments({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -44,19 +88,24 @@ export function Object({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Object</h1>
+      <h1>Rest arguments</h1>
 
       <p>
-        The <code>object</code> is a basic data type in Ballerina. An object
-        value has named methods and fields and these methods and fields share
-        the same symbol space. This means that it is not possible for an object
-        to have both a field and a method with the same name.
+        Ballerina allows you to call functions with rest arguments, with an
+        expression of a mapping or list type, spreading the members of the
+        mapping or the list as individual arguments to the function.
       </p>
 
       <p>
-        A <code>class</code> is used to define an object type and provides a way
-        to construct an object. The <code>new</code> expression is used to
-        create an object from a <code>class</code> definition.
+        If the type of the expression used in the rest argument is a list type,
+        the rest argument is equivalent to specifying each member of the list
+        value as a positional argument. If it is a mapping type, the rest
+        argument is equivalent to specifying each field of the mapping value as
+        a named argument, where the name and the value of the named argument
+        come from the name and the value of the field. In either case, the
+        static type of the expression must ensure that the equivalent positional
+        and/or named arguments would be valid and that arguments are provided
+        for all the required parameters.
       </p>
 
       <Row
@@ -65,31 +114,9 @@ export function Object({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.3/examples/object",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -107,7 +134,7 @@ export function Object({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -196,9 +223,13 @@ export function Object({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run object.bal`}</span>
-              <span>{`Alice`}</span>
-              <span>{`Alice`}</span>
+              <span>{`\$ bal run rest_arguments.bal`}</span>
+              <span>{`10`}</span>
+              <span>{`11`}</span>
+              <span>{`21`}</span>
+              <span>{`22`}</span>
+              <span>{`Initialized client with URL: http://localhost:8080, timeout: 60, HTTP version: 2.0`}</span>
+              <span>{`Initialized client with URL: http://localhost:8080, timeout: 15, HTTP version: 1.1`}</span>
             </code>
           </pre>
         </Col>
@@ -210,7 +241,7 @@ export function Object({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/defining-classes/">Defining classes</a>
+            <a href="/learn/by-example/functions/">Functions</a>
           </span>
         </li>
       </ul>
@@ -218,8 +249,8 @@ export function Object({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/object-constructor/">
-              Object constructor
+            <a href="/learn/by-example/provide-function-arguments-by-name/">
+              Provide function arguments by name
             </a>
           </span>
         </li>
@@ -228,8 +259,8 @@ export function Object({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/object-value-from-class-definition/">
-              Object value from class definition
+            <a href="/learn/by-example/included-record-parameters/">
+              Included record parameters
             </a>
           </span>
         </li>
@@ -238,25 +269,7 @@ export function Object({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/visibility-of-object-fields-and-methods/">
-              Visibility of object fields and methods
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/object-types/">Object types</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/object-closure/">Object closure</a>
+            <a href="/learn/by-example/aggregation/">Aggregation</a>
           </span>
         </li>
       </ul>
@@ -265,8 +278,8 @@ export function Object({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Array/Map symmetry"
-            href="/learn/by-example/array-map-symmetry"
+            title="Provide function arguments by name"
+            href="/learn/by-example/provide-function-arguments-by-name"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -293,7 +306,7 @@ export function Object({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Array/Map symmetry
+                  Provide function arguments by name
                 </span>
               </div>
             </div>
@@ -301,8 +314,8 @@ export function Object({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Defining classes"
-            href="/learn/by-example/defining-classes"
+            title="Function pointers"
+            href="/learn/by-example/function-pointers"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -312,7 +325,7 @@ export function Object({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Defining classes
+                  Function pointers
                 </span>
               </div>
               <svg

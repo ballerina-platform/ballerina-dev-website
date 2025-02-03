@@ -352,7 +352,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 | Option | Description | Mandatory/Optional |
 |--------|-------------|--------------------|
 | `<xsd-file-path>` | The path of the XSD file | Mandatory |
-| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the same Ballerina project | Optional |
+| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
 
 ### Improvements
 

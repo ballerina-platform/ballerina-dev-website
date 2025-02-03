@@ -342,6 +342,36 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 - Added support for relaxed data binding on the client side payload. This enables, `nil` values are treated as optional, and absent fields are handled as `nilable` types.
 
+#### WSDL tool
+
+- Introduced a new tool to generate Ballerina clients and record types from a given WSDL file.
+- This simplifies the integration with SOAP-based web services by automatically generating necessary types and client functions.
+
+```
+  $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>] [--port <port-name>]
+```
+
+| Option | Description | Mandatory/Optional |
+|--------|-------------|--------------------|
+| `<wsdl-file-path>` | The path of the WSDL file. | Mandatory |
+| `--operations <operation-uris>` | A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. | Optional |
+| `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the project default package. | Optional |
+| `-p, --port <port-name>` | The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. | Optional |
+
+#### XSD tool
+
+- Introduced a new tool to generate Ballerina record types from an XSD file.
+- Simplifies integration with XML-based operations in Ballerina.
+
+```
+  $ bal xsd <xsd-file-path> --module <output-module-name>
+```
+
+| Option | Description | Mandatory/Optional |
+|--------|-------------|--------------------|
+| `<xsd-file-path>` | The path of the XSD file | Mandatory |
+| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
+
 ### Improvements
 
 #### Language Server

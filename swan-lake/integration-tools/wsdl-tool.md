@@ -5,9 +5,8 @@ description: The WSDL tool provides the below set of command line tools to work 
 keywords: ballerina, programming language, wsdl, soap
 permalink: /learn/wsdl-tool/
 active: wsdl-tool
-intro: The WSDL tool provides the below set of command line tools to work with WSDL files in Ballerina.
---- 
-The Ballerina WSDL tool generates Ballerina client stubs and record types from a given WSDL file, simplifying integration with SOAP-based web services by eliminating the need for manually generating types and client functions.
+intro: The Ballerina WSDL tool generates Ballerina client stubs and record types from a given WSDL file, simplifying integration with SOAP-based web services by eliminating the need for manually creating types and client functions.
+---
 
 ## Install the tool
 

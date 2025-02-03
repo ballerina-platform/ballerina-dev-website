@@ -14,64 +14,70 @@ The Ballerina XSD tool generates Ballerina record types from an XSD specificatio
 
 Execute the command below to pull the XSD tool from [Ballerina Central](https://central.ballerina.io/ballerina/xsd/latest).
 
-```bash
+```
 $ bal tool pull xsd
 ```
 
 ## Usage
 
-The XSD tool provides the capability to generate the Ballerina record types for a given XSD schema.
+The XSD tool allows you to generate Ballerina record types from an XSD specification using the following command. It is mandatory to run the command inside a Ballerina project.
 
-### Generate Ballerina clients from XSD Specification
-
-The record types generated from an XSD file can be used in Ballerina applications to handle XML-based data defined in the XSD specification
-
-The following command will generate Ballerina records for a given XSD file.
-
-```bash
-$ bal xsd <xsd-file-name> --module <output-module-name>
+```
+$ bal xsd <xsd-file-path> 
+          [--module <output-module-name>]
 ```
 
-| Option | Description |
-|--------|-------------|
-| `<xsd-file-path>` | (Required) The path to the WSDL file. |
-|`-m, --module <output-module-name>` |: The name of the module in which Ballerina record types will be generated. If not provided, the output file will be saved to the same Ballerina project. |
+### Command options  
+
+| Option | Description | Mandatory/Optional |
+|--------|-------------|--------------------|
+| `<xsd-file-path>` | The path of the XSD file | Mandatory |
+| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated | Optional |
+
+### Generate types for the given XSD file
+
+Use the following command to generate Ballerina record types for all elements defined in the specified XSD file. By default, the generated `types.bal` file will be placed in the default module of the current Ballerina project.
+
+```
+$ bal xsd <source-file-path>
+```
 
 For example,
 
-```bash
-$ bal xsd hello.xsd --module custom
 ```
-
-This generates record types (`types.bal`) for the `hello.xsd` XSD specification. The above command can be run from anywhere on the execution path. It is mandatory to run the above command within a Ballerina package.
-
-Upon successful execution, the following file will be created in the `custom` directory within the Ballerina project.
-
-```bash
--- types.bal
-```
-
-## Examples
-
-### Generate record types in the default module
-
-This command generates record types in the current Ballerina project.
-
-```bash
 $ bal xsd sample.xsd
 ```
 
-### Generate record types in a specific module
+If successful, you will see the following output.
 
-To organize the generated types in a specific module, use the `--module` flag.
+```
+The 'types.bal' file is written to the default module
+```
 
-```bash
+### Generate types in a specific module
+
+To generate the Ballerina record types in a specific module, use the `--module` option.
+
+```
+$ bal xsd <source-file-path> --module <output-module-name>
+```
+
+For example,
+
+```
 $ bal xsd sample.xsd --module custom
 ```
 
-The generated types.bal file will be placed inside the `custom` module.
+This will generate a `types.bal` file inside the `modules/custom` directory of the Ballerina project.
 
-```bash
--- custom/
-   ├── types.bal
+```
+modules/
+└── custom/
+        └── types.bal
+```
+
+The following output will be displayed.
+
+```
+The 'types.bal' file is written to 'modules/custom'
 ```

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-xsd-support-left-nav-pages-swanlake
 title: XSD tool
-description: The XSD tool provides the below set of command line tools to work with XSD files in Ballerina.
+description: The XSD tool provides a set of command line tools to work with XSD files in Ballerina.
 keywords: ballerina, programming language, xsd, xml
 permalink: /learn/xsd-tool/
 active: xsd-tool
@@ -65,7 +65,7 @@ For example,
 $ bal xsd sample.xsd --module custom
 ```
 
-This will generate a `types.bal` file inside the `modules/custom` directory of the Ballerina project.
+This will generate a `types.bal` file inside the `custom` submodule of the Ballerina project.
 
 ```
 modules/

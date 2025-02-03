@@ -1,7 +1,7 @@
 ---
 layout: ballerina-wsdl-support-left-nav-pages-swanlake
 title: WSDL tool
-description: The WSDL tool provides the below set of command line tools to work with WSDL files in Ballerina.
+description: The WSDL tool provides a set of command line tools to work with WSDL files in Ballerina.
 keywords: ballerina, programming language, wsdl, soap
 permalink: /learn/wsdl-tool/
 active: wsdl-tool
@@ -70,7 +70,7 @@ types.bal
 bal wsdl <wsdl-file-path> --module <output-module-name>
 ```
 
-This command generates Ballerina clients and record types for the given WSDL file and saves them in the `modules/<output-module-name>` directory within the Ballerina project.
+This command generates Ballerina clients and record types for the given WSDL file and saves them in the `<output-module-name>` submodule within the Ballerina project.
 
 For example,
 
@@ -80,7 +80,7 @@ bal wsdl calculator.wsdl --module custom
 
 This generates a Ballerina client (`client.bal`) and record types (`types.bal`) for the `calculator.wsdl` WSDL specification.
 
-Upon successful execution, the following files will be created in the `modules/custom` directory within the Ballerina project.
+Upon successful execution, the following files will be created in the `custom` submodule within the Ballerina project.
 
 ```
 modules/

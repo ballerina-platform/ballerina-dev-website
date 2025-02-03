@@ -270,19 +270,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 #### WSDL tool
 
-- Introduced a new tool to generate Ballerina client stubs and record types from a given WSDL file.
+- Introduced a new tool to generate Ballerina clients and record types from a given WSDL file.
 - This simplifies the integration with SOAP-based web services by automatically generating necessary types and client functions.
 
 ```
   $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>] [--port <port-name>]
 ```
 
-| Option | Description |
-|--------|-------------|
-| `<wsdl-file-path>` | (Required) The path to the WSDL file. |
-| `--operations <operation-uris>` | (Optional) A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. |
-| `-m, --module <output-module-name>` | (Optional) The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the current Ballerina project. |
-| `-p, --port <port-name>` | (Optional) The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. |
+| Option | Description | Mandatory/Optional |
+|--------|-------------|--------------------|
+| `<wsdl-file-path>` | The path of the WSDL file. | Mandatory |
+| `--operations <operation-uris>` | A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. | Optional |
+| `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the current Ballerina project. | Optional |
+| `-p, --port <port-name>` | The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. | Optional |
 
 #### XSD tool
 
@@ -293,10 +293,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   $ bal xsd <xsd-file-path> --module <output-module-name>
 ```
 
-| Option | Description |
-|--------|-------------|
-| `<xsd-file-path>` | (Required) The path to the WSDL file. |
-|`-m, --module <output-module-name>` |: The name of the module in which Ballerina record types will be generated. If not provided, the output file will be saved to the same Ballerina project. |
+| Option | Description | Mandatory/Optional |
+|--------|-------------|--------------------|
+| `<xsd-file-path>` | The path of the XSD file | Mandatory |
+| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the same Ballerina project | Optional |
 
 #### Language Server
 

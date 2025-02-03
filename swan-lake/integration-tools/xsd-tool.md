@@ -5,11 +5,8 @@ description: The XSD tool provides the below set of command line tools to work w
 keywords: ballerina, programming language, xsd, xml
 permalink: /learn/xsd-tool/
 active: xsd-tool
-intro: The XSD tool provides the below set of command line tools to work with XSD files in Ballerina.
+intro: The Ballerina XSD tool generates Ballerina record types from an XSD specification, simplifying integration with XML-based operations in Ballerina.
 --- 
-
-The Ballerina XSD tool generates Ballerina record types from an XSD specification, simplifying integration with XML-based operations in Ballerina.
-
 ## Install the tool
 
 Execute the command below to pull the XSD tool from [Ballerina Central](https://central.ballerina.io/ballerina/xsd/latest).

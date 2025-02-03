@@ -85,6 +85,20 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ### New features
 
+#### `http` package
+
+- Added relaxed binding support for service and client data binding. This provides the flexibility to bind nil values to optional fields and absent values to nilable fields.
+
+  ```ballerina
+  // Enable relaxed data binding on the client side.
+  http:Client httpClient = check new("http://localhost:9090", laxDataBinding = true);
+  
+  // Enable relaxed data binding on the server side.
+  @http:ServiceConfig {laxDataBinding: true}
+  service /api on new http:Listener(9090) {
+  }
+  ```
+
 #### `ldap` package
 
 - Added support for secure LDAP (LDAPS) connections with SSL/TLS. This allows applications to securely authenticate and interact with LDAP directories using encrypted connections.
@@ -101,20 +115,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
         }
     }
   );
-  ```
-
-#### `http` package
-
-- Added relaxed binding support for service and client data binding. This provides the flexibility to bind nil values to optional fields and absent values to nilable fields.
-
-  ```ballerina
-  // Enable relaxed data binding on the client side.
-  http:Client httpClient = check new("http://localhost:9090", laxDataBinding = true);
-  
-  // Enable relaxed data binding on the server side.
-  @http:ServiceConfig {laxDataBinding: true}
-  service /api on new http:Listener(9090) {
-  }
   ```
 
 ### Improvements

@@ -177,6 +177,22 @@
                     "isDir": false,
                     "url": "/learn/edi-tool",
                     "id": "edi-tool"
+                },
+                {
+                    "dirName": "WSDL tool",
+                    "level": 3,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/wsdl-tool",
+                    "id": "wsdl-tool"
+                },
+                {
+                    "dirName": "XSD tool",
+                    "level": 3,
+                    "position": 8,
+                    "isDir": false,
+                    "url": "/learn/xsd-tool",
+                    "id": "xsd-tool"
                 }
             ]
         },

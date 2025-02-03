@@ -1,0 +1,18 @@
+{
+  "title": "Advanced conflict handling",
+  "description": "This BBE demonstrates writing custom conflict handling logic when constructing a map or a table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "duplicate",
+    "key",
+    "map",
+    "table",
+    "query",
+    "on conflict",
+    "error"
+  ],
+  "permalink": "/learn/by-example/advanced-conflict-handling",
+  "active": "advanced-conflict-handling"
+}

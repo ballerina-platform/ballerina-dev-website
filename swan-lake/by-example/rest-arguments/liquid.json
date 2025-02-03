@@ -1,0 +1,15 @@
+{
+  "title": "Rest arguments",
+  "description": "This BBE demonstrates calling functions with rest arguments in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "rest arguments",
+    "functions",
+    "function definition",
+    "parameters"
+  ],
+  "permalink": "/learn/by-example/rest-arguments",
+  "active": "rest-arguments"
+}

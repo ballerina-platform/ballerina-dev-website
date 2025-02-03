@@ -141,6 +141,14 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/grpc-tool`,
       },
       {
+        source: `/${redirectBase}learn/wsdl-tool`,
+        destination: `/${redirectBase}learn/integration-tools/wsdl-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/xsd-tool`,
+        destination: `/${redirectBase}learn/integration-tools/xsd-tool`,
+      },
+      {
         source: `/${redirectBase}learn/strand-dump-tool`,
         destination: `/${redirectBase}learn/development-tutorials/troubleshoot-the-runtime/strand-dump-tool`,
       },

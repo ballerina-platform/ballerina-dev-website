@@ -32,7 +32,7 @@ $ bal xsd <xsd-file-path>
 | Option | Description | Mandatory/Optional |
 |--------|-------------|--------------------|
 | `<xsd-file-path>` | The path of the XSD file | Mandatory |
-| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated | Optional |
+| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
 
 ### Generate types for the given XSD file
 

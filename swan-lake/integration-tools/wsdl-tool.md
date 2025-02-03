@@ -45,7 +45,7 @@ bal wsdl <wsdl-file-path>
 
 ### Generate Ballerina clients and types from a WSDL file
 
-```sh
+```
 bal wsdl <wsdl-file-path>
 ```
 
@@ -53,7 +53,7 @@ This command generates Ballerina clients and record types for all operations in 
 
 For example,
 
-```sh
+```
 bal wsdl calculator.wsdl
 ```
 
@@ -66,7 +66,7 @@ types.bal
 
 ### Generate a Ballerina client and types for a specific module
 
-```sh
+```
 bal wsdl <wsdl-file-path> --module <output-module-name>
 ```
 
@@ -74,7 +74,7 @@ This command generates Ballerina clients and record types for the given WSDL fil
 
 For example,
 
-```sh
+```
 bal wsdl calculator.wsdl --module custom
 ```
 
@@ -91,7 +91,7 @@ modules/
 
 ### Generate a Ballerina client for specific operations
 
-```sh
+```
 bal wsdl <wsdl-file-path> --operations <operation-uris>
 ```
 
@@ -99,13 +99,13 @@ This command generates a client containing methods only for the specified operat
 
 For example,
 
-```sh
+```
 bal wsdl sample.wsdl --operations http://sample.org/action1,http://sample.org/action2
 ```
 
 ### Generate a Ballerina client for a specific port
 
-```sh
+```
 bal wsdl <wsdl-file-path> --port <port-name>
 ```
 
@@ -113,6 +113,6 @@ This command generates a client only for the given port in the WSDL file.
 
 For example,
 
-```sh
+```
 bal wsdl calculator.wsdl --port SamplePortName
 ```

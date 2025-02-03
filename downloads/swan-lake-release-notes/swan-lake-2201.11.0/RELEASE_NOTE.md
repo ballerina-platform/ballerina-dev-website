@@ -337,7 +337,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 |--------|-------------|--------------------|
 | `<wsdl-file-path>` | The path of the WSDL file. | Mandatory |
 | `--operations <operation-uris>` | A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. | Optional |
-| `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the current Ballerina project. | Optional |
+| `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the project default package. | Optional |
 | `-p, --port <port-name>` | The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. | Optional |
 
 #### XSD tool

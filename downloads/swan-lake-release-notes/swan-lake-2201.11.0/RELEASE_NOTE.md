@@ -73,13 +73,161 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ## Runtime updates
 
-### New features
-
 ### Improvements
+
+##### Java 21 support
+
+The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its latest features, including virtual threads introduced with Project Loom. This enhancement addresses key performance issues in the current runtime, particularly with loops and asynchronous strand execution, and simplifies runtime APIs for native code developers.
+
+Note: If you are using Java 17 to run Ballerina programs, you must switch to Java 21.
+The upgraded concurrency model integrates Java 21's virtual threads with significant changes to asynchronous execution. However, the implementation of Ballerina interoperability will have an impact on Java 21 support due to any incompatible changes.
+
+For more details, refer to the [Java 21 release notes](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html).
+
+##### Improvements to Runtime Java APIs
+
+- The following API classes are moved to a different package
+
+| Old package                              | New package                                    |
+|------------------------------------------|------------------------------------------------|
+| io.ballerina.runtime.api.Node            | io.ballerina.runtime.api.repository.Node       |
+| io.ballerina.runtime.api.Artifact        | io.ballerina.runtime.api.repository.Artifact   |
+| io.ballerina.runtime.api.Repository      | io.ballerina.runtime.api.repository.Repository |
+| io.ballerina.runtime.api.PredefinedTypes | io.ballerina.runtime.api.types.PredefinedTypes |
+| io.ballerina.runtime.api.TypeTags        | io.ballerina.runtime.api.types.TypeTags        |
+
+- The following API from the `io.ballerina.runtime.api.Environment` class has been modified to return a `String` instance.
+  The previous API definition is as follows.
+```java
+public Optional<String> getStrandName();
+```
+This is modified as follows.
+```java
+public String getStrandName();
+```
+- The following APIs from the `io.ballerina.runtime.api.Runtime` class have been modified to return a `Object` instance.
+  Previous API definitions are as follows.
+```java
+public void init();
+public void start();
+```
+This is modified as follows.
+```java
+public Object init();
+public Object start();
+```
+- The API class `io.ballerina.runtime.api.async.StrandMetadata` has been converted to a record with the following definition and moved to package `io.ballerina.runtime.api.concurrent.StrandMetadata`
+```java
+public record StrandMetadata(boolean isConcurrentSafe, Map<String, Object> properties) {
+}
+```
+Therefore, the following APIs from `io.ballerina.runtime.api.async.StrandMetadata` has been removed.
+```java
+public String getModuleOrg();
+public String getModuleName();
+public String getModuleVersion();
+public String getTypeName();
+public String getParentFunctionName();
+```
+- The `isRemoteEnabled` API from the class `io.ballerina.runtime.api.Repository` has been renamed to the following.
+```java
+ boolean isRemoteManagementEnabled();
+```
+- The `call()` API from `io.ballerina.runtime.api.values.BFunctionPointer` class has been modified.
+  The previous API definition is as follows.
+```java
+ R call(T t);
+```
+This is modified as follows.
+```java
+Object call(Runtime runtime, Object... t);
+```
+- The following APIs from `io.ballerina.runtime.api.values.BFuture` have been modified.
+  The previous API definition is as follows.
+```java
+ Object getResult();
+```
+This is modified as follows.
+```java
+ Object get();
+```
+
+##### Strand Dump tool
+The strand dump tool has been updated to support virtual threads. The report now includes the total number of strands, with separate sections for isolated and non-isolated strands, each displaying their respective stack traces. Under the new concurrency model, each strand is directly mapped to a Java virtual thread, and the tool uses the virtual thread dump to extract strand related information. However, since the thread dump does not provide information about the state of virtual threads, the current version of the strand dump report does not include the state of the strands.
+
+#### New Runtime Java APIs
+
+1. A new runtime Java API is added to yield the current execution and to run an operation while allowing other non-isolated functions to run asynchronously.
+```java
+public abstract <T> T yieldAndRun(Supplier<T> supplier);
+```
+The above API can be called via a Ballerina environment instance as follows.
+```java
+import io.ballerina.runtime.api.Environment;
+
+env.yieldAndRun(() -> {
+            try {
+                Thread.sleep(1000);
+                return null;
+            } catch (InterruptedException e) {
+                throw ErrorCreator.createError(e);
+            }
+        });
+```
+2. A new runtime Java API is added to call a Ballerina function.
+```java
+public abstract Object callFunction(Module module, String functionName, StrandMetadata metadata, Object... args);
+```
+The above API can be called via a Ballerina environment instance as follows.
+```java
+import io.ballerina.runtime.api.Runtime;
+import io.ballerina.runtime.api.Environment;
+
+Runtime balRuntime = env.getRuntime();
+Object result = balRuntime.callFunction(module, "add", null, 5L, 7L);
+```
+This method call invokes a Ballerina function with the following definition.
+```ballerina
+public function add(int a, int b) returns int {
+    return a + b;
+}
+```
+3. A new runtime Java API is added to call a Ballerina object method.
+```java
+public abstract Object callMethod(BObject object, String methodName, StrandMetadata metadata,Object... args);
+```
+The above API can be called via a Ballerina environment instance as follows.
+```java
+import io.ballerina.runtime.api.Runtime;
+import io.ballerina.runtime.api.Environment;
+
+Runtime balRuntime = env.getRuntime();
+Object result = balRuntime.callMethod(person, "getNameWithTitle", null);
+```
+This method call invokes a Ballerina object method using the BObject `person`. The object has the following definition.
+```ballerina
+public class Person {
+    private string name;
+
+    public function init(string name) {
+        self.name = name;
+    }
+
+    public function getNameWithTitle() returns string {
+        return “Miss/Mrs.” + self.name;
+    }
+}
+```
+4. A new runtime Java API is added to the `io.ballerina.runtime.api.values.BFuture` to check whether the future is completed with panic or not.
+```java
+boolean isPanic();
+```
+5. A new `io.ballerina.runtime.api.values.BNever` class is introduced to represent a singleton never value in Ballerina runtime.
+   This non-instantiable class extends the `io.ballerina.runtime.api.values.BValue`.
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.11.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.11.0 )
 
 ## Ballerina library updates
 
@@ -234,3 +382,56 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+### Runtime changes
+
+The switch to Java 21 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 21 has some restrictions on custom thread management that may require adjustments to adopt the Java 21 threading model effectively. For more information, see Java 21 support.
+
+#### Removal of Runtime Java APIs
+
+- The following deprecated API from the `io.ballerina.runtime.api.Module` class has been removed.
+```java
+ public String getVersion();
+```
+
+- The following API from the same class can be used alternatively.
+```java
+  public String getMajorVersion();
+```
+- The following APIs from the `io.ballerina.runtime.api.Environment` class have been removed.
+```java
+public Future markAsync();
+public StrandMetadata getStrandMetadata();
+```
+- The following APIs from the `io.ballerina.runtime.api.Runtime` class have been removed.
+```java
+ public static Runtime getCurrentRuntime();
+
+ public BFuture invokeMethodAsyncSequentially(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
+
+ public BFuture invokeMethodAsyncConcurrently(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
+
+ public BFuture invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback,  Map<String, Object> properties, Type returnType, Object... args);
+
+ public Object invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Object... args);
+
+public void invokeMethodAsync(String functionName, Callback callback, Object... args);
+```
+- The API class `io.ballerina.runtime.api.async.Callback` has been removed.
+- The API class `io.ballerina.runtime.api.launch.LaunchListener` has been removed.
+- The following deprecated API from the `io.ballerina.runtime.ap.types.FunctionType` class has been removed.
+```java
+ Type[] getParameterTypes();
+```
+- The following APIs from `io.ballerina.runtime.api.values.BFunctionPointer` class have been removed.
+```java
+   BFuture asyncCall(Object[] args, StrandMetadata metaData);
+   BFuture asyncCall(Object[] args, Function<Object, Object> resultHandleFunction, StrandMetadata metaData);
+   Function<T, R> getFunction();
+```
+- The following APIs from `io.ballerina.runtime.api.values.BFuture` have been removed.
+```java
+ Strand getStrand();
+ Throwable getPanic();
+ Callback getCallback();
+```

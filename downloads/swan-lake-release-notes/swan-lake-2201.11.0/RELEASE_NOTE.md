@@ -247,6 +247,24 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   }
   ```
 
+#### `ldap` package
+
+- Added support for secure LDAP (LDAPS) connections with SSL/TLS. This allows applications to securely authenticate and interact with LDAP directories using encrypted connections.
+
+  ```ballerina
+  Client ldap =  check new ({
+        port: 636,
+        hostName,
+        password,
+        domainName,
+        clientSecureSocket: {
+          cert: "tests/resources/server/certs/server.crt",
+          enable: true
+        }
+    }
+  );
+  ```
+
 ### Improvements
 
 #### `http` package

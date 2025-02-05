@@ -51,7 +51,7 @@ See [Ballerina Code to Cloud Specification](https://github.com/ballerina-platfor
 
 Use the `bal build` command to build the Ballerina package. This will generate Kubernetes YAML files and Docker container artifacts.
 
->**Note:** For macOS users with Apple Silicon chips, it is necessary to set the environment variable DOCKER_DEFAULT_PLATFORM to linux/amd64 before building the image. This requirement exists because the Ballerina Docker image does not currently support Apple Silicon chips.
+>**Note:** For macOS users with Apple Silicon chips, it is necessary to set the environment variable `DOCKER_DEFAULT_PLATFORM` to `linux/amd64` before building the image. This requirement exists because the Ballerina Docker image does not currently support Apple Silicon chips.
 > ```
 > export DOCKER_DEFAULT_PLATFORM=linux/amd64
 > ```
@@ -117,7 +117,7 @@ $ minikube ip
 > **Tip:** you can access your service locally via `kubectl port-forward`
  `$ kubectl port-forward svc/hello-k8s-svc  8081:8080`
 
-Test the service using curl
+Test the service using cURL.
 
 ```
 $ curl http://<EXTERNAL-IP>:<NODE-PORT>/helloWorld/greeting
@@ -267,7 +267,7 @@ $ bal build --cloud="k8s"
     hello-k8s-svc-local   NodePort    10.99.245.41    <none>        9090:30342/TCP,9091:30515/TCP   66s
     kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP                         130m
     ```
-  - Execute the curl http://192.168.49.2:30342/helloWorld/greeting command to access the deployed service via cURL.
+  - Execute the following command to access the deployed service via cURL.
     ```
      $ curl http://192.168.49.2:30342/helloWorld/greeting
      Hello, Kubernetes!
@@ -344,7 +344,7 @@ jobs:
           echo "${KUBE_CONFIG_DATA}" | base64 --decode > $HOME/.kube/config
           kubectl apply -f <path to generated artifacts>
 ```
-The push event can initiate a workflow to the deployment process to the Kubernetes cluster.
+- **Step 01:** The push event can initiate a workflow to the deployment process to the Kubernetes cluster.
 - **Step 02:** This step builds the Ballerina project, compiling the source code and preparing the necessary artifacts for deployment in Kubernetes.
 - **Step 03:** This step logs into a Docker registry (such as Docker Hub or a private registry) to allow pushing the Docker image created in the build to the registry.
 - **Step 04:** Pushes the Docker image to the specified Docker registry.

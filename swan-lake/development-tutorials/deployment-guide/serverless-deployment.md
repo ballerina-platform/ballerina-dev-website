@@ -32,7 +32,7 @@ public function echo(lambda:Context ctx, json input) returns json {
 }
 ```
 
-3. Use `bal build` for generating the AWS Lambda artifacts.
+3. Use `bal build` to generate the AWS Lambda artifacts.
 The AWS Lambda functionality is implemented as a compiler extension. Therefore, artifact generation happens automatically when you build a Ballerina module by executing the command below.
 ```
 $ bal build --cloud="aws_lambda"
@@ -136,12 +136,11 @@ to simplify your workflows and eliminate the overhead of server management.
 
 This example demonstrates how to write a simple echo function in Azure Functions using Ballerina, where triggers 
 are represented by listeners attaching an `af:HttpListener` to a service that implies an HTTP trigger. 
-The resource method behaves like a `ballerina/http` service, In the provided code sample, there's an empty service path and a resource path
-named `hello` with a `get` accessor expecting a `name` query parameter, and the `ballerinax/azure_functions` package automatically handles the required artifact generation and data binding.
+The resource method behaves like a `ballerina/http` service, In the code sample shown below, there's an empty service path and a resource path named `hello` with a `get` accessor expecting a `name` query parameter, and the `ballerinax/azure_functions` package automatically handles the required artifact generation and data binding.
 
 1. Set up the prerequisites by following [these instructions.](https://ballerina.io/learn/azure-functions/#set-up-the-prerequisites)
 
-2. Here is an example Ballerina code.
+2. Here is an sample Ballerina code.
 ```ballerina
 import ballerinax/azure.functions;
 

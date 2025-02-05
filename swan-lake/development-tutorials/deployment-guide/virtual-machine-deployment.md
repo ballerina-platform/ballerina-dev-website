@@ -12,11 +12,12 @@ intro: If you prefer to execute Ballerina services directly on virtual machines 
       - Ensure the server meets the hardware requirements for your application (CPU, memory, disk space, etc.).
       - Configure the server OS (Linux is recommended for production).
 
-2. Install the Ballerina distribution from [the Ballerina Installation options.](https://ballerina.io/downloads/)
+2. Install the Ballerina distribution from the [Ballerina Installation options.](https://ballerina.io/downloads/)
 
 3. Install any other dependencies your Ballerina service might need (e.g., database drivers, libraries).
 
 4. Write Ballerina code.
+
       **service.bal**
       ```ballerina
          import ballerina/http;
@@ -64,7 +65,8 @@ jobs:
         with:
           args: 
             pack
-
+          
+    # Step 3: Build the Ballerina package with GraalVm
       #- name: Ballerina Build with GraalVm
       #  uses: ballerina-platform/ballerina-action@master
       #  with:
@@ -74,3 +76,4 @@ jobs:
 VM/Bare Metal Implementation:
 - **Step 01:** The push event can initiate a build and deployment process to the Kubernetes cluster.
 - **Step 02:** This step builds the Ballerina project, compiling the source code and preparing the necessary artifacts.
+    >Note: If you would like to build with GraalVM, you can replace step 02 with step 03.

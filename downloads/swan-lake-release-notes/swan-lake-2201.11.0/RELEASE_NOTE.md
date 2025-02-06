@@ -238,7 +238,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 ## External Contributors
 
 We would like to extend our heartfelt thanks to the following external contributors for their valuable contributions to
-the Ballerina SwanLake Update 11 release.
+the Ballerina Swan Lake Update 11 release.
 
 * [Randil Tharusha](https://github.com/randilt)
 * [Thilan Dissanayaka](https://github.com/thil4n)

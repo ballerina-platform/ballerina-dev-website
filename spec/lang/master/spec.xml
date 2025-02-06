@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-09-15</h1>
+<h1>Ballerina Language Specification, 2024R1</h1>
 <p>
 Primary contributors:
 </p>
@@ -27,7 +27,7 @@ Primary contributors:
 (Other contributors are listed in <a href="#contributors">Appendix D</a>.)
 </p>
 <p>
-Copyright © 2018-2022 <a href="https://wso2.com/">WSO2</a>
+Copyright © 2018-2024 <a href="https://wso2.com/">WSO2</a>
 </p>
 <p>
 Licensed under the <a
@@ -40,6 +40,10 @@ Language and document status
 <p>
 The language described in this specification is now stable. We do not plan to
 make changes that introduce significant incompatibilities.
+</p>
+<p>
+This release contains a preview of the regular expression feature. Minor
+changes may be made before it becomes stable.
 </p>
 <p>
 Comments on this document are welcome and should be made by creating an issue in
@@ -149,7 +153,9 @@ denoted by the hexadecimal numeral X</li>
 and is not a disallowed character;</li>
 <li><code>x..y</code> means any single Unicode character whose code point is
 greater than or equal to that of x and less than or equal to that of y</li>
-<li><code class="grammar">str</code> means the characters <code>str</code> literally</li>
+<li><code class="grammar">xyz</code> means the characters <code>xyz</code> literally</li>
+<li><code class="grammar">xyz</code><sub>NR</sub> means the characters <code>xyz</code> literally,
+and <code>xyz</code> is not a reserved keyword</li>
 <li><code>symbol </code>means a reference to production for the nonterminal
 <code>symbol</code></li>
 <li><code>x|y</code> means x or y</li>
@@ -349,18 +355,16 @@ Values are of four kinds, each corresponding to a kind of basic type:
 </p>
 <ul>
 <li>simple values, like booleans and floating point numbers, which are not
-constructed from other values;</li>
+composed from other values;</li>
 <li>structured values, like mappings and lists, which contain values of arbitrary basic types;</li>
 <li>sequence values, which consists of sequences of values of the same basic type;</li>
-<li>tagged data values, used for well-known data types with their own
-specialized string syntax;</li>
 <li>behavioral values, like functions and objects, which are not just data.</li>
 </ul>
 <p>
 There is a fundamental distinction between values that have a <em>storage
 identity</em> and values that do not. A value that has storage identity has an
 identity that comes from the location where the value is stored. All structural
-and behavioural values have a storage identity, whereas all simple values and tagged data values
+and behavioural values have a storage identity, whereas all simple values
 do not. Storage identity for sequence values is more complicated and will be
 explained in the section on sequence values.
 </p>
@@ -399,15 +403,13 @@ the shape does not consider representation details that do not affect the
 mathematical value being represented.
 </p>
 <p>
-A value is <em>plain data</em> if it is a simple value, a sequence value,
-a tagged data value or a
+A value is <em>plain data</em> if it is a simple value, a sequence value, or a
 structured value that does not contain a behavioral value at any depth.
 More precisely, a value is defined to be <em>plain data</em> if it is
 </p>
 <ul>
 <li>a simple value,</li>
 <li>a sequence value,</li>
-<li>a tagged data value, or</li>
 <li>a structured value, all of whose members are also plain data.</li>
 </ul>
 <p>
@@ -748,7 +750,6 @@ class="grammar"><dfn>type-descriptor</dfn> :=
    <abbr>simple-type-descriptor</abbr>
    | <abbr>sequence-type-descriptor</abbr>
    | <abbr>structured-type-descriptor</abbr>
-   | <abbr>tagged-data-type-descriptor</abbr>
    | <abbr>behavioral-type-descriptor</abbr>
    | <abbr>other-type-descriptor</abbr>
 </pre>
@@ -798,7 +799,7 @@ types found in some other structurally typed languages, such as Modula-3.
 The semantics of distinct types are based on type-ids. These are similar to the
 brands used by branded types. A distinct type is created by the use of the
 <code>distinct</code> keyword in either a <a
-href="#distinct-types">distinct-type-descriptor</a> or the
+href="#distinct_types">distinct-type-descriptor</a> or the
 <code>class-type-quals</code> of a <code>module-class-defn</code>. Each such
 occurrence of the <code>distinct</code> keyword has a distinct type-id, which
 uniquely identifies it within a Ballerina program. A type-id has three parts:
@@ -930,7 +931,7 @@ The following tables summarizes the iterable basic types.
 <section>
 <h3>Simple values</h3>
 <p>
-A simple value belongs to exactly one of the following basic types:
+The basic type of a simple value is either one of the following
 </p>
 <ul>
 <li>nil</li>
@@ -940,8 +941,7 @@ A simple value belongs to exactly one of the following basic types:
 <li>decimal</li>
 </ul>
 <p>
-The type descriptor for each simple basic type contains all the values of the
-basic type.
+or is a tagged data type.
 </p>
 <p>
 All simple basic types are inherently immutable.
@@ -953,7 +953,12 @@ class="grammar"><dfn>simple-type-descriptor</dfn> :=
    | <abbr>boolean-type-descriptor</abbr>
    | <abbr>int-type-descriptor</abbr>
    | <abbr>floating-point-type-descriptor</abbr>
+   | <abbr>tagged-data-type-descriptor</abbr>
 </pre>
+<p>
+The type descriptor for each simple basic type contains all the values of the
+basic type.
+</p>
 <section>
 <h4>Nil</h4>
 
@@ -1112,6 +1117,67 @@ do so using different exponents.
 </p>
 </section>
 </section>
+<section>
+<h4>Tagged data values</h4>
+
+<p>
+Tagged data types are used for well-known data types that are not
+application-specific, but are widely supported across multiple protocols and
+programming languages. Each of these data types has its own conventional string
+syntax. The use of tagged data types allows programs to work with these data
+types using their normal string syntax, while distinguishing the values as
+belonging to a specific tagged data type.
+</p>
+<p>
+Data tags are defined either by this specification or the Ballerina platform.
+For each such data tag, there is a corresponding basic type. The definition of a
+data tag specifies the set of values belonging to the corresponding basic type.
+A tagged data value is a value belonging to one of these basic types. Every
+tagged data value is plain data, immutable and has no storage identity. The
+shape of a tagged data value is the value.
+</p>
+<p>
+The definition of a data tag with corresponding basic type B specifies:
+</p>
+<ul>
+<li>the name of the data tag; this is an unqualified identifier that is used
+with the tagged-data-template-expr to construct a value of type B;</li>
+<li>the set of values that B consists of;</li>
+<li>an abstract parsing function, used at compile-time; a sequence of characters
+into which <var>n</var> values can be interpolated is represented by an array of
+<var>n</var> + 1 strings; the abstract parsing function accordingly takes an
+array of <var>n</var> + 1 strings, with <var>n</var> &#x2065; 0, and returns
+either an error or a function of <var>n</var> arguments that interpolates its
+arguments into the result of the parse; the type of both the arguments and the
+return value of the returned function is B;</li>
+<li>an abstract function mapping from values of type B to strings;</li>
+<li>a library module; method call expressions on values of type B will call
+functions in this module.</li>
+</ul>
+<p>
+Note that errors cannot happen during interpolation. The abstract parsing
+function must therefore allow interpolations only in places where any valid
+value of type B can be interpolated.
+</p>
+<p>
+Most of the functionality of a tagged data type is provided by its library
+module.
+</p>
+
+<pre
+class="grammar"><dfn>tagged-data-type-descriptor</dfn> := <abbr>qualified-identifier</abbr>
+</pre>
+<p>
+The qualified-identifier in a tagged-data-type-descriptor refers to a type that
+is defined in a module that is part of the language library or standard library.
+</p>
+<p>
+In this version of the Ballerina language, only the data tag <code>re</code>
+is defined, with associated lang library module <code>lang.regexp</code>.
+</p>
+
+</section>
+
 </section>
 <section>
 <h3>Sequence values</h3>
@@ -1753,7 +1819,9 @@ resolved. The expression must meet the requirements for an <a
 href="#isolated_functions">isolated function</a>. The closure is evaluated to
 create a field value each time the default is used in the construction of a
 mapping value. The default value does not affect the type described by the type
-descriptor.
+descriptor. It is a compile-time error if a default-expression
+contains a checking-expr with a checking-keyword of <code>check</code>,
+i.e. if evaluation of the expression could complete abruptly with a check-fail.
 </p>
 <p>
 A <code>record-type-inclusion</code> includes fields from a named record type.
@@ -1869,55 +1937,6 @@ table in order and the iteration completion value is always nil.
 </p>
 
 </section>
-</section>
-<section>
-<h3>Tagged data values</h3>
-
-<p>
-Tagged data types are used for well-known data types that are not
-application-specific, but are widely supported across multiple protocols and
-programming languages. Each of these data types has its own conventional string
-syntax. The use of tagged data types allows programs to work with these data
-types using their normal string syntax, while distinguishing the values as
-belonging to a specific tagged data type.
-</p>
-<p>
-Data tags are defined either by this specification or the Ballerina platform. For
-each such data tag, there is a basic type. The definition of a data tag
-specifies the set of values belonging to corresponding basic type. A tagged data
-value is a value belonging to one of these basic types. Every tagged data value
-is plain data, immmutable and has no storage identity. It is also atomic, in the
-sense that it contains no references to other values.
-</p>
-<p>
-The definition of a data tag defines:
-</p>
-<ul>
-<li>the tag; this is an unqualified identifier that is used with the
-tagged-data-template-expr to construct</li>
-<li>the set of values that its corresponding basic basic type consists of</li>
-<li>an abstract function mapping from strings to values</li>
-<li>an abstract function mapping from values to strings</li>
-<li>a library module; method call expressions on values of the basic type will
-call functions in this module</li>
-</ul>
-<p>
-Most of the functionality of a tagged data type is provided by the library
-module.
-</p>
-
-<pre
-class="grammar"><dfn>tagged-data-type-descriptor</dfn> := <abbr>qualified-identifier</abbr>
-</pre>
-<p>
-The qualified-identifier refers to a type that is defined in a module that is
-part of the language library or standard library.
-</p>
-<p>
-In this version of the Ballerina language, only the data tag <code>re</code>
-is defined, with associated lang library module <code>lang.regexp</code>.
-</p>
-
 </section>
 <section>
 <h3>Behavioral values</h3>
@@ -2755,7 +2774,7 @@ class="grammar"><dfn>singleton-type-descriptor</dfn> := <abbr>simple-const-expr<
 </pre>
 <p>
 A singleton type is a type containing a single shape. A singleton type is
-described using an compile-time constant expression for a single value: the type
+described using a compile-time constant expression for a single value: the type
 contains the shape of that value. Note that it is possible for the
 variable-reference within the simple-const-expr to reference a structured value;
 in this case, the value will have its read-only bit set; a value without its
@@ -2920,6 +2939,15 @@ Intersection types are particularly useful in conjunction with
 <code>readonly</code>. A set of readonly shapes can be described by
 <code>readonly&amp;T</code>, where <code>T</code> describes the primary aspect
 of the shape.
+</p>
+<p>
+When T is either <code>R&amp;readonly</code> or <code>readonly&amp;R</code>,
+where R is a record type descriptor, and a field in R has a default value with
+closure C, then, if the return type of C belongs to <a
+href="#Cloneable">Cloneable</a>, the field in T has a default value with a
+closure that applies the <a href="#ImmutableClone">ImmutableClone</a> operation
+to result of evaluating C; otherwise, the field in T does not have a default
+value.
 </p>
 </section>
 
@@ -3296,6 +3324,11 @@ static type of T's init method allows no arguments and does not include error</t
 <code>xml:Text</code></td>
 </tr>
 <tr>
+<td><code>regexp:RegExp</code></td>
+<td><code>re``</code></td>
+<td></td>
+</tr>
+<tr>
 <td>singleton</td>
 <td>the single value used to specify the type</td>
 <td></td>
@@ -3662,6 +3695,13 @@ The following table summarizes the result of ToString(v,style) for each basic ty
     <td colspan="3"><code>S</code> in direct style where S is the result of calling the toString method</td>
   </tr>
   <tr>
+   <td>behavioural type other than error or object</td>
+   <td colspan="3">identifier for behavioural type (<code>function</code>,
+     <code>future</code>, <code>typedesc</code>, <code>stream</code> or <code>handle</code>) followed
+     by implementation-dependent string
+   </td>
+  </tr>
+  <tr>
    <td rowspan="2"><em>cycle detected</em>
    </td>
    <td><code>...[N]</code>
@@ -3790,7 +3830,7 @@ follows:
 </section>
 </section>
 <section>
-<h3>Binding patterns and variables</h3>
+<h3>Binding patterns, variables and identifiers</h3>
 <section>
 <h4>Binding patterns</h4>
 <p>
@@ -3856,13 +3896,20 @@ list value consisting of all members of the matched list except for the the
 first m values to be assigned to <code>v</code>;</li>
 <li>a mapping-binding-pattern { f<sub>1</sub>: p<sub>1</sub>, f<sub>2</sub>:
 p<sub>2</sub>, ..., f<sub>n</sub>: p<sub>n</sub>, r } matches a mapping value m
-that includes fields f<sub>1</sub>, f<sub>2</sub>, ... , f<sub>n</sub> if
-p<sub>i</sub> matches the value of field f<sub>i</sub> for each i in 1 to n; if
-r is <code>...v</code> then a successful match causes a new mapping value
-consisting of all the other fields to be assigned to <code>v</code>; a
-field-binding-pattern consisting of just a variable-name <code>x</code> is
-equivalent to a field-binding-pattern <code>x: x</code>;
+if each field-binding-pattern f<sub>i</sub>: p<sub>i</sub> matches m for each i
+in 1 to n; if r is <code>...v</code> then a successful match causes a new
+mapping value consisting of all fields other than f<sub>1</sub> to f<sub>n</sub>
+to be assigned to <code>v</code>;</li>
+<li>a field-binding-pattern f: p matches a mapping value m if
+<ul>
+<li>m contains a field f and p matches its value; or</li>
+<li>m does not have a field f and p matches nil; this case is applied only when
+the field-binding-pattern is used in a context where it is known at compile-time
+that the field f is optional and cannot have the value nil;</li>
+</ul>
 </li>
+<li>a field-binding-pattern consisting of just a variable-name <code>x</code>
+is equivalent to a field-binding-pattern <code>x: x</code>;</li>
 <li>an error-binding-pattern error ET(p<sub>m</sub>, p<sub>c</sub>,
 f<sub>1</sub> = p<sub>1</sub>, f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub>
 = p<sub>n</sub>, r) matches an error value e if
@@ -4003,6 +4050,18 @@ scope. However, it is a compile error if an identifier is declared with
 block-scope and its scope overlaps with the scope of another declaration of the
 same identifier in the same symbol space also with block-scope.
 </p>
+
+<pre
+class="grammar"><dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
+<dfn>module-prefix</dfn> := <abbr>identifier</abbr> | <abbr>predeclared-prefix</abbr>
+</pre>
+<p>
+A <code>module-prefix</code> is a name that is used locally within the source of
+a module to refer to another module. A <code>module-prefix</code> in a
+qualified-identifier must refer to a <code>module-prefix</code> specified in an
+import declaration in the same source part.
+</p>
+
 </section>
 </section>
 </section>
@@ -4215,7 +4274,7 @@ The following sections describes how each kind expression is evaluated, assuming
 that evaluation of subexpressions complete normally. Except where explicitly
 stated to the contrary, expressions handle abrupt completion of subexpressions
 as follows. If in the course of evaluating an expression E, the evaluation of
-some subexpression E1 completes abruptly, then then evaluation of E also
+some subexpression E1 completes abruptly, then the evaluation of E also
 completes abruptly in the same way as E1.
 </p>
 </section>
@@ -4673,12 +4732,36 @@ that has its read-only bit on.
 <h4>Tagged data template expression</h4>
 
 <pre
-class="grammar"><dfn>tagged-data-template-expr</dfn> := <abbr>identifier</abbr> <abbr>BacktickString</abbr>
+class="grammar"><dfn>tagged-data-template-expr</dfn> := <abbr>data-tag</abbr> <abbr>BacktickString</abbr>
+<dfn>data-tag</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
-The identifier must defined as a data tag by this specification or the Ballerina
-platform.
+A tagged-data-template-expr with data tag <var>t</var> constructs a tagged data
+value of the basic type corresponding to <var>t</var>. The data-tag identifier
+must be the name of a data tag by this specification or the Ballerina platform.
 </p>
+<p>
+The BacktickString is parsed in two stages:
+</p>
+<ol>
+<li>the BacktickString is parsed resulting in a sequence of literal characters
+and interpolations, represented as an array of <var>n</var> expressions, one for
+each interpolation, and an array of <var>n</var> + 1 strings, where the
+interpolations occur between the strings;</li>
+<li>the array of strings is parsed using the abstract parsing function defined
+for the data tag; it is a compile-time error if the abstract parsing function
+returns an error.</li>
+</ol>
+<p>
+The static type of the expression in an interpolation must be the data tag's
+basic type. When the tagged-data-template-expr is evaluated, each expression in
+an interpolation is evaluated in order. The result of evaluating the
+tagged-data-template-expr is the result of applying the function that was
+created by the abstract parsing function at compile-time to the values resulting
+from the evaluation of these expressions. Note that the result of evaluating a
+tagged-data-template-expr cannot be an error.
+</p>
+
 </section>
 
 
@@ -4751,17 +4834,20 @@ class="grammar"><dfn>list-constructor-expr</dfn> := <code>[</code> [ <abbr>list-
 <dfn>list-member-list</dfn> := <abbr>list-member</abbr> (<code>,</code> <abbr>list-member</abbr>)*
 <dfn>list-member</dfn> := <abbr>single-list-member</abbr> | <abbr>spread-list-member</abbr>
 <dfn>single-list-member</dfn> := <abbr>expression</abbr>
-<dfn>spread-list-member</dfn> := <code>...</code> <abbr>expression</abbr>
+<dfn>spread-list-member</dfn> := <abbr>spread</abbr> | <abbr>aggregated-variable-reference</abbr>
+<dfn>spread</dfn> := <code>...</code> <abbr>expression</abbr>
 </pre>
 <p>
-A list-constructor-expr creates a new list value. The list is constructed by
-processing each list-member in the order specified as follows. The expression in
-the list-member is first evaluated resulting in a value <var>v</var>. If the
-list-member is a single-list-member, then <var>v</var> is added to the list
-being constructed. Otherwise <var>v</var> must be a list, and every member of
-<var>v</var> is added in order to the list being constructed. It is a
-compile-time error if the static type of the expression in a spread-list-member
-is not a subtype of list.
+A list-constructor-expr creates a new list value. It is a compile-time error if
+the static type of the expression in a spread in a spread-list-member is not a
+subtype of list. The list is constructed by processing each list-member in the
+order specified as follows. If the list-member is a single-list-member, then the
+expression in the list-member is first evaluated resulting in a value
+<var>v</var> and <var>v</var> is added to the list being constructed. If the
+list-member is a spread, then the expression in the spread is evaluated and each
+member of the resulting list is added in order to the list being constructed. An
+aggregated-variable-reference is handled like the <a
+href="#aggregated_variables">equivalent</a> spread.
 </p>
 <p>
 If there is a contextually expected type, then the inherent type of the newly
@@ -4772,7 +4858,7 @@ type descriptor, then it is a compile-time error unless there is exactly one
 member of the union that is a list type descriptor and that allows list shapes
 of a length that the static types of the expressions in the list-member-list
 make it possible for the constructed list to have; this list type descriptor is
-used as the inherent type. If there is a spread-list-member, and the type of its
+used as the inherent type. If there is a spread, and the type of its
 expression is not fixed length, then the minimum of the total number of members
 that may be added to the list being constructed by this spread-list-member and
 any previous list-member must be greater than or equal to the minimum length
@@ -4827,7 +4913,7 @@ class="grammar"><dfn>mapping-constructor-expr</dfn> := <code>{</code> [<abbr>fie
 <dfn>value-expr</dfn> := <abbr>expression</abbr>
 <dfn>computed-name-field</dfn> := <code>[</code> <abbr>field-name-expr</abbr> <code>]</code> <code>:</code> <abbr>value-expr</abbr>
 <dfn>field-name-expr</dfn> := <abbr>expression</abbr>
-<dfn>spread-field</dfn> := <code>...</code> <abbr>expression</abbr>
+<dfn>spread-field</dfn> := <abbr>spread</abbr>
 </pre>
 <p>
 A mapping-constructor-expr creates a new mapping value. 
@@ -4877,10 +4963,22 @@ the inherent type descriptor is a record type descriptor, then the record type
 descriptor must include an individual-field-descriptor for that field.
 </p>
 <p>
-If the inherent type descriptor is a record type descriptor, a field will be
-added to the constructed value using the default value from the type descriptor
-for any field that is not specified explicitly in the mapping constructor and
-that has a default value.
+If there is a specific-field with name <code><var>x</var></code> and there is a
+contextually expected type that allows an <code><var>x</var></code> field but
+does not allow a nil value for the <code><var>x</var></code> field, then the
+static type of the value-expr for the <code><var>x</var></code> field may
+include nil; if the result of evaluating the value-expr is nil, then no field
+will be added to the constructed value.
+</p>
+<p>
+Default values are added to the mapping value being constructed after fields
+have been added for every specific-field and spread-field: if the inherent type
+descriptor is a record type descriptor, then for each field-descriptor with name
+<var>f</var> having a default-expression, if the mapping value so far
+constructed does not have a field with name <var>f</var>, then the closure for
+the default-expression is evaluated resulting in a value <var>v</var>, and
+a field with name <var>f</var> and value <var>v</var> is added to the mapping
+value.
 </p>
 <p>
 If there is a contextually expected type, then the type that the inherent type
@@ -4913,7 +5011,9 @@ If the applicable contextually expected type is a subtype of readonly, then the
 mapping will be constructed with its read-only bit on. If the inherent type
 makes a specific field readonly, then that field will be constructed with its
 read-only bit on. A specific-field that starts with <code>readonly</code> will
-also be constructed with its read-only bit on.
+also be constructed with its read-only bit on. The read-only bit of the
+mapping value or field will be set only after the mapping value has been fully
+constructed, including any field specified by a computed-name-field.
 </p>
 
 </section>
@@ -5058,7 +5158,13 @@ If a field does not specify a field-initializer, then there must be an
 <code>init</code> method and the <code>init</code> method must initialize the
 field. The field-initializer must meet the requirements for an isolated function
 unless the <code>init</code> method is present and not declared as
-<code>isolated</code>. If the <code>object-constructor-expr</code> is implicitly
+<code>isolated</code>.
+If the <code>init</code> method is not present, 
+it is a compile-time error if the expression in an
+individual-field-descriptor contains a checking-expr with a checking-keyword of
+<code>check</code>, i.e. if evaluation of the expression could complete abruptly
+with a check-fail.
+If the <code>object-constructor-expr</code> is implicitly
 read-only, then the contextually expected type for a field-initializer will be
 the intersection of readonly and the type specified in the type-descriptor of
 the object-field.
@@ -5109,7 +5215,8 @@ class="grammar"><dfn>method-defn-body</dfn> := <abbr>function-defn-body</abbr>
 <p>
 Within a <code>method-defn-body</code>, the fields and methods of the object are
 not implicitly in-scope; instead the variable <code>self</code> is bound to the
-object and can be used to access fields and methods of the object. If the
+object and can be used to access fields and methods of the object. The
+<code>self</code> variable is implicitly final and cannot be modified. If the
 <code>object-constructor-expr</code> is explicitly isolated, then the
 <code>self</code> variable must be accessed only within the scope of a lock
 statement, except when <code>self</code> is part of a
@@ -5200,6 +5307,10 @@ is used to initialize the object and is treated specially. The return type of
 the <code>init</code> method must be a subtype of the union of error and nil,
 and must contain nil; if <code>init</code> returns an error, it means that
 initialization of the object failed.
+If the evaluation of a <code>field-initializer</code> completes abruptly with a check-fail
+with associated value <var>v</var>, then the <code>init</code> method
+returns <var>v</var> before its <code>method-defn-body</code> is executed;
+the return type of the <code>init</code> method must be consistent with this.
 </p>
 <p>
 The parameter list of an <code>init</code> method within an
@@ -5225,7 +5336,8 @@ is not definitely assigned at that point. It is a compile error if a
 If the <code>object-constructor-expr</code> is explicitly isolated, then a field
 can only be assigned to by an <code>assignment-stmt</code> with a right hand
 side that is an isolated expression. The requirement to access <code>self</code>
-within a lock statement does not apply to the <code>init</code> method.
+within a lock statement does not apply to the <code>init</code> method at any
+point where there is any potentially uninitialized field.
 </p>
 <p>
 The visibility of the <code>init</code> method cannot be <code>private</code>.
@@ -5260,7 +5372,7 @@ explicit-new-expr must refer to a class or a stream type.
 When the class-descriptor refers to a class, the explicit-new-expr allocates
 storage for an object of the type defined by the class and initializes it by
 passing the supplied arg-list to the <code>init</code> method defined by the
-class. It is a compile error if the type-descriptor if the arg-list does not
+class. It is a compile error if the arg-list does not
 match the signature of the class's <code>init</code> method. If the result of
 calling the <code>init</code> method is an error value e, then the result of
 evaluating the explicit-new-expr is e; otherwise the result is the newly
@@ -5333,6 +5445,11 @@ let-expr to an expression that is isolated.
 A variable-reference-expr that refers to a variable declared by a
 module-var-decl that includes <code>isolated</code> is only allowed within a
 lock-stmt.
+</p>
+<p>
+A variable-reference-expr cannot refer to an <a
+href="#aggregated_variables">aggregated variable</a>; an aggregated variable can
+be referenced only by an aggregated-variable-reference.
 </p>
 </section>
 <section>
@@ -5666,6 +5783,29 @@ arg-list are evaluated in the order in which they occur in the arg-list; the
 contextually expected type for the expression comes from the static type
 required for the expression as specified below.
 </p>
+<p>
+If the function-reference is an unqualified identifier
+<code><var>f</var></code>, the arg-list has a rest-arg and no positional-args,
+and the rest-arg is an aggregated-variable-reference of type T, then the
+function-reference is treated as referring to a function
+<code><var>f</var></code> in a module lang.M of the lang library, where M is
+selected as follows.
+</p>
+<ul>
+<li>If T is a subtype of B[], where B is a basic type with with corresponding
+langlib module lang.B and the module lang.B contains a function
+<code><var>f</var></code>, then M is B. The module corresponding to each basic
+type is listed in the <a href="#lang_library_modules">Lang library modules</a>
+section.</li>
+<li>Otherwise, M is <code>value</code>.</li>
+</ul>
+<p>
+In this case, if the langlib function requires at least one argument, but T
+allows the empty list, then the evaluation of the function-call-expr will first
+check whether the aggregated-variable-reference refers to an empty list, and, if
+so, the result of the function-call-expr will be nil; the return type of the
+langlib function will accordingly be unioned with nil.
+</p>
 <pre
 class="grammar"><dfn>positional-args</dfn> := <abbr>positional-arg</abbr> (<code>,</code> <abbr>positional-arg</abbr>)*
 <dfn>positional-arg</dfn> := <abbr>expression</abbr>
@@ -5716,17 +5856,18 @@ must be a subtype of the type declared for the corresponding parameter or
 field-descriptor.
 </p>
 <pre
-class="grammar"><dfn>rest-arg</dfn> := <code>...</code> <abbr>expression</abbr>
+class="grammar"><dfn>rest-arg</dfn> := <abbr>spread</abbr> | <abbr>aggregated-variable-reference</abbr>
 </pre>
 <p>
-The static type of the expression in a rest-arg must be either a list type or a
-mapping type. If it is a list type, then the rest-arg is equivalent to
-specifying each member of the list as a positional-arg. If it is a mapping type,
-then the rest-arg is equivalent to specifying each field of the mapping as a
-named-arg, with the name and value of the named-arg coming from the name and
-value of the field. In either case, the static type of the expression must be
-such as to ensure that the equivalent named-args or positional-args would be
-valid.
+The static type of the expression in a spread in a rest-arg must be either a
+list type or a mapping type. If it is a list type, then the rest-arg is
+equivalent to specifying each member of the list as a positional-arg. If it is a
+mapping type, then the rest-arg is equivalent to specifying each field of the
+mapping as a named-arg, with the name and value of the named-arg coming from the
+name and value of the field. In either case, the static type of the expression
+must be such as to ensure that the equivalent named-args or positional-args
+would be valid. An aggregated-variable-reference is handled like the <a
+href="#aggregated_variables">equivalent</a> spread.
 </p>
 <p>
 If there is neither a named-arg nor a positional-arg for a parameter that is not
@@ -5823,11 +5964,11 @@ where m is an automatically created module prefix for a module lang.M of the lan
 library, where M is selected as follows.
 </p>
 <ul>
-<li>If the static type of <code>expression</code> is a subtype of some basic
-type with identifier B, and the module lang.B contains a function
-<code>method-name</code> then M is B. The identifier for a basic type is the
-reserved identifier used in type descriptors for subtypes of that basic type, as
-listed in the <a href="#lang_library">Lang library</a> section.</li>
+<li>If the static type of <code>expression</code> is a subtype of basic type
+with corresponding langlib module lang.B and the module lang.B contains a
+function <code>method-name</code>, then M is B. The module corresponding to each
+basic type is listed in the <a href="#lang_library_modules">Lang library
+modules</a> section.</li>
 <li>Otherwise, M is <code>value</code>.</li>
 </ul>
 <p>
@@ -6630,9 +6771,9 @@ class="grammar"><dfn>checking-expr</dfn> := <abbr>checking-keyword</abbr> <abbr>
 Evaluates expression resulting in value v. If v has basic type error, then
 </p>
 <ul>
-<li>if the checking-keyword is <code>check</code>, then the check-expression
+<li>if the checking-keyword is <code>check</code>, then the checking-expr
 completes abruptly with a check-fail with associated value v;</li>
-<li>if the checking-keyword is <code>checkpanic</code>, then the check-expression
+<li>if the checking-keyword is <code>checkpanic</code>, then the checking-expr
 completes abruptly with a panic with associated value v.</li>
 </ul>
 <p>
@@ -6683,112 +6824,54 @@ T|error. It is permitted for T to be <code>never</code>.</li>
 <section>
 <h3>Query expression</h3>
 <p>
-A query expression provides a language-integrated query feature using SQL-like
-syntax. In this version of Ballerina, the functionality is similar to a list
-comprehensions; future versions will provided richer functionality.
+Query expressions provide a language-integrated query feature using SQL-like
+syntax.
 </p>
-
-<pre class="grammar"><dfn>query-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr> [<abbr>on-conflict-clause</abbr>]
-<dfn>query-construct-type</dfn> :=
-  <code>map</code>
-  | <code>table</code> <abbr>key-specifier</abbr>
-  | <code>stream</code>
+<pre class="grammar"><dfn>query-expr</dfn> := <abbr>query-select-expr</abbr> | <abbr>query-collect-expr</abbr>
+<dfn>query-select-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr> [<abbr>on-conflict-clause</abbr>]
+<dfn>query-collect-expr</dfn> := <abbr>query-pipeline</abbr> <abbr>collect-clause</abbr>
 <dfn>query-pipeline</dfn> := <abbr>from-clause</abbr> <abbr>intermediate-clause</abbr>*
 <dfn>intermediate-clause</dfn> :=
    <abbr>from-clause</abbr>
    | <abbr>where-clause</abbr>
    | <abbr>let-clause</abbr>
    | <abbr>join-clause</abbr>
-   | <abbr>order-by-clause</abbr>
    | <abbr>limit-clause</abbr>
+   | <abbr>order-by-clause</abbr>
+   | <abbr>group-by-clause</abbr>
 </pre>
 <p>
 A query expression consists of a sequence of clauses. The semantics of clauses
 is specified in terms of transforming a sequence of frames, where a frame is a
 binding of variables to values. The input to each clause is a sequence of
-frames. As each clause is executed, it iterates over its input frames and emits
-output: the final clause, which is a <code>select</code> clause, emits output
-<em>values</em>; the other clauses emit output <em>frames</em>. When a
-query-expr is evaluated, its clauses are executed in a pipeline by making the
-sequence of frames emitted by one clause be the input to the next clause. Each
-clause in the pipeline is executed lazily, pulling input from its preceding
-clause. The input to the first clause is a single empty frame.
+frames.
 </p>
 <p>
-When a <code>from</code> or <code>join</code> clause is executed, it makes calls
-to the <code>next</code> method of an Iterator object. If any of these calls
-return an error value <var>e</var>, then we say that the clause <em>completes
-early</em> with error value <var>e</var>.
+The initial part of a query expression is a pipeline, where each clause outputs
+a sequence of frames; the sequence of frames output by one clause become the
+input to the next clause. As each clause in the pipeline is executed, it
+iterates over its input frames and emits output frames. The pipeline is executed
+lazily, with each clause pulling input from its preceding clause. The input to
+the first clause is a single empty frame. The output of the pipeline is the
+output of its last clause.
 </p>
 <p>
-A query-expr that does not construct a stream is evaluated as described in this
-paragraph. If a clause completes early with error value <var>e</var>, then the
-result of evaluating the query-expr is <var>e</var>. The normal rules apply if
-the execution of any clause results in the evaluation of an expression
-completing abruptly. Otherwise, the result of evaluating a query expression is a
-single value, which is constructed from the sequence of values emitted by the
-last clause. The result must be one of the following basic types:
-</p>
-<ul>
-<li>list - the constructed list has a member for each emitted value; every
-emitted value must belong to type T, where T[] is the type of the constructed
-value</li>
-<li>mapping - the constructed mapping has a member for each emitted value; every
-emitted value must belong to type [string, T], where map&lt;T&gt; is the type
-of the constructed value </li>
-<li>table - the constructed table has a member for each emitted value; every
-emitted value must belong to type T, where table&lt;T&gt; is the type of the
-constructed value</li>
-<li>string - the constructed string is the concatenation of the emitted values;
-every emitted value must be of type string</li>
-<li>xml - the constructed xml value is the concatenation of the emitted values;
-every emitted value must be of type xml</li>
-<li>stream - the stream generates the emitted values</li>
-</ul>
-<p>
-A query-expr that constructs a stream must start with the <code>stream</code>
-keyword and is evaluated differently from a query-expr that constructs a value
-of other basic types. The clauses in the query-expr are executed lazily: clauses
-in the query-expr becomes closures, which are called as a result of next
-operations being performed on the stream. If a next operation causes the
-execution of a clause that completes early with an error value, then the error
-value is returned by the next operation; the evaluation of the query-expr will
-already have resulted in a stream value. If the next operation results in the
-evaluation of an expression within the query-expr completing abruptly with a
-check-fail, the associated error value will be returned as the result of the
-next operation. If the next operation results in the evaluation of an expression
-within the query-expr completely abruptly with a panic, then the next operation
-will complete abruptly with a panic.
+The remainder of the query expression says how to compute the result of the
+query expression using the sequence of frames output by the query pipeline.
+There are two kinds of query expression: query-select expressions and
+query-collect expressions. In a query-select expression the pipeline is followed
+by a <code>select</code> clause; in a query-collect expression, the pipeline is
+followed by a <code>collect</code> clause.
 </p>
 <p>
-A query-expr that constructs a mapping must start with the <code>map</code> keyword.
-An emitted value <code>[<var>k</var>, <var>v</var>]</code> results in adding a
-field with key <code><var>k</var></code> and value <code><var>v</var></code>.
-</p>
-<p>
-If the query-expr starts with <code>table</code>, then the query-expr will
-construct a table; the key-specifier specifies the key sequence of the
-constructed table in the same way as with a table-constructor-expr. Otherwise,
-the applicable contextually expected type determines the basic type of the value
-constructed. If there is no contextually expected type, then the basic type of
-the value constructed is the basic type of expression following <code>in</code>;
-it is a compile-time error if the static type of this expression is not a
-subtype of one of the basic types that a query expression can construct.
-</p>
-<p>
-When the query-expr is constructing a value of basic type list, mapping, table
-or xml, and the applicable contextually expected type is a subtype of readonly,
-then the query-expr will construct a value with its read-only bit set and the
-static type of the query-expr will be a subtype of readonly. Furthermore, the
-contextually expected type for the expression in the select-clause will also be
-a subtype of readonly.
-</p>
-<p>
-When during the construction of a map or table, an emitted value is added as a new
-member, it replaces any existing member with the same key value; when a new
-member replaces an existing member, it will have the same position in the order
-of members as the existing member. This behavior may be controlled by an
-<code>on conflict</code> clause.
+The execution of certain intermediate clauses can result in the pipeline being
+terminated prematurely. Specifically, when a <code>from</code> or
+<code>join</code> clause is executed, it makes calls to the <code>next</code>
+method of an Iterator object; if any of these calls return an error value
+<var>e</var>, then the clause is said to <em>complete early</em> with error
+value <var>e</var>. A query-select or query-collect expression will handle this
+early completion by terminating the execution of the pipeline, as described
+below.
 </p>
 <p>
 Variables bound by the clauses of a query-pipeline are implicitly final, and
@@ -6826,7 +6909,7 @@ resulting from binding typed-binding-pattern to <var>v</var>.</li>
 
 <section>
 <h4>Where clause</h4>
-<pre class="grammar"><dfn>where-clause</dfn> := <code>where</code> <abbr>expression</abbr>
+<pre class="grammar"><dfn>where-clause</dfn> := <code>where</code><sub>NR</sub> <abbr>expression</abbr>
 </pre>
 <p>
 A <code>where</code> clause is executed as follows:
@@ -6869,7 +6952,7 @@ E<sub>2</sub></code>.
 
 <section>
 <h4>Join clause</h4>
-<pre class="grammar"><dfn>join-clause</dfn> := [<code>outer</code>] <code>join</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr> <abbr>join-on-condition</abbr>
+<pre class="grammar"><dfn>join-clause</dfn> := [<code>outer</code><sub>NR</sub>] <code>join</code><sub>NR</sub> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr> <abbr>join-on-condition</abbr>
 <dfn>join-on-condition</dfn> := <code>on</code> <abbr>expression</abbr> <code>equals</code> <abbr>expression</abbr>
 </pre>
 <p>
@@ -6945,9 +7028,38 @@ if the type that would be inferred usually for the variable would be
 </section>
 
 <section>
+<h4>Limit clause</h4>
+<pre class="grammar">
+<dfn>limit-clause</dfn> := <code>limit</code><sub>NR</sub> <abbr>expression</abbr>
+</pre>
+<p>
+A <code>limit</code> clause limits the number of frames emitted by a query pipeline.
+</p>
+<p>
+A <code>limit</code> clause is executed as follows:
+</p>
+<ul>
+<li>evaluate expression resulting in a value <var>n</var>; variable bindings
+from input frames are not in scope for this evaluation;</li>
+<li>if <var>n</var> is less than zero, then panic;</li>
+<li>for each input frame <var>f</var>, while <var>n</var> is greater than 0
+<ul>
+<li>decrement <var>n</var>;</li>
+<li>emit <var>f</var>.</li> 
+</ul>
+</li> 
+</ul>
+
+<p>
+The static type of expression must be a subtype of <code>int</code>.
+</p>
+
+</section>
+
+<section>
 <h4>Order by clause</h4>
 <pre class="grammar">
-<dfn>order-by-clause</dfn> := <code>order</code> <code>by</code> <abbr>order-key</abbr> [<code>,</code> <abbr>order-key</abbr>]*
+<dfn>order-by-clause</dfn> := <code>order</code><sub>NR</sub> <code>by</code><sub>NR</sub> <abbr>order-key</abbr> [<code>,</code> <abbr>order-key</abbr>]*
 <dfn>order-key</dfn> := <abbr>expression</abbr> [<abbr>order-direction</abbr>]
 <dfn>order-direction</dfn> := <code>ascending</code> | <code>descending</code>
 </pre>
@@ -7008,74 +7120,263 @@ expression with <var>f</var> in scope</li>
 </ul>
 
 </section>
+
 <section>
-<h4>Limit clause</h4>
-<pre class="grammar">
-<dfn>limit-clause</dfn> := <code>limit</code> <abbr>expression</abbr>
-</pre>
-<p>
-A <code>limit</code> clause limits the number of frames emitted by a query pipeline.
-</p>
-<p>
-A <code>limit</code> clause is executed as follows:
-</p>
-<ul>
-<li>evaluate expression resulting in a value <var>n</var>; variable bindings
-from input frames are not in scope for this evaluation;</li>
-<li>if <var>n</var> is less than zero, then panic;</li>
-<li>for each input frame <var>f</var>, while <var>n</var> is greater than 0
-<ul>
-<li>decrement <var>n</var>;</li>
-<li>emit <var>f</var>.</li> 
-</ul>
-</li> 
-</ul>
+<h4 id="aggregated_variables">Aggregated variable bindings</h4>
 
 <p>
-The static type of expression must be a subtype of <code>int</code>.
+Frames constructed by collect and group-by clauses can contain
+<em>aggregated</em> variable bindings. The type of an aggregated variable
+binding is always a list type; as usual, the
+value bound to the variable belongs to this type. An aggregrated variable is
+special in that it is only allowed to be referenced by an
+aggregated-variable-reference; the semantics of such a reference are different
+from the semantics of a variable-reference-expr.
+</p>
+<p>
+An aggregated variable binding for a variable <var>x</var> is <em>aggregated
+from</em> a sequence of frames <var>S</var>, by binding <var>x</var> to a list
+with the same length as <var>S</var>, where the <var>i</var>-th member of the
+list is the value bound to <var>x</var> in the <var>i</var>-th frame in
+<var>S</var>. The type of the aggregated variable binding is derived from the
+type <code><var>T</var></code> of <var>x</var> in S and the kind of clause
+<var>C</var> that is constructing the binding. When <var>C</var> is a collect
+clause, <var>S</var> can be empty and the type is <code><var>T</var>[]</code>.
+When <var>C</var> is a group-by clause, <var>S</var> cannot be empty and so the
+type is <code>[<var>T</var>,<var>T</var>...]</code>.
+</p>
+
+<pre class="grammar"><dfn>aggregated-variable-reference</dfn> := <abbr>identifier</abbr>
+</pre>
+<p>
+A reference to an aggregated variable binding is <em>implicitly spread</em>: an
+identifier <code><var>x</var></code> that refers to an aggregated variable
+binding is treated like a spread <code>...<var>y</var></code>, where the
+variable <code><var>y</var></code> has the same type and value as
+<code><var>x</var></code> but is not aggregated.
+</p>
+<p>
+The grammar shows this by using the aggregated-variable-reference production. A
+reference to an aggregated variable is allowed only in a syntactic context where
+the grammar allows an aggregated-variable-reference. In each such syntactic
+context, the grammar also allows both a variable-reference-expr and a spread.
+When a reference to an aggregated variable occurs in an allowed context, it
+should be parsed as a aggregated-variable-reference rather than as a
+variable-reference-expr, and should be transformed into the equivalent spread.
+Any other reference to an aggregated variable should be parsed as a
+variable-reference-expr, and then rejected as semantically incorrect.
+</p>
+</section>
+
+<section>
+<h4>Group by clause</h4>
+<pre class="grammar"><dfn>group-by-clause</dfn> := <code>group</code><sub>NR</sub> <code>by</code><sub>NR</sub> <abbr>grouping-key</abbr> (<code>,</code> <abbr>grouping-key</abbr>)*
+<dfn>grouping-key</dfn> :=
+   <abbr>variable-name</abbr>
+   | <abbr>inferable-type-descriptor</abbr> <abbr>variable-name</abbr> <code>=</code> <abbr>expression</abbr>
+</pre>
+<p>
+A group-by-clause that uses an inferable-type-descriptor is transformed into a a
+let-clause followed by a group-by-clause where every grouping-key is a
+variable-name. For example:
+</p>
+<pre>group by var x1 = E1, var x2 = E2
+</pre>
+<p>
+is transformed to
+</p>
+<pre>let x1 = E1, x2 = E2 group by x1, x2
+</pre>
+<p>
+A group-by clause where every grouping-key is a variable-name is executed by
+first partitioning the sequence of input frames <var>S</var> into a set
+<var>P</var> of non-empty sequences of frames, such that:
+</p>
+<ul>
+<li>every member <var>P</var> is a subsequence (not necessarily consecutive) of <var>S</var>;</li>
+<li>every constituent of <var>S</var> is a constituent of exactly one member of <var>P</var>;</li>
+<li>two constituents <var>f</var><sub>1</sub> and <var>f</var><sub>2</sub> of
+<var>S</var> are constituents of the same member of <var>P</var> if and only if
+for every variable <var>x</var> that is a grouping-key,
+DeepEquals(<var>x</var><sub>1</sub>,<var>x</var><sub>2</sub>) is true, where
+<var>x</var><sub>1</sub> is the value bound to <var>x</var> in
+<var>f</var><sub>1</sub>, and <var>x</var><sub>2</sub> is the value bound to
+<var>x</var> in <var>f</var><sub>2</sub>.</li>
+</ul>
+<p>
+Next, for each sequence <var>G</var> in <var>P</var>, ordered by the order in
+which the first constituent of <var>G</var> occurs in <var>S</var>, an output
+frame is constructed from <var>G</var> and emitted. An output frame <var>g</var>
+is constructed from a sequence of input frames <var>G</var> as follows. The same
+variables are bound by <var>g</var> as are bound by <var>G</var>. For each
+variable that is a grouping-key, the value and type in <var>g</var> will be the
+same as the value and type in the first constituent of <var>G</var>. The binding
+for every other variable is <a href="#aggregated_variables">aggregated from</a>
+<var>G</var>.
 </p>
 
 </section>
 
 <section>
+<h4>Collect clause</h4>
+<pre class="grammar"><dfn>collect-clause</dfn> := <code>collect</code><sub>NR</sub> <abbr>expression</abbr>
+</pre>
+
+<p>
+A query-collect expression is used to perform aggregation. It is evaluated as
+follows.
+</p>
+
+<ol>
+<li>The query-pipeline is executed to produce a sequence of frames <var>S</var>.
+If during this any clause completes early with error value <var>e</var>, then
+the result of evaluating the query-collect-expr is <var>e</var>. In addition,
+the normal rules apply if the execution of any clause results in the evaluation
+of an expression completing abruptly.</li>
+<li>A frame <var>f</var> is constructed. For each variable <var>x</var> that is
+bound by <var>S</var>, <var>f</var> has a variable binding for <var>x</var> that
+is <a href="#aggregated_variables">aggregated from</a> <var>S</var>.</li>
+<li>The expression in the collect-clause is evaluated with <var>f</var> in scope
+resulting in a value <var>v</var>.</li>
+<li>The result of the query-collect expression is <var>v</var>.</li>
+</ol>
+
+<p>
+The contextually expected type for the expression in the collect-clause is the
+contextually expected type for the query-collect-expr.
+</p>
+</section>
+
+<section>
 <h4>Select clause</h4>
+
 <pre class="grammar">
-<dfn>select-clause</dfn> := <code>select</code> <abbr>expression</abbr>
+<dfn>select-clause</dfn> := <code>select</code><sub>NR</sub> <abbr>expression</abbr>
 </pre>
 <p>
-A <code>select</code> clause is executed as follows:
+When a query-select expression is evaluated, the <code>select</code> clause is
+executed as follows, so as to emit a sequence of values:
 </p>
 <ul>
-<li>for each input frame <var>f</var> 
+<li>for each frame <var>f</var> output by the query pipeline
 <ul>
-<li>evaluate the expression with <var>f</var> in scope resulting in value <var>v</var></li>
+<li>evaluate the expression that follows <code>select</code> with <var>f</var>
+in scope resulting in value <var>v</var></li>
 <li>emit <var>v</var></li> 
 </ul>
 </li> 
 </ul>
+<p>
+The sequence of values emitted by the execution of the <code>select</code>
+clause is used to construct a value, which becomes the result of the
+query-select-expr. The constructed result value must be one of the following
+basic types:
+</p>
+<ul>
+<li>list - the constructed list has a member for each emitted value; every
+emitted value must belong to type T, where T[] is the type of the constructed
+value;</li>
+<li>mapping - the constructed mapping has a member for each emitted value; every
+emitted value must belong to type [string, T], where map&lt;T&gt; is the type
+of the constructed value; an emitted value <code>[<var>k</var>,
+<var>v</var>]</code> results in adding a field with key
+<code><var>k</var></code> and value <code><var>v</var></code>;</li>
+<li>table - the constructed table has a member for each emitted value; every
+emitted value must belong to type T, where table&lt;T&gt; is the type of the
+constructed value;</li>
+<li>string - the constructed string is the concatenation of the emitted values;
+every emitted value must be of type string;</li>
+<li>xml - the constructed xml value is the concatenation of the emitted values;
+every emitted value must be of type xml;</li>
+<li>stream - the stream generates the emitted values.</li>
+</ul>
+<p>
+The clauses in a query-select-expr are executed either eagerly or lazily. If a
+query-select-expr is constructing a stream, they are executed lazily; otherwise,
+they are executed eagerly. When the clauses in a query-select-expr are being
+executed eagerly, the execution happens during the evaluation of the
+query-select-expr. When the clauses are being executed lazily, the evaluation of
+the query-select-expr constructs a stream object without executing any of the
+clauses; the clauses becomes closures, which are called later as a result of
+next operations being performed on the stream.
+</p>
+<p>
+With eager execution, if any clause completes early with error value
+<var>e</var>, then the result of evaluating the query-select-expr is
+<var>e</var>. In addition, the normal rules apply if the execution of any clause
+results in the evaluation of an expression completing abruptly.
+</p>
+<p>
+With lazy execution, when a next operation on the stream results in the
+execution of a clause that completes early with error value <var>e</var>, then
+that next operation returns <var>e</var>. Similarly, if the next operation
+results in the evaluation of an expression within the query-select-expr
+completing abruptly with a check-fail, the associated error value will be
+returned as the result of the next operation; if the next operation results in
+the evaluation of an expression within the query-select-expr completely abruptly
+with a panic, then the next operation will complete abruptly with a panic.
+</p>
+
+<pre class="grammar"><dfn>query-construct-type</dfn> :=
+  <code>map</code>
+  | <code>table</code> <abbr>key-specifier</abbr>
+  | <code>stream</code>
+</pre>
+<p>
+If a query-construct-type is specified, then it determines the basic type of the
+result. A query-select-expr that constructs a mapping must specify a
+query-construct-type of <code>map</code>.
+When constructing a table, the key-specifier specifies the key
+sequence of the constructed table in the same way as with a
+table-constructor-expr.
+</p>
+<p>
+If no query-construct-type is specified, the applicable contextually expected
+type determines the basic type of the value constructed. If there is no
+contextually expected type, then the basic type of the value constructed is the
+basic type of expression following <code>in</code>; it is a compile-time error
+if the static type of this expression is not a subtype of one of the basic types
+list, table, string, stream or xml.
+</p>
+<p>
+When the query-select-expr is constructing a value of basic type list, mapping, table
+or xml, and the applicable contextually expected type is a subtype of readonly,
+then the query-select-expr will construct a value with its read-only bit set and the
+static type of the query-select-expr will be a subtype of readonly. Furthermore, the
+contextually expected type for the expression in the select-clause will also be
+a subtype of readonly.
+</p>
 </section>
 
 <section>
 <h4>On conflict clause</h4>
 <pre class="grammar">
-<dfn>on-conflict-clause</dfn> := <code>on</code> <code>conflict</code> <abbr>expression</abbr>
+<dfn>on-conflict-clause</dfn> := <code>on</code> <code>conflict</code><sub>NR</sub> <abbr>expression</abbr>
 </pre>
 <p>
-An <code>on conflict</code> clause is allowed only for a query expression that
-constructs a map or table with a key sequence. The expression is evaluated when the
-<code>select</code> clause emits a value that conflicts with a previous value,
-in the sense that both values have the same key value in the map or table. The
-expression is evaluated with the same frame in scope as the select clause that
-emitted the value that conflicts with the previous value. The static type of the
-expression must be a subtype of <code>error?</code>. If the result of evaluating
-the expression is an error <var>e</var>, then the result of evaluating the
-query-expr is <var>e</var>. Otherwise, the result must be nil, and the earlier
-new value replaces the earlier conflicting value, in the same way as if there
-not been an <code>on conflict</code> clause.
+During the execution of the select clause of query-select-expr that is
+constructing a map or table, when value emitted by the select clause is added as
+a new member of the map or table being constructed, it replaces any existing
+member with the same key value; when a new member replaces an existing member,
+it will have the same position in the order of members as the existing member.
+This behavior may be controlled by an <code>on conflict</code> clause.
 </p>
 <p>
-Note that the expression may have side-effects; for example, it may call a
-function that logs an error.
+An <code>on conflict</code> clause is allowed only for a query-select-expr that
+constructs a table with a key sequence or a map. The expression is evaluated
+when the <code>select</code> clause emits a value that conflicts with a previous
+value, in the sense that both values have the same key value in the map or
+table. The expression is evaluated with the same frame in scope as the select
+clause that emitted the value that conflicts with the previous value. The static
+type of the expression must be a subtype of <code>error?</code>. If the result
+of evaluating the expression is an error <var>e</var>, then the result of
+evaluating the query-select-expr is <var>e</var>. Otherwise, the result must be
+nil, and the earlier new value replaces the earlier conflicting value, in the
+same way as if there not been an <code>on conflict</code> clause.
+</p>
+<p>
+Note that the expression in an on-conflict-clause may have side-effects; for
+example, it may call a function that logs an error.
 </p>
 </section>
 
@@ -7274,21 +7575,25 @@ A <code>type-cast-action-or-expr</code>, <code>checking-action-or-expr</code> or
 </p>
 
 <pre
-class="grammar"><dfn>query-action-or-expr</dfn> :=
-   [<abbr>query-construct-type</abbr>] <abbr>query-action-pipeline</abbr> <abbr>select-action-clause</abbr> [<abbr>on-conflict-clause</abbr>]
+class="grammar"><dfn>query-action-or-expr</dfn> := <abbr>query-select-action-or-expr</abbr> | <abbr>query-collect-action-or-expr</abbr>
+<dfn>query-select-action-or-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-action-pipeline</abbr> <abbr>select-action-clause</abbr> [<abbr>on-conflict-clause</abbr>]
+<dfn>query-collect-action-or-expr</dfn> := <abbr>query-action-pipeline</abbr> <abbr>collect-action-clause</abbr>
 <dfn>query-action-pipeline</dfn> := <abbr>from-action-clause</abbr> <abbr>intermediate-action-clause</abbr>*
 <dfn>intermediate-action-clause</dfn> :=
    <abbr>from-action-clause</abbr>
    | <abbr>let-action-clause</abbr>
+   | <abbr>join-action-clause</abbr>
    | <abbr>where-clause</abbr>
-   | <abbr>join-clause</abbr>
-   | <abbr>order-by-clause</abbr>
    | <abbr>limit-clause</abbr>
+   | <abbr>order-by-clause</abbr>
+   | <abbr>group-by-clause</abbr>
 
 <dfn>from-action-clause</dfn> := <code>from</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>action-or-expr</abbr>
 <dfn>let-action-clause</dfn> := <code>let</code> <abbr>let-action-var-decl</abbr> [<code>,</code> <abbr>let-action-var-decl</abbr>]*
 <dfn>let-action-var-decl</dfn> := [<abbr>annots</abbr>] <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>action-or-expr</abbr>
-<dfn>select-action-clause</dfn> := <code>select</code> <abbr>action-or-expr</abbr>
+<dfn>join-action-clause</dfn> := [<code>outer</code><sub>NR</sub>] <code>join</code><sub>NR</sub> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>action-or-expr</abbr> <abbr>join-on-condition</abbr>
+<dfn>select-action-clause</dfn> := <code>select</code><sub>NR</sub> <abbr>action-or-expr</abbr>
+<dfn>collect-action-clause</dfn> := <code>collect</code><sub>NR</sub> <abbr>action-or-expr</abbr>
 </pre>
 <p>
 A <code>query-action-or-expr</code> is a <code>query-expr</code> in which
@@ -7372,7 +7677,7 @@ class="grammar"><dfn>block-function-body</dfn> :=
 <dfn>default-worker-init</dfn> := <abbr>statement</abbr>*
 <dfn>default-worker</dfn> := <abbr>statement</abbr>*
 <dfn>named-worker-decl</dfn> :=
-   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
+   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr> [<abbr>on-fail-clause</abbr>]
 <dfn>worker-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -7487,7 +7792,7 @@ return <var>E</var >}</code>.
 </section>
 
 <section>
-<h4>External functions</h4>
+<h4>Functions with external bodies</h4>
 
 <pre
 class="grammar"><dfn>external-function-body</dfn> := <code>=</code> [<abbr>annots</abbr>] <code>external</code> 
@@ -7562,7 +7867,6 @@ class="grammar"><dfn>statement</dfn> :=
    <abbr>action-stmt</abbr>
    | <abbr>local-var-decl-stmt</abbr>
    | <abbr>xmlns-decl-stmt</abbr>
-   | <abbr>client-decl-stmt</abbr>
    | <abbr>assignment-stmt</abbr>
    | <abbr>compound-assignment-stmt</abbr>
    | <abbr>destructuring-assignment-stmt</abbr>
@@ -7574,9 +7878,6 @@ class="grammar"><dfn>statement</dfn> :=
    | <abbr>break-stmt</abbr>
    | <abbr>stmt-with-on-fail</abbr>
    | <abbr>fail-stmt</abbr>
-   | <abbr>retry-stmt</abbr>
-   | <abbr>transaction-stmt</abbr>
-   | <abbr>retry-transaction-stmt</abbr>
    | <abbr>rollback-stmt</abbr>
    | <abbr>panic-stmt</abbr>
    | <abbr>return-stmt</abbr>
@@ -7586,11 +7887,14 @@ class="grammar"><dfn>statement</dfn> :=
 <pre
 class="grammar">
 <dfn>regular-compound-stmt</dfn> :=
-  <abbr>do-stmt</abbr>
-  | <abbr>match-stmt</abbr>
-  | <abbr>foreach-stmt</abbr>
-  | <abbr>while-stmt</abbr>
-  | <abbr>lock-stmt</abbr>
+   <abbr>do-stmt</abbr>
+   | <abbr>match-stmt</abbr>
+   | <abbr>foreach-stmt</abbr>
+   | <abbr>while-stmt</abbr>
+   | <abbr>lock-stmt</abbr>
+   | <abbr>retry-stmt</abbr>
+   | <abbr>transaction-stmt</abbr>
+   | <abbr>retry-transaction-stmt</abbr>
 </pre>
 <p>
 A <code>regular-compound-stmt</code> can be combined with an
@@ -7867,13 +8171,8 @@ of all of its wait-future-exprs.
 <section>
 <h3>Worker message passing</h3>
 <p>
-Messages can be sent between workers.
-</p>
-<p>
-Sends and receives are matched up at compile-time. This allows the connection
-between the send and the receive to be shown in the sequence diagram. It is also
-guarantees that any sent message will be received, provided that neither the
-sending nor the receiving worker terminate abnormally or with an error.
+Messages can be sent between workers. A message is a value, which must belong to
+<code>value:Cloneable</code>.
 </p>
 <p>
 Messages can only be sent between workers that are peers of each other. A
@@ -7892,50 +8191,172 @@ scope; <code>function</code> refers to the function's default worker. The
 referenced worker must be a peer worker.
 </p>
 <p>
-Each worker maintains a separate logical queue for each peer worker to which it
-sends messages; a sending worker sends a message by adding it to the queue; a
-receiving worker receives a message by removing it from the sending worker's
-queue for that worker; messages are removed in the order in which they were
-added to the queue.
-</p>
-<section>
-<h4>Send action</h4>
-
-<pre
-class="grammar"><dfn>send-action</dfn> := <abbr>sync-send-action</abbr> | <abbr>async-send-action</abbr>
-<dfn>sync-send-action</dfn> := <abbr>expression</abbr> <code>-&gt;&gt;</code> <abbr>peer-worker</abbr>
-<dfn>async-send-action</dfn> := <abbr>expression</abbr> <code>-&gt;</code> <abbr>peer-worker</abbr> <code>;</code>
-</pre>
-<p>
-A send-action sends a message to the worker that is identified by peer-worker. A
-send-action starts by evaluating the expression, resulting in a value
-<code><var>v</var></code>; the Clone abstract operation is then applied to
-<code><var>v</var></code> resulting in value <code><var>c</var></code>. This
-value <code><var>c</var></code> is added to the message queue maintained by the
-sending worker for messages to be sent to the receiving worker; this queue
-continues to exist even if the receiving worker has already terminated.
+Each worker maintains a separate queue for each peer worker to which it sends
+messages; thus for each queue a sending worker and a receiving worker, which
+must be distinct. A queue has an array of slots together with two integers
+<var>w</var> and <var>r</var> that index into the array. Each slot is either
+empty or contains a message. The length of each queue's array is determined at
+compile-time. When a message is sent, the sending worker writes it to a slot in
+the queue. The receiving worker receives the message by reading it from a slot.
+Each slot is written to at most once and is read from at most once.
+The slots in a queue's array are written to in increasing order,
+and are read from in increasing order.
+The <var>w</var> and <var>r</var> indices are used to coordinate the sending and
+receiving worker: <var>w</var> is incremented by the sending worker as it writes
+messages to successive slots in the array; <var>r</var> is incremented by the
+receiving worker as it reads messages from successive slots in the array.
+The minimum value <var>w</var> and <var>r</var> is 0, and the maximum
+is the length of the array of slots.
 </p>
 <p>
-For each send-action S, the compiler determines a unique corresponding
-receive-action R, such that a message sent by S will be received by R, unless
-R's worker has terminated abnormally or with failure. It is a compile-time error
-if this cannot be done. The compiler determines a <em>failure type</em> for the
-corresponding receive-action. If the receive-action was not executed and its
-worker terminated normally, then the termination value of the worker will belong
-to the failure type. The failure type will be a (possibly empty) subtype of
-error.
+A message is sent by a send-action and received by a receive-action. The index
+of the slot used by each send-action and receive-action is determined at compile
+time. This allows the connection between the send-action and the receive-action
+to be shown in the sequence diagram.
+There is a one-to-one correspondence between slots and send-actions; there is
+a many-to-one correspondence between slots and receive-actions.
+It is a compile-time error if a send-action or receive-action occurs in a
+syntactic context, such as within the body of a foreach statement, where it
+could be executed more than once.
 </p>
 <p>
-The difference between async-send-action and sync-send-action is in what happens
-after the message is added to the queue. The evaluation of async-send-action
-completes immediately after this, and the result is always <code>()</code>. A
-subsequent flush action can be used to check whether the message was received.
-With sync-send-action, evaluation waits until the receiving worker either
-executes a receive action that receives the queued message or terminates. The
-evaluation of sync-send-action completes as follows:
+There are four types determined at compile-time for each slot:
 </p>
 <ul>
-<li>if the queued message was received, then normally with result nil;</li>
+<li>a message type: if a message v is written to the slot, then v belongs to the
+slot's message type</li>
+<li>a no message type: if it is possible for the index <var>w</var> of the queue
+to be &gt; <var>i</var> while the slot with index <var>i</var> is empty, then
+the no message type of the slot with index <var>i</var> is
+<code>error:NoMessage</code>, otherwise it is empty;</li>
+<li>a send failure type: this is the type of termination failure in the sending
+worker that caused the corresponding message not to be sent; more precisely, for
+any slot index <var>i</var>, if it is possible for <var>i</var> to be &#x2265;
+the index <var>w</var> of the queue at the time when the sending worker
+completes normally with termination value <var>e</var>, then <var>e</var>
+belongs to the send failure type of the slot with index <var>i</var>; it is a
+compile-time error if the send failure type is not a (possibly empty) subtype of
+error;</li>
+<li>a receive failure type: this is the type of termination failure in the
+receiving worker that caused the corresponding message not to be received; more
+precisely, for any slot index <var>i</var>, if it is possible for <var>i</var>
+to be &#x2265; the index <var>r</var> of the queue at the time when the
+receiving worker completes normally with termination value <var>e</var>, then
+<var>e</var> belongs to the receive failure type of the slot with index
+<var>i</var>; it is a compile-time error if the receive failure type is not a
+(possibly empty) subtype of error</li>
+</ul>
+<p>
+The sections below on <a href="#sending_messages">Sending messages</a> and
+<a href="#receiving_messages">Receiving messages</a> describe
+how the sending worker and receiving worker respectively increment the <var>w</var>
+and <var>r</var> indices of a queue.
+Note that the <var>w</var> index of a queue is updated to the length of the queue's
+slot array upon successful termination of the sending worker, but the <var>r</var>
+index is <em>not</em> similarly updated by the receiving worker.
+The overall effect of this in conjunction with the typing rules is that
+a send-action may occur in a conditional context where it may never be executed
+but a receive-action may not.
+</p>
+
+<section>
+<h4 id="sending_messages">Sending messages</h4>
+
+<pre
+class="grammar"><dfn>send-action</dfn> := <abbr>async-send-action</abbr> | <abbr>sync-send-action</abbr>
+</pre>
+
+<p>
+A send-action sends a message to the worker that is identified by peer-worker. A
+send-action with peer-worker R occurring within worker W is associated with the
+queue with sending worker W and receiving worker R. There is a one-to-one
+correspondence between the slots in a queue and the send-actions associated with
+that queue. The order of the slots in the queue is the same as the syntactic
+order of the send-actions.
+</p>
+<p>
+An async-send-action sends a message without waiting for it to be received by
+the receiving worker. A flush-action on a queue waits until the receiving worker
+has received all messages that have been send to the queue. A sync-send-action
+is equivalent to an async-send-action followed by a flush-action.
+</p>
+<p>
+It is possible that a send-action is not evaluated. This can happen when the
+worker containing the send-action terminates with an error or abnormally. It can
+also happen when the send-action occurs within a conditional or match statement;
+in this case, when there is no longer a possibility that the send-action will be
+evaluated, the <code>w</code> index in queue needs to be incremented past the
+index of the corresponding slot so as to ensure that a corresponding
+receive-action does not wait any longer than necessary. This is achieved by
+performing a <em>queue update</em> for every queue for whenever execution of the
+sending worker reaches specific points. A queue update is performed for a worker
+at a particular execution point by setting the <var>w</var> index to the least
+<var>k</var> such that <var>k</var> is &gt; <var>i</var> for every <var>i</var>
+where the send-action corresponding to the slot with index <var>i</var> is
+syntactically before the execution point. There is a queue update execution
+point immediately before every statement that might result in the worker's
+strand yielding. A final queue update is also performed if the worker terminates
+successfully, by setting <var>w</var> to the length of the queue's array.
+</p>
+<p>
+If a worker W is about to terminate normally, and any final queue updates have
+been performed, then for each queue for which W is the sending worker, W waits
+until either the receiving worker has terminated or the <var>r</var> index is
+&#x2265; the <var>w</var> index. If after waiting, the <var>r</var> index is
+still &lt; the <var>w</var> index in some queue with receiving worker R, R must
+have terminated abnormally, because the rule in the preceding paragraph. In this
+case, W terminates abnormally and W will use R's termination value as its
+termination value.
+</p>
+
+
+<section>
+<h5>Async send action</h5>
+<pre
+class="grammar"><dfn>async-send-action</dfn> := <abbr>expression</abbr> <code>-&gt;</code> <abbr>peer-worker</abbr> <code>;</code>
+</pre>
+
+<p>
+The evaluation of a async-send-action starts by evaluating the expression, resulting
+in a value <code><var>v</var></code>; the Clone abstract operation is then
+applied to <code><var>v</var></code> resulting in value
+<code><var>c</var></code>. This value <code><var>c</var></code> is then written
+to the slot in the associated queue corresponding to the send-action. The index
+<var>w</var> in the queue is set to 1 greater than the index of that slot in the
+queue. The result of an async-send-action is always <code>()</code>.
+</p>
+<p>
+The static type of the <code>expression</code> must be a subtype of
+<code>value:Cloneable</code>. The contextually expected type used to interpret
+<code>expression</code> is the contextually expected type from the corresponding
+receive-action.
+</p>
+<p>
+If the slot corresponding to an async-send-action has a non-empty receive
+failure type, then it is a compile-time error unless it can be determined that a
+sync-send-action or a flush-action will be executed before the sending worker
+terminates with success.
+</p>
+</section>
+<section>
+<h5>Flush action</h5>
+
+<pre
+class="grammar"><dfn>flush-action</dfn> := <code>flush</code> [<abbr>peer-worker</abbr>]
+</pre>
+<p>
+A flush-action with peer-worker R occurring within worker W is associated with the
+queue with sending worker W and receiving worker R. Evaluating
+the flush-action flushes the queue up to index
+<var>i</var> where <var>i</var> is the number of send-actions in W that syntactically
+precede the flush-action. More precisely, the evaluation of a flush-action waits
+until either the index <var>r</var> of the queue is &#x2265;
+<var>i</var> or the receiving worker has terminated. It then completes as
+follows:
+</p>
+<ul>
+<li>if index <var>r</var> of the queue is &#x2265; <var>i</var>, then normally with
+result <code>()</code></li>
 <li>otherwise
 <ul>
 <li>if the receiving worker terminated with failure, then normally with the
@@ -7947,38 +8368,54 @@ with the associated value being the termination value of the receiving worker.</
 </li>
 </ul>
 <p>
-The static type of the sync-send-action is F|() where F is the failure type of
-the corresponding receive action. If F is empty, then this static type will be
-equivalent to ().
+If the flush-action has a preceding async-send-action without any intervening
+sync-send-action or other flush-action, then the static type of the flush-action
+is F|(), where F is the receive failure type of the slot corresponding to that
+async-send-action. Otherwise, the static type of the flush-action is nil.
 </p>
 <p>
-The static type of the <code>expression</code> must be a subtype of
-<code>value:Cloneable</code>. The contextually expected type used to interpret
-<code>expression</code> is the contextually expected type from the corresponding
-receive-action.
-</p>
-<p>
-If the receive-action corresponding to an async-send-action has a non-empty
-failure type, then it is a compile-time error unless it can be determined that a
-sync-send-action or a flush-action will be executed before the sending worker
-terminates with success.
-</p>
-<p>
-If a worker W is about to terminate normally and there are messages still to be
-sent in a queue (which must be the result of executing an async-send-action), then
-the worker waits until the messages have been received or some receiving worker
-terminates. If a receiving worker R terminates without the message being
-received, R must have terminated abnormally, because the rule in the preceding
-paragraph. In this case, W terminates abnormally and W will use R's termination
-value as its termination value.
+If a peer-worker is not specified in the flush-action, then the flush-action
+flushes the queues to all other workers. In this case, the static type will be
+the union of the static type of flush on each worker separately.
 </p>
 </section>
 <section>
-<h4>Receive action</h4>
+<h5>Sync send action</h5>
+<pre
+class="grammar"><dfn>sync-send-action</dfn> := <abbr>expression</abbr> <code>-&gt;&gt;</code> <abbr>peer-worker</abbr>
+</pre>
+<p>
+A sync-send-action <code><var>E</var> -> <var>R</var></code> is equivalent to an
+async-send-action <code><var>E</var> ->> <var>R</var></code> followed by a
+flush-action <code>flush <var>R</var></code>. The static type of the
+sync-send-action is the static type of the flush-action.
+</p>
+</section>
+</section>
+
+<section>
+<h4 id="receiving_messages">Receiving messages</h4>
 
 <pre
-class="grammar"><dfn>receive-action</dfn> := <abbr>single-receive-action</abbr> | <abbr>multiple-receive-action</abbr>
+class="grammar"><dfn>receive-action</dfn> := <abbr>single-receive-action</abbr> | <abbr>multiple-receive-action</abbr> | <abbr>alternate-receive-action</abbr>
 </pre>
+<p>
+Each receive-action has one or more references to peer workers. A reference to a
+peer-worker W occurring in receive-action within worker R is associated with the
+queue with sending worker W and receiving worker R. There is a one-to-one
+correspondence between the slots in a queue and the references to
+receive-actions associated with that queue. The order of the slots in the queue
+is the same as the syntactic order of the references to peer workers.
+</p>
+<p>
+A slot with index <var>i</var> in its queue becomes <em>ready</em> when the
+index <var>w</var> of the queue is &gt; <var>i</var>. A value can be
+<em>received from</em> a slot with index <var>i</var> in a queue as follows. If
+the slot is empty, then the receive operation fails; otherwise, the value
+received is the value contained in the slot; in either case, the
+<var>r</var> index in the queue is set to <var>i</var> + 1.
+</p>
+
 <section>
 <h5>Single receive action</h5>
 
@@ -7986,36 +8423,22 @@ class="grammar"><dfn>receive-action</dfn> := <abbr>single-receive-action</abbr> 
 class="grammar"><dfn>single-receive-action</dfn> := <code>&lt;-</code> <abbr>peer-worker</abbr>
 </pre>
 <p>
-A single-receive-action receives a message from a single worker.
+A single-receive-action receives a message from a single worker,
+and accordingly has a reference to single peer worker.
 </p>
 <p>
-For each single-receive-action R receiving from worker W, the compiler
-determines a <em>corresponding send set</em>. The corresponding send set S is a
-set of send actions in W, such that
+A single-receive-action associated with a slot is evaluated by waiting until the
+slot is ready or the sending worker has terminated. Then
 </p>
 <ul>
-<li>in any execution of W that terminates successfully, exactly one member of S
-is executed and is executed once only</li>
-<li>if R is evaluated, it will receive the single message sent by a member of S,
-unless W has terminated abnormally or with failure.</li>
+<li>if the slot is ready, a value is received from the slot and the evaluation
+completes normally, with the result being
+<ul>
+<li>if the receive operation fails, a new value of type <code>error:NoMessage</code>;</li>
+<li>otherwise, the value received from the slot;</li>
 </ul>
-<p>
-The compiler terminates a failure type for the corresponding send set. If no
-member of the corresponding send set was evaluated and the sending worker
-terminated normally, then the termination value of the sending worker will
-belong to the failure type. The failure type will be a (possibly empty) subtype
-of error.
-</p>
-<p>
-A single-receive-action is evaluated by waiting until there is a message
-available in the queue or the sending worker terminates.  The evaluation of
-single-receive-action completes as follows:
-</p>
-<ul>
-<li>if a message becomes available in the queue, then the first available
-message is removed and the evaluation completes normally with the result being
-that message;</li>
-<li>otherwise
+</li>
+<li>otherwise, the evaluation completes as follows:
 <ul>
 <li>if the sending worker terminated with failure, then normally with the result
 being the the termination value of the sending worker, which will be an error;</li>
@@ -8025,9 +8448,8 @@ with the associated value being the termination value of the sending worker.</li
 </li>
 </ul>
 <p>
-The static type of the single-receive-action is T|F where T is the union of the
-static type of the expressions in the corresponding send set and F is the
-failure type of the corresponding send set.
+The static type of the single-receive-action is T|N|F where T is message type of
+the associated slot, N is its no message type, and F is its send failure type.
 </p>
 </section>
 <section>
@@ -8051,12 +8473,10 @@ A receive-field consisting of a peer-worker <code>W</code> is equivalent to a
 field <code>W:W</code>.
 </p>
 <p>
-The compiler determines a corresponding send set for each receive field, in the
-same way as for a single-receive-action. A multiple-receive-action is evaluated
-by waiting until there is a message available in the queue for every
-peer-worker.  If any of the peer workers W terminate before a message becomes
-available, then the evaluation of the multiple-receive-action completes as
-follows
+A multiple-receive-action is evaluated by waiting until the slot associated
+with every peer worker is ready. If, while waiting for a slot, the sending worker
+for the queue of that slot terminates, then the evaluation of the
+multiple-receive-action completes as follows
 </p>
 <ul>
 <li>if the sending worker terminated with failure, then normally with the result
@@ -8065,101 +8485,73 @@ being the the termination value of the sending worker, which will be an error;</
 with the associated value being the termination value of the sending worker.</li>
 </ul>
 <p>
-Otherwise, the result of the evaluation of multiple-receive-action completes by
-removing the first message from each queue and constructing a record with one
-field for each receive-field, where the value of the record is the message
-received.
+Otherwise, a value is received from every slot. If any of these receive
+operations fail, then the evaluation of the multiple-receive action completes
+normally with the result being a new value of type <code>error:NoMessage</code>,
+Otherwise, the evaluation completes normally with the result being a new record
+value, with one field for each receive-field, where the value of the field is
+the value received from the slot.
 </p>
 <p>
 The contextually expected typed for the multiple-receive-action determines a
 contextually expected type for each receive-field, in the same way as for a
 mapping constructor. The contextually expected type for each receive-field
-provides the contextually expected type for the expression in each member of the
-corresponding send set.
+provides the contextually expected type for the expression in the corresponding
+send-action.
 </p>
 <p>
-The static type of multiple-receive-action is R|F where
+The static type of multiple-receive-action is R|N|F where
 </p>
 <ul>
 <li>R is a record type, where R is determined in the same way as for a mapping
-constructor, where the static type of each field comes from the union of the
-static types of the expressions in each member of the corresponding send set and
-the contextually expected type is the contextually expected type of the
-multiple-receive-action</li>
-<li>F is the union of the failure types for the corresponding send set for each
-receive-field</li>
+constructor, where the static type of each field comes from the message type of
+the slot and the contextually expected type is the contextually expected type of
+the multiple-receive-action</li>
+<li>N is the union of the no message types of the slots</li>
+<li>F is the union of the send failure types of the slots</li>
 </ul>
 </section>
-</section>
 <section>
-<h4>Flush action</h4>
+<h5>Alternate receive action</h5>
 
 <pre
-class="grammar"><dfn>flush-action</dfn> := <code>flush</code> [<abbr>peer-worker</abbr>]
+class="grammar"><dfn>alternate-receive-action</dfn> := <code>&lt;-</code> <abbr>peer-worker</abbr> (<code>|</code> <abbr>peer-worker</abbr>)+
 </pre>
+
 <p>
-If peer-worker is specified, then flush waits until the queue of messages to be
-received by peer-worker is empty or until the peer-worker terminates.
+An alternate-receive-action receives a message from one of multiple peer-workers.
 </p>
 <p>
-Send-receive correspondence for async-send-action implies that the queue will
-eventually become empty, unless the peer-worker terminates abnormally or with
-failure. The evaluation of flush-action completes as follows:
+As with other receive actions, each reference to a peer worker is associated with a slot in
+a queue. An alternate-receive-action is evaluated by repeatedly waiting until either
 </p>
 <ul>
-<li>if the queue of messages is empty, then normally with result nil;</li>
-<li>otherwise
+<li>a sending worker terminates abnormally with a panic; in this, case the
+evaluation completes abruptly with a panic, with the associated value being the
+termination value of the sending worker;</li>
+<li>a slot <var>k</var> is ready, and is not empty, and the value in the slot is
+not an error; in this case, a value is received from every slot;
+the result or failure of these receive operations
+is ignored except for slot <var>k</var>; the evaluation completes normally, with
+the result being the value received from slot <var>k</var>; or</li>
+<li>all sending workers have terminated normally; in this case also, a value is
+received from every slot and the evaluation completes normally with the result
+of the alternative-receive-action being as follows
 <ul>
-<li>if the peer-worker terminated with failure, then normally with the result
-being the the termination value of the peer-worker, which will be an error;</li>
-<li>if the peer-worker terminated abnormally, then abruptly with a panic, with
-the associated value being the termination value of the peer-worker.</li>
+<li>if the receive operation of every slot fails, then a new value of type
+<code>error:NoMessage</code>;</li>
+<li>otherwise, the result of the first receive operation that did not fail,
+(in this case, that result will be an error value).</li>
 </ul>
 </li>
 </ul>
 <p>
-If the flush-action has a preceding async-send-action without any intervening
-sync-send-action or other flush-action, then the static type of the flush-action
-is F|(), where F is the failure type of the receive-action corresponding to that
-async-send-action. Otherwise, the static type of the flush-action is nil.
+The static type of the alternative-receive-action is T|N|F, where T is union of
+message type of the associated slots, N is the intersection of the no message
+types of the slots and F is the union the send failure type of the slots.
 </p>
-<p>
-If peer-worker is omitted, then the flush-action flushes the queues to all other
-workers. In this case, the static type will be the union of the static type of
-flush on each worker separately.
-</p>
+
 </section>
-<section>
-<h4>Send-receive correspondence</h4>
-<p>
-This section provides further details about how compile-time correspondence is
-established between sends and receive. This is based on the concept of the index
-of a message in its queue: a message has index n in its queue if it is the nth
-message added to the queue during the current execution of the worker.
-</p>
-<ul>
-<li>A send action/statement has index i in its queue if the message that it adds
-to the queue is always the i-th message added to the queue during the execution
-of its worker. It is a compile time error if a send statement or action does not
-have an index in its queue.</li>
-<li>A receive action has index i in a queue if any message that it removes from
-the queue is always the i-th message removed from the queue during the execution
-of its worker. It is a compile time error if a receive action does not have an
-index in each of its queues.</li>
-<li>A send action/statement and a receive action correspond if they have the
-same index in a queue.</li>
-<li>It is a compile time error if two or more receive actions have the same
-index in a queue.</li>
-<li>A send action/statement is in the same send set as another send
-action/statement if they have the same index in a queue. It is allowed for a
-send set to have more than one member.</li>
-<li>The maximum index that a receive action has in a queue must be the same as
-the maximum index that a send action or statement has in that queue.</li>
-<li>It is a compile time error if it is possible for a worker to terminate with
-success before it has executed all its receive actions.</li>
-<li>It is a compile time error if it is possible for a worker to terminate with
-success before it has executed one member from every send set.</li>
-</ul>
 </section>
 </section>
 
@@ -8213,7 +8605,7 @@ class="grammar"><dfn>client-resource-access-action</dfn> :=
 
 <dfn>computed-resource-access-path-segment</dfn> := <code>[</code> <abbr>expression</abbr> <code>]</code>
 
-<dfn>resource-access-rest-segment</dfn> := <code>[</code> <code>...</code> <abbr>expression</abbr> <code>]</code>
+<dfn>resource-access-rest-segment</dfn> := <code>[</code> <abbr>spread</abbr> <code>]</code>
 </pre>
 <p>
 A <code>client-resource-access-action</code> performs a <a
@@ -8553,21 +8945,6 @@ string.
 </p>
 </section>
 <section>
-<h3 id="client_declaration_statement">Client declaration statement</h3>
-
-<pre
-class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
-<dfn>client-decl</dfn> := [<abbr>annots</abbr>] <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
-<dfn>service-uri</dfn> := <abbr>string-literal</abbr>
-</pre>
-
-<p>
-The static type of the <code>simple-const-expr</code> must be a subtype of
-string.
-</p>
-
-</section>
-<section>
 <h3>Assignment</h3>
 
 <p>
@@ -8641,7 +9018,7 @@ the compiler determines for each lvexpr whether it is potentially undefined and
 whether it is potentially uninitialized.
 </p>
 <p>
-An lvalue supports three operations: store, read and filling-read.
+An lvalue supports four operations: store, remove, read and filling-read.
 </p>
 <p>
 The fundamental operation on an lvalue is to store a value in the storage
@@ -8684,6 +9061,17 @@ referring to a member k of a list value and the length of the list is n and k is
 using the FillMember abstract operation. The FillMember abstract operation may
 fail; in particular it will fail if the list is a fixed-length array. If the
 FillMember operation fails, then the attempt to store will panic.
+</p>
+<p>
+An lvalue that refers to a member of a mapping value supports a remove
+operation, which removes any member with the specific key referred to by the
+lvalue. The removal may be impermissible because it the inherent type of the
+mapping value requires a member with this key or because the mapping value is
+immutable. As with a store operation, a remove operation must be verified at
+runtime to ensure that it is not impermissible; an attempt to perform an
+impermissible remove operation will result in a panic at runtime. Performing the
+remove operation on a member that is not present has no effect, but is not an
+error.
 </p>
 <p>
 An lvalue also allows a read operation, which is used by the compound assignment
@@ -8798,18 +9186,28 @@ key type for T.
 class="grammar"><dfn>assignment-stmt</dfn> := <abbr>lvexpr</abbr> <code>=</code> <abbr>action-or-expr</abbr> <code>;</code>
 </pre>
 <p>
-The static type of action-or-expr must be a subtype of the static type of
-lvexpr. The static type of lvexpr provides the contextually expected type for
-action-or-expr. It is not an error for lvexpr to be potentially undefined or
-potentially uninitialized.
+An assignment-stmt stores the value that results from evaluating action-or-expr
+in the storage location referred to by lvexpr. When lvexpr is potentially
+undefined and has a static type that does not include nil, then a value of nil
+means to remove the member referred to by the lvexpr.
 </p>
 <p>
-It is executed at as follows:
+The static type of action-or-expr must be a subtype of the union of nil and the
+static type of lvexpr. If the static type of action-or-expr allows nil, but the
+static type of lvexpr does not allow nil, then lvexpr must refer to a member of
+a mapping value and must be be potentially undefined. The static type of lvexpr
+provides the contextually expected type for action-or-expr. It is not an error
+for lvexpr to be potentially undefined or potentially uninitialized.
+</p>
+<p>
+An assignment-stmt is executed at as follows:
 </p>
 <ol>
 <li>execute action-or-expr to get a value <var>v</var>;</li>
 <li>evaluate lvexpr to get an lvalue <var>lv</var>;</li>
-<li>perform the store operation of <var>lv</var> with value <var>v</var>.</li>
+<li>if <var>v</var> is nil but the static type of lvexpr does not allow nil,
+then perform the remove operation on <var>lv</var>; otherwise, perform the store
+operation on <var>lv</var> with value <var>v</var>.</li>
 </ol>
 
 </section>
@@ -9335,6 +9733,9 @@ there is a function call lexically within the lock-stmt that might result
 directly or indirectly in a call to that defined function.
 </p>
 <p>
+It is a compile-time error if a lock-stmt contains a sync-send-action or a receive-action.
+</p>
+<p>
 There are two cases where a variable is restricted to be used only within a
 lock statement:
 </p>
@@ -9426,6 +9827,17 @@ A <code>stmt-with-on-fail</code> is executed by executing the
 or a <code>fail</code> statement may cause control to transfer to the
 <code>on-fail-cause</code>. If so, the <code>statement-block</code> is executed;
 otherwise the <code>statement-block</code> is not executed.
+When the regular-compound-stmt is itself a failure handling statement,
+then only failure of that regular-compound-stmt itself causes control to
+transfer to the <code>on-fail-clause</code>; a failure <em>within</em> that
+regular-compound-stmt will be handled by that regular-compound-statement.
+</p>
+<p>
+An <code>on-fail-clause</code> attached to a <code>named-worker-decl</code> is a
+shorthand for a <code>named-worker-decl</code> with a statement block that is a
+<code>do-stmt</code> with that <code>on-fail-clause</code>: <code>worker
+<var>X</var> { <var>Y</var> } on fail <var>Z</var></code> is equivalent to
+<code>worker <var>X</var> { do { <var>Y</var> } on fail <var>Z</var> }</code>.
 </p>
 <p>
 If there is a <code>typed-binding-pattern</code>, then it is matched to the
@@ -9811,7 +10223,6 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
    | <abbr>module-const-decl</abbr>
    | <abbr>module-enum-decl</abbr>
    | <abbr>module-xmlns-decl</abbr>
-   | <abbr>module-client-decl</abbr>
    | <abbr>annotation-decl</abbr>
 </pre>
 <section>
@@ -9820,22 +10231,13 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
 <pre
 class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</abbr> <code>/</code>] <abbr>module-name</abbr> [<code>as</code> <abbr>import-prefix</abbr>] <code>;</code>
 <dfn>import-prefix</dfn> := <abbr>module-prefix</abbr> | <code>_</code>
-<dfn>module-prefix</dfn> := <abbr>identifier</abbr> | <abbr>predeclared-prefix</abbr>
 <dfn>org-name</dfn> := <abbr>import-identifier</abbr>
 <dfn>module-name</dfn> := <abbr>import-identifier</abbr> (<code>.</code> <abbr>import-identifier</abbr>)*
 <dfn>import-identifier</dfn> := <abbr>RestrictedIdentifier</abbr>
-
-<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
 module.
-</p>
-<p>
-A <code>module-prefix</code> is a name that is used locally within the source of
-a module to refer to another module. A <code>module-prefix</code> in a
-qualified-identifier must refer to a <code>module-prefix</code> specified in an
-import-declaration in the same source part.
 </p>
 <p>
 An import-prefix of <code>_</code> causes the module to be imported without
@@ -10007,7 +10409,7 @@ that has been registered with a module is called a <em>module listener</em>
 </p>
 <p>
 If at the start of the listening phase of program execution there are no module
-listeners, then the listening phase immediately terminates successfully.
+listeners, then program execution is terminated gracefully.
 Otherwise, the <code>start</code> method of each module listener is called; if
 any of these calls returns an error value, then the listening phase terminates
 unsuccessfully with this error value as its return value.
@@ -10015,10 +10417,12 @@ unsuccessfully with this error value as its return value.
 <p>
 The listening phase of program execution continues until either the program
 explicitly exits, by calling a standard library function, or the user explicitly
-requests the termination of the program using an implementation-dependent
-operating system facility (such as a signal on a POSIX system). In the latter
-case, the <code>gracefulStop</code> or <code>immediateStop</code> method of
-each registered listener will be called before termination.
+requests the graceful or immediate termination of the program using an
+implementation-dependent operating system facility (such as a signal on a POSIX
+system). In the latter case, the <code>gracefulStop</code> or
+<code>immediateStop</code> method of each registered listener will be called
+before termination. In the case of graceful termination, functions registered
+with <code>runtime:onGracefulStop</code> are also called.
 </p>
 
 <section>
@@ -10137,9 +10541,10 @@ The compiler may infer that a service object or a service object's remote method
 is isolated even it is not explicitly declared as such. In doing so, it analyzes
 a module to determine whether there is a set of declarations and definitions in
 the module, where each of them is a <code>service-decl</code>,
+<code>object-constructor-expr</code>,
 <code>module-var-decl</code>, <code>module-class-defn</code>
 <code>function-defn</code> or <code>method-defn</code>, and none of them
-explicitly specified an <code>isolated</code> qualifier, such that if all them
+explicitly specifies an <code>isolated</code> qualifier, such that if all them
 explicitly specified an <code>isolated</code> qualifier, then they all would
 meet the requirements for <a href="#isolated_functions">isolated functions</a>
 and isolated objects. If so, then the isolated bit of values resulting from them
@@ -10465,17 +10870,6 @@ statement</a> section.
 
 </section>
 
-<section>
-<h3>Module client declaration</h3>
-<pre
-class="grammar"><dfn>module-client-decl</dfn> := <abbr>client-decl</abbr>
-</pre>
-
-<p>
-The semantics of client-decl are described in the <a
-href="#client_declaration_statement">Client declaration statement</a> section.
-</p>
-</section>
 
 </section>
 <section>
@@ -10688,11 +11082,6 @@ The available attachment points are described in the following table.
    <td>none</td>
   </tr>
   <tr>
-   <td>client</td>
-   <td>client-decl</td>
-   <td>none</td>
-  </tr>
-  <tr>
    <td>var</td>
    <td>module-var-decl, local-var-decl-stmt, let-var-decl</td>
    <td>none</td>
@@ -10834,66 +11223,19 @@ of the name to which the documentation string is attached.
 <section>
 <h2 id="data_tags">10. Data tags</h2>
 <section>
-<h3>Regular expressions</h3>
+<h3>Regular expressions (preview)</h3>
 
 <p>
-The <code>re</code> tag is used for regular expressions. The lang library module
-for the corresponding basic type is <code>lang.regexp</code>.
+The <code>re</code> data tag is used for regular expressions. The lang library
+module for the corresponding basic type is <code>lang.regexp</code>.
 </p>
 <p>
 The syntax and semantics of Ballerina regular expressions are based on Perl.
 Ballerina supports a subset of Perl regular expressions that includes the most
 commonly used features and is interoperable across multiple regular expression
 engines. The supported syntax is defined by the <code>RegExp</code> grammar
-given below. The most rigourous specification of the semantics of Perl-style
-regular expressions in the the ECMAScript language specification. For this
-reason, the semantics of Ballerina regular expressions are defined by reference
-to the ECMAScript language specification, specifically ECMAScript 2022. The
-syntax of Ballerina regular expressions has been chosen to be a subset of
-ECMAScript regular expression syntax with one exception: regular expression
-flags, which in ECMAScript are specified in the regular expression literal
-following the closing <code>/</code>, are in Ballerina specified in the regular
-expression itself (using the same syntax as Perl).
+given below.
 </p>
-<p>
-The semantics of a Ballerina regular expression are as specified by ECMAScript
-subject to the following points:
-</p>
-<ul>
-<li>the version of ECMAScript used is ECMAScript 2022 (ECMA-262, 13th edition);</li>
-<li>Ballerina uses the semantics defined by ECMAScript for when Unicode mode, as set by the
-<code>u</code> flag, is in effect (ECMAScript regular expressions work differently depending
-on whether Unicode mode is in effect or not);</li>
-<li>the semantics of <code>\p</code> and <code>\P</code>, and of the
-<code>i</code> flag depend on the version of Unicode being used; this version of
-Ballerina uses Unicode version 10;</li>
-<li>regular expression constructs that depend on the definition of a line
-terminator or whitespace use the Ballerina definitions of those rather than the
-ECMAScript definitions; specifically
-<ul>
-<li><code>.</code> matches any character other than 0xA or 0xD;</li>
-<li><code>\s</code> matches any character allowed by the
-<code>WhiteSpaceChar</code> production; as in ECMAScript, <code>\S</code>
-matches any character not matched by <code>\s</code>;</li>
-</ul>
-</li>
-<li>the semantics of <code>ReFlagsOnOff</code> (which is not supported in ECMAScript) are as follows:
-<ul>
-<li>the flags are modified within the parenthesized group containing the
-<code>ReFlagsOnOff</code>, with those in <code>ReFlagsOn</code> being turned on,
-and those in <code>ReFlagsOff</code> being turned off;</li>
-<li>it is an error for any flag to be specified more than once within
-<code>ReFlagsOnOff</code>;</li>
-<li>the meaning of the <code>m</code>, <code>s</code> and <code>i</code> flags are as
-in ECMAScript;</li>
-<li>the meaning of the <code>x</code> flag is as in Perl: when this flag is in
-effect, any character in the regular expression that matches to the
-<code>WhiteSpaceChar</code> production, but is not within an
-<code>ReCharSet</code> is ignored; in addition, comments starting with
-<code>#</code> and continuing to the end of the line are ignored.</li>
-</ul>
-</li>
-</ul>
 
 <pre
 class="grammar"><dfn>RegExp</dfn> := <abbr>ReDisjunction</abbr>
@@ -10950,7 +11292,16 @@ class="grammar"><dfn>RegExp</dfn> := <abbr>ReDisjunction</abbr>
 
 <dfn>ReUnicodePropertyValueChar</dfn> := <abbr>AsciiLetter</abbr> | <abbr>Digit</abbr> | <code>_</code>
 
-<dfn>ReUnicodeGeneralCategory</dfn> := [<code>gc=</code>] <abbr>ReUnicodeGeneralCategoryName</abbr>
+<dfn>ReUnicodeGeneralCategory</dfn> := [<code>gc=</code>] <abbr>ReUnicodeGeneralCategoryAbbr</abbr>
+
+<dfn>ReUnicodeGeneralCategoryAbbr</dfn> :=
+  <code>L</code> [ <code>u</code> | <code>l</code> | <code>t</code> | <code>m</code> | <code>o</code> ]
+  | <code>M</code> [ <code>n</code> | <code>c</code> | <code>e</code> ]
+  | <code>N</code> [ <code>d</code> | <code>l</code> | <code>o</code> ]
+  | <code>S</code> [ <code>m</code> | <code>c</code> | <code>k</code> | <code>o</code> ]
+  | <code>P</code> [ <code>c</code> | <code>d</code> | <code>s</code> | <code>e</code> | <code>i</code> | <code>f</code> | <code>o</code> ]
+  | <code>Z</code> [ <code>s</code> | <code>l</code> | <code>p</code> ]
+  | <code>C</code> [ <code>c</code> | <code>f</code> | <code>o</code> | <code>n</code> ]
 
 <dfn>ReCharSetAtom</dfn> :=
   <abbr>ReCharSetAtomNoDash</abbr>
@@ -10991,6 +11342,93 @@ class="grammar"><dfn>RegExp</dfn> := <abbr>ReDisjunction</abbr>
 <dfn>ReIgnoreCaseFlag</dfn> := <code>i</code>
 <dfn>ReCommentFlag</dfn> := <code>x</code>
 </pre>
+<p>
+Note that <code>ReUnicodeGeneralCategoryAbbr</code> omits <code>Cs</code>, which
+is used for surrogate code points, since these cannot occur in a Ballerina
+string.
+</p>
+<p>
+The abstract parsing function that is part of the data tag definition behaves as
+follows. The argument string values are concatenated into a single string with a
+distinct token inserted between them to represent the interpolation point. The
+resulting string is parsed against the above <code>RegExp</code> grammar with
+the interpolation point token being an additional possibility allowed for
+<code>ReAtom</code>. The abstract parsing function returns a function that will
+behave equivalently to parsing the original string with
+<code>(?:<var>r<sub>i</sub></var>)</code> inserted at interpolation point
+<code><var>i</var></code>, where <code><var>r</var><sub>i</sub></code> is the
+string representation of the interpolated regular expression.
+</p>
+<p>
+The most rigorous specification of the semantics of Perl-style regular
+expressions is in the ECMAScript language specification. For this reason, the
+semantics of Ballerina regular expressions are defined by reference to the
+ECMAScript language specification, specifically ECMAScript 2022. The syntax of
+Ballerina regular expressions has been chosen to be a subset of ECMAScript
+regular expression syntax with one exception: regular expression flags, which in
+ECMAScript are specified in the regular expression literal following the closing
+<code>/</code>, are in Ballerina specified in the regular expression itself
+(using the same syntax as Perl).
+</p>
+<p>
+The semantics of a Ballerina regular expression are as specified by ECMAScript
+subject to the following points:
+</p>
+<ul>
+<li>the version of ECMAScript used is ECMAScript 2022 (ECMA-262, 13th edition);</li>
+<li>Ballerina uses the semantics defined by ECMAScript for when Unicode mode, as set by the
+<code>u</code> flag, is in effect (ECMAScript regular expressions work differently depending
+on whether Unicode mode is in effect or not);</li>
+<li>the semantics of <code>\p</code> and <code>\P</code>, and of the
+<code>i</code> flag depend on the version of Unicode being used; this version of
+Ballerina uses Unicode version 10;</li>
+<li>regular expression constructs that depend on the definition of a line
+terminator or whitespace use the Ballerina definitions of those rather than the
+ECMAScript definitions; specifically
+<ul>
+<li><code>.</code> matches any character other than 0xA or 0xD;</li>
+<li><code>\s</code> matches any character allowed by the
+<code>WhiteSpaceChar</code> production; as in ECMAScript, <code>\S</code>
+matches any character not matched by <code>\s</code>;</li>
+</ul>
+</li>
+<li>the semantics of <code>ReFlagsOnOff</code> (which is not supported in ECMAScript) are as follows:
+<ul>
+<li>the flags are modified within the parenthesized group containing the
+<code>ReFlagsOnOff</code>, with those in <code>ReFlagsOn</code> being turned on,
+and those in <code>ReFlagsOff</code> being turned off;</li>
+<li>it is an error for any flag to be specified more than once within
+<code>ReFlagsOnOff</code>;</li>
+<li>the meaning of the <code>m</code>, <code>s</code> and <code>i</code> flags are as
+in ECMAScript;</li>
+<li>the meaning of the <code>x</code> flag is as in Perl: when this flag is in
+effect, any character in the regular expression that matches to the
+<code>WhiteSpaceChar</code> production, but is not within an
+<code>ReCharSet</code> is ignored; in addition, comments starting with
+<code>#</code> and continuing to the end of the line are ignored.</li>
+</ul>
+</li>
+</ul>
+
+<p>
+ECMAScript specifies how to compile a regular expression in the above syntax
+into an abstract function that takes as arguments an input string and an index
+into the input string, and returns a value saying whether the regular expression
+matches the input string starting at the index, and, if it does, the index where
+the match ended, and for each capturing group, the start and end index, if any,
+within the input string where the capturing group matched. This abstract
+function corresponds directly to the <code>matchGroupsAt</code> function in the
+<code>lang.regexp</code> module. The <code>matchAt</code>, <code>find</code>,
+<code>findGroups</code>, <code>findAll</code> and <code>findAllGroups</code>
+functions can be defined straightforwardly in terms of the
+<code>matchGroupsAt</code> function. The <code>fullMatchGroup</code> function
+can be implemented by first appending `$` to the regular expression so as to
+anchor any match to the end of the input string (the multiline flag is initially
+off, so `$` matches only at the end of input), and then using the ECMAScript
+abstract function with a start index of 0. The <code>isFullMatch</code> function
+can be implemented straightforwardly in terms of the <code>fullMatchGroup</code>
+function.
+</p>
 
 </section>
 
@@ -11133,7 +11571,7 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 </section>
 
 <section>
-<h3>Lang library modules</h3>
+<h3 id="lang_library_modules">Lang library modules</h3>
 <p>
 The lang library consists of the following modules. With the exception of the
 <code>lang.value</code>, <code>lang.transaction</code> and
@@ -11314,7 +11752,7 @@ public enum SortDirection {
 public type OrderedType ()|boolean|int|float|decimal|string|OrderedType[];
 
 # Sorts an array.
-# If the member type of the array is not sorted, then the `key` function
+# If the member type of the array is not ordered, then the `key` function
 # must be specified.
 # Sorting works the same as with the `sort` clause of query expressions.
 #
@@ -11420,6 +11858,20 @@ public isolated function toStream(T[] arr) returns stream<T,()> = external;
 # + s - string representing a boolean value
 # + return - boolean that `s` represents, or an error if there is no such boolean
 public isolated function fromString(string s) returns boolean|error = external;
+
+# Tests whether at least one of a number of boolean values is true.
+# 
+# + bs - boolean values to operate on
+# + return - true if one or more of its arguments are true and false otherwise;
+#    false if there are no arguments
+public isolated function some(boolean... bs) returns boolean = external;
+
+# Tests whether every one of a number of boolean values is true.
+# 
+# + bs - boolean values to operate on
+# + return - true if all of its arguments are true and false otherwise;
+#    true if there are no arguments
+public isolated function every(boolean... bs) returns boolean = external;
 ]]></pre>
 
 </section>
@@ -11450,6 +11902,13 @@ public isolated function max(decimal x, decimal... xs) returns decimal = externa
 # + xs - other decimal values
 # + return - minimum value of `x` and all the `xs`.
 public isolated function min(decimal x, decimal... xs) returns decimal = external;
+
+# Average of one or more decimal values.
+# 
+# + x - first decimal value
+# + xs - other decimal values
+# + return - average value of `x` and all the `xs`.
+public isolated function avg(decimal x, decimal... xs) returns decimal = external;
 
 # IEEE abs operation.
 #
@@ -11585,6 +12044,9 @@ public isolated function toString(error e) returns string = external;
 # defined in the Ballerina Language Specification, using the expression style.
 public isolated function toBalString(error e) returns string = external;
 
+# The type of error for a receive-action when no message has been sent.
+public type NoMessage distinct error;
+
 # A type of error which can be retried.
 public type Retriable distinct error;
 
@@ -11670,6 +12132,13 @@ public isolated function max(float... xs) returns float = external;
 # + return - minimum value of all the `xs`
 public isolated function min(float... xs) returns float = external;
 
+# Average of zero or more float values.
+# Result is NaN if there are no arguments
+# 
+# + xs - float values to operate on
+# + return - average of all the `xs`
+public isolated function avg(float... xs) returns float = external;
+
 # IEEE abs operation.
 #
 # + x - float value to operate on
@@ -11682,7 +12151,7 @@ public isolated function abs(float x) returns float = external;
 # (this is the round-to-nearest rounding mode, which is the default for IEEE and for Ballerina).
 # A value of `fractionDigits` greater than 0 thus corresponds to the number of digits after the decimal
 # point being `fractionDigits`; a value of 0 for `fractionDigits` rounds to an integer.
-# If `x` is NaN, +0, -0, +∞ or -∞, then the result is `x``.
+# If `x` is NaN, +0, -0, +∞ or -∞, then the result is `x`.
 # When `fractionDigits` is 0, this is
 # the same as Java Math.rint method, .NET Math.Round method and
 # IEEE roundToIntegralTiesToEven operation
@@ -11874,8 +12343,8 @@ public isolated function fromBitsInt(int x) returns float = external;
 # The returned string will be in the same format used by `value:toString`,
 # except that it will not include an exponent.
 # If `x` is NaN or infinite, the result will be the same as `value:toString`.
-# This will panic if `fractionDigits`` is less than 0.
-# If `fractionDigits`` is zero, there will be no decimal point.
+# This will panic if `fractionDigits` is less than 0.
+# If `fractionDigits` is zero, there will be no decimal point.
 # Any necessary rounding will use the roundTiesToEven rounding direction.
 # 
 # + x - float value
@@ -12039,6 +12508,15 @@ public isolated function max(int n, int... ns) returns int = external;
 # + return - minimum value of `n` and all the `ns`
 public isolated function min(int n, int... ns) returns int = external;
 
+# Average of one or more int values.
+# The average is computed using the decimal type.
+# This function panics if the sum of the arguments overflows the decimal type.
+#
+# + n - first int value
+# + ns - other int values
+# + return - minimum value of `n` and all the `ns`
+public isolated function avg(int n, int... ns) returns decimal = external;
+
 # Returns the integer that `s` represents in decimal.
 # Returns error if `s` is not the decimal representation of an integer.
 # The first character may be `+` or `-`.
@@ -12080,8 +12558,8 @@ public isolated function fromHexString(string s) returns int|error = external;
 #    a decreasing sequence
 # + return - an iterable object
 public isolated function range(int rangeStart, int rangeEnd, int step) returns object {
-    public isolated function iterable() returns object {
-        *object:Iterable;
+    *object:Iterable;
+    public isolated function iterator() returns object {
         public isolated function next() returns record {|
             int value;
        |}?;
@@ -12259,10 +12737,10 @@ public type RawTemplate distinct object {
 </section>
 
 <section>
-<h4 id="lang.regexp"><code>lang.regexp</code> module</h4>
+<h4 id="lang.regexp"><code>lang.regexp</code> module (preview)</h4>
 
-<p>The <code>lang.regexp</code> module corresponds to tagged data type with tag
-<code>re</code>.</p>
+<p>The <code>lang.regexp</code> module corresponds to the basic type for the
+tagged data type with tag <code>re</code>.</p>
 
 <pre class="langlib"><![CDATA[
 
@@ -12270,39 +12748,147 @@ public type RawTemplate distinct object {
 @builtinSubtype
 public type RegExp any;
 
+# A span of a string.
+# A span is a substring of another string.
 public type Span readonly & object {
+   # The index within the string where the span starts.
    public int startIndex;
+   # The index within the string following the end of the span.
+   # The length of the span is `endIndex - startIndex`.
    public int endIndex;
-   // This avoids constructtng a potentially long string unless and until it is needed
+   # Returns a string with the content of the span.
    isolated function substring() returns string;
 };
 
+# A list providing detailed information about the match of a regular expression within string.
+# Each member of the list identifies the `Span` within the string matched
+# by each of the regular expression's capturing groups. 
+# The member with index 0 corresponds to the entire regular expression.
+# The group with index i, where i > 1,is the i-th capturing group;
+# this will be nil if the match of the regular expression did not use
+# a match of the capturing group.
+# The capturing groups within a regular expression are ordered by the position
+# of their opening parenthesis.
 public type Groups readonly & [Span, Span?...];
 
-# Returns the span of the first match that starts at or after startIndex.
+# Returns the first match of a regular expression within a string.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for a match of `re` 
+# + startIndex - the index within `str` at which to start looking for a match
+# + return - a `Span` describing the match, or nil if no match was found
 public isolated function find(RegExp re, string str, int startIndex = 0) returns Span? = external;
 
+# Returns the `Groups` for the first match of a regular expression within a string.
+#
+# + re - the regular expression  
+# + str - the string in which to look for a match of `re` 
+# + startIndex - the index within `str` at which to start looking for a match
+# + return - a `Groups` list describing the match, or nil if no match was found
 public isolated function findGroups(RegExp re, string str, int startIndex = 0) returns Groups? = external;
 
-# Return all non-overlapping matches
+# Returns a list of all the matches of a regular expression within a string.
+# After one match is found, it looks for the next match starting where the previous
+# match ended, so the list of matches will be non-overlapping.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for matches of `re` 
+# + startIndex - the index within `str` at which to start looking for matches
+# + return - a list containing a `Span` for each match found
 public isolated function findAll(RegExp re, string str, int startIndex = 0) returns Span[] = external;
+
+# Returns the `Groups` of all the matches of a regular expression within a string.
+# After one match is found, it looks for the next match starting where the previous
+# match ended, so the list of matches will be non-overlapping.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for matches of `re` 
+# + startIndex - the index within `str` at which to start looking for matches
+# + return - a list containing a `Group` for each match found
 public isolated function findAllGroups(RegExp re, string str, int startIndex = 0) returns Groups[] = external;
 
+# Tests whether there is a match of a regular expression at a specific index in the string.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for a match of `re` 
+# + startIndex - the index within `str` at which to look for a match; defaults to zero
+# + return - a `Span` describing the match, or nil if `re` did not match at that index; the startIndex of the
+#   `Span` will always be equal to `startIndex`
 public isolated function matchAt(RegExp re, string str, int startIndex = 0) returns Span? = external;
+
+# Returns the `Groups` of the match of a regular expression at a specific index in the string.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for a match of `re` 
+# + startIndex - the index within `str` at which to look for a match; defaults to zero
+# + return - a `Groups` list describing the match, or nil if `re` did not match at that index; the startIndex of the
+#   first `Span` in the list will always be equal to the `startIndex` of the first member of the list
 public isolated function matchGroupsAt(RegExp re, string str, int startIndex = 0) returns Groups? = external;
 
-# Says whether there is a match of the RegExp that starts at the beginning of the string and ends at the end of the string.
+# Tests whether there is full match of regular expression with a string.
+# A match of a regular expression in a string is a full match if it
+# starts at index 0 and ends at index `n`, where `n` is the length of the string.
+#
+# + re - the regular expression  
+# + str - the string
+# + return - true if there is full match of `re` with `str`, and false otherwise
 public isolated function isFullMatch(RegExp re, string str) returns boolean = external;
+
+# Returns the `Groups` of the match of a regular expression that is a full match of a string.
+# A match of the regular expression in a string is a full match if it
+# starts at index 0 and ends at index `n`, where `n` is the length of the string.
+# 
+# + re - the regular expression  
+# + str - the string in which to look for a match of `re` 
+# + return - a `Groups` list describing the match, or nil if there is not a full match; the 
+#   first `Span` in the list will be all of `str`
 public isolated function fullMatchGroups(RegExp re, string str) returns Groups? = external;
 
-public type ReplacerFunction function(Groups groups) returns string;
+# A function that constructs the replacement for the match of a regular expression.
+# The `groups` parameter describes the match for which the replacement is to be constructed.
+public type ReplacerFunction isolated function(Groups groups) returns string;
+
+# The replacement for the match of a regular expression found within a string.
+# A string value specifies that the replacement is a fixed string.
+# A function that specifies that the replacement is constructed by calling a function for each match.
 public type Replacement ReplacerFunction|string;
 
-# Replaces the first occurrence of a regular expression.
-public isolated function replace(RegExp re, string str, @isolatedParam Replacement replacement, int startIndex = 0) returns string = external;
-# Replaces all occurrences of a regular expression.
-public isolated function replaceAll(RegExp re, string str, @isolatedParam Replacement replacement, int startIndex = 0) returns string = external;
+# Replaces the first match of a regular expression.
+#
+# + re - the regular expression  
+# + str - the string in which to perform the replacements  
+# + replacement - a `Replacement` that gives the replacement for the match  
+# + startIndex - the index within `str` at which to start looking for a match; defaults to zero
+# + return - `str` with the first match, if any, replaced by the string specified by `replacement`
+public isolated function replace(RegExp re, string str, Replacement replacement, int startIndex = 0) returns string = external;
 
+# Replaces all matches of a regular expression.
+# After one match is found, it looks for the next match starting where the previous
+# match ended, so the matches will be non-overlapping.
+#
+# + re - the regular expression  
+# + str - the string in which to perform the replacements  
+# + replacement - a `Replacement` that gives the replacement for each match  
+# + startIndex - the index within `str` at which to start looking for matches; defaults to zero
+# + return - `str` with every match replaced by the string specified by `replacement`
+public isolated function replaceAll(RegExp re, string str, Replacement replacement, int startIndex = 0) returns string = external;
+
+# Splits a string into substrings separated by matches of a regular expression.
+# This finds the the non-overlapping matches of a regular expression and
+# returns a list of substrings of `str` that occur before the first match,
+# between matches, or after the last match.  If there are no matches, then
+# `[str]` will be returned.
+# 
+# + re - the regular expression that specifies the separator
+# + str - the string to be split
+# + return - a list of substrings of `str` separated by matches of `re` 
+public isolated function split(RegExp re, string str) returns string[] = external;
+
+# Constructs a regular expression from a string.
+# The syntax of the regular expression is the same as accepted by the `re` tagged data template expression.
+#
+# + str - the string representation of a regular expression
+# + return - the regular expression, or an error value if `str` is not a valid regular expression
 public isolated function fromString(string str) returns RegExp|error = external;
 ]]></pre>
 
@@ -12412,6 +12998,8 @@ public isolated function reduce(stream<Type,ErrorType?> stm, @isolatedParam func
 <p>The <code>lang.string</code> module corresponds to basic type string.</p>
 
 <pre class="langlib"><![CDATA[
+
+import ballerina/lang.regexp;
 
 # Built-in subtype of string containing strings of length 1.
 @builtinSubtype
@@ -12617,6 +13205,27 @@ public isolated function padEnd(string str, int len, Char padChar = " ") returns
 # + zeroChar - the character to use for the zero; defaults to ASCII zero `0`
 # + return - `str` padded with zeros 
 public isolated function padZero(string str, int len, Char zeroChar = "0") returns string = external;
+
+# Refers to the `RegExp` type defined by lang.regexp module.
+public type RegExp regexp:RegExp;
+
+# Tests whether there is a full match of a regular expression with a string.
+# A match of a regular expression in a string is a full match if it
+# starts at index 0 and ends at index `n`, where `n` is the length of the string.
+# This is equivalent to `regex:isFullMatch(re, str)`.
+#
+# + str - the string
+# + re - the regular expression
+# + return - true if there is full match of `re` with `str`, and false otherwise
+public isolated function matches(string str, RegExp re) returns boolean = external;
+
+# Tests whether there is a match of a regular expression somewhere within a string.
+# This is equivalent to `regexp:find(re, str, startIndex) != ()`.
+# 
+# + str - the string to be matched
+# + re - the regular expression
+# + return - true if the is a match of `re` somewhere within `str`, otherwise false
+public isolated function includesMatch(string str, RegExp re, int startIndex = 0) returns boolean = external;
 ]]></pre>
 
 </section>
@@ -13235,7 +13844,7 @@ public type StackFrame readonly & object {
 # The first member of the array represents the top of the call stack.
 public isolated function getStackTrace() returns StackFrame[] = external;
 
-# Type of the function passed to `onGracefulStop.
+# Type of the function passed to `onGracefulStop`.
 public type StopHandler function() returns error?;
 
 # Registers a function that will be called during graceful shutdown.
@@ -13256,6 +13865,12 @@ public isolated function onGracefulStop(StopHandler handler) = external;
 more than one basic type..</p>
 
 <pre class="langlib"><![CDATA[
+
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
 
 # The type of value to which `clone` and `cloneReadOnly` can be applied.
 public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;
@@ -13290,10 +13905,10 @@ public isolated function cloneReadOnly(CloneableType v) returns CloneableType & 
 # + return - a new value that belongs to type `t`, or an error if this cannot be done
 # 
 # When `v` is a structural value, the inherent type of the value to be constructed
-# comes from `t`. When `t` is a union, it must be possible to determine which
-# member of the union to use for the inherent type by following the same rules
-# that are used by list constructor expressions and mapping constructor expressions
-# with the contextually expected type. If not, then an error is returned.
+# comes from `t`. When `t` is a union that includes more than one type descriptor
+# that can be used as the inherent type of values with `v`'s basic type, then
+# the inherent type used will be the first (leftmost) such type descriptor such that a value
+# belonging to that type can be constructed from `v`.
 # The `cloneWithType` operation is recursively applied to each member of `v` using
 # the type descriptor that the inherent type requires for that member.
 # 
@@ -13374,7 +13989,7 @@ public isolated function toJson(anydata v) returns json = external;
 # + return - string representation of `v` converted to `json`
 public isolated function toJsonString(anydata v) returns string = external;
 
-# Parses a string in JSON format and returns the the value that it represents.
+# Parses a string in JSON format and returns the value that it represents.
 # Numbers in the JSON string are converted into Ballerina values of type
 # decimal except in the following two cases:
 # if the JSON number starts with `-` and is numerically equal to zero, then it is
@@ -13446,6 +14061,29 @@ public isolated function fromJsonStringWithType(string str, typedesc<anydata> t 
 # - otherwise, the merge fails
 # If the merge fails, then `j1` is unchanged.
 public isolated function mergeJson(json j1, json j2) returns json|error = external;
+
+# Returns the number of arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + vs - the arguments
+# + return - the number of arguments
+public isolated function count(any|error... vs) returns int = external;
+
+# Returns the first of its arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + v - first argument
+# + vs - other arguments
+# + return - the first argument v
+public isolated function first(Type v, any|error... vs) returns Type = external;
+
+# Returns the last of its arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + v - first argument
+# + vs - other arguments
+# + return - the last argument
+public isolated function last(Type v, Type... vs) returns Type = external;
 ]]></pre>
 
 </section>
@@ -13468,8 +14106,51 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
+<h3>Summary of changes from 2023R1 to 2024R1</h3>
+<ol>
+<li>Isolated inference can infer <code>isolated</code> for an object constructor expression.</li>
+<li>A query-select-expr can construct a stream without explicitly specifying
+the <code>stream</code> keyword.</li>
+<li>It is no longer allowed for a lock statement to contain a sync-send-action or a receive-action.</li>
+<li>A <code>retry</code> or <code>transaction</code> statement may now have an <code>on fail</code>
+clause.</li>
+<li>A named worker declaration may now have an <code>on fail</code> clause.</li>
+<li>The compile-time requirement that a send-action must always be executed
+unless its containing worker terminates with an error or panic has been
+removed.</li>
+<li>An alternate-receive-action has been added.</li>
+</ol>
+</section>
+<section>
+<h3>Summary of changes from 2022R4 to 2023R1</h3>
+<ol>
+<li>Query expressions now support grouping and aggregation, using new
+<code>group by</code> and <code>collect</code> clauses.</li>
+<li>Keywords that start clauses of a query expression, except for
+<code>from</code> and <code>let</code>, are no longer reserved (and so can be
+used as identifier names).</li>
+<li>Functions useful for aggregation have been added to langlib:
+<code>int:avg</code>, <code>float:avg</code>, <code>decimal:avg</code>,
+<code>boolean:some</code>, <code>boolean:every</code>, <code>value:count</code>,
+<code>value:first</code>, <code>value:last</code>.</li>
+<li>A <code>join</code> clause in a query expression can contain remote method
+calls and other actions.</li>
+<li>Clarify that the <code>self</code> variable in a method is implicitly
+final.</li>
+<li>Regexp type has a filler value.</li>
+<li>Readonly record types can have defaults.</li>
+</ol>
+</section>
+
+<section>
 <h3>Summary of changes from 2022R3 to 2022R4</h3>
 <ol>
+<li>Regular expressions have been added as a new data type. This
+feature has preview status in this release.</li>
+<li>When an optional field cannot have the value nil, the field
+can be manipulated conveniently by treating nil as representing the
+absence of the field: this works for constructors, binding patterns
+and assignment.</li>
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
 <li>An optional semi-colon is now allowed after top-level definitions and
 method definitions that are currentlty terminated by <code>}</code>.</li>

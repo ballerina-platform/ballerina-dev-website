@@ -534,7 +534,7 @@ public void invokeMethodAsync(String functionName, Callback callback, Object... 
 
 ## First-time contributors
 
-We would like to extend our heartfelt thanks to the following first-time contributors for their valuable contributions to
+We would like to extend our heartfelt thanks to the following first-time contributors for their valuable contributions to the Ballerina Swan Lake Update 11 release.
 the Ballerina Swan Lake Update 11 release.
 
 * [Randil Tharusha](https://github.com/randilt)

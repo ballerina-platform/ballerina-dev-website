@@ -532,7 +532,7 @@ public void invokeMethodAsync(String functionName, Callback callback, Object... 
  Callback getCallback();
 ```
 
-## External Contributors
+## First-time contributors
 
 We would like to extend our heartfelt thanks to the following external contributors for their valuable contributions to
 the Ballerina Swan Lake Update 11 release.

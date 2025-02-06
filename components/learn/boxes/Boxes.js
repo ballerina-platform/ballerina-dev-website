@@ -177,6 +177,24 @@ export default function Boxes(props) {
                         <p className={styles.description}>The set of command line tools provided to work with EDI files in Ballerina.</p>
                       </div>
 
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/wsdl-tool`} className={styles.titleLink}>
+                            WSDL tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate Ballerina clients and records for a WSDL specification.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/xsd-tool`} className={styles.titleLink}>
+                            XSD tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate Ballerina records for an XSD specification.</p>
+                      </div>
+
                     </div>
                   </div>
                 </div>

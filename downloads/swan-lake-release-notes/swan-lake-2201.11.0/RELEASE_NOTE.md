@@ -233,6 +233,54 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ### New features
 
+#### `crypto` package
+
+- Added support for PGP encryption and decryption with streams
+
+  ```ballerina
+  stream<byte[], error?> inputStream = check io:fileReadBlocksAsStream("input.txt");
+  stream<byte[], crypto:Error?>|crypto:Error encryptedStream = crypto:encryptStreamAsPgp(inputStream, "publicKey.asc");
+  ```
+
+  ```ballerina
+  byte[] passphrase = check io:fileReadBytes("passphrase.txt");
+  stream<byte[], error?> inputStream = check io:fileReadBlocksAsStream("pgp_encrypted.txt");
+  stream<byte[], crypto:Error?>|crypto:Error decryptedStream = crypto:decryptStreamFromPgp(inputStream, "privateKey.asc", passphrase);
+  ```
+
+- Added support for Bcrypt hashing and verification
+
+  ```ballerina
+  string password = "mySecurePassword123";
+  string|crypto:Error hash = crypto:hashBcrypt(password);
+  ```
+
+  ```ballerina
+  string password = "mySecurePassword123";
+  string hashedPassword = "$2a$12$LQV3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewYpwBAM7RHF.H9m";
+  boolean|crypto:Error matches = crypto:verifyBcrypt(password, hashedPassword);
+  ```
+
+- Added support for Argon2 hashing and verification
+
+  ```ballerina
+  string password = "mySecurePassword123";
+  string|crypto:Error hash = crypto:hashArgon2(password);
+  ```
+
+  ```ballerina
+  string password = "mySecurePassword123";
+  string hashedPassword = "$argon2id$v=19$m=65536,t=3,p=4$c29tZXNhbHQ$hash";
+  boolean|crypto:Error matches = crypto:verifyArgon2(password, hashedPassword);
+  ```
+
+- Added support for Keccak-256 hashing
+
+  ```ballerina
+  byte[] data = "Hello Ballerina".toBytes();
+  byte[] hash = crypto:hashKeccak256(data);
+  ```
+
 #### `http` package
 
 - Added relaxed binding support for service and client data binding. This provides the flexibility to bind nil values to optional fields and absent values to nilable fields.

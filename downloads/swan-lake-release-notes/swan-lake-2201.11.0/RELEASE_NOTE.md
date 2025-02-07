@@ -344,7 +344,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   ```
   $ bal openapi flatten <openapi.yaml>
   ```
-- Introduced the `align` sub-command, which aligns the OpenAPI contract file with Ballerina's naming conventions. The Ballerina name extensions are added to the schemas which can not be modified directly. The output is a modified OpenAPI contract.
+- Introduced the `align` sub-command, which aligns the OpenAPI contract file with Ballerina's naming conventions. Ballerina name extensions are added to the schemas which can not be modified directly. The output is a modified OpenAPI contract.
 
   ```
   $ bal openpai align <openapi.yaml>

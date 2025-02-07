@@ -1,9 +1,9 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.11.0 (Swan Lake) 
+title: 2201.11.0 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201.11.0/
 active: 2201.11.0
-redirect_from: 
+redirect_from:
     - /downloads/swan-lake-release-notes/2201.11.0
     - /downloads/swan-lake-release-notes/2201.11.0-swan-lake/
     - /downloads/swan-lake-release-notes/2201.11.0-swan-lake
@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 11 (2201.11.0)
 
-<em> Swan Lake Update 11 (2201.11.0) is the eleventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em> 
+<em> Swan Lake Update 11 (2201.11.0) is the eleventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -288,7 +288,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   ```ballerina
   // Enable relaxed data binding on the client side.
   http:Client httpClient = check new("http://localhost:9090", laxDataBinding = true);
-  
+
   // Enable relaxed data binding on the server side.
   @http:ServiceConfig {laxDataBinding: true}
   service /api on new http:Listener(9090) {
@@ -437,7 +437,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
 ### Improvements
 
-- Replaced `Package.md`, and `Module.md` with `README.md` as the primary documentation for packages, ensuring a unified documentation format across Ballerina Central and version control platforms. 
+- Replaced `Package.md`, and `Module.md` with `README.md` as the primary documentation for packages, ensuring a unified documentation format across Ballerina Central and version control platforms.
 
   If you create a new package with the library template, a `README.md` is created.
 
@@ -463,7 +463,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
   ```
 
 - Introduced configuration support to specify metadata, including enabling export and defining a custom readme file name for a specific module.
-  
+
   The following example demonstrates configuring the foo module in `Ballerina.toml`.
 
   ``` toml
@@ -472,7 +472,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
   export = true
   readme = "README.md"
    ```
-  
+
 - Upgraded the version of BALA archives to `3.0.0` to accommodate the above changes.
 
 ### Bug fixes
@@ -531,3 +531,11 @@ public void invokeMethodAsync(String functionName, Callback callback, Object... 
  Throwable getPanic();
  Callback getCallback();
 ```
+
+## First-time contributors
+
+We would like to extend our heartfelt thanks to the following first-time contributors for their valuable contributions to the Ballerina Swan Lake Update 11 release.
+
+* [Randil Tharusha](https://github.com/randilt)
+* [Thilan Dissanayaka](https://github.com/thil4n)
+* [DAA](https://github.com/DaAlbrecht)

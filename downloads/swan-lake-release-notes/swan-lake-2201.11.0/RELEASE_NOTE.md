@@ -536,6 +536,15 @@ public void invokeMethodAsync(String functionName, Callback callback, Object... 
 
 We would like to extend our heartfelt thanks to the following first-time contributors for their valuable contributions to the Ballerina Swan Lake Update 11 release.
 
+* [Ansak Mahir](https://github.com/AnsarMahir)
+* [Areeb Niyas](https://github.com/areebniyas)
+* [Atharva Kulkarni](https://github.com/Atharva1723)
+* [Bmen](https://github.com/hongdongni)
+* [DAA](https://github.com/DaAlbrecht)
+* [Ovindu Atukorala ](https://github.com/ovindu-a)
+* [Felix Schnabel](https://github.com/Shadow-Devil)
+* [Jaagrav Seal](https://github.com/Jaagrav)
+* [Mohamed Ishad](https://github.com/Ishad-M-I-M)
+* [Rahul Jain](https://github.com/rahul1995)
 * [Randil Tharusha](https://github.com/randilt)
 * [Thilan Dissanayaka](https://github.com/thil4n)
-* [DAA](https://github.com/DaAlbrecht)

@@ -7,7 +7,7 @@ active: 2201.10.4
 
 ## Overview of Ballerina Swan Lake Update 10 (2201.10.4)
 
-<em>Swan Lake Update 10 (2201.10.4) is the third patch release of Ballerina 2201.10.0 (Swan Lake Update 10) and it includes a new set of bug fixes to the language.</em>
+<em>Swan Lake Update 10 (2201.10.4) is the fourth patch release of Ballerina 2201.10.0 (Swan Lake Update 10) and it includes a new set of bug fixes to the language.</em>
 
 ## Update Ballerina
 

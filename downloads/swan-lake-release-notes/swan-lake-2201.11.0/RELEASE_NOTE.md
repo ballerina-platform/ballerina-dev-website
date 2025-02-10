@@ -542,7 +542,6 @@ We would like to extend our heartfelt thanks to the following first-time contrib
 * [Bmen](https://github.com/hongdongni)
 * [DAA](https://github.com/DaAlbrecht)
 * [Ovindu Atukorala ](https://github.com/ovindu-a)
-* [Felix Schnabel](https://github.com/Shadow-Devil)
 * [Jaagrav Seal](https://github.com/Jaagrav)
 * [Mohamed Ishad](https://github.com/Ishad-M-I-M)
 * [Rahul Jain](https://github.com/rahul1995)

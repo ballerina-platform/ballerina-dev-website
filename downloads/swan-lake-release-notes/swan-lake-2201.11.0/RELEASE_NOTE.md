@@ -388,7 +388,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   This code generation support is available for client, service implementation, and service type code generation.
 
 
-- Added support for relaxed data binding on the client side payload. This enables, `nil` values are treated as optional, and absent fields are handled as `nilable` types.
+- Added support for relaxed data binding on the client side payload. This enables `nil` values to be treated as optional, and absent fields to be handled as `nilable` types.
 
 #### WSDL tool
 
@@ -452,7 +452,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
         └── lib_test.bal
   ```
 
-- Introduced the capability to overrride the default `README.md` by specifying a preferred file using the `readme` field in the `[package]` table of the `Ballerina.toml`.
+- Introduced the capability to override the default `README.md` by specifying a preferred file using the `readme` field in the `[package]` table of the `Ballerina.toml`.
 
   ``` toml
   [package]

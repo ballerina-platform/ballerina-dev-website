@@ -349,7 +349,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   ```
   $ bal openpai align <openapi.yaml>
   ```
-- Add code generation support with the new Ballerina name extensions. These extensions are mapped as relevant annotations in the generated types, parameters and record fields.
+- Added code generation support for the new Ballerina name extensions. These extensions are mapped as relevant annotations in the generated types, parameters, and record fields.
 
   For example,
   ```yaml

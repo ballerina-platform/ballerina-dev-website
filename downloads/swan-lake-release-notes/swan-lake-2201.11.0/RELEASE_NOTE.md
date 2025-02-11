@@ -475,8 +475,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
   readme = "README.md"
    ```
 
-- Upgraded the version of BALA archives to `3.0.0` to accommodate the above changes.
-
 ### Bug fixes
 
 ## Backward-incompatible changes

@@ -28,19 +28,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
-### New features
-
-#### `data.xmldata` module
-
-- Introduced XML schema definition (XSD) Sequence and Choice support for the `data.xmldata` module.
-- Introduced union type support for `xml` operations in the `data.xmldata` module.
-- Introduced singleton, union of singletons, and enum support for `xml` operations in the `data.xmldata` module.
-
-#### `data.csv` module
-
-- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
-- Introduced support for parsing CSV with union types as expected types.
-
 ### Improvements
 
 #### Support for XML step extensions in XML step expressions
@@ -296,6 +283,109 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   service /api on new http:Listener(9090) {
   }
   ```
+
+#### `data.xmldata` package
+
+- Introduced XML schema definition (XSD) Sequence and Choice support for the `data.xmldata` package.
+
+```ballerina
+  import ballerina/data.xmldata;
+  import ballerina/io;
+
+  type Transaction record {|
+      @xmldata:Sequence
+      TransactionType Transaction;
+  |};
+
+  type TransactionType record {|
+      @xmldata:SequenceOrder {
+          value: 1
+      }
+      string TransactionID;
+
+      @xmldata:SequenceOrder {
+          value: 2
+      }
+      string SenderAccount;
+
+      @xmldata:SequenceOrder {
+          value: 3
+      }
+      string ReceiverAccount;
+
+      @xmldata:SequenceOrder {
+          value: 4
+      }
+      decimal Amount;
+  |};
+
+  xml validXml = xml `
+      <Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="transaction.xsd">
+          <TransactionID>TXN12345</TransactionID>
+          <SenderAccount>1234567890</SenderAccount>
+          <ReceiverAccount>0987654321</ReceiverAccount>
+          <Amount>1000.50</Amount>
+      </Transaction>
+  `;
+
+  xml invalidXml = xml `
+      <Transaction>
+          <TransactionID>TXN12345</TransactionID>
+          <SenderAccount>1234567890</SenderAccount>
+          <Amount>1000.50</Amount>
+          <Currency>USD</Currency>
+      </Transaction>
+  `;
+
+  public function main() {
+      Transaction|xmldata:Error validTransaction = xmldata:parseAsType(validXml);
+      io:println(validTransaction); // {"Transaction":{"TransactionID":"TXN12345","SenderAccount":"1234567890","ReceiverAccount":"0987654321","Amount":1000.50}}
+
+      Transaction|xmldata:Error invalidTransaction = xmldata:parseAsType(invalidXml);
+      io:println(invalidTransaction); // error Error ("Element 'Amount' is not in the correct order in 'Transaction'")
+  }
+```
+
+- Introduced union type support for `xml` operations in the `data.xmldata` package.
+- Introduced singleton, union of singletons, and enum support for `xml` operations in the `data.xmldata` package.
+
+#### `data.csv` package
+
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing CSV with union types as expected types.
+
+```ballerina
+  import ballerina/data.csv;
+  import ballerina/io;
+
+  type Book record {
+      string name;
+      string author;
+      decimal price;
+      string publishedDate;
+  };
+
+  type BookMinimal record {|
+      string name;
+      string author;
+  |};
+
+  public function main() {
+      string csvString = string `name,author,price,publishedDate
+                                Effective Java,Joshua Bloch,45.99,2018-01-01
+                                Clean Code,Robert C. Martin,37.50,2008-08-01`;
+
+      // Parse CSV string to a array of records.
+      Book[]|csv:Error bookRecords = csv:parseString(csvString);
+      io:println(bookRecords);
+
+      // Parse CSV string to a array of records with data projection.
+      // Here only the fields specified in the target record type (`name` and `author` fields)  
+      // are included in the constructed value. 
+      BookMinimal[]|csv:Error briefBookRecords = csv:parseString(csvString);
+      io:println(briefBookRecords);
+  }
+```
 
 #### `ldap` package
 

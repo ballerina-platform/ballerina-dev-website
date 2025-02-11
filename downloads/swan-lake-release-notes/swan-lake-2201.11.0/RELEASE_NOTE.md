@@ -80,13 +80,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its latest features, including virtual threads introduced with Project Loom. This enhancement addresses key performance issues in the current runtime, particularly with loops and asynchronous strand execution, and simplifies runtime APIs for native code developers.
 
 Note: If you are using Java 17 to run Ballerina programs, you must switch to Java 21.
+
 The upgraded concurrency model integrates Java 21's virtual threads with significant changes to asynchronous execution. However, the implementation of Ballerina interoperability will have an impact on Java 21 support due to any incompatible changes.
 
 For more details, refer to the [Java 21 release notes](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html).
 
-##### Improvements to Runtime Java APIs
+##### Improvements to runtime Java APIs
 
-- The following API classes are moved to a different package
+- The following API classes have been moved to a different package.
 
 | Old package                              | New package                                    |
 |------------------------------------------|------------------------------------------------|
@@ -97,7 +98,7 @@ For more details, refer to the [Java 21 release notes](https://www.oracle.com/ja
 | io.ballerina.runtime.api.TypeTags        | io.ballerina.runtime.api.types.TypeTags        |
 
 - The following API from the `io.ballerina.runtime.api.Environment` class has been modified to return a `String` instance.
-  The previous API definition is as follows.
+  The previous API definition:
 ```java
 public Optional<String> getStrandName();
 ```
@@ -105,23 +106,23 @@ This is modified as follows.
 ```java
 public String getStrandName();
 ```
-- The following APIs from the `io.ballerina.runtime.api.Runtime` class have been modified to return a `Object` instance.
+- The following APIs from the `io.ballerina.runtime.api.Runtime` class have been modified to return an `Object` instance.
   Previous API definitions are as follows.
 ```java
 public void init();
 public void start();
 ```
-This is modified as follows.
+These have been modified as follows.
 ```java
 public Object init();
 public Object start();
 ```
-- The API class `io.ballerina.runtime.api.async.StrandMetadata` has been converted to a record with the following definition and moved to package `io.ballerina.runtime.api.concurrent.StrandMetadata`
+- The `io.ballerina.runtime.api.async.StrandMetadata` class has been converted to a record with the following definition and moved to the `io.ballerina.runtime.api.concurrent` package.
 ```java
 public record StrandMetadata(boolean isConcurrentSafe, Map<String, Object> properties) {
 }
 ```
-Therefore, the following APIs from `io.ballerina.runtime.api.async.StrandMetadata` has been removed.
+Therefore, the following APIs from `io.ballerina.runtime.api.async.StrandMetadata` have been removed.
 ```java
 public String getModuleOrg();
 public String getModuleName();
@@ -129,7 +130,7 @@ public String getModuleVersion();
 public String getTypeName();
 public String getParentFunctionName();
 ```
-- The `isRemoteEnabled` API from the class `io.ballerina.runtime.api.Repository` has been renamed to the following.
+- The `isRemoteEnabled` API from the `io.ballerina.runtime.api.Repository` class has been renamed to the following.
 ```java
  boolean isRemoteManagementEnabled();
 ```
@@ -153,6 +154,7 @@ This is modified as follows.
 ```
 
 ##### Strand Dump tool
+
 The strand dump tool has been updated to support virtual threads. The report now includes the total number of strands, with separate sections for isolated and non-isolated strands, each displaying their respective stack traces. Under the new concurrency model, each strand is directly mapped to a Java virtual thread, and the tool uses the virtual thread dump to extract strand related information. However, since the thread dump does not provide information about the state of virtual threads, the current version of the strand dump report does not include the state of the strands.
 
 #### New Runtime Java APIs
@@ -178,7 +180,7 @@ env.yieldAndRun(() -> {
 ```java
 public abstract Object callFunction(Module module, String functionName, StrandMetadata metadata, Object... args);
 ```
-The above API can be called via a Ballerina environment instance as follows.
+This API can be called via a Ballerina environment instance as follows.
 ```java
 import io.ballerina.runtime.api.Runtime;
 import io.ballerina.runtime.api.Environment;
@@ -349,7 +351,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   ```
   $ bal openpai align <openapi.yaml>
   ```
-- Added code generation support for the new Ballerina name extensions. These extensions are mapped as relevant annotations in the generated types, parameters, and record fields.
+- Added code generation support for Ballerina name extensions. These extensions are mapped as annotations in the generated types, parameters, and record fields.
 
   For example,
   ```yaml
@@ -388,7 +390,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
   This code generation support is available for client, service implementation, and service type code generation.
 
 
-- Added support for relaxed data binding on the client side payload. This enables `nil` values to be treated as optional, and absent fields to be handled as `nilable` types.
+- Added support for relaxed data binding on the client side payload. This enables nil values to be treated as optional, and absent fields to be handled as nilable types.
 
 #### WSDL tool
 
@@ -439,7 +441,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
 - Replaced `Package.md`, and `Module.md` with `README.md` as the primary documentation for packages, ensuring a unified documentation format across Ballerina Central and version control platforms.
 
-  If you create a new package with the library template, a `README.md` is created.
+  If you create a new package with the library template, a `README.md` file is created.
 
   ```
   $ bal build -t lib winery
@@ -452,7 +454,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
         └── lib_test.bal
   ```
 
-- Introduced the capability to override the default `README.md` by specifying a preferred file using the `readme` field in the `[package]` table of the `Ballerina.toml`.
+- Introduced the capability to override the default `README.md` by specifying a preferred file using the `readme` field in the `[package]` table of the `Ballerina.toml` file.
 
   ``` toml
   [package]

@@ -59,7 +59,9 @@ var traverseFolder = function (dir) {
     } else {
       /* Is a file */
       filex = filex.replace(/downloads\/1.2.x-release-notes\//g, "");
-      results.push(filex);
+      if (filex.indexOf("template") === -1) {
+        results.push(filex);
+      }
     }
   });
 

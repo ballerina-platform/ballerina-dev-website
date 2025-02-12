@@ -30,6 +30,7 @@ import CommunityCarousel from '../../components/common/image-carousel/ImageCarou
 import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 import Certification from '../../components/community/certification/Certification';
 import Ambassador from '../../components/common/ambassador/Ambassador';
+import Contribute from '../../components/community/contribute/Contribute';
 
 export default function Community() {
 
@@ -120,26 +121,30 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
+            <Contribute getLink={getLink} />
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <Ambassador getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Resources getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <UniversitySessions getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow slackRow">
+          <Row className="pageContentRow communityRow">
             <Certification getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Contact getLink={getLink} />
           </Row>
 

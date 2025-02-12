@@ -1,6 +1,20 @@
 {
     "articles": [
         {
+            "url": "https://vocal.media/01/top-5-programming-languages-trending-in-2025",
+            "title": "Top 5 Programming Languages Trending in 2025",
+            "author": "Rahul Sharma",
+            "source": "Vocal",
+            "date": "Jan 10, 2025"
+        },
+        {
+            "url": "https://economist.com.na/93773/education/nust-students-ace-ballerina-hackathon/",
+            "title": "NUST students ace Ballerina Hackathon",
+            "author": "",
+            "source": "Economist - Namibia",
+            "date": "Dec 3, 2024"
+        },
+        {
             "url": "https://www.analyticsinsight.net/programming/will-there-be-a-new-dominant-programming-language-by-2030",
             "title": "Will There Be a New Dominant Programming Language by 2030?",
             "author": "Monica",

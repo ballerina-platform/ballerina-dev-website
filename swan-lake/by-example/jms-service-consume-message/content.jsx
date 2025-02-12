@@ -209,7 +209,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> Run the JMS message producer given in the{" "}
-          <a href="/learn/by-example/jms-producer-produce-message-send">
+          <a href="/learn/by-example/jms-producer-produce-message">
             JMS message producer - Produce message
           </a>{" "}
           example to produce some messages to the queue.

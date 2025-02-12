@@ -191,6 +191,11 @@ a {
   font-size: 1.3rem;
 }
 
+.community h4 {
+  color: #585a5e;
+  font-size: 1.2rem;
+}
+
 .mdContent h4,
 .mdContent h5,
 .mdContent h6,

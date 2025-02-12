@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @bhashinee  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2022/08/23  
-_Updated_: 2024/03/26  
+_Updated_: 2025/01/20  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -25,6 +25,7 @@ The conforming implementation of the specification is released and included in t
    * 2.4. [SHA384](#24-sha384)
    * 2.5. [SHA512](#25-sha512)
    * 2.6. [CRC32B](#26-crc32b)
+   * 2.7. [KECCAK256](#27-keccak256)
 3. [HMAC](#3-hmac)
    * 3.1. [MD5](#31-md5)
    * 3.2. [SHA1](#32-sha1)
@@ -101,6 +102,9 @@ The conforming implementation of the specification is released and included in t
     * 9.2 [Decrypt](#92-decrypt)
        * 9.2.1 [ML-KEM-768-HPKE](#921-ml-kem-768-hpke)
        * 9.2.2 [RSA-KEM-ML-KEM-768-HPKE](#922-rsa-kem-ml-kem-768-hpke)
+10. [Password hashing](#10-password-hashing)
+    * 10.1 [BCrypt](#101-bcrypt)
+    * 10.2 [Argon2](#102-argon2)
 
        
 ## 1. [Overview](#1-overview)
@@ -163,6 +167,15 @@ This API can be used to create the Hex-encoded CRC32B value of the given data.
 string stringData = "Hello Ballerina";
 byte[] data = stringData.toBytes();
 string checksum = crypto:crc32b(data);
+```
+
+### 2.7. [KECCAK256](#27-keccak256)
+
+This API can be used to create the Hex-encoded KECCAK-256 value of the given data.
+```ballerina
+string stringData = "Hello Ballerina";
+byte[] data = stringData.toBytes();
+string checksum = crypto:hashKeccak256(data);
 ```
 
 ## 3. [HMAC](#3-hmac)
@@ -1109,4 +1122,65 @@ byte[] encapsulatedKey = encryptionResult.encapsulatedSecret;
 crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias", "keyStorePassword");
 crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias", "keyStorePassword");
 byte[] decryptedData = check crypto:decryptRsaKemMlKem768Hpke(cipherText, encapsulatedKey, rsaPrivateKey, mlkemPrivateKey);
+```
+
+## 10. [Password Hashing](#10-password-hashing)
+
+The `crypto` module provides password hashing using BCrypt and Argon2id algorithms for secure password storage.
+
+### 10.1 [BCrypt](#101-bcrypt)
+
+Implements the BCrypt password hashing algorithm based on the Blowfish cipher.
+
+```ballerina
+public isolated function hashBcrypt(string password, int workFactor = 12) returns string|Error
+```
+
+Parameters:
+- `password`: The plain text password to hash
+- `workFactor`: Computational complexity factor (4-31, default: 12)
+
+```ballerina
+public isolated function verifyBcrypt(string password, string hashedPassword) returns boolean|Error
+```
+
+Example:
+```ballerina
+string password = "your-password";
+// Hash with default work factor (12)
+string hashedPassword1 = check crypto:hashBcrypt(password);
+// Hash with custom work factor
+string hashedPassword2 = check crypto:hashBcrypt(password, 14);
+boolean isValid = check crypto:verifyBcrypt(password, hashedPassword1);
+```
+
+### 10.2 [Argon2](#102-argon2)
+
+Implements the Argon2id variant of the Argon2 password hashing algorithm, optimized for both high memory usage and GPU resistance.
+
+```ballerina
+public isolated function hashArgon2(string password, int iterations = 3, 
+    int memory = 65536, int parallelism = 4) returns string|Error
+```
+
+Parameters:
+- `password`: The plain text password to hash
+- `iterations`: Number of iterations (default: 3)
+- `memory`: Memory usage in KB (minimum: 8192, default: 65536)
+- `parallelism`: Degree of parallelism (default: 4)
+
+Output hash length is fixed at 256 bits for optimal security and performance.
+
+```ballerina
+public isolated function verifyArgon2(string password, string hashedPassword) returns boolean|Error
+```
+
+Example:
+```ballerina
+string password = "your-password";
+// Hash with default parameters
+string hashedPassword1 = check crypto:hashArgon2(password);
+// Hash with custom parameters
+string hashedPassword2 = check crypto:hashArgon2(password, iterations = 4, memory = 131072, parallelism = 8);
+boolean isValid = check crypto:verifyArgon2(password, hashedPassword1);
 ```

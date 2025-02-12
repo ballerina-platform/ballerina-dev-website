@@ -10,38 +10,43 @@ intro: Let’s set up a Ballerina development environment and write a simple Bal
 
 ## Install Ballerina
 
-[Download](/downloads/) Ballerina based on the operating system you are using and install it.
+[Download](/downloads/) and install Ballerina based on your operating system.
 
->**Tip:** For more information on installing Ballerina, see [Installation options](/downloads/installation-options/).
+>**Tip:** For more information, see [Installation options](/downloads/installation-options/).
 
 ## Set up the editor
 
 Set up a text editor to write Ballerina code.
 
->**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the Ballerina VS Code extension installed. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
+>**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the Ballerina VS Code extension installed. For more information about the features of this extension, check <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
 
 ## Meet `bal`
 
-`bal` is the Ballerina build tool and package manager. Among other things, `bal` helps you to create, build, test, and run your package. The latest `bal` tool version is available with the latest Ballerina installation. 
+`bal` is the Ballerina build tool and package manager. Among other things, it helps you create, build, test, and run your package. The latest version of the `bal` tool is included with the latest Ballerina installation. 
 
-Open your terminal, and run the following commands to make sure everything is ready.
+Open your terminal, and run the following commands to verify that everything is ready.
 
 ```
 $ bal
+```
+
+```
 $ bal version
 ```
 
+Let's create a Ballerina program that prints `Hello, World!`.
+
 ## Create a new package
 
-Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina package. 
+Use the `bal new` command to create a new Ballerina package, which is the primary unit for organizing and managing Ballerina code. 
 
->**Info:** For more information on packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
+>**Info:** For more information about packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```
 $ bal new greeter
 ```
 
-This command creates a new directory called `greeter` with the content below.
+This command creates a new directory named `greeter` with the following content:
 
 ```
 greeter/
@@ -49,12 +54,14 @@ greeter/
 └── main.bal
 ```
 
-- The `Ballerina.toml` file contains metadata, which describes your package. Also, the `bal` tool uses the `Ballerina.toml` file to identify the root of a package.
-- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files into the `greeter` directory.
+- The `Ballerina.toml` file contains metadata that describes your package. The `bal` tool also uses the `Ballerina.toml` file to identify the root of a package.
+- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `greeter` directory.
 
 ## Say `Hello, World!`
 
-You can open the package directory in your text editor. If you are using VS Code, run `code .` from inside the `greeter` directory. Then, open the `main.bal` file to see the generated source.
+Open the package directory in your text editor. If you are using VS Code, you could navigate to the `greeter` directory and run `code .` to open the directory in VS Code. 
+
+Then, open the `main.bal` file to see the generated source.
 
 ```ballerina
 import ballerina/io;
@@ -66,11 +73,11 @@ public function main() {
 
 In this code:
 
-- The first line is an import statement, which makes the functionality in the <a href="https://lib.ballerina.io/ballerina/io/latest" target="_blank">`ballerina/io`</a> module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on the files.
+- The first line is an import statement, which makes the functionality in the <a href="https://lib.ballerina.io/ballerina/io/latest" target="_blank">`ballerina/io`</a> module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on files.
 - The `main` function is your program's entry point, and you can execute it by running the program. 
-- This function contains a statement, which prints `Hello, World!` to the console. This statement calls the `println` function in the `io` module with `"Hello, World!"` as an argument.
+- The `main` function contains a statement that prints `Hello, World!` to the console. This statement calls the `println` function in the `io` module with `"Hello, World!"` as an argument.
 
->**Info:** To learn more about the language, see [Language basics](/learn/language-basics/). 
+>**Info:** To learn more about the basics of the language, see [Language basics](/learn/language-basics/). 
 
 ## Run the package
 
@@ -86,7 +93,7 @@ Running executable
 Hello, World!
 ```
 
-Alternatively, you can generate an executable program with `bal build`,
+Alternatively, you can generate an executable file with `bal build`,
 
 ```
 $ bal build
@@ -97,7 +104,7 @@ Generating executable
 	target/bin/greeter.jar
 ```
 
-and then, use `bal run` as follows.
+and run it using `bal run`.
 
 ```
 $ bal run target/bin/greeter.jar
@@ -106,9 +113,9 @@ Hello, World!
 
 ## Write a simple REST API
 
-Now, let's change the `greeter` application to a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
+Now, let's change the `greeter` application into a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
-Replace the `main.bal` content with the code below.
+Replace the contents of the `main.bal` file with the following code:
 
 ```ballerina
 import ballerina/http;
@@ -126,13 +133,12 @@ service / on httpListener {
 }
 ```
 
-Let's take a moment to digest the new constructs in this code:
+Let's take a moment to understand the new constructs in this code:
 
 - The <a href="https://lib.ballerina.io/ballerina/http/latest" target="_blank">`http`</a> module provides high-level abstractions to work with the HTTP protocol. 
-- The listener declaration creates a new HTTP listener with the port `8080`. The `listener` is the entity, which receives the network input and then routes it to the attached service(s).
-- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods as `resource` and `remote`.
-- Services use `remote` methods to expose services in a procedural style and they are named by verbs whereas `resource` methods are used for data-oriented protocols and they are named by nouns.
-- In this example, there are two `resource` methods: The first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
+- The listener declaration creates a new HTTP listener that will listen on port `8080`. The `listener` is the entity that receives network input and routes it to the attached service(s).
+- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods: `resource` methods and `remote` methods. Services use `remote` methods to expose services in a procedural style and are named using verbs, whereas `resource` methods are used for data-oriented protocols and are named using nouns.
+- In this example, there are two `resource` methods: the first one responds to HTTP GET requests with the `/greeting` path, and the other one responds to `GET` requests with the `/greeting/{name}` path.
 - These `resource` methods return a `string` value, which maps to the `text/plain` content-type in the HTTP response.
 
 >**Info:** To learn more about services, see [Network interaction](/learn/network-interaction/). 
@@ -149,7 +155,7 @@ Compiling source
 Running executable
 ```
 
-Also, run the commands below in another terminal window to invoke the REST API.
+Now, open another terminal window and run the following commands to invoke the REST API.
 
 ```
 $ curl localhost:8080/greeting
@@ -158,6 +164,8 @@ Hello, World!
 $ curl localhost:8080/greeting/Ballerina
 Hello Ballerina
 ```
+
+Alternatively, you can use the built-in `Try it` feature by clicking on the `Try it` CodeLens above the service declaration on VS Code.
 
 ## Learn more
 

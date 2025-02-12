@@ -365,7 +365,7 @@ An insecure FTP listener can be initialized by providing the mandatory `protocol
 #
 # + listenerConfig - Configurations for FTP listener
 # + return - `()` or else an `ftp:Error` upon failure to initialize the listener
-public isolated function init(ListenerConfiguration listenerConfig) returns Error?;
+public isolated function init(*ListenerConfiguration listenerConfig) returns Error?;
 ```
 #### 4.2.2. Secure Listener
 A secure listener can be initialized by providing `ftp:SFTP` as the protocol and by providing `ftp:Credentials`

@@ -31,7 +31,7 @@ import Toc from "../../components/common/pg-toc/Toc";
 
 export async function getStaticProps() {
 
-    const fileName = fs.readFileSync(`hacktoberfest/connector-contributor-guide.md`, "utf-8");
+    const fileName = fs.readFileSync(`contributions/connector-contributor-guide.md`, "utf-8");
     const { data: frontmatter, content } = matter(fileName);
     const id = "connector-contributor-guide";
 

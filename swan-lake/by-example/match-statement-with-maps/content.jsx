@@ -61,7 +61,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/match-statement-with-maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/match-statement-with-maps",
                 "_blank",
               );
             }}

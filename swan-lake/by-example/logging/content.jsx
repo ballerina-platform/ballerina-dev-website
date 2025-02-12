@@ -7,6 +7,11 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/log;
 
+public type User record {
+    string name;
+    int age;
+};
+
 public function main() {
     // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
     log:printDebug("debug log");
@@ -14,9 +19,13 @@ public function main() {
     log:printInfo("info log");
     log:printWarn("warn log");
 
+    User user = {
+         name: "Harry",
+         age: 20
+    };
     // You can pass any number of key/value pairs, which need to be displayed in the log message.
-    // These can be of the \`anydata\` type including int, string, and boolean.
-    log:printInfo("info log", id = 845315, name = "foo", successful = true);
+    // These can be of the \`anydata\` type including int, string, boolean, records, etc.
+    log:printInfo("info log", id = 845315, name = "foo", successful = true, user = user);
 
     // Optionally, an error can be passed to the functions.
     error e = error("something went wrong!");
@@ -61,7 +70,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/logging",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/logging",
                 "_blank",
               );
             }}
@@ -193,11 +202,11 @@ export function Logging({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run logging.bal`}</span>
-              <span>{`time=2023-09-04T13:35:12.309+05:30 level=ERROR module="" message="error log"`}</span>
-              <span>{`time=2023-09-04T13:35:12.319+05:30 level=INFO module="" message="info log"`}</span>
-              <span>{`time=2023-09-04T13:35:12.320+05:30 level=WARN module="" message="warn log"`}</span>
-              <span>{`time=2023-09-04T13:35:12.321+05:30 level=INFO module="" message="info log" id=845315 name="foo" successful=true`}</span>
-              <span>{`time=2023-09-04T13:35:12.323+05:30 level=ERROR module="" message="error log with cause" error={"causes":[],"message":"something went wrong!","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"logging.bal","lineNumber":15}]} id=845315 name="foo"`}</span>
+              <span>{`time=2024-09-27T16:11:50.079+05:30 level=ERROR module="" message="error log"`}</span>
+              <span>{`time=2024-09-27T16:11:50.120+05:30 level=INFO module="" message="info log"`}</span>
+              <span>{`time=2024-09-27T16:11:50.122+05:30 level=WARN module="" message="warn log"`}</span>
+              <span>{`time=2024-09-27T16:11:50.134+05:30 level=INFO module="" message="info log" id=845315 name="foo" successful=true user={"name":"Harry","age":20}`}</span>
+              <span>{`time=2024-09-27T16:11:50.157+05:30 level=ERROR module="" message="error log with cause" error={"causes":[],"message":"something went wrong!","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"logging.bal","lineNumber":24}]} id=845315 name="foo"`}</span>
             </code>
           </pre>
         </Col>

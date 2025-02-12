@@ -68,11 +68,13 @@ export function OnConflictClause({ codeSnippets }) {
       </p>
 
       <p>
-        The syntax to write an <code>on conflict</code> clause is{" "}
-        <code>on conflict expression</code>. The type of the expression should
-        be <code>error?</code>. If the result of evaluating the expression is an
-        error, then, the error will be the result. Otherwise, the old value is
-        replaced by the new value.
+        The <code>on conflict</code> clause uses the syntax{" "}
+        <code>on conflict &lt;expression&gt;</code>, where the expression must
+        be of type <code>error?</code>. If a conflicting key is found, and the
+        expression evaluates to an error, that error becomes the result of the
+        query expression. If it evaluates to <code>null</code> or the{" "}
+        <code>on conflict</code> clause is absent, the old value is replaced by
+        the new value.
       </p>
 
       <Row
@@ -85,7 +87,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/on-conflict-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/on-conflict-clause",
                 "_blank",
               );
             }}
@@ -227,6 +229,16 @@ export function OnConflictClause({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/advanced-conflict-handling">
+              Advanced conflict handling
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/query-expressions">Query expressions</a>
           </span>
         </li>
@@ -360,8 +372,8 @@ export function OnConflictClause({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Iterate over XML with a query"
-            href="/learn/by-example/iterating-over-xml-with-query"
+            title="Advanced conflict handling"
+            href="/learn/by-example/advanced-conflict-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -371,7 +383,7 @@ export function OnConflictClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Iterate over XML with a query
+                  Advanced conflict handling
                 </span>
               </div>
               <svg

@@ -34,7 +34,7 @@ public client class Client {
 public function main() returns error? {
     Client albumClient = check new ("localhost:9090");
 
-    // \`->\` is used to access the resource/remote functions in the client class.
+    // \`->\` is used to access the resource/remote methods in the client class.
     // Sends a \`GET\` request to the \`/albums\` resource.
     Album[] albums = check albumClient->/["albums"];
     io:println(albums);
@@ -97,7 +97,7 @@ export function ClientClass({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/client-class",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/client-class",
                 "_blank",
               );
             }}

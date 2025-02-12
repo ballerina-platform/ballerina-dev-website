@@ -50,17 +50,17 @@ export function HttpBasicRestService({ codeSnippets }) {
       <p>
         Ballerina language has first-class abstractions for service and resource
         concepts in the form of <code>service</code> and{" "}
-        <code>resource functions</code>. A resource function consists of an
-        accessor and path. A service can have a collection of resource
-        functions. These abstractions allow mapping REST concepts such as
-        operations, resource paths and resource representations cleanly into
-        your program. <code>http:Service</code> can be used to write RESTful
-        services. A service is defined with a base path, the path common to all
-        resource paths. Each resource function is defined with the required
-        operation such as <code>get</code>, <code>put</code>, <code>post</code>,
-        etc and the path. Similar to regular functions resource functions have
-        input parameters and return types that are mapped to the HTTP request
-        and response.
+        <code>resource methods</code>. A resource method consists of an accessor
+        and path. A service can have a collection of resource methods. These
+        abstractions allow mapping REST concepts such as operations, resource
+        paths and resource representations cleanly into your program.{" "}
+        <code>http:Service</code> can be used to write RESTful services. A
+        service is defined with a base path, the path common to all resource
+        paths. Each resource method is defined with the required operation such
+        as <code>get</code>, <code>put</code>, <code>post</code>, etc and the
+        path. Similar to regular functions resource methods have input
+        parameters and return types that are mapped to the HTTP request and
+        response.
       </p>
 
       <Row
@@ -73,7 +73,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-basic-rest-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-basic-rest-service",
                 "_blank",
               );
             }}

@@ -1,0 +1,13 @@
+{
+  "title": "Multiple receive",
+  "description": "This BBE demonstrates the use of the multiple receive action in inter-worker communication",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "worker",
+    "multiple receive"
+  ],
+  "permalink": "/learn/by-example/multiple-receive",
+  "active": "multiple-receive"
+}

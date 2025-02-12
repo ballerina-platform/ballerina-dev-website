@@ -61,7 +61,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/jms-service-consume-message",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/jms-service-consume-message",
                 "_blank",
               );
             }}
@@ -209,7 +209,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> Run the JMS message producer given in the{" "}
-          <a href="/learn/by-example/jms-producer-produce-message">
+          <a href="/learn/by-example/jms-producer-produce-message-send">
             JMS message producer - Produce message
           </a>{" "}
           example to produce some messages to the queue.

@@ -67,7 +67,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
       <h1>HTTP service - JWT authentication</h1>
 
       <p>
-        The <code>http:Service</code> and resource function can be secured with
+        The <code>http:Service</code> and resource method can be secured with
         JWT and additionally, scopes can be added to enforce authorization. It
         validates the JWT sent in the <code>Authorization</code> header against
         the provided configurations. Ballerina uses the concept of scopes for
@@ -89,7 +89,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-service-jwt-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-service-jwt-authentication",
                 "_blank",
               );
             }}

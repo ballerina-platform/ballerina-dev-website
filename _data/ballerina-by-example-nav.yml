@@ -100,20 +100,23 @@ sublinks:
           - title: Provide function arguments by name
             id: 5
             url: provide-function-arguments-by-name
-          - title: Function pointers
+          - title: Rest arguments
             id: 6
+            url: rest-arguments
+          - title: Function pointers
+            id: 7
             url: function-pointers
           - title: Function values
-            id: 7
+            id: 8
             url: function-values
           - title: Function types
-            id: 8
+            id: 9
             url: function-types
           - title: Anonymous function
-            id: 9
+            id: 10
             url: anonymous-function
           - title: Function closure
-            id: 10
+            id: 11
             url: function-closure
       - title: Iteration
         id: 8
@@ -400,20 +403,23 @@ sublinks:
           - title: On conflict clause
             id: 11
             url: on-conflict-clause
-          - title: Iterate over XML with a query
+          - title: Advanced conflict handling
             id: 12
+            url: advanced-conflict-handling
+          - title: Iterate over XML with a query
+            id: 13
             url: iterating-over-xml-with-query
           - title: Nested query expressions
-            id: 13
+            id: 14
             url: nested-query-expressions
           - title: Destructure records using a query
-            id: 14
+            id: 15
             url: destructure-records-using-query
           - title: Querying streams
-            id: 15
+            id: 16
             url: querying-with-streams
           - title: Aggregation
-            id: 16
+            id: 17
             url: aggregation
       - title: Query actions
         id: 21
@@ -469,9 +475,9 @@ sublinks:
           - title: Raw templates
             id: 1
             url: raw-templates
-          - title: Backtick templates
+          - title: String templates
             id: 2
-            url: backtick-templates
+            url: string-templates
           - title: XML templates
             id: 3
             url: xml-templates
@@ -658,26 +664,32 @@ sublinks:
           - title: Inter-worker message passing
             id: 10
             url: inter-worker-message-passing
-          - title: Conditional send
+          - title: Alternate receive
             id: 11
+            url: alternate-receive
+          - title: Multiple receive
+            id: 12
+            url: multiple-receive
+          - title: Conditional send
+            id: 13
             url: conditional-send
           - title: Inter-worker failure propagation
-            id: 12
+            id: 14
             url: inter-worker-failure-propagation
           - title: Named worker with on fail clause
-            id: 13
+            id: 15
             url: named-worker-with-on-fail-clause
           - title: Synchronize message passing
-            id: 14
+            id: 16
             url: synchronize-message-passing
           - title: Asynchronize message passing
-            id: 15
+            id: 17
             url: asynchronize-message-passing
           - title: Flush
-            id: 16
+            id: 18
             url: flush
           - title: Fork
-            id: 17
+            id: 19
             url: fork
       - title: Transactions
         id: 33
@@ -1177,6 +1189,9 @@ sublinks:
           - title: Error handling
             id: 3
             url: websocket-service-error-handling
+          - title: Query parameter
+            id: 4
+            url: websocket-query-parameter
       - title: WebSocket client
         id: 15
         sublinks:
@@ -1774,6 +1789,9 @@ sublinks:
           - title: Time formatting/parsing
             id: 3
             url: time-formatting-and-parsing
+          - title: Time Zone
+            id: 4
+            url: time-zone
       - title: Cache
         id: 6
         sublinks:

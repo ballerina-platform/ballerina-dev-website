@@ -68,7 +68,7 @@ export function WebsocketServiceOauth2({ codeSnippets }) {
       <h1>WebSocket service - OAuth2</h1>
 
       <p>
-        The <code>websocket:Service</code> and resource function can be secured
+        The <code>websocket:Service</code> and resource method can be secured
         with OAuth2 and additionally, scopes can be added to enforce
         fine-grained authorization. It validates the OAuth2 token sent in the{" "}
         <code>Authorization</code> header against the provided configurations.
@@ -91,7 +91,7 @@ export function WebsocketServiceOauth2({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websocket-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websocket-service-oauth2",
                 "_blank",
               );
             }}

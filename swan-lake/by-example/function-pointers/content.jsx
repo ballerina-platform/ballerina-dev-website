@@ -64,7 +64,7 @@ export function FunctionPointers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/function-pointers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/function-pointers",
                 "_blank",
               );
             }}
@@ -231,10 +231,7 @@ export function FunctionPointers({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Provide function arguments by name"
-            href="/learn/by-example/provide-function-arguments-by-name"
-          >
+          <Link title="Rest arguments" href="/learn/by-example/rest-arguments">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +257,7 @@ export function FunctionPointers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide function arguments by name
+                  Rest arguments
                 </span>
               </div>
             </div>

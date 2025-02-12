@@ -23,9 +23,16 @@ To complete this part of the guide, you need:
    >**Tip:** For additional download options, see [Get Started with GraalVM](https://www.graalvm.org/jdk17/docs/getting-started/).
 
       ```
-      $ sdk install java 17.0.7-graalce
+      $ sdk install java 21.0.2-graalce
       ```
-      > **Note:** If you have installed Ballerina Swan Lake Update 7(2201.7.x) or lower, you have to install GraalVM JDK 11. For download options, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started/macos/).
+      > **Note:** For download options, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started/macos/). The required GraalVM JDK version depends on the update version, as shown below.
+         
+      **Update Versions**|**Java version**
+      :-----:|:-----:
+      Update 7 or below| 11
+      Update 8, 9 and 10| 17
+      Update 11 and above| 21
+
 2. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory. If you have installed using SDKMAN! you can set it to `JAVA_HOME`.
 
 > **Note:** 
@@ -59,58 +66,64 @@ After the environment is set up, follow the steps below to build a native execut
    Compiling source
            ballerina/hello_world:0.1.0
 
-   ===============================================================================================
+   ========================================================================================================================
    GraalVM Native Image: Generating 'hello_world' (executable)...
-   ===============================================================================================
-   [1/8] Initializing...                                                           (5.8s @ 0.30GB)
-    Java version: 17.0.8+7, vendor version: GraalVM CE 17.0.8+7.1
-    Graal compiler: optimization level: 2, target machine: armv8-a
-    C compiler: cc (apple, arm64, 14.0.3)
-    Garbage collector: Serial GC (max heap size: 80% of RAM)
-    2 user-specific feature(s)
-    - com.oracle.svm.thirdparty.gson.GsonFeature
-    - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
-   [2/8] Performing analysis...  [*******]                                        (50.9s @ 2.63GB)
-     24,957 (92.94%) of 26,854 types reachable
-     81,899 (80.56%) of 101,665 fields reachable
-    137,486 (72.86%) of 188,711 methods reachable
-      5,160 types,   117 fields, and 3,566 methods registered for reflection
-         85 types,    74 fields, and    65 methods registered for JNI access
-          5 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, z
-   [3/8] Building universe...                                                      (8.1s @ 2.33GB)
-   [4/8] Parsing methods...      [***]                                             (5.3s @ 3.01GB)
-   [5/8] Inlining methods...     [***]                                             (2.7s @ 3.22GB)
-   [6/8] Compiling methods...    [******]                                         (42.5s @ 2.24GB)
-   [7/8] Layouting methods...    [***]                                             (7.2s @ 4.20GB)
-   [8/8] Creating image...       [***]                                            (11.1s @ 4.29GB)
-     84.96MB (57.36%) for code area:    99,712 compilation units
-     61.55MB (41.55%) for image heap:  488,592 objects and 34 resources
-      1.61MB ( 1.09%) for other data
-    148.12MB in total
-   -----------------------------------------------------------------------------------------------
-   Top 10 origins of code area:       Top 10 object types in image heap:
-     62.81MB hello_world.jar            16.05MB byte[] for code metadata
-     11.99MB java.base                  13.10MB byte[] for embedded resources
-      3.03MB java.xml                    6.59MB java.lang.Class
-      1.41MB java.desktop                5.32MB byte[] for java.lang.String
-      1.30MB svm.jar (Native Image)      4.81MB java.lang.String
-      1.21MB java.net.http               3.80MB byte[] for general heap data
-    589.89kB java.naming                 2.09MB com.oracle.svm.core.hub.DynamicHubCompanion
-    466.25kB java.management             1.28MB byte[] for reflection metadata
-    458.28kB java.rmi                    1.00MB java.lang.String[]
-    318.20kB jdk.crypto.ec             928.40kB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
-    892.91kB for 21 more packages        6.30MB for 3528 more object types
-   -----------------------------------------------------------------------------------------------
+   ========================================================================================================================
+   [1/8] Initializing...                                                                                   (12.4s @ 0.20GB)
+   Java version: 21.0.2+13, vendor version: GraalVM CE 21.0.2+13.1
+   Graal compiler: optimization level: 2, target machine: armv8-a
+   C compiler: cc (apple, arm64, 16.0.0)
+   Garbage collector: Serial GC (max heap size: 80% of RAM)
+   2 user-specific feature(s):
+   - com.oracle.svm.thirdparty.gson.GsonFeature
+     - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
+   ------------------------------------------------------------------------------------------------------------------------
+   Build resources:
+   - 12.09GB of memory (75.6% of 16.00GB system memory, determined at start)
+     - 8 thread(s) (100.0% of 8 available processor(s), determined at start)
+       Warning: RecomputeFieldValue.ArrayIndexScale automatic substitution failed. The automatic substitution registration was attempted because a call to jdk.internal.misc.Unsafe.arrayIndexScale(Class) was detected in the static initializer of io.netty.util.internal.shaded.org.jctools.util.UnsafeLongArrayAccess. Detailed failure reason(s): Could not determine the field where the value produced by the call to jdk.internal.misc.Unsafe.arrayIndexScale(Class) for the array index scale computation is stored. The call is not directly followed by a field store or by a sign extend node followed directly by a field store.
+       [2/8] Performing analysis...  [*****]                                                                   (35.2s @ 2.56GB)
+       20,862 reachable types   (90.5% of   23,054 total)
+       37,349 reachable fields  (66.5% of   56,189 total)
+       110,452 reachable methods (68.1% of  162,167 total)
+       5,830 types,   134 fields, and 4,234 methods registered for reflection
+       83 types,    66 fields, and    65 methods registered for JNI access
+       5 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, z
+       [3/8] Building universe...                                                                               (6.6s @ 2.65GB)
+       [4/8] Parsing methods...      [***]                                                                      (6.6s @ 1.94GB)
+       [5/8] Inlining methods...     [***]                                                                      (2.8s @ 2.87GB)
+       [6/8] Compiling methods...    [*******]                                                                 (48.2s @ 3.11GB)
+       [7/8] Layouting methods...    [***]                                                                      (6.8s @ 4.64GB)
+       [8/8] Creating image...       [***]                                                                     (10.2s @ 2.72GB)
+       64.51MB (48.90%) for code area:    75,155 compilation units
+       65.94MB (49.98%) for image heap:  473,416 objects and 79 resources
+       1.47MB ( 1.12%) for other data
+       131.92MB in total
+   ------------------------------------------------------------------------------------------------------------------------
+   Top 10 origins of code area:                                Top 10 object types in image heap:
+   42.47MB hello_world.jar                                     18.95MB byte[] for code metadata
+   11.95MB java.base                                           12.68MB byte[] for embedded resources
+   2.98MB java.xml                                             6.95MB byte[] for java.lang.String
+   1.48MB svm.jar (Native Image)                               5.25MB java.lang.Class
+   1.31MB java.desktop                                         5.03MB int[]
+   1.26MB java.net.http                                        4.62MB java.lang.String
+   585.32kB java.naming                                          1.75MB com.oracle.svm.core.hub.DynamicHubCompanion
+   462.91kB java.management                                      1.12MB byte[] for reflection metadata
+   451.34kB java.rmi                                             1.05MB byte[] for general heap data
+   304.96kB jdk.crypto.ec                                      971.00kB java.lang.String[]
+   898.96kB for 22 more packages                                 7.59MB for 4745 more object types
+   ------------------------------------------------------------------------------------------------------------------------
    Recommendations:
-    HEAP: Set max heap for improved and more predictable memory usage.
-    CPU:  Enable more CPU features with '-march=native' for improved performance.
-   -----------------------------------------------------------------------------------------------
-             18.5s (13.6% of total time) in 109 GCs | Peak RSS: 5.11GB | CPU load: 5.08
-   -----------------------------------------------------------------------------------------------
+   INIT: Adopt '--strict-image-heap' to prepare for the next GraalVM release.
+   HEAP: Set max heap for improved and more predictable memory usage.
+   CPU:  Enable more CPU features with '-march=native' for improved performance.
+   ------------------------------------------------------------------------------------------------------------------------
+                          19.8s (15.2% of total time) in 88 GCs | Peak RSS: 3.76GB | CPU load: 4.69
+   ------------------------------------------------------------------------------------------------------------------------
    Produced artifacts:
-    /Users/ballerina/hello_world/target/bin/hello_world (executable)
-   ===============================================================================================
-   Finished generating 'hello_world' in 2m 14s.
+   /Users/ballerina/hello_world/target/bin/hello_world (executable)
+   ========================================================================================================================
+   Finished generating 'hello_world' in 2m 9s.
    ```
 
    > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --graalvm`.
@@ -226,6 +239,6 @@ file under the section '[platform.<java*>]' with the attribute
 
 In that scenario, the package owner should evaluate the GraalVM-compatibility with `bal test --graalvm`. If the package has sufficient test cases to verify the compatibility, the package can be marked as GraalVM-compatible by adding the following to the Ballerina.toml file.
 ```toml
-[platform.java17]
+[platform.java21]
 graalvmCompatible = true
 ```

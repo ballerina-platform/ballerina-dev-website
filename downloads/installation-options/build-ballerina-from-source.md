@@ -15,7 +15,7 @@ keywords: ballerina, installing ballerina, programming language, ballerina insta
 
 Follow the steps below to set up the prerequisites.
 
-1. Download and [set up](https://adoptopenjdk.net/installation.html) OpenJDK 17 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution).
+1. Download and [set up](https://adoptopenjdk.net/installation.html) OpenJDK 21 ([Adopt OpenJDK](https://adoptopenjdk.net/) or any other OpenJDK distribution).
 
    >**Info:** You can also use [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html).
 

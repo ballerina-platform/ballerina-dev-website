@@ -79,12 +79,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its latest features, including virtual threads introduced with Project Loom. This enhancement addresses key performance issues in the current runtime, particularly with loops and asynchronous strand execution, and simplifies runtime APIs for native code developers.
 
-Note: If you are using Java 17 to run Ballerina programs, you must switch to Java 21.
-
-The upgraded concurrency model integrates Java 21's virtual threads with significant changes to asynchronous execution. However, the implementation of Ballerina interoperability will have an impact on Java 21 support due to any incompatible changes.
-
-For more details, refer to the [Java 21 release notes](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html).
-
 ##### Improvements to runtime Java APIs
 
 - The following API classes have been moved to a different package.
@@ -481,7 +475,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
 ### Runtime changes
 
-The switch to Java 21 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 21 has some restrictions on custom thread management that may require adjustments to adopt the Java 21 threading model effectively. For more information, see Java 21 support.
+The switch to Java 21 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 21 has some restrictions on custom thread management that may require adjustments to adopt the Java 21 threading model effectively.For more details, refer to the [Java 21 release notes](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html).
 
 #### Removal of Runtime Java APIs
 

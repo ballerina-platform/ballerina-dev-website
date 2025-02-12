@@ -62,7 +62,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ### Improvements
 
-##### Java 21 support
+#### Java 21 support
 
 The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its latest features, including virtual threads introduced with Project Loom. This enhancement addresses key performance issues in the current runtime, particularly with loops and asynchronous strand execution, and simplifies runtime APIs for native code developers.
 
@@ -406,10 +406,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 ### New features
 
-#### Language Server
-
-#### CLI
-
 #### OpenAPI tool
 - Introduced the `flatten` sub-command, which flattens the OpenAPI contract file by moving all the inline schemas to the components section. The output is a modified OpenAPI contract.
 
@@ -492,10 +488,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 | `<xsd-file-path>` | The path of the XSD file | Mandatory |
 | `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
 
-### Improvements
-
-#### Language Server
-
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) of the repositories below.
@@ -504,8 +496,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=milestone%3A2201.11.0+is%3Aclosed+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug)
 
 ## Ballerina packages updates
-
-### New features
 
 ### Improvements
 
@@ -526,7 +516,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
 - Introduced the capability to override the default `README.md` by specifying a preferred file using the `readme` field in the `[package]` table of the `Ballerina.toml` file.
 
-  ``` toml
+  ```toml
   [package]
   org = "samjs"
   name = "winery"
@@ -538,14 +528,12 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
   The following example demonstrates configuring the foo module in `Ballerina.toml`.
 
-  ``` toml
+  ```toml
   [[package.modules]]
   name = "winery.foo"
   export = true
   readme = "README.md"
    ```
-
-### Bug fixes
 
 ## Backward-incompatible changes
 

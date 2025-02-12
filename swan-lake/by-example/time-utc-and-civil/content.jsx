@@ -57,7 +57,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          <code>time</code> module module
+          <code>time</code> module
         </a>
         .
       </p>
@@ -72,7 +72,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/time-utc-and-civil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/time-utc-and-civil",
                 "_blank",
               );
             }}

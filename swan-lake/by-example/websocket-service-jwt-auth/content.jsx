@@ -66,7 +66,7 @@ export function WebsocketServiceJwtAuth({ codeSnippets }) {
       <h1>WebSocket service - JWT authentication</h1>
 
       <p>
-        The <code>websocket:Service</code> and resource function can be secured
+        The <code>websocket:Service</code> and resource method can be secured
         with JWT and additionally, scopes can be added to enforce authorization.
         It validates the JWT sent in the <code>Authorization</code> header
         against the provided configurations. Ballerina uses the concept of
@@ -87,7 +87,7 @@ export function WebsocketServiceJwtAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websocket-service-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websocket-service-jwt-auth",
                 "_blank",
               );
             }}

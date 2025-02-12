@@ -7,23 +7,41 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// The \`Person\` object type that contains a string field called \`name\`.
-type Person distinct object {
+class Person {
     public string name;
+
+    function init(string name) {
+        self.name = name;
+    }
 };
 
-// The \`Engineer\` and \`Manager\` classes are structurally the same but introducing the
-// \`distinct\` keyword distinguishes them by considering them as nominal types.
-distinct class Engineer {
-    *Person;
+// The \`DistinctPerson\` type is a proper subtype of the \`Person\` type.
+distinct class DistinctPerson {
+    public string name;
 
     function init(string name) {
         self.name = name;
     }
 }
 
-distinct class Manager {
-    *Person;
+// The \`SomeWhatDistinctPerson\` type is a subtype of the \`DistinctPerson\` type
+// since it includes the \`DistinctPerson\` type's type IDs via inclusion.
+class SomeWhatDistinctPerson {
+    *DistinctPerson;
+
+    public string name;
+
+    function init(string name) {
+        self.name = name;
+    }
+}
+
+// The \`EvenMoreDistinctPerson\` type is a proper subtype of the \`DistinctPerson\` 
+// type since it has an additional type ID.
+distinct class EvenMoreDistinctPerson {
+    *DistinctPerson;
+
+    public string name;
 
     function init(string name) {
         self.name = name;
@@ -31,9 +49,19 @@ distinct class Manager {
 }
 
 public function main() {
-    Person person = new Engineer("Alice");
-    // The \`is\` operator can be used to distinguish distinct subtypes.
-    io:println(person is Engineer ? "Engineer" : "Manager");
+    Person person = new ("John Smith");
+    io:println(person is DistinctPerson);
+
+    DistinctPerson distinctPerson = new ("Alice Johnson");
+    io:println(distinctPerson is Person);
+
+    SomeWhatDistinctPerson someWhatDistinctPerson = new ("Michael Brown");
+    io:println(someWhatDistinctPerson is DistinctPerson);
+    io:println(distinctPerson is SomeWhatDistinctPerson);
+
+    EvenMoreDistinctPerson evenMoreDistinctPerson = new ("Sarah Wilson");
+    io:println(evenMoreDistinctPerson is DistinctPerson);
+    io:println(distinctPerson is EvenMoreDistinctPerson);
 }
 `,
 ];
@@ -51,17 +79,21 @@ export function DistinctObjectTypes({ codeSnippets }) {
       <h1>Distinct object types</h1>
 
       <p>
-        Using the <code>distinct</code> keyword in the type definition creates
-        distinct object types. This concept allows defining a type with nominal
-        typing within a structured type system. This is useful when interacting
-        with the external world through API interfaces like <code>GraphQL</code>
-        . You may want to leverage nominal typing via this distinct typing
-        feature of Ballerina.
+        For more explicit control over object type relations you can use{" "}
+        <code>distinct</code> object types. Each distinct object type
+        declaration has a unique type ID. When you include a distinct object
+        type within another object type declaration, the new type's type ID set
+        will include the type IDs of the included type. When checking if a given
+        object type <code>OSub</code> is a subtype of a distinct object type{" "}
+        <code>OSuper</code> there is the additional requirement that the{" "}
+        <code>OSub</code> type must contain all the type IDs of the{" "}
+        <code>OSuper</code> type.
       </p>
 
       <p>
-        Conceptually, a distinct type including another distinct type results in
-        multiple interface inheritance.
+        This way you can achieve the same behavior as a nominal type system
+        within Ballerina's structured type system, which is useful to support
+        features such as GraphQL API interfaces.
       </p>
 
       <Row
@@ -74,7 +106,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/distinct-object-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/distinct-object-types",
                 "_blank",
               );
             }}
@@ -202,7 +234,12 @@ export function DistinctObjectTypes({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal distinct_object_types.bal`}</span>
-              <span>{`Engineer`}</span>
+              <span>{`false`}</span>
+              <span>{`true`}</span>
+              <span>{`true`}</span>
+              <span>{`true`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
             </code>
           </pre>
         </Col>
@@ -240,6 +277,16 @@ export function DistinctObjectTypes({ codeSnippets }) {
           <span>
             <a href="https://ballerina.io/why-ballerina/flexibly-typed/">
               Flexibly typed
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/graphql-interfaces/">
+              GraphQL service - Interfaces
             </a>
           </span>
         </li>

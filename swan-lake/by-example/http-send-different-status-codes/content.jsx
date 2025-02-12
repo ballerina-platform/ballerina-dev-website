@@ -49,11 +49,11 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
       <p>
         The subtypes of the <code>http:StatusCodeResponse</code> record type
         represent different HTTP status code responses. Returning them from the
-        resource function results in the relevant HTTP status code response. To
+        resource method results in the relevant HTTP status code response. To
         send a non-entity body response, use the relevant constant value
         declared in the <code>http</code> module. These constant values can be
         directly returned from the resource method by specifying the relevant
-        return type in the resource function signature. Use this when different
+        return type in the resource method signature. Use this when different
         status code responses need to be sent without a body and headers.
       </p>
 
@@ -67,7 +67,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-send-different-status-codes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-send-different-status-codes",
                 "_blank",
               );
             }}

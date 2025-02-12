@@ -85,7 +85,7 @@ export function RawTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/raw-templates",
                 "_blank",
               );
             }}
@@ -228,8 +228,18 @@ export function RawTemplates({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/learn/by-example/backtick-templates/">
-              Backtick templates
+            <a href="https://ballerina.io/learn/by-example/string-templates/">
+              String templates
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/learn/by-example/regexp-type/">
+              RegExp type
             </a>
           </span>
         </li>
@@ -295,8 +305,8 @@ export function RawTemplates({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Backtick templates"
-            href="/learn/by-example/backtick-templates"
+            title="String templates"
+            href="/learn/by-example/string-templates"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -306,7 +316,7 @@ export function RawTemplates({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Backtick templates
+                  String templates
                 </span>
               </div>
               <svg

@@ -224,6 +224,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Rest arguments",
+        "url": "rest-arguments",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Function pointers",
         "url": "function-pointers",
         "verifyBuild": true,
@@ -927,6 +934,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Advanced conflict handling",
+        "url": "advanced-conflict-handling",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Iterate over XML with a query",
         "url": "iterating-over-xml-with-query",
         "verifyBuild": true,
@@ -1084,15 +1098,13 @@
       {
         "name": "Raw templates",
         "url": "raw-templates",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Backtick templates",
-        "url": "backtick-templates",
+        "name": "String templates",
+        "url": "string-templates",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1541,6 +1553,20 @@
       {
         "name": "Inter-worker message passing",
         "url": "inter-worker-message-passing",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Alternate receive",
+        "url": "alternate-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Multiple receive",
+        "url": "multiple-receive",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -2857,6 +2883,15 @@
       {
         "name": "Error handling",
         "url": "websocket-service-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Query parameter",
+        "url": "websocket-query-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -4470,6 +4505,13 @@
         "url": "time-formatting-and-parsing",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Time Zone",
+        "url": "time-zone",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       }
     ]

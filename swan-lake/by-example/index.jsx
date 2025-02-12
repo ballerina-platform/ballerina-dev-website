@@ -96,6 +96,10 @@ import {
   codeSnippetData as ProvideFunctionArgumentsByNameCodeSnippetData,
 } from "./provide-function-arguments-by-name/content.jsx";
 import {
+  RestArguments,
+  codeSnippetData as RestArgumentsCodeSnippetData,
+} from "./rest-arguments/content.jsx";
+import {
   FunctionPointers,
   codeSnippetData as FunctionPointersCodeSnippetData,
 } from "./function-pointers/content.jsx";
@@ -444,6 +448,10 @@ import {
   codeSnippetData as OnConflictClauseCodeSnippetData,
 } from "./on-conflict-clause/content.jsx";
 import {
+  AdvancedConflictHandling,
+  codeSnippetData as AdvancedConflictHandlingCodeSnippetData,
+} from "./advanced-conflict-handling/content.jsx";
+import {
   IteratingOverXmlWithQuery,
   codeSnippetData as IteratingOverXmlWithQueryCodeSnippetData,
 } from "./iterating-over-xml-with-query/content.jsx";
@@ -524,9 +532,9 @@ import {
   codeSnippetData as RawTemplatesCodeSnippetData,
 } from "./raw-templates/content.jsx";
 import {
-  BacktickTemplates,
-  codeSnippetData as BacktickTemplatesCodeSnippetData,
-} from "./backtick-templates/content.jsx";
+  StringTemplates,
+  codeSnippetData as StringTemplatesCodeSnippetData,
+} from "./string-templates/content.jsx";
 import {
   XmlTemplates,
   codeSnippetData as XmlTemplatesCodeSnippetData,
@@ -739,6 +747,14 @@ import {
   InterWorkerMessagePassing,
   codeSnippetData as InterWorkerMessagePassingCodeSnippetData,
 } from "./inter-worker-message-passing/content.jsx";
+import {
+  AlternateReceive,
+  codeSnippetData as AlternateReceiveCodeSnippetData,
+} from "./alternate-receive/content.jsx";
+import {
+  MultipleReceive,
+  codeSnippetData as MultipleReceiveCodeSnippetData,
+} from "./multiple-receive/content.jsx";
 import {
   ConditionalSend,
   codeSnippetData as ConditionalSendCodeSnippetData,
@@ -1356,6 +1372,10 @@ import {
   codeSnippetData as WebsocketServiceErrorHandlingCodeSnippetData,
 } from "./websocket-service-error-handling/content.jsx";
 import {
+  WebsocketQueryParameter,
+  codeSnippetData as WebsocketQueryParameterCodeSnippetData,
+} from "./websocket-query-parameter/content.jsx";
+import {
   WebsocketClient,
   codeSnippetData as WebsocketClientCodeSnippetData,
 } from "./websocket-client/content.jsx";
@@ -1932,6 +1952,10 @@ import {
   codeSnippetData as TimeFormattingAndParsingCodeSnippetData,
 } from "./time-formatting-and-parsing/content.jsx";
 import {
+  TimeZone,
+  codeSnippetData as TimeZoneCodeSnippetData,
+} from "./time-zone/content.jsx";
+import {
   CacheBasics,
   codeSnippetData as CacheBasicsCodeSnippetData,
 } from "./cache-basics/content.jsx";
@@ -2203,6 +2227,8 @@ const BBEs = {
   DefaultValuesForFunctionParametersCodeSnippetData,
   ProvideFunctionArgumentsByName,
   ProvideFunctionArgumentsByNameCodeSnippetData,
+  RestArguments,
+  RestArgumentsCodeSnippetData,
   FunctionPointers,
   FunctionPointersCodeSnippetData,
   FunctionValues,
@@ -2377,6 +2403,8 @@ const BBEs = {
   CreateStreamsWithQueryCodeSnippetData,
   OnConflictClause,
   OnConflictClauseCodeSnippetData,
+  AdvancedConflictHandling,
+  AdvancedConflictHandlingCodeSnippetData,
   IteratingOverXmlWithQuery,
   IteratingOverXmlWithQueryCodeSnippetData,
   NestedQueryExpressions,
@@ -2417,8 +2445,8 @@ const BBEs = {
   JsonpathExpressionsCodeSnippetData,
   RawTemplates,
   RawTemplatesCodeSnippetData,
-  BacktickTemplates,
-  BacktickTemplatesCodeSnippetData,
+  StringTemplates,
+  StringTemplatesCodeSnippetData,
   XmlTemplates,
   XmlTemplatesCodeSnippetData,
   XmlDataModel,
@@ -2525,6 +2553,10 @@ const BBEs = {
   NamedWorkersAndFuturesCodeSnippetData,
   InterWorkerMessagePassing,
   InterWorkerMessagePassingCodeSnippetData,
+  AlternateReceive,
+  AlternateReceiveCodeSnippetData,
+  MultipleReceive,
+  MultipleReceiveCodeSnippetData,
   ConditionalSend,
   ConditionalSendCodeSnippetData,
   InterWorkerFailurePropagation,
@@ -2833,6 +2865,8 @@ const BBEs = {
   WebsocketServicePayloadConstraintValidationCodeSnippetData,
   WebsocketServiceErrorHandling,
   WebsocketServiceErrorHandlingCodeSnippetData,
+  WebsocketQueryParameter,
+  WebsocketQueryParameterCodeSnippetData,
   WebsocketClient,
   WebsocketClientCodeSnippetData,
   WebsocketClientPayloadConstraintValidation,
@@ -3121,6 +3155,8 @@ const BBEs = {
   TimeUtcAndCivilCodeSnippetData,
   TimeFormattingAndParsing,
   TimeFormattingAndParsingCodeSnippetData,
+  TimeZone,
+  TimeZoneCodeSnippetData,
   CacheBasics,
   CacheBasicsCodeSnippetData,
   CacheInvalidation,

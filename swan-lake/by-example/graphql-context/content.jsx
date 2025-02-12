@@ -7,14 +7,6 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
-import ballerina/lang.value;
-
-// Defines a record type to use as an object in the GraphQL service.
-type Profile record {|
-    string name;
-    int age;
-    float salary;
-|};
 
 @graphql:ServiceConfig {
     // Initialization of the \`graphqlContext\` should be provided to the \`contextInit\` field.
@@ -26,20 +18,49 @@ service /graphql on new graphql:Listener(9090) {
 
     function init() {
         // Initializes the \`profile\` value.
-        self.profile = {name: "Walter White", age: 51, salary: 737000.00};
+        self.profile = new ("Walter White", 51, 737000.00);
     }
 
     // If the context is needed, it should be defined as a parameter of the resolver function.
     resource function get profile(graphql:Context context) returns Profile|error {
-        // Retrieves the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
-        // the \`scope\` is not found in the context.
-        value:Cloneable|isolated object {} scope = check context.get("scope");
+        // The profile information will be returned only if the scope is \`admin\` or \`user\`.
+        check validateScope(context, ["admin", "user"]);
+        return self.profile;
+    }
+}
 
-        // The profile information will be returned only if the scope is \`admin\`.
-        if scope is string && scope == "admin" {
-            return self.profile;
-        }
+// Defines a service class to use as an object in the GraphQL service.
+service class Profile {
+    private final string name;
+    private final int age;
+    private final float salary;
 
+    function init(string name, int age, float salary) {
+        self.name = name;
+        self.age = age;
+        self.salary = salary;
+    }
+
+    resource function get name() returns string => self.name;
+
+    resource function get age() returns int => self.age;
+
+    // If the context is needed, it should just be specified as a parameter of the resolver method.
+    // Ballerina handles propagating the context, and therefore, it is not required to be passed 
+    // as an argument to the \`init\` method from the parent resolver.
+    resource function get salary(graphql:Context context) returns float|error {
+        // The salary information will be returned only if the scope is \`admin\`.
+        check validateScope(context, ["admin"]);
+        return self.salary;
+    }
+}
+
+isolated function validateScope(graphql:Context context, string[] allowedScopes) returns error? {
+    // Retrieves the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
+    // the \`scope\` is not found in the context.
+    final string scope = check context.get("scope").ensureType();
+    // If the scope doesn't matches any of the allowed scopes return an \`error\`.
+    if !allowedScopes.some(allowedScope => scope == allowedScope) {
         // Returns an \`error\` if the required scope is not found.
         return error("Permission denied");
     }
@@ -122,7 +143,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/graphql-context",
                 "_blank",
               );
             }}
@@ -271,7 +292,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/graphql-context",
                 "_blank",
               );
             }}

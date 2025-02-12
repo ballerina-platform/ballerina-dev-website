@@ -5,20 +5,27 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/soap;
-import ballerina/soap.soap12;
+  `import ballerina/soap.soap12;
+import ballerina/crypto;
 
 public function main() returns error? {
+    crypto:KeyStore keyStore = {
+        path: "/path/to/keyStore.p12",
+        password: "keyStorePassword"
+    };
+    crypto:KeyStore decryptionKeyStore = {
+        path: "/path/to/keyStore.p12",
+        password: "keyStorePassword"
+    };
+
     soap12:Client soapClient = check new ("http://soap-endpoint.com?wsdl",
         {
             inboundSecurity: {
-                username: "user",
-                password: "password",
-                passwordType: soap:TEXT
+                signatureKeystore: keyStore,
+                decryptKeystore: decryptionKeyStore
             }
         }
     );
-
     xml body = xml \`<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
                         <soap:Body></soap:Body>
                     </soap:Envelope>\`;
@@ -62,7 +69,7 @@ export function SoapClientSecurityInboundSecurityConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/soap-client-security-inbound-security-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/soap-client-security-inbound-security-config",
                 "_blank",
               );
             }}

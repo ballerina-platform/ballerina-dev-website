@@ -264,7 +264,7 @@ export function SecurityCrypto({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/security-crypto",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/security-crypto",
                 "_blank",
               );
             }}

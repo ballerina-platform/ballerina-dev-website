@@ -77,7 +77,7 @@ export function Functions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/functions",
                 "_blank",
               );
             }}
@@ -250,6 +250,14 @@ export function Functions({ codeSnippets }) {
             <a href="/learn/by-example/provide-function-arguments-by-name/">
               Provide function arguments by name
             </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rest-arguments/">Rest arguments</a>
           </span>
         </li>
       </ul>

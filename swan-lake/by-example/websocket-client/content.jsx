@@ -59,7 +59,7 @@ export function WebsocketClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websocket-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websocket-client",
                 "_blank",
               );
             }}
@@ -237,8 +237,8 @@ export function WebsocketClient({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error handling"
-            href="/learn/by-example/websocket-service-error-handling"
+            title="Query parameter"
+            href="/learn/by-example/websocket-query-parameter"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -265,7 +265,7 @@ export function WebsocketClient({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Query parameter
                 </span>
               </div>
             </div>

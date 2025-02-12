@@ -49,7 +49,7 @@ export function GrpcServiceHeaders({ codeSnippets }) {
         contains the Protobuf message and the header map. The header map
         supports <code>string</code>and <code>string[]</code> types. The{" "}
         <code>Context</code> type of the required record is provided as the
-        target type of the remote function to receive the headers. A{" "}
+        target type of the remote method to receive the headers. A{" "}
         <code>Context</code> record value is created with the required headers
         and is returned to the client. The <code>getHeader</code> and{" "}
         <code>getHeaders</code> methods are also available to manipulate the
@@ -66,7 +66,7 @@ export function GrpcServiceHeaders({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/grpc-service-headers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/grpc-service-headers",
                 "_blank",
               );
             }}

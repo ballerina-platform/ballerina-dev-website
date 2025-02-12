@@ -74,7 +74,7 @@ export function CacheBasics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/cache-basics",
                 "_blank",
               );
             }}
@@ -216,10 +216,7 @@ export function CacheBasics({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Time formatting/parsing"
-            href="/learn/by-example/time-formatting-and-parsing"
-          >
+          <Link title="Time Zone" href="/learn/by-example/time-zone">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +242,7 @@ export function CacheBasics({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Time formatting/parsing
+                  Time Zone
                 </span>
               </div>
             </div>

@@ -68,7 +68,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/iterating-over-xml-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/iterating-over-xml-with-query",
                 "_blank",
               );
             }}
@@ -315,8 +315,8 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="On conflict clause"
-            href="/learn/by-example/on-conflict-clause"
+            title="Advanced conflict handling"
+            href="/learn/by-example/advanced-conflict-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -343,7 +343,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  On conflict clause
+                  Advanced conflict handling
                 </span>
               </div>
             </div>

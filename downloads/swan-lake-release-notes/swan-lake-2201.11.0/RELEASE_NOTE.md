@@ -345,6 +345,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 - Introduced XML schema definition (XSD) Sequence and Choice support for the `data.xmldata` package.
 
 ```ballerina
+import ballerina/data.xmldata;
+import ballerina/io;
+
 type Transaction record {|
     @xmldata:Sequence
     TransactionType Transaction;
@@ -361,6 +364,28 @@ type TransactionType record {|
     }
     decimal Amount;
 |};
+
+xml validXml = xml `
+    <Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="transaction.xsd">
+        <TransactionID>TXN12345</TransactionID>
+        <Amount>1000.50</Amount>
+    </Transaction>
+`;
+
+xml invalidXml = xml `
+    <Transaction>
+        <Amount>1000.50</Amount>
+        <TransactionID>TXN12345</TransactionID>
+    </Transaction>
+`;
+
+public function main() {
+    Transaction|xmldata:Error validTransaction = xmldata:parseAsType(validXml);
+    io:println(validTransaction); // {"Transaction":{"TransactionID":"TXN12345", "Amount":1000.50}}
+
+    Transaction|xmldata:Error invalidTransaction = xmldata:parseAsType(invalidXml);
+    io:println(invalidTransaction); // error Error ("Element 'Amount' is not in the correct order in 'Transaction'")
+}
 ```
 
 - Introduced union type support for `xml` operations in the `data.xmldata` package.

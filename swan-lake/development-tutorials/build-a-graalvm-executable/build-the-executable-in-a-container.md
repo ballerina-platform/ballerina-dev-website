@@ -57,8 +57,8 @@ After the environment is set up, follow the steps below to build the native exec
     => [internal] load build definition from Dockerfile                                                                           0.0s
     => => transferring dockerfile: 416B                                                                                           0.0s
     => [internal] load metadata for gcr.io/distroless/base:latest                                                                 3.2s
-    => [internal] load metadata for ghcr.io/graalvm/native-image-community:17-ol8                                                 4.2s
-    => [build 1/4] FROM ghcr.io/graalvm/native-image-community:17-ol8@sha256                                                      0.0s
+    => [internal] load metadata for ghcr.io/graalvm/native-image-community:21-ol9                                                 4.2s
+    => [build 1/4] FROM ghcr.io/graalvm/native-image-community:21-ol9@sha256                                                      0.0s
     => [internal] load build context                                                                                              0.2s
     => => transferring context: 38.38MB                                                                                           0.2s
     => [stage-1 1/3] FROM gcr.io/distroless/base@sha256:73deaaf6a207c1a33850257ba74e0f196bc418636cada9943a03d7abea980d6d          0.0s
@@ -80,7 +80,7 @@ After the environment is set up, follow the steps below to build the native exec
 
    ```	
    # Auto Generated Dockerfile
-   FROM ghcr.io/graalvm/native-image-community:17-ol8 as build
+   FROM ghcr.io/graalvm/native-image-community:21-ol9 as build
 
    WORKDIR /app/build
 

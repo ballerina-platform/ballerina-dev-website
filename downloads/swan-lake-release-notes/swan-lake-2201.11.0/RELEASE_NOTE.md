@@ -140,72 +140,72 @@ The strand dump tool has been updated to support virtual threads. The report now
 
 #### New runtime Java APIs
 
-1. A new runtime Java API is added to yield the current execution and to run an operation while allowing other non-isolated functions to run asynchronously.
-```java
-public abstract <T> T yieldAndRun(Supplier<T> supplier);
-```
-The above API can be called via a Ballerina environment instance as follows.
-```java
-import io.ballerina.runtime.api.Environment;
-
-env.yieldAndRun(() -> {
-            try {
-                Thread.sleep(1000);
-                return null;
-            } catch (InterruptedException e) {
-                throw ErrorCreator.createError(e);
-            }
-        });
-```
-2. A new runtime Java API is added to call a Ballerina function.
-```java
-public abstract Object callFunction(Module module, String functionName, StrandMetadata metadata, Object... args);
-```
-This API can be called via a Ballerina environment instance as follows.
-```java
-import io.ballerina.runtime.api.Runtime;
-import io.ballerina.runtime.api.Environment;
-
-Runtime balRuntime = env.getRuntime();
-Object result = balRuntime.callFunction(module, "add", null, 5L, 7L);
-```
-This method call invokes a Ballerina function with the following definition.
-```ballerina
-public function add(int a, int b) returns int {
-    return a + b;
-}
-```
-3. A new runtime Java API is added to call a Ballerina object method.
-```java
-public abstract Object callMethod(BObject object, String methodName, StrandMetadata metadata,Object... args);
-```
-The above API can be called via a Ballerina environment instance as follows.
-```java
-import io.ballerina.runtime.api.Runtime;
-import io.ballerina.runtime.api.Environment;
-
-Runtime balRuntime = env.getRuntime();
-Object result = balRuntime.callMethod(person, "getNameWithTitle", null);
-```
-This method call invokes a Ballerina object method using the BObject `person`. The object has the following definition.
-```ballerina
-public class Person {
-    private string name;
-
-    public function init(string name) {
-        self.name = name;
-    }
-
-    public function getNameWithTitle() returns string {
-        return “Miss/Mrs.” + self.name;
-    }
-}
-```
-4. A new runtime Java API is added to the `io.ballerina.runtime.api.values.BFuture` to check whether the future is completed with panic or not.
-```java
-boolean isPanic();
-```
-5. A new `io.ballerina.runtime.api.values.BNever` class is introduced to represent a singleton never value in Ballerina runtime.
+- A new runtime Java API is added to yield the current execution and to run an operation while allowing other non-isolated functions to run asynchronously.
+  ```java
+  public abstract <T> T yieldAndRun(Supplier<T> supplier);
+  ```
+  The above API can be called via a Ballerina environment instance as follows.
+  ```java
+  import io.ballerina.runtime.api.Environment;
+  
+  env.yieldAndRun(() -> {
+              try {
+                  Thread.sleep(1000);
+                  return null;
+              } catch (InterruptedException e) {
+                  throw ErrorCreator.createError(e);
+              }
+          });
+  ```
+- A new runtime Java API is added to call a Ballerina function.
+  ```java
+  public abstract Object callFunction(Module module, String functionName, StrandMetadata metadata, Object... args);
+  ```
+  This API can be called via a Ballerina environment instance as follows.
+  ```java
+  import io.ballerina.runtime.api.Runtime;
+  import io.ballerina.runtime.api.Environment;
+  
+  Runtime balRuntime = env.getRuntime();
+  Object result = balRuntime.callFunction(module, "add", null, 5L, 7L);
+  ```
+  This method call invokes a Ballerina function with the following definition.
+  ```ballerina
+  public function add(int a, int b) returns int {
+      return a + b;
+  }
+  ```
+- A new runtime Java API is added to call a Ballerina object method.
+  ```java
+  public abstract Object callMethod(BObject object, String methodName, StrandMetadata metadata,Object... args);
+  ```
+  The above API can be called via a Ballerina environment instance as follows.
+  ```java
+  import io.ballerina.runtime.api.Runtime;
+  import io.ballerina.runtime.api.Environment;
+  
+  Runtime balRuntime = env.getRuntime();
+  Object result = balRuntime.callMethod(person, "getNameWithTitle", null);
+  ```
+  This method call invokes a Ballerina object method using the BObject `person`. The object has the following definition.
+  ```ballerina
+  public class Person {
+      private string name;
+  
+      public function init(string name) {
+          self.name = name;
+      }
+  
+      public function getNameWithTitle() returns string {
+          return “Miss/Mrs.” + self.name;
+      }
+  }
+  ```
+- A new runtime Java API is added to the `io.ballerina.runtime.api.values.BFuture` to check whether the future is completed with panic or not.
+  ```java
+  boolean isPanic();
+  ```
+-  A new `io.ballerina.runtime.api.values.BNever` class is introduced to represent a singleton never value in Ballerina runtime.
    This non-instantiable class extends the `io.ballerina.runtime.api.values.BValue`.
 
 ## Ballerina library updates
@@ -265,7 +265,7 @@ boolean isPanic();
 - Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
 - Introduced support for parsing CSV with union types as expected types.
 
-```ballerina
+  ```ballerina
   import ballerina/data.csv;
   import ballerina/io;
 
@@ -296,7 +296,7 @@ boolean isPanic();
       BookMinimal[]|csv:Error briefBookRecords = csv:parseString(csvString);
       io:println(briefBookRecords);
   }
-```
+  ```
 
 #### `http` package
 

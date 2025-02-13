@@ -23,7 +23,7 @@ import ballerina/websub;
     }
 }
 service on new websub:Listener(9090) {
-    // Defines the remote function that accepts the event notification request for the WebHook.
+    // Defines the remote method that accepts the event notification request for the WebHook.
     remote function onEventNotification(websub:ContentDistributionMessage event) returns error? {
         json retrievedContent = check event.content.ensureType();
         if retrievedContent.zen is string {
@@ -75,7 +75,7 @@ export function WebsubWebhookSample({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websub-webhook-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websub-webhook-sample",
                 "_blank",
               );
             }}

@@ -19,7 +19,7 @@ service /chat on new websocket:Listener(9090) {
 service class ChatService {
     *websocket:Service;
 
-    // This \`remote function\` is triggered when a new message is received
+    // This \`remote method\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
     remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
@@ -73,7 +73,7 @@ export function WebsocketBasicSample({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websocket-basic-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websocket-basic-sample",
                 "_blank",
               );
             }}

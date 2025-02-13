@@ -6,28 +6,33 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/crypto;
-import ballerina/soap;
 import ballerina/soap.soap12;
 
 public function main() returns error? {
-    crypto:PrivateKey verificationKey = check crypto:decodeRsaPrivateKeyFromKeyFile(
-        "../resource/path/to/private.key"
-    );
-    crypto:PublicKey decryptionKey = check crypto:decodeRsaPublicKeyFromCertFile(
-        "../resource/path/to/public.crt"
-    );
+    crypto:KeyStore keyStore = {
+        path: "/path/to/keyStore.p12",
+        password: "keyStorePassword"
+    };
+    crypto:KeyStore decryptionKeyStore = {
+        path: "/path/to/decryptionKeyStore.p12",
+        password: "keyStorePassword"
+    };
 
     soap12:Client soapClient = check new ("http://soap-endpoint.com?wsdl",
         {
             outboundSecurity: {
-                verificationKey: verificationKey,
-                signatureAlgorithm: soap:RSA_SHA256,
-                decryptionKey: decryptionKey,
-                decryptionAlgorithm: soap:RSA_ECB
+                signatureConfig: {
+                    keystore: keyStore,
+                    privateKeyAlias: "private-key-alias",
+                    privateKeyPassword: "private-key-password"
+                },
+                encryptionConfig: {
+                    keystore: decryptionKeyStore,
+                    publicKeyAlias: "public-key-alias"
+                }
             }
         }
     );
-
     xml body = xml \`<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
                         <soap:Body></soap:Body>
                     </soap:Envelope>\`;
@@ -67,7 +72,7 @@ export function SoapClientSecurityOutboundSecurityConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/soap-client-security-outbound-security-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/soap-client-security-outbound-security-config",
                 "_blank",
               );
             }}

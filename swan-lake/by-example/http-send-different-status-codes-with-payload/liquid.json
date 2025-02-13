@@ -1,6 +1,6 @@
 {
   "title": "Send different status codes with payload",
-  "description": "This example is on how to use the status code records with a payload in an HTTP resource function.",
+  "description": "This example is on how to use the status code records with a payload in an HTTP resource method.",
   "keywords": [
     "ballerina",
     "ballerina by example",

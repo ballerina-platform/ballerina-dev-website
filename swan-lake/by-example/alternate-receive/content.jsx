@@ -5,29 +5,70 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
+  `import ballerina/http;
+import ballerina/io;
+import ballerina/lang.runtime;
+
+type Response record {
+    record {
+        string 'worker;
+    } args;
+};
+
+// Concurrently fetch content from two URLs using workers and
+// return the first non-error value received.
+function getFirstFetched(string url1, string url2) returns string? {
+    // Workers \`w1\` and \`w2\` fetch content from \`url1\` and \`url2\` respectively.
+    worker w1 {
+        string|error result = fetch(url1);
+        result -> w3;
+    }
+
+    worker w2 {
+        runtime:sleep(3);
+        string|error result = fetch(url2);
+        result -> w3;
+    }
+
+    // Worker \`w3\` waits until one of the workers sends a non-error value. 
+    worker w3 returns string? {
+        // The value of the variable \`result\` is set as soon as
+        // a non-error message is received from either worker \`w1\` or \`w2\`.
+        string|error result = <- w1 | w2;
+        return result is error ? () : result;
+    }
+
+    // The value returned from worker \`w3\` is set to the variable \`w3Result\`.
+    string? w3Result = wait w3;
+    return w3Result;
+}
+
+function fetch(string url) returns string|error {
+    http:Client cl = check new (url);
+    Response response = check cl->get("");
+    return response.args.'worker;
+}
 
 public function main() {
-    string name = "James";
+    // Both arguments passed to the \`getFirstFetched\` function are valid URLs.
+    // Thus, the alternate receive action in worker \`w3\` sets the
+    // first value it receives from a worker as the result.
+    string? firstFetched = getFirstFetched("https://postman-echo.com/get?worker=w1",
+            "https://postman-echo.com/get?worker=w2");
+    io:println(firstFetched);
 
-    // Concatenates \`Hello, \` strings with the \`name\` value.
-    string s1 = string \`Hello, \${name}\`;
-    io:println(s1);
-
-    // Concatenates \`Backtick:\` strings with \`.
-    string s2 = string \`Backtick:\${"\`"}\`;
-    io:println(s2);
-
-    // If required, a single-line string template can be split into a multiline string template by breaking
-    // at an interpolation point or using string concatenation.
-    string s3 = string \`A string-template-expr is evaluated by evaluating the expression in each interpolation in \${
-        ""}the order in which they occur.\`;
-    io:println(s3);
+    // The first argument passed to the \`getFirstFetched\` function is an invalid URL.
+    // Therefore, the worker \`w1\` in the \`getFirstFetched\` function returns an error.
+    // Thus, the alternate receive action in worker \`w3\` waits further
+    // and sets the value that is received from \`w2\` as the result.
+    firstFetched = getFirstFetched("https://postman-echo.com/ge?worker=w4",
+            "https://postman-echo.com/get?worker=w5");
+    io:println(firstFetched);
 }
 `,
 ];
 
-export function BacktickTemplates({ codeSnippets }) {
+export function AlternateReceive({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -37,37 +78,17 @@ export function BacktickTemplates({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Backtick templates</h1>
+      <h1>Alternate receive</h1>
 
       <p>
-        The backtick templates consist of a tag followed by characters
-        surrounded by backticks. They can contain <code>expressions</code> in{" "}
-        <code>$&#123;...&#125;</code> to be interpolated. If no escapes are
-        recognized: use an <code>expression</code> to escape.
+        The alternate receive action can be used to receive one of multiple
+        values corresponding to multiple send actions. It operates by waiting
+        until it receives a non-error message, a panic termination status on a
+        closed channel, or the closure of all channels. The alternative receive
+        action sets the first non-error value it receives as the result. If all
+        the channels return errors, it sets the last received error as the
+        result.
       </p>
-
-      <p>They can contain newlines and are processed in two phases.</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Phase 1 does tag-independent parse: result is a list of{" "}
-            <code>strings</code> and <code>expressions</code>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Phase 2 is tag-dependent: Phase 2 for <code>string...</code>{" "}
-            converts <code>expressions</code> to <code>strings</code> and
-            concatenates. <code>base16</code> and <code>base64</code> tags do
-            not allow <code>expressions</code>.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -79,7 +100,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/backtick-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/alternate-receive",
                 "_blank",
               );
             }}
@@ -206,10 +227,9 @@ export function BacktickTemplates({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run backtick_templates.bal`}</span>
-              <span>{`Hello, James`}</span>
-              <span>{`Backtick:\``}</span>
-              <span>{`A string-template-expr is evaluated by evaluating the expression in each interpolation in the order in which they occur.`}</span>
+              <span>{`\$ bal run alternate_receive.bal`}</span>
+              <span>{`w1`}</span>
+              <span>{`w5`}</span>
             </code>
           </pre>
         </Col>
@@ -217,7 +237,10 @@ export function BacktickTemplates({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link
+            title="Inter-worker message passing"
+            href="/learn/by-example/inter-worker-message-passing"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -243,14 +266,17 @@ export function BacktickTemplates({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Raw templates
+                  Inter-worker message passing
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="XML templates" href="/learn/by-example/xml-templates">
+          <Link
+            title="Multiple receive"
+            href="/learn/by-example/multiple-receive"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -259,7 +285,7 @@ export function BacktickTemplates({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML templates
+                  Multiple receive
                 </span>
               </div>
               <svg

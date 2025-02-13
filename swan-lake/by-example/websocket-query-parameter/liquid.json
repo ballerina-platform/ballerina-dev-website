@@ -1,0 +1,13 @@
+{
+  "title": "Query parameter",
+  "description": "This example is on how to extract the query parameters from websocket URL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket service",
+    "query parameter"
+  ],
+  "permalink": "/learn/by-example/websocket-query-parameter",
+  "active": "websocket-query-parameter"
+}

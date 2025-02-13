@@ -74,7 +74,7 @@ export function WebsocketServiceErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/websocket-service-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/websocket-service-error-handling",
                 "_blank",
               );
             }}
@@ -291,8 +291,8 @@ export function WebsocketServiceErrorHandling({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            title="Query parameter"
+            href="/learn/by-example/websocket-query-parameter"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -302,7 +302,7 @@ export function WebsocketServiceErrorHandling({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Query parameter
                 </span>
               </div>
               <svg

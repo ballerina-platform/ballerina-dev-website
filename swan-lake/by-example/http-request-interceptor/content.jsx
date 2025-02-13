@@ -22,7 +22,7 @@ table<Album> key(title) albums = table [
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
-    // A default resource function, which will be executed for all the requests. 
+    // A default resource method, which will be executed for all the requests.
     // A \`RequestContext\` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
@@ -108,7 +108,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-request-interceptor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-request-interceptor",
                 "_blank",
               );
             }}

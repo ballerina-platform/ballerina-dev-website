@@ -51,11 +51,11 @@ export function HttpCaller({ codeSnippets }) {
         call toward a service. It is used to send responses back to the caller.
         In addition, it also contains meta information such as remote/local
         addresses. When the <code>http:Caller</code> is defined, the resource
-        function return type is constrained to <code>error?</code>.{" "}
+        method return type is constrained to <code>error?</code>.{" "}
         <code>http:Caller</code> is useful to handle scenarios such as sending
         status code <code>100 Continue</code> or doing some work after sending
         the response to the caller. In most cases, <code>http:Caller</code> is
-        not required as returning from the resource function sends the response
+        not required as returning from the resource method sends the response
         back to the caller.
       </p>
 
@@ -69,7 +69,7 @@ export function HttpCaller({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-caller",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-caller",
                 "_blank",
               );
             }}

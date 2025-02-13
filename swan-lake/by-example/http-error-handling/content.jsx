@@ -22,7 +22,7 @@ service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
     // The error occurred in the request-response path can be accessed by the 
-    // mandatory argument: \`error\`. The remote function can return a response,
+    // mandatory argument: \`error\`. The remote method can return a response,
     // which will overwrite the existing error response.
     remote function interceptResponseError(error err) returns http:BadRequest {
         // In this case, all the errors are sent as \`400 BadRequest\` responses with a customized
@@ -98,7 +98,7 @@ export function HttpErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-error-handling",
                 "_blank",
               );
             }}

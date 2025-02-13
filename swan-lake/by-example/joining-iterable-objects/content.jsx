@@ -69,9 +69,12 @@ export function JoiningIterableObjects({ codeSnippets }) {
       <h1>Join iterable objects</h1>
 
       <p>
-        A <code>join</code> clause performs an inner or left outer equijoin. The
-        result is similar to using the nested <code>from</code> clauses and{" "}
-        <code>where</code> clause.
+        A <code>join</code> clause performs an inner or left outer equi-join.
+        The result is similar to using the nested <code>from</code> clauses and
+        a <code>where</code> clause. Variables declared in the query expression
+        before the join clause are accessible only on the left side of the join
+        condition, while variables declared in the join clause are accessible
+        only on the right side of the join condition.
       </p>
 
       <Row
@@ -84,7 +87,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/joining-iterable-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/joining-iterable-objects",
                 "_blank",
               );
             }}

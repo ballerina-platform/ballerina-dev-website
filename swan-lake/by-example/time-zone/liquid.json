@@ -1,0 +1,15 @@
+{
+  "title": "Time Zone",
+  "description": "BBE on how to use time zone APIs in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "time",
+    "zone",
+    "utc",
+    "zoneId"
+  ],
+  "permalink": "/learn/by-example/time-zone",
+  "active": "time-zone"
+}

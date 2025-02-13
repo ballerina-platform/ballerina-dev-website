@@ -53,12 +53,8 @@ export function PersistGetByKey({ codeSnippets }) {
         The bal persist feature provides support to manage data persistence in a
         Ballerina package. It starts with defining the application's data model.
         Once the model is defined, the client API is generated with resources
-        based on the model. The generated
-      </p>
-
-      <p>
-        API can be used to query and manipulate the persistent data in the
-        application.
+        based on the model. The generated API can be used to query and
+        manipulate the persistent data in the application.
       </p>
 
       <p>
@@ -68,10 +64,9 @@ export function PersistGetByKey({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Note:</strong> This example uses Ballerina tables as the data
-          store. You can use MySQL and Google Sheets as the data store as well.
-          For more information, see{" "}
-          <a href="/learn/supported-data-stores/">Supported Data Stores</a>.
+          <strong>Note:</strong> This example uses the Ballerina tables as the
+          data store. For more information about other supported data stores,
+          see <a href="/learn/supported-data-stores/">Supported Data Stores</a>.
         </p>
       </blockquote>
 
@@ -135,18 +130,17 @@ export function PersistGetByKey({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal persist init --module store`}</span>
+              <span>{`\$ bal persist init`}</span>
               <span>{`
 `}</span>
-              <span>{`Initialized persistence in your Ballerina project.`}</span>
-              <span>{`
-`}</span>
-              <span>{`Your Persist schema is at persist/model.bal.`}</span>
-              <span>{`You can now update it with entity definitions.`}</span>
+              <span>{`Initialized the package for persistence.`}</span>
               <span>{`
 `}</span>
               <span>{`Next steps:`}</span>
-              <span>{`Run bal persist generate to generate the Ballerina Client, Types, and Scripts. You can then start querying your database.`}</span>
+              <span>{`1. Define your data model in "persist/model.bal".`}</span>
+              <span>{`2. Execute \`bal persist add --datastore <datastore> --module <module>\` to add an entry to "Ballerina.toml" for integrating code generation with the package build process.`}</span>
+              <span>{`OR`}</span>
+              <span>{`Execute \`bal persist generate --datastore <datastore> --module <module>\` for a one-time generation of the client.`}</span>
             </code>
           </pre>
         </Col>
@@ -169,7 +163,7 @@ export function PersistGetByKey({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/persist-get-by-key",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/persist-get-by-key",
                 "_blank",
               );
             }}
@@ -300,15 +294,27 @@ export function PersistGetByKey({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal persist generate`}</span>
+              <span>{`\$ bal persist generate --datastore inmemory --module store`}</span>
               <span>{`
 `}</span>
-              <span>{`Generated Ballerina Client, Types, and Scripts to ./generated/store directory.`}</span>
-              <span>{`You can now start using Ballerina Client in your code.`}</span>
+              <span>{`Persist client and entity types generated successfully in the store directory.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The <code>bal persist generate</code> command
+          is a one-time generation task, and the generated client code is a part
+          of the project. We can also integrate the client code generation with
+          the project's build process by executing the{" "}
+          <code>bal persist add</code> command. This command will add the client
+          code generation as a build task in the <code>Ballerina.toml</code>{" "}
+          file. See <a href="learn/persist-cli-tool/">Persist CLI Commands</a>{" "}
+          for more information.
+        </p>
+      </blockquote>
 
       <h4>Use the generated client API</h4>
 
@@ -328,7 +334,7 @@ export function PersistGetByKey({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/persist-get-by-key",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/persist-get-by-key",
                 "_blank",
               );
             }}

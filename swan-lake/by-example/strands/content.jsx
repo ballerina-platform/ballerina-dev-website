@@ -15,8 +15,11 @@ function userSpeakerService(string userName) {
 }
 
 public function main() {
+
+    io:println("In function worker");
+
     // By default, named workers are multitasked cooperatively, not preemptively.
-    // Each named worker has a \`strand\` (a logical thread of control) and
+    // Each named worker has a strand (a logical thread of control) and
     // the execution switches between strands only at specific \`yield\` points.
     worker A {
         io:println("In worker A");
@@ -30,7 +33,11 @@ public function main() {
         io:println("Worker B end");
     }
 
-    io:println("In function worker");
+    // Explicitly wait for named workers to complete.
+    // This guarantees that the Ballerina program will not terminate till 
+    // the workers have completed their execution.
+    wait A;
+    wait B;
 }
 `,
 ];
@@ -55,12 +62,6 @@ export function Strands({ codeSnippets }) {
         invokes a system call that would block.
       </p>
 
-      <p>
-        This avoids the need for users to lock variables that are accessed from
-        multiple named workers. An annotation can be used to make a strand run
-        on a separate thread.
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -71,7 +72,7 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/strands",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/strands",
                 "_blank",
               );
             }}

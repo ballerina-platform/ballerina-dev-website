@@ -70,7 +70,7 @@ export function ConditionalSend({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/conditional-send",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/conditional-send",
                 "_blank",
               );
             }}
@@ -208,8 +208,8 @@ export function ConditionalSend({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Inter-worker message passing"
-            href="/learn/by-example/inter-worker-message-passing"
+            title="Multiple receive"
+            href="/learn/by-example/multiple-receive"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -236,7 +236,7 @@ export function ConditionalSend({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Inter-worker message passing
+                  Multiple receive
                 </span>
               </div>
             </div>

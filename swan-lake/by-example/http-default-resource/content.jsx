@@ -34,15 +34,15 @@ export function HttpDefaultResource({ codeSnippets }) {
       <h1>HTTP service - Default resource</h1>
 
       <p>
-        The default resource slightly varies from the usual resource function as
+        The default resource slightly varies from the usual resource method as
         it uses <code>rest parameters</code> as the <code>resource path</code>{" "}
         and the <code>default</code> identifier as the{" "}
         <code>resource accessor</code>. The <code>rest parameters</code> allow
         any of the URL paths to be matched, and it supports <code>string</code>,{" "}
         <code>int</code>, <code>float</code>, <code>boolean</code>, and{" "}
         <code>decimal</code> as types. The <code>default</code> identifier also
-        allows any HTTP methods to be dispatched to the resource function. Use
-        it when designing a REST API to handle proxy services or as a default
+        allows any HTTP methods to be dispatched to the resource method. Use it
+        when designing a REST API to handle proxy services or as a default
         location to get dispatched if none of the other resources are matched.
       </p>
 
@@ -56,7 +56,7 @@ export function HttpDefaultResource({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/http-default-resource",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/http-default-resource",
                 "_blank",
               );
             }}

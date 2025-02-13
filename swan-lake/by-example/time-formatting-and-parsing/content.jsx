@@ -86,7 +86,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.10.2/examples/time-formatting-and-parsing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/time-formatting-and-parsing",
                 "_blank",
               );
             }}
@@ -268,7 +268,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Cache basics" href="/learn/by-example/cache-basics">
+          <Link title="Time Zone" href="/learn/by-example/time-zone">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -277,7 +277,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cache basics
+                  Time Zone
                 </span>
               </div>
               <svg

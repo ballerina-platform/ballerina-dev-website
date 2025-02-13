@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.11.0 (Swan Lake)
+title: Swan Lake Update 11 (2201.11.0)
 permalink: /downloads/swan-lake-release-notes/2201.11.0/
 active: 2201.11.0
 redirect_from:
@@ -70,13 +70,13 @@ The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its la
 
 - The following API classes have been moved to a different package.
 
-| Old package                              | New package                                    |
-|------------------------------------------|------------------------------------------------|
-| io.ballerina.runtime.api.Node            | io.ballerina.runtime.api.repository.Node       |
-| io.ballerina.runtime.api.Artifact        | io.ballerina.runtime.api.repository.Artifact   |
-| io.ballerina.runtime.api.Repository      | io.ballerina.runtime.api.repository.Repository |
-| io.ballerina.runtime.api.PredefinedTypes | io.ballerina.runtime.api.types.PredefinedTypes |
-| io.ballerina.runtime.api.TypeTags        | io.ballerina.runtime.api.types.TypeTags        |
+| Old package                                | New package                                      |
+|--------------------------------------------|--------------------------------------------------|
+| `io.ballerina.runtime.api.Node`            | `io.ballerina.runtime.api.repository.Node`       |
+| `io.ballerina.runtime.api.Artifact`        | `io.ballerina.runtime.api.repository.Artifact`   |
+| `io.ballerina.runtime.api.Repository`      | `io.ballerina.runtime.api.repository.Repository` |
+| `io.ballerina.runtime.api.PredefinedTypes` | `io.ballerina.runtime.api.types.PredefinedTypes` |
+| `io.ballerina.runtime.api.TypeTags`        | `io.ballerina.runtime.api.types.TypeTags`        |
 
 - The following API from the `io.ballerina.runtime.api.Environment` class has been modified to return a `String` instance.
   The previous API definition:
@@ -134,11 +134,11 @@ This is modified as follows.
  Object get();
 ```
 
-##### Strand Dump tool
+##### Strand dump tool
 
 The strand dump tool has been updated to support virtual threads. The report now includes the total number of strands, with separate sections for isolated and non-isolated strands, each displaying their respective stack traces. Under the new concurrency model, each strand is directly mapped to a Java virtual thread, and the tool uses the virtual thread dump to extract strand related information. However, since the thread dump does not provide information about the state of virtual threads, the current version of the strand dump report does not include the state of the strands.
 
-#### New Runtime Java APIs
+#### New runtime Java APIs
 
 1. A new runtime Java API is added to yield the current execution and to run an operation while allowing other non-isolated functions to run asynchronously.
 ```java
@@ -207,10 +207,6 @@ boolean isPanic();
 ```
 5. A new `io.ballerina.runtime.api.values.BNever` class is introduced to represent a singleton never value in Ballerina runtime.
    This non-instantiable class extends the `io.ballerina.runtime.api.values.BValue`.
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.11.0 )
 
 ## Ballerina library updates
 
@@ -338,49 +334,49 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 - Introduced XML schema definition (XSD) Sequence and Choice support for the `data.xmldata` package.
 
-```ballerina
-import ballerina/data.xmldata;
-import ballerina/io;
-
-type Transaction record {|
-    @xmldata:Sequence
-    TransactionType Transaction;
-|};
-
-type TransactionType record {|
-    @xmldata:SequenceOrder {
-        value: 1
-    }
-    string TransactionID;
-
-    @xmldata:SequenceOrder {
-        value: 4
-    }
-    decimal Amount;
-|};
-
-xml validXml = xml `
-    <Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="transaction.xsd">
-        <TransactionID>TXN12345</TransactionID>
-        <Amount>1000.50</Amount>
-    </Transaction>
-`;
-
-xml invalidXml = xml `
-    <Transaction>
-        <Amount>1000.50</Amount>
-        <TransactionID>TXN12345</TransactionID>
-    </Transaction>
-`;
-
-public function main() {
-    Transaction|xmldata:Error validTransaction = xmldata:parseAsType(validXml);
-    io:println(validTransaction); // {"Transaction":{"TransactionID":"TXN12345", "Amount":1000.50}}
-
-    Transaction|xmldata:Error invalidTransaction = xmldata:parseAsType(invalidXml);
-    io:println(invalidTransaction); // error Error ("Element 'Amount' is not in the correct order in 'Transaction'")
-}
-```
+  ```ballerina
+  import ballerina/data.xmldata;
+  import ballerina/io;
+  
+  type Transaction record {|
+      @xmldata:Sequence
+      TransactionType Transaction;
+  |};
+  
+  type TransactionType record {|
+      @xmldata:SequenceOrder {
+          value: 1
+      }
+      string TransactionID;
+  
+      @xmldata:SequenceOrder {
+          value: 4
+      }
+      decimal Amount;
+  |};
+  
+  xml validXml = xml `
+      <Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="transaction.xsd">
+          <TransactionID>TXN12345</TransactionID>
+          <Amount>1000.50</Amount>
+      </Transaction>
+  `;
+  
+  xml invalidXml = xml `
+      <Transaction>
+          <Amount>1000.50</Amount>
+          <TransactionID>TXN12345</TransactionID>
+      </Transaction>
+  `;
+  
+  public function main() {
+      Transaction|xmldata:Error validTransaction = xmldata:parseAsType(validXml);
+      io:println(validTransaction); // {"Transaction":{"TransactionID":"TXN12345", "Amount":1000.50}}
+  
+      Transaction|xmldata:Error invalidTransaction = xmldata:parseAsType(invalidXml);
+      io:println(invalidTransaction); // error Error ("Element 'Amount' is not in the correct order in 'Transaction'")
+  }
+  ```
 
 - Introduced union type support for `xml` operations in the `data.xmldata` package.
 - Introduced singleton, union of singletons, and enum support for `xml` operations in the `data.xmldata` package.
@@ -395,8 +391,6 @@ public function main() {
 - Added header name mapping support in record fields.
 - Migrated client and service data binding to use the `toJson` and `parserAsType` functions from the  `ballerina/data.jsondata` module instead of the `fromJsonWithType` function from the `ballerina.lang.value` module. This change improves how JSON data is converted to Ballerina records and vice versa, by allowing field names to be overridden using the `jsondata:Name` annotation.
 - Added support to configure the server name to be used in the SSL SNI extension.
-
-### Deprecations
 
 ### Bug fixes
 
@@ -492,7 +486,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) of the repositories below.
 
-- [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.11.0+is%3Aclosed+label%3AType%2FBug+)
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue%20state%3Aclosed%20label%3AArea%2FDebugger%20label%3AType%2FBug%20milestone%3A2201.11.0)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=milestone%3A2201.11.0+is%3Aclosed+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug)
 
 ## Ballerina packages updates
@@ -541,7 +535,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 11 (2201.11.0) 
 
 The switch to Java 21 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 21 has some restrictions on custom thread management that may require adjustments to adopt the Java 21 threading model effectively.For more details, refer to the [Java 21 release notes](https://www.oracle.com/java/technologies/javase/21-relnote-issues.html).
 
-#### Removal of Runtime Java APIs
+#### Removal of runtime Java APIs
 
 - The following deprecated API from the `io.ballerina.runtime.api.Module` class has been removed.
 ```java

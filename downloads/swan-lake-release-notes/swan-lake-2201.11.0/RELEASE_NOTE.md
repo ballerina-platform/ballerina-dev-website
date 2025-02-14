@@ -69,70 +69,70 @@ The jBallerina runtime is now upgraded to support Java 21 LTS, leveraging its la
 ##### Improvements to runtime Java APIs
 
 - The following API classes have been moved to a different package.
-
-| Old package                                | New package                                      |
-|--------------------------------------------|--------------------------------------------------|
-| `io.ballerina.runtime.api.Node`            | `io.ballerina.runtime.api.repository.Node`       |
-| `io.ballerina.runtime.api.Artifact`        | `io.ballerina.runtime.api.repository.Artifact`   |
-| `io.ballerina.runtime.api.Repository`      | `io.ballerina.runtime.api.repository.Repository` |
-| `io.ballerina.runtime.api.PredefinedTypes` | `io.ballerina.runtime.api.types.PredefinedTypes` |
-| `io.ballerina.runtime.api.TypeTags`        | `io.ballerina.runtime.api.types.TypeTags`        |
+  
+  | Old package                                | New package                                      |
+  |--------------------------------------------|--------------------------------------------------|
+  | `io.ballerina.runtime.api.Node`            | `io.ballerina.runtime.api.repository.Node`       |
+  | `io.ballerina.runtime.api.Artifact`        | `io.ballerina.runtime.api.repository.Artifact`   |
+  | `io.ballerina.runtime.api.Repository`      | `io.ballerina.runtime.api.repository.Repository` |
+  | `io.ballerina.runtime.api.PredefinedTypes` | `io.ballerina.runtime.api.types.PredefinedTypes` |
+  | `io.ballerina.runtime.api.TypeTags`        | `io.ballerina.runtime.api.types.TypeTags`        |
 
 - The following API from the `io.ballerina.runtime.api.Environment` class has been modified to return a `String` instance.
   The previous API definition:
-```java
-public Optional<String> getStrandName();
-```
-This is modified as follows.
-```java
-public String getStrandName();
-```
+  ```java
+  public Optional<String> getStrandName();
+  ```
+  This is modified as follows.
+  ```java
+  public String getStrandName();
+  ```
 - The following APIs from the `io.ballerina.runtime.api.Runtime` class have been modified to return an `Object` instance.
   Previous API definitions are as follows.
-```java
-public void init();
-public void start();
-```
-These have been modified as follows.
-```java
-public Object init();
-public Object start();
-```
+  ```java
+  public void init();
+  public void start();
+  ```
+  These have been modified as follows.
+  ```java
+  public Object init();
+  public Object start();
+  ```
 - The `io.ballerina.runtime.api.async.StrandMetadata` class has been converted to a record with the following definition and moved to the `io.ballerina.runtime.api.concurrent` package.
-```java
-public record StrandMetadata(boolean isConcurrentSafe, Map<String, Object> properties) {
-}
-```
-Therefore, the following APIs from `io.ballerina.runtime.api.async.StrandMetadata` have been removed.
-```java
-public String getModuleOrg();
-public String getModuleName();
-public String getModuleVersion();
-public String getTypeName();
-public String getParentFunctionName();
-```
+  ```java
+  public record StrandMetadata(boolean isConcurrentSafe, Map<String, Object> properties) {
+  }
+  ```
+  Therefore, the following APIs from `io.ballerina.runtime.api.async.StrandMetadata` have been removed.
+  ```java
+  public String getModuleOrg();
+  public String getModuleName();
+  public String getModuleVersion();
+  public String getTypeName();
+  public String getParentFunctionName();
+  ```
 - The `isRemoteEnabled` API from the `io.ballerina.runtime.api.Repository` class has been renamed to the following.
-```java
- boolean isRemoteManagementEnabled();
-```
-- The `call()` API from `io.ballerina.runtime.api.values.BFunctionPointer` class has been modified.
-  The previous API definition is as follows.
-```java
- R call(T t);
-```
-This is modified as follows.
-```java
-Object call(Runtime runtime, Object... t);
-```
-- The following APIs from `io.ballerina.runtime.api.values.BFuture` have been modified.
-  The previous API definition is as follows.
-```java
- Object getResult();
-```
-This is modified as follows.
-```java
- Object get();
-```
+  ```java
+   boolean isRemoteManagementEnabled();
+  ```
+  - The `call()` API from `io.ballerina.runtime.api.values.BFunctionPointer` class has been modified.
+    The previous API definition is as follows.
+  ```java
+   R call(T t);
+  ```
+  This is modified as follows.
+  ```java
+  Object call(Runtime runtime, Object... t);
+  ```
+  - The following APIs from `io.ballerina.runtime.api.values.BFuture` have been modified.
+    The previous API definition is as follows.
+  ```java
+   Object getResult();
+  ```
+  This is modified as follows.
+  ```java
+   Object get();
+  ```
 
 ##### Strand dump tool
 
@@ -457,30 +457,30 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 11 (2201.11.0)
 - Introduced a new tool to generate Ballerina clients and record types from a given WSDL file.
 - This simplifies the integration with SOAP-based web services by automatically generating necessary types and client functions.
 
-```
-  $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>] [--port <port-name>]
-```
-
-| Option | Description | Mandatory/Optional |
-|--------|-------------|--------------------|
-| `<wsdl-file-path>` | The path of the WSDL file. | Mandatory |
-| `--operations <operation-uris>` | A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. | Optional |
-| `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the project default package. | Optional |
-| `-p, --port <port-name>` | The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. | Optional |
+  ```
+    $ bal wsdl <wsdl-file-path> [--operations <operation-uris>] [--module <output-module-name>] [--port <port-name>]
+  ```
+  
+  | Option | Description | Mandatory/Optional |
+  |--------|-------------|--------------------|
+  | `<wsdl-file-path>` | The path of the WSDL file. | Mandatory |
+  | `--operations <operation-uris>` | A comma-separated list of operation URIs for which client methods should be generated. If not provided, methods for all operations in the WSDL file will be generated. | Optional |
+  | `-m, --module <output-module-name>` | The name of the module where the generated client and record types will be placed. If not provided, output files will be saved to the project default package. | Optional |
+  | `-p, --port <port-name>` | The name of the port that defines the service endpoint. If specified, a client will be generated only for this port. Otherwise, clients for all available ports will be generated. | Optional |
 
 #### XSD tool
 
 - Introduced a new tool to generate Ballerina record types from an XSD file.
 - Simplifies integration with XML-based operations in Ballerina.
 
-```
-  $ bal xsd <xsd-file-path> --module <output-module-name>
-```
-
-| Option | Description | Mandatory/Optional |
-|--------|-------------|--------------------|
-| `<xsd-file-path>` | The path of the XSD file | Mandatory |
-| `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
+  ```
+    $ bal xsd <xsd-file-path> --module <output-module-name>
+  ```
+  
+  | Option | Description | Mandatory/Optional |
+  |--------|-------------|--------------------|
+  | `<xsd-file-path>` | The path of the XSD file | Mandatory |
+  | `-m`, `--module`   | The name of the module in which the Ballerina record types are generated. If not provided, the output file will be saved to the project default package | Optional |
 
 ### Bug fixes
 
@@ -538,51 +538,51 @@ The switch to Java 21 may have an impact on Ballerina interoperability usage if 
 #### Removal of runtime Java APIs
 
 - The following deprecated API from the `io.ballerina.runtime.api.Module` class has been removed.
-```java
- public String getVersion();
-```
+  ```java
+   public String getVersion();
+  ```
 
 - The following API from the same class can be used alternatively.
-```java
-  public String getMajorVersion();
-```
+  ```java
+    public String getMajorVersion();
+  ```
 - The following APIs from the `io.ballerina.runtime.api.Environment` class have been removed.
-```java
-public Future markAsync();
-public StrandMetadata getStrandMetadata();
-```
+  ```java
+  public Future markAsync();
+  public StrandMetadata getStrandMetadata();
+  ```
 - The following APIs from the `io.ballerina.runtime.api.Runtime` class have been removed.
-```java
- public static Runtime getCurrentRuntime();
-
- public BFuture invokeMethodAsyncSequentially(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
-
- public BFuture invokeMethodAsyncConcurrently(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
-
- public BFuture invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback,  Map<String, Object> properties, Type returnType, Object... args);
-
- public Object invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Object... args);
-
-public void invokeMethodAsync(String functionName, Callback callback, Object... args);
-```
+  ```java
+   public static Runtime getCurrentRuntime();
+  
+   public BFuture invokeMethodAsyncSequentially(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
+  
+   public BFuture invokeMethodAsyncConcurrently(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Map<String, Object> properties, Type returnType, Object... args);
+  
+   public BFuture invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback,  Map<String, Object> properties, Type returnType, Object... args);
+  
+   public Object invokeMethodAsync(BObject object, String methodName, String strandName, StrandMetadata metadata, Callback callback, Object... args);
+  
+  public void invokeMethodAsync(String functionName, Callback callback, Object... args);
+  ```
 - The API class `io.ballerina.runtime.api.async.Callback` has been removed.
 - The API class `io.ballerina.runtime.api.launch.LaunchListener` has been removed.
 - The following deprecated API from the `io.ballerina.runtime.ap.types.FunctionType` class has been removed.
-```java
- Type[] getParameterTypes();
-```
+  ```java
+   Type[] getParameterTypes();
+  ```
 - The following APIs from `io.ballerina.runtime.api.values.BFunctionPointer` class have been removed.
-```java
-   BFuture asyncCall(Object[] args, StrandMetadata metaData);
-   BFuture asyncCall(Object[] args, Function<Object, Object> resultHandleFunction, StrandMetadata metaData);
-   Function<T, R> getFunction();
-```
+  ```java
+     BFuture asyncCall(Object[] args, StrandMetadata metaData);
+     BFuture asyncCall(Object[] args, Function<Object, Object> resultHandleFunction, StrandMetadata metaData);
+     Function<T, R> getFunction();
+  ```
 - The following APIs from `io.ballerina.runtime.api.values.BFuture` have been removed.
-```java
- Strand getStrand();
- Throwable getPanic();
- Callback getCallback();
-```
+  ```java
+   Strand getStrand();
+   Throwable getPanic();
+   Callback getCallback();
+  ```
 
 ## First-time contributors
 

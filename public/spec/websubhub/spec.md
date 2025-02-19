@@ -24,17 +24,17 @@ The conforming implementation of the specification is released and included in t
      * 2.1.2 [Initialization](#212-initialization)
      * 2.1.3 [Methods](#213-methods)
    * 2.2. [Service](#22-service)
-     * 2.2.1. [Methods](#221-methods)
-       * 2.2.1.1. [onRegisterTopic](#2211-onregistertopic)
-       * 2.2.1.2. [onDeregisterTopic](#2212-onderegistertopic)
-       * 2.2.1.3. [onEventMessage](#2213-oneventmessage)
-       * 2.2.1.4. [onSubscription](#2214-onsubscription)
-       * 2.2.1.5. [onSubscriptionValidation](#2215-onsubscriptionvalidation)
-       * 2.2.1.6. [onSubscriptionIntentVerified](#2216-onsubscriptionintentverified)
-       * 2.2.1.7. [onUnsubscritpion](#2217-onunsubscritpion)
-       * 2.2.1.8. [onUnsubscriptionValidation](#2218-onunsubscriptionvalidation)
-       * 2.2.1.9. [onUnsubscriptionIntenVerified](#2219-onunsubscriptionintenverified)
-     * 2.2.1. [Annotation](#222-annotation)
+     * 2.2.1. [Annotation](#221-annotation)
+     * 2.2.2. [Methods](#222-methods)
+       * 2.2.2.1. [onRegisterTopic](#2221-onregistertopic)
+       * 2.2.2.2. [onDeregisterTopic](#2222-onderegistertopic)
+       * 2.2.2.3. [onEventMessage](#2223-oneventmessage)
+       * 2.2.2.4. [onSubscription](#2224-onsubscription)
+       * 2.2.2.5. [onSubscriptionValidation](#2225-onsubscriptionvalidation)
+       * 2.2.2.6. [onSubscriptionIntentVerified](#2226-onsubscriptionintentverified)
+       * 2.2.2.7. [onUnsubscritpion](#2227-onunsubscritpion)
+       * 2.2.2.8. [onUnsubscriptionValidation](#2228-onunsubscriptionvalidation)
+       * 2.2.2.9. [onUnsubscriptionIntenVerified](#2229-onunsubscriptionintenverified)
    * 2.3. [Hub Client](#23-hub-client)
      * 2.3.1. [Initialization](#231-initialization)
      * 2.3.2. [Distribute Content](#232-distribute-content)
@@ -213,9 +213,25 @@ public type Service distinct service object {
 };
 ```
 
-#### 2.2.1. Methods
+#### 2.2.1. Annotation 
 
-##### 2.2.1.1. onRegisterTopic
+Apart from the listener level configurations a `hub` will require few additional configurations. Hence, there should be 
+`websubhub:ServiceConfig` a service-level-annotation for `websubhub:Service` which contains
+`websubhub:ServiceConfiguration` record.
+```ballerina
+# Configuration for a WebSub Hub service.
+#
+# + leaseSeconds - The period for which the subscription is expected to be active in the `hub`
+# + webHookConfig - HTTP client configurations for subscription/unsubscription intent verification
+public type ServiceConfiguration record {|
+    int leaseSeconds?;
+    ClientConfiguration webHookConfig?;
+|};
+```
+
+#### 2.2.2. Methods
+
+##### 2.2.2.1. onRegisterTopic
 
 This remote method is invoked when the `publisher` sends a request to register a `topic` to the `hub`.
 ```ballerina
@@ -228,7 +244,7 @@ remote function onRegisterTopic(websubhub:TopicRegistration msg)
     returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError|error;
 ```
 
-##### 2.2.1.2. onDeregisterTopic
+##### 2.2.2.2. onDeregisterTopic
 
 This remote method is invoked when the `publisher` sends a request to remove a `topic` from the `hub`.
 ```ballerina
@@ -241,7 +257,7 @@ remote function onDeregisterTopic(websubhub:TopicDeregistration msg)
     returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError|error;
 ```
 
-##### 2.2.1.3. onEventMessage
+##### 2.2.2.3. onEventMessage
 
 This remote method is invoked when the `publisher` sends a request to notify the `hub` about content update for a 
 `topic`.
@@ -255,7 +271,7 @@ remote function onUpdateMessage(websubhub:UpdateMessage msg)
     returns websubhub:Acknowledgement|websubhub:UpdateMessageError|error;
 ```
 
-##### 2.2.1.4. onSubscription
+##### 2.2.2.4. onSubscription
 
 This remote method is invoked when the `subscriber` sends a request to subscribe for a `topic` in the `hub`. (This is an
 optional remote method.)
@@ -273,7 +289,7 @@ remote function onSubscription(websubhub:Subscription msg)
         websubhub:InternalSubscriptionError|error;
 ```
 
-##### 2.2.1.5. onSubscriptionValidation
+##### 2.2.2.5. onSubscriptionValidation
 
 This remote method is invoked when subscription request from the `subscriber` is accepted from the `hub`. `hub` could 
 enforce additional validation for the subscription request when this method is invoked. If the validations are failed 
@@ -288,7 +304,7 @@ remote function onSubscriptionValidation(websubhub:Subscription msg)
     returns websubhub:SubscriptionDeniedError|error?;
 ```
 
-##### 2.2.1.6. onSubscriptionIntentVerified
+##### 2.2.2.6. onSubscriptionIntentVerified
 
 This remote method is invoked after the `hub` verifies the subscription request.
 ```ballerina
@@ -299,7 +315,7 @@ This remote method is invoked after the `hub` verifies the subscription request.
 remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) returns error?;
 ```
 
-##### 2.2.1.7. onUnsubscritpion
+##### 2.2.2.7. onUnsubscritpion
 
 This remote method is invoked when the `subscriber` sends a request to unsubscribe from a `topic` in the `hub`. (This is 
 an optional remote method.)
@@ -315,7 +331,7 @@ remote function onUnsubscription(websubhub:Unsubscription msg)
         websubhub:InternalUnsubscriptionError|error;
 ```
 
-##### 2.2.1.8. onUnsubscriptionValidation
+##### 2.2.2.8. onUnsubscriptionValidation
 
 This remote method is invoked when unsubscription request from the `subscriber` is accepted from the `hub`. `hub` could
 enforce additional validation for the unsubscription request when this method is invoked. If the validations are failed
@@ -330,7 +346,7 @@ remote function onUnsubscriptionValidation(websubhub:Unsubscription msg)
     returns websubhub:UnsubscriptionDeniedError|error?;
 ```
 
-##### 2.2.1.9. onUnsubscriptionIntenVerified
+##### 2.2.2.9. onUnsubscriptionIntenVerified
 
 This remote method is invoked after the `hub` verifies the unsubscription request.
 ```ballerina
@@ -358,22 +374,6 @@ This is due to the limited information in the WebSub specification on the relati
 
 In the event of a bad request from the `publisher` or the `subscriber`, the WebSubHub dispatcher will automatically send 
 back the appropriate response to the client.
-
-#### 2.2.2. Annotation 
-
-Apart from the listener level configurations a `hub` will require few additional configurations. Hence, there should be 
-`websubhub:ServiceConfig` a service-level-annotation for `websubhub:Service` which contains
-`websubhub:ServiceConfiguration` record.
-```ballerina
-# Configuration for a WebSub Hub service.
-#
-# + leaseSeconds - The period for which the subscription is expected to be active in the `hub`
-# + webHookConfig - HTTP client configurations for subscription/unsubscription intent verification
-public type ServiceConfiguration record {|
-    int leaseSeconds?;
-    ClientConfiguration webHookConfig?;
-|};
-```
 
 ### 2.3. Hub Client
 

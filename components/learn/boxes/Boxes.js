@@ -316,7 +316,8 @@ export default function Boxes(props) {
                             Update tool
                           </a>
                         </p>
-                        <p className={styles.description}>Maintain your Ballerina installation up to date with the latest patch and minor releases.</p>
+                        <p className={styles.description}>Maintain your Ballerina installation up to date with the
+                          latest patch and minor releases.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -325,7 +326,16 @@ export default function Boxes(props) {
                             Ballerina Shell
                           </a>
                         </p>
-                        <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
+                        <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for
+                          Ballerina.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/cicd`} className={styles.titleLink}>
+                            Configure CI/CD for Ballerina Projects
+                          </a>
+                        </p>
+                        <p className={styles.description}>Learn how to configure a CI/CD pipeline for a Ballerina project.</p>
                       </div>
                     </div>
                   </div>
@@ -336,9 +346,9 @@ export default function Boxes(props) {
                   <div>
                     <h3 id='organize-source-code-and-dependencies' className='section'>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30"
+                          height="30"
                         fill="currentColor"
                         className="bi bi-link-45deg mdButton pe-2"
                         viewBox="0 0 16 16"

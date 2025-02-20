@@ -111,7 +111,7 @@ hello-svc-local         NodePort        10.108.87.21        <none>        9090:3
 Access the service using the external IP and NodePort
 
 For Minikube users, you can obtain the IP using.
-```yaml
+```shell
 $ minikube ip
 ```
 > **Tip:** you can access your service locally via `kubectl port-forward`
@@ -128,11 +128,10 @@ $ curl http://<EXTERNAL-IP>:<NODE-PORT>/helloWorld/greeting
 For a more complex deployment, this demonstrates a Ballerina app that reads a greeting from a config map and responds to HTTP requests. It covers Kubernetes deployment with resource limits, autoscaling, config maps, and health probes using Code to Cloud. 
 
 1. Create a new Ballerina package.
-
+```
 $ bal new hello_k8s
 ```
 2. Replace the `main.bal` file with the following content.
-
 ```ballerina
 import ballerina/http;
 
@@ -163,6 +162,7 @@ service /probes on probeEP {
     }
 }
 ```
+
 4. Create a `Config.toml` file.
 
 ```toml
@@ -199,7 +199,9 @@ path="/probes/healthz"
 port=9091
 path="/probes/readyz"
 ```
+
 6. Build the package. 
+
 ```
 $ bal build --cloud="k8s"
   Compiling source

@@ -38,7 +38,7 @@ The AWS Lambda functionality is implemented as a compiler extension. Therefore, 
 $ bal build --cloud="aws_lambda"
 ```
 
-4. Execute the AWS CLI command to deploy the function, here it creates and publishes the functions by replacing the respective AWS, $LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME values given in the command with your values.
+4. Deploy the Lambda function using AWS CLI by running the deployment command. Replace the placeholder values ($LAMBDA_ROLE_ARN, $REGION_ID, and $FUNCTION_NAME) with your specific AWS account information.
 
 ```
 $ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws-lambda-hello-world.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role--layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10

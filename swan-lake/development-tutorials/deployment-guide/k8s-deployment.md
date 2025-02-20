@@ -235,7 +235,7 @@ $ bal build --cloud="k8s"
 > **Tip:** You can build the GraalVM executable in Kubernetes.
 > 
 >  GraalVM enhances Kubernetes deployments of Ballerina applications by enabling faster startup times and reduced memory usage. These advantages make it ideal for microservices workloads that demand rapid scaling and minimal resource consumption in a containerized environment. GraalVM’s native image feature uses ahead-of-time compilation, producing lightweight containers and improving Kubernetes deployment efficiency. The GraalVM build is best suited for deployments that prioritize fast scaling and reduced resource usage, while the standard JVM build is more appropriate for services that do not require such optimizations.
->  Execute the command below to build a Ballerina package.
+>  Execute the command below to build GraalVM artifacts. This builds the Ballerina executable in a container along with the GraalVM runtime.
 > ```
 > $ bal build --graalvm --cloud=k8s
 > ```
@@ -300,8 +300,6 @@ This [Ballerina GitHub](https://github.com/ballerina-platform/ballerina-action) 
 ```yaml
 
 name: Ballerina CI/CD with Kubernetes and Ballerina Central Push
-
-# Step 1: Checkout the Repository
 on: [push]
 
 jobs:
@@ -309,6 +307,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the Repository
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -345,7 +344,7 @@ jobs:
           echo "${KUBE_CONFIG_DATA}" | base64 --decode > $HOME/.kube/config
           kubectl apply -f <path to generated artifacts>
 ```
-- **Step 01:** The push event can initiate a workflow to the deployment process to the Kubernetes cluster.
+- **Step 01:** This step checks out the repository.
 - **Step 02:** This step builds the Ballerina project, compiling the source code and preparing the necessary artifacts for deployment in Kubernetes.
 - **Step 03:** This step logs into a Docker registry (such as Docker Hub or a private registry) to allow pushing the Docker image created in the build to the registry.
 - **Step 04:** Pushes the Docker image to the specified Docker registry.

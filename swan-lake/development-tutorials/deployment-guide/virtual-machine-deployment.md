@@ -18,7 +18,6 @@ intro: If you prefer to execute Ballerina services directly on virtual machines 
 
 4. Write Ballerina code.
 
-      **service.bal**
       ```ballerina
          import ballerina/http;
             

@@ -277,6 +277,14 @@
                             "isDir": false,
                             "url": "/learn/ballerina-shell",
                             "id": "ballerina-shell"
+                        },
+                        {
+                            "dirName": "Configure CI/CD for Ballerina Projects",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/cicd",
+                            "id": "cicd"
                         }
                     ]
                 },

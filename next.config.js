@@ -289,6 +289,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/build-and-run/ballerina-shell/`,
       },
       {
+        source: `/${redirectBase}learn/cicd/`,
+        destination: `/${redirectBase}learn/development-tutorials/build-and-run/cicd/`,
+      },
+      {
         source: `/${redirectBase}learn/style-guide/:slug`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/style-guide/:slug`,
       },

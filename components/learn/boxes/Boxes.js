@@ -332,7 +332,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/cicd`} className={styles.titleLink}>
-                            Configure CI/CD for Ballerina Projects
+                            Configure CI/CD for Ballerina projects
                           </a>
                         </p>
                         <p className={styles.description}>Learn how to configure a CI/CD pipeline for a Ballerina project.</p>

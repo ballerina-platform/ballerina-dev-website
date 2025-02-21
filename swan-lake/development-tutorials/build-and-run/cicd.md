@@ -1,6 +1,6 @@
 ---
 layout: ballerina-cli-documentation-left-nav-pages-swanlake
-title: Configure CI/CD for Ballerina Projects
+title: Configure CI/CD for Ballerina projects
 description: Learn how to configure a CI/CD pipeline for a Ballerina project.
 keywords: ballerina, programming language, CICD, CI/CD, pipeline, github actions, gitlab, bitbucket
 permalink: /learn/build-and-run/ci-cd/

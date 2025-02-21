@@ -35,6 +35,7 @@ The conforming implementation of the specification is released and included in t
        * 2.2.2.7. [onUnsubscritpion](#2227-onunsubscritpion)
        * 2.2.2.8. [onUnsubscriptionValidation](#2228-onunsubscriptionvalidation)
        * 2.2.2.9. [onUnsubscriptionIntenVerified](#2229-onunsubscriptionintenverified)
+     * 2.2.3. [Controller](#223-controller)
    * 2.3. [Hub Client](#23-hub-client)
      * 2.3.1. [Initialization](#231-initialization)
      * 2.3.2. [Distribute Content](#232-distribute-content)
@@ -223,9 +224,11 @@ Apart from the listener level configurations a `hub` will require few additional
 #
 # + leaseSeconds - The period for which the subscription is expected to be active in the `hub`
 # + webHookConfig - HTTP client configurations for subscription/unsubscription intent verification
+# + autoVerifySubscriptionIntent - Configuration to enable or disable automatic subscription verification
 public type ServiceConfiguration record {|
     int leaseSeconds?;
     ClientConfiguration webHookConfig?;
+    boolean autoVerifySubscriptionIntent = false;
 |};
 ```
 
@@ -374,6 +377,34 @@ This is due to the limited information in the WebSub specification on the relati
 
 In the event of a bad request from the `publisher` or the `subscriber`, the WebSubHub dispatcher will automatically send 
 back the appropriate response to the client.
+
+#### 2.2.3. Controller
+
+When `autoVerifySubscriptionIntent` is enabled in the `websubhub:ServiceConfig` annotation, the `websubhub:Controller` can be used to mark a 
+subscription or unsubscription as verified. This class is initialized exclusively within the WebSubHub framework and provides the 
+following API.
+
+```ballerina
+type Controller object {
+
+    # Marks a particular subscription as verified.
+    #
+    # + subscription - The `websubhub:Subscription` or `websubhub:Unsubscription` message
+    # + return - A `websubhub:Error` if the `websubhub:Service` has not enabled subscription auto-verification, 
+    #           or else nil
+    public isolated function markAsVerified(Subscription|Unsubscription subscription) returns Error?;
+
+    # Checks whether a particular subscription has been marked as verified. Please note that this 
+    # is an internal API which is used within the WebSubHub dispatcher to identify whether 
+    # to skip the subscrition intent verification for the subscription or unsubscription.
+    # 
+    # + subscription - The `websubhub:Subscription` or `websubhub:Unsubscription` message
+    # + return - A `true` if the subscrition/unsubscription has been marked as verified or else `false`
+    isolated function skipSubscriptionVerification(Subscription|Unsubscription subscription) returns boolean;
+};
+```
+
+> Note: The `websubhub:Controller` will be available only as an optional parameter in the `onSubscription` and `onUnsubscription` remote methods of the `websubhub:Service`.
 
 ### 2.3. Hub Client
 

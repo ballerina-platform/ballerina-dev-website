@@ -1,6 +1,28 @@
 {
     "events": [
         {
+            "date": "Feb 28, 2025",
+            "expire": "2025-02-28T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "University of Moratuwa",
+            "faculty": "Department of Information Technology",
+            "title": "Ballerina language workshop",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Gayal Dassanayake",
+                    "twitter": "https://www.linkedin.com/in/gayal-dassanayake/"
+                },
+                {
+                    "name": "Shammi Kolonne",
+                    "twitter": "https://twitter.com/shammi0107"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "Sep 30 - Nov 02, 2024",
             "expire": "2024-11-02T04:30:00+00:00",
             "type": "Ballerina Hackathon",

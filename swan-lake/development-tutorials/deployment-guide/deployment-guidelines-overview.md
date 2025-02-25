@@ -21,6 +21,6 @@ The Ballerina distribution always includes the JRE. The supported Java versions 
 
 | Ballerina Swan Lake version                                                             | Compatible Java version |
 |-----------------------------------------------------------------------------------------|-------------------------|
-| Ballerina Swan Lake (2201.0.0) up to Ballerina Swan Lake Update 7 (2201.7.0)            | JDK Temurin 11.x        |
-| Ballerina Swan Lake Update 8 (2201.8.0) up to Ballerina Swan Lake Update 10 (2201.10.0) | JDK Temurin 17.x        |
-| Ballerina Swan Lake Update 11 (2201.11.0)                                               | JDK Temurin 21.x        |
+| Ballerina Swan Lake (2201.0.0) up to Ballerina Swan Lake Update 7 (2201.7.0)            | Java 11.x               |
+| Ballerina Swan Lake Update 8 (2201.8.0) up to Ballerina Swan Lake Update 10 (2201.10.0) | Java 17.x               |
+| Ballerina Swan Lake Update 11 (2201.11.0)                                               | Java 21.x               |

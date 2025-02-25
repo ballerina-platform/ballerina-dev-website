@@ -27,10 +27,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - <a href="https://aws.amazon.com/ses/" target="_blank">Simple Email Service (SES)</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
 
-
-### Set up the prerequisites
-
-Follow the instructions in the sections below to set up the prerequisites.
+Follow the instructions in the sections below to deploy a Ballerina function in AWS Lambda.
 
 ### Set up the AWS account
 
@@ -72,7 +69,7 @@ Follow the steps below to create a new role in your AWS account.
 
 You can write AWS Lambda functions that use different triggers based on your use case.
 
-Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://lib.ballerina.io/ballerinax/awslambda/latest#Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time.
+Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://central.ballerina.io/ballerinax/awslambda/latest#Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time.
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
@@ -97,16 +94,6 @@ To deploy the function, execute the command, which you get in the CLI output log
 >**Note:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
 
 >**Info:** For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed.
-
-
-### Examples
-
-In a more practical scenario, the AWS Lambda functions will be used by associating them with an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
-
-For examples of the usage of AWS Lambda functions, see [AWS Lambda](/learn/by-example/#aws-lambda).
-
-<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
-
 
 ### CI/CD deployment with AWS Lambda
 
@@ -176,6 +163,15 @@ jobs:
 - **Step 05:** Deploy the packaged Ballerina function to AWS Lambda by uploading the ZIP file.
 - **Step 06:** Test the deployed Lambda function by invoking it and outputting the response to confirm that the function works as expected.
 
+### Examples
+
+In a more practical scenario, the AWS Lambda functions will be used by associating them with an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
+
+For examples of the usage of AWS Lambda functions, see [AWS Lambda](/learn/by-example/#aws-lambda).
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+
+
 ## Azure Functions
 
 The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
@@ -192,16 +188,14 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 |                                                 Supported triggers                                                |                                              Supported output bindings                                              |                                             Supported input bindings                                            |
 |:-----------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|
-|     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger" target="_blank">HTTP</a>     |       <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput" target="_blank">HTTP</a>      |                                                        -                                                        |
-|    <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueTrigger" target="_blank">Queue</a>    |      <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueOutput" target="_blank">Queue</a>     |                                                        -                                                        |
-|     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobTrigger" target="_blank">Blob</a>     |       <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobOutput" target="_blank">Blob</a>      |     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobInput" target="_blank">Blob</a>     |
-|                                                         -                                                         | <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TwilioSmsOutput" target="_blank">Twilio SMS</a> |                                                        -                                                        |
-| <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">Cosmos DB</a> |   <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">Cosmos DB</a>  | <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">Cosmos DB</a> |
-|    <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">Timer</a>    |                                                          -                                                          |                                                        -                                                        |
+|     <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger" target="_blank">HTTP</a>     |       <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#HttpOutput" target="_blank">HTTP</a>      |                                                        -                                                        |
+|    <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#QueueTrigger" target="_blank">Queue</a>    |      <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#QueueOutput" target="_blank">Queue</a>     |                                                        -                                                        |
+|     <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#BlobTrigger" target="_blank">Blob</a>     |       <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#BlobOutput" target="_blank">Blob</a>      |     <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#BlobInput" target="_blank">Blob</a>     |
+|                                                         -                                                         | <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#TwilioSmsOutput" target="_blank">Twilio SMS</a> |                                                        -                                                        |
+| <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">Cosmos DB</a> |   <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">Cosmos DB</a>  | <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">Cosmos DB</a> |
+|    <a href="https://central.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">Timer</a>    |                                                          -                                                          |                                                        -                                                        |
 
-### Set up the prerequisites
-
-Follow the instructions in the sections below to set up the prerequisites.
+Follow the instructions in the sections below to deploy a Ballerina function in Azure Functions.
 
 ### Set up Azure Functions
 
@@ -248,21 +242,21 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 You can use Azure Functions in the [native approach of Ballerina](/learn/build-the-executable-in-a-container/).
 
-### Set up the prerequisites
+#### Set up the prerequisites
 
 Follow the steps below to set up the prerequisites, which are specifically required to follow the native approach.
 
-1. Set up the [general prerequisites](#set-up-the-prerequisites).
+1. Set up the [general prerequisites](#set-up-azure-functions).
 2. Install and configure [Docker](https://www.docker.com/) in your machine.
 3. Install and configure [GraalVM](https://www.graalvm.org/) in your machine.
 
-### Create the app
+#### Create the app
 
 Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
 - Runtime stack - `Java 21`
 - Hosting operating system - `Linux` (As of now, Ballerina Azure functions native support is only available for Linux.)
 
-### Create the function
+#### Create the function
 
 An Azure Functions package supports the two build options below.
 
@@ -273,7 +267,7 @@ An Azure Functions package supports the two build options below.
 
 You can use these build options along with the graalvm build option (`--graalvm`) while building the package, as shown below.
 
-### Build locally
+#### Build locally
 
 The example command below will build the package and run it locally.
 
@@ -283,7 +277,7 @@ $ bal build --cloud="azure_functions_local" --graalvm
 
 >**Info:** This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
 
-### Build for the cloud
+#### Build for the cloud
 
 The example command below will build the package for the Azure Functions cloud.
 
@@ -297,7 +291,7 @@ $ bal build --cloud="azure_functions" --graalvm
 
 You can either deploy the Azure Functions package locally or on the Azure Functions cloud.
 
-### Deploy locally
+#### Deploy locally
 
 The example command below will deploy the package locally.
 
@@ -305,17 +299,13 @@ The example command below will deploy the package locally.
 $ func start --script-root target/azure_functions
 ```
 
-### Deploy on the cloud
+#### Deploy on the cloud
 
 The example command below will deploy the package on the Azure Functions cloud.
 
 ```
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
-
-### Examples
-
-For examples of the usage of Azure Functions, see [Azure Functions](/learn/by-example/#azure-functions).
 
 ### CI/CD with Azure Function
 
@@ -362,3 +352,7 @@ jobs:
 - **Step 02:** This step compiles the Ballerina application to generate an executable JAR file. The `bal build` command compiles the code and packages it, making it ready for deployment.
 - **Step 03:** Install the Azure Functions Core Tools, which are necessary for deploying and testing Azure Functions in this GitHub Actions environment.
 - **Step 04:** Deploy the built Ballerina application to an Azure Function App. This step uploads the packaged function to Azure and configures it for serverless execution.
+
+### Examples
+
+For examples of the usage of Azure Functions, see [Azure Functions](/learn/by-example/#azure-functions).

@@ -555,12 +555,12 @@
                             "id": "deployment-guidelines-overview"
                         },
                         {
-                            "dirName": "Kubernetes deployment",
+                            "dirName": "Containerized deployment",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/k8s-deployment",
-                            "id": "k8s-deployment"
+                            "url": "/learn/containerized-deployment",
+                            "id": "containerized-deployment"
                         },
                         {
                             "dirName": "Serverless deployment ",

@@ -7,10 +7,9 @@ active: ballerina-deployment-guideLines
 intro: If you prefer to execute Ballerina services directly on virtual machines (VMs) or bare metal servers without using containerization, you can follow these steps to set up and run your services in a production environment, 
 ---
 
-1. Prepare the Server Environment.
-    - Provision the VM or Bare Metal Server,
-      - Ensure the server meets the hardware requirements for your application (CPU, memory, disk space, etc.).
-      - Configure the server OS (Linux is recommended for production).
+1. Prepare the Server Environment by provisioning the VM or Bare Metal Server.
+   - Ensure the server meets the hardware requirements for your application (CPU, memory, disk space, etc.).
+   - Configure the server OS (Linux is recommended for production).
 
 2. Install the Ballerina distribution from the [Ballerina Installation options.](https://ballerina.io/downloads/)
 
@@ -36,10 +35,11 @@ intro: If you prefer to execute Ballerina services directly on virtual machines 
       $ bal build
       ```
    > **Tip**: You can use GraalVM builds to compile Ballerina apps into native binaries, ensuring faster startup and lower memory usage compared to the JVM.
-         ```
-         $ bal build --graalvm
-         ```
-         See [Build the GraalVM executable](https://ballerina.io/learn/build-the-executable-locally/) for more information.
+   >
+   > ```
+   > $ bal build --graalvm
+   > ```
+   > See [Build the GraalVM executable](https://ballerina.io/learn/build-the-executable-locally/) for more information.
 
 ## CI/CD integration with VMs
 
@@ -54,18 +54,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-	 # Step 1: Checkout the Repository
+	  # Step 1: Checkout the Repository
       - name: Checkout
         uses: actions/checkout@v1
 
-	# Step 2: Build the Ballerina package
+	 # Step 2: Build the Ballerina package
       - name: Ballerina Build
         uses: ballerina-platform/ballerina-action@master
         with:
           args: 
             pack
           
-    # Step 3: Build the Ballerina package with GraalVm
+      # Step 3: Build the Ballerina package with GraalVm
       #- name: Ballerina Build with GraalVm
       #  uses: ballerina-platform/ballerina-action@master
       #  with:
@@ -75,4 +75,4 @@ jobs:
 VM/Bare Metal Implementation:
 - **Step 01:** The push event can initiate a build and deployment process to the Kubernetes cluster.
 - **Step 02:** This step builds the Ballerina project, compiling the source code and preparing the necessary artifacts.
-    >Note: If you would like to build with GraalVM, you can replace step 02 with step 03.
+    >Note: If you would like to build with GraalVM, uncomment the Step 3 section in the workflow file and comment out Step 2.

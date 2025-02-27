@@ -307,7 +307,7 @@ The example command below will deploy the package on the Azure Functions cloud.
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
 
-### CI/CD with Azure Function
+### CI/CD with Azure Functions
 
 This GitHub Action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project.
 It is triggered by every push to the repository and automatically builds the project.

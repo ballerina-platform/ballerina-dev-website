@@ -527,11 +527,11 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/k8s-deployment/`} className={styles.titleLink}>
-                            Kubernetes deployment
+                          <a href={`${prefix}/learn/containerized-deployment/`} className={styles.titleLink}>
+                            Containerized deployment
                           </a>
                         </p>
-                        <p className={styles.description}>Guidelines for deployment in Kubernetes.</p>
+                        <p className={styles.description}>Guidelines for deployment in Docker and Kubernetes.</p>
                       </div>
 
                       <div className={styles.content}>

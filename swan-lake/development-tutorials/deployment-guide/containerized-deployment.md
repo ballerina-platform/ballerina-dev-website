@@ -1,7 +1,7 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Kubernetes deployment
-description: Ballerina Code to Cloud module is designed to allow developers to write code without thinking about the deployment platform. This module generates Kubernetes artifacts directly from your Ballerina code, enabling developers to focus on business logic.
+title: Containerized deployment
+description: Ballerina Code to Cloud module is designed to allow developers to write code without thinking about the deployment platform. This module generates Kubernetes and Docker artifacts directly from your Ballerina code, enabling developers to focus on business logic.
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
 active: ballerina-deployment-guideLines
 intro: Ballerina Code to Cloud is designed to allow developers to write code without thinking about the deployment platform. This module generates Kubernetes artifacts directly from your Ballerina code, enabling developers to focus on business logic.
@@ -514,7 +514,7 @@ Follow the steps below to execute the Kubernetes service.
 >**Note:** You can visit the <a href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md" target="_blank">Code to Cloud specification</a> for detailed information about all the supported features. As mentioned in the beginning, Code to Cloud is a tool created to make the development process easier. It does not cover the operational properties in Kubernetes. If you want to have these additional features in your deployment, or you need to change the generated Kubernetes artifacts, you can use <a href="https://kustomize.io" target="_blank">Kustomize</a> for modifying the generated YAML.
 
 
-## Ballerina deployment with Kubernetes Kustomize
+## Kubernetes deployment with Kustomize
 
 [Kustomize](https://kustomize.io/) is a tool that allows you to modify Kubernetes YAML files without altering the original files. It can enhance the generated YAML from code-to-cloud deployments by applying additional customizations. The `kustomization.yaml` file in the root directory demonstrates how to combine and manage the generated YAML files from multiple projects. Using Kustomize patches, you can add environment variables, such as specifying the location of the `Config.toml` file for a service, to enable additional configuration.
 

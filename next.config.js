@@ -273,8 +273,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/deployment-guide/virtual-machine-deployment`,
       },
       {
-        source: `/${redirectBase}learn/k8s-deployment`,
-        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/k8s-deployment`,
+        source: `/${redirectBase}learn/containerized-deployment`,
+        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/containerized-deployment`,
       },
       {
         source: `/${redirectBase}learn/serverless-deployment`,

@@ -1,6 +1,22 @@
 {
     "events": [
-           {
+        {
+            "date": "May 20-22, 2025",
+            "day": "Tuesday",
+            "time": "",
+            "expire": "2025-05-23T00:00:00.00-00:00",
+            "location": "Virtual",
+            "url": "https://www.womentech.net/speaker/all/all/130754",
+            "eventType": "Women in Tech Global Conference 2025",
+            "eventName": "Ballerina - Role of modern programming language in cloud-native applications",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Dec 6, 2024",
             "day": "Fri.",
             "time": "2:30 p.m. CST",

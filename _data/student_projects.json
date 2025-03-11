@@ -1,10 +1,110 @@
 {
     "projects": [
         {
+            "title": "ResourceHub",
+            "description": "An app aimed at simplifying organizational resource management, asset tracking, employee requests, meal preferences, and administrative maintenance scheduling.",
+            "tags": ["React.js", "Ballerina"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": [{
+                    "name": "Shayan Malinda",
+                    "x": "https://www.linkedin.com/in/shayanmalinda/"
+                },
+                {
+                    "name": "Dilan Perera",
+                    "x": "https://www.linkedin.com/in/indilanperera/"
+                }
+            ],
+            "repo": {
+                "org": "FiveStackDev",
+                "name": ""
+            }
+        },
+        {
+            "title": "Carpooling Mobile App",
+            "description": "This open-source app enables company ridesharing, offering a customizable, seamless experience for drivers and passengers.",
+            "tags": ["Ballerina", "Next.js"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": [{
+                    "name": "Tharindu Weerasinghe",
+                    "x": "https://www.linkedin.com/in/tharinduweerasinghe/"
+                },
+                {
+                    "name": "Yukthi Lochana",
+                    "x": "https://x.com/Clo_Nic"
+                }
+            ],
+            "repo": {
+                "org": "UCSC-SmartShopper",
+                "name": ""
+            }
+        },
+        {
+            "title": "AutoMeet",
+            "description": "inspired by Chili Piper, this open-source version aims to provide to automate the meeting scheduling process by seamlessly integrating with calendars",
+            "tags": ["React.js", "Ballerina", "Google APIs"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": [{
+                    "name": "Asma Jabir",
+                    "x": "https://www.linkedin.com/in/asma-jabir/"
+                },
+                {
+                    "name": "Nipuna Madushan",
+                    "x": "https://www.linkedin.com/in/nipuna-madhushan-0311/"
+                }
+            ],
+            "repo": {
+                "org": "Serryudy",
+                "name": "Automeet"
+            }
+        },
+        {
+            "title": "Online Election System",
+            "description": "The project will allow registered voters to securely log in and cast their votes for candidates in a given election in Sri Lanka.",
+            "tags": ["Ballerina", "Next.js", "PostgreSQL"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": [{
+                    "name": "Gayal Dassanayake",
+                    "x": "https://www.linkedin.com/in/gayal-dassanayake/"
+                },
+                {
+                    "name": "Shammi Kolonne",
+                    "x": "https://www.linkedin.com/in/shammikolonne/"
+                }
+            ],
+            "repo": {
+                "org": "https://github.com/Online-Election-System",
+                "name": ""
+            }
+        },
+        {
+            "title": "SplitTrack",
+            "description": "This app offers a feature-rich, AI-powered alternative to Splitwise, providing advanced expense management with more features available in the free-tier.",
+            "tags": ["React.js", "Ballerina"],
+            "status": "ongoing",
+            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "advisor": [{
+                    "name": "Dulaj Dilshan",
+                    "x": "https://www.linkedin.com/in/dulajdilshan"
+                },
+                {
+                    "name": "Nipuna Fernando",
+                    "x": "https://www.linkedin.com/in/nipunayf"
+                }
+            ],
+            "repo": {
+                "org": "FinOSIQ",
+                "name": "splittrack"
+            }
+        },
+        {
             "title": "SmartShopper",
             "description": "An app that compares prices across major supermarkets to optimize a user's shopping list. Key components include UI, data collection, and price comparison algorithms.",
             "tags": ["React.js", "Ballerina", "PostgreSQL", "Stripe", "Tailwind", "Chakra UI", "Twillio", "Vercel", "Choreo"],
-            "status": "ongoing",
+            "status": "past",
             "icon": "/images/uni-projects/smartShopper.jpeg",
             "advisor": {
                 "name": "Anuruddha Liyanarachchi",
@@ -19,7 +119,7 @@
             "title": "Mediphix",
             "description": "A platform for managing and viewing patient visits, diagnoses, and prescriptions across medical institutions, aimed at reducing misdiagnosis through synchronized patient history.",
             "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
-            "status": "ongoing",
+            "status": "past",
             "icon": "/images/uni-projects/mediphix.jpg",
             "advisor": {
                 "name": "Dulaj Dilshan",
@@ -34,7 +134,7 @@
             "title": "Highlights",
             "description": "A task management app that integrates with calendars, inspired by 'Make Time.' It helps users prioritize tasks and goals while providing a concise daily overview.",
             "tags": ["Node.js", "Ballerina", "MongoDB", "React.js", "Sketch", "PlantUML"],
-            "status": "ongoing",
+            "status": "past",
             "icon": "/images/uni-projects/logo_text.png",
             "advisor": {
                 "name": "Nipuna Fernando",

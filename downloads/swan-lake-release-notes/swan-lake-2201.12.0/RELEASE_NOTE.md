@@ -101,7 +101,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.0)
 
 #### `http` package
 
-- Moved SSL context creation to the client initialization process for better performance
+- Improved HTTP client performance particularly when using a trust store with multiple certificates
 - Added TLS v1.3-supported cipher suites to the default listener configuration
 - Added support for **X25519MLKEM768** key encapsulation in TLS v1.3, replacing **X25519Kyber768** key encapsulation algorithm
 

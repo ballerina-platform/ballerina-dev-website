@@ -63,30 +63,30 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.0)
 - Introduced the `consolidated-packages` bal tool to generate code required to consolidate multiple Ballerina services into a single executable.
 - Simplifies service consolidation to enable monolith-style deployments.
 
-```toml
-[package]
-org = "myorg"
-name = "myapp"
-version = "0.1.0"
+  ```toml
+  [package]
+  org = "myorg"
+  name = "myapp"
+  version = "0.1.0"
 
-[[tool.consolidate-packages]]
-id = "consolidateSvc"
-options.services = ["myorg/menu_service", "myorg/order_service"]
-```
+  [[tool.consolidate-packages]]
+  id = "consolidateSvc"
+  options.services = ["myorg/menu_service", "myorg/order_service"]
+  ```
 
 Automation tools and CI/CD pipelines can integrate the CLI tool to automatically generate a Ballerina package containing the consolidated services.
 
-To install the tool, run:
+- To install the tool, run:
 
-```bash
-$ bal tool pull consolidate-packages 
-```
+  ```bash
+  $ bal tool pull consolidate-packages 
+  ```
 
-To create a package, use:
+- To create a package, use:
 
-```bash
-$ bal consolidate-packages new --package-path <path> <comma-separated-list-of-services> 
-```
+  ```bash
+  $ bal consolidate-packages new --package-path <path> <comma-separated-list-of-services> 
+  ```
 
 For more information, see [consolidate-packages tool](/learn/consolidate-packages-tool). 
 

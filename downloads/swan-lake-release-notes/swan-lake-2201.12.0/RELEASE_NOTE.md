@@ -78,7 +78,6 @@ Automation tools and CI/CD pipelines can integrate the CLI tool to automatically
 
 - To install the tool, run:
 
-  ```bash
   $ bal tool pull consolidate-packages 
   ```
 

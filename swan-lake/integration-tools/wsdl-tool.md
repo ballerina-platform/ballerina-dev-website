@@ -12,7 +12,7 @@ intro: The Ballerina WSDL tool generates Ballerina client stubs and record types
 
 Execute the command below to pull the WSDL tool from [Ballerina Central](https://central.ballerina.io/ballerina/wsdl/latest).
 
-```sh
+```
 bal tool pull wsdl
 ```
 
@@ -27,7 +27,7 @@ The client generated from a WSDL file can be used in your applications to call t
 
 The following command will generate Ballerina client stubs and records for a given WSDL file. It is mandatory to run the command within a Ballerina package.
 
-```sh
+```
 bal wsdl <wsdl-file-path>
          [--operations <operation-uris>]
          [--module <output-module-name>]

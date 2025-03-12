@@ -149,6 +149,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/xsd-tool`,
       },
       {
+        source: `/${redirectBase}learn/consolidate-packages-tool`,
+        destination: `/${redirectBase}learn/integration-tools/consolidate-packages-tool`,
+      },
+      {
         source: `/${redirectBase}learn/strand-dump-tool`,
         destination: `/${redirectBase}learn/development-tutorials/troubleshoot-the-runtime/strand-dump-tool`,
       },

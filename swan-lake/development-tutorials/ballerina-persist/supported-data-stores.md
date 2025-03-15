@@ -182,14 +182,14 @@ The default length for some SQL types can be changed using the [Advanced SQL typ
 
 You need to set values for the following basic configuration parameters in the `Config.toml` file in your project to use the relational data store.
 
-|   Parameter   |                                                        Description                                                         |
-|:-------------:|:--------------------------------------------------------------------------------------------------------------------------:|
-|     host      |                                               The hostname of the DB server.                                               |
-|     port      |                                                 The port of the DB server.                                                 |
-|   username    |                                               The username of the DB server.                                               |
-|   password    |                                               The password of the DB server.                                               |
-|   database    |                                            The name of the database to be used.                                            |
-| defaultSchema | The database schema which all tables belongs to. This is an optional parameter and only supported in MSSQL and PostgreSQL. |
+|   Parameter   |                                                        Description                                                        |
+|:-------------:|:-------------------------------------------------------------------------------------------------------------------------:|
+|     host      |                                              The hostname of the DB server.                                               |
+|     port      |                                                The port of the DB server.                                                 |
+|   username    |                                              The username of the DB server.                                               |
+|   password    |                                              The password of the DB server.                                               |
+|   database    |                                           The name of the database to be used.                                            |
+| defaultSchema |  The database schema which tables belongs to. This is an optional parameter and only supported in MSSQL and PostgreSQL.   |
 
 
 

@@ -81,9 +81,9 @@ export default function UseCases(props) {
                                                 <img src={`${prefix}/images/ai_codegen.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="copilotView2" title="Test Generation">
+                                        <Tab eventKey="copilotView2" title="AI Data Mapper">
                                         <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_test.png`}/>
+                                                <img src={`${prefix}/images/ai_datamapper.png`}/>
                                             </div>
                                         </Tab>
                                         <Tab eventKey="copilotView3" title="Ask Ballerina">
@@ -91,9 +91,9 @@ export default function UseCases(props) {
                                                 <img src={`${prefix}/images/ai_ask.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="copilotView4" title="AI Data Mapper">
+                                        <Tab eventKey="copilotView4" title="Test Generation">
                                         <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_datamapper.png`}/>
+                                                <img src={`${prefix}/images/ai_test.png`}/>
                                             </div>
                                         </Tab>
                                     </Tabs>

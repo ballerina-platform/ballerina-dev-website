@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.12.0 (Swan Lake) 
+title: Ballerina Swan Lake Update 12 (2201.12.0) 
 permalink: /downloads/swan-lake-release-notes/2201.12.0/
 active: 2201.12.0
 redirect_from: 
@@ -173,9 +173,3 @@ For more information, see [consolidate-packages tool](/learn/consolidate-package
   2. The default schema specified in the `Config.toml` file.
   3. The default schema of the database.
 
-### Bug fixes
-
-To view bug fixes, see the GitHub milestone for Swan Lake Update 12 (2201.12.0) of the repositories below.
-
-- [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.12.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.12.0%22+is%3Aclosed)

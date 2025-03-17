@@ -86,9 +86,9 @@ The `in-memory` data store supports the following Ballerina types.
 
 The In-Memory data store does not require any configuration.
 
-## Relational Databases (MySQL, MSSQL, PostgreSQL)
+## Relational Databases (MySQL, MSSQL, PostgreSQL, H2)
 
-The data store is a relational database management system that stores data in tables. It is useful for storing data in a relational format. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when generating the bal persist client APIs for MySQL, MSSQL, and PostgreSQL.
+The data store is a relational database management system that stores data in tables. It is useful for storing data in a relational format. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when generating the bal persist client APIs for MySQL, MSSQL, PostgreSQL, and H2.
 
 Below are the ways you can provide the data store for each client generation option.
 
@@ -182,13 +182,16 @@ The default length for some SQL types can be changed using the [Advanced SQL typ
 
 You need to set values for the following basic configuration parameters in the `Config.toml` file in your project to use the relational data store.
 
-|  Parameter  |              Description              |
-|:-----------:|:-------------------------------------:|
-|    host     |    The hostname of the DB server.     |
-|    port     |      The port of the DB server.       |
-|  username   |    The username of the DB server.     |
-|  password   |    The password of the DB server.     |
-|  database   | The name of the database to be used.  |
+|   Parameter   |                                                        Description                                                        |
+|:-------------:|:-------------------------------------------------------------------------------------------------------------------------:|
+|     host      |                                              The hostname of the DB server.                                               |
+|     port      |                                                The port of the DB server.                                                 |
+|   username    |                                              The username of the DB server.                                               |
+|   password    |                                              The password of the DB server.                                               |
+|   database    |                                           The name of the database to be used.                                            |
+| defaultSchema |  The database schema which tables belongs to. This is an optional parameter and only supported in MSSQL and PostgreSQL.   |
+
+
 
 The following is a sample `Config.toml` file generated for each relational data store.
 
@@ -214,6 +217,7 @@ port = 1433
 user = "sa"
 password = ""
 database = ""
+defaultSchema = ""
 ```
 
 Additionally, you can set values for the following advanced configuration parameters in the `Config.toml` file in your project to use the MSSQL data store. For more information on these parameters, see the [MSSQL Connector documentation](https://lib.ballerina.io/ballerinax/mssql/latest#Options).
@@ -227,6 +231,7 @@ port = 5432
 user = "postgres"
 password = ""
 database = ""
+defaultSchema = ""
 ```
 
 Additionally, you can set values for the following advanced configuration parameters in the `Config.toml` file in your project to use the PostgreSQL data store. For more information on these parameters, see the [PosgreSQL Connector documentation](https://central.ballerina.io/ballerinax/postgresql/latest#Options).

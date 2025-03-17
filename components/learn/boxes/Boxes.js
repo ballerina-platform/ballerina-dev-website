@@ -194,6 +194,15 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Generate Ballerina records for an XSD specification.</p>
                       </div>
+                      
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/consolidate-packages-tool`} className={styles.titleLink}>
+                            Consolidate-packages tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate code to consolidate Ballerina services.</p>
+                      </div>
 
                     </div>
                   </div>

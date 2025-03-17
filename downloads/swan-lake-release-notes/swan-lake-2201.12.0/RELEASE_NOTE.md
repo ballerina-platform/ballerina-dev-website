@@ -105,6 +105,23 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.0)
 - Added TLS v1.3-supported cipher suites to the default listener configuration
 - Added support for **X25519MLKEM768** key encapsulation in TLS v1.3, replacing **X25519Kyber768** key encapsulation algorithm
 
+#### `persist` package
+
+- Added new `@sql:Schema` annotation to define the schema of a entity record in the database. The schema can be defined using the `@sql:Schema` annotation as follows:
+
+  ```ballerina
+  import ballerina/persist.sql;
+  
+  @sql:Schema {value: "my_schema"}
+  type Person record {|
+      readonly int id;
+      string name;
+      string address;
+  |};
+  ```
+  
+  The `@sql:Schema` annotation is currently supported for MSSQL and PostgreSQL databases.
+
 ### Breaking changes
 
 #### `crypto` package
@@ -152,6 +169,25 @@ Automation tools and CI/CD pipelines can integrate the CLI tool to automatically
   ```
 
 For more information, see [consolidate-packages tool](/learn/consolidate-packages-tool). 
+
+#### Persist tool
+
+- Introduced support to define default schema for all entities in the database using configuration. This is an optional configuration and only supported in MSSQL and PostgreSQL. This can be set in the `Config.toml` file along with other database configurations as follows:
+
+  ```toml
+  [<packageName>.<moduleName>]
+  host = "localhost"
+  port = 5432
+  user = "postgres"
+  password = ""
+  database = ""
+  defaultSchema = "EMPLOYEE"
+  ```
+  The priority order for schema resolution is as follows:
+
+  1. The schema defined in the model using the `@sql:Schema` annotation.
+  2. The default schema specified in the `Config.toml` file.
+  3. The default schema of the database.
 
 #### Language Server
 

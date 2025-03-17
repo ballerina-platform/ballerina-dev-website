@@ -72,12 +72,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.0)
   path = "resources/certs/ballerinaKeystore.p12"
   password = "ballerina"
   ```
-- Added the following static analysis rules to the Ballerina scan tool
-
-  | RuleID           | Rule Kind     | Rule Description                                       |
-  |------------------|---------------|--------------------------------------------------------|
-  | ballerina/http:1 | VULNERABILITY | Avoid allowing default resource accessor               |
-  | ballerina/http:2 | VULNERABILITY | Avoid permissive Cross-Origin Resource Sharing         |
 
 - Introduced an API to convert an `http:Response` object into a `http:StatusCodeRecord`, which includes the status code, body, and headers
 

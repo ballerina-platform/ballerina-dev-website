@@ -1389,7 +1389,7 @@ table.cTopControlsContainer tbody {
 } */
 
 .integration.code pre.shiki,
-#code-container {
+:is(#code-container, #agent-code-container)  {
   background-color: #ffffff !important;
   border: 1px solid #eeeeee;
 }
@@ -1492,7 +1492,7 @@ table.cTopControlsContainer tbody {
 }
 
 /* ----------- draggable code blocks -------------- */
-#code-container {
+:is(#code-container, #agent-code-container)  {
   width: 100%;
   /* height: auto; */
   /* min-height: 600px; */
@@ -1504,7 +1504,7 @@ table.cTopControlsContainer tbody {
   border-radius: 4px;
 }
 
-#left_panel {
+:is(#left_panel, #agent-left_panel) {
   position: absolute;
   left: 0;
   top: 0;
@@ -1524,7 +1524,7 @@ table.cTopControlsContainer tbody {
   z-index: 1;
 }
 
-#right_panel {
+:is(#right_panel, #agent-right_panel) {
   position: absolute;
   right: 0;
   top: 0;
@@ -1547,7 +1547,7 @@ table.cTopControlsContainer tbody {
 	margin: auto;
 } */
 
-#drag {
+:is(#drag, #agent-drag) {
   position: absolute;
   left: -4px;
   top: 0;
@@ -1565,7 +1565,7 @@ table.cTopControlsContainer tbody {
   z-index: 1000;
 }
 
-#code-container .title-new {
+:is(#code-container, #agent-code-container)  .title-new {
   background-color: #20b6b0;
   color: #fff;
   padding: 10px;
@@ -1574,22 +1574,22 @@ table.cTopControlsContainer tbody {
   z-index: 999;
 }
 
-#code-container .title-old {
+:is(#code-container, #agent-code-container)  .title-old {
   background-color: #464646;
   color: #fff;
   padding: 10px;
   margin-bottom: 0;
 }
 
-#code-tab li {
+:is(#code-container, #agent-code-container)  li {
   white-space: break-spaces;
 }
 
-#code-tab .tab-pane p {
+:is(#code-container, #agent-code-container)  .tab-pane p {
   font-family: monospace;
 }
 
-#code-container .button-wrap {
+:is(#code-container, #agent-code-container) .button-wrap {
   /* background-color: #20b6b0;
   border-radius: 50%;
   position: absolute; */

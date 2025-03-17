@@ -32,6 +32,8 @@ export default function UseCases(props) {
 
     const why = samples['why-is-ballerina-the-way-you-should-write-ai-applications'];
 
+    const agent = samples['ballerina-ai-agent'];
+
     const chat = samples['bring-text-alive-with-openai-chats'];
     const chat1 = samples['openai1'];
     const chat2 = samples['openai2'];
@@ -62,45 +64,52 @@ export default function UseCases(props) {
     var isResizing = false;
 
     React.useEffect(() => {
-        (function () {
-            var container = document.getElementById("code-container"),
-                left = document.getElementById("left_panel"),
-                right = document.getElementById("right_panel"),
-                handle = document.getElementById("drag");
+        addDragHandler(
+          document.getElementById("code-container"),
+          document.getElementById("left_panel"),
+          document.getElementById("right_panel"),
+          document.getElementById("drag")
+        );
 
-            handle.onmousedown = function (e) {
-                isResizing = true;
-            };
-
-            document.onmousemove = function (e) {
-                // we don't want to do anything if we aren't resizing.
-                if (!isResizing) {
-                    return;
-                }
-
-                var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
-
-                //stop resizing if the left panel or right panel is too small
-                if (e.clientX - container.offsetLeft <= 50 || offsetRight <= 50) {
-
-                    isResizing = false;
-                    return;
-                }
-
-
-
-                left.style.right = offsetRight + "px";
-                right.style.width = offsetRight + "px";
-            }
-
-            document.onmouseup = function (e) {
-                // stop resizing
-                isResizing = false;
-            }
-        })();
+        addDragHandler(
+          document.getElementById("agent-code-container"),
+          document.getElementById("agent-left_panel"),
+          document.getElementById("agent-right_panel"),
+          document.getElementById("agent-drag")
+        );
     }, []);
 
+    function addDragHandler(container, left, right, handle) {
+      let isResizing = false;
 
+      handle.addEventListener("mousedown", function (e) {
+        isResizing = true;
+
+        function onMouseMove(e) {
+          if (!isResizing) return;
+
+          var offsetRight =
+            container.clientWidth - (e.clientX - container.offsetLeft);
+
+          if (e.clientX - container.offsetLeft <= 50 || offsetRight <= 50) {
+            isResizing = false;
+            return;
+          }
+
+          left.style.right = offsetRight + "px";
+          right.style.width = offsetRight + "px";
+        }
+
+        function onMouseUp() {
+          isResizing = false;
+          document.removeEventListener("mousemove", onMouseMove);
+          document.removeEventListener("mouseup", onMouseUp);
+        }
+        
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      });
+    }
 
     return (
         <>
@@ -243,8 +252,81 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
+             {/* agent */}
+             <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='ballerina-ai-agent' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'ballerina-ai-agent')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {agent.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{agent.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}>
+                                        <span>Personal Assistant with Calendar and Email Management</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/personal_ai_assistant_agent' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>                            
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
+                                <div id="agent-code-container" className='d-none d-lg-block'>
+                                    <div id="agent-left_panel">
+                                        <p className='title-old'>Code</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: agent.code }} />
+                                    </div>
+                                    <div id="agent-right_panel">
+                                        <div id="agent-drag">
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute button-wrap" ><circle cx="23" cy="23" r="23" fill="#20b6b0"></circle><path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path><path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path></svg>
+                                        </div>
+                                        <p className='title-new'>Diagram</p>
+                                        <div className="code-panel diagram">
+                                            <Image src={`${prefix}/images/agent-diagram.png`} width={520} height={548} alt="Diagram" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {/* mobile view */}
+                                <div id="code-tab" className='d-block d-lg-none'>
+                                    <Tabs defaultActiveKey="code" id="codeTab1" className="mb-3 codeTabs">
+                                        <Tab eventKey="code" title="Code">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: agent.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="diagram" title="Diagram">
+                                            <img src={`${prefix}/images/agent-diagram.png`} width={520} height={548} alt="Diagram" />
+                                        </Tab>
+                                    </Tabs>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
             {/* chat */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration even">
                 <Col xs={12}>
                     <Container>
                         <Row>

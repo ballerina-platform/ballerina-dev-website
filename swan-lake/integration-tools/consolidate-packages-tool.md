@@ -37,7 +37,6 @@ is typically useful in CI/CD pipelines.
 
 Execute the command below to pull the tool.
 
-```bash
 bal tool pull consolidate-packages
 ```
 

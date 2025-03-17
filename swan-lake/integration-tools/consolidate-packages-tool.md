@@ -42,7 +42,6 @@ bal tool pull consolidate-packages
 
 ##### Creating a new consolidator package
 
-```bash
 $ bal consolidate-packages new --package-path <path> <comma-separated-list-of-services> 
 ```
 

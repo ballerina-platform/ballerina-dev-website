@@ -47,7 +47,6 @@ $ bal consolidate-packages new --package-path <path> <comma-separated-list-of-se
 
 For example,
 
-```bash
 $ bal consolidate-packages new --package-path hotel-app myorg/order_service,myorg/payment_service 
 ```
 

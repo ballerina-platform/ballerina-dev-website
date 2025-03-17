@@ -51,7 +51,7 @@ a.cDownload span {
     margin-bottom: 20px;
 }
 
-#code-container .codeSnippet {
+:is(#code-container, #agent-code-container) .codeSnippet {
     overflow-y: scroll;
 }
 

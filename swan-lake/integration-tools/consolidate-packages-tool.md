@@ -5,12 +5,8 @@ description: The consolidate-packages tool provides CLI commands and a build too
 keywords: ballerina, programming language, consolidate packages, consolidate-packages, monolith
 permalink: /learn/consolidate-packages-tool/
 active: consolidate-packages-tool
-intro: This tool generates code required to group multiple services into one deployable artifact supporting monolith-style deployments.
+intro: Ballerina inherently supports microservices-style deployments, which are well-suited for microservice orchestration platforms like Kubernetes. However, if you prefer a server-based deployment model, this tool allows you to consolidate multiple services into a single process, making deployments more manageable and efficient.
 ---
-
-Ballerina inherently supports microservices-style deployments, which are well-suited for microservice orchestration platforms like Kubernetes.
-However, if you prefer a server-based deployment model, this tool allows you to consolidate multiple services into a single process, making deployments more manageable and efficient.
-
 ## Usage
 
 ### Create or update a consolidator package

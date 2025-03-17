@@ -327,7 +327,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* np */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -375,7 +375,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* chat */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>

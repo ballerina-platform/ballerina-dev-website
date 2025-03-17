@@ -8,12 +8,10 @@ service / on new http:Listener(8080) {
             string title = <string>row[0];
             string content = <string>row[1];
             float[] vector = check getEmbedding(string `${title} ${"\n"} ${content}`);
-            vectors[vectors.length()] = 
-                {id: title, values: vector, metadata: {"content": content}};
+            vectors[vectors.length()] = {id: title, values: vector, metadata: {"content": content}};
         }
 
-        pinecone:UpsertResponse response = 
-            check pineconeClient->/vectors/upsert.post({vectors, namespace: NAMESPACE});
+        pinecone:UpsertResponse response = check pineconeClient->/vectors/upsert.post({vectors, namespace: NAMESPACE});
         if response.upsertedCount != range.values.length() {
             return error("Failed to insert embedding vectors to pinecone.");
         }
@@ -22,13 +20,19 @@ service / on new http:Listener(8080) {
 
     resource function get answer(string question) returns string?|error {
         string prompt = check constructPrompt(question);
-        text:CreateCompletionRequest prmt = {
-            prompt: prompt,
-            model: "text-davinci-003",
-            max_tokens: 2000
+
+        chat:CreateChatCompletionRequest request = {
+            model: "gpt-4o-mini",
+            messages: [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
         };
-        text:CreateCompletionResponse completionRes = check openAIText->/completions.post(prmt);
-        return completionRes.choices[0].text;
+
+        chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
+        return response.choices[0].message.content;
     }
 }
 ```

@@ -1,23 +1,27 @@
 ```
 public function main(*EmailDetails emailDetails) returns error? {
+
     fork {
         worker poemWorker returns string|error? {
-            text:CreateCompletionRequest textPrompt = {
-                prompt: string `Generate a creative poem on the topic ${emailDetails.topic}.`,
-                model: "text-davinci-003",
+            chat:CreateChatCompletionRequest request = {
+                model: "gpt-4o-mini",
+                messages: [
+                    {
+                        "role": "user",
+                        "content": string `Generate a creative poem on the topic ${emailDetails.topic}.`
+                    }
+                ],
                 max_tokens: 1000
             };
-            text:CreateCompletionResponse completionRes = 
-                check openAIText->/completions.post(textPrompt);
-            return completionRes.choices[0].text;
+
+            chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
+            return response.choices[0].message.content;
         }
 
         worker imageWorker returns byte[]|error {
-            stabilityai:TextToImageRequestBody payload = 
-                {text_prompts: [{"text": emailDetails.topic, "weight": 1}]};
-            stabilityai:ImageRes listResult = 
-                check stabilityAI->/v1/generation/stable\-diffusion\-v1/
-                text\-to\-image.post(payload);
+            stabilityai:TextToImageRequestBody payload = {text_prompts: [{"text": emailDetails.topic, "weight": 1}]};
+            stabilityai:ImageRes listResult = check stabilityAI->/v1/generation/["stable-diffusion-512-v2-1"]/text\-to\-image.post(payload);
+
             string? imageBytesString = listResult.artifacts[0].'base64;
             if imageBytesString is () {
                 return error("Image byte string is empty.");
@@ -52,12 +56,13 @@ public function main(*EmailDetails emailDetails) returns error? {
     messageBody = r.replaceAll(messageBody, "<br>");
 
     gmail:MessageRequest messageRequest = {
-        recipient: emailDetails.recipientEmail,
+        to: [emailDetails.recipientEmail],
         subject: emailDetails.topic,
-        messageBody,
-        contentType: gmail:TEXT_HTML,
-        inlineImagePaths: [{imagePath: "./image.png", mimeType: "image/png"}]
+        bodyInHtml: messageBody,
+        inlineImages: [{path: "./image.png", mimeType: "image/png", name: "dew", contentId: "fwes"}]
     };
-    _ = check gmail->sendMessage(messageRequest, userId = "me");
+
+    gmail:Message sendResult = check gmail->/users/me/messages/send.post(messageRequest);
+    io:println(sendResult);
 }
 ```

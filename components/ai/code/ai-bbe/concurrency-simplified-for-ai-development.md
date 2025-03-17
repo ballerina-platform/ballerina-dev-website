@@ -7,25 +7,25 @@ url: 'https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_c
 fork {
     // Generate greeting text and design in parallel
     worker greetingWorker returns string|error? {
-        string prompt = 
-            string `Generate a greeting for a/an ${occasion}
-                .${"\n"}Special notes: ${specialNotes}`;
-        text:CreateCompletionRequest textPrompt = {
-            prompt,
-            model: "text-davinci-003",
-            max_tokens: 100
+        chat:CreateChatCompletionRequest request = {
+            model: "gpt-4o-mini",
+            messages: [
+                {
+                    "role": "user",
+                    "content": string `Generate a greeting for a/an ${occasion}.${"\n"}Special notes: ${specialNotes}`
+                }
+            ]
         };
-        text:CreateCompletionResponse completionRes = 
-            check openaiText->/completions.post(textPrompt);
-        return completionRes.choices[0].text;
+
+        chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
+        return response.choices[0].message.content;
     }
+
     worker imageWorker returns string|error? {
-        string prompt = string `Greeting card design for ${occasion}, ${specialNotes}`;
         images:CreateImageRequest imagePrompt = {
-            prompt
+            prompt: string `Greeting card design for ${occasion}, ${specialNotes}`
         };
-        images:ImagesResponse imageRes = 
-            check openaiImages->/images/generations.post(imagePrompt);
+        images:ImagesResponse imageRes = check openAIImages->/images/generations.post(imagePrompt);
         return imageRes.data[0].url;
     }
 }

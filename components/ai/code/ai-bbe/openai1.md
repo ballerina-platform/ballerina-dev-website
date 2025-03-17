@@ -1,22 +1,27 @@
 ```
 public function main(string filePath) returns error? {
-    text:Client openAIText = check new ({auth: {token: openAIToken}});
+    chat:Client openAIChat = check new ({auth: {token: openAIToken}});
 
     string fileContent = check io:fileReadString(filePath);
     io:println(string `Content: ${fileContent}`);
 
-    text:CreateCompletionRequest textPrompt = {
-        prompt: string `Summarize:\n" ${fileContent}`,
-        model: "text-davinci-003",
+    chat:CreateChatCompletionRequest request = {
+        model: "gpt-4o-mini",
+        messages: [
+            {
+                "role": "user",
+                "content": string `Summarize:\n" ${fileContent}`
+            }
+        ],
         max_tokens: 2000
     };
-    text:CreateCompletionResponse completionRes = 
-        check openAIText->/completions.post(textPrompt);
-    string? summary = completionRes.choices[0].text;
 
-    if summary is () { 
-        return error("Failed to summarize the given text.");    
-    } 
+    chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
+    string? summary = response.choices[0].message.content;
+
+    if summary is () {
+        return error("Failed to summarize the given text.");
+    }
     io:println(string `Summary: ${summary}`);
 }
 ```

@@ -5,26 +5,25 @@ public function main() returns error? {
     themoviedb:InlineResponse2001 upcomingMovies = check moviedb->getUpcomingMovies();
 
     // Generate a creative tweet using Azure OpenAI   
-    string prompt = "Instruction: Generate a creative and short tweet " +
-        "below 250 characters about the following " +
-        "upcoming and recently released movies. Movies: ";
+    string prompt = "Instruction: Generate a creative and short tweet below 250 characters about the following " +
+    "upcoming and recently released movies. Movies: ";
     foreach int i in 1 ... NO_OF_MOVIES {
         prompt += string `${i}. ${upcomingMovies.results[i - 1].title} `;
     }
 
-    text:Deploymentid_completions_body completionsBody = {
-        prompt,
-        max_tokens: MAX_TOKENS
+    final twitter:Client twitter = check new ({
+        auth: {token: token}
+    });
+
+    final chat:Client chatClient = check new (config = {auth: {apiKey: openAIToken}}, serviceUrl = serviceUrl);
+
+    chat:CreateChatCompletionRequest chatBody = {
+        messages: [{role: "user", "content": prompt}]
     };
-    final text:Client azureOpenAI = check new (
-        config = {auth: {apiKey: openAIToken}},
-        serviceUrl = serviceUrl
-    );
-    text:Inline_response_200 completion = 
-        check azureOpenAI->/deployments/[deploymentId]/completions.post(
-            API_VERSION, completionsBody
-        );
-    string? tweetContent = completion.choices[0].text;
+
+    chat:CreateChatCompletionResponse chatResult = check chatClient->/deployments/[deploymentId]/chat/completions.post("2023-12-01-preview", chatBody);
+    record {|chat:ChatCompletionResponseMessage message?; chat:ContentFilterChoiceResults content_filter_results?; int index?; string finish_reason?; anydata...;|}[] choices = check chatResult.choices.ensureType();
+    string? tweetContent = choices[0].message?.content;
 
     if tweetContent is () {
         return error("Failed to generate a tweet on upcoming and recently released movies.");
@@ -35,8 +34,7 @@ public function main() returns error? {
     }
 
     // Tweet it out!
-    final twitter:Client twitter = check new (twitterConfig);
-    twitter:Tweet tweet = check twitter->tweet(tweetContent);
-    io:println("Tweet: ", tweet.text);
+    twitter:TweetCreateResponse tweet = check twitter->/tweets.post(payload = {text: tweetContent});
+    io:println("Tweet: ", tweet);
 }
 ```

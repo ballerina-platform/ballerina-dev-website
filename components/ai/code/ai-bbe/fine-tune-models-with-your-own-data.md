@@ -14,17 +14,17 @@ public function main() returns error? {
         },
         purpose: "fine-tune"
     };
+
     finetunes:OpenAIFile fileResponse = check openAIFineTunes->/files.post(fileRequest);
     io:println(string `Training file uploaded successfully with ID: ${fileResponse.id}`);
 
-    finetunes:CreateFineTuneRequest fineTuneRequest = {
+    finetunes:CreateFineTuningJobRequest fineTuneRequest = {
         training_file: fileResponse.id,
-        model: "ada",
-        n_epochs: 4
+        model: "gpt-3.5-turbo",
+        seed: 4
     };
-    finetunes:FineTune fineTuneResponse = 
-        check openAIFineTunes->/fine\-tunes.post(fineTuneRequest);
-    io:println(string `Fine-tune job started successfully with ID: ${
-                       fineTuneResponse.id}`);
+
+    finetunes:FineTuningJob fineTuneResponse = check openAIFineTunes->/fine_tuning/jobs.post(fineTuneRequest);
+    io:println(string `Fine-tune job started successfully with ID: ${fineTuneResponse.id}`);
 }
 ```

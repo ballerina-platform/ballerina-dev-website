@@ -10,15 +10,21 @@ public function main(string filePath) returns error? {
         count: 3, // Number of retry attempts before stopping.
         backOffFactor: 2.0 // Multiplier of the retry interval.
     };
-    final text:Client openAIText = check new ({auth: {token: openAIToken}, retryConfig});
+    final chat:Client openAIChat = check new ({auth: {token: openAIToken}, retryConfig});
 
-    text:CreateEditRequest editReq = {
-        input: check io:fileReadString(filePath),
-        instruction: "Fix grammar and spelling mistakes.",
-        model: "text-davinci-edit-001"
+    chat:CreateChatCompletionRequest request = {
+        model: "gpt-4o-mini",
+        messages: [
+            {
+                "role": "user",
+                "content": string `Fix grammar and spelling mistakes of the content ${check
+                io:fileReadString(filePath)}`
+            }
+        ]
     };
-    text:CreateEditResponse editRes = check openAIText->/edits.post(editReq);
-    string text = check editRes.choices[0].text.ensureType();
+
+    chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
+    string text = check response.choices[0].message.content.ensureType();
     io:println(string `Corrected: ${text}`);
 }
 ```

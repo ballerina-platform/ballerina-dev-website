@@ -193,6 +193,14 @@
                     "isDir": false,
                     "url": "/learn/xsd-tool",
                     "id": "xsd-tool"
+                },
+                {
+                    "dirName": "Consolidate-packages tool",
+                    "level": 3,
+                    "position": 9,
+                    "isDir": false,
+                    "url": "/learn/consolidate-packages-tool",
+                    "id": "consolidate-packages-tool"
                 }
             ]
         },

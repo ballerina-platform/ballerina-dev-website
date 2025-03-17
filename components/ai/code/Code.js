@@ -326,7 +326,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* chat */}
-            <Row className="pageContentRow integration even">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -404,7 +404,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* dalle */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -496,7 +496,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* music */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -561,7 +561,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* tune */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -622,7 +622,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* vector */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -683,7 +683,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* libraries */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -744,7 +744,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* effortlessly */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -811,7 +811,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* powered */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -878,7 +878,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* robust */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -939,7 +939,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* concurrency*/}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -1000,7 +1000,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* ipaas */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

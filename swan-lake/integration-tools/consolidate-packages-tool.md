@@ -9,8 +9,7 @@ intro: This tool generates code required to group multiple services into one dep
 ---
 
 Ballerina inherently supports microservices-style deployments, which are well-suited for microservice orchestration platforms like Kubernetes.
-However, many enterprise users deploy on VMs or Docker, where managing each service as a separate process increases complexity and resource overhead. 
-This tool provides a solution tailored to such scenarios by enabling consolidated deployments.
+However, if you prefer a server-based deployment model, this tool allows you to consolidate multiple services into a single process, making deployments more manageable and efficient.
 
 ## Usage
 

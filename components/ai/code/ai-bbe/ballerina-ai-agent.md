@@ -30,8 +30,8 @@ final agent:Agent personalAiAssistant = check new (systemPrompt = systemPrompt, 
 
 service /personalAiAssistant on new http:Listener(9090) {
     resource function post chat(@http:Payload agent:ChatReqMessage request) returns agent:ChatRespMessage|error {
-        string stringResult = check personalAiAssistant->run(request.message);
-        return {message: stringResult};
+        string agentResponse = check personalAiAssistant->run(request.message);
+        return {message: agentResponse};
     }
 }
 ```

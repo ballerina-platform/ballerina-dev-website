@@ -354,7 +354,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{np.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <span>Sample 1: Convert audio to text and translate using OpenAI</span>
+                                        <span>Sample: Building an AI-Powered Blog Analyzer Using Ballerina's Natural Functions</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/rate-blog-posts-using-natural-functions/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub

@@ -37,16 +37,19 @@ is typically useful in CI/CD pipelines.
 
 Execute the command below to pull the tool.
 
+```
 bal tool pull consolidate-packages
 ```
 
 ##### Creating a new consolidator package
 
+```
 $ bal consolidate-packages new --package-path <path> <comma-separated-list-of-services> 
 ```
 
 For example,
 
+```
 $ bal consolidate-packages new --package-path hotel-app myorg/order_service,myorg/payment_service 
 ```
 
@@ -54,13 +57,13 @@ $ bal consolidate-packages new --package-path hotel-app myorg/order_service,myor
 
 Execute the following command from the package root directory.
 
-```bash
+```
 $ bal consolidate-packages add <comma-separated-list-of-services>
 ```
 
 For example,
 
-```bash
+```
 $ cd hotel-app
 $ bal consolidate-packages add myorg/customer_service,myorg/menu_service
 ```
@@ -68,13 +71,13 @@ $ bal consolidate-packages add myorg/customer_service,myorg/menu_service
 ##### Removing services from an existing package
 Execute the following command from the package root directory.
 
-```bash
+```
 $ bal consolidate-packages remove <comma-separated-list-of-services>
 ```
 
 For example,
 
-```bash
+```
 $ bal consolidate-packages remove myorg/payment_service
 ```
 

@@ -48,6 +48,7 @@ export default function UseCases(props) {
     const music = samples['transcribe-speech-or-music-with-whisper'];
     const sample1 = samples['music1'];
     const sample2 = samples['music2'];
+    const npCode = samples['natural_programming_code'];
 
     const tune = samples['fine-tune-models-with-your-own-data'];
     const vector = samples['simplify-vector-database-management'];
@@ -59,7 +60,7 @@ export default function UseCases(props) {
     const effort1 = samples['effort1'];
     const effort2 = samples['effort2'];
     const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
-
+    const np = samples['blog-analyzer-using-natural-programming'];
 
     var isResizing = false;
 
@@ -325,8 +326,56 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* chat */}
+            {/* np */}
             <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='ai-powered-blog-analyzer-using-natural-programming' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'ai-powered-blog-analyzer-using-natural-programming')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {np.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{np.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}>
+                                        <span>Sample: Building an AI-Powered Blog Analyzer Using Ballerina's Natural Functions</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/rate-blog-posts-using-natural-functions/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                <div id="code-tab">
+                                    <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: npCode.code }} />
+                                            </div>
+                                    </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* chat */}
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -404,7 +453,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* dalle */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -496,7 +545,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* music */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -561,7 +610,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* tune */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -622,7 +671,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* vector */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -683,7 +732,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* libraries */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -744,7 +793,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* effortlessly */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -811,7 +860,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* powered */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -878,7 +927,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* robust */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -939,7 +988,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* concurrency*/}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -1000,7 +1049,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* ipaas */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>

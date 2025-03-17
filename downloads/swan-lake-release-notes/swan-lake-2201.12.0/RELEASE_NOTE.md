@@ -153,25 +153,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.0)
   id = "consolidateSvc"
   options.services = ["myorg/menu_service", "myorg/order_service"]
   ```
-  
-#### Persist tool
-
-- Introduced support to define default schema for all entities in the database using configuration. This is an optional configuration and only supported in MSSQL and PostgreSQL. This can be set in the `Config.toml` file along with other database configurations as follows:
-
-  ```toml
-  [<packageName>.<moduleName>]
-  host = "localhost"
-  port = 5432
-  user = "postgres"
-  password = ""
-  database = ""
-  defaultSchema = "EMPLOYEE"
-  ```
-  The priority order for schema resolution is as follows:
-
-   1. The schema defined in the model using the `@sql:Schema` annotation.
-   2. The default schema specified in the `Config.toml` file.
-   3. The default schema of the database.
 
 Automation tools and CI/CD pipelines can integrate the CLI tool to automatically generate a Ballerina package containing the consolidated services.
 
@@ -188,6 +169,25 @@ Automation tools and CI/CD pipelines can integrate the CLI tool to automatically
   ```
 
 For more information, see [consolidate-packages tool](/learn/consolidate-packages-tool). 
+
+#### Persist tool
+
+- Introduced support to define default schema for all entities in the database using configuration. This is an optional configuration and only supported in MSSQL and PostgreSQL. This can be set in the `Config.toml` file along with other database configurations as follows:
+
+  ```toml
+  [<packageName>.<moduleName>]
+  host = "localhost"
+  port = 5432
+  user = "postgres"
+  password = ""
+  database = ""
+  defaultSchema = "EMPLOYEE"
+  ```
+  The priority order for schema resolution is as follows:
+
+  1. The schema defined in the model using the `@sql:Schema` annotation.
+  2. The default schema specified in the `Config.toml` file.
+  3. The default schema of the database.
 
 #### Language Server
 

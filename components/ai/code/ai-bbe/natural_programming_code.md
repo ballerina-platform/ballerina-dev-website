@@ -2,7 +2,8 @@
 import ballerina/http;
 import ballerinax/np;
 
-final readonly & string[] categories = ["Gardening", "Sports", "Health", "Technology", "Travel"];
+final readonly & string[] categories 
+        = ["Gardening", "Sports", "Health", "Technology", "Travel"];
 
 public type Blog record {|
     string title;

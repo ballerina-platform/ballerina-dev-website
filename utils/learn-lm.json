@@ -815,6 +815,24 @@
                             "id": "ballerina-profiler"
                         }
                     ]
+                },
+                {
+                    "dirName": "Additional tools",
+                    "level": 2,
+                    "position": 11,
+                    "isDir": true,
+                    "url": "/learn/additional-tools",
+                    "id": "additional-tools",
+                    "subDirectories": [
+                        {
+                            "dirName": "Scan tool",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/scan-tool",
+                            "id": "scan-tool"
+                        }
+                    ]
                 }
             ]
         },

@@ -7,7 +7,7 @@ active: 2201.12.1
 
 ## Overview of Ballerina Swan Lake Update 12 (2201.12.1)
 
-<em>Swan Lake Update 12 (2201.12.1) is the first patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of features and improvements to developer tooling.</em>
+<em>Swan Lake Update 12 (2201.12.1) is the first patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of improvements and bug fixes to developer tooling.</em>
 
 ## Update Ballerina
 
@@ -23,6 +23,15 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ## Developer tools updates
 
-### New features
+This release includes the following improvements and bug fixes related to the low-code visualizer in the Ballerina Visual Studio Code extension:
 
-### Improvements
+- **Natural programming & AI integration**: Enhanced completion support, model context resolution, and improved navigation for AI chat agents.
+- **Types API & type browser**: Introduced a type browser and improved API support for better type exploration.
+- **Search & expression editor**: Improved expression editor functionality and search capabilities.
+- **OAS & deployment support**: Added APIs to manage generated OAS modules and introduced deployment completion notifications.
+- **FTP & service generation**: Fixed issues in FTP service generation and improved module resolution for NP and agent modules.
+- **Data mapper & GraphQL enhancements**: Addressed return type handling, function parameters in GraphQL diagrams, and helper pane improvements.
+- **Function & value type fixes**: Resolved function type resolution issues and improved value type handling.
+- **Agent & tooling fixes**: Fixed AI agent tool additions and chat formatting inconsistencies.
+- **Diagram & UI fixes**: Corrected errors in sequence diagrams, GraphQL views, and UI rendering issues in installation steps.
+- **General stability fixes**: Addressed minor bugs, including module pulling issues and duplicate UI components.  

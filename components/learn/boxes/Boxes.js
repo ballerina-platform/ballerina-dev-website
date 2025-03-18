@@ -887,10 +887,10 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/scan-tool`} className={styles.titleLink}>
-                            Scan tool (experimental)
+                            Scan Tool (experimental)
                           </a>
                         </p>
-                        <p className={styles.description}>A static code analysis tool for checks the Ballerina code for security issues and quality improvements.</p>
+                        <p className={styles.description}>A static code analysis tool that checks Ballerina code for security issues and quality improvements.</p>
                       </div>
                     </div>
                   </div>

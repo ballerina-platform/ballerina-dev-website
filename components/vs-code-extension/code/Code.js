@@ -131,13 +131,13 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{architectureView.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                          {/* <span>Sample 1: Summarize text using OpenAI</span>  */}
-                                        <a href={`${prefix}/learn/vs-code-extension/design-the-application/explore-the-architecture-view/`}className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        {/* <a href={`${prefix}/learn/vs-code-extension/design-the-application/explore-the-architecture-view/`}className={styles.cDownload} target="_blank" rel="noreferrer"> */}
                                              {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />  */}
                                             
-                                            <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Design your project" />
-                                            Explore the Architecture View
-                                        </a>
-                                        <a href='https://github.com/ballerina-guides/gcp-microservices-demo' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            {/* <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Design your project" /> */}
+                                            {/* Explore the Architecture View */}
+                                        {/* </a> */}
+                                        <a href='https://github.com/ballerina-guides/gcp-microservices-demo/tree/main/frontend' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -157,17 +157,17 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="architectureView1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="architectureView1" title="Level 1">
+                                        <Tab eventKey="architectureView1" title="Ballerina Visualizer">
                                             <div className={styles.codeSnippet}>
                                                 <img src={`${prefix}/images/architecture-view-level1.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="architectureView2" title="Level 2">
+                                        {/* <Tab eventKey="architectureView2" title="Level 2">
                                         <div className={styles.codeSnippet}>
                                                 <img src={`${prefix}/images/architecture-view-level2.png`}/>
                                             </div>
-                                        </Tab>
-                                        <Tab eventKey="architectureView3" title="Type Diagram">
+                                        </Tab> */}
+                                        <Tab eventKey="architectureView3" title="Types">
                                         <div className={styles.codeSnippet}>
                                                 <img src={`${prefix}/images/type-diagram.png`}/>
                                             </div>
@@ -429,16 +429,16 @@ export default function UseCases(props) {
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}>
-                                        <a href={`${prefix}/learn/vs-code-extension/try-the-services/try-graphql-services/`} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    {/* <div className={styles.dVersion}> */}
+                                        {/* <a href={`${prefix}/learn/vs-code-extension/try-the-services/try-graphql-services/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL designer" />
                                         Try GraphQL services
-                                        </a>
-                                        <a href='https://github.com/ballerina-platform/module-ballerina-graphql/tree/master/examples/starwars' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        </a> */}
+                                        {/* <a href='https://github.com/ballerina-platform/module-ballerina-graphql/tree/master/examples/starwars' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
-                                        </a>
-                                    </div>
+                                        </a> */}
+                                    {/* </div> */}
 
 
                                 </div>
@@ -446,16 +446,16 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="serviceDesigning1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="serviceDesigning1" title="Try GraphQL services">
+                                        <Tab eventKey="serviceDesigning1" title="Try HTTP services">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/http-try-it.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="serviceDesigning2" title="Try GraphQL services">
-                                            <div className={styles.codeSnippet}>
+                                        {/* <Tab eventKey="serviceDesigning2" title="Try GraphQL services"> */}
+                                            {/* <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/graphql-try-it.png`}/>
-                                            </div>
-                                        </Tab>
+                                            </div> */}
+                                        {/* </Tab> */}
                                     </Tabs>
                                 </div>
                             </Col>

@@ -1618,5 +1618,51 @@
 	],
 	"api-docs":"ballerina-api-docs-2201.11.0.zip",
 	"release-notes":"ballerina-release-notes-2201.11.0.md"
+},
+{
+	"version":"2201.12.0",
+	"short-version":"2201.12.0",
+	"display-version":"2201.12.0 (Swan Lake Update 12)",
+	"release-date":"2025-03-13",
+	"windows-installer":"ballerina-2201.12.0-swan-lake-windows-x64.msi",
+	"windows-installer-size":"201mb",
+	"linux-installer":"ballerina-2201.12.0-swan-lake-linux-x64.deb",
+	"linux-installer-size":"234mb",
+	"linux-arm-installer":"ballerina-2201.12.0-swan-lake-linux-arm-x64.deb",
+	"linux-arm-installer-size":"234mb",
+	"macos-installer":"ballerina-2201.12.0-swan-lake-macos-x64.pkg",
+	"macos-installer-size":"266mb",
+	"macos-arm-installer":"ballerina-2201.12.0-swan-lake-macos-arm-x64.pkg",
+	"macos-arm-installer-size":"265mb",
+	"rpm-installer":"ballerina-2201.12.0-swan-lake-linux-x64.rpm",
+	"rpm-installer-size":"268mb",
+	"other-artefacts":[  
+		"ballerina-2201.12.0-swan-lake.zip"
+ 	],
+	"api-docs":"ballerina-api-docs-2201.12.0.zip",
+	"release-notes":"ballerina-release-notes-2201.12.0.md"
+},
+{
+	"version":"2201.12.1",
+	"short-version":"2201.12.1",
+	"display-version":"2201.12.1 (Swan Lake Update 12)",
+	"release-date":"2025-03-16",
+	"windows-installer":"ballerina-2201.12.1-swan-lake-windows-x64.msi",
+	"windows-installer-size":"202mb",
+	"linux-installer":"ballerina-2201.12.1-swan-lake-linux-x64.deb",
+	"linux-installer-size":"234mb",
+	"linux-arm-installer":"ballerina-2201.12.1-swan-lake-linux-arm-x64.deb",
+	"linux-arm-installer-size":"234mb",
+	"macos-installer":"ballerina-2201.12.1-swan-lake-macos-x64.pkg",
+	"macos-installer-size":"266mb",
+	"macos-arm-installer":"ballerina-2201.12.1-swan-lake-macos-arm-x64.pkg",
+	"macos-arm-installer-size":"265mb",
+	"rpm-installer":"ballerina-2201.12.1-swan-lake-linux-x64.rpm",
+	"rpm-installer-size":"268mb",
+	"other-artefacts":[  
+		"ballerina-2201.12.1-swan-lake.zip"
+ 	],
+	"api-docs":"ballerina-api-docs-2201.12.1.zip",
+	"release-notes":"ballerina-release-notes-2201.12.1.md"
 }
 ]

@@ -7,7 +7,7 @@ active: 2201.12.2
 
 ## Overview of Ballerina Swan Lake Update 12 (2201.12.2)
 
-<em>Swan Lake Update 12 (2201.12.2) is the second patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of features and improvements to developer tooling.</em>
+<em>Swan Lake Update 12 (2201.12.2) is the second patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of improvements and bug fixes to developer tooling.</em>
 
 ## Update Ballerina
 
@@ -23,6 +23,10 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ## Developer tools updates
 
-### New features
+This release includes the following improvements and bug fixes related to the new low-code visualizer in the Ballerina Visual Studio Code extension:
 
-### Improvements
+- **Record Editor & Data Mapping Fixes**: Fixed resetting record values when mapping fields have no expressions.
+- **Agent Tooling & Actions**: Updated agent tools to include View and Delete actions and improved connection visualization in agents.
+- **GraphQL & Type Diagram Fixes**: Fixed GraphQL service retrieval issues with annotations and improved source navigation in GraphQL and type diagrams.
+- **Service Creation & Project Support**: Resolved issues when creating services in Devant projects.
+- **Sequence Diagram Enhancements**: Added support for local connections and improved diagram rendering.  

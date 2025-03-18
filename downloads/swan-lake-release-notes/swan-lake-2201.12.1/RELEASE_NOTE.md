@@ -7,7 +7,7 @@ active: 2201.12.1
 
 ## Overview of Ballerina Swan Lake Update 12 (2201.12.1)
 
-<em>Swan Lake Update 12 (2201.12.1) is the first patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of features and improvements to developer tooling.</em>
+<em>Swan Lake Update 12 (2201.12.1) is the first patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of improvements and bug fixes to developer tooling.</em>
 
 ## Update Ballerina
 

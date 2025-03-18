@@ -1,19 +1,18 @@
 ---
-title: Scan tool
-description: Check out how you can dump and inspect the currently available strands of a Ballerina program.
+title: Scan Tool
+description: Learn how to dump and inspect the currently available strands of a Ballerina program.
 keywords: ballerina runtime, troubleshoot, scan, thread dump
 permalink: /learn/scan-tool/
 active: scan-tool
 ---
 
-The Ballerina scan tool is a static code analysis tool performs analysis on Ballerina projects and identifies potential code smells, bugs, and vulnerabilities without executing them.
+The Ballerina Scan Tool is a static code analysis tool that performs analysis on Ballerina projects and identifies potential code smells, bugs, and vulnerabilities without executing them.
 
->**Note:** Ballerina Scan is an experimental feature, which supports only a limited set of rules.
+>**Note:** Ballerina Scan is an experimental feature that supports only a limited set of rules.
 
+## Install the Tool
 
-## Install the tool
-
-Execute the command below to pull the scan tool from [Ballerina Central](https://central.ballerina.io/ballerina/wsdl/latest).
+Execute the command below to pull the Scan Tool from [Ballerina Central](https://central.ballerina.io/ballerina/wsdl/latest).
 
 ```sh
 bal tool pull scan
@@ -21,9 +20,9 @@ bal tool pull scan
 
 ## Usage Guide for Ballerina Scan Tool
 
-The Ballerina Scan tool helps you analyze your Ballerina project for potential issues, enforce coding standards, and generate detailed reports. Below are various ways you can use the tool to fit your development workflow.
+The Ballerina Scan Tool helps you analyze your Ballerina project for potential issues, enforce coding standards, and generate detailed reports. Below are various ways you can use the tool to fit your development workflow.
 
-### Scan a Ballerina project
+### Scan a Ballerina Project
 
 To run a full analysis across all Ballerina files in your project, use the following command:
 
@@ -31,7 +30,7 @@ To run a full analysis across all Ballerina files in your project, use the follo
 bal scan --scan-report
 ```
 
-This will produce the HTML report and scan results inside `target/report` directory
+This will produce the HTML report and scan results inside the `target/report` directory.
 
 ### List All Available Analysis Rules
 

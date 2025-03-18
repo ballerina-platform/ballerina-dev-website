@@ -1,6 +1,6 @@
 ---
 layout: ballerina-cli-documentation-left-nav-pages-swanlake
-title: Update Tool
+title: Update tool
 description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest releases.
 keywords: ballerina, programming language, release, update
 permalink: /learn/build-and-run/update-tool/

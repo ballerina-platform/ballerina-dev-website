@@ -67,7 +67,12 @@ export default function Downloads() {
             <Row className={`${styles.downloadContentRow}`}>
                <div className={styles.releaseLinks} >
                      <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
+                        {
+                           swanlake.version === "2201.12.2" ?
+                           <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-2201.12.0`}>RELEASE NOTES &gt;</a></p>
+                           :
+                           <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
+                        }
                      </div>
                </div>
             </Row>

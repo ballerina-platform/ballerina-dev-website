@@ -25,8 +25,8 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 This release includes the following improvements and bug fixes related to the new low-code visualizer in the Ballerina Visual Studio Code extension:
 
-- **Record Editor & Data Mapping Fixes**: Fixed resetting record values when mapping fields have no expressions.
-- **Agent Tooling & Actions**: Updated agent tools to include View and Delete actions and improved connection visualization in agents.
-- **GraphQL & Type Diagram Fixes**: Fixed GraphQL service retrieval issues with annotations and improved source navigation in GraphQL and type diagrams.
-- **Service Creation & Project Support**: Resolved issues when creating services in Devant projects.
-- **Sequence Diagram Enhancements**: Added support for local connections and improved diagram rendering.  
+- **Record editor & data mapping fixes**: Fixed resetting record values when mapping fields have no expressions.
+- **Agent tooling & actions**: Updated agent tools to include View and Delete actions and improved connection visualization in agents.
+- **GraphQL & type diagram fixes**: Fixed GraphQL service retrieval issues with annotations and improved source navigation in GraphQL and type diagrams.
+- **Service creation & project support**: Resolved issues when creating services in DevAnt projects.
+- **Sequence diagram enhancements**: Added support for local connections and improved diagram rendering.  

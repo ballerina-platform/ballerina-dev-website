@@ -14,8 +14,8 @@ The Ballerina Scan Tool is a static code analysis tool that performs analysis on
 
 Execute the command below to pull the Scan Tool from [Ballerina Central](https://central.ballerina.io/ballerina/wsdl/latest).
 
-```sh
-bal tool pull scan
+```
+$ bal tool pull scan
 ```
 
 ## Usage Guide for Ballerina Scan Tool
@@ -26,8 +26,8 @@ The Ballerina Scan Tool helps you analyze your Ballerina project for potential i
 
 To run a full analysis across all Ballerina files in your project, use the following command:
 
-```bash
-bal scan --scan-report
+```
+$ bal scan --scan-report
 ```
 
 This will produce the HTML report and scan results inside the `target/report` directory.
@@ -36,8 +36,8 @@ This will produce the HTML report and scan results inside the `target/report` di
 
 If you’d like to explore the full set of rules the tool can apply, run:
 
-```bash
-bal scan --list-rules
+```
+$ bal scan --list-rules
 ```
 
 This will display a comprehensive list of available rules for your project, which you can include or exclude in future scans.
@@ -46,12 +46,12 @@ This will display a comprehensive list of available rules for your project, whic
 
 If you want to apply a specific set of rules, list them as a comma-separated string by specifying the rule ID:
 
-```bash
-bal scan --include-rules="ballerina:1, ballerina/io:2"
+```
+$ bal scan --include-rules="ballerina:1, ballerina/io:2"
 ```
 
 To ignore a specific set of rules during the analysis, use the following command:
 
-```bash
-bal scan --exclude-rules="ballerina:1, ballerina/io:2"
+```
+$ bal scan --exclude-rules="ballerina:1, ballerina/io:2"
 ```

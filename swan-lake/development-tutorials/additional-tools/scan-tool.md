@@ -1,6 +1,6 @@
 ---
 title: Scan Tool
-description: Learn how to dump and inspect the currently available strands of a Ballerina program.
+description: Learn how to perform static code analysis on Ballerina projects to identify potential code smells, bugs, and vulnerabilities.
 keywords: ballerina runtime, troubleshoot, scan, thread dump
 permalink: /learn/scan-tool/
 active: scan-tool

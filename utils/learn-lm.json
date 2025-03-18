@@ -271,7 +271,7 @@
                             "id": "cli-commands"
                         },
                         {
-                            "dirName": "Update Tool",
+                            "dirName": "Update tool",
                             "level": 3,
                             "position": 2,
                             "isDir": false,

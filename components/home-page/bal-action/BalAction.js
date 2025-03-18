@@ -122,7 +122,7 @@ export default function BalAction(props) {
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2} id="column2" >
-                    <div className={styles.focusPane}>
+                    <div className={styles.focusPane} style={{textAlign: 'center'}}>
                       <Image src={`${prefix}/images/consuming-services-diagram.png`} width={433} height={655} alt="consuming-services-diagram" />
                     </div>
                   </Col>
@@ -150,7 +150,7 @@ export default function BalAction(props) {
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2}>
-                    <div className={styles.focusPane}>
+                    <div className={styles.focusPane} style={{textAlign: 'center'}}>
                       <Image src={`${prefix}/images/working-with-data-diagram.png`} width={433} height={456} alt="working-with-data-diagram" />
                     </div>
                   </Col>

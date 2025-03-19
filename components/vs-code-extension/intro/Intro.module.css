@@ -151,6 +151,7 @@ a.cDownload:hover {
     width: -moz-available;         
   width: -webkit-fill-available;  
   width: fill-available;
+  border: 1px solid #ccc;
 }
 
 .Code_cDownload__bc7ZJ {

@@ -91,7 +91,7 @@ export default function UseCases(props) {
                                                 <img src={`${prefix}/images/ai_ask.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="copilotView4" title="Test Generation">
+                                        <Tab eventKey="copilotView4" title="Test generation">
                                         <div className={styles.codeSnippet}>
                                                 <img src={`${prefix}/images/ai_test.png`}/>
                                             </div>
@@ -295,17 +295,17 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="sample1" title="Code Completion">
+                                        <Tab eventKey="sample1" title="Code completion">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/code-completion.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="sample2" title="Code Actions">
+                                        <Tab eventKey="sample2" title="Code actions">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/code-actions.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="sample3" title="Go to References">
+                                        <Tab eventKey="sample3" title="Go to references">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/go-to-references.png`}/>
                                             </div>
@@ -444,20 +444,18 @@ export default function UseCases(props) {
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                <div id="code-tab">
-                                    <Tabs defaultActiveKey="serviceDesigning1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="serviceDesigning1" title="Try HTTP services">
-                                            <div className={styles.codeSnippet}>
-                                            <img src={`${prefix}/images/http-try-it.png`}/>
-                                            </div>
-                                        </Tab>
-                                        {/* <Tab eventKey="serviceDesigning2" title="Try GraphQL services"> */}
-                                            {/* <div className={styles.codeSnippet}>
-                                            <img src={`${prefix}/images/graphql-try-it.png`}/>
-                                            </div> */}
-                                        {/* </Tab> */}
-                                    </Tabs>
-                                </div>
+                                {
+                                    (tryIt.code && tryIt.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: tryIt.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (tryIt.frontmatter.image && tryIt.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${tryIt.frontmatter.image}`} alt={tryIt.frontmatter.title} />
+                                        : null
+                                }
                             </Col>
                         </Row>
                     </Container>
@@ -580,7 +578,6 @@ export default function UseCases(props) {
             </Row>
 
              {/* Notebooks */}
-
              <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>

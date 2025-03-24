@@ -17,6 +17,22 @@
             "buttonText": "More info"
         },
         {
+            "date": "April 29, 2025",
+            "day": "Tuesday",
+            "time": "5:30 p.m. CDT",
+            "expire": "2025-04-30T00:00:00.00-00:00",
+            "location": "Austin, Texas",
+            "url": "https://www.meetup.com/coder-austin-network/events/306462997/",
+            "eventType": "Coder: Austin Network",
+            "eventName": "Boosting DevOps Productivity with Ballerina & Coder",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Dec 6, 2024",
             "day": "Fri.",
             "time": "2:30 p.m. CST",

@@ -1,22 +1,6 @@
 {
     "events": [
         {
-            "date": "April 29, 2025",
-            "day": "Tuesday",
-            "time": "5:30 p.m. CDT",
-            "expire": "2025-04-30T00:00:00.00-00:00",
-            "location": "Austin, Texas",
-            "url": "https://www.meetup.com/coder-austin-network/events/306462997/",
-            "eventType": "Coder: Austin Network",
-            "eventName": "Boosting DevOps Productivity with Ballerina & Coder",
-            "presenterTwitter": "https://twitter.com/anupama_pathira",
-            "presenter": "Anupama Pathirage",
-            "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
-        },
-        {
             "date": "May 20-22, 2025",
             "day": "Tuesday",
             "time": "",
@@ -25,6 +9,22 @@
             "url": "https://www.womentech.net/speaker/all/all/130754",
             "eventType": "Women in Tech Global Conference 2025",
             "eventName": "Ballerina - Role of modern programming language in cloud-native applications",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "April 29, 2025",
+            "day": "Tuesday",
+            "time": "5:30 p.m. CDT",
+            "expire": "2025-04-30T00:00:00.00-00:00",
+            "location": "Austin, Texas",
+            "url": "https://www.meetup.com/coder-austin-network/events/306462997/",
+            "eventType": "Coder: Austin Network",
+            "eventName": "Boosting DevOps Productivity with Ballerina & Coder",
             "presenterTwitter": "https://twitter.com/anupama_pathira",
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",

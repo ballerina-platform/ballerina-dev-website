@@ -7,7 +7,7 @@ active: overview-of-ballerina-observability
 intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
 ---
 
-Ballerina Observability is a built-in feature designed to facilitate monitoring and debugging Ballerina applications by collecting, processing, and analyzing performance and operational data. It integrates seamlessly with observability tools and supports three primary pillars of observability: metrics, tracing, and logging.
+Ballerina Observability is a built-in feature designed to facilitate monitoring and debugging Ballerina applications by collecting, processing, and analyzing performance and operational data. It integrates seamlessly with observability tools and supports three primary pillars of observability.
 
 1. **Metrics** - Provide quantitative insights into the performance of an application, such as request counts, latencies, and error counts.
 2. **Tracing** - Used to track requests/transactions as they flow through different services in a distributed system from the point of entry to exit.

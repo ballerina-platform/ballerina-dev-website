@@ -4,12 +4,10 @@ description: See how Ballerina supports observability by exposing itself via met
 keywords: ballerina, observability, metrics, prometheus
 permalink: /learn/supported-observability-tools-and-platforms/prometheus/
 active: prometheus
-intro: The sections below include information about how to observe metrics of Ballerina programs with Prometheus.
+intro: Ballerina provides metrics compatible with <a href="https://prometheus.io/">Prometheus</a> which is widely used worldwide to monitor open-source systems.
 ---
 
-Ballerina provides metrics compatible with [Prometheus](https://prometheus.io/) which is widely used worldwide for monitoring open-source systems.
-
-This [Example](/learn/overview-of-ballerina-observability/#example-a-simple-ballerina-service-to-observe) will be used in the guide. Follow the steps given below to observe Ballerina metrics in Prometheus.
+The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina metrics in Prometheus.
 
 ## Step 1 - Set up Prometheus
 Prometheus is used as the monitoring system, which pulls out the metrics collected from the Ballerina `/metrics` service. This section focuses on the quick installation of Prometheus with Docker and the configuration required to collect metrics from the Ballerina service with the default configurations. Follow the steps below to configure Prometheus. 
@@ -54,7 +52,7 @@ To include the Prometheus extension into the executable, the `ballerinax/prometh
 import ballerinax/prometheus as _;
 ```
 
-To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context of `/metrics` in default port 9797 when starting the Ballerina service.
+To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context of `/metrics` in default port `9797` when starting the Ballerina service.
 
 ## Step 3 - Configure Ballerina runtime configurations
 You can set up prometheus for your Ballerina project using configurations similar to the following in your `Config.toml` file.
@@ -71,8 +69,8 @@ host="0.0.0.0"
 
 Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
-ballerinax.prometheus. port | The value of the port to which the '/metrics' service will bind. This service will be used by Prometheus to scrape the information of the Ballerina service. | `9797` | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
-ballerinax.prometheus. host | The name of the host to which the '/metrics' service will bind. This service will be used by Prometheus to scrape the information of the Ballerina service. | `0.0.0.0` | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
+`ballerinax.prometheus.port` | The value of the port to which the '/metrics' service will bind. This service will be used by Prometheus to scrape the information of the Ballerina service. | `9797` | Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range. 
+`ballerinax.prometheus.host` | The name of the host to which the '/metrics' service will bind. This service will be used by Prometheus to scrape the information of the Ballerina service. | `0.0.0.0` | IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.
 
 ## Step 4 - Run the Ballerina service
 

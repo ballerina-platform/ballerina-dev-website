@@ -4,12 +4,10 @@ description: See how Ballerina supports observability by exposing itself via tra
 keywords: ballerina, observability, tracing, zipkin
 permalink: /learn/supported-observability-tools-and-platforms/zipkin/
 active: zipkin
-intro: The sections below include information about how to observe distributed tracing of Ballerina programs with Zipkin.
+intro: Users can configure Ballerina to support distributed tracing with <a href="https://zipkin.io/">Zipkin</a>, which is one of the open-source and distributed tracing platforms that helps troubleshoot latency problems in service architectures. Ballerina provides tracing data in OpenTelemetry format.
 ---
 
-Users can configure Ballerina to support distributed tracing with [Zipkin](https://zipkin.io/), which is one of the open-source and distributed tracing platforms that helps troubleshoot latency problems in service architectures. Ballerina provides tracing data in OpenTelemetry format.
-
-This [Example](/learn/overview-of-ballerina-observability/#example-a-simple-ballerina-service-to-observe) will be used in the guide. Follow the steps given below to observe Ballerina tracing in Zipkin.
+The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing in Zipkin.
 
 ## Step 1 - Set up Zipkin
 

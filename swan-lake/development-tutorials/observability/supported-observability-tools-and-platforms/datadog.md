@@ -4,12 +4,10 @@ description: See how Ballerina supports observability by exposing itself via met
 keywords: ballerina, observability, metrics, tracing, datadog
 permalink: /learn/supported-observability-tools-and-platforms/datadog/
 active: datadog
-intro: The sections below include information about how to observe Ballerina programs with DataDog.
+intro: Users can observe Ballerina programs with <a href="https://www.datadoghq.com/">DataDog</a>, which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with DataDog.
 ---
 
-Users can observe Ballerina programs with [DataDog](https://www.datadoghq.com/), which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with DataDog.
-
-This [Example](/learn/overview-of-ballerina-observability/#example-a-simple-ballerina-service-to-observe) will be used in the guide. Follow the steps given below to observe Ballerina tracing and metrics in DataDog.
+The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing and metrics in DataDog.
 
 Create a new account in DataDog. Select a billing plan according to your needs (A free plan is also included).
 
@@ -19,7 +17,7 @@ Then follow the steps below to set up your Datadog account to view metrics and t
 
 1. Add Prometheus to the Integrations for your account
 
-   You need to add Prometheus in the Integrations. Please go to the “Integrations” tab and search for Prometheus.
+   You need to add Prometheus in the Integrations. Please go to the **Integrations** tab and search for Prometheus.
 
    ![Adding Prometheus in DataDog Integrations](/learn/images/datadog-add-prometheus.png "Adding Prometheus in DataDog Integrations")
 

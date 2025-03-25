@@ -7,8 +7,6 @@ active: overview-of-ballerina-observability
 intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
 ---
 
-Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
-
 It consists of the three major pillars below.
 
 1. **Metrics** - numeric values that are collected and aggregated over a period of time.
@@ -17,27 +15,25 @@ It consists of the three major pillars below.
 
 Observability tools and platforms enable developers to monitor, troubleshoot, and optimize their applications effectively.
 
-Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client connectors use semantic tags to make tracing and metrics monitoring more informative.
-
 ## Provide observability in Ballerina
+Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client connectors use semantic tags to make tracing and metrics monitoring more informative.
 
 This guide demonstrates how to enable Ballerina observability to observe Ballerina services using different tools and platforms. We will use the example given below.
 
-### Example: A simple Ballerina service to observe
-Create a new Ballerina project using the `bal new` command.
+### Example: Observe a Ballerina service
+Create a new Ballerina package using the `bal new` command.
 ```
 $ bal new observability_demo
 
 Created new package 'observability_demo' at observability_demo.
 ```
 
-Delete everything inside the `main.bal` file which is located inside the newly created `observability_demo` directory, and replace it with the following code to create a Ballerina service.
+Replace the contents of the `main.bal` file, which is located inside the newly created `observability_demo` directory with the following code:
 
 ```ballerina
 import ballerina/http;
 import ballerina/log;
 
-// Define data structures.
 type Product record {|
     int id;
     string name;
@@ -173,10 +169,10 @@ tracingProvider=<TRACING_PROVIDER>
 
 Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
-ballerina.observe. metricsEnabled | Whether metrics monitoring is enabled (true) or disabled (false) | false | `true` or `false`
-ballerina.observe. metricsReporter | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `prometheus`, `newrelic` or if any custom implementation, the name of the reporter.
-ballerina.observe.tracingEnabled | Whether tracing is enabled (true) or disabled (false) | false | `true` or `false`
-ballerina.observe.tracingProvider | The tracer name, which implements the tracer interface. | `None` | `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
+`ballerina.observe.metricsEnabled` | Whether metrics monitoring is enabled (true) or disabled (false) | false | `true` or `false`
+`ballerina.observe.metricsReporter` | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `prometheus`, `newrelic` or if any custom implementation, the name of the reporter.
+`ballerina.observe.tracingEnabled` | Whether tracing is enabled (true) or disabled (false) | false | `true` or `false`
+`ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
 
 ## Observability tools and platforms supported by Ballerina
 

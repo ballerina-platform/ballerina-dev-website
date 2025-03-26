@@ -74,31 +74,31 @@ service /shop on new http:Listener(8090) {
     }
 
     // Add a new product.
-    resource function post product(@http:Payload Product product) returns http:Created|http:Conflict|error? {
+    resource function post product(Product product) returns http:Created|http:Conflict|error? {
         log:printInfo("Adding a new product");
 
-        if (products.hasKey(product.id.toString())) {
-            log:printError(string `Product already exists with product ID: ${product.id.toString()}`);
+        if products.hasKey(product.id.toString()) {
+            log:printError("Product already exists with product ID", id =product.id);
             http:Conflict errorResponse = {
-                body:  "Product already exists"
+                body:  string `Product already exists with product ID: ${product.id}`
             };
             return errorResponse;
         }
 
         products[product.id.toString()] = product;
-        log:printInfo(string `Product added successfully. ${product.toString()}`);
+        log:printInfo("Product added successfully.", product = product);
         http:Created response = {
-            body:  "Product added successfully"
+            body: string `Product added successfully with product ID: ${product.id}`
         };
         return response;   
     }
 
     // Place a new order.
-    resource function post 'order(@http:Payload OrderRequest orderRequest) returns http:Accepted|http:NotFound|error? {
+    resource function post 'order(OrderRequest orderRequest) returns http:Accepted|http:NotFound|error? {
         log:printInfo("Received order request");
 
         if !products.hasKey(orderRequest.productId.toString()) {
-            log:printError(string `Product not found with product ID: ${orderRequest.productId.toString()}`);
+            log:printError("Product not found with product ID", id = orderRequest.productId);
             http:NotFound errorResponse = {
                 body:  string `Product not found with product ID: ${orderRequest.productId.toString()}`
             };
@@ -109,9 +109,9 @@ service /shop on new http:Listener(8090) {
         orders[orderCount.toString()] = newOrder;
         orderCount += 1;
 
-        log:printInfo(string `Order placed successfully. ${newOrder.toString()}`);
+        log:printInfo("Order placed successfully.", 'order = newOrder);
         http:Accepted response = {
-            body:  newOrder.toJson()
+            body:  newOrder
         };
         return response;
     }
@@ -120,18 +120,18 @@ service /shop on new http:Listener(8090) {
     resource function get 'order/[int orderId]() returns http:Ok|http:NotFound|error? {
         log:printInfo("Fetching order details");
 
-        if (!orders.hasKey(orderId.toString())) {
-            log:printError(string `Order not found with order ID: ${orderId.toString()}`);
+        if !orders.hasKey(orderId.toString()) {
+            log:printError("Order not found with order ID", id = orderId);
             http:NotFound errorResponse = {
-                body:  string `Order not found with order ID: ${orderId.toString()}`
+                body: string `Order not found with order ID: ${orderId}`
             };
             return errorResponse;
         }
 
-        Order 'order =  <Order> orders[orderId.toString()];
-        log:printInfo(string `Order details fetched successfully. ${'order.toString()}`);
+        Order 'order =  orders.get(orderId.toString());
+        log:printInfo("Order details fetched successfully", 'order = 'order);
         http:Ok response = {
-            body:  'order.toJson()
+            body:  'order
         };
         return response;
     }

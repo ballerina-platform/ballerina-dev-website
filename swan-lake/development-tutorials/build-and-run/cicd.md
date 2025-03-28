@@ -46,7 +46,7 @@ Below are the sample configurations for popular platforms to get started quickly
            uses: actions/checkout@v3
 
          - name: Set up Ballerina
-           uses: ballerina-platform/ballerina-action@v1
+           uses: ballerina-platform/setup-ballerina@v1
            with:
              version: 2201.11.0 # Specify the Ballerina version
 
@@ -74,7 +74,7 @@ Below are the sample configurations for popular platforms to get started quickly
            run: bal build --cloud=docker
 
          - name: Push Docker Image
-           run: | # Replace my-ballerina-app with your Docker image name
+           run: | # Replace the docker image name, version and repository with correct values 
              echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
              docker push my-ballerina-app:${{ github.sha }} 
    ```
@@ -84,7 +84,7 @@ Below are the sample configurations for popular platforms to get started quickly
 - **Docker support**: Builds and pushes Docker images if your project requires containerization.
 
 To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` and `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/publish-packages-to-ballerina-central/#publish-a-package-to-ballerina-central). 
-Docker username and password can be obtained from [Docker Hub](https://hub.docker.com/).
+Docker username and password can be obtained from [Docker Hub](https://hub.docker.com/). Replace the docker image name, version, and repository with the correct values.
 
 ### GitLab CI/CD for Ballerina
 

@@ -1,4 +1,4 @@
 ---
-title: 'Create images with DALL-E and Stable Diffusion'
-description: "Stable Diffusion and OpenAI’s DALL-E image APIs generate or edit images with text based instructions. The power of the Ballerina library makes uploading, downloading and processing images a breeze."
+title: 'Beyond Text: Multimodal AI at Your Fingertips'
+description: "AI isn’t just about text—and neither is Ballerina. With connectors to popular AI providers, you can integrate image generation, audio synthesis, and other multimodal capabilities into your applications just as easily as working with LLMs. Whatever the medium, Ballerina helps you bring it all together through a unified, type-safe integration layer."
 ---

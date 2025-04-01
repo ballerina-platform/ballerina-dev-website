@@ -1,4 +1,4 @@
 ---
-title: 'Transcribe speech or music with Whisper'
-description: "OpenAI’s Whisper API makes speech and music computable! Easily transcribe speech or music in any language into text. The power of the Ballerina library makes manipulating audio files and processing the results trivially simple."
+title: 'Ballerina Copilot'
+description: "Ballerina Copilot makes it easy to build both AI and non-AI integrations using natural language—just tell it what you want, and it gets to work. Whether you're connecting to an LLM or stitching together APIs, Copilot helps you move fast with less code. And the fun part? Ballerina Copilot is written in Ballerina itself!"
 ---

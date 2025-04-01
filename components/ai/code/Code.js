@@ -142,53 +142,10 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{why.frontmatter.description}</ReactMarkdown>
 
-                                    <div className={styles.dVersions}>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://central.ballerina.io/search?q=package%3Aopenai.`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>OpenAI Connectors</div>
-                                            </a>
-                                        </div>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://central.ballerina.io/search?q=package%3Aazure.openai.&sort=pull_count%2CDESC&page=1`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>Azure OpenAI connectors</div>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.dVersions}>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://central.ballerina.io/search/keywords?q=Embedding+Search&page=1`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>Vector DB connectors</div>
-                                            </a>
-                                        </div>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://central.ballerina.io/search/keywords?q=AI%2FImages&page=1`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>Images</div>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.dVersions}>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://central.ballerina.io/ballerina/math.vector`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>Vector Math</div>
-                                            </a>
-                                        </div>
-                                    </div>
-
                                     {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>HR Retrieval Augmented Generation Application</span>
                                                 <a href={why.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -219,7 +176,7 @@ export default function UseCases(props) {
                                         <p className='title-new'>Diagram</p>
                                         {/* <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} /> */}
                                         <div className="code-panel diagram">
-                                            <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                            <Image src={`${prefix}/images/ai_project_flow_diag.png`} width={520} height={548} alt="Diagram" />
                                             {/* <img src={`${prefix}/images/ai-diagram.png`} alt={why.frontmatter.title} className={styles.doNotFill} width='71%' /> */}
                                         </div>
                                         {/* <div className="code-panel">
@@ -410,8 +367,8 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 2: Correct grammar and spelling in text using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <span>Sample 2: Function Calling using OpenAI</span>
+                                        <a href='https://github.com/xlight05/ai-samples/blob/usecase-samples/function_calling/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -480,8 +437,8 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <span>Sample 1: Generate images using OpenAI and store them in Google Drive</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <span>Sample 1: Describe an image using OpenAI</span>
+                                        <a href='https://github.com/xlight05/ai-samples/blob/usecase-samples/describe_photo/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -497,16 +454,16 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 3: Create and send customized greeting cards using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <span>Sample 3: Convert audio to text and translate using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 4: Generate a poem and an image on a topic using OpenAI and Stable Diffusion and email both of them</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_and_send_a_creative_email_using_openai_and_stability_ai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <span>Sample 4: Audio-to-text summarization using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -528,12 +485,12 @@ export default function UseCases(props) {
                                         </Tab>
                                         <Tab eventKey="dalle3" title="Sample 3">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle3.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample1.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="dalle4" title="Sample 4">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle4.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample2.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -571,477 +528,33 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}>
-                                        <span>Sample 1: Convert audio to text and translate using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
-                                        </a>
-                                    </div>
-
-                                    <div className={styles.dVersion}>
-                                        <span>Sample 2: Audio-to-text summarization using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
-                                        </a>
-                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
-                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="sample1" title="Sample 1">
+                                    <Tabs defaultActiveKey="copilotView1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="copilotView1" title="Code generation">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample1.code }} />
+                                                <img src={`${prefix}/images/ai_codegen.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="sample2" title="Sample 2">
-                                            <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample2.code }} />
+                                        <Tab eventKey="copilotView2" title="AI Data Mapper">
+                                        <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_datamapper.png`}/>
                                             </div>
                                         </Tab>
-                                    </Tabs>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* tune */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='fine-tune-models-with-your-own-data' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'fine-tune-models-with-your-own-data')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {tune.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{tune.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (tune.frontmatter.url && tune.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Fine-tune GPT-3 models</span>
-                                                <a href={tune.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (tune.code && tune.code !== '') ?
+                                        <Tab eventKey="copilotView3" title="Ask Ballerina">
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: tune.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (tune.frontmatter.image && tune.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${tune.frontmatter.image}`} alt={tune.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* vector */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='simplify-vector-database-management' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'simplify-vector-database-management')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {vector.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{vector.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (vector.frontmatter.url && vector.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Answer questions by performing a similarity search on embedding vectors stored in Weaviate</span>
-                                                <a href={vector.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (vector.code && vector.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: vector.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (vector.frontmatter.image && vector.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${vector.frontmatter.image}`} alt={vector.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* libraries */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='libraries-for-ai-operations' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'libraries-for-ai-operations')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {libraries.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{libraries.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (libraries.frontmatter.url && libraries.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Text similarity comparison with OpenAI GPT-3 embeddings</span>
-                                                <a href={libraries.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (libraries.code && libraries.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: libraries.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (libraries.frontmatter.image && libraries.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${libraries.frontmatter.image}`} alt={libraries.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* effortlessly */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='effortlessly-create-impactful-business-use-cases' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'effortlessly-create-impactful-business-use-cases')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {effortlessly.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{effortlessly.frontmatter.description}</ReactMarkdown>
-
-                                    <div className={styles.dVersion}>
-                                        <span>Sample 1: Chatbot service for Slack using Azure OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/slackbot_using_azure_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
-                                        </a>
-                                    </div>
-
-                                    <div className={styles.dVersion}>
-                                        <span>Sample 2: Question Answering based on Context using OpenAI GPT-3 and Pinecone</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai_and_pinecone/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-
-                                <div id="code-tab">
-                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="sample1" title="Sample 1">
-                                            <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort1.code }} />
+                                                <img src={`${prefix}/images/ai_ask.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="sample2" title="Sample 2">
-                                            <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort2.code }} />
+                                        <Tab eventKey="copilotView4" title="Test generation">
+                                        <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_test.png`}/>
                                             </div>
                                         </Tab>
                                     </Tabs>
                                 </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* powered */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='create-ai-powered-apis' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'create-ai-powered-apis')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {powered.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{powered.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (powered.frontmatter.url && powered.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Question answering with OpenAI</span>
-                                                <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                    <div className={styles.dVersion}>
-                                        <a href='/use-cases/integration' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            Take a deeper dive into using Ballerina for integration.
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (powered.code && powered.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: powered.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (powered.frontmatter.image && powered.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${powered.frontmatter.image}`} alt={powered.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* robust */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='write-robust-api-powered-ai-applications' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'write-robust-api-powered-ai-applications')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {robust.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{robust.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (robust.frontmatter.url && robust.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Grammar and spelling correction in text using OpenAI</span>
-                                                <a href={robust.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (robust.code && robust.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: robust.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (robust.frontmatter.image && robust.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${robust.frontmatter.image}`} alt={robust.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* concurrency*/}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='concurrency-simplified-for-ai-development' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'concurrency-simplified-for-ai-development')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {concurrency.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{concurrency.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (concurrency.frontmatter.url && concurrency.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Personalized greetings with custom design using OpenAI</span>
-                                                <a href={concurrency.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (concurrency.code && concurrency.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: concurrency.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (concurrency.frontmatter.image && concurrency.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${concurrency.frontmatter.image}`} alt={concurrency.frontmatter.title} />
-                                        : null
-                                }
                             </Col>
                         </Row>
                     </Container>
@@ -1080,7 +593,7 @@ export default function UseCases(props) {
                                         (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with WSO2 Choreo for free
+                                                    Get started with WSO2 Devant for free
                                                 </a>
                                             </div>
                                             : null

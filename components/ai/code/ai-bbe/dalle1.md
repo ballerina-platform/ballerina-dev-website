@@ -1,28 +1,28 @@
 ```
 public function main() returns error? {
+    chat:CreateChatCompletionRequest request = {
+        model: "gpt-4o-mini",
+        messages: [
+            {
+                role: "user",
+                content: [
+                    {
+                        'type: "text",
+                        text: "What is in this image?"
+                    },
+                    {
+                        'type: "image_url",
+                        image_url: {
+                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+    chat:CreateChatCompletionResponse completionRes = check openAIChat->/chat/completions.post(request);
 
-    sheets:Client gSheets = check new ({auth: {token: googleAccessToken}});
-    images:Client openAIImages = check new ({auth: {token: openAIToken}});
-    drive:Client gDrive = check new ({auth: {token: googleAccessToken}});
-
-    sheets:Column range = check gSheets->getColumn(sheetId, sheetName, "A");
-
-    foreach var cell in range.values {
-        string prompt = cell.toString();
-        images:CreateImageRequest imagePrompt = {
-            prompt,
-            response_format: "b64_json"
-        };
-
-        images:ImagesResponse imageRes = check openAIImages->/images/generations.post(imagePrompt);
-        string? encodedImage = imageRes.data[0].b64_json;
-        if encodedImage is () {
-            return error(string `Failed to generate image for prompt: ${prompt}`);
-        }
-
-        // Decode the Base64 string and store image in Google Drive
-        byte[] imageBytes = check array:fromBase64(encodedImage);
-        _ = check gDrive->uploadFileUsingByteArray(imageBytes, string `${cell}.png`, gDriveFolderId);
-    }
+    string content = check completionRes.choices[0].message.content.ensureType();
+    io:println("Photo Description: ", content);   
 }
 ```

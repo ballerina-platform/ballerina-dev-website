@@ -571,9 +571,17 @@
                             "id": "deployment-guidelines-overview"
                         },
                         {
-                            "dirName": "Containerized deployment",
+                            "dirName": "Virtual machine deployment",
                             "level": 3,
                             "position": 2,
+                            "isDir": false,
+                            "url": "/learn/virtual-machine-deployment",
+                            "id": "virtual-machine-deployment"
+                        },
+                        {
+                            "dirName": "Containerized deployment",
+                            "level": 3,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/containerized-deployment",
                             "id": "containerized-deployment"
@@ -581,18 +589,10 @@
                         {
                             "dirName": "Serverless deployment ",
                             "level": 3,
-                            "position": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/serverless-deployment",
                             "id": "serverless-deployment"
-                        },
-                        {
-                            "dirName": "Virtual machine deployment",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/virtual-machine-deployment",
-                            "id": "virtual-machine-deployment"
                         }
                     ]
                 },

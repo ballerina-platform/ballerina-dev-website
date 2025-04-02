@@ -546,6 +546,15 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/virtual-machine-deployment`} className={styles.titleLink}>
+                            Virtual machine deployment
+                          </a>
+                        </p>
+                        <p className={styles.description}>Guidelines for deployment in VMs.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/containerized-deployment/`} className={styles.titleLink}>
                             Containerized deployment
                           </a>
@@ -560,15 +569,6 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Guidelines for deployment in Serverless.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/virtual-machine-deployment`} className={styles.titleLink}>
-                            Virtual machine deployment
-                          </a>
-                        </p>
-                        <p className={styles.description}>Guidelines for deployment in VMs.</p>
                       </div>
 
                     </div>

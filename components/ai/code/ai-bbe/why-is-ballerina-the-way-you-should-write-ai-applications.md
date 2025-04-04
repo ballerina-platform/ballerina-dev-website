@@ -1,61 +1,43 @@
 ---
 title: 'Why is Ballerina the way you should write AI applications?'
-description: "For many years Python, a wonderful language, has been the de facto choice for data analytics, data science, and machine learning. But using LLMs to add AI to business applications is not about those problems anymore but more about prompt engineering, fine-tuning, calling APIs offered by hosted LLMs, chaining LLMs, and combining them with other APIs.<br/><br/>
-
-Ballerina is your best choice for writing modern cloud-native applications that incorporate LLM-powered AI!
-"
-url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'
+description: "Python remains the go-to for machine learning, data science, and analytics—but integrating AI into modern business applications is a different challenge. It’s now about invoking LLMs, prompt engineering, and embedding AI into workflows. Ballerina, a cloud-native language built for integration, offers powerful abstractions to connect with LLMs and seamlessly weave AI into your applications to deliver real value."
+url: 'https://github.com/xlight05/ai-samples/blob/usecase-samples/hr_agent_rag_app/main.bal'
 ---
 ```
-public function main(string audioURL, string toLanguage) returns error? {
-    // Creates a HTTP client to download the audio file
-    http:Client audioEP = check new (audioURL);
-    http:Response httpResp = check audioEP->get("");
-    byte[] audioBytes = check httpResp.getBinaryPayload();
-    check io:fileWriteBytes(AUDIO_FILE_PATH, audioBytes);
+service /agent on hrAgent {
+    resource function post chat(@http:Payload agent:ChatReqMessage request) returns agent:ChatRespMessage|error {
+        string query = request.message;
+        embeddings:Deploymentid_embeddings_body embeddingsBody = {input: query};
+        embeddings:Inline_response_200 embeddingsResult = check azureOpenAIEmbeddings->/deployments/[EMBEDDING_DEPLOYMENT_ID]/embeddings.post("2023-03-15-preview", embeddingsBody);
 
-    // Creates a request to translate the audio file to text (English)
-    audio:CreateTranslationRequest translationsReq = {
-        file: {fileContent: check io:fileReadBytes(AUDIO_FILE_PATH), fileName: AUDIO_FILE},
-        model: "whisper-1"
-    };
+        float[] embeddingsFloat = decimalToFloatArray(embeddingsResult.data[0].embedding);
+        vector:QueryRequest queryRequest = {
+            topK: 4,
+            includeMetadata: true,
+            vector: embeddingsFloat
+        };
+        vector:QueryResponse response = check pinecodeVector->/query.post(queryRequest);
+        vector:QueryMatch[] matches = check response.matches.ensureType();
 
-    // Translates the audio file to text (English)
-    audio:Client openAIAudio = check new ({auth: {token: openAIToken}});
-    audio:CreateTranscriptionResponse transcriptionRes = check openAIAudio->/audio/translations.post(translationsReq);
-    io:println("Audio text in English: ", transcriptionRes.text);
+        string context = check augment(matches);
 
-    final chat:Client openAIChat = check new ({
-        auth: {
-            token: openAIToken
-        }
-    });
+        string systemPrompt = string `You are an HR Policy Assistant that provides employees with accurate answers
+        based on company HR policies.Your responses must be clear and strictly based on the provided context.
+        ${context}`;
 
-    string query = string `Translate the following text from English to ${toLanguage} : ${transcriptionRes.text}`;
+        chat:CreateChatCompletionRequest chatRequest = {
+            messages: [
+                {role: "system", "content": systemPrompt},
+                {role: "user", "content": query}
+            ]
+        };
 
-    // Creates a request to translate the text from English to another language
-    chat:CreateChatCompletionRequest request = {
-        model: "gpt-4o",
-        messages: [
-            {
-                "role": "user",
-                "content": query
-            }
-        ],
-        temperature: 0.7,
-        max_tokens: 256,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0
-    };
+        chat:CreateChatCompletionResponse chatResult =
+        check azureOpenAIChat->/deployments/[LLM_DEPLOYMENT_ID]/chat/completions.post("2023-12-01-preview", chatRequest);
+        ChatResponseChoice[] choices = check chatResult.choices.ensureType();
+        string chatResponse = check choices[0].message?.content.ensureType();
 
-    // Translates the text from English to another language
-    chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
-    string? translatedText = response.choices[0].message.content;
-
-    if translatedText is () {
-        return error("Failed to translate the given audio.");
+        return {message: chatResponse};
     }
-    io:println("Translated text: ", translatedText);
 }
 ```

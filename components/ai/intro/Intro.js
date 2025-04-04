@@ -33,11 +33,11 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                    AI is no longer only about training models but rather invoking APIs with AI available as a Service from OpenAI, Microsoft, Google, Facebook, and others.
+                                    AI is no longer just trained — it&apos;s integrated.
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Ballerina is well-suited for integrating AI into your applications, especially for leveraging large language models and other generative technologies.
+                                Ballerina is purpose-built for integration, making it an ideal choice for bringing AI into your applications. With built-in abstractions designed for invoking your favourite large language models and other generative AI technologies, Ballerina simplifies and streamlines AI integration like never before.
                                 </p>
 
                                 <p className={styles.dVersion}>

@@ -1,25 +1,39 @@
 ```
-public function main(string filePath) returns error? {
-    http:RetryConfig retryConfig = {
-        interval: 5, // Initial retry interval in seconds.
-        count: 3, // Number of retry attempts before stopping.
-        backOffFactor: 2.0 // Multiplier of the retry interval.
+public function main() returns error? {
+    ParamterSchema param = {
+        'type: "object",
+        properties: {
+            "location": {
+                'type: "string",
+                description: "City and country e.g. Bogotá, Colombia"
+            }
+        },
+        required: ["location"],
+        additionalProperties: false
     };
-    final chat:Client openAIChat = check new ({auth: {token: openAIToken}, retryConfig});
-
     chat:CreateChatCompletionRequest request = {
         model: "gpt-4o-mini",
         messages: [
             {
-                "role": "user",
-                "content": string `Fix grammar and spelling mistakes of the content ${check
-                io:fileReadString(filePath)}`
+                role: "user",
+                content: string `What is the weather like in Paris today?`
             }
+        ],
+        tools: [
+        {
+            'type: "function",
+            'function: {
+                name: "get_weather",
+                description: "Get current temperature for a given location.",
+                parameters: param,
+                strict: true
+            }
+        }
         ]
     };
+    chat:CreateChatCompletionResponse completionRes = check openAIChat->/chat/completions.post(request);
 
-    chat:CreateChatCompletionResponse response = check openAIChat->/chat/completions.post(request);
-    string text = check response.choices[0].message.content.ensureType();
-    io:println(string `Corrected: ${text}`);
+    chat:ChatCompletionMessageToolCalls toolCalls = check completionRes.choices[0].message.tool_calls.ensureType();
+    io:println("Tool Calls: ", toolCalls);
 }
 ```

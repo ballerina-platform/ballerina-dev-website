@@ -1,6 +1,24 @@
 {
     "events": [
         {
+            "date": "Apr 09, 2025",
+            "expire": "2025-04-09T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "Robert Gordon University",
+            "faculty": "Department of Computer Science",
+            "title": "Modern Software Security Practices",
+            "isVirtual": true,
+            "location": "United Kingdom",
+            "presenters": [
+                {
+                    "name": "Chamupathi Gigara Hettige",
+                    "twitter": "https://www.linkedin.com/in/gigarahettige/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "Feb 28, 2025",
             "expire": "2025-02-28T04:30:00+00:00",
             "type": "Workshop",

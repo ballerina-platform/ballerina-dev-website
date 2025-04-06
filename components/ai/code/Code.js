@@ -34,32 +34,22 @@ export default function UseCases(props) {
 
     const agent = samples['ballerina-ai-agent'];
 
-    const chat = samples['bring-text-alive-with-openai-chats'];
-    const chat1 = samples['openai1'];
-    const chat2 = samples['openai2'];
-    const chat3 = samples['openai3'];
+    const text_connectors = samples['ballerina_text_connectors'];
+    const text_connectors_chat1 = samples['openai1'];
+    const text_connectors_chat2 = samples['openai2'];
+    const text_connectors_chat3 = samples['openai3'];
 
-    const dalle = samples['create-images-with-dall-e'];
-    const dalle1 = samples['dalle1'];
-    const dalle2 = samples['dalle2'];
-    const dalle3 = samples['dalle3'];
-    const dalle4 = samples['dalle4'];
+    const multimodel = samples['ballerina_multimodel'];
+    const multimodel_1 = samples['multimodel1'];
+    const multimodel_2 = samples['multimodel2'];
+    const multimodel_3 = samples['multimodel3'];
+    const multimodel_4 = samples['multimodel4'];
 
-    const music = samples['transcribe-speech-or-music-with-whisper'];
-    const sample1 = samples['music1'];
-    const sample2 = samples['music2'];
+    const copilot = samples['copilot_your_partner'];
+
     const npCode = samples['natural_programming_code'];
 
-    const tune = samples['fine-tune-models-with-your-own-data'];
-    const vector = samples['simplify-vector-database-management'];
-    const libraries = samples['libraries-for-ai-operations'];
-    const powered = samples['create-ai-powered-apis'];
-    const robust = samples['write-robust-api-powered-ai-applications'];
-    const concurrency = samples['concurrency-simplified-for-ai-development'];
-    const effortlessly = samples['effortlessly-create-impactful-business'];
-    const effort1 = samples['effort1'];
-    const effort2 = samples['effort2'];
-    const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
+    const ipaas = samples['hosting_ipaas'];
     const np = samples['blog-analyzer-using-natural-programming'];
 
     var isResizing = false;
@@ -161,12 +151,7 @@ export default function UseCases(props) {
                                 <div id="code-container" className='d-none d-lg-block'>
                                     <div id="left_panel">
                                         <p className='title-old'>Code</p>
-                                        {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
                                         <div className="code-panel" dangerouslySetInnerHTML={{ __html: why.code }} />
-                                        {/* <div className="code-panel">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                            <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                        </div> */}
                                     </div>
                                     <div id="right_panel">
                                         <div id="drag">
@@ -174,16 +159,9 @@ export default function UseCases(props) {
                                         </div>
 
                                         <p className='title-new'>Diagram</p>
-                                        {/* <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} /> */}
-                                        <div className="code-panel diagram">
-                                            <Image src={`${prefix}/images/ai_project_flow_diag.png`} width={520} height={548} alt="Diagram" />
-                                            {/* <img src={`${prefix}/images/ai-diagram.png`} alt={why.frontmatter.title} className={styles.doNotFill} width='71%' /> */}
+                                        <div className="code-panel diagram-multi">
+                                            <Image src={`${prefix}/images/ai_project_comp.png`} width={520} height={548} padding={30} alt="Diagram" />
                                         </div>
-                                        {/* <div className="code-panel">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                            <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                        </div> */}
-
                                     </div>
                                 </div>
 
@@ -199,7 +177,7 @@ export default function UseCases(props) {
                                             </div>
                                         </Tab>
                                         <Tab eventKey="diagram" title="Diagram">
-                                            <img src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                            <img src={`${prefix}/images/ai_project_comp.png`} width={520} height={548} alt="Diagram" />
                                         </Tab>
                                     </Tabs>
                                 </div>
@@ -331,8 +309,68 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* chat */}
+            {/* copilot */}
             <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='copilot_your_partner' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'copilot_your_partner')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {copilot.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{copilot.frontmatter.description}</ReactMarkdown>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="copilotView1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="copilotView1" title="Code generation">
+                                            <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_codegen.png`}/>
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="copilotView2" title="AI Data Mapper">
+                                        <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_datamapper.png`}/>
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="copilotView3" title="Ask Ballerina">
+                                        <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_ask.png`}/>
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="copilotView4" title="Test generation">
+                                        <div className={styles.codeSnippet}>
+                                                <img src={`${prefix}/images/ai_test.png`}/>
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* text connectors */}
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -350,14 +388,14 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {chat.frontmatter.title}
+                                    {text_connectors.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{chat.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{text_connectors.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Summarize text using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
@@ -388,17 +426,17 @@ export default function UseCases(props) {
                                     <Tabs defaultActiveKey="chat1" id="code" className="mb-3 codeTabs">
                                         <Tab eventKey="chat1" title="Sample 1">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat1.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: text_connectors_chat1.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="chat2" title="Sample 2">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat2.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: text_connectors_chat2.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="chat3" title="Sample 3">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat3.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: text_connectors_chat3.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -409,13 +447,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* dalle */}
-            <Row className="pageContentRow integration code odd">
+            {/* multimodal */}
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='create-images-with-dall-e' className='section'>
+                                <h2 id='ballerina_multimodel' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -423,19 +461,19 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'create-images-with-dall-e')}
+                                        onClick={(e) => props.getLink(e.target, 'ballerina_multimodel')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {dalle.frontmatter.title}
+                                    {multimodel.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{multimodel.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Describe an image using OpenAI</span>
                                         <a href='https://github.com/xlight05/ai-samples/blob/usecase-samples/describe_photo/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
@@ -475,22 +513,22 @@ export default function UseCases(props) {
                                     <Tabs defaultActiveKey="dalle1" id="code" className="mb-3 codeTabs">
                                         <Tab eventKey="dalle1" title="Sample 1">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle1.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: multimodel_1.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="dalle2" title="Sample 2">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle2.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: multimodel_2.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="dalle3" title="Sample 3">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample1.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: multimodel_3.code }} />
                                             </div>
                                         </Tab>
                                         <Tab eventKey="dalle4" title="Sample 4">
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample2.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: multimodel_4.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -501,68 +539,8 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* music */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='transcribe-speech-or-music-with-whisper' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'transcribe-speech-or-music-with-whisper')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {music.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                <div id="code-tab">
-                                    <Tabs defaultActiveKey="copilotView1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="copilotView1" title="Code generation">
-                                            <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_codegen.png`}/>
-                                            </div>
-                                        </Tab>
-                                        <Tab eventKey="copilotView2" title="AI Data Mapper">
-                                        <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_datamapper.png`}/>
-                                            </div>
-                                        </Tab>
-                                        <Tab eventKey="copilotView3" title="Ask Ballerina">
-                                        <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_ask.png`}/>
-                                            </div>
-                                        </Tab>
-                                        <Tab eventKey="copilotView4" title="Test generation">
-                                        <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/ai_test.png`}/>
-                                            </div>
-                                        </Tab>
-                                    </Tabs>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* ipaas */}
-            <Row className="pageContentRow integration code">
+            {/* devant */}
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

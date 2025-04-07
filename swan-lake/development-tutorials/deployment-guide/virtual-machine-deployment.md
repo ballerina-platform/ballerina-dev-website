@@ -73,7 +73,7 @@ The following steps outline the CI process in a source repository:
 
 2. Install the Ballerina distribution from the [Ballerina Installation options.](/downloads/)
 
-3. Install any other dependencies your Ballerina packages might need (e.g., database drivers, libraries).
+3. Install any other dependencies your Ballerina application might need (e.g., database drivers, libraries).
 
 4. Create a new Ballerina package.
 

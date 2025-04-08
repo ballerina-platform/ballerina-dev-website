@@ -159,8 +159,8 @@ export default function UseCases(props) {
                                         </div>
 
                                         <p className='title-new'>Diagram</p>
-                                        <div className="code-panel diagram-multi">
-                                            <Image src={`${prefix}/images/ai_project_comp.png`} width={520} height={548} padding={30} alt="Diagram" />
+                                        <div className="code-panel diagram-multi" style={{textAlign: 'center'}}>
+                                            <Image src={`${prefix}/images/ai_project_comp.png`} width={381} height={540} padding={30} alt="Diagram" />
                                         </div>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@ export default function UseCases(props) {
                                             </div>
                                         </Tab>
                                         <Tab eventKey="diagram" title="Diagram">
-                                            <img src={`${prefix}/images/ai_project_comp.png`} width={520} height={548} alt="Diagram" />
+                                            <img src={`${prefix}/images/ai_project_comp.png`} width={381} height={540} alt="Diagram" />
                                         </Tab>
                                     </Tabs>
                                 </div>

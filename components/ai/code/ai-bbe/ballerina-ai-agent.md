@@ -1,6 +1,6 @@
 ---
-title: "Seamless Integrations with Ballerina AI Agents"
-description: "Ballerina's AI Agent feature enables your applications to understand and execute natural language commands by leveraging the reasoning and text generation capabilities of LLMs. This integration allows your applications to perform complex tasks, automate workflows, and provide intelligent responses, enhancing user interaction and operational efficiency."
+title: "Seamless integrations with Ballerina AI agents"
+description: "Ballerina's AI Agent feature enables your applications to understand and execute natural language commands by leveraging the reasoning capabilities of LLMs. It empowers your apps to act autonomously—automating workflows, making decisions, and driving intelligent outcomes."
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/personal_ai_assistant_agent/agents.bal'
 ---
 ```

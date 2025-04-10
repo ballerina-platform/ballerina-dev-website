@@ -665,21 +665,15 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{choreo.frontmatter.description}</ReactMarkdown>
 
-                                    <div className={styles.dVersion}>
-                                        <a href={`${prefix}/learn/vs-code-extension/deploy-with-wso2-choreo/`} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Deploy the code" />
-                                            Deploy with WSO2 Choreo
-                                        </a>
-                                        <a href="https://wso2.com/choreo/" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/main-right-arrow-home-grey.svg`} width={20} height={20} alt="Deploy the code" />
-                                            Get started with WSO2 Choreo
-                                        </a>
-                                        <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.choreo" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/main-right-arrow-home-grey.svg`} width={20} height={20} alt="Deploy the code" />
-                                            Get the Choreo extension
-                                        </a>
-                                        
-                                    </div>
+                                    {
+                                        (choreo.frontmatter.url && choreo.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={choreo.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    Deploy with Devant by WSO2
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
 
                                 </div>
                             </Col>

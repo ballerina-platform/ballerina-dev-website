@@ -661,7 +661,7 @@ export default function UseCases(props) {
                                         (deployment.frontmatter.url && deployment.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={deployment.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with Choreo IDevP for free
+                                                    Get started with Devant by WSO2 for free
                                                 </a>
                                             </div>
                                             : null

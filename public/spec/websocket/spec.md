@@ -35,7 +35,7 @@ The conforming implementation of the specification is released and included in t
             * [onClose](#onclose)
             * [onError](#onerror)
         * 3.2.2. [Dispatching custom remote methods](#322-dispatching-custom-remote-methods)
-          * [Dispatching custom error remote methods](#Dispatching custom error remote methods)
+          * [Dispatching custom error remote methods](#dispatching-custom-error-remote-methods)
         * 3.2.3. [Return types](#323-return-types)
 4. [Client](#4-client)
     * 4.1. [Client Configurations](#41-client-configurations)
@@ -366,45 +366,80 @@ For example, if the message is `{"event": "heartbeat"}` it will get dispatched t
 
 1. The user can configure the field name(key) to identify the messages and the allowed values as message types.
 
-The `dispatcherKey` is used to identify the event type of the incoming message by its value. 
-The `dispatcherStreamId` is used to distinguish between requests and their corresponding responses in a multiplexing scenario.
+    The `dispatcherKey` is used to identify the event type of the incoming message by its value. The `dispatcherStreamId` is used to distinguish between requests and their corresponding responses in a multiplexing scenario.
 
-```ballerina
+    ```ballerina
+    Ex:
+    incoming message = ` {"event": "heartbeat", "id": "1"}`
+    dispatcherKey = "event"
+    dispatcherStreamId = "id"
+    event/message type = "heartbeat"
+    dispatching to remote function = "onHeartbeat"
 
-Ex:
-incoming message = ` {"event": "heartbeat", "id": "1"}`
-dispatcherKey = "event"
-dispatcherStreamId = "id"
-event/message type = "heartbeat"
-dispatching to remote function = "onHeartbeat"
+    ```ballerina
+    @websocket:ServiceConfig {
+        dispatcherKey: "event",
+        dispatcherStreamId: "id"
+    }
+    service / on new websocket:Listener(9090) {}
+    ```
 
-```ballerina
-@websocket:ServiceConfig {
-    dispatcherKey: "event",
-    dispatcherStreamId: "id"
-}
-service / on new websocket:Listener(9090) {}
-```
+2. Naming of the remote function.
 
-##### [Dispatching custom error remote methods](#Dispatching custom error remote methods)
+    * If there are spaces and underscores between message types, those will be removed and made camel case("un subscribe" -> "onUnSubscribe").
+    * The 'on' word is added as the predecessor and the remote function name is in the camel case("heartbeat" -> "onHeartbeat").
+
+3. Custom Dispatching with `@DispatcherMapping` annotation
+
+    The `@DispatcherMapping` annotation allows users to explicitly define the dispatching behavior for remote functions. If an incoming message type matches the value in the annotation, the respective remote function will be invoked.
+
+    ```ballerina
+    @DispatcherMapping {
+        value: "subscribe"
+    }
+    remote function onSubscribeMessage(Subscribe message) returns string {
+        return "onSubscribeMessage";
+    }
+    ```
+
+    In this case, when a message of type "subscribe" is received, the `onSubscribeMessage` remote function is invoked.
+
+4. If an unmatching message type receives where a matching remote function is not implemented in the WebSocket service by the user, it gets dispatched to the default `onMessage` remote function if it is implemented. Or else it will get ignored.
+
+##### [Dispatching custom error remote methods](#dispatching-custom-error-remote-methods)
 
 If the user has defined a remote function with the name `customRemoteFunction` + `Error` in the WebSocket service, the error messages will get dispatched to that remote function when there is a data binding error. If that is not defined, the generic `onError` remote function gets dispatched.
 
+* Example 1
+
 ```ballerina
-Ex:
+remote function onHeartbeat(Heartbeat message) returns error? {
+}
+
+remote function onHeartbeatError(error message) returns error? {
+}
+
 incoming message = ` {"event": "heartbeat"}`
-dispatcherKey = "event"
-event/message type = "heartbeat"
 dispatching remote function = "onHeartbeat"
 dispatching error remote function = "onHeartbeatError"
 ```
 
-2. Naming of the remote function.
+* Example 2
 
-- If there are spaces and underscores between message types, those will be removed and made camel case("un subscribe" -> "onUnSubscribe").
-- The 'on' word is added as the predecessor and the remote function name is in the camel case("heartbeat" -> "onHeartbeat").
+```ballerina
+@websocket:DispatcherMapping {
+    value: "subscribe"
+}
+remote function onSubscribeMessage(Subscribe message) returns error? {
+}
 
-3. If an unmatching message type receives where a matching remote function is not implemented in the WebSocket service by the user, it gets dispatched to the default `onMessage` remote function if it is implemented. Or else it will get ignored.
+remote function onSubscribeMessageError(error message) returns error? {
+}
+
+incoming message = ` {"event": "subscribe"}`
+dispatching remote function = "onSubscribeMessage"
+dispatching error remote function = "onSubscribeMessageError"
+```
 
 #### 3.2.3. Return types
 

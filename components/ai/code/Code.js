@@ -402,19 +402,19 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="npVsCodeFeaturesView1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="npVsCodeFeaturesView1" title="Generate code from requirements">
+                                        <Tab eventKey="npVsCodeFeaturesView1" title="Code from requirements">
                                             <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/np_code_generation_from_requirements.png.png`}/>
+                                                <img src={`${prefix}/images/np_code_generation_from_requirements.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="npVsCodeFeaturesView2" title="Check drift between code and documentation">
+                                        <Tab eventKey="npVsCodeFeaturesView2" title="Drift Detection & Repair ">
                                         <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/np_drift_check.png`}/>
+                                                <img src={`${prefix}/images/np_drift_check.gif`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="npVsCodeFeaturesView3" title="Generate test from requirements">
+                                        <Tab eventKey="npVsCodeFeaturesView3" title="Test from requirements">
                                         <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/np_test_generation_from_requirements.png.png`}/>
+                                                <img src={`${prefix}/images/np_test_generation_from_requirements.png`}/>
                                             </div>
                                         </Tab>
                                     </Tabs>

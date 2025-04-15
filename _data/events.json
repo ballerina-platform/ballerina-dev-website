@@ -1,10 +1,10 @@
 {
     "events": [
         {
-            "date": "May 20-22, 2025",
-            "day": "Tuesday",
-            "time": "",
-            "expire": "2025-05-23T00:00:00.00-00:00",
+            "date": "May 21, 2025",
+            "day": "Wednesday",
+            "time": "11:30 a.m. CDT",
+            "expire": "2025-05-22T00:00:00.00-00:00",
             "location": "Virtual",
             "url": "https://www.womentech.net/speaker/all/all/130754",
             "eventType": "Women in Tech Global Conference 2025",

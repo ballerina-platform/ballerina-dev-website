@@ -105,6 +105,7 @@ The conforming implementation of the specification is released and included in t
 10. [Password hashing](#10-password-hashing)
     * 10.1 [BCrypt](#101-bcrypt)
     * 10.2 [Argon2](#102-argon2)
+    * 10.3 [PBKDF2](#103-pbkdf2)
 
        
 ## 1. [Overview](#1-overview)
@@ -1183,4 +1184,52 @@ string hashedPassword1 = check crypto:hashArgon2(password);
 // Hash with custom parameters
 string hashedPassword2 = check crypto:hashArgon2(password, iterations = 4, memory = 131072, parallelism = 8);
 boolean isValid = check crypto:verifyArgon2(password, hashedPassword1);
+```
+
+### 10.3 [PBKDF2](#103-pbkdf2)
+
+Implements the PBKDF2 (Password-Based Key Derivation Function 2) algorithm for password hashing.
+
+```ballerina
+public enum HmacAlgorithm {
+    SHA1,
+    SHA256,
+    SHA512
+}
+public isolated function hashPbkdf2(string password, int iterations = 10000,
+    HmacAlgorithm algorithm = SHA256) returns string|Error
+```
+
+Parameters:
+
+- `password`: The plain text password to hash
+- `iterations`: Optional number of iterations (default: 10000)
+- `algorithm`: Optional HMAC algorithm (SHA1, SHA256, SHA512). Default is SHA256
+
+Example:
+
+```ballerina
+string password = "mySecurePassword123";
+// Hash with default parameters
+string hashedPassword = check crypto:hashPbkdf2(password);
+// Hash with custom parameters
+string customHashedPassword = check crypto:hashPbkdf2(password, iterations = 15000, algorithm = SHA512);
+```
+
+```ballerina
+public isolated function verifyPbkdf2(string password, string hashedPassword) returns boolean|Error
+```
+
+Parameters:
+
+- `password`: The plain text password to verify
+- `hashedPassword`: PBKDF2 hashed password to verify against
+
+Example:
+
+```ballerina
+string password = "mySecurePassword123";
+string hashedPassword = "$pbkdf2-sha256$i=10000$salt$hash";
+// Verify the hashed password
+boolean isValid = check crypto:verifyPbkdf2(password, hashedPassword);
 ```

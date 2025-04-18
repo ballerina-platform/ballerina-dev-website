@@ -195,14 +195,6 @@ export default function Boxes(props) {
                         <p className={styles.description}>Generate Ballerina records for an XSD specification.</p>
                       </div>
                       
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/consolidate-packages-tool`} className={styles.titleLink}>
-                            Consolidate-packages tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Generate code to consolidate Ballerina services.</p>
-                      </div>
 
                     </div>
                   </div>
@@ -891,6 +883,15 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>A static code analysis tool that checks Ballerina code for security issues and quality improvements.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/consolidate-packages-tool`} className={styles.titleLink}>
+                            Consolidate-packages tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate code to consolidate Ballerina services.</p>
                       </div>
                     </div>
                   </div>

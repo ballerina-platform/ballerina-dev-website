@@ -212,14 +212,6 @@
             ]
         },
         {
-            "dirName": "Deploy with WSO2 Choreo",
-            "level": 1,
-            "position": 11,
-            "isDir": false,
-            "url": "/learn/vs-code-extension/deploy-with-wso2-choreo",
-            "id": "deploy-with-wso2-choreo"
-        },
-        {
             "dirName": "Build executables",
             "level": 1,
             "position": 12,

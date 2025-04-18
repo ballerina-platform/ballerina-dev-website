@@ -157,16 +157,16 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="architectureView1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="architectureView1" title="Ballerina Visualizer">
+                                        <Tab eventKey="architectureView1" title="Design Diagram">
                                             <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/architecture-view-level1.png`}/>
+                                                <img src={`${prefix}/images/design-diagram.png`}/>
                                             </div>
                                         </Tab>
-                                        {/* <Tab eventKey="architectureView2" title="Level 2">
+                                        <Tab eventKey="architectureView2" title="Flow Diagram">
                                         <div className={styles.codeSnippet}>
-                                                <img src={`${prefix}/images/architecture-view-level2.png`}/>
+                                                <img src={`${prefix}/images/flow-diagram.png`}/>
                                             </div>
-                                        </Tab> */}
+                                        </Tab>
                                         <Tab eventKey="architectureView3" title="Types">
                                         <div className={styles.codeSnippet}>
                                                 <img src={`${prefix}/images/type-diagram.png`}/>

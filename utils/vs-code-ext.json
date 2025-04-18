@@ -16,32 +16,6 @@
             
         },
         {
-            "dirName": "Design the application",
-            "level": 1,
-            "position": 2,
-            "isDir": true,
-            "url": "swan-lake/vs-code-extension/design-the-application",
-            "id": "design-the-application",
-            "subDirectories": [
-                {
-                    "dirName": "Explore the Architecture View",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/learn/vs-code-extension/design-the-application/explore-the-architecture-view",
-                    "id": "explore-the-architecture-view"
-                },
-                {
-                    "dirName": "Design using the Architecture View",
-                    "level": 2,
-                    "position": 2,
-                    "isDir": false,
-                    "url": "/learn/vs-code-extension/design-the-application/design-using-the-architecture-view",
-                    "id": "design-using-the-architecture-view"
-                }
-            ]
-        },
-        {
             "dirName": "Design the services",
             "level": 1,
             "position": 3,

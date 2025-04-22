@@ -762,7 +762,6 @@
                             "url": "/downloads/swan-lake-release-notes/swan-lake-alpha4",
                             "id": "swan-lake-alpha4"
                         },
-
                         {
                             "dirName": "Swan Lake Alpha3",
                             "level": 2,
@@ -863,7 +862,6 @@
                         }
                     ]
                 },
-
                 {
                     "dirName": "2201.1.0",
                     "level": 2,
@@ -883,6 +881,14 @@
             "url": "/downloads/1.2.x-release-notes",
             "id": "1.2.x-release-notes",
             "subDirectories": [
+                {
+                    "dirName": "1.2.58",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.58",
+                    "id": "1.2.58"
+                },
                 {
                     "dirName": "1.2.57",
                     "level": 2,

@@ -1536,8 +1536,7 @@
       "rpm-installer":"ballerina-linux-installer-x64-1.2.58.rpm",
       "rpm-installer-size":"176mb",
       "other-artefacts":[  
-         "ballerina-1.2.58.zip",
-         "ballerina-1.2.58.vsix"
+         "ballerina-1.2.58.zip"
        ],
       "api-docs":"ballerina-api-docs-1.2.58.zip",
       "release-notes":"ballerina-release-notes-1.2.58.md"

@@ -614,7 +614,6 @@
                     "url": "#swan-lake-alpha4",
                     "id": "swan-lake-alpha4v"
                 },
-
                 {
                     "dirName": "Swan Lake Alpha3",
                     "level": 2,
@@ -720,6 +719,14 @@
                     "isDir": false,
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
+                },
+                {
+                    "dirName": "1.2.58",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.58",
+                    "id": "1.2.58v"
                 },
                 {
                     "dirName": "1.2.57",
@@ -1176,7 +1183,7 @@
                     "isDir": false,
                     "url": "#1.2.1",
                     "id": "1.2.1v"
-                },                
+                },
                 {
                     "dirName": "1.2.0",
                     "level": 2,
@@ -1247,7 +1254,7 @@
                     "url": "#1.1.0",
                     "id": "1.1.0v",
                     "subDirectories": []
-                }        
+                }
             ]
         },
         {
@@ -1283,7 +1290,7 @@
                     "url": "#1.0.4",
                     "id": "1.0.4v",
                     "subDirectories": []
-                }, 
+                },
                 {
                     "dirName": "1.0.3",
                     "level": 2,
@@ -1364,7 +1371,7 @@
                     "url": "#0.991.0",
                     "id": "0.991.0v",
                     "subDirectories": []
-                }, 
+                },
                 {
                     "dirName": "0.990.3",
                     "level": 2,
@@ -1454,7 +1461,7 @@
                     "url": "#0.980.0",
                     "id": "0.980.0v",
                     "subDirectories": []
-                }, 
+                },
                 {
                     "dirName": "0.975.0",
                     "level": 2,

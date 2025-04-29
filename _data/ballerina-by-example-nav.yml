@@ -184,11 +184,14 @@ sublinks:
           - title: Dependent types
             id: 13
             url: dependent-types
-          - title: Stream type
+          - title: Singleton types
             id: 14
+            url: singleton-types
+          - title: Stream type
+            id: 15
             url: stream-type
           - title: Never type
-            id: 15
+            id: 16
             url: never-type
       - title: Expression-oriented style
         id: 11

@@ -196,6 +196,10 @@ import {
   codeSnippetData as DependentTypesCodeSnippetData,
 } from "./dependent-types/content.jsx";
 import {
+  SingletonTypes,
+  codeSnippetData as SingletonTypesCodeSnippetData,
+} from "./singleton-types/content.jsx";
+import {
   StreamType,
   codeSnippetData as StreamTypeCodeSnippetData,
 } from "./stream-type/content.jsx";
@@ -2277,6 +2281,8 @@ const BBEs = {
   EnsureTypeFunctionCodeSnippetData,
   DependentTypes,
   DependentTypesCodeSnippetData,
+  SingletonTypes,
+  SingletonTypesCodeSnippetData,
   StreamType,
   StreamTypeCodeSnippetData,
   NeverType,

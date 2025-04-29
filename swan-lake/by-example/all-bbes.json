@@ -421,6 +421,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Singleton types",
+        "url": "singleton-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Stream type",
         "url": "stream-type",
         "verifyBuild": true,

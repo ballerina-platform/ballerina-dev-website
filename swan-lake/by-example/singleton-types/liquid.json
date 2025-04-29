@@ -1,0 +1,13 @@
+{
+  "title": "Singleton types",
+  "description": "This BBE demonstrates singleton types in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "singletons",
+    "singleton types"
+  ],
+  "permalink": "/learn/by-example/singleton-types",
+  "active": "singleton-types"
+}

@@ -42,7 +42,7 @@ export function JmsConsumerAcknowledgement({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>JMS message producer - Manual acknowledgment</h1>
+      <h1>JMS message consumer - Manual acknowledgment</h1>
 
       <p>
         The <code>jms:MessageConsumer</code> allows manual acknowledgment for
@@ -62,7 +62,7 @@ export function JmsConsumerAcknowledgement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/jms-consumer-acknowledgement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/jms-consumer-acknowledgement",
                 "_blank",
               );
             }}
@@ -210,7 +210,7 @@ export function JmsConsumerAcknowledgement({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> Run the JMS message producer given in the{" "}
-          <a href="/learn/by-example/jms-producer-produce-message-send">
+          <a href="/learn/by-example/jms-producer-produce-message">
             JMS message producer - Produce message
           </a>{" "}
           example to produce a few sample messages to the queue.

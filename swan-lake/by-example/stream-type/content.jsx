@@ -72,7 +72,7 @@ export function StreamType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/stream-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/stream-type",
                 "_blank",
               );
             }}
@@ -233,8 +233,8 @@ export function StreamType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Dependent types"
-            href="/learn/by-example/dependent-types"
+            title="Singleton types"
+            href="/learn/by-example/singleton-types"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export function StreamType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dependent types
+                  Singleton types
                 </span>
               </div>
             </div>

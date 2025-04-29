@@ -68,7 +68,7 @@ export function RabbitmqConsumerWithClientAcknowledgement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/rabbitmq-consumer-with-client-acknowledgement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rabbitmq-consumer-with-client-acknowledgement",
                 "_blank",
               );
             }}

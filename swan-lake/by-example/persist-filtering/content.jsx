@@ -199,7 +199,7 @@ export function PersistFiltering({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/persist-filtering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-filtering",
                 "_blank",
               );
             }}
@@ -370,7 +370,7 @@ export function PersistFiltering({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.11.0/examples/persist-filtering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-filtering",
                 "_blank",
               );
             }}

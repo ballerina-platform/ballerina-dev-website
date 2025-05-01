@@ -55,7 +55,8 @@ export default function BalAction(props) {
       hash = hash.replace('#', '');
       if (hash === "consuming-services" || hash === "working-with-data"
         || hash === "restful-api" || hash === "grpc-api" || hash === "graphql-api"
-        || hash === "kafka-consumer-producer" || hash === "working-with-databases") {
+        || hash === "kafka-consumer-producer" || hash === "working-with-databases"
+        || hash === "working-with-llms") {
         setKey(hash);
         const element = document.getElementById("ballerina-in-action");
         element.scrollIntoView();
@@ -71,6 +72,7 @@ export default function BalAction(props) {
   const graphqlApi = samples['graphql-api'];
   const kafkaConsumer = samples['kafka-consumer-producer'];
   const workingWithDataBases = samples['working-with-databases'];
+  const workingWithLlms = samples['working_with_llms'];
   return (
     <Col sm={12}>
       <Container>
@@ -270,6 +272,27 @@ export default function BalAction(props) {
                         </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />
+                    </div>
+                  </Col>
+                </Row>
+              </Tab>
+
+              <Tab eventKey="working-with-llms" title="Working with LLMs">
+                <Row>
+                  <Col sm={12}>
+                    <div className={styles.focusPane}>
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working-with-llms" target="_blank" rel="noreferrer" passhref title="Open on GitHub">
+                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                        <CopyToClipboard text={codeSamples['working-with-llms']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithLlms }} />
                     </div>
                   </Col>
                 </Row>

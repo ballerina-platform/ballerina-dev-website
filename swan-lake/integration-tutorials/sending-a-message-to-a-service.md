@@ -177,12 +177,6 @@ service /healthcare on new http:Listener(8290) {
 }
 ```
 
-#### Sequence diagram
-
-The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
-
-<img src="/learn/images/integration-tutorials/sending-a-message-to-a-service/sequence_diagram.png" alt="Sequence Diagram" height="800" style="width:auto; max-width:100%">
-
 ### Step 3: Build and run the service
 
 ![Run the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/run_the_service.gif)

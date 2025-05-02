@@ -35,7 +35,7 @@ service /graphql on new graphql:Listener(9090) {
 }
 ```
 
-<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/visualize.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/graphql-visualizer.gif" class="cInlineImage-full"/>
 
 ## Explore the GraphQL API Designer 
 
@@ -45,28 +45,12 @@ The GraphQL API Designer provides the following features.
 - Create and edit constructs such as records and service classes
 - Navigate to the specific source code
 
-## Use the GraphQL API Designer functionalities
+### Example : Add a GraphQL query and add the source
 
-You can perform the above functionalities using the GraphQL API Designer as follows.
+Add a query to the GraphQL service with a `Profile` record as the output object. Then Navigate to the source code of the newly created `profile` query and update the resource body. Use **Ctrl + Click** shortcut on the specific field to navigate to the respective source code. 
 
-### Add a GraphQL query
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/graphql-add-query-and-source.gif" class="cInlineImage-full"/> 
 
-Add a query to the GraphQL service with a `Profile` record as the output object.
 
->**Info:** Hover over each field to view the provided **Edit**, **Delete**, and **Design** GraphQL operations.
 
-<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/query-creation.gif" class="cInlineImage-full"/> 
 
-### Access the query source
-
-Navigate to the source code of the newly created `profile` query and update the resource body. Use **Ctrl + Click** shortcut on the specific field to navigate to the respective source code. 
-
-<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/navigate.gif" class="cInlineImage-full"/>
-
-### Create a record construct
-
-Create a record within the GraphQL API Designer itself.
-
->**Info:** You can use this same approach to create service classes as well.
-
-<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/add-new-construct.gif" class="cInlineImage-full"/>

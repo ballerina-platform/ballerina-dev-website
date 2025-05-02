@@ -389,13 +389,13 @@ For example, if the message is `{"event": "heartbeat"}` it will get dispatched t
     * If there are spaces and underscores between message types, those will be removed and made camel case("un subscribe" -> "onUnSubscribe").
     * The 'on' word is added as the predecessor and the remote function name is in the camel case("heartbeat" -> "onHeartbeat").
 
-3. Custom Dispatching with `@DispatcherMapping` annotation
+3. Custom Dispatching with `@websocket:DispatcherConfig` annotation
 
-    The `@DispatcherMapping` annotation allows users to explicitly define the dispatching behavior for remote functions. If an incoming message type matches the value in the annotation, the respective remote function will be invoked.
+    The `@websocket:DispatcherConfig` annotation allows users to explicitly define the dispatching behavior for remote functions. If an incoming message type matches the dispatcherValue in the annotation, the respective remote function will be invoked.
 
     ```ballerina
-    @DispatcherMapping {
-        value: "subscribe"
+    @websocket:DispatcherConfig {
+        dispatcherValue: "subscribe"
     }
     remote function onSubscribeMessage(Subscribe message) returns string {
         return "onSubscribeMessage";
@@ -427,8 +427,8 @@ dispatching error remote function = "onHeartbeatError"
 * Example 2
 
 ```ballerina
-@websocket:DispatcherMapping {
-    value: "subscribe"
+@websocket:DispatcherConfig {
+    dispatcherValue: "subscribe"
 }
 remote function onSubscribeMessage(Subscribe message) returns error? {
 }

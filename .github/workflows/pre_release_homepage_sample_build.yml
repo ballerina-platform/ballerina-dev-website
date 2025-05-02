@@ -13,7 +13,7 @@ jobs:
       max-parallel: 3
       matrix:
         sample: ['consuming-services.md', 'graphql-api.md', 'kafka-consumer-producer.md', 'restful-api.md',
-                 'working-with-data.md', 'working-with-databases.md']
+                 'working-with-data.md', 'working-with-databases.md', 'working-with-llms.md']
     env:
       GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
 

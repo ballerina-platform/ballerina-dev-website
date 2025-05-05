@@ -157,19 +157,17 @@ Follow the steps below to open the Data Mapper via the **Visualize** CodeLens.
 
     <img src="/learn/images/vs-code-extension/visual-programming/datamapper/open-via-code-lens.gif" class="cInlineImage-full"/>
 
-### Open via the Diagram View
+### Open via the Ballerina Visualizer View
 
-Follow the steps below to open the Data Mapper via the Diagram View.
+Follow the steps below to open the Data Mapper via the Ballerina Visualizer View.
 
-1. Open the file in the Diagram View.
+1. Open the Ballerina Visualizer.
 
-2. Click the **+ Component** button. 
+2. Click the **+ Add Artifact** button. 
 
-3. Select the desired file.
+3. Click **Data Mapper** under the **Other Artifcats** section.
 
-4. Click **Data Mapper** in the **Add Constructs** pane.
-
-<img src="/learn/images/vs-code-extension/visual-programming/datamapper/open-via-diagram.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/datamapper/open-via-visualizer.gif" class="cInlineImage-full"/>
 
 ## Provide inputs and output
 

@@ -7,7 +7,7 @@ intro: The new HTTP API Designer enables you to design HTTP services interactive
 
 ## Open the service 
 
-Use the source code below to create a HTTP service using the code editor and click on the **Visualize** codeLens, which is placed above the service.
+Use the source code below to create a HTTP service using the code editor and click on the **Visualize** CodeLens, which is placed above the service.
 
 ```ballerina
 import ballerina/http;
@@ -44,14 +44,13 @@ service / on new http:Listener(9090) {
     }
 }
 ```
-
-<img src="/learn/images/vs-code-extension/release-notes/v-4.0.0/service-design.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/http-api-designer.gif" class="cInlineImage-full"/>
 
 ## Visualize the service
 
-The HTTP API Designer provides an overview of the design of the service resources. This gives a broad idea of the behavior of the service. It will visualize the service similar to the OpenAPI viewer. You can see the parameters and response details. Also, you can interact with record types and modify type definitions from the [Statement Editor](/learn/vs-code-extension/references/statement-editor/call-a-ballerina-package-function/).
+The HTTP API Designer provides an overview of the design of the service resources. This gives a broad idea of the behavior of the service. You can see the parameters and response details.
 
-<img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/visualize.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/http-service-designer.png" class="cInlineImage-full"/>
 
 ## Add resources to the service
 
@@ -68,18 +67,11 @@ Follow the steps below to add resources to the service.
     - Path parameters
     - Query/Header parameters
     - Payload body
-    - Request/Caller parameters
 
 3. Click the **Add resource** button to add a new return response type and select the specific status codes that need to be returned from the resource.
 
-    >**Tip:** Enter the desired name for the record type, and then click the **Create Record** button to create new type records.
-
 4. Define name records for the response type, which will apply the coding best practices to implement the resource.
-
-    <img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/edit-api.gif" class="cInlineImage-full"/>
 
 ## Implement the resources of the service
 
 Either navigate to the low-code editing mode, or press **Ctrl + click** on a resource method to navigate to the source code  start implementing the content of the resource.
-
-<img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/navigation.gif" class="cInlineImage-full"/>

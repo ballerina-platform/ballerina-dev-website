@@ -994,6 +994,14 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/call-llms-with-natural-expressions/`} className={styles.titleLink}>
+                            Call Large Language Models (LLMs) with natural expressions
+                          </a>
+                        </p>
+                        <p className={styles.description}>Use natural expressions to work with LLMs.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/deploy-ballerina-on-kubernetes/`} className={styles.titleLink}>
                             Deploy Ballerina on Kubernetes
                           </a>

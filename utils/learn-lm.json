@@ -877,6 +877,14 @@
                             "id": "build-a-data-service-in-ballerina"
                         },
                         {
+                            "dirName": "Call Large Language Models (LLMs) with natural expressions",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/call-llms-with-natural-expressions",
+                            "id": "call-llms-with-natural-expressions"
+                        },
+                        {
                             "dirName": "Write a GraphQL API with Ballerina",
                             "level": 3,
                             "position": 3,
@@ -895,7 +903,7 @@
                         {
                             "dirName": "Deploy Ballerina on Kubernetes",
                             "level": 3,
-                            "position": 6,
+                            "position": 7,
                             "isDir": false,
                             "url": "/learn/deploy-ballerina-on-kubernetes",
                             "id": "deploy-ballerina-on-kubernetes"
@@ -903,7 +911,7 @@
                         {
                             "dirName": "Manage data persistence with bal persist",
                             "level": 3,
-                            "position": 7,
+                            "position": 8,
                             "isDir": false,
                             "url": "/learn/manage-data-persistence-with-bal-persist",
                             "id": "manage-data-persistence-with-bal-persist"
@@ -911,7 +919,7 @@
                         {
                             "dirName": "Create your first connector with Ballerina",
                             "level": 3,
-                            "position": 8,
+                            "position": 9,
                             "isDir": false,
                             "url": "/learn/create-your-first-connector-with-ballerina",
                             "id": "create-your-first-connector-with-ballerina"

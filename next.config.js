@@ -53,6 +53,10 @@ const nextConfig = {
         destination: `/learn/resources/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
+        source: `/learn/call-llms-with-natural-expressions`,
+        destination: `/learn/resources/featured-scenarios/call-llms-with-natural-expressions`,
+      },
+      {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },

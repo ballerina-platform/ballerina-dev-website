@@ -994,8 +994,8 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/call-llms-with-natural-expressions/`} className={styles.titleLink}>
-                            Call Large Language Models (LLMs) with natural expressions
+                          <a href={`${prefix}/learn/work-with-llms-using-natural-expressions/`} className={styles.titleLink}>
+                            Work with Large Language Models (LLMs) using natural expressions
                           </a>
                         </p>
                         <p className={styles.description}>Use natural expressions to work with LLMs.</p>

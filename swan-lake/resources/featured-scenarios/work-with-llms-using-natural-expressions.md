@@ -1,11 +1,11 @@
 ---
-layout: ballerina-calling-llms-with-natural-expressions-left-nav-pages-swanlake
-title: Call Large Language Models (LLMs) with Natural Expressions 
+layout: ballerina-working-with-llms-using-natural-expressions-left-nav-pages-swanlake
+title: Work with Large Language Models (LLMs) using natural expressions
 description: Bring AI-powered capabilities into your integrations using natural expressions to call LLMs with automatic binding of the response to user-defined types.
 keywords: ballerina, AI, LLM, large language model, natural programming
-permalink: /learn/call-llms-with-natural-expressions/
-active: call-llms-with-natural-expressions
-intro: This guide helps you understand the basics of Ballerina natural expressions.
+permalink: /learn/work-with-llms-using-natural-expressions/
+active: work-with-llms-using-natural-expressions
+intro: This guide helps you understand the basics of using natural expressions in Ballerina to work with LLMs.
 ---
 
 ## Set up the prerequisites
@@ -26,7 +26,7 @@ To complete this tutorial, you need:
 
 ## Understand the implementation
 
-This tutorial describes how to use Ballerina's natural expressions to integrate calling large language models (LLMs). In this sample you will develop a REST API with a single GET resource that accepts the name of a country, the interests of the user, and a count and uses a natural expression to call an LLM to identify the specified number of attractions in the specified country that may be of interest to the user. The expected structure of the response is indicated by the expected type and natural expressions automatically bind the response to the expected type.
+This tutorial describes how to use Ballerina's natural expressions to integrate working with large language models (LLMs). In this sample you will develop a REST API with a single GET resource that accepts the name of a country, the interests of the user, and a count and uses a natural expression to call an LLM to identify the specified number of attractions in the specified country that may be of interest to the user. The expected structure of the response is indicated by the expected type and natural expressions automatically bind the response to the expected type.
 
 ## Create the service package
 

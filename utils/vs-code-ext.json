@@ -50,12 +50,12 @@
             "id": "implement-the-code",
             "subDirectories": [
                 {
-                    "dirName": "Sequence Diagram View",
+                    "dirName": "Ballerina Visualizer View",
                     "level": 2,
                     "position": 1,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/implement-the-code/sequence-diagram-view",
-                    "id": "sequence-diagram-view"
+                    "url": "/learn/vs-code-extension/implement-the-code/ballerina-visualizer-view",
+                    "id": "ballerina-visualizer-view"
                 },
                 {
                     "dirName": "Entity Relationship Diagram View",

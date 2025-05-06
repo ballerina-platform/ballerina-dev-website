@@ -877,12 +877,12 @@
                             "id": "build-a-data-service-in-ballerina"
                         },
                         {
-                            "dirName": "Call Large Language Models (LLMs) with natural expressions",
+                            "dirName": "Work with Large Language Models (LLMs) using natural expressions",
                             "level": 3,
                             "position": 6,
                             "isDir": false,
-                            "url": "/learn/call-llms-with-natural-expressions",
-                            "id": "call-llms-with-natural-expressions"
+                            "url": "/learn/work-with-llms-using-natural-expressions",
+                            "id": "work-with-llms-using-natural-expressions"
                         },
                         {
                             "dirName": "Write a GraphQL API with Ballerina",

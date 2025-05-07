@@ -1,6 +1,28 @@
 {
     "events": [
         {
+            "date": "May 08, 2025",
+            "expire": "2025-05-08T04:30:00+00:00",
+            "type": "Workshop",
+            "university": "APIIT",
+            "faculty": "Department of Software Engineering",
+            "title": "Introduction to Ballerina",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Anjana Supun",
+                    "twitter": "https://www.linkedin.com/in/anjana-supun/"
+                },
+                {
+                    "name": "Dulmina Kodagoda",
+                    "twitter": "https://www.linkedin.com/in/dulmina-renuke-008423133/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "Apr 09, 2025",
             "expire": "2025-04-09T04:30:00+00:00",
             "type": "Workshop",

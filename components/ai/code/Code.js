@@ -47,7 +47,7 @@ export default function UseCases(props) {
 
     const copilot = samples['copilot_your_partner'];
 
-    const npCode = samples['natural_programming_code'];
+    const npCode = samples['natural_expressions'];
 
     const ipaas = samples['hosting_ipaas'];
     const np = samples['blog-analyzer-using-natural-programming'];

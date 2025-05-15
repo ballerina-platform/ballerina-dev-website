@@ -1,22 +1,22 @@
 .balActionTabs {
     width: 100%;
     background: #f5f5f5;
-    border: 1px #c7c7c7 solid !important;
-    /* border-bottom: none !important; */
-    justify-content: space-around;
+}
+
+.balActionTabs li {
+    display: flex;
 }
 
 .balActionTabs li button {
     color: #20b6b0;
     cursor: default;
     background: #f5f5f5;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    border: 1px #c7c7c7 solid !important;
 }
 
 .balActionTabs li button:focus, .balActionTabs li button:hover {
     color: #555 !important;
-    border-color: #f5f5f5 !important;
+    border: 1px #b0aeae solid !important;
     isolation: isolate;
 }
 
@@ -26,7 +26,7 @@
     color: #555 !important;
     cursor: default;
     background-color: #f5f5f5 !important;
-    border: transparent;
+    border: 1px #c7c7c7 solid !important;
     border-bottom: #20b6b0 3px solid !important;
 }
 

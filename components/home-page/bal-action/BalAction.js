@@ -103,6 +103,7 @@ export default function BalAction(props) {
               activeKey={key}
               onSelect={(k) => setKey(k)}
               className={styles.balActionTabs}
+              justify
             >
 
               <Tab eventKey="consuming-services" title="Consuming services">

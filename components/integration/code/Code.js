@@ -982,7 +982,7 @@ export default function UseCases(props) {
                                         (ai.frontmatter.url && ai.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={ai.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Ballerina for AI as a Service
+                                                    Ballerina for AI
                                                 </a>
                                             </div>
                                             : null

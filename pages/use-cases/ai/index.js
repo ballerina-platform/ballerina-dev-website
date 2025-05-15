@@ -167,7 +167,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for <i>AI as a Service</i></h1>
+                <h1>Ballerina for AI</h1>
               </Container>
 
             </Col>

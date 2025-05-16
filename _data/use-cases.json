@@ -11,7 +11,7 @@
         {
             "slug": "ai",
             "frontmatter": {
-                "title": "Ballerina for AI as a Service",
+                "title": "Ballerina for AI",
                 "description": "Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models.",
                 "logo": "/images/Vectors-05.png"
             }

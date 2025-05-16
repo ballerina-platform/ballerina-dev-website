@@ -5,7 +5,7 @@
             "description": "An app aimed at simplifying organizational resource management, asset tracking, employee requests, meal preferences, and administrative maintenance scheduling.",
             "tags": ["React.js", "Ballerina"],
             "status": "ongoing",
-            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "icon": "/images/default.png",
             "advisors": [{
                     "name": "Shayan Malinda",
                     "x": "https://www.linkedin.com/in/shayanmalinda/"
@@ -25,7 +25,7 @@
             "description": "This open-source app enables company ridesharing, offering a customizable, seamless experience for drivers and passengers.",
             "tags": ["Ballerina", "Next.js"],
             "status": "ongoing",
-            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "icon": "/images/default.png",
             "advisors": [{
                     "name": "Tharindu Weerasinghe",
                     "x": "https://www.linkedin.com/in/tharinduweerasinghe/"
@@ -65,7 +65,7 @@
             "description": "The project will allow registered voters to securely log in and cast their votes for candidates in a given election in Sri Lanka.",
             "tags": ["Ballerina", "Next.js", "PostgreSQL"],
             "status": "ongoing",
-            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "icon": "/images/default.png",
             "advisors": [{
                     "name": "Gayal Dassanayake",
                     "x": "https://www.linkedin.com/in/gayal-dassanayake/"
@@ -85,7 +85,7 @@
             "description": "This app offers a feature-rich, AI-powered alternative to Splitwise, providing advanced expense management with more features available in the free-tier.",
             "tags": ["React.js", "Ballerina"],
             "status": "ongoing",
-            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "icon": "/images/default.png",
             "advisors": [{
                     "name": "Dulaj Dilshan",
                     "x": "https://www.linkedin.com/in/dulajdilshan"

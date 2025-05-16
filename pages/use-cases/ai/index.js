@@ -111,11 +111,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for AI as a Service - The Ballerina programming language</title>
+        <title>Ballerina for AI - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina for AI as a Service - The Ballerina programming language" />
+        <meta property="og:title" content="Ballerina for AI - The Ballerina programming language" />
         <meta
           property="og:description"
           content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
@@ -127,7 +127,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina for AI as a Service - The Ballerina programming language" />
+        <meta property="og:title" content="Ballerina for AI - The Ballerina programming language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ai-sm-banner.png"
@@ -142,7 +142,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina for AI as a Service - The Ballerina programming language" />
+        <meta name="twitter:title" content="Ballerina for AI - The Ballerina programming language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -167,7 +167,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for <i>AI as a Service</i></h1>
+                <h1>Ballerina for AI</h1>
               </Container>
 
             </Col>

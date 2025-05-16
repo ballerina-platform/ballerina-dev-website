@@ -6,7 +6,7 @@
             "tags": ["React.js", "Ballerina"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": [{
+            "advisors": [{
                     "name": "Shayan Malinda",
                     "x": "https://www.linkedin.com/in/shayanmalinda/"
                 },
@@ -26,7 +26,7 @@
             "tags": ["Ballerina", "Next.js"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": [{
+            "advisors": [{
                     "name": "Tharindu Weerasinghe",
                     "x": "https://www.linkedin.com/in/tharinduweerasinghe/"
                 },
@@ -36,7 +36,7 @@
                 }
             ],
             "repo": {
-                "org": "UCSC-SmartShopper",
+                "org": "wso2-ballerina-carpooling-project",
                 "name": ""
             }
         },
@@ -46,7 +46,7 @@
             "tags": ["React.js", "Ballerina", "Google APIs"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": [{
+            "advisors": [{
                     "name": "Asma Jabir",
                     "x": "https://www.linkedin.com/in/asma-jabir/"
                 },
@@ -66,7 +66,7 @@
             "tags": ["Ballerina", "Next.js", "PostgreSQL"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": [{
+            "advisors": [{
                     "name": "Gayal Dassanayake",
                     "x": "https://www.linkedin.com/in/gayal-dassanayake/"
                 },
@@ -76,7 +76,7 @@
                 }
             ],
             "repo": {
-                "org": "https://github.com/Online-Election-System",
+                "org": "Online-Election-System",
                 "name": ""
             }
         },
@@ -86,7 +86,7 @@
             "tags": ["React.js", "Ballerina"],
             "status": "ongoing",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": [{
+            "advisors": [{
                     "name": "Dulaj Dilshan",
                     "x": "https://www.linkedin.com/in/dulajdilshan"
                 },
@@ -106,10 +106,10 @@
             "tags": ["React.js", "Ballerina", "PostgreSQL", "Stripe", "Tailwind", "Chakra UI", "Twillio", "Vercel", "Choreo"],
             "status": "past",
             "icon": "/images/uni-projects/smartShopper.jpeg",
-            "advisor": {
+            "advisors": [{
                 "name": "Anuruddha Liyanarachchi",
                 "x": "https://www.linkedin.com/in/anuruddhal/"
-            },
+            }],
             "repo": {
                 "org": "UCSC-SmartShopper",
                 "name": ""
@@ -121,10 +121,10 @@
             "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
             "status": "past",
             "icon": "/images/uni-projects/mediphix.jpg",
-            "advisor": {
+            "advisors": [{
                 "name": "Dulaj Dilshan",
                 "x": "https://www.linkedin.com/in/dulajdilshan"
-            },
+            }],
             "repo": {
                 "org": "PlazerDev",
                 "name": ""
@@ -136,10 +136,10 @@
             "tags": ["Node.js", "Ballerina", "MongoDB", "React.js", "Sketch", "PlantUML"],
             "status": "past",
             "icon": "/images/uni-projects/logo_text.png",
-            "advisor": {
+            "advisors": [{
                 "name": "Nipuna Fernando",
                 "x": "https://www.linkedin.com/in/nipunayf"
-            },
+            }],
             "repo": {
                 "org": "nipunayf",
                 "name": "highlights"

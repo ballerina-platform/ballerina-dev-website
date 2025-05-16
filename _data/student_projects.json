@@ -45,7 +45,7 @@
             "description": "inspired by Chili Piper, this open-source version aims to provide to automate the meeting scheduling process by seamlessly integrating with calendars",
             "tags": ["React.js", "Ballerina", "Google APIs"],
             "status": "ongoing",
-            "icon": "/images/uni-projects/smartShopper.jpeg",
+            "icon": "/images/uni-projects/automeet.jpg",
             "advisors": [{
                     "name": "Asma Jabir",
                     "x": "https://www.linkedin.com/in/asma-jabir/"

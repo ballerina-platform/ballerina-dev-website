@@ -35,6 +35,22 @@ const CardGrid = React.forwardRef((props, ref) => {
         );
     };
 
+    const getAdvisors = (advisors) => {
+        if (!Array.isArray(advisors)) {
+            return null;
+        }
+        return (
+            <>
+                {advisors.map((advisor, index) => (
+                    <React.Fragment key={advisor.name + index}>
+                        <a href={advisor.x}>{advisor.name}</a>
+                        {index < advisors.length - 1 && <span>,&nbsp;</span>}
+                    </React.Fragment>
+                ))}
+            </>
+        );
+    };
+
     const [limit, setLimit] = React.useState(8);
     const [showSMBtn, setShowSMBtn] = React.useState(true);
     const [showHideBtn, setShowHideBtn] = React.useState(false);
@@ -157,7 +173,6 @@ const CardGrid = React.forwardRef((props, ref) => {
                                 {props.launcher === "project-mentorship" && (
                                     <>
                                         {propsData.slice(0, limit).map((_, idx) => {
-                                            const encodedEmail = _.advisor.email ? btoa(_.advisor.email) : '';
                                             return (
                                                 <React.Fragment key={idx}>
 
@@ -204,9 +219,7 @@ const CardGrid = React.forwardRef((props, ref) => {
 
                                                                         <div className={styles.cardLinks}>
                                                                             {getTechnologies(_.tags)}
-                                                                            <p>Mentor: <a href={_.advisor.x} className={styles.cDownload}>
-                                                                                {_.advisor.name}
-                                                                            </a></p>
+                                                                            <p>Mentor(s): {getAdvisors(_.advisors)}</p>
                                                                             {props.section === "Available projects" ? (
                                                                                 <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={(e) => handleEmailClick(e, _.title, encodedEmail)}>
                                                                                     Join the project

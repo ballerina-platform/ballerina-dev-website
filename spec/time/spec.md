@@ -3,7 +3,7 @@
 _Owners_: @daneshk @BuddhiWathsala  
 _Reviewers_: @daneshk  
 _Created_: 2021/12/04   
-_Updated_: 2022/02/17  
+_Updated_: 2025/04/23  
 _Edition_: Swan Lake 
 
 ## Introduction
@@ -59,7 +59,7 @@ The `Civil` record represents time within some region relative to a time scale s
 
 The time library contains two APIs to get the systematic time values.
 
-The following API returns the current instant of the system clock in seconds from the epoch of `1970-01-01T00:00:00` with a given precision. The precision specifies the number of zeros after the decimal point (e.g. 3) would give the millisecond precision, and nil means native precision (nanosecond precision 9) of the clock).
+The following API returns the current instant of the system clock in seconds from the epoch of `1970-01-01T00:00:00` with a given precision. The precision specifies the number of zeros after the decimal point (e.g. 3) would give the millisecond precision, and nil means native precision (nanosecond precision 9) of the clock.
 
 ```ballerina
 public isolated function utcNow(int? precision = ()) returns Utc;
@@ -97,6 +97,12 @@ The following API returns the day of week value (e.g. Sunday, Monday etc.) of a 
 
 ```ballerina
 public isolated function dayOfWeek(Date date) returns DayOfWeek;
+```
+
+The following API adds or subtracts a given time duration from a Civil value in a time zone-agnostic way.
+
+```ballerina
+public isolated function civilAddDuration(Civil civil, Duration duration) returns Civil|Error;
 ```
 
 ## 5. Time conversions
@@ -161,4 +167,10 @@ On the other hand, the following API in the Zone object converts a given `Utc` t
 
 ```ballerina
 public isolated function utcToCivil(Utc utc) returns Civil;
+```
+
+The following API in the zone object adds or subtracts a given time duration from a Civil value based on the time zone.
+
+```ballerina
+public isolated function civilAddDuration(Civil civil, Duration duration) returns Civil|Error;
 ```

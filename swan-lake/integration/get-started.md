@@ -20,20 +20,6 @@ Set up a text editor to write Ballerina code.
 
 >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the Ballerina VS Code extension installed. For more information about the features of this extension, check <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
 
-## Meet `bal`
-
-`bal` is the Ballerina build tool and package manager. Among other things, it helps you create, build, test, and run your package. The latest version of the `bal` tool is included with the latest Ballerina installation. 
-
-Open your terminal, and run the following commands to verify that everything is ready.
-
-```
-$ bal
-```
-
-```
-$ bal version
-```
-
 Let's create a Ballerina program that prints `Hello, World!`.
 
 ## Create a new package
@@ -43,23 +29,23 @@ Use the `bal new` command to create a new Ballerina package, which is the primar
 >**Info:** For more information about packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```
-$ bal new greeter
+$ bal new simple-country-service
 ```
 
-This command creates a new directory named `greeter` with the following content:
+This command creates a new directory named `simple-country-service` with the following content:
 
 ```
-greeter/
+simple-country-service/
 ├── Ballerina.toml
 └── main.bal
 ```
 
 - The `Ballerina.toml` file contains metadata that describes your package. The `bal` tool also uses the `Ballerina.toml` file to identify the root of a package.
-- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `greeter` directory.
+- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `simple-country-service` directory.
 
 ## Say `Hello, World!`
 
-Open the package directory in your text editor. If you are using VS Code, you could navigate to the `greeter` directory and run `code .` to open the directory in VS Code. 
+Open the package directory in your text editor. If you are using VS Code, you could navigate to the `simple-country-service` directory and run `code .` to open the directory in VS Code. 
 
 Then, open the `main.bal` file to see the generated source.
 
@@ -71,12 +57,6 @@ public function main() {
 }
 ```
 
-In this code:
-
-- The first line is an import statement, which makes the functionality in the <a href="https://lib.ballerina.io/ballerina/io/latest" target="_blank">`ballerina/io`</a> module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on files.
-- The `main` function is your program's entry point, and you can execute it by running the program. 
-- The `main` function contains a statement that prints `Hello, World!` to the console. This statement calls the `println` function in the `io` module with `"Hello, World!"` as an argument.
-
 >**Info:** To learn more about the basics of the language, see [Language basics](/learn/language-basics/). 
 
 ## Run the package
@@ -86,7 +66,7 @@ Run `bal run` in your terminal to run this package.
 ```
 $ bal run
 Compiling source
-	example/greeter:0.1.0
+	example/simple_country_service:0.1.0
 
 Running executable
 
@@ -98,48 +78,68 @@ Alternatively, you can generate an executable file with `bal build`,
 ```
 $ bal build
 Compiling source
-	example/greeter:0.1.0
+	example/simple_country_service:0.1.0
 
 Generating executable
-	target/bin/greeter.jar
+	target/bin/simple_country_service.jar
 ```
 
 and run it using `bal run`.
 
 ```
-$ bal run target/bin/greeter.jar
+$ bal run target/bin/simple_country_service.jar
 Hello, World!
 ```
 
 ## Write a simple REST API
 
-Now, let's change the `greeter` application into a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
+Now, let's change the `simple_country_service` application into a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
 Replace the contents of the `main.bal` file with the following code:
 
 ```ballerina
 import ballerina/http;
 
-listener http:Listener httpListener = new (8080);
+public type Country record {
+    string name;
+    string continent;
+    int population;
+    decimal gdp;
+    float area;
+};
 
-service / on httpListener {
-    resource function get greeting() returns string { 
-        return "Hello, World!"; 
-    }
+service / on new http:Listener(8080) {
+    // The `countries` resource function returns:
+    // - `json`: A JSON array containing the top 10 countries based on GDP per capita.
+    // - `http:InternalServerError`: An HTTP 500 error response if there is a failure in processing the request.
+    resource function get countries() returns json|http:InternalServerError {
+        do {
+            // Creating an HTTP client to connect to the server.
+            http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
 
-    resource function get greeting/[string name]() returns string { 
-        return "Hello " + name; 
+            // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
+            Country[] countries = check countriesClient->/countries;
+
+            // Using a query expression to process the list of countries and generate a summary.
+            json topCountries =
+                from var {name, continent, population, area, gdp} in countries
+            where population >= 100000000 && area >= 1000000.0 // Filtering countries with a population >= 100M and area >= 1M sq km.
+            let decimal gdpPerCapita = (gdp / population).round(2) // Calculating and rounding GDP per capita to 2 decimal places.
+            order by gdpPerCapita descending // Sorting the results by GDP per capita in descending order.
+            limit 10 // Limiting the results to the top 10 countries.
+            select {name, continent, gdpPerCapita}; // Selecting the country name, continent, and GDP per capita.
+            return topCountries;
+        } on fail var err {
+            return <http:InternalServerError>{
+                body: {
+                    "error": "Failed to retrieve countries from the backend service",
+                    "message": err.message()
+                }
+            };
+        }
     }
 }
 ```
-
-Let's take a moment to understand the new constructs in this code:
-
-- The <a href="https://lib.ballerina.io/ballerina/http/latest" target="_blank">`http`</a> module provides high-level abstractions to work with the HTTP protocol. 
-- The listener declaration creates a new HTTP listener that will listen on port `8080`. The `listener` is the entity that receives network input and routes it to the attached service(s).
-- The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods: `resource` methods and `remote` methods. Services use `remote` methods to expose services in a procedural style and are named using verbs, whereas `resource` methods are used for data-oriented protocols and are named using nouns.
-- In this example, there are two `resource` methods: the first one responds to HTTP GET requests with the `/greeting` path, and the other one responds to `GET` requests with the `/greeting/{name}` path.
-- These `resource` methods return a `string` value, which maps to the `text/plain` content-type in the HTTP response.
 
 >**Info:** To learn more about services, see [Network interaction](/learn/network-interaction/). 
 
@@ -150,7 +150,7 @@ Let's run this package in your terminal:
 ```
 $ bal run
 Compiling source
-	example/greeter:0.1.0
+	example/simple_country_service:0.1.0
 
 Running executable
 ```
@@ -158,11 +158,8 @@ Running executable
 Now, open another terminal window and run the following commands to invoke the REST API.
 
 ```
-$ curl localhost:8080/greeting
-Hello, World!
-
-$ curl localhost:8080/greeting/Ballerina
-Hello Ballerina
+$ ccurl localhost:8080/countries
+[{"name":"United States", "continent":"North America", "gdpPerCapita":82657.95}, {"name":"Russia", "continent":"Europe/Asia", "gdpPerCapita":15047.85}, {"name":"Mexico", "continent":"North America", "gdpPerCapita":13883.21}, {"name":"China", "continent":"Asia", "gdpPerCapita":12318.28}, {"name":"Brazil", "continent":"South America", "gdpPerCapita":9147.56}, {"name":"Indonesia", "continent":"Asia", "gdpPerCapita":4091.05}, {"name":"Egypt", "continent":"Africa", "gdpPerCapita":3547.19}, {"name":"India", "continent":"Asia", "gdpPerCapita":2318.83}]
 ```
 
 Alternatively, you can use the built-in `Try it` feature by clicking on the `Try it` CodeLens above the service declaration on VS Code.

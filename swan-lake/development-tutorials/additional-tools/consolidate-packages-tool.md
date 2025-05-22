@@ -24,6 +24,16 @@ id = "consolidateSvc"
 options.services = ["myorg/svc1", "myorg/svc2"]
 ```
 
+Services required for consolidation can be from Ballerina Central, local repository, or both. In addition to the tool entries above, add a dependency entry for locally published packages as shown below:
+
+```toml
+[[dependency]]
+org = "myorg"
+name = "svc1"
+version = "1.1.0"
+repository = "local"
+```
+
 #### Using the CLI tool
 Alternatively, the `consolidate-packages` CLI tool can be installed to create the package and add or remove services. This
 is typically useful in CI/CD pipelines.
@@ -48,6 +58,12 @@ For example,
 $ bal consolidate-packages new --package-path hotel-app myorg/order_service,myorg/payment_service 
 ```
 
+To create a consolidated package with local packages, 
+
+```
+$ bal consolidate-packages new --package-path hotel-app myorg/order_service,myorg/payment_service --repository=local
+```
+
 ##### Adding new services to an existing package
 
 Execute the following command from the package root directory.
@@ -61,6 +77,13 @@ For example,
 ```
 $ cd hotel-app
 $ bal consolidate-packages add myorg/customer_service,myorg/menu_service
+```
+
+To add local packages, 
+
+```
+$ cd hotel-app
+$ bal consolidate-packages add myorg/customer_service,myorg/menu_service --repository=local
 ```
 
 ##### Removing services from an existing package

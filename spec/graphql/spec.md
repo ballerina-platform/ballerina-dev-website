@@ -3,7 +3,7 @@
 _Authors_: [@aashikam](https://github.com/aashikam) [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@MohamedSabthar](https://github.com/MohamedSabthar) [@Nuvindu](https://github.com/Nuvindu) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
 _Reviewers_: [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@ldclakmal](https://github.com/ldclakmal) [@MohamedSabthar](https://github.com/MohamedSabthar) [@shafreenAnfar](https://github.com/shafreenAnfar) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
 _Created_: 2022/01/06 \
-_Updated_: 2024/08/06 \
+_Updated_: 2025/04/07 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
@@ -112,6 +112,9 @@ The conforming implementation of the specification is released and included in t
             * 7.1.10.1 [The `maxComplexity` Field](#71101-the-maxcomplexity-field)
             * 7.1.10.2 [The `defaultFieldComplexity` Field](#71102-the-defaultfieldcomplexity-field)
             * 7.1.10.3 [The `warnOnly` Field](#71103-the-warnonly-field)
+        * 7.1.11 [Document Cache Configurations](#7111-document-cache-configurations)
+            * 7.1.11.1 [The `enabled` Field](#71111-the-enabled-field)
+            * 7.1.11.2 [The `maxSize` Field](#71112-the-maxsize-field)
     * 7.2 [Resource Configuration](#72-resource-configuration)
         * 7.2.1 [Field Interceptors](#721-field-interceptors)
         * 7.2.2 [Prefetch Method Name Configurations](#722-prefetch-method-name-configurations)
@@ -212,6 +215,11 @@ The conforming implementation of the specification is released and included in t
             * 10.7.1.3 [Cache Invalidation](#10713-cache-invalidation)
                 * 10.7.1.3.1 [The `invalidate` Method](#107131-the-invalidate-method)
                 * 10.7.1.3.2 [The `invalidateAll` Method](#107132-the-invalidateall-method)
+        * 10.7.2 [Document Caching](#1072-document-caching)
+            * 10.7.2.1 [Enable Document Caching](#10721-enable-document-caching)
+            * 10.7.2.2 [Recommended Best Practices](#10722-recommended-best-practices)
+                * 10.7.2.2.1 [Arguments](#107221-arguments)
+                * 10.7.2.2.2 [Cache Size](#107222-cache-size)
     * 10.8 [Observability](#108-observability)
         * 10.8.1 [Metrics](#1081-metrics)
             * 10.8.1.1 [Operation Type](#10811-operation-type)
@@ -1753,11 +1761,11 @@ The field `enabled` accepts a `boolean` that denotes whether the client is enabl
 
 ##### 7.1.5.2 The `path` Field
 
-The optional field `path` accepts a valid `string` for the GraphiQL service. If the path is not given in the configuration, `/graphiql` is set as the default path.
+The field `path` accepts a valid `string` for the GraphiQL service. If the path is not given in the configuration, `/graphiql` is set as the default path.
 
 ##### 7.1.5.3 The `printUrl` Field
 
-The optional field `printUrl` accepts a boolean that denotes whether the GraphiQL url is printed to stdout or not. By default, it has been set to `true`.
+The field `printUrl` accepts a boolean that denotes whether the GraphiQL url is printed to stdout or not. By default, it has been set to `true`.
 
 #### 7.1.6 Service Interceptors
 
@@ -1849,15 +1857,15 @@ service on new graphql:Listener(9090) {
 
 ##### 7.1.9.1 The `enabled` Field
 
-The optional field `enabled` accepts a `boolean` that denotes whether the server-side operation cache is enabled or not. By default, it has been set to `true`.
+The field `enabled` accepts a `boolean` that denotes whether the server-side operation cache is enabled or not. By default, it has been set to `true`.
 
 ##### 7.1.9.2 The `maxAge` Field
 
-The optional field `maxAge` accepts a valid `decimal` value which is considered as the TTL(Time To Live) in seconds. The default maxAge is `60` seconds.
+The field `maxAge` accepts a valid `decimal` value which is considered as the TTL(Time To Live) in seconds. The default maxAge is `60` seconds.
 
 ##### 7.1.9.3 The `maxSize` Field
 
-The optional field `maxSize` accepts an int that denotes the maximum number of cache entries in the cache table. By default, it has been set to `120`.
+The field `maxSize` accepts an int that denotes the maximum number of cache entries in the cache table. By default, it has been set to `120`.
 
 #### 7.1.10 Query Complexity Configurations
 
@@ -1900,6 +1908,45 @@ The `defaultFieldComplexity` field is used to provide the default complexity of 
 ##### 7.1.10.3 The `warnOnly` Field
 
 The `warnOnly` field is used to provide a boolean value to denote whether to warn only when the query complexity exceeds the `maxComplexity` or to fail the request. By default, it has been set to `false`.
+
+#### 7.1.11 Document Cache Configurations
+
+The `documentCacheConfig` field is used to provide the document cache configuration to enable the [GraphQL document caching](#1072-document-caching). By default, document caching is disabled for Ballerina GraphQL services.
+
+###### Example: Enable Document Cache with Default Values
+
+```ballerina
+@graphql:ServiceConfig {
+    documentCacheConfig: {}
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+###### Example: Document Cache Configurations
+
+```ballerina
+@graphql:ServiceConfig {
+    documentCacheConfig: {
+        enabled: true
+        maxSize: 50
+    }
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+##### 7.1.11.1 The `enabled` Field
+
+The field `enabled` accepts a `boolean` that denotes whether the document cache is enabled or not. By default, it has been set to `true`.
+
+> **Note:** Even if this value is set to `true` by default, document caching is not enabled if the `documentCacheConfig` field is specified in the `ServiceConfig` annotation.
+
+##### 7.1.11.2 The `maxSize` Field
+
+The field `maxSize` accepts an int that denotes the maximum number of cache entries in the document cache table. By default, it has been set to `100`.
 
 ### 7.2 Resource Configuration
 
@@ -4047,6 +4094,79 @@ service /graphql on new graphql:Listener(9090) {
 ```
 
 In this example, caching is enabled at the operation level. Therefore, the field `name` and `type` will be cached. Since the field-level cache configuration overrides the parent cache configurations, the field `version` will not be cached. When updating the name with a mutation, the cached values become invalid. Hence, the `invalidate` function can be used to invalidate the existing cache values.
+
+#### 10.7.2 Document Caching
+
+The Ballerina GraphQL module supports server-side document caching, which can be enabled through service configuration. The Ballerina cache module manages the cache internally using a single in-memory cache table. The GraphQL engine automatically generates cache keys by hashing the document. Before hashing, the engine normalizes the document by removing unnecessary elements such as whitespace, new lines, and comments while preserving its logical structure. This ensures consistent cache keys for equivalent queries, regardless of formatting differences.
+
+The internal cache table uses an LRU eviction policy, and cache entries remain valid until they are evicted by the LRU policy. Once the cache hits, it skips the document parsing process.
+
+> **Note**: Documents are cached only if they are parsed successfully without errors.
+
+#### 10.7.2.1 Enable Document Caching
+
+The document caching can be enabled by providing the configuration via the GraphQL service annotation. The field `documentCachConfig` accepts the configurations as described in the [document cache configuration](#7110-document-cache-configurations) section.
+
+###### Example: Document Caching
+
+```ballerina
+import ballerina/graphql;
+
+public type Profile record {|
+    string name;
+    int age;
+|};
+
+@graphql:ServiceConfig {
+    documentCacheConfig: {
+        maxSize: 20
+    }
+}
+service /graphql on new graphql:Listener(9090) {
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 51
+        };
+    }
+}
+```
+
+#### 10.7.2.2 Recommended Best Practices
+
+##### 10.7.2.2.1 Arguments
+
+* If a query includes literal values as arguments, those literals become part of the cached document. As a result, similar requests with different argument values will be treated as separate entries, requiring parsing and caching each time. To maximize cache efficiency, it is recommended to pass arguments using variables instead of literals within the document.
+
+###### Example: Recomemnded way
+
+```ballerina
+query GetProfile($teacherName:String!, $studentName: String!) {
+    teacher(name: $teacherName) {
+      id
+    }
+    student(name: $studentName) {
+      id
+    }
+}
+```
+
+###### Example: Non-Recommended way
+
+```ballerina
+query GetProfile {
+    teacher(name: "Bob") {
+      id
+    }
+    student(name: "Jessie") {
+      id
+    }
+}
+```
+
+##### 10.7.2.2.2 Cache Size
+
+* Cache size is measured by the number of cache entries, not by memory usage. Ensure that the cache's [maxSize](#71102-the-maxsize-field) is configured appropriately based on the available memory and the average size of a query.
 
 ### 10.8 Observability
 

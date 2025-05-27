@@ -4385,6 +4385,29 @@
     ]
   },
   {
+    "title": "Change data capture",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume events",
+        "url": "cdc-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Advanced usage",
+        "url": "cdc-advanced-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Avro",
     "column": 0,
     "category": "Common libraries",

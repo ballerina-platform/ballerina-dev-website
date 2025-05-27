@@ -1735,6 +1735,15 @@ sublinks:
           - title: Call stored procedures
             id: 7
             url: mysql-call-stored-procedures
+      - title: Change data capture
+        id: 64
+        sublinks:
+          - title: Consume events
+            id: 1
+            url: cdc-service
+          - title: Advanced usage
+            id: 2
+            url: cdc-advanced-service
   - title: Common libraries
     id: 3
     sublinks:

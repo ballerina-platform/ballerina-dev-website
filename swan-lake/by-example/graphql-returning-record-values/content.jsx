@@ -87,7 +87,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/graphql-returning-record-values",
                 "_blank",
               );
             }}
@@ -236,7 +236,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/graphql-returning-record-values",
                 "_blank",
               );
             }}

@@ -98,7 +98,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}
@@ -192,7 +192,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}
@@ -317,7 +317,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}

@@ -78,7 +78,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-guarantee-test-execution-order",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.4/examples/testerina-guarantee-test-execution-order",
                 "_blank",
               );
             }}

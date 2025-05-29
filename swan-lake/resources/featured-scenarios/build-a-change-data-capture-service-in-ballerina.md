@@ -19,7 +19,7 @@ To follow along with this tutorial, ensure you have:
 * A terminal or command-line interface
 * MySQL 8.0 or later
 
-## Set Up a MySQL Server Instance
+## Set up a MySQL server instance
 
 You can use one of the following methods to set up MySQL:
 
@@ -30,13 +30,13 @@ You can use one of the following methods to set up MySQL:
 
 > **Tip:** Keep your MySQL connection details (host, port, username, and password) handy.
 
-## Set Up the MySQL Database
+## Set up the MySQL database
 
 ### Enable CDC in MySQL
 
 CDC relies on MySQL’s binary logging feature, which is enabled by default in MySQL 8.0+ unless explicitly disabled.
 
-#### 1. Verify Binary Logging
+#### Verify binary logging
 
 Run the following SQL to confirm:
 
@@ -46,7 +46,7 @@ SHOW VARIABLES LIKE 'log_bin';
 
 If `log_bin` is `ON`, you're good to go.
 
-#### 2. Ensure Proper CDC Settings
+#### Ensure proper CDC settings
 
 Also verify the following:
 
@@ -67,7 +67,7 @@ binlog-row-image=FULL
 
 Then restart MySQL to apply the changes.
 
-### Create Necessary Tables
+### Create necessary tables
 
 Log in to your MySQL server and execute:
 
@@ -89,7 +89,7 @@ INSERT INTO transactions (user_id, amount, status, created_at) VALUES
 (12, 4500.00, 'PENDING', '2025-04-01 08:30:00');
 ```
 
-## Create a Ballerina Service Package
+## Create a Ballerina service package
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic.
 
@@ -111,7 +111,7 @@ fraud_detection/
 
 > **Tip:** Delete the auto-generated `main.bal` — we’ll create our own.
 
-## Define the Transaction Record
+## Define the `Transaction` record
 
 In Ballerina, records represent structured data. Define one that matches the `transactions` table:
 
@@ -125,7 +125,7 @@ type Transactions record {|
 |};
 ```
 
-## Import Required Modules
+## Import required modules
 
 Add the following imports to your Ballerina program:
 
@@ -139,7 +139,7 @@ import ballerinax/mysql;
 import ballerinax/mysql.cdc.driver as _;
 ```
 
-## Add CDC Listener and Base Service
+## Add CDC listener and base service
 
 Set up the CDC listener using the [`mysql:CdcListener`](https://central.ballerina.io/ballerinax/mysql/latest#CdcListener) and [`cdc:Service`](https://central.ballerina.io/ballerinax/cdc/latest#Service):
 
@@ -167,14 +167,19 @@ listener mysql:CdcListener financeDBListener = new (
 
 > **Tip:** Use [Ballerina configurable variables](https://ballerina.io/learn/configure-a-sample-ballerina-service/) to manage credentials securely.
 
-### Define the CDC Service
+*Define the CDC Service*
 
 ```ballerina
 service cdc:Service on financeDBListener {
     isolated remote function onCreate(Transactions trx) returns error? {
         log:printInfo(`Transaction with id: ${trx.tx_id}`);
         if trx.amount > 10000.0 {
-            log:printWarn(`⚠️ Fraud alert: High-value transaction detected: Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`);
+            log:printWarn(
+                `⚠️ Fraud alert: High-value transaction detected: 
+                Id: ${trx.tx_id}, 
+                User Id: ${trx.user_id}, 
+                Amount: $${trx.amount}`
+            );
         }
     }
 
@@ -186,7 +191,7 @@ service cdc:Service on financeDBListener {
 
 > **Note:** We're only handling `onCreate` here, but the service can also support `onRead`, `onUpdate`, and `onDelete`.
 
-## The Complete Code
+## The complete code
 
 Here’s the complete `main.bal`:
 
@@ -224,7 +229,12 @@ service cdc:Service on financeDBListener {
     isolated remote function onCreate(Transactions trx) returns error? {
         log:printInfo(`Transaction with id: ${trx.tx_id}`);
         if trx.amount > 10000.0 {
-            log:printWarn(`⚠️ Fraud alert: High-value transaction detected: Id: ${trx.tx_id}, User Id: ${trx.user_id}, Amount: $${trx.amount}`);
+            log:printWarn(
+                `⚠️ Fraud alert: High-value transaction detected: 
+                Id: ${trx.tx_id}, 
+                User Id: ${trx.user_id}, 
+                Amount: $${trx.amount}`
+            );
         }
     }
 
@@ -234,7 +244,7 @@ service cdc:Service on financeDBListener {
 }
 ```
 
-## Run the Service
+## Run the service
 
 ### Add the credentials
 
@@ -245,7 +255,7 @@ username="root"
 password="rootPassword"
 ```
 
-### Execute the command
+### Execute the `bal run` command
 
 ```bash
 bal run
@@ -259,7 +269,7 @@ Compiling source
 Running executable
 ```
 
-## Try It Out
+## Try it out
 
 Run the following SQL to simulate transactions:
 
@@ -280,7 +290,7 @@ time=2025-05-28T22:49:59.231+05:30 level=INFO module=wso2/fraud_detection messag
 time=2025-05-28T22:49:59.245+05:30 level=WARN module=wso2/fraud_detection message="⚠️ Fraud alert: High-value transaction detected: Id: 5, User Id: 11, Amount: $12000.0"
 ```
 
-## Learn More
+## Learn more
 
 To learn more about CDC service in Ballerina, see the following.
 

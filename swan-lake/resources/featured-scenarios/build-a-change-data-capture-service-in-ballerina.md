@@ -148,10 +148,13 @@ import ballerinax/cdc;
 import ballerinax/mysql;
 import ballerinax/mysql.cdc.driver as _;
 
+configurable string username = ?;
+configurable string password = ?;
+
 listener mysql:CdcListener financeDBListener = new (
     database = {
-        username: "root",
-        password: "root",
+        username,
+        password,
         includedDatabases: "finance_db",
         includedTables: "finance_db.transactions"
     },
@@ -193,6 +196,9 @@ import ballerinax/cdc;
 import ballerinax/mysql;
 import ballerinax/mysql.cdc.driver as _;
 
+configurable string username = ?;
+configurable string password = ?;
+
 type Transactions record {|
     int tx_id;
     int user_id;
@@ -203,8 +209,8 @@ type Transactions record {|
 
 listener mysql:CdcListener financeDBListener = new (
     database = {
-        username: "root",
-        password: "root",
+        username,
+        password,
         includedDatabases: "finance_db",
         includedTables: "finance_db.transactions"
     },
@@ -229,6 +235,17 @@ service cdc:Service on financeDBListener {
 ```
 
 ## Run the Service
+
+### Add the credentials
+
+In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
+
+```toml
+username="root"
+password="rootPassword"
+```
+
+### Execute the command
 
 ```bash
 bal run

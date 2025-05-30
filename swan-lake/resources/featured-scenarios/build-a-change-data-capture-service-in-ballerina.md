@@ -34,7 +34,7 @@ You can use one of the following methods to set up MySQL:
 
 ### Enable CDC in MySQL
 
-CDC relies on MySQL’s binary logging feature, which is enabled by default in MySQL 8.0+ unless explicitly disabled.
+CDC relies on [MySQL’s binary logging](https://dev.mysql.com/doc/refman/8.4/en/binary-log.html) feature, which is enabled by default in MySQL 8.0+ unless explicitly disabled.
 
 #### Verify binary logging
 
@@ -48,7 +48,7 @@ If `log_bin` is `ON`, you're good to go.
 
 #### Ensure proper CDC settings
 
-Also verify the following:
+Also, verify the following:
 
 ```sql
 SHOW VARIABLES LIKE 'binlog_format';
@@ -95,10 +95,10 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](https://ballerina.io/learn/organize-ballerina-code/).
 
-In the terminal, run the following to create a new Ballerina project:
+In the terminal, run the following to create a new Ballerina package:
 
-```bash
-bal new fraud_detection
+```
+$ bal new fraud_detection
 ```
 
 This creates:
@@ -257,8 +257,8 @@ password="rootPassword"
 
 ### Execute the `bal run` command
 
-```bash
-bal run
+```
+$ bal run
 ```
 
 You should see the listener start up and await changes.

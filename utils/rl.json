@@ -23,6 +23,14 @@
                     "id": "swan-lake-2201.12",
                     "subDirectories": [
                         {
+                            "dirName": "2201.12.6 (Swan Lake Update 12)",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/downloads/swan-lake-release-notes/swan-lake-2201.12.6",
+                            "id": "swan-lake-2201.12.6"
+                        },
+                        {
                             "dirName": "2201.12.5 (Swan Lake Update 12)",
                             "level": 3,
                             "position": 1,

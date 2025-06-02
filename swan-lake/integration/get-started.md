@@ -108,14 +108,14 @@ public type Country record {
     float area;
 };
 
-service / on new http:Listener(8080) {
-    resource function get countries() returns Country[]|error {
-        // Creating an HTTP client to connect to the server.
-        http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
 
+service / on new http:Listener(8080) {
+
+    resource function get countries() returns Country[]|error {
         // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
         Country[] countries = check countriesClient->/countries;
-                return countries;
+        return countries;
     }
 }
 ```
@@ -162,12 +162,12 @@ public type CountryResponse record {
     decimal gdpPerCapita;
 };
 
+http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+
 service / on new http:Listener(8080) {
+
     resource function get countries() returns CountryResponse[]|http:InternalServerError {
         do {
-            // Creating an HTTP client to connect to the server.
-            http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
-
             // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
             Country[] countries = check countriesClient->/countries;
 
@@ -183,14 +183,13 @@ service / on new http:Listener(8080) {
         } on fail var err {
             return <http:InternalServerError>{
                 body: {
-                    "error": "Failed to retrieve countries from the backend service",
+                    "error": "Failed to retrieve countries",
                     "message": err.message()
                 }
             };
         }
     }
 }
-
 ```
 Run following command to invoke above.
 

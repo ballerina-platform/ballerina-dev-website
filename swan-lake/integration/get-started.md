@@ -108,7 +108,7 @@ public type Country record {
     float area;
 };
 
-http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+final http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
 
 service / on new http:Listener(8080) {
 

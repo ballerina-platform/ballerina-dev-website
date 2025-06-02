@@ -109,28 +109,13 @@ public type Country record {
 };
 
 service / on new http:Listener(8080) {
-    resource function get countries() returns Country[]|http:InternalServerError {
-        do {
-            // Creating an HTTP client to connect to the server.
-            http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+    resource function get countries() returns Country[]|error {
+        // Creating an HTTP client to connect to the server.
+        http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
 
-            // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
-            Country[] countries = check countriesClient->/countries;
-
-            // Using a query expression to process the list of countries and generate a summary.
-            json topCountries =
-                from var {name, continent, population, area, gdp} in countries
-            where population >= 100000000 // Filtering countries with a population >= 100M.
-            select {name, continent, gdpPerCapita}; // Selecting the country name, continent, and GDP per capita.
-            return topCountries;
-        } on fail var err {
-            return <http:InternalServerError>{
-                body: {
-                    "error": "Failed to retrieve countries from the backend service",
-                    "message": err.message()
-                }
-            };
-        }
+        // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
+        Country[] countries = check countriesClient->/countries;
+                return countries;
     }
 }
 ```
@@ -153,7 +138,7 @@ Now, open another terminal window and run the following command to invoke the RE
 
 ```
 $ curl localhost:8080/countries
-[{"name":"United States", "continent":"North America", "gdpPerCapita":82657.95}, {"name":"Russia", "continent":"Europe/Asia", "gdpPerCapita":15047.85}, {"name":"Mexico", "continent":"North America", "gdpPerCapita":13883.21}, {"name":"China", "continent":"Asia", "gdpPerCapita":12318.28}, {"name":"Brazil", "continent":"South America", "gdpPerCapita":9147.56}, {"name":"Indonesia", "continent":"Asia", "gdpPerCapita":4091.05}, {"name":"Egypt", "continent":"Africa", "gdpPerCapita":3547.19}, {"name":"India", "continent":"Asia", "gdpPerCapita":2318.83}]
+[{"name":"United States", "continent":"North America", "population":331002651, "gdp":2.736E+13, "area":9833517.0, "capital":"Washington, D.C.", "languages":"English", "currency":"USD"}, {"name":"Canada", "continent":"North America", "population":37742154, "gdp":2.14E+12, "area":9984670.0, "capital":"Ottawa", "languages":"English, French", "currency":"CAD"}, {"name":"Brazil", "continent":"South America", "population":212559417, "gdp":1.9444E+12, "area":8515767.0, "capital":"Brasília", "languages":"Portuguese", "currency":"BRL"}, {"name":"United Kingdom", "continent":"Europe", "population":67886011, "gdp":2.56E+12, "area":243610.0, "capital":"London", "languages":"English", "currency":"GBP"}, {"name":"Germany", "continent":"Europe", "population":83783942, "gdp":4.5E+12, "area":357022.0, "capital":"Berlin", "languages":"German", "currency":"EUR"}, {"name":"France", "continent":"Europe", "population":65273511, "gdp":2.93E+12, "area":551695.0, "capital":"Paris", "languages":"French", "currency":"EUR"}, {"name":"India", "continent":"Asia", "population":1380004385, "gdp":3.2E+12, "area":3287263.0, "capital":"New Delhi", "languages":"Hindi, English", "currency":"INR"}, {"name":"China", "continent":"Asia", "population":1439323776, "gdp":1.773E+13, "area":9596961.0, "capital":"Beijing", "languages":"Mandarin", "currency":"CNY"}, {"name":"Japan", "continent":"Asia", "population":126476461, "gdp":4.2E+12, "area":377975.0, "capital":"Tokyo", "languages":"Japanese", "currency":"JPY"}, {"name":"Australia", "continent":"Oceania", "population":25499884, "gdp":1.78E+12, "area":7692024.0, "capital":"Canberra", "languages":"English", "currency":"AUD"}, {"name":"South Africa", "continent":"Africa", "population":59308690, "gdp":1.275E+12, "area":1219090.0, "capital":"Pretoria", "languages":"11 official languages", "currency":"ZAR"}, {"name":"Russia", "continent":"Europe/Asia", "population":145934462, "gdp":2.196E+12, "area":1.7098242E7, "capital":"Moscow", "languages":"Russian", "currency":"RUB"}, {"name":"Mexico", "continent":"North America", "population":128932753, "gdp":1.79E+12, "area":1964375.0, "capital":"Mexico City", "languages":"Spanish", "currency":"MXN"}, {"name":"Italy", "continent":"Europe", "population":60461826, "gdp":2.0E+12, "area":301340.0, "capital":"Rome", "languages":"Italian", "currency":"EUR"}, {"name":"Argentina", "continent":"South America", "population":45195774, "gdp":4.07E+11, "area":2780400.0, "capital":"Buenos Aires", "languages":"Spanish", "currency":"ARS"}, {"name":"Spain", "continent":"Europe", "population":46754778, "gdp":1.4E+12, "area":505990.0, "capital":"Madrid", "languages":"Spanish", "currency":"EUR"}, {"name":"Indonesia", "continent":"Asia", "population":273523615, "gdp":1.119E+12, "area":1904569.0, "capital":"Jakarta", "languages":"Indonesian", "currency":"IDR"}, {"name":"Saudi Arabia", "continent":"Asia", "population":34813871, "gdp":7.93E+11, "area":2149690.0, "capital":"Riyadh", "languages":"Arabic", "currency":"SAR"}, {"name":"South Korea", "continent":"Asia", "population":51269185, "gdp":1.647E+12, "area":100210.0, "capital":"Seoul", "languages":"Korean", "currency":"KRW"}, {"name":"Turkey", "continent":"Europe/Asia", "population":84339067, "gdp":7.2E+11, "area":783562.0, "capital":"Ankara", "languages":"Turkish", "currency":"TRY"}, {"name":"Egypt", "continent":"Africa", "population":102334404, "gdp":3.63E+11, "area":1002450.0, "capital":"Cairo", "languages":"Arabic", "currency":"EGP"}, {"name":"Thailand", "continent":"Asia", "population":69799978, "gdp":5.43E+11, "area":513120.0, "capital":"Bangkok", "languages":"Thai", "currency":"THB"}, {"name":"Pakistan", "continent":"Asia", "population":220892340, "gdp":2.78E+11, "area":881913.0, "capital":"Islamabad", "languages":"Urdu, English", "currency":"PKR"}, {"name":"Nigeria", "continent":"Africa", "population":206139589, "gdp":4.32E+11, "area":923768.0, "capital":"Abuja", "languages":"English", "currency":"NGN"}, {"name":"Vietnam", "continent":"Asia", "population":97338579, "gdp":3.4E+11, "area":331212.0, "capital":"Hanoi", "languages":"Vietnamese", "currency":"VND"}, {"name":"Philippines", "continent":"Asia", "population":109581078, "gdp":4.02E+11, "area":300000.0, "capital":"Manila", "languages":"Filipino, English", "currency":"PHP"}, {"name":"Colombia", "continent":"South America", "population":50882891, "gdp":3.24E+11, "area":1141748.0, "capital":"Bogotá", "languages":"Spanish", "currency":"COP"}, {"name":"Sri Lanka", "continent":"Asia", "population":21803000, "gdp":8.41E+10, "area":65610.0, "capital":"Sri Jayawardenepura Kotte", "languages":"Sinhala, Tamil", "currency":"LKR"}]
 ```
 
 Alternatively, you can use the built-in `Try it` feature by clicking on the `Try it` CodeLens above the service declaration on VS Code.
@@ -205,8 +190,8 @@ service / on new http:Listener(8080) {
         }
     }
 }
-```
 
+```
 Run following command to invoke above.
 
 ```

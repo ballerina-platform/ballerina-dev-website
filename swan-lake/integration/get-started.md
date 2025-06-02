@@ -109,10 +109,7 @@ public type Country record {
 };
 
 service / on new http:Listener(8080) {
-    // The `countries` resource function returns:
-    // - `json`: A JSON array containing the top 10 countries based on GDP per capita.
-    // - `http:InternalServerError`: An HTTP 500 error response if there is a failure in processing the request.
-    resource function get countries() returns json|http:InternalServerError {
+    resource function get countries() returns Country[]|http:InternalServerError {
         do {
             // Creating an HTTP client to connect to the server.
             http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
@@ -123,10 +120,7 @@ service / on new http:Listener(8080) {
             // Using a query expression to process the list of countries and generate a summary.
             json topCountries =
                 from var {name, continent, population, area, gdp} in countries
-            where population >= 100000000 && area >= 1000000.0 // Filtering countries with a population >= 100M and area >= 1M sq km.
-            let decimal gdpPerCapita = (gdp / population).round(2) // Calculating and rounding GDP per capita to 2 decimal places.
-            order by gdpPerCapita descending // Sorting the results by GDP per capita in descending order.
-            limit 10 // Limiting the results to the top 10 countries.
+            where population >= 100000000 // Filtering countries with a population >= 100M.
             select {name, continent, gdpPerCapita}; // Selecting the country name, continent, and GDP per capita.
             return topCountries;
         } on fail var err {
@@ -155,14 +149,70 @@ Compiling source
 Running executable
 ```
 
-Now, open another terminal window and run the following commands to invoke the REST API.
+Now, open another terminal window and run the following command to invoke the REST API.
 
 ```
-$ ccurl localhost:8080/countries
+$ curl localhost:8080/countries
 [{"name":"United States", "continent":"North America", "gdpPerCapita":82657.95}, {"name":"Russia", "continent":"Europe/Asia", "gdpPerCapita":15047.85}, {"name":"Mexico", "continent":"North America", "gdpPerCapita":13883.21}, {"name":"China", "continent":"Asia", "gdpPerCapita":12318.28}, {"name":"Brazil", "continent":"South America", "gdpPerCapita":9147.56}, {"name":"Indonesia", "continent":"Asia", "gdpPerCapita":4091.05}, {"name":"Egypt", "continent":"Africa", "gdpPerCapita":3547.19}, {"name":"India", "continent":"Asia", "gdpPerCapita":2318.83}]
 ```
 
 Alternatively, you can use the built-in `Try it` feature by clicking on the `Try it` CodeLens above the service declaration on VS Code.
+
+You can implement advanced filtering by updating the service as demonstrated in the following example.
+
+```ballerina
+import ballerina/http;
+
+public type Country record {
+    string name;
+    string continent;
+    int population;
+    decimal gdp;
+    float area;
+};
+
+public type CountryResponse record {
+    string name;
+    string continent;
+    decimal gdpPerCapita;
+};
+
+service / on new http:Listener(8080) {
+    resource function get countries() returns CountryResponse[]|http:InternalServerError {
+        do {
+            // Creating an HTTP client to connect to the server.
+            http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+
+            // Sending a GET request to the "/countries" endpoint and retrieving an array of `Country` records.
+            Country[] countries = check countriesClient->/countries;
+
+            // Using a query expression to process the list of countries and generate a summary.
+            CountryResponse[] topCountries =
+                from var {name, continent, population, area, gdp} in countries
+            where population >= 100000000 && area >= 1000000.0 // Filtering countries with a population >= 100M and area >= 1M sq km.
+            let decimal gdpPerCapita = (gdp / population).round(2) // Calculating and rounding GDP per capita to 2 decimal places.
+            order by gdpPerCapita descending // Sorting the results by GDP per capita in descending order.
+            limit 10 // Limiting the results to the top 10 countries.
+            select {name, continent, gdpPerCapita}; // Selecting the country name, continent, and GDP per capita.
+            return topCountries;
+        } on fail var err {
+            return <http:InternalServerError>{
+                body: {
+                    "error": "Failed to retrieve countries from the backend service",
+                    "message": err.message()
+                }
+            };
+        }
+    }
+}
+```
+
+Run following command to invoke above.
+
+```
+$ curl http://localhost:8080/countries
+[{"name":"United States", "continent":"North America", "gdpPerCapita":82657.95}, {"name":"Russia", "continent":"Europe/Asia", "gdpPerCapita":15047.85}, {"name":"Mexico", "continent":"North America", "gdpPerCapita":13883.21}, {"name":"China", "continent":"Asia", "gdpPerCapita":12318.28}, {"name":"Brazil", "continent":"South America", "gdpPerCapita":9147.56}, {"name":"Indonesia", "continent":"Asia", "gdpPerCapita":4091.05}, {"name":"Egypt", "continent":"Africa", "gdpPerCapita":3547.19}, {"name":"India", "continent":"Asia", "gdpPerCapita":2318.83}]
+```
 
 ## Learn more
 

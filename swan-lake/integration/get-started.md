@@ -29,23 +29,23 @@ Use the `bal new` command to create a new Ballerina package, which is the primar
 >**Info:** For more information about packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```
-$ bal new simple-country-service
+$ bal new country-service
 ```
 
-This command creates a new directory named `simple-country-service` with the following content:
+This command creates a new directory named `country-service` with the following content:
 
 ```
-simple-country-service/
+country-service/
 ├── Ballerina.toml
 └── main.bal
 ```
 
 - The `Ballerina.toml` file contains metadata that describes your package. The `bal` tool also uses the `Ballerina.toml` file to identify the root of a package.
-- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `simple-country-service` directory.
+- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `country-service` directory.
 
 ## Say `Hello, World!`
 
-Open the package directory in your text editor. If you are using VS Code, you could navigate to the `simple-country-service` directory and run `code .` to open the directory in VS Code. 
+Open the package directory in your text editor. If you are using VS Code, you could navigate to the `country-service` directory and run `code .` to open the directory in VS Code. 
 
 Then, open the `main.bal` file to see the generated source.
 
@@ -66,7 +66,7 @@ Run `bal run` in your terminal to run this package.
 ```
 $ bal run
 Compiling source
-	example/simple_country_service:0.1.0
+	example/country_service:0.1.0
 
 Running executable
 
@@ -78,22 +78,22 @@ Alternatively, you can generate an executable file with `bal build`,
 ```
 $ bal build
 Compiling source
-	example/simple_country_service:0.1.0
+	example/country_service:0.1.0
 
 Generating executable
-	target/bin/simple_country_service.jar
+	target/bin/country_service.jar
 ```
 
 and run it using `bal run`.
 
 ```
-$ bal run target/bin/simple_country_service.jar
+$ bal run target/bin/country_service.jar
 Hello, World!
 ```
 
 ## Write a simple REST API
 
-Now, let's change the `simple_country_service` application into a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
+Now, let's change the `country_service` application into a REST API. Ballerina has first-class abstractions for services, resources, etc., and they make network service development easier and more fun. 
 
 Replace the contents of the `main.bal` file with the following code:
 
@@ -105,7 +105,7 @@ public type Country record {
     string continent;
     int population;
     decimal gdp;
-    float area;
+    decimal area;
 };
 
 final http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
@@ -129,7 +129,7 @@ Let's run this package in your terminal:
 ```
 $ bal run
 Compiling source
-	example/simple_country_service:0.1.0
+	example/country_service:0.1.0
 
 Running executable
 ```
@@ -153,7 +153,7 @@ public type Country record {
     string continent;
     int population;
     decimal gdp;
-    float area;
+    decimal area;
 };
 
 public type CountryResponse record {
@@ -162,7 +162,7 @@ public type CountryResponse record {
     decimal gdpPerCapita;
 };
 
-http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
+final http:Client countriesClient = check new ("https://dev-tools.wso2.com/gs/helpers/v1.0/");
 
 service / on new http:Listener(8080) {
 
@@ -174,7 +174,7 @@ service / on new http:Listener(8080) {
             // Using a query expression to process the list of countries and generate a summary.
             CountryResponse[] topCountries =
                 from var {name, continent, population, area, gdp} in countries
-            where population >= 100000000 && area >= 1000000.0 // Filtering countries with a population >= 100M and area >= 1M sq km.
+            where population >= 100000000 && area >= 1000000d // Filtering countries with a population >= 100M and area >= 1M sq km.
             let decimal gdpPerCapita = (gdp / population).round(2) // Calculating and rounding GDP per capita to 2 decimal places.
             order by gdpPerCapita descending // Sorting the results by GDP per capita in descending order.
             limit 10 // Limiting the results to the top 10 countries.

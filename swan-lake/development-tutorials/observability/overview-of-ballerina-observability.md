@@ -178,7 +178,7 @@ Configuration key | Description | Default value | Possible values
 
 This outlines how to enable and configure observability in Ballerina for various tools and platforms. It provides a step-by-step guide for setting up monitoring, tracing, and logging using widely used observability solutions.
 
-Observability tools and platforms help monitor and analyze application performance, identify issues, and ensure reliability. Following are the main observability tools and platforms supported by Ballerina:
+Observability tools and platforms help monitor and analyze application performance, identify issues, and ensure reliability. The following are the main observability tools and platforms supported by Ballerina:
 
 - **[Prometheus](https://prometheus.io/):** A monitoring system and time-series database for metrics collection and alerting.
 

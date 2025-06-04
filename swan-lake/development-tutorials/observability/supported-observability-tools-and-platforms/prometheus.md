@@ -40,7 +40,7 @@ Prometheus is used as the monitoring system, which pulls out the metrics collect
 3.  Start the Prometheus server in a Docker container with the command below.
 
     ```
-    $ docker run -p 19090:9090 -v <path_to_prometheus.yml>:/etc/prometheus/ prom/prometheus
+    $ docker run -p 9090:9090 -v <path_to_prometheus.yml>:/etc/prometheus/ prom/prometheus
     ```
 
 ## Step 2 - Import Ballerina Prometheus extension

@@ -192,7 +192,7 @@ Observability tools and platforms help monitor and analyze application performan
 
 - **[Elastic Stack](https://www.elastic.co/elastic-stack):** A collection of tools (Elasticsearch, Logstash, Kibana) for centralized logging and analytics.
 
-Following contains the guide to set up and observe Ballerina programs in each of the observability tool or platform mentioned above.
+The following contains a guide to set up and observe Ballerina programs in each of the observability tools or platforms mentioned above.
 
 - [Observe Ballerina programs with Prometheus](/learn/supported-observability-tools-and-platforms/prometheus)
 - [Observe Ballerina programs with Jaeger](/learn/supported-observability-tools-and-platforms/jaeger)

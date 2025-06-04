@@ -135,7 +135,7 @@ $ curl http://localhost:9797/metrics
 
 ## Set up Grafana
 
-[Grafana](https://grafana.com/) can be used to visualize Ballerina metrics provided for Prometheus. First, users need to set up the Ballerina project to observe metrics in Prometheus. Please follow the steps mentioned above.
+[Grafana](https://grafana.com/) can be used to visualize Ballerina metrics provided for Prometheus. First, users need to set up the Ballerina project to observe metrics in Prometheus and follow the steps mentioned above.
 
 Let’s use Grafana to visualize metrics in a dashboard. For this, we need to install Grafana and configure Prometheus as a data source. Follow the steps below to configure Grafana.
 

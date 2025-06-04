@@ -170,7 +170,7 @@ tracingProvider=<TRACING_PROVIDER>
 Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 `ballerina.observe.metricsEnabled` | Whether metrics monitoring is enabled (true) or disabled (false) | false | `true` or `false`
-`ballerina.observe.metricsReporter` | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `prometheus`, `newrelic` or if any custom implementation, the name of the reporter.
+`ballerina.observe.metricsReporter` | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `prometheus`, `newrelic`, or if any custom implementation, the name of the reporter.
 `ballerina.observe.tracingEnabled` | Whether tracing is enabled (true) or disabled (false) | false | `true` or `false`
 `ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
 

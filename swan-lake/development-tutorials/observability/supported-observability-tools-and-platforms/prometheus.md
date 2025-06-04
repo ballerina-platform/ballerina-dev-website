@@ -74,7 +74,7 @@ Configuration key | Description | Default value | Possible values
 
 ## Step 4 - Run the Ballerina service
 
-When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint (`/metrics`) for metrics monitoring and the metrics will be published to Prometheus. Prometheus should be configured to scrape metrics from the metrics HTTP endpoint in Ballerina.
+When Ballerina observability is enabled, the Ballerina runtime exposes internal metrics via an HTTP endpoint (`/metrics`) for metrics monitoring, and the metrics will be published to Prometheus. Prometheus should be configured to scrape metrics from the metrics HTTP endpoint in Ballerina.
 
 Run the following command to start the Ballerina service.
 

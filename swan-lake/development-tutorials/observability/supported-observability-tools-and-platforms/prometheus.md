@@ -52,7 +52,7 @@ To include the Prometheus extension into the executable, the `ballerinax/prometh
 import ballerinax/prometheus as _;
 ```
 
-To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context of `/metrics` in default port `9797` when starting the Ballerina service.
+To support Prometheus as the metrics reporter, an HTTP endpoint starts with the context of `/metrics` in the default port `9797` when starting the Ballerina service.
 
 ## Step 3 - Configure Ballerina runtime configurations
 You can set up Prometheus for your Ballerina project using configurations similar to the following in your `Config.toml` file.

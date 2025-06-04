@@ -28,7 +28,7 @@ $ bal new observability_demo
 Created new package 'observability_demo' at observability_demo.
 ```
 
-Replace the contents of the `main.bal` file, which is located inside the newly created `observability_demo` directory with the following code:
+Replace the contents of the `main.bal` file, which is located inside the newly created `observability_demo` directory, with the following code:
 
 ```ballerina
 import ballerina/http;

@@ -1,10 +1,10 @@
 ---
-title: Observe Ballerina programs with Prometheus
+title: Observe metrics using Prometheus
 description: See how Ballerina supports observability by exposing itself via metrics to Prometheus.
 keywords: ballerina, observability, metrics, prometheus
 permalink: /learn/supported-observability-tools-and-platforms/prometheus/
 active: prometheus
-intro: Ballerina provides metrics compatible with <a href="https://prometheus.io/">Prometheus</a> which is widely used worldwide to monitor open-source systems.
+intro: Ballerina provides metrics compatible with [Prometheus](https://prometheus.io), which is widely used worldwide to monitor open-source systems.
 ---
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina metrics in Prometheus.
@@ -34,7 +34,6 @@ Prometheus is used as the monitoring system, which pulls out the metrics collect
     Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as `a.b.c.d` and its
     port (default `9797`).
     If you need more information, go to the <a href="https://prometheus.io/docs/introduction/first_steps/" target="_blank">Prometheus documentation</a>.
-    
     If your Ballerina service is running on localhost and Prometheus in a Docker container,
     add the target as `host.docker.internal:9797` to access the localhost from Docker.
 

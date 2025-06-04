@@ -1,10 +1,10 @@
 ---
-title: Observe Ballerina programs with Jaeger
+title: Observe tracing using Jaeger
 description: See how Ballerina supports observability by exposing itself via tracing to Jaeger.
 keywords: ballerina, observability, tracing, jaeger
 permalink: /learn/supported-observability-tools-and-platforms/jaeger/
 active: jaeger
-intro: Users can configure Ballerina to support distributed tracing with <a href="https://www.jaegertracing.io/">Jaeger</a>, which is one of the open-source and distributed tracing platforms used worldwide. Ballerina provides tracing data in OpenTelemetry format.
+intro: Users can configure Ballerina to support distributed tracing with [Jaeger](https://www.jaegertracing.io/), which is one of the open-source and distributed tracing platforms used worldwide. Ballerina provides tracing data in OpenTelemetry format.
 ---
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing in Jaeger.

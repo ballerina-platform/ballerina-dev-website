@@ -1,10 +1,10 @@
 ---
-title: Observe Ballerina programs with Elastic Stack
+title: Observe logs using Elastic Stack
 description: See how Ballerina supports observability by exposing its logs to Elastic Stack.
 keywords: ballerina, observability, metrics, tracing, elastic stack
 permalink: /learn/supported-observability-tools-and-platforms/elastic-stack/
 active: elastic-stack
-intro: In Ballerina, distributed logging and analysis are supported by the <a href="https://www.elastic.co/elastic-stack">Elastic Stack</a>. Ballerina has a log module for logging into the console. To monitor the logs, the Ballerina standard output needs to be redirected to a file.
+intro: In Ballerina, distributed logging and analysis are supported by the [Elastic Stack](https://www.elastic.co/elastic-stack). Ballerina has a log module for logging into the console. To monitor the logs, the Ballerina standard output needs to be redirected to a file.
 ---
 
 The Elastic Stack comprises the following components.

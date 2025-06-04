@@ -1,10 +1,10 @@
 ---
-title: Observe Ballerina programs with New Relic
+title: Observe metrics and tracing using New Relic
 description: See how Ballerina supports observability by exposing itself via metrics and tracing to New Relic.
 keywords: ballerina, observability, metrics, tracing, new relic
 permalink: /learn/supported-observability-tools-and-platforms/new-relic/
 active: new-relic
-intro: Users can observe Ballerina programs with <a href="https://newrelic.com/">New Relic</a>, which is an observability platform designed to help organizations monitor, analyze, and troubleshoot their applications, infrastructure, and digital experiences in real-time. Both metrics and tracing in Ballerina can be viewed with New Relic.
+intro: Users can observe Ballerina programs with [New Relic](https://newrelic.com/), which is an observability platform designed to help organizations monitor, analyze, and troubleshoot their applications, infrastructure, and digital experiences in real-time. Both metrics and tracing in Ballerina can be viewed with New Relic.
 ---
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing and metrics in New Relic.

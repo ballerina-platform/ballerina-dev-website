@@ -1,10 +1,10 @@
 ---
-title: Observe Ballerina programs with DataDog
+title: Observe metrics and tracing using DataDog
 description: See how Ballerina supports observability by exposing itself via metrics and tracing to DataDog.
 keywords: ballerina, observability, metrics, tracing, datadog
 permalink: /learn/supported-observability-tools-and-platforms/datadog/
 active: datadog
-intro: Users can observe Ballerina programs with <a href="https://www.datadoghq.com/">DataDog</a>, which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with DataDog.
+intro: Users can observe Ballerina programs with [DataDog](https://www.datadoghq.com/), which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with DataDog.
 ---
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing and metrics in DataDog.

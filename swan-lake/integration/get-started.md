@@ -41,7 +41,7 @@ country-service/
 ```
 
 - The `Ballerina.toml` file contains metadata that describes your package. The `bal` tool also uses the `Ballerina.toml` file to identify the root of a package.
-- The `main.bal` file is a source file and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `country-service` directory.
+- The `main.bal` file is a source file, and it contains the Ballerina code that prints `Hello, World!` to the console. You can add any number of source files in the `country-service` directory.
 
 ## Say `Hello, World!`
 

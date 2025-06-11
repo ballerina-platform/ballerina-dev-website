@@ -74,16 +74,16 @@ Before we begin, make sure you have:
 
 Detailed information on the Ballerina connector structure can be found in the [Ballerina module contribution guide](https://github.com/ballerina-platform/ballerina-library/blob/main/docs/adding-a-new-ballerina-module.md#directory-structure).
 
-## Step 2: Prepare the OpenAPI specification
+## Step 2: Prepare the OpenAPI definition
 
-1. Find the OpenAPI specification for the API you want to create a connector. This is usually available in the API documentation.
-   Example: For Twitter, you can get the latest API specification from the [Twitter OpenAPI endpoint](https://api.twitter.com/2/openapi.json).
+1. Find the OpenAPI definition for the API you want to create a connector. This is usually available in the API documentation.
+   Example: For Twitter, you can get the latest API definition from the [Twitter OpenAPI endpoint](https://api.twitter.com/2/openapi.json).
 
 2. Save the file as `openapi.yaml` (or `openapi.json`) in the `docs/spec` directory of your project.
 
 3. To improve compatibility and readability before generating the Ballerina client, run the following preprocessing steps using the Ballerina OpenAPI tool:
 
-   **a. Flatten the OpenAPI specification**
+   **a. Flatten the OpenAPI definition**
 
    This step relocates all inline embedded schemas to the `components` section to improve readability and reduce redundancy.
    
@@ -93,9 +93,9 @@ Detailed information on the Ballerina connector structure can be found in the [B
    
    This command will generate a `flattened_openapi.yaml` file in the `docs/spec` directory.
 
-   **b. Align the flattened specification**
+   **b. Align the flattened OpenAPI definition**
 
-   This aligns the OpenAPI specification according to the best practices of Ballerina..
+   This aligns the OpenAPI definition according to the best practices of Ballerina..
    
    ```bash
    bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec
@@ -109,12 +109,12 @@ Detailed information on the Ballerina connector structure can be found in the [B
    - Use the new `openapi.yaml` for generating the Ballerina client in the Step 3.
 
 > **Note:**
-> - These preprocessing steps often reduce the need for manual specification sanitization. However, if further changes are needed (e.g. modifying security schemes or redefining schemas), document them in `docs/spec/sanitations.md`.  
+> - These preprocessing steps often reduce the need for manual sanitization. However, if further changes are needed (e.g. modifying security schemes or redefining schemas), document them in `docs/spec/sanitations.md`.
 > - You may need to perform additional sanitization after generating the client code (Step 3) and testing the connector (Step 4) to address any compile-time or runtime issues. Make sure to update the `sanitations.md` file accordingly.
 
 ## Step 3: Generate the Ballerina client code
 
-With your OpenAPI spec ready, use the [Ballerina OpenAPI tool](https://ballerina.io/learn/openapi-tool/) to generate the connector code.
+With your OpenAPI definition ready, use the [Ballerina OpenAPI tool](https://ballerina.io/learn/openapi-tool/) to generate the connector code.
 
 1. In your terminal, run the following command from the project root:
       

@@ -83,9 +83,7 @@ Detailed information on the Ballerina connector structure can be found in the [B
 
 3. To improve compatibility and readability before generating the Ballerina client, run the following preprocessing steps using the Ballerina OpenAPI tool:
 
-   > **Note:** These preprocessing steps often reduce the need for manual specification sanitization. However, if further changes are needed (e.g. modifying security schemes or redefining schemas), document them in `docs/spec/sanitations.md`.
-
-   **a. Flatten the OpenAPI spec**
+   **a. Flatten the OpenAPI specification**
 
    This step relocates all inline embedded schemas to the `components` section to improve readability and reduce redundancy.
    
@@ -95,7 +93,7 @@ Detailed information on the Ballerina connector structure can be found in the [B
    
    This command will generate a `flattened_openapi.yaml` file in the `docs/spec` directory.
 
-   **b. Align the flattened spec**
+   **b. Align the flattened specification**
 
    This aligns the OpenAPI file with Ballerina’s naming conventions by adding `x-ballerina-name` extensions where needed.
    
@@ -110,7 +108,9 @@ Detailed information on the Ballerina connector structure can be found in the [B
    - Rename `aligned_ballerina_openapi.yaml` to `openapi.yaml`.
    - Use the new `openapi.yaml` for generating the Ballerina client in the Step 3.
 
-> **Note:** You may need to perform additional sanitization after generating the client code (Step 3) and testing the connector (Step 4) to address any compile-time or runtime issues. Make sure to update the `sanitations.md` file accordingly.
+> **Note:**
+> - These preprocessing steps often reduce the need for manual specification sanitization. However, if further changes are needed (e.g. modifying security schemes or redefining schemas), document them in `docs/spec/sanitations.md`.  
+> - You may need to perform additional sanitization after generating the client code (Step 3) and testing the connector (Step 4) to address any compile-time or runtime issues. Make sure to update the `sanitations.md` file accordingly.
 
 ## Step 3: Generate the Ballerina client code
 

@@ -48,8 +48,7 @@ Before we begin, make sure you have:
    ├── ballerina/
    |   ├── tests/
    │   ├── Ballerina.toml
-   │   ├── Module.md
-   │   ├── Package.md
+   │   ├── README.md
    │   ├── build.gradle
    │   └── client.bal
    ├── build-config/
@@ -82,11 +81,34 @@ Detailed information on the Ballerina connector structure can be found in the [B
 
 2. Save the file as `openapi.yaml` (or `openapi.json`) in the `docs/spec` directory of your project.
 
-3. You may need to sanitize the OpenAPI specification to ensure compatibility with the Ballerina OpenAPI tool. This process may involve:
-   - adding, removing, or modifying security schemes to customize authentication options.
-   - redefining inline schemas as named schemas to avoid duplication and improve readability.
+3. To improve compatibility and readability before generating the Ballerina client, run the following preprocessing steps using the Ballerina OpenAPI tool:
 
-4. Update the `sanitations.md` file (under `docs/spec/`) with the details of any changes made to the original OpenAPI specification.
+   > **Note:** These preprocessing steps often reduce the need for manual specification sanitization. However, if further changes are needed (e.g. modifying security schemes or redefining schemas), document them in `docs/spec/sanitations.md`.
+
+   **a. Flatten the OpenAPI spec**
+
+   This step relocates all inline embedded schemas to the `components` section to improve readability and reduce redundancy.
+   
+   ```bash
+   bal openapi flatten -i docs/spec/openapi.yaml -o docs/spec
+   ```
+   
+   This command will generate a `flattened_openapi.yaml` file in the `docs/spec` directory.
+
+   **b. Align the flattened spec**
+
+   This aligns the OpenAPI file with Ballerina’s naming conventions by adding `x-ballerina-name` extensions where needed.
+   
+   ```bash
+   bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec
+   ```
+
+   This command will generate a `aligned_ballerina_openapi.yaml` file in the `docs/spec` directory.
+
+   **Next steps:**
+   - Remove the original `openapi.yaml` and `flattened_openapi.yaml` from the `docs/spec` directory.
+   - Rename `aligned_ballerina_openapi.yaml` to `openapi.yaml`.
+   - Use the new `openapi.yaml` for generating the Ballerina client in the Step 3.
 
 > **Note:** You may need to perform additional sanitization after generating the client code (Step 3) and testing the connector (Step 4) to address any compile-time or runtime issues. Make sure to update the `sanitations.md` file accordingly.
 
@@ -97,7 +119,7 @@ With your OpenAPI spec ready, use the [Ballerina OpenAPI tool](https://ballerina
 1. In your terminal, run the following command from the project root:
       
    ```
-   bal openapi -i path/to/spec --mode client -o ballerina
+   bal openapi -i docs/spec/openapi.yaml --mode client -o ballerina
    ```
 
    This will generate the ballerina source code of the client connector in your `ballerina/` directory.
@@ -125,24 +147,24 @@ Now that your connector is generated, it is important to write tests to ensure e
 
 Follow these steps to ensure your connector is well-documented:
 
-1. Update `Module.md` and `Package.md` files.
+1. Update the `ballerina/README.md` file.
 
-   These files will be displayed on the Ballerina Central package landing page. Ensure they introduce and explain the connector package clearly and comprehensively. Each file should include the following sections:
+   This file will be displayed on the Ballerina Central package landing page. Make sure it provides a clear and comprehensive introduction to the connector, including the following sections:
    
    - **Overview**: Provide a concise introduction to the connector, explaining its purpose and key features.
    - **Setup**: Offer step-by-step instructions on configuring the connector and any necessary prerequisites, such as API keys or environment setup.
    - **Quickstart**: Include a basic and clear example that helps users to start using the connector immediately.
    - **Examples**: Link to additional use cases, providing context on how the connector can be used in different scenarios.
 
-   > For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/Module.md).
+   > For reference, check the [Twitter connector documentation](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/ballerina/README.md).
 
-2. Update the `README.md` file.
+2. Update the root level `README.md` file.
 
-   This file will be displayed on the GitHub repository landing page. Therefore, it should include the same information as `Module.md` with a few additional sections such as `Building from Source`, `Contributing`, `License`, etc.
+   This file will be displayed on the GitHub repository landing page. Therefore, it should include the same information as `ballerina/README.md` with a few additional sections such as `Building from Source`, `Contributing`, `License`, etc.
    
    > For reference, check the [Twitter connector README](https://github.com/ballerina-platform/module-ballerinax-twitter/blob/main/README.md).
 
-3. Write example use cases (optional).
+3. Write example use cases.
 
    Providing practical examples helps users understand the connector better. These examples should show how the connector is used in real-world scenarios.
 

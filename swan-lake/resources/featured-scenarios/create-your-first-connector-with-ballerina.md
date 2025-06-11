@@ -88,6 +88,8 @@ Detailed information on the Ballerina connector structure can be found in the [B
    This step relocates all inline embedded schemas to the `components` section to improve readability and reduce redundancy.
    
    ```
+   $ bal openapi flatten -i docs/spec/openapi.yaml -o docs/spec
+   ```
    
    This command will generate a `flattened_openapi.yaml` file in the `docs/spec` directory.
 
@@ -95,8 +97,8 @@ Detailed information on the Ballerina connector structure can be found in the [B
 
    This aligns the OpenAPI definition according to the best practices of Ballerina..
    
-   ```bash
-   bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec
+   ```
+   $ bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec
    ```
 
    This command will generate a file named `aligned_ballerina_openapi.yaml` in the `docs/spec` directory.
@@ -117,7 +119,7 @@ With your OpenAPI definition ready, use the [Ballerina OpenAPI tool](https://bal
 1. In your terminal, run the following command from the project root:
       
    ```
-   bal openapi -i docs/spec/openapi.yaml --mode client -o ballerina
+   $ bal openapi -i docs/spec/openapi.yaml --mode client -o ballerina
    ```
 
    This will generate the ballerina source code of the client connector in your `ballerina/` directory.

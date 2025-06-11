@@ -95,7 +95,7 @@ Detailed information on the Ballerina connector structure can be found in the [B
 
    **b. Align the flattened specification**
 
-   This aligns the OpenAPI file with Ballerina’s naming conventions by adding `x-ballerina-name` extensions where needed.
+   This aligns the OpenAPI specification according to the best practices of Ballerina..
    
    ```bash
    bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec

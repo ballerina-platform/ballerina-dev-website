@@ -87,8 +87,7 @@ Detailed information on the Ballerina connector structure can be found in the [B
 
    This step relocates all inline embedded schemas to the `components` section to improve readability and reduce redundancy.
    
-   ```bash
-   bal openapi flatten -i docs/spec/openapi.yaml -o docs/spec
+   $ bal openapi flatten -i docs/spec/openapi.yaml -o docs/spec
    ```
    
    This command will generate a `flattened_openapi.yaml` file in the `docs/spec` directory.
@@ -101,7 +100,7 @@ Detailed information on the Ballerina connector structure can be found in the [B
    bal openapi align -i docs/spec/flattened_openapi.yaml -o docs/spec
    ```
 
-   This command will generate a `aligned_ballerina_openapi.yaml` file in the `docs/spec` directory.
+   This command will generate a file named `aligned_ballerina_openapi.yaml` in the `docs/spec` directory.
 
    **Next steps:**
    - Remove the original `openapi.yaml` and `flattened_openapi.yaml` from the `docs/spec` directory.

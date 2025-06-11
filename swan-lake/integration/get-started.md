@@ -143,7 +143,8 @@ $ curl localhost:8080/countries
 
 Alternatively, you can use the built-in `Try it` feature by clicking on the `Try it` CodeLens above the service declaration on VS Code.
 
-You can implement advanced filtering by updating the service as demonstrated in the following example.
+You can implement advanced filtering and error handling by updating the service as demonstrated in the following example.
+This example shows how to filter and process the country data. Additionally, the error handling is improved by explicitly returning an appropriate HTTP error response (`http:InternalServerError`) if the data retrieval fails. You can further extend this approach to handle other error scenarios by returning different HTTP error types such as `http:BadRequest`, `http:NotFound`, or custom error responses as needed.
 
 ```ballerina
 import ballerina/http;

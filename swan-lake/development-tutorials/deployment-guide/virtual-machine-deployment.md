@@ -7,53 +7,6 @@ active: ballerina-deployment-guideLines
 intro: This guide explains how to deploy Ballerina services on virtual machines (VMs), offering a traditional server-based approach without containerization. It covers two deployment strategies, decentralized and centralized.
 ---
 
-## Decentralized deployment
-
-The decentralized deployment offers a straightforward approach, ideal for simpler applications or when direct control over individual deployments is preferred. In this method, Ballerina artifacts are developed and published to a registry (a storage location for deployable components). The deployment process retrieves these artifacts and deploys them to the target environment, ensuring all necessary dependencies and configurations are included.
-
-### Continuous Integration (CI)
-
-Continuous Integration (CI) in decentralized deployment streamlines development by automating the building, testing, and publishing of individual Ballerina artifacts, ensuring faster feedback and fewer integration issues.
-
-The following steps outline the CI process of the decentralized deployment:
-
-1. Prepare the Server Environment by provisioning the VM or Bare Metal Server.
-   - Ensure the server meets the hardware requirements for your application (CPU, memory, disk space, etc.).
-   - Configure the server OS (Linux is recommended for production).
-
-2. Install the Ballerina distribution from the [Ballerina Installation options.](https://ballerina.io/downloads/)
-
-3. Install any other dependencies your Ballerina integration might need (e.g., database drivers, libraries).
-
-4. Implement the business logic in the Ballerina.
-
-   > **Tip:** Organize the Project: Follow the standard Ballerina project structure, with a `Ballerina.toml` file and source organized in modules if needed. You can visit the [Organize Ballerina code](https://ballerina.io/learn/organize-ballerina-code/) for detailed information about packages and how you can manage the growth of your source code.
-
-5. Add tests to the created integration.
-
-   > **Tip:** You can use [Ballerina test framework](https://ballerina.io/learn/test-ballerina-code/write-tests/) to write and run tests for your Ballerina applications. The Ballerina test framework provides a simple way to write unit tests, integration tests, and end-to-end tests for your Ballerina code.
-
-6. Build the Ballerina integration. This command compiles the Ballerina application to produce the target artifacts. The default build command creates an executable `.jar` file in the `target/bin` directory.
-
-   ```bash
-   $ bal build
-   ```
-
-   > **Tip**: You can use GraalVM builds to compile Ballerina apps into native binaries, ensuring faster startup and lower memory usage compared to the JVM.
-   >
-   > ```bash
-   > $ bal build --graalvm
-   > ```
-   >
-   > See [Build the GraalVM executable](https://ballerina.io/learn/build-the-executable-locally/) for more information.
-
-7. Publish the artifacts to the registry.
-
-> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/virtual-machine-deployment/#ballerina-github-action-for-cicd-integration).
-
-### Continuous Deployment (CD)
-
-The Continuous Deployment (CD) process in a decentralized setup involves automating the deployment of Ballerina artifacts to the target environment.  This typically involves using a deployment workflow or pipeline to retrieve the built artifacts from the registry, configure the target environment, deploy the application, and verify its successful deployment.
 
 ## Centralized deployment
 
@@ -162,6 +115,54 @@ The following steps outline the process of setting up a deployment repository fo
 The generated Ballerina artifact can be deployed to the target environment, configuring necessary environment variables and system settings.
 
 > **Tip**: The above steps of the CD process can be automated using the [Ballerina GitHub action](/learn/virtual-machine-deployment/#ballerina-github-action-for-cicd-integration).
+
+## Decentralized deployment
+
+The decentralized deployment offers a straightforward approach, ideal for simpler applications or when direct control over individual deployments is preferred. In this method, Ballerina artifacts are developed and published to a registry (a storage location for deployable components). The deployment process retrieves these artifacts and deploys them to the target environment, ensuring all necessary dependencies and configurations are included.
+
+### Continuous Integration (CI)
+
+Continuous Integration (CI) in decentralized deployment streamlines development by automating the building, testing, and publishing of individual Ballerina artifacts, ensuring faster feedback and fewer integration issues.
+
+The following steps outline the CI process of the decentralized deployment:
+
+1. Prepare the Server Environment by provisioning the VM or Bare Metal Server.
+   - Ensure the server meets the hardware requirements for your application (CPU, memory, disk space, etc.).
+   - Configure the server OS (Linux is recommended for production).
+
+2. Install the Ballerina distribution from the [Ballerina Installation options.](https://ballerina.io/downloads/)
+
+3. Install any other dependencies your Ballerina integration might need (e.g., database drivers, libraries).
+
+4. Implement the business logic in the Ballerina.
+
+   > **Tip:** Organize the Project: Follow the standard Ballerina project structure, with a `Ballerina.toml` file and source organized in modules if needed. You can visit the [Organize Ballerina code](https://ballerina.io/learn/organize-ballerina-code/) for detailed information about packages and how you can manage the growth of your source code.
+
+5. Add tests to the created integration.
+
+   > **Tip:** You can use [Ballerina test framework](https://ballerina.io/learn/test-ballerina-code/write-tests/) to write and run tests for your Ballerina applications. The Ballerina test framework provides a simple way to write unit tests, integration tests, and end-to-end tests for your Ballerina code.
+
+6. Build the Ballerina integration. This command compiles the Ballerina application to produce the target artifacts. The default build command creates an executable `.jar` file in the `target/bin` directory.
+
+   ```bash
+   $ bal build
+   ```
+
+   > **Tip**: You can use GraalVM builds to compile Ballerina apps into native binaries, ensuring faster startup and lower memory usage compared to the JVM.
+   >
+   > ```bash
+   > $ bal build --graalvm
+   > ```
+   >
+   > See [Build the GraalVM executable](https://ballerina.io/learn/build-the-executable-locally/) for more information.
+
+7. Publish the artifacts to the registry.
+
+> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/virtual-machine-deployment/#ballerina-github-action-for-cicd-integration).
+
+### Continuous Deployment (CD)
+
+The Continuous Deployment (CD) process in a decentralized setup involves automating the deployment of Ballerina artifacts to the target environment.  This typically involves using a deployment workflow or pipeline to retrieve the built artifacts from the registry, configure the target environment, deploy the application, and verify its successful deployment.
 
 ## Ballerina GitHub Action for CI/CD integration
 

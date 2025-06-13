@@ -994,6 +994,14 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/build-a-change-data-capture-service-in-ballerina/`} className={styles.titleLink}>
+                            Build a Change Data Capture (CDC) service in Ballerina
+                          </a>
+                        </p>
+                        <p className={styles.description}>Use Ballerina constructs to work with change data capture (cdc) services.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/work-with-llms-using-natural-expressions/`} className={styles.titleLink}>
                             Work with Large Language Models (LLMs) using natural expressions
                           </a>

@@ -49,6 +49,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: `/learn/build-a-change-data-capture-service-in-ballerina`,
+        destination: `/learn/resources/featured-scenarios/build-a-change-data-capture-service-in-ballerina`,
+      },
+      {
         source: `/learn/build-a-data-service-in-ballerina`,
         destination: `/learn/resources/featured-scenarios/build-a-data-service-in-ballerina`,
       },

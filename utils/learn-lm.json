@@ -877,9 +877,17 @@
                             "id": "build-a-data-service-in-ballerina"
                         },
                         {
-                            "dirName": "Work with Large Language Models (LLMs) using natural expressions",
+                            "dirName": "Build a Change Data Capture (CDC) service in Ballerina",
                             "level": 3,
                             "position": 6,
+                            "isDir": false,
+                            "url": "/learn/build-a-change-data-capture-service-in-ballerina",
+                            "id": "build-a-change-capture-service-in-ballerina"
+                        },
+                        {
+                            "dirName": "Work with Large Language Models (LLMs) using natural expressions",
+                            "level": 3,
+                            "position": 7,
                             "isDir": false,
                             "url": "/learn/work-with-llms-using-natural-expressions",
                             "id": "work-with-llms-using-natural-expressions"
@@ -903,7 +911,7 @@
                         {
                             "dirName": "Deploy Ballerina on Kubernetes",
                             "level": 3,
-                            "position": 7,
+                            "position": 8,
                             "isDir": false,
                             "url": "/learn/deploy-ballerina-on-kubernetes",
                             "id": "deploy-ballerina-on-kubernetes"
@@ -911,7 +919,7 @@
                         {
                             "dirName": "Manage data persistence with bal persist",
                             "level": 3,
-                            "position": 8,
+                            "position": 9,
                             "isDir": false,
                             "url": "/learn/manage-data-persistence-with-bal-persist",
                             "id": "manage-data-persistence-with-bal-persist"
@@ -919,7 +927,7 @@
                         {
                             "dirName": "Create your first connector with Ballerina",
                             "level": 3,
-                            "position": 9,
+                            "position": 10,
                             "isDir": false,
                             "url": "/learn/create-your-first-connector-with-ballerina",
                             "id": "create-your-first-connector-with-ballerina"

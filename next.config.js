@@ -233,20 +233,32 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/configurability/provide-values-to-configurable-variables`,
       },
       {
-        source: `/${redirectBase}learn/observe-ballerina-programs`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-ballerina-programs`,
+        source: `/${redirectBase}learn/overview-of-ballerina-observability`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/overview-of-ballerina-observability`,
       },
       {
-        source: `/${redirectBase}learn/observe-logs`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-logs`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/prometheus`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/prometheus`,
       },
       {
-        source: `/${redirectBase}learn/observe-metrics`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-metrics`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/jaeger`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/jaeger`,
       },
       {
-        source: `/${redirectBase}learn/observe-tracing`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-tracing`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/zipkin`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/zipkin`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/datadog`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/datadog`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/new-relic`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/new-relic`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/elastic-stack`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/elastic-stack`,
       },
       {
         source: `/${redirectBase}learn/organize-ballerina-code`,

@@ -653,31 +653,19 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
-                            Observe Ballerina programs</a>
+                          <a href={`${prefix}/learn/overview-of-ballerina-observability`} className={styles.titleLink}>
+                            Overview of Ballerina observability
+                          </a>
                         </p>
                         <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-logs`} className={styles.titleLink}>
-                            Observe logs</a>
+                          <a href={`${prefix}/learn/supported-observability-tools-and-platforms/prometheus`} className={styles.titleLink}>
+                              Supported observability tools and platforms
+                          </a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing logs of Ballerina programs.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-metrics`} className={styles.titleLink}>
-                            Observe metrics</a>
-                        </p>
-                        <p className={styles.description}>How Ballerina supports observing metrics of Ballerina programs.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-tracing`} className={styles.titleLink}>
-                            Observe tracing</a>
-                        </p>
-                        <p className={styles.description}>How Ballerina supports observing tracing of Ballerina programs.</p>
+                        <p className={styles.description}>How to observe Ballerina programs with different observability tools and platforms.</p>
                       </div>
                     </div>
                   </div>

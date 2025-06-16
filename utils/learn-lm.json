@@ -563,12 +563,12 @@
                             "id": "deployment-guidelines-overview"
                         },
                         {
-                            "dirName": "Virtual machine deployment",
+                            "dirName": "Monolithic deployment",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/virtual-machine-deployment",
-                            "id": "virtual-machine-deployment"
+                            "url": "/learn/monolithic-deployment",
+                            "id": "monolithic-deployment"
                         },
                         {
                             "dirName": "Containerized deployment",

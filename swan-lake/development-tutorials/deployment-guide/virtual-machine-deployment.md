@@ -1,6 +1,6 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
-title: Virtual machine deployment
+title: Monolithic deployment
 description: This guide explains how to deploy Ballerina services on virtual machines (VMs), offering a traditional server-based approach without containerization. It covers two deployment strategies, decentralized and centralized.
 keywords: ballerina, programming language, services, cloud, kubernetes, docker
 active: ballerina-deployment-guideLines
@@ -10,7 +10,7 @@ intro: This guide explains how to deploy Ballerina services on virtual machines 
 
 ## Centralized deployment
 
-While decentralized deployment offers simplicity, managing numerous Ballerina artifacts and their dependencies can become complex.  It may also lead to increased resource consumption due to the separate deployment of each artifact.  Centralized deployment addresses these challenges by consolidating all Ballerina artifacts into a single, deployable package, offering a more streamlined and resource-efficient approach.  This strategy is well-suited for scenarios involving multiple Ballerina artifacts that need to be deployed together, or where a more efficient deployment process is desired.
+Managing a large number of Ballerina artifacts and their dependencies across different environments can become increasingly complex and difficult to maintain over time. It may also lead to increased resource consumption due to the separate deployment of each artifact. Centralized deployment addresses these challenges by consolidating all Ballerina artifacts into a single, deployable package, offering a more streamlined and resource-efficient approach.  This strategy is well-suited for scenarios involving multiple Ballerina artifacts that need to be deployed together, or where a more efficient deployment process is desired.
 
 The centralized deployment involves two primary repositories:
 
@@ -64,7 +64,7 @@ The following steps outline the CI process in a source repository:
 
    > **Tip**: Visit the [Publish Pacakages to Ballerina Central](/learn/publish-packages-to-ballerina-central/) for more information on how to publish packages to Ballerina Central.
 
-> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/virtual-machine-deployment/#ballerina-github-action-for-cicd-integration).
+> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/monolithic-deployment/#ballerina-github-action-for-cicd-integration).
 
 ### Continuous Deployment (CD) - Deployment Repository
 
@@ -114,6 +114,7 @@ The following steps outline the process of setting up a deployment repository fo
 
 The generated Ballerina artifact can be deployed to the target environment, configuring necessary environment variables and system settings.
 
+> **Tip**: The above steps of the CD process can be automated using the [Ballerina GitHub action](/learn/monolithic-deployment/#ballerina-github-action-for-cicd-integration).
 
 #### Hot deployment
 
@@ -248,7 +249,7 @@ The following steps outline the CI process of the decentralized deployment:
 
 7. Publish the artifacts to the registry.
 
-> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/virtual-machine-deployment/#ballerina-github-action-for-cicd-integration).
+> **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/monolithic-deployment/#ballerina-github-action-for-cicd-integration).
 
 ### Continuous Deployment (CD)
 

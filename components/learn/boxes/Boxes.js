@@ -538,8 +538,8 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/virtual-machine-deployment`} className={styles.titleLink}>
-                            Virtual machine deployment
+                          <a href={`${prefix}/learn/monolithic-deployment`} className={styles.titleLink}>
+                            Monolithic deployment
                           </a>
                         </p>
                         <p className={styles.description}>Guidelines for deployment in VMs.</p>

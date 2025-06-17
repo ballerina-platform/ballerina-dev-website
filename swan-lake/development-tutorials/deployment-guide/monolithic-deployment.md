@@ -36,7 +36,7 @@ The following steps outline the CI process in a source repository:
 
 4. Create a new Ballerina package.
 
-   ```bash
+   ```
    $ bal new --template lib <package-name>
    ```
 
@@ -52,13 +52,13 @@ The following steps outline the CI process in a source repository:
 
 7. Generate the Ballerina archive.
 
-    ```bash
+    ```
     $ bal pack
     ```
 
 8. Push the package to the Ballerina Central repository.
 
-   ```bash
+   ```
    $ bal push
    ```
 
@@ -106,7 +106,7 @@ The following steps outline the process of setting up a deployment repository fo
 
    > **Tip**: You can use GraalVM builds to compile Ballerina apps into native binaries, ensuring faster startup and lower memory usage compared to the JVM.
    >
-   > ```bash
+   > ```
    > $ bal build --graalvm <consolidated-project-name>  
    > ```
    >
@@ -235,13 +235,13 @@ The following steps outline the CI process of the decentralized deployment:
 
 6. Build the Ballerina integration. This command compiles the Ballerina application to produce the target artifacts. The default build command creates an executable `.jar` file in the `target/bin` directory.
 
-   ```bash
+   ```
    $ bal build
    ```
 
    > **Tip**: You can use GraalVM builds to compile Ballerina apps into native binaries, ensuring faster startup and lower memory usage compared to the JVM.
    >
-   > ```bash
+   > ```
    > $ bal build --graalvm
    > ```
    >

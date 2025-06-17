@@ -122,7 +122,7 @@ Hot deployments refer to the process of updating or redeploying software compone
 
 Here the hot deployment strategy works by orchestrating multiple service instances through a NGINX load balancer, allowing you to update and restart services without interrupting user traffic. The load balancer automatically routes requests away from instances undergoing updates and back to them once they are healthy again.
 
-**1. Active-Active**
+**1. Active-Active** 
 
    All instances actively serve traffic simultaneously. NGINX uses passive health monitoring through `max_fails` and `fail_timeout` directives. When an instance fails to respond successfully `max_fails` times within the `fail_timeout` window, NGINX temporarily removes it from the load balancing pool.
 
@@ -133,20 +133,20 @@ Here the hot deployment strategy works by orchestrating multiple service instanc
    **NGINX configuration**
 
    ```nginx
-      events {}
+   events {}
 
-      http {
-         upstream backend {
-            server 127.0.0.1 max_fails=3 fail_timeout=30s;
-            server 127.0.0.2 max_fails=3 fail_timeout=30s;
-         }
+   http {
+      upstream backend {
+         server 127.0.0.1 max_fails=3 fail_timeout=30s;
+         server 127.0.0.2 max_fails=3 fail_timeout=30s;
+      }
 
-         server {
-            location / {
-                  proxy_pass http://backend;
-            }
+      server {
+         location / {
+               proxy_pass http://backend;
          }
       }
+   }
    ```
 
 **2. Active-Active (with health checks)** 
@@ -162,8 +162,8 @@ Here the hot deployment strategy works by orchestrating multiple service instanc
 
    http {
       upstream backend {
-         server 127.0.0.1:8080 max_fails=3 fail_timeout=30s;
-         server 127.0.0.1:8081 max_fails=3 fail_timeout=30s;
+         server 127.0.0.1 max_fails=3 fail_timeout=30s;
+         server 127.0.0.2 max_fails=3 fail_timeout=30s;
       }
 
       server {
@@ -193,8 +193,8 @@ Here the hot deployment strategy works by orchestrating multiple service instanc
 
    http {
       upstream backend {
-         server 127.0.0.1:8080 max_fails=3 fail_timeout=30s;
-         server 127.0.0.1:8081 max_fails=3 fail_timeout=30s;
+         server 127.0.0.1 max_fails=3 fail_timeout=30s;
+         server 127.0.0.2 max_fails=3 fail_timeout=30s;
       }
 
       server {

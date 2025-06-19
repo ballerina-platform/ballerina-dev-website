@@ -563,12 +563,12 @@
                             "id": "deployment-guidelines-overview"
                         },
                         {
-                            "dirName": "Virtual machine deployment",
+                            "dirName": "Monolithic deployment",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/virtual-machine-deployment",
-                            "id": "virtual-machine-deployment"
+                            "url": "/learn/monolithic-deployment",
+                            "id": "monolithic-deployment"
                         },
                         {
                             "dirName": "Containerized deployment",
@@ -655,36 +655,70 @@
                     "id": "observability",
                     "subDirectories": [
                         {
-                            "dirName": "Observe Ballerina programs",
+                            "dirName": "Overview of Ballerina observability",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/observe-ballerina-programs",
-                            "id": "observe-ballerina-programs"
+                            "url": "/learn/overview-of-ballerina-observability",
+                            "id": "overview-of-ballerina-observability"
                         },
                         {
-                            "dirName": "Observe logs",
+                            "dirName": "Supported observability tools and platforms",
                             "level": 3,
                             "position": 2,
-                            "isDir": false,
-                            "url": "/learn/observe-logs",
-                            "id": "observe-logs"
-                        },
-                        {
-                            "dirName": "Observe metrics",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/observe-metrics",
-                            "id": "observe-metrics"
-                        },
-                        {
-                            "dirName": "Observe tracing",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/observe-tracing",
-                            "id": "observe-tracing"
+                            "isDir": true,
+                            "url": "/learn/supported-observability-tools-and-platforms",
+                            "id": "supported-observability-tools-and-platforms",
+                            "subDirectories": [
+                                {
+                                    "dirName": "Prometheus",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/prometheus",
+                                    "id": "prometheus"
+                                },
+                                {
+                                    "dirName": "Jaeger",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/jaeger",
+                                    "id": "jaeger"
+                                },
+                                {
+                                    "dirName": "Zipkin",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/zipkin",
+                                    "id": "zipkin"
+                                },
+                                {
+                                    "dirName": "DataDog",
+                                    "level": 4,
+                                    "position": 4,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/datadog",
+                                    "id": "datadog"
+                                },
+                                {
+                                    "dirName": "New Relic",
+                                    "level": 4,
+                                    "position": 5,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/new-relic",
+                                    "id": "new-relic"
+                                },
+                                {
+                                    "dirName": "Elastic Stack",
+                                    "level": 4,
+                                    "position": 6,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
+                                    "id": "elastic-stack"
+                                }
+                            ]
                         }
                     ]
                 },

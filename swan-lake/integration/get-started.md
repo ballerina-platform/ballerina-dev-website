@@ -192,7 +192,7 @@ service / on new http:Listener(8080) {
     }
 }
 ```
-Run following command to invoke above.
+Let's stop the currently running package and rerun it. Then, execute the following command to invoke it.
 
 ```
 $ curl http://localhost:8080/countries

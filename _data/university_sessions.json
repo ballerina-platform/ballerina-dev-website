@@ -7,7 +7,7 @@
             "university": "Innovate with Ballerina",
             "faculty": "",
             "title": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
-            "isVirtual": true,
+            "isVirtual": false,
             "location": "Sri Lanka",
             "url": "https://innovatewithballerina.com/",
             "buttonText": "View details"

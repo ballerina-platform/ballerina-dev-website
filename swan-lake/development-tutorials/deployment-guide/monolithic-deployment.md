@@ -1,12 +1,11 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: Monolithic deployment
-description: This guide explains how to deploy Ballerina services on virtual machines (VMs), offering a traditional server-based approach without containerization. It covers two deployment strategies, decentralized and centralized.
-keywords: ballerina, programming language, services, cloud, kubernetes, docker
+description: This guide explains how to deploy Ballerina services in a monolithic architecture, offering a traditional server-based approach without containerization. It covers two deployment strategies, centralized and decentralized.
+keywords: ballerina, programming language, services, cloud, kubernetes, docker, monolithic
 active: ballerina-deployment-guideLines
-intro: This guide explains how to deploy Ballerina services on virtual machines (VMs), offering a traditional server-based approach without containerization. It covers two deployment strategies, decentralized and centralized.
+intro: This guide explains how to deploy Ballerina services in a monolithic architecture, offering a traditional server-based approach without containerization. It covers two deployment strategies, centralized and decentralized.
 ---
-
 
 ## Centralized deployment
 

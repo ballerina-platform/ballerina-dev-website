@@ -289,8 +289,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/deployment-guide/deployment-guidelines-overview`,
       },
       {
-        source: `/${redirectBase}learn/virtual-machine-deployment`,
-        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/virtual-machine-deployment`,
+        source: `/${redirectBase}learn/monolithic-deployment`,
+        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/monolithic-deployment`,
       },
       {
         source: `/${redirectBase}learn/containerized-deployment`,

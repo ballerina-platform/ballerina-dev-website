@@ -28,5 +28,4 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-A regression issue is fixed with this release.
-
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.6)](https://github.com/wso2/product-ballerina-integrator/issues?q=is%3Aissue%20state%3Aclosed%20label%3AType%2FBug%20milestone%3A2201.12.6)

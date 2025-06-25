@@ -695,7 +695,7 @@
                                     "id": "zipkin"
                                 },
                                 {
-                                    "dirName": "DataDog",
+                                    "dirName": "Datadog",
                                     "level": 4,
                                     "position": 4,
                                     "isDir": false,

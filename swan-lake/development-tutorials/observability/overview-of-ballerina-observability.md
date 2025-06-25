@@ -188,7 +188,7 @@ Observability tools and platforms help monitor and analyze application performan
 
 - **[New Relic](https://newrelic.com/):** A full-stack observability platform for application performance monitoring (APM) and telemetry.
 
-- **[DataDog](https://www.datadoghq.com/):** A cloud-based observability service offering monitoring, metrics, traces, and logging.
+- **[Datadog](https://www.datadoghq.com/):** A cloud-based observability service offering monitoring, metrics, traces, and logging.
 
 - **[Elastic Stack](https://www.elastic.co/elastic-stack):** A collection of tools (Elasticsearch, Logstash, Kibana) for centralized logging and analytics.
 
@@ -198,5 +198,5 @@ The following contains a guide to set up and observe Ballerina programs in each 
 - [Observe Ballerina programs with Jaeger](/learn/supported-observability-tools-and-platforms/jaeger)
 - [Observe Ballerina programs with Zipkin](/learn/supported-observability-tools-and-platforms/zipkin)
 - [Observe Ballerina programs with New Relic](/learn/supported-observability-tools-and-platforms/new-relic)
-- [Observe Ballerina programs with DataDog](/learn/supported-observability-tools-and-platforms/datadog)
+- [Observe Ballerina programs with Datadog](/learn/supported-observability-tools-and-platforms/datadog)
 - [Observe Ballerina programs with Elastic Stack](/learn/supported-observability-tools-and-platforms/elastic-stack)

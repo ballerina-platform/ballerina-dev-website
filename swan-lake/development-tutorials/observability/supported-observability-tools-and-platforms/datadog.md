@@ -1,51 +1,51 @@
 ---
-title: Observe metrics and tracing using DataDog
-description: See how Ballerina supports observability by exposing itself via metrics and tracing to DataDog.
+title: Observe metrics and tracing using Datadog
+description: See how Ballerina supports observability by exposing itself via metrics and tracing to Datadog.
 keywords: ballerina, observability, metrics, tracing, datadog
 permalink: /learn/supported-observability-tools-and-platforms/datadog/
 active: datadog
-intro: Users can observe Ballerina programs with [DataDog](https://www.datadoghq.com/), which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with DataDog.
+intro: Users can observe Ballerina programs with [Datadog](https://www.datadoghq.com/), which is a comprehensive observability and monitoring platform for cloud-scale applications. It provides developers, IT operations teams, and business users with tools to monitor, troubleshoot, and optimize performance across their entire technology stack, including applications, servers, databases, and services. Both metrics and tracing in Ballerina can be viewed with Datadog.
 ---
 
-The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing and metrics in DataDog.
+The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide. Follow the steps given below to observe Ballerina tracing and metrics in Datadog.
 
-Create a new account in DataDog. Select a billing plan according to your needs (A free plan is also included).
+Create a new account in Datadog. Select a billing plan according to your needs (A free plan is also included).
 
 Then follow the steps below to set up your Datadog account to view metrics and tracing provided by Ballerina.
 
-## Step 1 - Create a DataDog account and  an API key
+## Step 1 - Create a Datadog account and  an API key
 
 1. Add Prometheus to the Integrations for your account
 
    You need to add Prometheus in the Integrations. Please go to the **Integrations** tab and search for Prometheus.
 
-   ![Adding Prometheus in DataDog Integrations](/learn/images/datadog-add-prometheus.png "Adding Prometheus in DataDog Integrations")
+   ![Adding Prometheus in Datadog Integrations](/learn/images/datadog-add-prometheus.png "Adding Prometheus in Datadog Integrations")
 
 2. Create an API key
 
-    You need to create an API key for the DataDog agent. To create an API key,
+    You need to create an API key for the Datadog agent. To create an API key,
 
     > **Click Profile → Organization Settings → API keys**
 
-    ![Creating an API key in DataDog](/learn/images/datadog-creating-api-key.png "Creating an API key in DataDog")
+    ![Creating an API key in Datadog](/learn/images/datadog-creating-api-key.png "Creating an API key in Datadog")
 
-## Step 2 - Set up the DataDog agent
+## Step 2 - Set up the Datadog agent
 
-After setting up your DataDog account, you need to set up a DataDog Agent in your instance.
+After setting up your Datadog account, you need to set up a Datadog Agent in your instance.
 
-You can follow this [documentation](https://docs.datadoghq.com/agent/?tab=Linux) to get started with the DataDog agent on your local machine.
+You can follow this [documentation](https://docs.datadoghq.com/agent/?tab=Linux) to get started with the Datadog agent on your local machine.
 
-You need to include the API key you generated in your DataDog account to `datadog.yaml` in the `datadog-agent/etc` folder.
+You need to include the API key you generated in your Datadog account to `datadog.yaml` in the `datadog-agent/etc` folder.
 
-Then follow the steps below to configure metrics and tracing data publishing to DataDog.
+Then follow the steps below to configure metrics and tracing data publishing to Datadog.
 
 1. Add configuration for metrics
 
-    Once you add Prometheus by following step 1, you will get a guide to configure a DataDog agent in your instance.
+    Once you add Prometheus by following step 1, you will get a guide to configure a Datadog agent in your instance.
 
-    ![Prometheus configurations for DataDog agent](/learn/images/datadog-agent-prometheus-configurations.png "Prometheus configurations for DataDog agent")
+    ![Prometheus configurations for Datadog agent](/learn/images/datadog-agent-prometheus-configurations.png "Prometheus configurations for Datadog agent")
 
-    You can follow the instructions given in the above configuration to set up a DataDog agent.
+    You can follow the instructions given in the above configuration to set up a Datadog agent.
 
     A sample of the conf.yaml file which you should include in the prometheus.d folder can be found here.
 
@@ -77,7 +77,7 @@ Then follow the steps below to configure metrics and tracing data publishing to 
 
     You need to use the following configurations in the `datadog.yaml`.
 
-    To view traces in DataDog, we need to enable the APM (Application Performance Monitoring) in your DataDog agent.
+    To view traces in Datadog, we need to enable the APM (Application Performance Monitoring) in your Datadog agent.
 
     ```yaml
     apm_config:
@@ -146,7 +146,7 @@ ballerinax.jaeger. reporterBufferSize | Queue size of the Jaeger client. | 1000 
 
 ## Step 5 - Run the Ballerina service
 
-When Ballerina observability is enabled, the Ballerina runtime collects tracing and metrics data and will be published to DataDog.
+When Ballerina observability is enabled, the Ballerina runtime collects tracing and metrics data and will be published to Datadog.
 
 Run the following command to start the Ballerina service.
 
@@ -191,34 +191,34 @@ $ curl -X POST http://localhost:8090/shop/order \
 $ curl -X GET http://localhost:8090/shop/order/0
 ```
 
-## Step 7 - View metrics on DataDog
+## Step 7 - View metrics on Datadog
 
-You can observe the metrics in the DataDog platform under the `Metrics` tab in the left navigation.
+You can observe the metrics in the Datadog platform under the `Metrics` tab in the left navigation.
 
-![Metrics Explorer in DataDog](/learn/images/datadog-metrics-explorer.png "Metrics Explorer in DataDog")
+![Metrics Explorer in Datadog](/learn/images/datadog-metrics-explorer.png "Metrics Explorer in Datadog")
 
-You can add filters and use functions in the DataDog to visualize what you want with the metrics provided by Ballerina.
+You can add filters and use functions in the Datadog to visualize what you want with the metrics provided by Ballerina.
 
-Ballerina provides a [dashboard](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-prometheus/refs/heads/main/metrics-dashboards/datadog/ballerina_metrics_dashboard.json) in the DataDog to observe metrics in Ballerina applications.
+Ballerina provides a [dashboard](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-prometheus/refs/heads/main/metrics-dashboards/datadog/ballerina_metrics_dashboard.json) in the Datadog to observe metrics in Ballerina applications.
 
-You can add a new dashboard in the DataDog under the `Dashboards` tab in the left navigation. After creating the new dashboard, go to the `Configure` tab in the dashboard. Import the `dashboard.json` file provided above.
+You can add a new dashboard in the Datadog under the `Dashboards` tab in the left navigation. After creating the new dashboard, go to the `Configure` tab in the dashboard. Import the `dashboard.json` file provided above.
 
 ![Importing a dashboard json](/learn/images/datadog-importing-dashboard.png "Importing a dashboard json")
 
-The Ballerina Dashboard in the DataDog will be displayed as below.
+The Ballerina Dashboard in the Datadog will be displayed as below.
 
-![Ballerina Dashboard in DataDog](/learn/images/datadog-metrics-dashboard-1.png "Ballerina Dashboard in DataDog")
-![Ballerina Dashboard in DataDog](/learn/images/datadog-metrics-dashboard-2.png "Ballerina Dashboard in DataDog")
+![Ballerina Dashboard in Datadog](/learn/images/datadog-metrics-dashboard-1.png "Ballerina Dashboard in Datadog")
+![Ballerina Dashboard in Datadog](/learn/images/datadog-metrics-dashboard-2.png "Ballerina Dashboard in Datadog")
 
-## Step 8 - View tracing on DataDog
+## Step 8 - View tracing on Datadog
 
-To view traces of the Ballerina application, go to **APM → Traces** in the DataDog.
+To view traces of the Ballerina application, go to **APM → Traces** in the Datadog.
 
-![Trace Explorer in DataDog](/learn/images/datadog-trace-explorer.png "Trace Explorer in DataDog")
+![Trace Explorer in Datadog](/learn/images/datadog-trace-explorer.png "Trace Explorer in Datadog")
 
 You can filter the traces with the service name, resource, operation name, span kind, etc.
 
-![Filter traces in DataDog](/learn/images/datadog-filter-traces.png "Filter traces in DataDog")
+![Filter traces in Datadog](/learn/images/datadog-filter-traces.png "Filter traces in Datadog")
 
 Once you select a trace, you can get more information with the tags attached to the span.
 

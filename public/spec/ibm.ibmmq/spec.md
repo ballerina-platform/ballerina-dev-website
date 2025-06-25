@@ -1,22 +1,22 @@
 # Specification: Ballerina `ibm.ibmmq` Library
 
-_Authors_: @ayeshLK \
+_Authors_: @ayeshLK @ThisaruGuruge \
 _Reviewers_: @NipunaRanasinghe @dilanSachi \
 _Created_: 2024/01/28 \
 _Updated_: 2024/02/14 \
-_Edition_: Swan Lake 
+_Edition_: Swan Lake
 
-## Introduction  
+## Introduction
 
-This is the specification for the `ibm.ibmmq` library of [Ballerina language](https://ballerina.io/), which provides the 
+This is the specification for the `ibm.ibmmq` library of [Ballerina language](https://ballerina.io/), which provides the
 functionality to send and receive messages by connecting to an IBM MQ server.
 
-The `ibm.ibmmq` library specification has evolved and may continue to evolve in the future. The released versions of the 
+The `ibm.ibmmq` library specification has evolved and may continue to evolve in the future. The released versions of the
 specification can be found under the relevant GitHub tag.
 
-If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the Discord 
-server. Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback 
-is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals 
+If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the Discord
+server. Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback
+is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals
 under discussion can be found with the label `type/proposal` in Github.
 
 The conforming implementation of the specification is released to Ballerina Central. Any deviation from the specification is considered a bug.
@@ -34,12 +34,14 @@ The conforming implementation of the specification is released to Ballerina Cent
     * 5.1. [Functions](#51-functions)
 6. [Topic](#6-topic)
     * 6.1. [Functions](#61-functions)
+7. [Listener](#7-listener)
+8. [Service](#8-service)
 
 ## 1. Overview
 
-IBM MQ is a robust messaging middleware that facilitates the secure and reliable exchange of messages between applications. 
-This specification elaborates on the usage of IBM MQ queue manager, queue, and topic. These clients allow the writing of 
-distributed applications and microservices that read, write, and process messages in parallel, at scale, and in a fault-tolerant 
+IBM MQ is a robust messaging middleware that facilitates the secure and reliable exchange of messages between applications.
+This specification elaborates on the usage of IBM MQ queue manager, queue, and topic. These clients allow the writing of
+distributed applications and microservices that read, write, and process messages in parallel, at scale, and in a fault-tolerant
 manner even in the case of network problems or machine failures.
 
 Ballerina `ibm.ibmmq` provides several core APIs:
@@ -50,8 +52,8 @@ Ballerina `ibm.ibmmq` provides several core APIs:
 
 ## 2. Queue Manager
 
-An IBM MQ Queue Manager represents a vital abstraction for managing communication between an application and an IBM MQ server. 
-It serves as a key interface for establishing, managing, and controlling the connection between a client application 
+An IBM MQ Queue Manager represents a vital abstraction for managing communication between an application and an IBM MQ server.
+It serves as a key interface for establishing, managing, and controlling the connection between a client application
 and the IBM MQ messaging infrastructure.
 
 ### 2.1 Configurations
@@ -114,7 +116,7 @@ public type QueueManagerConfiguration record {|
     string password?;
     # Configurations related to SSL/TLS encryption
     SecureSocket secureSocket?;
-    # Defines the combination of key exchange, encryption, 
+    # Defines the combination of key exchange, encryption,
     # and integrity algorithms used for establishing a secure SSL/TLS connection
     SslCipherSuite sslCipherSuite?;
 |};
@@ -144,7 +146,7 @@ public isolated function init(*ibmmq:QueueManagerConfiguration configurations) r
 # ```
 # ibmmq:Queue queue = check queueManager.accessQueue("queue1", ibmmq:MQOO_OUTPUT);
 # ```
-# 
+#
 # + queueName - Name of the queue
 # + options - The options which control the opening of the queue
 # + return - The `ibmmq:Queue` object or an `ibmmq:Error` if the operation failed
@@ -158,7 +160,7 @@ public isolated function accessQueue(string queueName, int options) returns ibmm
 # ```
 # ibmmq:Topic topic = check queueManager.accessTopic("topic1", ibmmq:MQOO_OUTPUT);
 # ```
-# 
+#
 # + topicName - Name of the queue
 # + options - The options which control the opening of the topic
 # + return - The `ibmmq:Queue` object or an `ibmmq:Error` if the operation failed
@@ -238,7 +240,7 @@ public type MQRFH2 record {|
     int encoding = 273;
     # Character set identifier of data that follows NameValueData
     int codedCharSetId = -2;
-    # Contents of the variable part of the structure 
+    # Contents of the variable part of the structure
     string[] folderStrings = [];
     # Coded character set for the NameValue data
     int nameValueCCSID = 1208;
@@ -246,7 +248,7 @@ public type MQRFH2 record {|
     byte[] nameValueData = [];
     # Length of NameValueData
     int nameValueLength = 0;
-    # Format name of data that follows NameValueData.The name should be padded with 
+    # Format name of data that follows NameValueData.The name should be padded with
     # blanks to the length of the field.
     string format = DEFAULT_BLANK_VALUE;
     # Structure identifier
@@ -272,13 +274,13 @@ public type MQCIH record {|
     int codedCharSetId = 0;
     # MQ format name of data that follows MQCIH
     string format = DEFAULT_BLANK_VALUE;
-    # Structure identifier 
+    # Structure identifier
     string strucId = "CIH ";
     # Length of the structure
     int strucLength = 180;
     # Structure version number
     int version = 2;
-    # Return code from bridge 
+    # Return code from bridge
     int returnCode = 0;
     # MQ completion code or CICS EIBRESP
     int compCode = 0;
@@ -290,7 +292,7 @@ public type MQCIH record {|
     int waitInterval = -2;
     # Link type
     int linkType = 1;
-    # Bridge facility release time 
+    # Bridge facility release time
     int facilityKeepTime = 0;
     # Send/receive ADS descriptor
     int ADSDescriptor = 0;
@@ -308,7 +310,7 @@ public type MQCIH record {|
     string authenticator = "";
     # MQ format name of reply message
     string replyToFormat = "";
-    # Remote CICS system Id to use 
+    # Remote CICS system Id to use
     string remoteSysId = "";
     # CICS RTRANSID to use
     string remoteTransId = "";
@@ -351,7 +353,7 @@ public type MQIIH record {|
     string lTermOverride = DEFAULT_BLANK_VALUE;
     # The message format services map name, placed in the IO PCB field
     string mfsMapName = DEFAULT_BLANK_VALUE;
-    # This is the MQ format name of the reply message that is sent 
+    # This is the MQ format name of the reply message that is sent
     # in response to the current message
     string replyToFormat = DEFAULT_BLANK_VALUE;
     # The RACF password or PassTicket
@@ -371,6 +373,13 @@ public type MQIIH record {|
 
 ```ballerina
 public type Header MQRFH2|MQRFH|MQCIH|MQIIH;
+```
+
+- MessageCharset type represents coded character set used in application message data.
+
+```ballerina
+public type MessageCharset MQCCSI_APPL|MQCCSI_ASCII|MQCCSI_ASCII_ISO|MQCCSI_AS_PUBLISHED|MQCCSI_DEFAULT|
+    MQCCSI_EBCDIC|MQCCSI_EMBEDDED|MQCCSI_INHERIT|MQCCSI_Q_MGR|MQCCSI_UNDEFINED|MQCCSI_UNICODE|MQCCSI_UTF8;
 ```
 
 - Message record represents an IBM MQ message.
@@ -399,6 +408,16 @@ public type Message record {|
     string replyToQueueName?;
     # Name of reply queue manager
     string replyToQueueManagerName?;
+    # Specifies the representation used for numeric values in the application message data.
+    # This can be represented using as a combination of `ibmmq:MQENC_*` options
+    int encoding = ENC_INTEGER_NORMAL|ENC_DECIMAL_NORMAL|ENC_FLOAT_IEEE_NORMAL;
+    # The coded character set identifier of character data in the application message data
+    MESSAGE_CHARSET characterSet = CCSI_Q_MGR;
+    # The accounting token, which is part of the message's identity and allows the work performed as a result of
+    # the message to be properly charged
+    byte[] accountingToken?;
+    # Id of the user who originated the message
+    string userId?;
     # Headers to be sent in the message
     Header[] headers?;
     # Message payload
@@ -445,9 +464,9 @@ An IBM MQ Queue enables applications to interact with an IBM MQ queue to exchang
 # ```
 # check queue->put({payload: "Hello World".toBytes()});
 # ```
-# 
+#
 # + message - IBM MQ message
-# + options - Options controlling the action of the put operation. Can be a combination of 
+# + options - Options controlling the action of the put operation. Can be a combination of
               one or more `ibmmq:MQPMO_*` options and values can combined using either '+' or '|'
 # + return - An `ibmmq:Error` if the operation fails or else `()`
 isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO_SYNCPOINT) returns ibmmq:Error?;
@@ -460,9 +479,9 @@ isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO
 # ```
 # ibmmq:Message? message = check queue->get();
 # ```
-# 
+#
 # + getMessageOptions - Options to control message retrieval
-# + return - An `ibmmq:Message` if there is a message in the queue, `()` if there 
+# + return - An `ibmmq:Message` if there is a message in the queue, `()` if there
 #           is no message or else `ibmmq:Error` if the operation fails
 isolated remote function get(*ibmmq:GetMessageOptions getMessageOptions) returns ibmmq:Message|ibmmq:Error?;
 ```
@@ -474,7 +493,7 @@ isolated remote function get(*ibmmq:GetMessageOptions getMessageOptions) returns
 # ```
 # check check queue->close();
 # ```
-# 
+#
 # + return - An `ibmmq:Error` if the operation fails or else `()`
 isolated remote function close() returns ibmmq:Error?
 ```
@@ -492,9 +511,9 @@ An IBM MQ Topic enables applications to interact with an IBM MQ Topic to exchang
 #```
 # check topic->put({payload: "Hello World".toBytes()});
 #```
-# 
+#
 # + message - IBM MQ message
-# + options - Options controlling the action of the put operation. Can be a combination of 
+# + options - Options controlling the action of the put operation. Can be a combination of
               one or more `ibmmq:MQPMO_*` options and values can combined using either '+' or '|'
 # + return - An `ibmmq:Error` if the operation fails or else `()`
 isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO_SYNCPOINT) returns ibmmq:Error?;
@@ -507,21 +526,71 @@ isolated remote function put(ibmmq:Message message, int options = ibmmq:MQPMO_NO
 # ```
 # ibmmq:Message? message = check topic->get();
 # ```
-# 
+#
 # + getMessageOptions - Options to control message retrieval
-# + return - An `ibmmq:Message` if there is a message in the queue, `()` if there 
+# + return - An `ibmmq:Message` if there is a message in the queue, `()` if there
 #           is no message or else `ibmmq:Error` if the operation fails
 isolated remote function get(*ibmmq:GetMessageOptions getMessageOptions) returns ibmmq:Message|ibmmq:Error?;
 ```
 
-- To close the Topic client, the `close` function can be used.
+- To receive a message using JMS-compliant APIs, the `send` function can be used.
+
+```
+ # Sends a message to an IBM MQ topic.
+ #
+ # This method supports JMS-compliant message delivery, including compatibility with
+ # durable subscriptions and asynchronous message listeners.
+ #
+ # Unlike the `put` method (which uses IBM MQ's native APIs), this method uses the JMS APIs and
+ # is recommended for interoperability with JMS-based consumers.
+ #
+ # ```ballerina
+ # check topic->send({payload: "Hello World".toBytes()});
+ # ```
+ #
+ # + message - The message to be sent to the topic.
+ # + return - An `ibmmq:Error` if the operation fails; otherwise, `()`
+ isolated remote function send(Message message) returns Error?
+ ```
+
+## 7. Listener
+
+The IBM MQ listener enables applications to interact with an IBM MQ listener to receive messages. The Ballerina IBM MQ listener is mapped to an IBM MQ Queue manager. Therefore, the listener can be initialized with the relevant configurations defined in the `ibmmq:QueueManagerConfiguration` record.
 
 ```ballerina
-# Closes the IBM MQ topic object. No further operations on this object are permitted after it is closed.
-# ```
-# check check topic->close();
-# ```
-# 
-# + return - An `ibmmq:Error` if the operation fails or else `()`
-isolated remote function close() returns ibmmq:Error?
+import ballerinax/ibm.ibmmq;
+
+configurable string name = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string channel = ?;
+configurable string userID = ?;
+configurable string password = ?;
+
+listener ibmmq:Listener ibmmqListener = new({
+    name,
+    host,
+    port,
+    channel,
+    userID,
+    password
+});
+```
+
+## 8. Service
+
+The IBM MQ service enables applications to interact with an IBM MQ service to send messages. The Ballerina IBM MQ
+service is mapped to a single connection to the IBMMQ broker, with either a queue or a topic configuration. The service
+can be configured using the `ibmmq:ServiceConfig` annotation.
+
+```ballerina
+service on ibmmqListener {
+    remote function onMessage(ibmmq:Message message) {
+        // Handle the message
+    }
+
+    remote function onError(error err) {
+        // Handle the error
+    }
+}
 ```

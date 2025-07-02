@@ -5,7 +5,7 @@ description: The consolidate-packages tool provides CLI commands and a build too
 keywords: ballerina, programming language, consolidate packages, consolidate-packages, monolith
 permalink: /learn/consolidate-packages-tool/
 active: consolidate-packages-tool
-intro: The consolidate-packages tool allows you to create a single executable by combining multiple services. These services can either be pulled from Ballerina Central or used directly from your project setup without needing to publish them externally.
+intro: The consolidate-packages tool allows you to create a single executable by consolidating multiple Ballerina services. These services can either be pulled from Ballerina Central or used directly from your local environment without needing to publish them to a remote repository.
 ---
 
 ## Consolidate packages from the Ballerina Central
@@ -30,7 +30,7 @@ In some projects, services are developed together but do not require publishing 
 
 1. Publish packages required to consolidate to the local repository.
 
-```bash
+```
 $ bal push --repository local
 ```
 
@@ -53,7 +53,7 @@ The CLI tool helps automate the consolidation process, which is typically useful
 Execute the command below to pull the tool.
 
 ```
-bal tool pull consolidate-packages
+$ bal tool pull consolidate-packages
 ```
 
 ### Creating a new consolidator package
@@ -110,4 +110,4 @@ For example,
 $ bal consolidate-packages remove myorg/menu,myorg/ad
 ```
 
-Run `bal consolidate-services --help` for more information about the commands. 
+Run `bal consolidate-packages --help` for more information about the commands. 

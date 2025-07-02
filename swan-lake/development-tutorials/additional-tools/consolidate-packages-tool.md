@@ -10,7 +10,7 @@ intro: The consolidate-packages tool allows you to create a single executable by
 
 ## Consolidate packages from the Ballerina Central
 
-## Define the consolidator package
+### Define the consolidator package
 Create a new package and add the `consolidate-packages` tool entry, along with the required services for consolidation, in the `Ballerina.toml` file, as shown in the example below. Services can be added or removed as needed by updating the values provided for the `options.services` array.
 
 ```toml
@@ -26,23 +26,23 @@ options.services = ["myorg/order", "myorg/checkout"]
 
 ## Consolidate locally published packages
 
-In some projects, services are developed together but do not require publishing to the central repository, as they are consumed within the same project. For these cases, the tool enables the consolidation of multiple packages into a single executable without requiring publication to any remote repository. The packages can be published to the local repository and consolidated using the steps below:
+In some projects, services are developed together but do not require publishing to a remote repository, as they are consumed within the same project. For these cases, the tool enables the consolidation of multiple packages into a single executable without requiring publication to any remote repository. The packages can be published to the local repository and consolidated using the steps below:
 
-1. Publish packages required to consolidate to the local repository.
+1. Publish packages required to consolidate to the local repository using the `bal push` command.
 
-```
-$ bal push --repository local
-```
+   ```
+   $ bal push --repository local
+   ```
 
 2. Include the packages as local dependencies in the `Ballerina.toml` of the consolidator package.
 
-```toml
-[[dependency]]
-org = "myorg"
-name = "menu"
-version = "1.1.0"
-repository = "local"
-```
+   ```toml
+   [[dependency]]
+   org = "myorg"
+   name = "menu"
+   version = "1.1.0"
+   repository = "local"
+   ```
 
 ## Using the CLI tool
 

@@ -72,7 +72,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/converting-from-user-defined-type-to-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/converting-from-user-defined-type-to-json",
                 "_blank",
               );
             }}
@@ -241,7 +241,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Match statement with maps"
-            href="/learn/by-example/match-statement-with-maps"
+            href="/learn/by-example/match-statement-with-maps/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -277,7 +277,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from table and XML to JSON"
-            href="/learn/by-example/converting-from-table-and-xml-to-json"
+            href="/learn/by-example/converting-from-table-and-xml-to-json/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

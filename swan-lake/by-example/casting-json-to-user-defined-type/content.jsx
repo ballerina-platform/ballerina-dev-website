@@ -73,7 +73,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/casting-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/casting-json-to-user-defined-type",
                 "_blank",
               );
             }}
@@ -268,7 +268,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from JSON to user-defined type"
-            href="/learn/by-example/convert-from-json-to-user-defined-type"
+            href="/learn/by-example/convert-from-json-to-user-defined-type/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -304,7 +304,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Resource method typing"
-            href="/learn/by-example/resource-method-typing"
+            href="/learn/by-example/resource-method-typing/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

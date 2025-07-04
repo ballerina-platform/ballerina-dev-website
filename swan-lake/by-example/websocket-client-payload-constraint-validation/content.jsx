@@ -60,7 +60,7 @@ export function WebsocketClientPayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websocket-client-payload-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-client-payload-constraint-validation",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function WebsocketClientPayloadConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            href="/learn/by-example/websocket-client/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +285,7 @@ export function WebsocketClientPayloadConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="SSL/TLS"
-            href="/learn/by-example/websocket-service-ssl-tls"
+            href="/learn/by-example/websocket-service-ssl-tls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

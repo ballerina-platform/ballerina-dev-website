@@ -67,7 +67,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-send-different-status-codes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-send-different-status-codes",
                 "_blank",
               );
             }}
@@ -317,7 +317,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send response"
-            href="/learn/by-example/http-send-response"
+            href="/learn/by-example/http-send-response/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -353,7 +353,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send different status codes with payload"
-            href="/learn/by-example/http-send-different-status-codes-with-payload"
+            href="/learn/by-example/http-send-different-status-codes-with-payload/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -66,7 +66,7 @@ export function TransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/transaction-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/transaction-statement",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function TransactionStatement({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Fork" href="/learn/by-example/fork">
+          <Link title="Fork" href="/learn/by-example/fork/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export function TransactionStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Check semantics"
-            href="/learn/by-example/check-semantics"
+            href="/learn/by-example/check-semantics/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

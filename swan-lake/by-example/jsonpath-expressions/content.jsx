@@ -83,7 +83,7 @@ export function JsonpathExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/jsonpath-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/jsonpath-expressions",
                 "_blank",
               );
             }}
@@ -245,7 +245,7 @@ export function JsonpathExpressions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="JSON to record with projection"
-            href="/learn/by-example/json-to-record-with-projection"
+            href="/learn/by-example/json-to-record-with-projection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -279,7 +279,7 @@ export function JsonpathExpressions({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link title="Raw templates" href="/learn/by-example/raw-templates/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

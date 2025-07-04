@@ -64,7 +64,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/interface-to-external-code",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/interface-to-external-code",
                 "_blank",
               );
             }}
@@ -202,7 +202,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Run strands safely on separate threads"
-            href="/learn/by-example/run-strands-safely-on-separate-threads"
+            href="/learn/by-example/run-strands-safely-on-separate-threads/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -238,7 +238,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Assertions"
-            href="/learn/by-example/testerina-assertions"
+            href="/learn/by-example/testerina-assertions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

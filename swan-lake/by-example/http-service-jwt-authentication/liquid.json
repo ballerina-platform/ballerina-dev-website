@@ -9,6 +9,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/http-service-jwt-authentication",
+  "permalink": "/learn/by-example/http-service-jwt-authentication/",
   "active": "http-service-jwt-authentication"
 }

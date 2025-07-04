@@ -89,7 +89,7 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/langlib-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/langlib-functions",
                 "_blank",
               );
             }}
@@ -232,7 +232,7 @@ export function LanglibFunctions({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Range function" href="/learn/by-example/int-range">
+          <Link title="Range function" href="/learn/by-example/int-range/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +267,7 @@ export function LanglibFunctions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Structural typing"
-            href="/learn/by-example/structural-typing"
+            href="/learn/by-example/structural-typing/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

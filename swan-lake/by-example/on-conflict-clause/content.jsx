@@ -87,7 +87,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/on-conflict-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/on-conflict-clause",
                 "_blank",
               );
             }}
@@ -337,7 +337,7 @@ export function OnConflictClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create streams with a query"
-            href="/learn/by-example/create-streams-with-query"
+            href="/learn/by-example/create-streams-with-query/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -373,7 +373,7 @@ export function OnConflictClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Advanced conflict handling"
-            href="/learn/by-example/advanced-conflict-handling"
+            href="/learn/by-example/advanced-conflict-handling/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -115,7 +115,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-error-handling",
                 "_blank",
               );
             }}
@@ -264,7 +264,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-error-handling",
                 "_blank",
               );
             }}
@@ -420,7 +420,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-error-handling",
                 "_blank",
               );
             }}
@@ -604,7 +604,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Union types"
-            href="/learn/by-example/graphql-service-union-types"
+            href="/learn/by-example/graphql-service-union-types/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -640,7 +640,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="GraphiQL client"
-            href="/learn/by-example/graphql-graphiql"
+            href="/learn/by-example/graphql-graphiql/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

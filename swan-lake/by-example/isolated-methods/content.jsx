@@ -76,7 +76,7 @@ export function IsolatedMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/isolated-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/isolated-methods",
                 "_blank",
               );
             }}
@@ -216,7 +216,7 @@ export function IsolatedMethods({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Isolated variables"
-            href="/learn/by-example/isolated-variables"
+            href="/learn/by-example/isolated-variables/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -252,7 +252,7 @@ export function IsolatedMethods({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Isolated objects"
-            href="/learn/by-example/isolated-objects"
+            href="/learn/by-example/isolated-objects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

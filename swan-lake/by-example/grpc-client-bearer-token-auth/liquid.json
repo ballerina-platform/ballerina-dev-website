@@ -9,6 +9,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/grpc-client-bearer-token-auth",
+  "permalink": "/learn/by-example/grpc-client-bearer-token-auth/",
   "active": "grpc-client-bearer-token-auth"
 }

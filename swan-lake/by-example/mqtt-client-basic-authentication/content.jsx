@@ -70,7 +70,7 @@ export function MqttClientBasicAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mqtt-client-basic-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/mqtt-client-basic-authentication",
                 "_blank",
               );
             }}
@@ -319,7 +319,7 @@ export function MqttClientBasicAuthentication({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/mqtt-client-ssl">
+          <Link title="SSL/TLS" href="/learn/by-example/mqtt-client-ssl/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -354,7 +354,7 @@ export function MqttClientBasicAuthentication({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Add/Remove entries"
-            href="/learn/by-example/ldap-add-remove-entry"
+            href="/learn/by-example/ldap-add-remove-entry/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

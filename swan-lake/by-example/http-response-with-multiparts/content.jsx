@@ -155,7 +155,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-response-with-multiparts",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-response-with-multiparts",
                 "_blank",
               );
             }}
@@ -484,7 +484,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Sending headers"
-            href="/learn/by-example/http-send-header"
+            href="/learn/by-example/http-send-header/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -518,7 +518,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
+          <Link title="Passthrough" href="/learn/by-example/http-passthrough/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

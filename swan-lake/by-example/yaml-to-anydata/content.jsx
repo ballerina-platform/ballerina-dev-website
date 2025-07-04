@@ -96,7 +96,7 @@ export function YamlToAnydata({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/yaml-to-anydata",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/yaml-to-anydata",
                 "_blank",
               );
             }}
@@ -236,7 +236,7 @@ export function YamlToAnydata({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Record to XML conversion"
-            href="/learn/by-example/xml-from-record-conversion"
+            href="/learn/by-example/xml-from-record-conversion/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -272,7 +272,7 @@ export function YamlToAnydata({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="YAML to anydata with projection"
-            href="/learn/by-example/yaml-to-anydata-with-projection"
+            href="/learn/by-example/yaml-to-anydata-with-projection/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

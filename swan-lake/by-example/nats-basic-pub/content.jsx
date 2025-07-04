@@ -69,7 +69,7 @@ export function NatsBasicPub({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-basic-pub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/nats-basic-pub",
                 "_blank",
               );
             }}
@@ -323,7 +323,7 @@ export function NatsBasicPub({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume JetStream message"
-            href="/learn/by-example/nats-jetstream-sub"
+            href="/learn/by-example/nats-jetstream-sub/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -359,7 +359,7 @@ export function NatsBasicPub({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send request message"
-            href="/learn/by-example/nats-basic-request"
+            href="/learn/by-example/nats-basic-request/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

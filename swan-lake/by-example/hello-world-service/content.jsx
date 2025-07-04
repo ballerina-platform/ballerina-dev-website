@@ -47,7 +47,7 @@ export function HelloWorldService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/hello-world-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/hello-world-service",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function HelloWorldService({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Hello world main" href="/learn/by-example/hello-world">
+          <Link title="Hello world main" href="/learn/by-example/hello-world/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -284,7 +284,7 @@ export function HelloWorldService({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Programs and modules"
-            href="/learn/by-example/programs-and-modules"
+            href="/learn/by-example/programs-and-modules/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

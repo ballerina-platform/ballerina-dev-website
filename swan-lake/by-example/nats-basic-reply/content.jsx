@@ -64,7 +64,7 @@ export function NatsBasicReply({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-basic-reply",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/nats-basic-reply",
                 "_blank",
               );
             }}
@@ -248,7 +248,10 @@ export function NatsBasicReply({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Consume message" href="/learn/by-example/nats-basic-sub">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/nats-basic-sub/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +286,7 @@ export function NatsBasicReply({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Constraint validations"
-            href="/learn/by-example/nats-service-constraint-validation"
+            href="/learn/by-example/nats-service-constraint-validation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

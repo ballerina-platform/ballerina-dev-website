@@ -86,7 +86,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/time-formatting-and-parsing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/time-formatting-and-parsing",
                 "_blank",
               );
             }}
@@ -234,7 +234,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Time with zone offset"
-            href="/learn/by-example/time-utc-and-civil"
+            href="/learn/by-example/time-utc-and-civil/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -268,7 +268,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Time Zone" href="/learn/by-example/time-zone">
+          <Link title="Time Zone" href="/learn/by-example/time-zone/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

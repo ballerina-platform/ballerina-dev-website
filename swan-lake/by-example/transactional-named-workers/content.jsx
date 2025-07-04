@@ -65,7 +65,7 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/transactional-named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/transactional-named-workers",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transactional qualifier"
-            href="/learn/by-example/transactional-qualifier"
+            href="/learn/by-example/transactional-qualifier/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -239,7 +239,7 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Commit/rollback handlers"
-            href="/learn/by-example/commit-rollback-handlers"
+            href="/learn/by-example/commit-rollback-handlers/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -78,7 +78,7 @@ export function TesterinaBeforeAndAfterEach({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-before-and-after-each",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-before-and-after-each",
                 "_blank",
               );
             }}
@@ -238,7 +238,7 @@ export function TesterinaBeforeAndAfterEach({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Before and after test"
-            href="/learn/by-example/testerina-before-and-after-test"
+            href="/learn/by-example/testerina-before-and-after-test/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function TesterinaBeforeAndAfterEach({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Before and after groups"
-            href="/learn/by-example/testerina-before-and-after-groups"
+            href="/learn/by-example/testerina-before-and-after-groups/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

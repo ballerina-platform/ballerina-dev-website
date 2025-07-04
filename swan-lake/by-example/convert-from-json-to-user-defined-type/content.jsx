@@ -82,7 +82,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/convert-from-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/convert-from-json-to-user-defined-type",
                 "_blank",
               );
             }}
@@ -275,7 +275,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from table and XML to JSON"
-            href="/learn/by-example/converting-from-table-and-xml-to-json"
+            href="/learn/by-example/converting-from-table-and-xml-to-json/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -311,7 +311,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Cast JSON to user-defined type"
-            href="/learn/by-example/casting-json-to-user-defined-type"
+            href="/learn/by-example/casting-json-to-user-defined-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -76,7 +76,7 @@ export function Tuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/tuples",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/tuples",
                 "_blank",
               );
             }}
@@ -265,7 +265,7 @@ export function Tuples({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nested arrays" href="/learn/by-example/nested-arrays">
+          <Link title="Nested arrays" href="/learn/by-example/nested-arrays/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +300,7 @@ export function Tuples({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest type in tuples"
-            href="/learn/by-example/rest-type-in-tuples"
+            href="/learn/by-example/rest-type-in-tuples/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

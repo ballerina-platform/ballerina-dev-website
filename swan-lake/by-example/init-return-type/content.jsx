@@ -63,7 +63,7 @@ export function InitReturnType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/init-return-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/init-return-type",
                 "_blank",
               );
             }}
@@ -201,7 +201,7 @@ export function InitReturnType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Visibility of object fields and methods"
-            href="/learn/by-example/visibility-of-object-fields-and-methods"
+            href="/learn/by-example/visibility-of-object-fields-and-methods/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -235,7 +235,7 @@ export function InitReturnType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Object types" href="/learn/by-example/object-types">
+          <Link title="Object types" href="/learn/by-example/object-types/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

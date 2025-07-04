@@ -75,7 +75,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/inter-worker-failure-propagation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/inter-worker-failure-propagation",
                 "_blank",
               );
             }}
@@ -214,7 +214,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Conditional send"
-            href="/learn/by-example/conditional-send"
+            href="/learn/by-example/conditional-send/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -250,7 +250,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Named worker with on fail clause"
-            href="/learn/by-example/named-worker-with-on-fail-clause"
+            href="/learn/by-example/named-worker-with-on-fail-clause/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

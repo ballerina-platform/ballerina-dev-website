@@ -30,7 +30,7 @@ export function StringTemplates({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link title="Raw templates" href="/learn/by-example/raw-templates/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@ export function StringTemplates({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="XML templates" href="/learn/by-example/xml-templates">
+          <Link title="XML templates" href="/learn/by-example/xml-templates/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -69,7 +69,7 @@ export function HttpCaller({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-caller",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-caller",
                 "_blank",
               );
             }}
@@ -319,7 +319,7 @@ export function HttpCaller({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Request/Response object"
-            href="/learn/by-example/http-request-response"
+            href="/learn/by-example/http-request-response/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -355,7 +355,7 @@ export function HttpCaller({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Redirects"
-            href="/learn/by-example/http-service-redirects"
+            href="/learn/by-example/http-service-redirects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

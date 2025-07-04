@@ -67,7 +67,7 @@ export function InitFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/init-function",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/init-function",
                 "_blank",
               );
             }}
@@ -215,7 +215,7 @@ export function InitFunction({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Main function" href="/learn/by-example/main-function">
+          <Link title="Main function" href="/learn/by-example/main-function/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +250,7 @@ export function InitFunction({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Variables and types"
-            href="/learn/by-example/variables-and-types"
+            href="/learn/by-example/variables-and-types/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

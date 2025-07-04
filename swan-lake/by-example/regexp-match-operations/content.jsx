@@ -89,7 +89,7 @@ export function RegexpMatchOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/regexp-match-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/regexp-match-operations",
                 "_blank",
               );
             }}
@@ -274,7 +274,7 @@ export function RegexpMatchOperations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="RegExp find operations"
-            href="/learn/by-example/regexp-find-operations"
+            href="/learn/by-example/regexp-find-operations/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -308,7 +308,7 @@ export function RegexpMatchOperations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Documentation" href="/learn/by-example/documentation">
+          <Link title="Documentation" href="/learn/by-example/documentation/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

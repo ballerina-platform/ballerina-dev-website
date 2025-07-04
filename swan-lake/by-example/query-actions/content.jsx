@@ -69,7 +69,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/query-actions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/query-actions",
                 "_blank",
               );
             }}
@@ -219,7 +219,7 @@ export function QueryActions({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Aggregation" href="/learn/by-example/aggregation">
+          <Link title="Aggregation" href="/learn/by-example/aggregation/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +252,7 @@ export function QueryActions({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="JSON type" href="/learn/by-example/json-type">
+          <Link title="JSON type" href="/learn/by-example/json-type/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

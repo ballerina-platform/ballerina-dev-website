@@ -56,7 +56,7 @@ export function WaitingForWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/waiting-for-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/waiting-for-workers",
                 "_blank",
               );
             }}
@@ -197,7 +197,7 @@ export function WaitingForWorkers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Sequence diagrams"
-            href="/learn/by-example/sequence-diagrams"
+            href="/learn/by-example/sequence-diagrams/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -231,7 +231,7 @@ export function WaitingForWorkers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Strands" href="/learn/by-example/strands">
+          <Link title="Strands" href="/learn/by-example/strands/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

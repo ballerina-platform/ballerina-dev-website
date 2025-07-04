@@ -97,7 +97,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/binding-patterns-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/binding-patterns-in-match-statement",
                 "_blank",
               );
             }}
@@ -267,7 +267,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Match guard in match statement"
-            href="/learn/by-example/match-guard-in-match-statement"
+            href="/learn/by-example/match-guard-in-match-statement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -301,7 +301,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Functions" href="/learn/by-example/functions">
+          <Link title="Functions" href="/learn/by-example/functions/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

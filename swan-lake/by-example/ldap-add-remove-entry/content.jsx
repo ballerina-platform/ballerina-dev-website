@@ -81,7 +81,7 @@ export function LdapAddRemoveEntry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/ldap-add-remove-entry",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/ldap-add-remove-entry",
                 "_blank",
               );
             }}
@@ -285,7 +285,7 @@ export function LdapAddRemoveEntry({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic authentication"
-            href="/learn/by-example/mqtt-client-basic-authentication"
+            href="/learn/by-example/mqtt-client-basic-authentication/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -321,7 +321,7 @@ export function LdapAddRemoveEntry({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Search for an entry"
-            href="/learn/by-example/ldap-search-entry"
+            href="/learn/by-example/ldap-search-entry/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

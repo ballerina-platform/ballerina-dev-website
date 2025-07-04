@@ -74,7 +74,7 @@ export function QueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/query-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/query-expressions",
                 "_blank",
               );
             }}
@@ -325,7 +325,7 @@ export function QueryExpressions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Structured keys"
-            href="/learn/by-example/structured-keys"
+            href="/learn/by-example/structured-keys/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -361,7 +361,7 @@ export function QueryExpressions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Sort iterable objects"
-            href="/learn/by-example/sort-iterable-objects"
+            href="/learn/by-example/sort-iterable-objects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

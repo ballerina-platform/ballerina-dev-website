@@ -84,7 +84,7 @@ export function TesterinaGroupTests({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-group-tests",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-group-tests",
                 "_blank",
               );
             }}
@@ -416,7 +416,7 @@ export function TesterinaGroupTests({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Guarantee test execution order"
-            href="/learn/by-example/testerina-guarantee-test-execution-order"
+            href="/learn/by-example/testerina-guarantee-test-execution-order/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -452,7 +452,7 @@ export function TesterinaGroupTests({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Function mocking"
-            href="/learn/by-example/testerina-mocking-functions"
+            href="/learn/by-example/testerina-mocking-functions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

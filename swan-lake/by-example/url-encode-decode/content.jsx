@@ -56,7 +56,7 @@ export function UrlEncodeDecode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/url-encode-decode",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/url-encode-decode",
                 "_blank",
               );
             }}
@@ -201,7 +201,7 @@ export function UrlEncodeDecode({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="JWT issue/validate"
-            href="/learn/by-example/security-jwt-issue-validate"
+            href="/learn/by-example/security-jwt-issue-validate/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -235,7 +235,7 @@ export function UrlEncodeDecode({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="UTC time" href="/learn/by-example/time-utc">
+          <Link title="UTC time" href="/learn/by-example/time-utc/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

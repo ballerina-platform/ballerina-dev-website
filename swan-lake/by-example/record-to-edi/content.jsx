@@ -79,7 +79,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -169,7 +169,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -469,7 +469,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -612,7 +612,7 @@ export function RecordToEdi({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="EDI to record conversion"
-            href="/learn/by-example/edi-to-record"
+            href="/learn/by-example/edi-to-record/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -648,7 +648,7 @@ export function RecordToEdi({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Environment variables"
-            href="/learn/by-example/environment-variables"
+            href="/learn/by-example/environment-variables/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

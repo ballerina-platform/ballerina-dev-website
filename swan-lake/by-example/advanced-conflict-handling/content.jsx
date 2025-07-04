@@ -76,7 +76,7 @@ export function AdvancedConflictHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/advanced-conflict-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/advanced-conflict-handling",
                 "_blank",
               );
             }}
@@ -325,7 +325,7 @@ export function AdvancedConflictHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="On conflict clause"
-            href="/learn/by-example/on-conflict-clause"
+            href="/learn/by-example/on-conflict-clause/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -361,7 +361,7 @@ export function AdvancedConflictHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Iterate over XML with a query"
-            href="/learn/by-example/iterating-over-xml-with-query"
+            href="/learn/by-example/iterating-over-xml-with-query/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

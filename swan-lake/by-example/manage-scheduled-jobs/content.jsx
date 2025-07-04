@@ -112,7 +112,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/manage-scheduled-jobs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/manage-scheduled-jobs",
                 "_blank",
               );
             }}
@@ -272,7 +272,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Schedule one time job"
-            href="/learn/by-example/task-one-time-job-execution"
+            href="/learn/by-example/task-one-time-job-execution/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -306,7 +306,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Generate UUID" href="/learn/by-example/uuid-generation">
+          <Link title="Generate UUID" href="/learn/by-example/uuid-generation/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

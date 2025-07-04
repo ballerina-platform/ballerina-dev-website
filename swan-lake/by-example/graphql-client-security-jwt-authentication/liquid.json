@@ -11,6 +11,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/graphql-client-security-jwt-authentication",
+  "permalink": "/learn/by-example/graphql-client-security-jwt-authentication/",
   "active": "graphql-client-security-jwt-authentication"
 }

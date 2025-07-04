@@ -72,7 +72,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/time-utc-and-civil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/time-utc-and-civil",
                 "_blank",
               );
             }}
@@ -213,7 +213,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="UTC time" href="/learn/by-example/time-utc">
+          <Link title="UTC time" href="/learn/by-example/time-utc/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +248,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Time formatting/parsing"
-            href="/learn/by-example/time-formatting-and-parsing"
+            href="/learn/by-example/time-formatting-and-parsing/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

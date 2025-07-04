@@ -120,7 +120,7 @@ export function ArrayMapSymmetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/array-map-symmetry",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/array-map-symmetry",
                 "_blank",
               );
             }}
@@ -265,7 +265,7 @@ export function ArrayMapSymmetry({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Default values for record fields"
-            href="/learn/by-example/default-values-for-record-fields"
+            href="/learn/by-example/default-values-for-record-fields/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -299,7 +299,7 @@ export function ArrayMapSymmetry({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Object" href="/learn/by-example/object">
+          <Link title="Object" href="/learn/by-example/object/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

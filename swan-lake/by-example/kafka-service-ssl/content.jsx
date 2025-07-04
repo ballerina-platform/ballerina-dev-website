@@ -75,7 +75,7 @@ export function KafkaServiceSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/kafka-service-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/kafka-service-ssl",
                 "_blank",
               );
             }}
@@ -266,7 +266,7 @@ export function KafkaServiceSsl({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Constraint validation"
-            href="/learn/by-example/kafka-consumer-constraint-validation"
+            href="/learn/by-example/kafka-consumer-constraint-validation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -302,7 +302,7 @@ export function KafkaServiceSsl({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="SASL authentication"
-            href="/learn/by-example/kafka-service-sasl"
+            href="/learn/by-example/kafka-service-sasl/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

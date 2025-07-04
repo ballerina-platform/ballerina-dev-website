@@ -67,7 +67,7 @@ export function Flush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/flush",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/flush",
                 "_blank",
               );
             }}
@@ -206,7 +206,7 @@ export function Flush({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Asynchronize message passing"
-            href="/learn/by-example/asynchronize-message-passing"
+            href="/learn/by-example/asynchronize-message-passing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -240,7 +240,7 @@ export function Flush({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Fork" href="/learn/by-example/fork">
+          <Link title="Fork" href="/learn/by-example/fork/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

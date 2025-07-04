@@ -70,7 +70,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-client-payload-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-client-payload-constraint-validation",
                 "_blank",
               );
             }}
@@ -259,7 +259,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Payload data binding"
-            href="/learn/by-example/http-client-data-binding"
+            href="/learn/by-example/http-client-data-binding/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -295,7 +295,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Path parameter"
-            href="/learn/by-example/http-client-path-parameter"
+            href="/learn/by-example/http-client-path-parameter/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

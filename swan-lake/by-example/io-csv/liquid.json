@@ -2,6 +2,6 @@
   "title": "Read/write CSV",
   "description": "BBE on how to read/write from/to a CSV file.",
   "keywords": ["ballerina", "ballerina by examples", "bbe", "csv", "table"],
-  "permalink": "/learn/by-example/io-csv",
+  "permalink": "/learn/by-example/io-csv/",
   "active": "io-csv"
 }

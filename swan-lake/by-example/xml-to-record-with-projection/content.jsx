@@ -80,7 +80,7 @@ export function XmlToRecordWithProjection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-to-record-with-projection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/xml-to-record-with-projection",
                 "_blank",
               );
             }}
@@ -217,7 +217,7 @@ export function XmlToRecordWithProjection({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="XML to record" href="/learn/by-example/xml-to-record">
+          <Link title="XML to record" href="/learn/by-example/xml-to-record/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +250,7 @@ export function XmlToRecordWithProjection({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="RegExp type" href="/learn/by-example/regexp-type">
+          <Link title="RegExp type" href="/learn/by-example/regexp-type/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

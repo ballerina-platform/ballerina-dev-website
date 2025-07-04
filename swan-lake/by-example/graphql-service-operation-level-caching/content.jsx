@@ -106,7 +106,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-operation-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-operation-level-caching",
                 "_blank",
               );
             }}
@@ -255,7 +255,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-operation-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-operation-level-caching",
                 "_blank",
               );
             }}
@@ -429,7 +429,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Custom prefetch methods"
-            href="/learn/by-example/custom-prefetch-methods"
+            href="/learn/by-example/custom-prefetch-methods/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -465,7 +465,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Field-level caching"
-            href="/learn/by-example/graphql-service-field-level-caching"
+            href="/learn/by-example/graphql-service-field-level-caching/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

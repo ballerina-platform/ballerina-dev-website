@@ -98,7 +98,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}
@@ -192,7 +192,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}
@@ -317,7 +317,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-bidirectional-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-service-bidirectional-streaming",
                 "_blank",
               );
             }}
@@ -503,7 +503,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Client-side streaming RPC"
-            href="/learn/by-example/grpc-service-client-streaming"
+            href="/learn/by-example/grpc-service-client-streaming/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -539,7 +539,7 @@ export function GrpcServiceBidirectionalStreaming({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send/Receive headers"
-            href="/learn/by-example/grpc-service-headers"
+            href="/learn/by-example/grpc-service-headers/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

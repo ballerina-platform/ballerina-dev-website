@@ -57,7 +57,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-check-deadline",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-service-check-deadline",
                 "_blank",
               );
             }}
@@ -240,7 +240,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Server reflection"
-            href="/learn/by-example/grpc-server-reflection"
+            href="/learn/by-example/grpc-server-reflection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

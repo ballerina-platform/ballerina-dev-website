@@ -9,6 +9,6 @@
     "consumer",
     "transaction"
   ],
-  "permalink": "/learn/by-example/rabbitmq-transaction-consumer",
+  "permalink": "/learn/by-example/rabbitmq-transaction-consumer/",
   "active": "rabbitmq-transaction-consumer"
 }

@@ -81,7 +81,7 @@ export function OptionalFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/optional-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/optional-fields",
                 "_blank",
               );
             }}
@@ -234,7 +234,7 @@ export function OptionalFields({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Computed field key"
-            href="/learn/by-example/computed-field-key"
+            href="/learn/by-example/computed-field-key/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -268,7 +268,7 @@ export function OptionalFields({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Open records" href="/learn/by-example/open-records">
+          <Link title="Open records" href="/learn/by-example/open-records/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

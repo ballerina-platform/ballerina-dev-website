@@ -64,7 +64,7 @@ export function NamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/named-workers",
                 "_blank",
               );
             }}
@@ -205,7 +205,7 @@ export function NamedWorkers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Asynchronous function calls"
-            href="/learn/by-example/asynchronous-function-calls"
+            href="/learn/by-example/asynchronous-function-calls/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -241,7 +241,7 @@ export function NamedWorkers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Sequence diagrams"
-            href="/learn/by-example/sequence-diagrams"
+            href="/learn/by-example/sequence-diagrams/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

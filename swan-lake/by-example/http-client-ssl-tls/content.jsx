@@ -54,7 +54,7 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-client-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-client-ssl-tls",
                 "_blank",
               );
             }}
@@ -231,7 +231,7 @@ export function HttpClientSslTls({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2">
+          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +266,7 @@ export function HttpClientSslTls({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Mutual SSL"
-            href="/learn/by-example/http-client-mutual-ssl"
+            href="/learn/by-example/http-client-mutual-ssl/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

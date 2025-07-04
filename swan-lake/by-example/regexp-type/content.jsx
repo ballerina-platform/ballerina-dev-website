@@ -105,7 +105,7 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/regexp-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/regexp-type",
                 "_blank",
               );
             }}
@@ -295,7 +295,7 @@ export function RegexpType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XML to record with projection"
-            href="/learn/by-example/xml-to-record-with-projection"
+            href="/learn/by-example/xml-to-record-with-projection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -331,7 +331,7 @@ export function RegexpType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="RegExp operations overview"
-            href="/learn/by-example/regexp-operations-overview"
+            href="/learn/by-example/regexp-operations-overview/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

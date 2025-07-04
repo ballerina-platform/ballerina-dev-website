@@ -52,7 +52,7 @@ export function GrpcServerReflection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-server-reflection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-server-reflection",
                 "_blank",
               );
             }}
@@ -308,7 +308,7 @@ export function GrpcServerReflection({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send/Receive headers"
-            href="/learn/by-example/grpc-service-headers"
+            href="/learn/by-example/grpc-service-headers/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -344,7 +344,7 @@ export function GrpcServerReflection({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Check deadline"
-            href="/learn/by-example/grpc-service-check-deadline"
+            href="/learn/by-example/grpc-service-check-deadline/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -73,7 +73,7 @@ export function AnydataToYamlString({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/anydata-to-yaml-string",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/anydata-to-yaml-string",
                 "_blank",
               );
             }}
@@ -215,7 +215,7 @@ export function AnydataToYamlString({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="YAML to anydata with projection"
-            href="/learn/by-example/yaml-to-anydata-with-projection"
+            href="/learn/by-example/yaml-to-anydata-with-projection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -251,7 +251,7 @@ export function AnydataToYamlString({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert CSV string to records"
-            href="/learn/by-example/csv-string-to-record-array"
+            href="/learn/by-example/csv-string-to-record-array/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

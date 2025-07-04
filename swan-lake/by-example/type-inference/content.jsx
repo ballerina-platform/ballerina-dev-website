@@ -66,7 +66,7 @@ export function TypeInference({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/type-inference",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/type-inference",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function TypeInference({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Covariance" href="/learn/by-example/covariance">
+          <Link title="Covariance" href="/learn/by-example/covariance/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export function TypeInference({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Built-in integer subtypes"
-            href="/learn/by-example/built-in-integer-subtypes"
+            href="/learn/by-example/built-in-integer-subtypes/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -100,7 +100,7 @@ export function GrpcServiceBasicAuthLdapUserStore({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-service-basic-auth-ldap-user-store",
                 "_blank",
               );
             }}
@@ -302,7 +302,7 @@ export function GrpcServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic authentication file user store"
-            href="/learn/by-example/grpc-service-basic-auth-file-user-store"
+            href="/learn/by-example/grpc-service-basic-auth-file-user-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -338,7 +338,7 @@ export function GrpcServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="JWT authentication"
-            href="/learn/by-example/grpc-service-jwt-auth"
+            href="/learn/by-example/grpc-service-jwt-auth/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

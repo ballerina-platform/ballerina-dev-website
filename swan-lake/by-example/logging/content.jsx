@@ -70,7 +70,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/logging",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/logging",
                 "_blank",
               );
             }}
@@ -216,7 +216,7 @@ export function Logging({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Cache invalidation"
-            href="/learn/by-example/cache-invalidation"
+            href="/learn/by-example/cache-invalidation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -252,7 +252,7 @@ export function Logging({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Logging with context"
-            href="/learn/by-example/logging-with-context"
+            href="/learn/by-example/logging-with-context/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

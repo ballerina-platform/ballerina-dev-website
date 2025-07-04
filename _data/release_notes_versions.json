@@ -1540,5 +1540,22 @@
        ],
       "api-docs":"ballerina-api-docs-1.2.58.zip",
       "release-notes":"ballerina-release-notes-1.2.58.md"
+   },
+   {
+      "version": "1.2.59",
+      "release-date": "2025-07-04",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.59.msi",
+      "windows-installer-size": "272K",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.59.deb",
+      "linux-installer-size": "155mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.59.pkg",
+      "macos-installer-size": "175mb",
+      "rpm-installer": "ballerina-linux-installer-x64-1.2.59.rpm",
+      "rpm-installer-size": "178mb",
+      "other-artefacts": [
+         "ballerina-1.2.59.zip"
+      ],
+      "api-docs": "ballerina-api-docs-1.2.59.zip",
+      "release-notes": "ballerina-release-notes-1.2.59.md"
    }
 ]

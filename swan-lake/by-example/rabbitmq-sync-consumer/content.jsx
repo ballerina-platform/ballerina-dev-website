@@ -61,7 +61,7 @@ export function RabbitmqSyncConsumer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rabbitmq-sync-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/rabbitmq-sync-consumer",
                 "_blank",
               );
             }}
@@ -245,7 +245,7 @@ export function RabbitmqSyncConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Produce message"
-            href="/learn/by-example/rabbitmq-producer"
+            href="/learn/by-example/rabbitmq-producer/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,7 +281,7 @@ export function RabbitmqSyncConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transactional producer"
-            href="/learn/by-example/rabbitmq-transaction-producer"
+            href="/learn/by-example/rabbitmq-transaction-producer/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

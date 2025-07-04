@@ -58,7 +58,7 @@ export function AnydataType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/anydata-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/anydata-type",
                 "_blank",
               );
             }}
@@ -195,7 +195,7 @@ export function AnydataType({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Errors" href="/learn/by-example/error-reporting">
+          <Link title="Errors" href="/learn/by-example/error-reporting/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +228,7 @@ export function AnydataType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Any type" href="/learn/by-example/any-type">
+          <Link title="Any type" href="/learn/by-example/any-type/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

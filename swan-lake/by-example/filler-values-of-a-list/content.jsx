@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/filler-values-of-a-list",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/filler-values-of-a-list",
                 "_blank",
               );
             }}
@@ -229,7 +229,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest type in tuples"
-            href="/learn/by-example/rest-type-in-tuples"
+            href="/learn/by-example/rest-type-in-tuples/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,7 +263,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="List subtyping" href="/learn/by-example/list-subtyping">
+          <Link title="List subtyping" href="/learn/by-example/list-subtyping/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

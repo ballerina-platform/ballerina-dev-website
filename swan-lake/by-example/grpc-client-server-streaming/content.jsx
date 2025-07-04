@@ -77,7 +77,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-client-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-client-server-streaming",
                 "_blank",
               );
             }}
@@ -285,7 +285,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-client-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/grpc-client-server-streaming",
                 "_blank",
               );
             }}
@@ -462,7 +462,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -497,7 +497,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Client-side streaming RPC"
-            href="/learn/by-example/grpc-client-client-streaming"
+            href="/learn/by-example/grpc-client-client-streaming/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

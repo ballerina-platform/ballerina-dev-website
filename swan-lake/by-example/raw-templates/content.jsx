@@ -85,7 +85,7 @@ export function RawTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/raw-templates",
                 "_blank",
               );
             }}
@@ -270,7 +270,7 @@ export function RawTemplates({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="JSONPath expressions"
-            href="/learn/by-example/jsonpath-expressions"
+            href="/learn/by-example/jsonpath-expressions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -306,7 +306,7 @@ export function RawTemplates({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="String templates"
-            href="/learn/by-example/string-templates"
+            href="/learn/by-example/string-templates/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

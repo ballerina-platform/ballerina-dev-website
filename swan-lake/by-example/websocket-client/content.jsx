@@ -59,7 +59,7 @@ export function WebsocketClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websocket-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-client",
                 "_blank",
               );
             }}
@@ -238,7 +238,7 @@ export function WebsocketClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query parameter"
-            href="/learn/by-example/websocket-query-parameter"
+            href="/learn/by-example/websocket-query-parameter/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function WebsocketClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Payload constraint validation"
-            href="/learn/by-example/websocket-client-payload-constraint-validation"
+            href="/learn/by-example/websocket-client-payload-constraint-validation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

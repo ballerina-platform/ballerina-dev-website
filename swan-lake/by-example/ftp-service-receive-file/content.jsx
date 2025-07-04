@@ -80,7 +80,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/ftp-service-receive-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/ftp-service-receive-file",
                 "_blank",
               );
             }}
@@ -269,7 +269,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/email-client-ssl-tls">
+          <Link title="SSL/TLS" href="/learn/by-example/email-client-ssl-tls/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +304,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send file"
-            href="/learn/by-example/ftp-service-send-file"
+            href="/learn/by-example/ftp-service-send-file/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

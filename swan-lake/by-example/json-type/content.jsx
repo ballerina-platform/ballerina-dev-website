@@ -88,7 +88,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/json-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/json-type",
                 "_blank",
               );
             }}
@@ -283,7 +283,7 @@ export function JsonType({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Query actions" href="/learn/by-example/query-actions">
+          <Link title="Query actions" href="/learn/by-example/query-actions/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -318,7 +318,7 @@ export function JsonType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Access JSON elements"
-            href="/learn/by-example/access-json-elements"
+            href="/learn/by-example/access-json-elements/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -63,7 +63,7 @@ export function DecimalType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/decimal-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/decimal-type",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function DecimalType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Floating point numbers"
-            href="/learn/by-example/floating-point-numbers"
+            href="/learn/by-example/floating-point-numbers/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -237,7 +237,7 @@ export function DecimalType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link title="Nil" href="/learn/by-example/nil/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

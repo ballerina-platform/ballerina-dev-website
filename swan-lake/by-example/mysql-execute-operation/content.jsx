@@ -88,7 +88,7 @@ export function MysqlExecuteOperation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/mysql-execute-operation",
                 "_blank",
               );
             }}
@@ -331,7 +331,7 @@ export function MysqlExecuteOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query with advanced mapping"
-            href="/learn/by-example/mysql-query-column-mapping"
+            href="/learn/by-example/mysql-query-column-mapping/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -367,7 +367,7 @@ export function MysqlExecuteOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Batch execution"
-            href="/learn/by-example/mysql-batch-execute-operation"
+            href="/learn/by-example/mysql-batch-execute-operation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

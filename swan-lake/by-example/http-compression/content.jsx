@@ -66,7 +66,7 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-compression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-compression",
                 "_blank",
               );
             }}
@@ -311,7 +311,7 @@ export function HttpCompression({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="File upload"
-            href="/learn/by-example/http-service-file-upload"
+            href="/learn/by-example/http-service-file-upload/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -345,7 +345,7 @@ export function HttpCompression({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Trace logs" href="/learn/by-example/http-trace-logs">
+          <Link title="Trace logs" href="/learn/by-example/http-trace-logs/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

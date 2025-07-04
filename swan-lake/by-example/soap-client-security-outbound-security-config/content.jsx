@@ -72,7 +72,7 @@ export function SoapClientSecurityOutboundSecurityConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/soap-client-security-outbound-security-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/soap-client-security-outbound-security-config",
                 "_blank",
               );
             }}
@@ -236,7 +236,7 @@ export function SoapClientSecurityOutboundSecurityConfig({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Inbound Security"
-            href="/learn/by-example/soap-client-security-inbound-security-config"
+            href="/learn/by-example/soap-client-security-inbound-security-config/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -272,7 +272,7 @@ export function SoapClientSecurityOutboundSecurityConfig({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume message"
-            href="/learn/by-example/rabbitmq-consumer"
+            href="/learn/by-example/rabbitmq-consumer/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

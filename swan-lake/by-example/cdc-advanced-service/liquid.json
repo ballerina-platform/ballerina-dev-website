@@ -1,0 +1,18 @@
+{
+  "title": "Group events by table",
+  "description": "This BBE demonstrates how to use a CDC (Change Data Capture) service in Ballerina to capture and process real-time changes from a MySQL database.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mysql",
+    "cdc",
+    "change data capture",
+    "realtime",
+    "database",
+    "service",
+    "data streaming"
+  ],
+  "permalink": "/learn/by-example/cdc-advanced-service/",
+  "active": "cdc-advanced-service"
+}

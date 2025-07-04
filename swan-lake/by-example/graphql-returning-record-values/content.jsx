@@ -87,7 +87,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-returning-record-values",
                 "_blank",
               );
             }}
@@ -236,7 +236,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-returning-record-values",
                 "_blank",
               );
             }}
@@ -413,7 +413,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Service as output object"
-            href="/learn/by-example/graphql-returning-service-objects"
+            href="/learn/by-example/graphql-returning-service-objects/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -449,7 +449,7 @@ export function GraphqlReturningRecordValues({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Input types"
-            href="/learn/by-example/graphql-input-types"
+            href="/learn/by-example/graphql-input-types/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

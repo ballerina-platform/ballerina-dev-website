@@ -67,7 +67,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-2-to-1-1-downgrade-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-2-to-1-1-downgrade-service",
                 "_blank",
               );
             }}
@@ -303,7 +303,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
+          <Link title="Passthrough" href="/learn/by-example/http-passthrough/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +338,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="HTTP/2 server push"
-            href="/learn/by-example/http-2-0-server-push"
+            href="/learn/by-example/http-2-0-server-push/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

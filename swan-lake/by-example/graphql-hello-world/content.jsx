@@ -67,7 +67,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-hello-world",
                 "_blank",
               );
             }}
@@ -216,7 +216,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-hello-world",
                 "_blank",
               );
             }}
@@ -393,7 +393,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Interceptor error handling"
-            href="/learn/by-example/http-interceptor-error-handling"
+            href="/learn/by-example/http-interceptor-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -429,7 +429,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Service as output object"
-            href="/learn/by-example/graphql-returning-service-objects"
+            href="/learn/by-example/graphql-returning-service-objects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

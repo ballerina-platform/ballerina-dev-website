@@ -77,7 +77,7 @@ export function GraphqlIdScalarType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-id-scalar-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-id-scalar-type",
                 "_blank",
               );
             }}
@@ -226,7 +226,7 @@ export function GraphqlIdScalarType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-id-scalar-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-id-scalar-type",
                 "_blank",
               );
             }}
@@ -403,7 +403,7 @@ export function GraphqlIdScalarType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Input objects"
-            href="/learn/by-example/graphql-input-objects"
+            href="/learn/by-example/graphql-input-objects/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -437,7 +437,7 @@ export function GraphqlIdScalarType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Interfaces" href="/learn/by-example/graphql-interfaces">
+          <Link title="Interfaces" href="/learn/by-example/graphql-interfaces/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

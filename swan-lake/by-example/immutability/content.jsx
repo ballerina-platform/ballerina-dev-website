@@ -67,7 +67,7 @@ export function Immutability({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/immutability",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/immutability",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function Immutability({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Enumerations" href="/learn/by-example/enumerations">
+          <Link title="Enumerations" href="/learn/by-example/enumerations/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export function Immutability({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Asynchronous function calls"
-            href="/learn/by-example/asynchronous-function-calls"
+            href="/learn/by-example/asynchronous-function-calls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

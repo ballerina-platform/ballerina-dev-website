@@ -2,6 +2,6 @@
   "title": "Receive file",
   "description": "This example demonstrates getting file content from a remote FTP server.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
-  "permalink": "/learn/by-example/ftp-client-receive-file",
+  "permalink": "/learn/by-example/ftp-client-receive-file/",
   "active": "ftp-client-receive-file"
 }

@@ -79,7 +79,7 @@ export function Table({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/table",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/table",
                 "_blank",
               );
             }}
@@ -260,7 +260,7 @@ export function Table({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error binding pattern in match statement"
-            href="/learn/by-example/error-binding-pattern-in-match-statement"
+            href="/learn/by-example/error-binding-pattern-in-match-statement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -294,7 +294,7 @@ export function Table({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Table types" href="/learn/by-example/table-types">
+          <Link title="Table types" href="/learn/by-example/table-types/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

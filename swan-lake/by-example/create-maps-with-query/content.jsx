@@ -66,7 +66,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/create-maps-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/create-maps-with-query",
                 "_blank",
               );
             }}
@@ -304,7 +304,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create tables with a query"
-            href="/learn/by-example/create-tables-with-query"
+            href="/learn/by-example/create-tables-with-query/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -340,7 +340,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create streams with a query"
-            href="/learn/by-example/create-streams-with-query"
+            href="/learn/by-example/create-streams-with-query/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

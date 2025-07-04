@@ -93,7 +93,7 @@ export function SecurityJwtIssueValidate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/security-jwt-issue-validate",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/security-jwt-issue-validate",
                 "_blank",
               );
             }}
@@ -247,7 +247,7 @@ export function SecurityJwtIssueValidate({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Cryptographic operations"
-            href="/learn/by-example/security-crypto"
+            href="/learn/by-example/security-crypto/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -283,7 +283,7 @@ export function SecurityJwtIssueValidate({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="URL encode/decode operations"
-            href="/learn/by-example/url-encode-decode"
+            href="/learn/by-example/url-encode-decode/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -8,6 +8,6 @@
     "jwt issuer",
     "jwt validator"
   ],
-  "permalink": "/learn/by-example/security-jwt-issue-validate",
+  "permalink": "/learn/by-example/security-jwt-issue-validate/",
   "active": "security-jwt-issue-validate"
 }

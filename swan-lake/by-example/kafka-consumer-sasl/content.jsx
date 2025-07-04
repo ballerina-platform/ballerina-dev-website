@@ -76,7 +76,7 @@ export function KafkaConsumerSasl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/kafka-consumer-sasl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/kafka-consumer-sasl",
                 "_blank",
               );
             }}
@@ -266,7 +266,7 @@ export function KafkaConsumerSasl({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/kafka-consumer-ssl">
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-consumer-ssl/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -301,7 +301,7 @@ export function KafkaConsumerSasl({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send/Receive"
-            href="/learn/by-example/soap-client-send-receive"
+            href="/learn/by-example/soap-client-send-receive/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

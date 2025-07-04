@@ -296,7 +296,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/azure-functions-cosmosdb-trigger",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/azure-functions-cosmosdb-trigger",
                 "_blank",
               );
             }}
@@ -502,7 +502,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="HTTP trigger with queue"
-            href="/learn/by-example/azure-functions-http-trigger-with-queue"
+            href="/learn/by-example/azure-functions-http-trigger-with-queue/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -536,7 +536,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Get all" href="/learn/by-example/persist-get-all">
+          <Link title="Get all" href="/learn/by-example/persist-get-all/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

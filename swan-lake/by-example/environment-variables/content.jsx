@@ -59,7 +59,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/environment-variables",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function EnvironmentVariables({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Record to EDI conversion"
-            href="/learn/by-example/record-to-edi"
+            href="/learn/by-example/record-to-edi/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -237,7 +237,7 @@ export function EnvironmentVariables({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="File paths" href="/learn/by-example/filepaths">
+          <Link title="File paths" href="/learn/by-example/filepaths/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

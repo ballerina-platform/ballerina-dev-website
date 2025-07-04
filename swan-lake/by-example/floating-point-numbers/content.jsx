@@ -53,7 +53,7 @@ export function FloatingPointNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/floating-point-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/floating-point-numbers",
                 "_blank",
               );
             }}
@@ -190,7 +190,7 @@ export function FloatingPointNumbers({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Integers" href="/learn/by-example/integers">
+          <Link title="Integers" href="/learn/by-example/integers/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +223,7 @@ export function FloatingPointNumbers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Decimal type" href="/learn/by-example/decimal-type">
+          <Link title="Decimal type" href="/learn/by-example/decimal-type/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

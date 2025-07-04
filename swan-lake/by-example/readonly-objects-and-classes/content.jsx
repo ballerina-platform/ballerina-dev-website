@@ -73,7 +73,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/readonly-objects-and-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/readonly-objects-and-classes",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Readonly and isolated"
-            href="/learn/by-example/readonly-and-isolated"
+            href="/learn/by-example/readonly-and-isolated/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +248,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Combining isolated functions and lock"
-            href="/learn/by-example/combining-isolated-functions-and-lock"
+            href="/learn/by-example/combining-isolated-functions-and-lock/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

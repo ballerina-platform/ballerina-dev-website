@@ -100,7 +100,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-field-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-field-interceptors",
                 "_blank",
               );
             }}
@@ -253,7 +253,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-field-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-field-interceptors",
                 "_blank",
               );
             }}
@@ -430,7 +430,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Service interceptors"
-            href="/learn/by-example/graphql-service-interceptors"
+            href="/learn/by-example/graphql-service-interceptors/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -466,7 +466,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Interceptor configurations"
-            href="/learn/by-example/graphql-interceptor-configurations"
+            href="/learn/by-example/graphql-interceptor-configurations/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

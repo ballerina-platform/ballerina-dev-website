@@ -71,7 +71,7 @@ export function Panics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/panics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/panics",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function Panics({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error subtyping"
-            href="/learn/by-example/error-subtyping"
+            href="/learn/by-example/error-subtyping/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +248,7 @@ export function Panics({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Trap expression"
-            href="/learn/by-example/trap-expression"
+            href="/learn/by-example/trap-expression/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

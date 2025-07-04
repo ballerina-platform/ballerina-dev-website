@@ -53,7 +53,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/converting-from-table-and-xml-to-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/converting-from-table-and-xml-to-json",
                 "_blank",
               );
             }}
@@ -216,7 +216,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from user-defined type to JSON"
-            href="/learn/by-example/converting-from-user-defined-type-to-json"
+            href="/learn/by-example/converting-from-user-defined-type-to-json/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -252,7 +252,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from JSON to user-defined type"
-            href="/learn/by-example/convert-from-json-to-user-defined-type"
+            href="/learn/by-example/convert-from-json-to-user-defined-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

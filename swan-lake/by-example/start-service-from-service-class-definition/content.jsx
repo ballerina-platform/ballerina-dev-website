@@ -90,7 +90,7 @@ export function StartServiceFromServiceClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/start-service-from-service-class-definition",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/start-service-from-service-class-definition",
                 "_blank",
               );
             }}
@@ -327,7 +327,7 @@ export function StartServiceFromServiceClassDefinition({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client class" href="/learn/by-example/client-class">
+          <Link title="Client class" href="/learn/by-example/client-class/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -362,7 +362,7 @@ export function StartServiceFromServiceClassDefinition({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Binding patterns"
-            href="/learn/by-example/binding-patterns"
+            href="/learn/by-example/binding-patterns/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

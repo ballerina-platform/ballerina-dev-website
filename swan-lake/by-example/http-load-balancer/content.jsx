@@ -59,7 +59,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-load-balancer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-load-balancer",
                 "_blank",
               );
             }}
@@ -237,7 +237,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Circuit breaker"
-            href="/learn/by-example/http-circuit-breaker"
+            href="/learn/by-example/http-circuit-breaker/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -271,7 +271,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Failover" href="/learn/by-example/http-failover">
+          <Link title="Failover" href="/learn/by-example/http-failover/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

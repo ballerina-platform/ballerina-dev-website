@@ -64,7 +64,7 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/error-handling",
                 "_blank",
               );
             }}
@@ -202,7 +202,7 @@ export function ErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configure via CLI arguments"
-            href="/learn/by-example/configuring-via-cli"
+            href="/learn/by-example/configuring-via-cli/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -238,7 +238,7 @@ export function ErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Check expression"
-            href="/learn/by-example/check-expression"
+            href="/learn/by-example/check-expression/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -120,7 +120,7 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-call-stored-procedures",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/mysql-call-stored-procedures",
                 "_blank",
               );
             }}
@@ -376,7 +376,7 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Atomic transactions"
-            href="/learn/by-example/mysql-atomic-transaction"
+            href="/learn/by-example/mysql-atomic-transaction/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -411,8 +411,8 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Serialization/Deserialization"
-            href="/learn/by-example/avro-serdes"
+            title="Listen to database"
+            href="/learn/by-example/cdc-service/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -422,7 +422,7 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialization/Deserialization
+                  Listen to database
                 </span>
               </div>
               <svg

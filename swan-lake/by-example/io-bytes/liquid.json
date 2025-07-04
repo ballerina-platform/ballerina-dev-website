@@ -2,6 +2,6 @@
   "title": "Read/write bytes",
   "description": "BBE on how to read/write from/to a bytes file.",
   "keywords": ["ballerina", "ballerina by examples", "bbe", "bytes"],
-  "permalink": "/learn/by-example/io-bytes",
+  "permalink": "/learn/by-example/io-bytes/",
   "active": "io-bytes"
 }

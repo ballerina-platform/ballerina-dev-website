@@ -73,7 +73,7 @@ export function RabbitmqServiceConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rabbitmq-service-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/rabbitmq-service-constraint-validation",
                 "_blank",
               );
             }}
@@ -272,7 +272,7 @@ export function RabbitmqServiceConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transactional consumer"
-            href="/learn/by-example/rabbitmq-transaction-consumer"
+            href="/learn/by-example/rabbitmq-transaction-consumer/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -308,7 +308,7 @@ export function RabbitmqServiceConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Declare a queue"
-            href="/learn/by-example/rabbitmq-queue-declare"
+            href="/learn/by-example/rabbitmq-queue-declare/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -62,7 +62,7 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/access-optional-json-elements",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/access-optional-json-elements",
                 "_blank",
               );
             }}
@@ -230,7 +230,7 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Access JSON elements"
-            href="/learn/by-example/access-json-elements"
+            href="/learn/by-example/access-json-elements/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -266,7 +266,7 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Match statement with maps"
-            href="/learn/by-example/match-statement-with-maps"
+            href="/learn/by-example/match-statement-with-maps/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

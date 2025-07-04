@@ -61,7 +61,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/match-statement-with-maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/match-statement-with-maps",
                 "_blank",
               );
             }}
@@ -221,7 +221,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Access optional JSON elements"
-            href="/learn/by-example/access-optional-json-elements"
+            href="/learn/by-example/access-optional-json-elements/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -257,7 +257,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert from user-defined type to JSON"
-            href="/learn/by-example/converting-from-user-defined-type-to-json"
+            href="/learn/by-example/converting-from-user-defined-type-to-json/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -73,7 +73,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-basic-rest-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-basic-rest-service",
                 "_blank",
               );
             }}
@@ -376,7 +376,7 @@ export function HttpBasicRestService({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Object mocking"
-            href="/learn/by-example/testerina-mocking-objects"
+            href="/learn/by-example/testerina-mocking-objects/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -412,7 +412,7 @@ export function HttpBasicRestService({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Service and resource paths"
-            href="/learn/by-example/http-service-and-resource-paths"
+            href="/learn/by-example/http-service-and-resource-paths/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

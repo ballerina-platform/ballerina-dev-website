@@ -121,7 +121,7 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-atomic-transaction",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/mysql-atomic-transaction",
                 "_blank",
               );
             }}
@@ -352,7 +352,7 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-atomic-transaction",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/mysql-atomic-transaction",
                 "_blank",
               );
             }}
@@ -454,7 +454,7 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Batch execution"
-            href="/learn/by-example/mysql-batch-execute-operation"
+            href="/learn/by-example/mysql-batch-execute-operation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -490,7 +490,7 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Call stored procedures"
-            href="/learn/by-example/mysql-call-stored-procedures"
+            href="/learn/by-example/mysql-call-stored-procedures/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

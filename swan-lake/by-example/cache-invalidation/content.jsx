@@ -86,7 +86,7 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/cache-invalidation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/cache-invalidation",
                 "_blank",
               );
             }}
@@ -228,7 +228,7 @@ export function CacheInvalidation({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Cache basics" href="/learn/by-example/cache-basics">
+          <Link title="Cache basics" href="/learn/by-example/cache-basics/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +261,7 @@ export function CacheInvalidation({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Logging" href="/learn/by-example/logging">
+          <Link title="Logging" href="/learn/by-example/logging/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

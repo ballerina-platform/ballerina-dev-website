@@ -92,7 +92,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-service-oauth2",
                 "_blank",
               );
             }}
@@ -295,7 +295,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="JWT authentication"
-            href="/learn/by-example/graphql-service-jwt-auth"
+            href="/learn/by-example/graphql-service-jwt-auth/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -331,7 +331,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="SSL/TLS"
-            href="/learn/by-example/graphql-client-security-ssl-tls"
+            href="/learn/by-example/graphql-client-security-ssl-tls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

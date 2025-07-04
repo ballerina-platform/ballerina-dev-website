@@ -1904,6 +1904,14 @@ import {
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
 import {
+  CdcService,
+  codeSnippetData as CdcServiceCodeSnippetData,
+} from "./cdc-service/content.jsx";
+import {
+  CdcAdvancedService,
+  codeSnippetData as CdcAdvancedServiceCodeSnippetData,
+} from "./cdc-advanced-service/content.jsx";
+import {
   AvroSerdes,
   codeSnippetData as AvroSerdesCodeSnippetData,
 } from "./avro-serdes/content.jsx";
@@ -3135,6 +3143,10 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
+  CdcService,
+  CdcServiceCodeSnippetData,
+  CdcAdvancedService,
+  CdcAdvancedServiceCodeSnippetData,
   AvroSerdes,
   AvroSerdesCodeSnippetData,
   IoBytes,

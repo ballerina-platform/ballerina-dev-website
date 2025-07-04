@@ -70,7 +70,7 @@ export function StructuralTyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/structural-typing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/structural-typing",
                 "_blank",
               );
             }}
@@ -209,7 +209,7 @@ export function StructuralTyping({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Langlib functions"
-            href="/learn/by-example/langlib-functions"
+            href="/learn/by-example/langlib-functions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -243,7 +243,7 @@ export function StructuralTyping({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Unions" href="/learn/by-example/unions">
+          <Link title="Unions" href="/learn/by-example/unions/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

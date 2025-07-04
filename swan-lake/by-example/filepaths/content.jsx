@@ -79,7 +79,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/filepaths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/filepaths",
                 "_blank",
               );
             }}
@@ -240,7 +240,7 @@ export function Filepaths({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Environment variables"
-            href="/learn/by-example/environment-variables"
+            href="/learn/by-example/environment-variables/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function Filepaths({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Directories" href="/learn/by-example/directories">
+          <Link title="Directories" href="/learn/by-example/directories/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

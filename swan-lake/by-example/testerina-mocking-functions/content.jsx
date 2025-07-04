@@ -114,7 +114,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-mocking-functions",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-mocking-functions",
                 "_blank",
               );
             }}
@@ -354,7 +354,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Group tests"
-            href="/learn/by-example/testerina-group-tests"
+            href="/learn/by-example/testerina-group-tests/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -390,7 +390,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Object mocking"
-            href="/learn/by-example/testerina-mocking-objects"
+            href="/learn/by-example/testerina-mocking-objects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -65,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/querying-with-streams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/querying-with-streams",
                 "_blank",
               );
             }}
@@ -313,7 +313,7 @@ export function QueryingWithStreams({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Destructure records using a query"
-            href="/learn/by-example/destructure-records-using-query"
+            href="/learn/by-example/destructure-records-using-query/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -347,7 +347,7 @@ export function QueryingWithStreams({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Aggregation" href="/learn/by-example/aggregation">
+          <Link title="Aggregation" href="/learn/by-example/aggregation/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -83,7 +83,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-from-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/xml-from-record-conversion",
                 "_blank",
               );
             }}
@@ -225,7 +225,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XML to record conversion"
-            href="/learn/by-example/xml-to-record-conversion"
+            href="/learn/by-example/xml-to-record-conversion/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="YAML to anydata"
-            href="/learn/by-example/yaml-to-anydata"
+            href="/learn/by-example/yaml-to-anydata/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

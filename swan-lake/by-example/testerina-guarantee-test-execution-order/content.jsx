@@ -78,7 +78,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-guarantee-test-execution-order",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-guarantee-test-execution-order",
                 "_blank",
               );
             }}
@@ -236,7 +236,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Data-driven tests"
-            href="/learn/by-example/testerina-data-driven-tests"
+            href="/learn/by-example/testerina-data-driven-tests/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -272,7 +272,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Group tests"
-            href="/learn/by-example/testerina-group-tests"
+            href="/learn/by-example/testerina-group-tests/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

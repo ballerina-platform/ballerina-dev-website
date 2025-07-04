@@ -81,7 +81,7 @@ export function OuterJoinClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/outer-join-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/outer-join-clause",
                 "_blank",
               );
             }}
@@ -219,7 +219,7 @@ export function OuterJoinClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Join iterable objects"
-            href="/learn/by-example/joining-iterable-objects"
+            href="/learn/by-example/joining-iterable-objects/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,7 +253,7 @@ export function OuterJoinClause({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Query tables" href="/learn/by-example/querying-tables">
+          <Link title="Query tables" href="/learn/by-example/querying-tables/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

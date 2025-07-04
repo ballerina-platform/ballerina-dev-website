@@ -83,7 +83,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-client-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-client-error-handling",
                 "_blank",
               );
             }}
@@ -262,7 +262,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Handle partial response"
-            href="/learn/by-example/graphql-client-handle-partial-response"
+            href="/learn/by-example/graphql-client-handle-partial-response/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -298,7 +298,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="SSL/TLS"
-            href="/learn/by-example/graphql-service-ssl-tls"
+            href="/learn/by-example/graphql-service-ssl-tls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

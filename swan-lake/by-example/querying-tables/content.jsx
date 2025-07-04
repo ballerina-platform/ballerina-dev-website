@@ -70,7 +70,7 @@ export function QueryingTables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/querying-tables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/querying-tables",
                 "_blank",
               );
             }}
@@ -313,7 +313,7 @@ export function QueryingTables({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Outer Join clause"
-            href="/learn/by-example/outer-join-clause"
+            href="/learn/by-example/outer-join-clause/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -349,7 +349,7 @@ export function QueryingTables({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create tables with a query"
-            href="/learn/by-example/create-tables-with-query"
+            href="/learn/by-example/create-tables-with-query/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

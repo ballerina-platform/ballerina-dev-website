@@ -2,6 +2,6 @@
   "title": "Produce message",
   "description": "This example demonstrates sending messages to a Kafka topic using a kafka:Producer client.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "kafka", "producer"],
-  "permalink": "/learn/by-example/kafka-producer-produce-message",
+  "permalink": "/learn/by-example/kafka-producer-produce-message/",
   "active": "kafka-producer-produce-message"
 }

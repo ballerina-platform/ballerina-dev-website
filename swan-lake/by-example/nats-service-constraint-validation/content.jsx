@@ -73,7 +73,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-service-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/nats-service-constraint-validation",
                 "_blank",
               );
             }}
@@ -274,7 +274,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send reply to request message"
-            href="/learn/by-example/nats-basic-reply"
+            href="/learn/by-example/nats-basic-reply/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -310,7 +310,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume JetStream message"
-            href="/learn/by-example/nats-jetstream-sub"
+            href="/learn/by-example/nats-jetstream-sub/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

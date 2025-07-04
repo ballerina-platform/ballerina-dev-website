@@ -54,7 +54,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/ensureType-function",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/ensureType-function",
                 "_blank",
               );
             }}
@@ -193,7 +193,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Built-in string subtype"
-            href="/learn/by-example/built-in-string-subtype"
+            href="/learn/by-example/built-in-string-subtype/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -229,7 +229,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Dependent types"
-            href="/learn/by-example/dependent-types"
+            href="/learn/by-example/dependent-types/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

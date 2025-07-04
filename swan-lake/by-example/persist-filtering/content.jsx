@@ -199,7 +199,7 @@ export function PersistFiltering({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-filtering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/persist-filtering",
                 "_blank",
               );
             }}
@@ -370,7 +370,7 @@ export function PersistFiltering({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-filtering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/persist-filtering",
                 "_blank",
               );
             }}
@@ -527,7 +527,7 @@ export function PersistFiltering({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Select fields"
-            href="/learn/by-example/persist-select-fields"
+            href="/learn/by-example/persist-select-fields/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -563,7 +563,7 @@ export function PersistFiltering({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Relation queries"
-            href="/learn/by-example/persist-relation-queries"
+            href="/learn/by-example/persist-relation-queries/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

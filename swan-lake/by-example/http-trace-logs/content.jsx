@@ -65,7 +65,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-trace-logs",
                 "_blank",
               );
             }}
@@ -363,7 +363,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-trace-logs",
                 "_blank",
               );
             }}
@@ -463,7 +463,7 @@ export function HttpTraceLogs({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Compression" href="/learn/by-example/http-compression">
+          <Link title="Compression" href="/learn/by-example/http-compression/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -496,7 +496,7 @@ export function HttpTraceLogs({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Access logs" href="/learn/by-example/http-access-logs">
+          <Link title="Access logs" href="/learn/by-example/http-access-logs/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

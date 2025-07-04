@@ -117,7 +117,7 @@ export function TesterinaAssertions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-assertions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/testerina-assertions",
                 "_blank",
               );
             }}
@@ -276,7 +276,7 @@ export function TesterinaAssertions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Interface to external code"
-            href="/learn/by-example/interface-to-external-code"
+            href="/learn/by-example/interface-to-external-code/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,7 +312,7 @@ export function TesterinaAssertions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Before and after test"
-            href="/learn/by-example/testerina-before-and-after-test"
+            href="/learn/by-example/testerina-before-and-after-test/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

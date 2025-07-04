@@ -70,7 +70,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/synchronize-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/synchronize-message-passing",
                 "_blank",
               );
             }}
@@ -210,7 +210,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Named worker with on fail clause"
-            href="/learn/by-example/named-worker-with-on-fail-clause"
+            href="/learn/by-example/named-worker-with-on-fail-clause/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -246,7 +246,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Asynchronize message passing"
-            href="/learn/by-example/asynchronize-message-passing"
+            href="/learn/by-example/asynchronize-message-passing/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

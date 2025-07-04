@@ -60,7 +60,7 @@ export function ErrorDetail({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/error-detail",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/error-detail",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function ErrorDetail({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Type intersection for error types"
-            href="/learn/by-example/error-type-intersection"
+            href="/learn/by-example/error-type-intersection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -232,7 +232,7 @@ export function ErrorDetail({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Error cause" href="/learn/by-example/error-cause">
+          <Link title="Error cause" href="/learn/by-example/error-cause/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

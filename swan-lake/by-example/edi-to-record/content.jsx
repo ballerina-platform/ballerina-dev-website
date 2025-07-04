@@ -101,7 +101,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -189,7 +189,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -279,7 +279,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -579,7 +579,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -724,7 +724,7 @@ export function EdiToRecord({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configure logging"
-            href="/learn/by-example/logging-configuration"
+            href="/learn/by-example/logging-configuration/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -760,7 +760,7 @@ export function EdiToRecord({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Record to EDI conversion"
-            href="/learn/by-example/record-to-edi"
+            href="/learn/by-example/record-to-edi/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

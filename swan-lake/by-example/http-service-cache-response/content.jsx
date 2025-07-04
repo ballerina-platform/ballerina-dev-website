@@ -65,7 +65,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-service-cache-response",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-service-cache-response",
                 "_blank",
               );
             }}
@@ -238,7 +238,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error handling"
-            href="/learn/by-example/http-default-error-handling"
+            href="/learn/by-example/http-default-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send request/Receive response"
-            href="/learn/by-example/http-client-send-request-receive-response"
+            href="/learn/by-example/http-client-send-request-receive-response/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

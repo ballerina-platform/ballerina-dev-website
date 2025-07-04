@@ -52,7 +52,7 @@ export function ListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/list-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/list-binding-pattern",
                 "_blank",
               );
             }}
@@ -229,7 +229,7 @@ export function ListBindingPattern({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Wildcard binding pattern"
-            href="/learn/by-example/wildcard-binding-pattern"
+            href="/learn/by-example/wildcard-binding-pattern/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -265,7 +265,7 @@ export function ListBindingPattern({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest binding pattern in list binding pattern"
-            href="/learn/by-example/rest-binding-pattern-in-list-binding-pattern"
+            href="/learn/by-example/rest-binding-pattern-in-list-binding-pattern/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

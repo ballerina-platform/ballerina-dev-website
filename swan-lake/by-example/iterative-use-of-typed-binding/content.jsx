@@ -78,7 +78,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/iterative-use-of-typed-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/iterative-use-of-typed-binding",
                 "_blank",
               );
             }}
@@ -265,7 +265,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Single use of typed binding patterns with on fail clause"
-            href="/learn/by-example/single-use-with-on-fail-clause"
+            href="/learn/by-example/single-use-with-on-fail-clause/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -301,7 +301,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="List binding pattern in match statement"
-            href="/learn/by-example/list-binding-pattern-in-match-statement"
+            href="/learn/by-example/list-binding-pattern-in-match-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

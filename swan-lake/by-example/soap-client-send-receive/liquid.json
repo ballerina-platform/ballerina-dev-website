@@ -2,6 +2,6 @@
   "title": "Send/Receive",
   "description": "This example demonstrates connecting and interacting with a SOAP endpoint via a Ballerina SOAP client.",
   "keywords": ["ballerina", "ballerina by example", "soap", "client"],
-  "permalink": "/learn/by-example/soap-client-send-receive",
+  "permalink": "/learn/by-example/soap-client-send-receive/",
   "active": "soap-client-send-receive"
 }

@@ -37,9 +37,11 @@ specification is considered a bug.
 6. [Message consumer](#6-message-consumer)
    * 6.1. [Functions](#61-functions)
 7. [Message listener](#7-message-listener)
-   * 7.1. [Configuration](#71-configuration)
-   * 7.2. [Initialization](#72-initialization)
-   * 7.3. [Functions](#73-functions)
+   * 7.1. [Initialization](#71-initialization)
+   * 7.2. [Functions](#72-functions)
+   * 7.3. [Service](#73-service)
+     * 7.3.1. [Configuration](#731-configuration)
+     * 7.3.2. [Functions](#732-functions)
    * 7.4. [Caller](#74-caller)
      * 7.4.1. [Functions](#741-functions)
    * 7.5. [Usage](#75-usage)
@@ -481,52 +483,27 @@ isolated remote function close() returns jms:Error?;
 
 ## 7. Message listener
 
-A JMS message listener is a mechanism for asynchronously receiving messages using event-driven programming. Instead of 
-actively polling for messages, you can register a message listener. Upon the arrival of a message at the subscribed 
-destination of the message listener, the callback method of the registered listener is triggered.
+The JMS listener in Ballerina enables applications to receive messages **asynchronously** from a JMS provider.
 
-### 7.1. Configuration
+### 7.1. Initialization
 
-When initializing a `jms:Listener`, the following configurations can be provided.
+In Ballerina, a `jms:Listener` represents a JMS connection. To initialize a listener, the appropriate JMS connection configuration should be provided.
+
 ```ballerina
-# Message listener configurations.
-#
-# + connectionConfig - Configurations related to the broker connection  
-# + acknowledgementMode - Configuration indicating how messages received by the session will be acknowledged
-# + consumerOptions - Underlying JMS message consumer configurations
-public type MessageListenerConfigurations record {|
-    ConnectionConfiguration connectionConfig;
-    AcknowledgementMode acknowledgementMode = AUTO_ACKNOWLEDGE;
-    ConsumerOptions consumerOptions;
-|};
-```
-
-### 7.2. Initialization
-
-The `jms:Listener` can be initialized by providing the `jms:MessageListenerConfigurations`.
-```ballerina
-# Creates a new `jms:Listener`.
+# Initializes a new `jms:Listener`.
 # ```ballerina
 # listener jms:Listener messageListener = check new(
-#   connectionConfig = {
-#       initialContextFactory: "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
-#       providerUrl: "tcp://localhost:61616"
-#   },
-#   consumerOptions = {
-#       destination: {
-#           'type: jms:QUEUE,
-#           name: "test-queue"
-#       }
-#   }
+#   initialContextFactory = "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
+#   providerUrl = "tcp://localhost:61616"
 # );
 # ```
-# 
-# + consumerConfig - Underlying JMS consumer configurations
+#
+# + connectionConfig - The configurations to be used when initializing the JMS listener
 # + return - The relevant JMS consumer or a `jms:Error` if there is any error
-public isolated function init(*jms:MessageListenerConfigurations listenerConfig) returns jms:Error?;
+public isolated function init(*ConnectionConfiguration connectionConfig) returns Error?;
 ```
 
-### 7.3. Functions
+### 7.2. Functions
 
 To attach a service to the listener, `attach` function can be used.
 ```ballerina
@@ -586,9 +563,76 @@ To stop the listener immediately, `immediateStop` function can be used.
 public isolated function immediateStop() returns jms:Error?;
 ```
 
+### 7.3. Service
+
+A JMS service in Ballerina is used to receive messages from a JMS provider. It is attached to a `jms:Listener` and bound to a specific `jms:Destination`, which can be either a **queue** or a **topic**.
+
+#### 7.3.1. Configuration
+
+To subscribe a service to a JMS destination, the subscription configurations should be provided using the `jms:ServiceConfig` annotation.
+
+```ballerina
+# Represents configurations for a JMS queue subscription.
+#
+# + sessionAckMode - Configuration indicating how messages received by the session will be acknowledged
+# + queueName - The name of the queue to consume messages from
+# + messageSelector - Only messages with properties matching the message selector expression are delivered. 
+#                     If this value is not set that indicates that there is no message selector for the message consumer
+#                     For example, to only receive messages with a property `priority` set to `'high'`, use:
+#                     `"priority = 'high'"`. If this value is not set, all messages in the queue will be delivered.
+public type QueueConfig record {|
+  AcknowledgementMode sessionAckMode = AUTO_ACKNOWLEDGE;
+  string queueName;
+  string messageSelector?;
+|};
+
+
+# Represents configurations for JMS topic subscription.
+#
+# + sessionAckMode - Configuration indicating how messages received by the session will be acknowledged
+# + topicName - The name of the topic to subscribe to
+# + messageSelector - Only messages with properties matching the message selector expression are delivered. 
+#                     If this value is not set that indicates that there is no message selector for the message consumer
+#                     For example, to only receive messages with a property `priority` set to `'high'`, use:
+#                     `"priority = 'high'"`. If this value is not set, all messages in the queue will be delivered.
+# + noLocal - If true then any messages published to the topic using this session's connection, or any other connection 
+#             with the same client identifier, will not be added to the durable subscription.
+# + consumerType - The message consumer type
+# + subscriberName - the name used to identify the subscription
+public type TopicConfig record {|
+  AcknowledgementMode sessionAckMode = AUTO_ACKNOWLEDGE;
+  string topicName;
+  string messageSelector?;
+  boolean noLocal = false;
+  ConsumerType consumerType = DEFAULT;
+  string subscriberName?;
+|};
+
+# The service configuration type for the `jms:Service`.
+public type ServiceConfiguration QueueConfig|TopicConfig;
+
+# Annotation to configure the `jms:Service`.
+public annotation ServiceConfiguration ServiceConfig on service;
+```
+
+#### 7.3.2. Functions
+
+To receive messages from a `jms:Destination`, the `onMessage` function can be used.
+```ballerina
+# Invoked when a message is received at a subscribed JMS destination.
+#
+# + message - Received JMS message
+# + caller - Optional `jms:Caller` to control transactions and message acknowledgement
+# + return - A `error` if there is an error during message processing or else `()`
+remote function onMessage(jms:Message message, jms:Caller caller) returns error?;
+```
+
 ### 7.4. Caller
 
-A `jms:Caller` can be used to mark JMS message as received. The caller is used in association with the `jms:Listener`.
+The `jms:Caller` object is used in conjunction with a `jms:Listener` to manage message acknowledgments and transactions.
+
+* It allows explicitly acknowledging messages to mark them as received.
+* When using the `jms:SESSION_TRANSACTED` session mode, it also enables transaction control through `commit` and `rollback` operations.
 
 #### 7.4.1. Functions
 
@@ -604,10 +648,35 @@ To mark a JMS message as received, `acknowledge` function can be used.
 isolated remote function acknowledge(jms:Message message) returns jms:Error?;
 ```
 
+To commit all the messages received in this transaction and release any locks currently held, `'commit` function can be used.
+```ballerina
+# Commits all messages received in this transaction and releases any locks currently held.
+# ```
+# check caller->'commit();
+# ```
+# 
+# + return - A `jms:Error` if there is an error or else `()`
+isolated remote function 'commit() returns jms:Error?;
+```
+
+To rollback all the messages received in this transaction and release any locks currently held, `'rollback` function can be used.
+```ballerina
+# Rolls back any messages received in this transaction and releases any locks currently held.
+# ```
+# check caller->'rollback();
+# ```
+# 
+# + return - A `jms:Error` if there is an error or else `()`
+isolated remote function 'rollback() returns jms:Error?;
+```
+
 ### 7.5. Usage
 
 After initializing the `jms:Listener` a `jms:Service` must be attached to it.
 ```ballerina
+@jms:ServiceConfig {
+   queueName: "MyQueue"
+}
 service jms:Service "consumer-service" on messageListener {
     remote function onMessage(jms:Caller caller, jms:Message message) returns error? {
         // process results

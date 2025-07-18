@@ -1,8 +1,20 @@
 {
     "events": [
         {
-            "date": "Jul 21, 2025",
-            "expire": "2025-07-21T04:30:00+00:00",
+            "date": "July 21, 2025",
+            "expire": "2025-09-28T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Data Handling with Ballerina",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "Jul 20, 2025",
+            "expire": "2025-07-21T15:30:00+00:00",
             "type": "Workshop",
             "university": "The Open University of Sri Lanka",
             "faculty": "",
@@ -24,7 +36,7 @@
         },
         {
             "date": "May 19 - Sep 27, 2025",
-            "expire": "2025-09-28T04:30:00+00:00",
+            "expire": "2025-09-29T04:30:00+00:00",
             "type": "Ballerina Hackathon",
             "university": "Innovate with Ballerina",
             "faculty": "",

@@ -101,12 +101,33 @@ service on new http:Listener(8080) {
 }
 ```
 
-### Introduce the natural expression to call the LLM and bind the response
+### Introduce a model provider corresponding to the LLM
 
-Within the resource, introduce a natural expression with the requirement specified in natural language. Use interpolations to refer to in-scope variables/parameters; at runtime, these get replaced with the values passed to the parameters.
+Introduce an `ai:ModelProvider` value corresponding to the LLM you want to use. You can get started with the default model (without having to specify your own LLM keys) by calling the `ai:getDefaultModelProvider()` function.
 
 ```ballerina
-Attraction[]|error attractions = natural {
+import ballerina/ai;
+
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
+```
+
+Alternatively you can use a model provider from the relevant `ballerinax/ai.<provider>` package (e.g., `ballerinax/ai.openai`, `ballerinax/ai.azure`, etc.) with your own keys.
+
+```ballerina
+import ballerina/ai;
+import ballerinax/ai.openai;
+
+configurable string apiKey = ?;
+
+final ai:ModelProvider openAiModel = check new openai:ModelProvider(apiKey, openai:GPT_4O);
+```
+
+### Introduce the natural expression to call the LLM and bind the response
+
+Within the resource, introduce a natural expression with the requirement specified in natural language. Specify the model provider value to set the LLM to use. Use interpolations to refer to in-scope variables/parameters; at runtime, these get replaced with the values passed to the parameters.
+
+```ballerina
+Attraction[]|error attractions = natural (model) {
     Tell me the top ${count} places to visit in ${country} which are 
     good for a tourist who has an interest in ${interest} to visit.  
     Include a highlight one-liner about that place.
@@ -120,7 +141,7 @@ service on new http:Listener(8080) {
     resource function get attractions(string country, string interest, int count = 5) 
             returns Attraction[]|http:InternalServerError {
 
-        Attraction[]|error attractions = natural {
+        Attraction[]|error attractions = natural (model) {
             Tell me the top ${count} places to visit in ${country} which are 
             good for a tourist who has an interest in ${interest} to visit.  
             Include a highlight one-liner about that place.
@@ -139,7 +160,10 @@ service on new http:Listener(8080) {
 The complete code in the `service.bal` will be as follows.
 
 ```ballerina
+import ballerina/ai;
 import ballerina/http;
+
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 # Represents a tourist attraction.
 type Attraction record {|
@@ -154,7 +178,7 @@ type Attraction record {|
 service on new http:Listener(8080) {
     resource function get attractions(string country, string interest, int count = 5) 
             returns Attraction[]|http:InternalServerError {
-        Attraction[]|error attractions = natural {
+        Attraction[]|error attractions = natural (model) {
             Tell me the top ${count} places to visit in ${country} which are 
             good for a tourist who has an interest in ${interest} to visit.  
             Include a highlight one-liner about that place.
@@ -168,93 +192,11 @@ service on new http:Listener(8080) {
 }
 ```
 
-## Configure the LLM
+## Configure the default model
 
-### Configure the default LLM
-
-Provide configuration for the LLM via configurable variables. This configuration will be used in an LLM client across all natural expressions, unless a model is explicitly specified in the natural expression.
-
-You can use your keys and configuration for OpenAI or Azure OpenAI by configuring the `defaultModelConfig` variable in the `ballerina/np` module.
-
-E.g., add the following for Azure OpenAI in the Config.toml file
-
-```toml
-[ballerina.np.defaultModelConfig]
-serviceUrl = "<SERVICE_URL>"
-deploymentId = "<DEPLOYMENT_ID>"
-apiVersion = "<API_VERSION>"
-connectionConfig.auth.apiKey = "<YOUR_API_KEY>"
-```
-
-Alternatively, you can use the default model made available via WSO2 Copilot. Log in to WSO2 Copilot, open up the VS Code command palette (`Ctrl + Shift + P` or `command + shift + P`), and run `Configure Default Model for Natural Functions`. This will add configuration for the default model into the Config.toml file. Please note that this will require VS Code being open in the relevant directory.
+If you are using the default model made available via WSO2 Copilot (i.e., using the `ai:getDefaultModelProvider()` function), log in to WSO2 Copilot, open up the VS Code command palette (`Ctrl + Shift + P` or `command + shift + P`), and run `Configure Default Model`. This will add configuration for the default model into the Config.toml file. Please note that this will require VS Code being open in the relevant directory.
 
 ![Configure the default model](/learn/images/ai_natural_expr_configure_default_model.png)
-
-### Configure the LLM in the natural expression
-
-Alternatively, for finer control over the model used with each natural expression, the model can also be explicitly specified in the code. 
-
-Natural expressions expect an argument of type `np:ModelProvider` to use as the model. The `ballerinax/np` package provides implementations of `np:ModelProvider` for commonly-used providers.
-
-```ballerina
-import ballerinax/np.openai;
-
-configurable string model = ?;
-configurable string token = ?;
-
-final openai:ModelProvider openAI = check new (
-    {connectionConfig: {auth: {token}}},
-    model
-);
-
-// Specify the model after the `natural` keyword.
-Attraction[]|error attractions = natural (openAI) {
-    Tell me the top ${count} places to visit in ${country} which are 
-    good for a tourist who has an interest in ${interest} to visit.  
-    Include a highlight one-liner about that place.
-};
-```
-
-The updated source code is as follows.
-
-```ballerina
-import ballerina/http;
-import ballerinax/np.openai;
-
-# Represents a tourist attraction.
-type Attraction record {|
-    # The name of the attraction
-    string name;
-    # The city where the attraction is located
-    string city;
-    # A notable feature or highlight of the attraction
-    string highlight;
-|};
-
-configurable string model = ?;
-configurable string token = ?;
-
-final openai:ModelProvider openAI = check new (
-    {connectionConfig: {auth: {token}}},
-    model
-);
-
-service on new http:Listener(8080) {
-    resource function get attractions(string country, string interest, int count = 5) 
-            returns Attraction[]|http:InternalServerError {
-        Attraction[]|error attractions = natural (openAI) {
-            Tell me the top ${count} places to visit in ${country} which are 
-            good for a tourist who has an interest in ${interest} to visit.  
-            Include a highlight one-liner about that place.
-        };
-
-        if attractions is Attraction[] {
-            return attractions;
-        }
-        return {body: "Failed to fetch attractions: " + attractions.message()};
-    }    
-}
-```
 
 ## Run the service 
 

@@ -456,7 +456,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
    
    - `config/fluent-bit/parsers.conf`
 
-   ```conf  
+   ```conf
    [PARSER]
    Name        bal_logfmt_parser
    Format      logfmt

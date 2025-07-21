@@ -717,6 +717,14 @@
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
                                     "id": "elastic-stack"
+                                },
+                                {
+                                    "dirName": "OpenSearch",
+                                    "level": 4,
+                                    "position": 7,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/opensearch",
+                                    "id": "opensearch"
                                 }
                             ]
                         }

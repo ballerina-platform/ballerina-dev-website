@@ -68,7 +68,7 @@ Follow the steps given below to view Ballerina metrics, tracing and logs in Open
     logFilePath = "/var/log/ballerina/ballerina-app/app.log"
     ```
     
-   This configuration enables metrics logs and tracing in the Ballerina application and configures the Jaeger exporter.
+    This configuration enables metrics logs and tracing in the Ballerina application and configures the Jaeger exporter.
 
 6. Build the Ballerina application as a Docker image using the command below.
 

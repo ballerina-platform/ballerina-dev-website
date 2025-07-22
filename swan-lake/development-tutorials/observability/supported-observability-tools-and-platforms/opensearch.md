@@ -15,7 +15,7 @@ Follow the steps given below to view Ballerina metrics, tracing and logs in Open
 
 1. Create a new Ballerina project using the command below.
 
-   ```bash
+   ```
    $ bal new ballerina-app
    ``` 
    
@@ -38,7 +38,7 @@ Follow the steps given below to view Ballerina metrics, tracing and logs in Open
 
     ```toml
     [container.image]
-    repository="wso2inc" # Docker hub name
+    repository="wso2inc" # Docker repository name
     name="ballerina-app" # container name
     tag="v0.1.0"
 
@@ -72,7 +72,7 @@ Follow the steps given below to view Ballerina metrics, tracing and logs in Open
 
 6. Build the Ballerina application as a Docker image using the command below.
 
-   ```bash
+   ```
    $ bal build -c --dockerfile ballerina-app/Dockerfile ballerina-app
    ```
 
@@ -333,7 +333,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
    - `config/fluent-bit/fluent-bit.conf`
 
-   ```conf
+   ```apache
    [SERVICE]
    Flush         1
    Log_Level     info
@@ -456,7 +456,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
    
    - `config/fluent-bit/parsers.conf`
 
-   ```conf
+   ```apache
    [PARSER]
    Name        bal_logfmt_parser
    Format      logfmt
@@ -585,7 +585,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
    - `setup/opensearch-integration-artifacts.ndjson`
    
-   ```ndjson
+   ```json
    {"attributes":{"fields":"[{\"count\":0,\"name\":\"@timestamp\",\"type\":\"date\",\"esTypes\":[\"date\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"count\":0,\"name\":\"_id\",\"type\":\"string\",\"esTypes\":[\"_id\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"count\":0,\"name\":\"_index\",\"type\":\"string\",\"esTypes\":[\"_index\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"count\":0,\"name\":\"_score\",\"type\":\"number\",\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"_source\",\"type\":\"_source\",\"esTypes\":[\"_source\"],\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"_type\",\"type\":\"string\",\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"app\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"app.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"app\"}}},{\"count\":0,\"name\":\"component\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"component.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"component\"}}},{\"count\":0,\"name\":\"host\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"host.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"host\"}}},{\"count\":0,\"name\":\"integration\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"integration.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"integration\"}}},{\"count\":0,\"name\":\"level\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"level.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"level\"}}},{\"count\":0,\"name\":\"log\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"log.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"log\"}}},{\"count\":0,\"name\":\"message\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"message.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"message\"}}},{\"count\":0,\"name\":\"module\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"module.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"module\"}}},{\"count\":0,\"name\":\"product\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"product.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"product\"}}},{\"count\":0,\"name\":\"protocol\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"protocol.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"protocol\"}}},{\"count\":0,\"name\":\"response_time\",\"type\":\"number\",\"esTypes\":[\"long\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"count\":0,\"name\":\"status\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"status.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"status\"}}},{\"count\":0,\"name\":\"sublevel\",\"type\":\"string\",\"esTypes\":[\"text\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"count\":0,\"name\":\"sublevel.keyword\",\"type\":\"string\",\"esTypes\":[\"keyword\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true,\"subType\":{\"multi\":{\"parent\":\"sublevel\"}}},{\"count\":0,\"name\":\"time\",\"type\":\"date\",\"esTypes\":[\"date\"],\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true}]","timeFieldName":"time","title":"ballerina-metrics-logs-*"},"id":"b4440b60-88ae-11ef-b202-c55dd46cb2a8","migrationVersion":{"index-pattern":"7.6.0"},"references":[],"type":"index-pattern","updated_at":"2025-02-19T05:59:32.264Z","version":"WzAsMV0="}
    {"attributes":{"description":"","kibanaSavedObjectMeta":{"searchSourceJSON":"{\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}"},"title":"Integration - Metrics control","uiStateJSON":"{}","version":1,"visState":"{\"title\":\"Integration - Metrics control\",\"type\":\"input_control_vis\",\"aggs\":[],\"params\":{\"controls\":[{\"fieldName\":\"app.keyword\",\"id\":\"1729066473443\",\"label\":\"Deployment\",\"options\":{\"dynamicOptions\":true,\"multiselect\":true,\"order\":\"desc\",\"size\":5,\"type\":\"terms\"},\"parent\":\"\",\"type\":\"list\",\"indexPatternRefName\":\"control_0_index_pattern\"},{\"id\":\"1732018993376\",\"fieldName\":\"protocol.keyword\",\"parent\":\"\",\"label\":\"Protocol\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_1_index_pattern\"},{\"id\":\"1732019076548\",\"fieldName\":\"integration.keyword\",\"parent\":\"\",\"label\":\"Integration \",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"},\"indexPatternRefName\":\"control_2_index_pattern\"}],\"pinFilters\":false,\"updateFiltersOnChange\":true,\"useTimeFilter\":false}}"},"id":"04bec0a0-8b96-11ef-8aa3-7f37389b131d","migrationVersion":{"visualization":"7.10.0"},"references":[{"id":"b4440b60-88ae-11ef-b202-c55dd46cb2a8","name":"control_0_index_pattern","type":"index-pattern"},{"id":"b4440b60-88ae-11ef-b202-c55dd46cb2a8","name":"control_1_index_pattern","type":"index-pattern"},{"id":"b4440b60-88ae-11ef-b202-c55dd46cb2a8","name":"control_2_index_pattern","type":"index-pattern"}],"type":"visualization","updated_at":"2025-02-19T05:59:32.264Z","version":"WzEsMV0="}
    {"attributes":{"description":"","kibanaSavedObjectMeta":{"searchSourceJSON":"{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"},"title":"Total deployments","uiStateJSON":"{}","version":1,"visState":"{\"title\":\"Total deployments\",\"type\":\"metric\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"params\":{\"field\":\"app.keyword\",\"customLabel\":\"Deployments\"},\"schema\":\"metric\"}],\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":28}}}}"},"id":"f8c1ead0-a674-11ef-8062-134cf166371a","migrationVersion":{"visualization":"7.10.0"},"references":[{"id":"b4440b60-88ae-11ef-b202-c55dd46cb2a8","name":"kibanaSavedObjectMeta.searchSourceJSON.index","type":"index-pattern"}],"type":"visualization","updated_at":"2025-02-19T05:59:32.264Z","version":"WzIsMV0="}
@@ -676,7 +676,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
 4. Run docker compose to start the OpenSearch server along with Ballerina service.
 
-   ```bash
+   ```
    docker compose -f docker-compose.yml up -d
    ```
 

@@ -9,6 +9,12 @@
             "title": "Data Handling with Ballerina",
             "isVirtual": true,
             "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Gayal Dassanayake",
+                    "twitter": "https://www.linkedin.com/in/gayaldassanayake/"
+                }
+            ],
             "url": "Handling-Data-with-Ballerina.pdf",
             "buttonText": "View details"
         },

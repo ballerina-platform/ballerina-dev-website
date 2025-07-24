@@ -13,33 +13,25 @@ Follow the steps given below to view Ballerina metrics, traces and logs in OpenS
 
 ## Step 1 - Set up Ballerina application for observability
 
-1. Create a new Ballerina package using the command below.
-
-   ```
-   $ bal new ballerina-app
-   ``` 
-   
-   Copy the sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) into the `main.bal` file in the `ballerina-app` package.
-   
-2. Open the `main.bal` file in the `ballerina-app` package and add the following imports.
+1. Open the `main.bal` file in the Ballerina package and add the following imports.
 
    ```ballerina
    import ballerinax/metrics.logs as _;
    import ballerinax/jaeger as _;
    ```
    
-3. Add `cloud = "docker"` under the `[build-options]` table into the `Ballerina.toml` file in the package.
+2. Add `cloud = "docker"` under the `[build-options]` table into the `Ballerina.toml` file in the package.
 
     ```toml
     [build-options]
     cloud = "docker"
     ```
-4. Create a file named `Cloud.toml` in the package directory and add the content below.
+3. Create a file named `Cloud.toml` in the package directory and add the content below.
 
     ```toml
     [container.image]
     repository="wso2inc" # Docker repository name
-    name="ballerina-app" # container name
+    name="sample-service" # container name
     tag="v0.1.0"
 
     [settings]
@@ -48,7 +40,7 @@ Follow the steps given below to view Ballerina metrics, traces and logs in OpenS
     
     This file is used to build the Docker image for the Ballerina application.
 
-5. Create the `Config.toml` file in the package directory or anywhere else and paste the following content.
+4. Create the `Config.toml` file in the package directory or anywhere else and paste the following content.
 
     ```toml
     [ballerina.observe]
@@ -65,18 +57,18 @@ Follow the steps given below to view Ballerina metrics, traces and logs in OpenS
     reporterBufferSize = 1000
     
     [ballerinax.metrics.logs]
-    logFilePath = "/var/log/ballerina/ballerina-app/app.log"
+    logFilePath = "/var/log/ballerina/sample-service/app.log"
     ```
     
     This configuration enables metrics logs and tracing in the Ballerina application and configures the Jaeger exporter.
 
-6. Build the Ballerina application as a Docker image using the command below.
+5. Build the Ballerina application as a Docker image using the command below.
 
    ```
    $ bal build
    ```
 
-   This will create a Docker image named `wso2inc/ballerina-app:v0.1.0`.
+   This will create a Docker image named `wso2inc/sample-service:v0.1.0`.
 
 ## Step 2 - Set up OpenSearch
 
@@ -221,14 +213,14 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
             echo 'Setup completed successfully!'
           "
 
-      ballerina-app:
-        image: wso2inc/ballerina-app:v0.1.0
-        container_name: ballerina-app
+      sample-service:
+        image: wso2inc/sample-service:v0.1.0
+        container_name: sample-service
         ports:
           - "8090:8090"
         volumes:
           - ./config/ballerina/Config.toml:/home/ballerina/Config.toml
-          - ./logs/ballerina/ballerina-app/app.log:/var/log/ballerina/ballerina-app/app.log
+          - ./logs/ballerina/sample-service:/var/log/ballerina/sample-service
         environment:
           - BAL_CONFIG_FILES=/home/ballerina/Config.toml
         depends_on:
@@ -251,7 +243,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
         Use the same content as in the previous step, which enables metrics logs and tracing in the Ballerina application and configures the Jaeger exporter.
    
-    - `config/dashboards/pipelines.yaml`
+    - `config/dashboards/opensearch_dashboards.yml`
     
        ```yaml
        # Server configuration
@@ -335,153 +327,153 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
        ```apache
        [SERVICE]
-       Flush         1
-       Log_Level     info
-       Daemon        off
-       Parsers_File  parsers.conf
-       HTTP_Server   On
-       HTTP_Listen   0.0.0.0
-       HTTP_Port     2020
+          Flush         1
+          Log_Level     info
+          Daemon        off
+          Parsers_File  parsers.conf
+          HTTP_Server   On
+          HTTP_Listen   0.0.0.0
+          HTTP_Port     2020
 
        # Input from Ballerina log files
        [INPUT]
-       Name              tail
-       Path              /var/log/ballerina/*/app.log
-       Parser            bal_logfmt_parser
-       Tag               ballerina.*
-       Refresh_Interval  5
-       Mem_Buf_Limit     256MB
-       Skip_Long_Lines   On
-       Read_from_Head    On
-       Path_Key          log_file_path
+          Name              tail
+          Path              /var/log/ballerina/*/app.log
+          Parser            bal_logfmt_parser
+          Tag               ballerina.*
+          Refresh_Interval  5
+          Mem_Buf_Limit     256MB
+          Skip_Long_Lines   On
+          Read_from_Head    On
+          Path_Key          log_file_path
 
        # Add application name from file path
        [FILTER]
-       Name    lua
-       Match   *
-       Script  /fluent-bit/scripts/scripts.lua
-       Call    extract_app_from_path
+          Name    lua
+          Match   *
+          Script  /fluent-bit/scripts/scripts.lua
+          Call    extract_app_from_path
 
        # ========== BALLERINA LOG PROCESSING ==========
 
        # Enrich all Ballerina logs with common fields
        [FILTER]
-       Name    lua
-       Match   ballerina.*
-       Script  /fluent-bit/scripts/scripts.lua
-       Call    enrich_bal_logs
+          Name    lua
+          Match   ballerina.*
+          Script  /fluent-bit/scripts/scripts.lua
+          Call    enrich_bal_logs
 
        # Construct Ballerina app names
        [FILTER]
-       Name    lua
-       Match   ballerina.*
-       Script  /fluent-bit/scripts/scripts.lua
-       Call    construct_bal_app_name
+          Name    lua
+          Match   ballerina.*
+          Script  /fluent-bit/scripts/scripts.lua
+          Call    construct_bal_app_name
 
        # First: Separate Ballerina metrics logs (those with logger="metrics")
        [FILTER]
-       Name rewrite_tag
-       Match ballerina.*
-       Rule $logger ^metrics$ ballerina_metrics false
-       Emitter_Name re_emitted_bal_metrics
+          Name rewrite_tag
+          Match ballerina.*
+          Rule $logger ^metrics$ ballerina_metrics false
+          Emitter_Name re_emitted_bal_metrics
 
        # Second: Route remaining ballerina logs to application logs
        # This catches all ballerina.* logs that weren't retagged as metrics
        [FILTER]
-       Name rewrite_tag
-       Match ballerina.*
-       Rule $module .* ballerina_app_logs false
-       Emitter_Name re_emitted_bal_app_logs
+          Name rewrite_tag
+          Match ballerina.*
+          Rule $module .* ballerina_app_logs false
+          Emitter_Name re_emitted_bal_app_logs
 
        # Process Ballerina metrics
        [FILTER]
-       Name    lua
-       Match   ballerina_metrics
-       Script  /fluent-bit/scripts/scripts.lua
-       Call    extract_bal_metrics_data
+          Name    lua
+          Match   ballerina_metrics
+          Script  /fluent-bit/scripts/scripts.lua
+          Call    extract_bal_metrics_data
 
        # ========== OUTPUT CONFIGURATIONS ==========
 
        # Ballerina Application Logs
        [OUTPUT]
-       Name opensearch
-       Host opensearch
-       HTTP_User admin
-       HTTP_Passwd Ballerina@123
-       Logstash_Format On
-       Logstash_DateFormat %Y-%m-%d
-       Logstash_Prefix ballerina-application-logs
-       Match ballerina_app_logs
-       Port 9200
-       Replace_Dots On
-       Suppress_Type_Name On
-       tls On
-       tls.verify Off
-       Trace_Error On
+          Name opensearch
+          Host opensearch
+          HTTP_User admin
+          HTTP_Passwd Ballerina@123
+          Logstash_Format On
+          Logstash_DateFormat %Y-%m-%d
+          Logstash_Prefix ballerina-application-logs
+          Match ballerina_app_logs
+          Port 9200
+          Replace_Dots On
+          Suppress_Type_Name On
+          tls On
+          tls.verify Off
+          Trace_Error On
 
        # Ballerina Metrics Logs
        [OUTPUT]
-       Name opensearch
-       Host opensearch
-       HTTP_User admin
-       HTTP_Passwd Ballerina@123
-       Logstash_Format On
-       Logstash_DateFormat %Y-%m-%d
-       Logstash_Prefix ballerina-metrics-logs
-       Match ballerina_metrics
-       Port 9200
-       Replace_Dots On
-       Suppress_Type_Name On
-       tls On
-       tls.verify Off
-       Trace_Error On
+          Name opensearch
+          Host opensearch
+          HTTP_User admin
+          HTTP_Passwd Ballerina@123
+          Logstash_Format On
+          Logstash_DateFormat %Y-%m-%d
+          Logstash_Prefix ballerina-metrics-logs
+          Match ballerina_metrics
+          Port 9200
+          Replace_Dots On
+          Suppress_Type_Name On
+          tls On
+          tls.verify Off
+          Trace_Error On
 
        # Fallback for any unmatched logs
        [OUTPUT]
-       Name opensearch
-       Host opensearch
-       HTTP_User admin
-       HTTP_Passwd Ballerina@123
-       Logstash_Format On
-       Logstash_DateFormat %Y-%m-%d
-       Logstash_Prefix general-logs
-       Match_regex ^(wso2mi|wso2apim).*
-       Port 9200
-       Replace_Dots On
-       Suppress_Type_Name On
-       tls On
-       tls.verify Off
-       Trace_Error On
+          Name opensearch
+          Host opensearch
+          HTTP_User admin
+          HTTP_Passwd Ballerina@123
+          Logstash_Format On
+          Logstash_DateFormat %Y-%m-%d
+          Logstash_Prefix general-logs
+          Match_regex ^(wso2mi|wso2apim).*
+          Port 9200
+          Replace_Dots On
+          Suppress_Type_Name On
+          tls On
+          tls.verify Off
+          Trace_Error On
        ```
    
     - `config/fluent-bit/parsers.conf`
 
        ```apache
        [PARSER]
-       Name        bal_logfmt_parser
-       Format      logfmt
-       Types       response_time_seconds:float
-       Time_Key    time
-       Time_Format %Y-%m-%dT%H:%M:%S.%L%z
-       Time_Keep   On
+          Name        bal_logfmt_parser
+          Format      logfmt
+          Types       response_time_seconds:float
+          Time_Key    time
+          Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+          Time_Keep   On
    
        [PARSER]
-       Name        bal_parser
-       Format      logfmt
-       Types       response_time_seconds:float
+          Name        bal_parser
+          Format      logfmt
+          Types       response_time_seconds:float
    
        [PARSER]
-       Name        jsonparser
-       Format      json
-       Time_Key    time
-       Time_Keep   On
+          Name        jsonparser
+          Format      json
+          Time_Key    time
+          Time_Keep   On
    
        [PARSER]
-       Name        docker
-       Format      json
-       Time_Key    time
-       Time_Format %Y-%m-%dT%H:%M:%S.%L
-       Time_Keep   On
+          Name        docker
+          Format      json
+          Time_Key    time
+          Time_Format %Y-%m-%dT%H:%M:%S.%L
+          Time_Keep   On
        ```
 
     - `config/fluent-bit/scripts/scripts.lua`
@@ -490,7 +482,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
       function extract_app_from_path(tag, timestamp, record)
          if record["log_file_path"] then
             local path = record["log_file_path"]
-            -- Extract application name from path like /var/log/ballerina/ballerina-app/app.log
+            -- Extract application name from path like /var/log/ballerina/*/app.log
             local app_name = string.match(path, "/var/log/[^/]+/([^/]+)/")
             if app_name then
                record["app_name"] = app_name

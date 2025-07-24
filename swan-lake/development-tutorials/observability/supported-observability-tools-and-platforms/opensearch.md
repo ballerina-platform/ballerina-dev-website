@@ -723,9 +723,9 @@ Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and nav
 
 Then click on the "Integration metrics dashboard" to view the metrics.
 
-![OpenSearch metrics dashboard](/learn/images/opensearch-metrics-dashboard-1.png "OpenSearch metrics dashboard")
+![OpenSearch metrics dashboard](/learn/images/opensearch-metrics-dashboard-overall.png "OpenSearch metrics dashboard")
 
-![OpenSearch metrics dashboard](/learn/images/opensearch-metrics-dashboard-2.png "OpenSearch metrics dashboard")
+![OpenSearch metrics summary](/learn/images/opensearch-metrics-dashboard-summary.png "OpenSearch metrics summary")
 
 ## Step 6 - View logs on OpenSearch Dashboard
 
@@ -733,7 +733,7 @@ Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and nav
 
 Then click on the "Integration logs dashboard" to view the integration logs.
 
-![OpenSearch logs dashboard](/learn/images/opensearch-logs-dashboard-1.png "OpenSearch logs dashboard")
+![OpenSearch logs dashboard](/learn/images/opensearch-logs-dashboard-overall.png "OpenSearch logs dashboard")
 
-![OpenSearch logs dashboard](/learn/images/opensearch-logs-dashboard-2.png "OpenSearch logs dashboard")
+![OpenSearch logs view](/learn/images/opensearch-logs-dashboard-logs-view.png "OpenSearch logs view")
 

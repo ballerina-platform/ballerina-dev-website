@@ -9,7 +9,7 @@ intro: Users can observe Ballerina programs with [OpenSearch](https://opensearch
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide.
 
-Follow the steps given below to view Ballerina metrics, tracing and logs in OpenSearch.
+Follow the steps given below to view Ballerina metrics, traces and logs in OpenSearch.
 
 ## Step 1 - Set up Ballerina application for observability
 

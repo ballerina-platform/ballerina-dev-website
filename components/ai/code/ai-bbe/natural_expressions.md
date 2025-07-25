@@ -1,4 +1,5 @@
 ```
+import ballerina/ai;
 import ballerina/http;
 
 final readonly & string[] categories = ["Gardening", "Sports", "Health", "Technology", "Travel"];
@@ -13,7 +14,7 @@ type Review record {|
     int rating;
 |};
 
-public isolated function reviewBlog(Blog blog) returns Review|error => natural {
+public isolated function reviewBlog(Blog blog) returns Review|error => natural (check ai:getDefaultModelProvider()) {
     You are an expert content reviewer for a blog site that 
     categorizes posts under the following categories: ${categories}
 

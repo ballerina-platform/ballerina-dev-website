@@ -12,10 +12,10 @@ intro: This guide helps you understand the basics of using natural expressions i
 
 To complete this tutorial, you need:
 
-1. Ballerina 2201.13.0-m1 (Swan Lake) or greater. Install [Ballerina](/downloads/) and use the `bal dist pull` command to pull the milestone version.
+1. Ballerina 2201.13.0-m3 (Swan Lake) or greater. Install [Ballerina](/downloads/) and use the `bal dist pull` command to pull the milestone version.
 
     ```
-    $ bal dist pull 2201.13.0-m1
+    $ bal dist pull 2201.13.0-m3
     ```
 
 2. A text editor
@@ -103,7 +103,11 @@ service on new http:Listener(8080) {
 
 ### Introduce a model provider corresponding to the LLM
 
-Introduce an `ai:ModelProvider` value corresponding to the LLM you want to use. You can get started with the default model (without having to specify your own LLM keys) by calling the `ai:getDefaultModelProvider()` function.
+Introduce an `ai:ModelProvider` value corresponding to the LLM you want to use. 
+
+You can get started with the default model (without having to specify your own LLM keys) by calling the `ai:getDefaultModelProvider()` function.
+
+> Note that the default model provider is subject to rate limits and other usage constraints.
 
 ```ballerina
 import ballerina/ai;
@@ -194,7 +198,7 @@ service on new http:Listener(8080) {
 
 ## Configure the default model
 
-If you are using the default model made available via WSO2 Copilot (i.e., using the `ai:getDefaultModelProvider()` function), log in to WSO2 Copilot, open up the VS Code command palette (`Ctrl + Shift + P` or `command + shift + P`), and run `Configure Default Model`. This will add configuration for the default model into the Config.toml file. Please note that this will require VS Code being open in the relevant directory.
+If you are using the default model made available via WSO2 Copilot (i.e., using the `ai:getDefaultModelProvider()` function), log in to WSO2 Copilot, open up the VS Code command palette (`Ctrl + Shift + P` or `command + shift + P`), and run `Configure default WSO2 Model Provider`. This will add configuration for the default model into the `Config.toml` file. Please note that this will require VS Code being open in the relevant project.
 
 ![Configure the default model](/learn/images/ai_natural_expr_configure_default_model.png)
 

@@ -1,10 +1,10 @@
 ---
-title: Observe metrics, tracing and logs using OpenSearch
-description: See how Ballerina supports observability by exposing itself via metrics, tracing and logs to OpenSearch.
-keywords: ballerina, observability, metrics, tracing, logs, opensearch
+title: Observe metrics, traces and logs using OpenSearch
+description: See how Ballerina supports observability by exposing itself via metrics, traces and logs to OpenSearch.
+keywords: ballerina, observability, metrics, traces, logs, opensearch
 permalink: /learn/supported-observability-tools-and-platforms/opensearch/
 active: opensearch
-intro: Users can observe Ballerina programs with [OpenSearch](https://opensearch.org/), which is a community-driven, Apache 2.0-licensed open source search and analytics suite that makes it easy to ingest, search, visualize, and analyze data. It provides a highly scalable system for providing fast access and response to large volumes of data with an integrated visualization tool, OpenSearch Dashboards, that makes it easy for users to explore their data.
+intro: Users can observe Ballerina programs with [OpenSearch](htftps://opensearch.org/), which is a community-driven, Apache 2.0-licensed open source search and analytics suite that makes it easy to ingest, search, visualize, and analyze data. It provides a highly scalable system for providing fast access and response to large volumes of data with an integrated visualization tool, OpenSearch Dashboards, that makes it easy for users to explore their data.
 ---
 
 The sample [shop service](/learn/overview-of-ballerina-observability/#example-observe-a-ballerina-service) will be used in this guide.
@@ -147,7 +147,7 @@ Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and nav
 
 The image below is the sample tracing information you can see in Opensearch.
 
-![OpenSearch tracing Dashboard](/learn/images/opensearch-tracing-dashboard.png "OpenSearch tracing Dashboard")
+![OpenSearch traces Dashboard](/learn/images/opensearch-traces-dashboard.png "OpenSearch traces Dashboard")
 
 ![Span details in OpenSearch](/learn/images/span-details-opensearch.png "Span details in OpenSearch") 
 

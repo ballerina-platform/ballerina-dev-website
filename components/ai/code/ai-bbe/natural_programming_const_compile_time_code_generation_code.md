@@ -1,18 +1,21 @@
 ```
-final http:Client shopClient = check new ("http://localhost:8080/shop");
-final OrderRequest[] testOrderRequests = getTestOrderRequests();
+import ballerina/http;
+import ballerina/test;
 
-function getTestOrderRequests() returns OrderRequest[] =>
+final http:Client shopClient = check new ("http://localhost:8080/shop");
+
+function getTestProducts() returns Product[] =>
     const natural {
-        Generate list of order requests with:
-        - productId: Random id starts with PROD and INVALID, example: PROD001, PROD002, INVALID001
-        - quantity: Random integer between 0 and 10
+        Generate list of products with:
+        - id: random id starts with "PROD", example:-  "PROD001"
+        - price: random decimal between 10.0 and 1000.0
     };
 
 @test:Config
-function testProcessOrderRequests() returns error? {
-    foreach OrderRequest request in testOrderRequests {
-        check testProcessOrderFlow(request);
-    }
+function testFilterProducts() returns error? {
+    Product[] filteredProducts = filterProductsAbovePrice(getTestProducts(), 100);
+    filteredProducts.forEach(function(Product product) {
+        test:assertTrue(product.price > 100d);
+    });
 }
 ```

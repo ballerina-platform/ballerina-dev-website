@@ -357,7 +357,7 @@ export default function UseCases(props) {
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: npCompileTimeCodegenerationCode.code }} />
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="constCompileCodeGeneration" title="Constant natural expressions">
+                                        <Tab eventKey="constCompileCodeGeneration" title="Compile-time data generation">
                                             <div className={styles.codeSnippet}>
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: npConstCompileTimeCodegenerationCode.code }} />
                                             </div>

@@ -2,8 +2,6 @@
 import ballerina/http;
 import ballerina/test;
 
-final http:Client shopClient = check new ("http://localhost:8080/shop");
-
 function getTestProducts() returns Product[] =>
     const natural {
         Generate list of products with:

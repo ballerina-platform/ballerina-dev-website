@@ -14,8 +14,8 @@ function getTestProducts() returns Product[] =>
 @test:Config
 function testFilterProducts() returns error? {
     Product[] filteredProducts = filterProductsAbovePrice(getTestProducts(), 100);
-    filteredProducts.forEach(function(Product product) {
+    foreach Product product in filteredProducts {
         test:assertTrue(product.price > 100d);
-    });
+    }
 }
 ```

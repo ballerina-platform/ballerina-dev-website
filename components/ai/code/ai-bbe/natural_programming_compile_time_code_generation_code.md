@@ -15,7 +15,7 @@ final Product[] productCatalog = [
 ];
 
 function filterProductsAbovePrice(Product[] products, decimal priceThreshold) returns Product[] = @natural:code {
-    prompt: string `Filter products that have a price greater than the given price threshold.`
+    prompt: "Filter products that have a price greater than the given price threshold."
 } external;
 
 service /shop on new http:Listener(8080) {

@@ -343,7 +343,7 @@ export default function UseCases(props) {
                                 </div>
                                 <div className={styles.dVersion}>
                                     <span>Sample: Building e-commerce order filtering platform with Compile-Time Code Generation</span>
-                                    <a href='https://github.com/ballerina-guides/ai-samples/tree/main/compile-time-code-generation-with-order-system' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <a href='https://github.com/ballerina-guides/ai-samples/tree/main/filter-products-using-compile-time-code-generation' className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                         View code on GitHub
                                     </a>

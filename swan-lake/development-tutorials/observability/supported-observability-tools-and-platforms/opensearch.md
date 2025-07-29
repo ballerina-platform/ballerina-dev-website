@@ -81,7 +81,10 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
    [ballerinax.metrics.logs]
    logFilePath = "<PATH>/<TO>/opensearch-observability-dashboard/logs/ballerina/<NAME_FOR_SERVICE>/app.log"
    ```
-    
+       
+   Update the `logFilePath` with the path to openSearch observability dashboard logs directory, 
+   which is `path/to/opensearch-observability-dashboard/logs/ballerina/<NAME_FOR_SERVICE>/app.log`.
+
    These configurations enable metrics logs and traces in the Ballerina application and configures the Jaeger exporter.
 
    The table below provides the descriptions of each configuration option and possible values that can be assigned.
@@ -143,7 +146,10 @@ $ curl -X GET http://localhost:8090/shop/order/0
 
 ## Step 5 - View distributed tracing on OpenSearch Dashboard
 
-Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and navigate to the "Traces" tab under "Observability" section.
+Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and login using the admin credentials you set up in the `.env` file.
+Use the username `admin` and the password you set for `OPENSEARCH_INITIAL_ADMIN_PASSWORD`.
+
+Navigate to the "Traces" tab under "Observability" section.
 
 The image below is the sample tracing information you can see in Opensearch.
 

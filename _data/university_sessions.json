@@ -1,6 +1,24 @@
 {
     "events": [
         {
+            "date": "July 28, 2025",
+            "expire": "2025-07-28T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "University of Colombo School of Computing (UCSC)",
+            "faculty": "",
+            "title": "The Open Source Way – Contributing, Collaborating, and Building Together",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Thisaru Guruge",
+                    "twitter": "https://www.linkedin.com/in/thisaruguruge/"
+                }
+            ],
+            "url": "The-Open-Source-Way–Contributing-Collaborating-and-Building-Together.pdf",
+            "buttonText": "View details"
+        },
+        {
             "date": "July 21, 2025",
             "expire": "2025-07-21T21:30:00+00:00",
             "type": "Workshop",

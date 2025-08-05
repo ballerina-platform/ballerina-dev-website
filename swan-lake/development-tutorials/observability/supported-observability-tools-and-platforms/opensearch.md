@@ -85,7 +85,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
    Update the `logFilePath` with the path to openSearch observability dashboard logs directory, 
    which is `path/to/opensearch-observability-dashboard/logs/ballerina/<NAME_FOR_SERVICE>/app.log`.
 
-   These configurations enable metrics logs and traces in the Ballerina application and configures the Jaeger exporter.
+   These configurations enable metrics, logs, and traces in the Ballerina application and configure the Jaeger exporter.
 
    The table below provides the descriptions of each configuration option and possible values that can be assigned.
 

@@ -173,7 +173,7 @@ Then click on the "Integration metrics dashboard" to view the metrics.
 
 ![OpenSearch metrics summary](/learn/images/opensearch-metrics-dashboard-summary.png "OpenSearch metrics summary")
 
-## Step 7 - View logs on OpenSearch Dashboard
+## Step 7 - View logs on OpenSearch dashboard
 
 Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and navigate to the "Dashboards" tab under "OpenSearch Dashboards" section.
 

@@ -151,7 +151,7 @@ Use the username `admin` and the password you set for `OPENSEARCH_INITIAL_ADMIN_
 
 Navigate to the **Traces** tab under **Observability** section.
 
-The image below is the sample tracing information you can see in Opensearch.
+The image below is a sample tracing information you can see in Opensearch.
 
 ![OpenSearch traces Dashboard](/learn/images/opensearch-traces-dashboard.png "OpenSearch traces Dashboard")
 

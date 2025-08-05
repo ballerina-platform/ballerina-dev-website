@@ -144,7 +144,7 @@ $ curl -X POST http://localhost:8090/shop/order \
 $ curl -X GET http://localhost:8090/shop/order/0
 ```
 
-## Step 5 - View distributed tracing on OpenSearch Dashboard
+## Step 5 - View distributed tracing on OpenSearch dashboard
 
 Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and login using the admin credentials you set up in the `.env` file.
 Use the username `admin` and the password you set for `OPENSEARCH_INITIAL_ADMIN_PASSWORD`.

@@ -627,6 +627,15 @@ To receive messages from a `jms:Destination`, the `onMessage` function can be us
 remote function onMessage(jms:Message message, jms:Caller caller) returns error?;
 ```
 
+To handle runtime errors that occur during message reception or while dispatching a message to the `onMessage` function, the `onError` function can be used.
+```ballerina
+# Invoked when a runtime error occurs during message reception or while dispatching a message to the `onMessage` method.
+#
+# + err - The `jms:Error` containing details of the error encountered
+# + return - A `error` if an error occurs while handling the error, or else `()`
+remote function onError(jms:Error err) returns error?;
+```
+
 ### 7.4. Caller
 
 The `jms:Caller` object is used in conjunction with a `jms:Listener` to manage message acknowledgments and transactions.

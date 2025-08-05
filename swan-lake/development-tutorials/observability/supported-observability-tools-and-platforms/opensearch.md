@@ -163,7 +163,7 @@ Service map shows the relationship between different services in the system.
 
 ![Service details in OpenSearch](/learn/images/service-details-opensearch.png "Service details in OpenSearch")
 
-## Step 6 - View metrics on OpenSearch Dashboard
+## Step 6 - View metrics on OpenSearch dashboard
 
 Open the OpenSearch Dashboard in your browser at <http://localhost:5601> and navigate to the "Dashboards" tab under "OpenSearch Dashboards" section.
 

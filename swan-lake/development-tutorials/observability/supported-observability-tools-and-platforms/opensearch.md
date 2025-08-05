@@ -157,7 +157,7 @@ The image below is a sample tracing information you can see in Opensearch.
 
 ![Span details in OpenSearch](/learn/images/span-details-opensearch.png "Span details in OpenSearch") 
 
-Service map shows the relationship between different services in the system.
+The service map shows the relationship between different services in the system.
 
 ![Service map in OpenSearch](/learn/images/service-map-opensearch.png "Service map in OpenSearch")
 

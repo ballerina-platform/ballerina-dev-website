@@ -101,7 +101,7 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
 ## Step 3 - Run the Ballerina service
 
-When Ballerina observability is enabled, the Ballerina runtime collects metrics logs and traces.
+When Ballerina observability is enabled, the Ballerina runtime collects metrics, logs, and traces.
 
 Run the following command to start the Ballerina service.
 

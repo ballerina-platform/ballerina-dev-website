@@ -12,7 +12,8 @@ const supportedLangs = [
     "java",
     "xml",
     "cmd",
-    "nginx"
+    "nginx",
+    "properties"
 ];
 
 String.prototype.hashCode = function () {

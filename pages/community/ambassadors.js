@@ -50,14 +50,14 @@ export default function Ambassadors() {
   return (
     <>
       <Head>
-        <title>Ballerina Ambassador program - The Ballerina programming language</title>
-        <meta name="description" content="Join the Ballerina Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <title>Ballerina Student Ambassador program - The Ballerina programming language</title>
+        <meta name="description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language, student engagement program, ambassadors" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina Ambassador program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="og:title" content="Ballerina Student Ambassador program - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
           itemProp="image"
@@ -65,17 +65,17 @@ export default function Ambassadors() {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina Ambassador program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="og:title" content="Ballerina Student Ambassador program - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ambassadors/ballerina-ambassador-program-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content="Ballerina Ambassador program - The Ballerina programming language" />
-        <meta property="twitter:description" content="Join the Ballerina Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
-        <meta property="twitter:text:description" content="Join the Ballerina Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta name="twitter:title" content="Ballerina Student Ambassador program - The Ballerina programming language" />
+        <meta property="twitter:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
+        <meta property="twitter:text:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           name="twitter:image"
           content="https://ballerina.io/images/ambassadors/ballerina-ambassador-program-sm-banner.png"
@@ -89,7 +89,7 @@ export default function Ambassadors() {
                 <Row>
                   <img src="/images/mesh-1-row-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
-                    <h1>Ballerina Ambassador program</h1>
+                    <h1>Ballerina Student Ambassador program</h1>
                     <p style={{ fontSize: "22px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>
                       Empower the developer community or represent Ballerina in your university to solve real-world integration challenges, and unlock unique opportunities to showcase your skills while building a vibrant developer network.
                     </p>

@@ -261,6 +261,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/elastic-stack`,
       },
       {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/opensearch`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opensearch`,
+      },
+      {
         source: `/${redirectBase}learn/organize-ballerina-code`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/organize-ballerina-code`,
       },

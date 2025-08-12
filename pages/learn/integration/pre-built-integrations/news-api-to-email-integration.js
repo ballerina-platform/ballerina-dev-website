@@ -70,7 +70,7 @@ public function main() returns error? {
     }
     email:Message message = {
         to: emailAddress,
-        'from: fromAddress,
+        "from": fromAddress,
         subject: "BBC Headlines",
         body: mailBody
     };

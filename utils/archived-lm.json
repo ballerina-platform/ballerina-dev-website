@@ -783,6 +783,13 @@
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
                 },{
+                    "dirName": "1.2.60",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.60",
+                    "id": "1.2.60v"
+                },{
                     "dirName": "1.2.59",
                     "level": 2,
                     "position": 1,

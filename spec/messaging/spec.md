@@ -86,12 +86,13 @@ type StoreListenerConfiguration record {|
     decimal pollingInterval = 1;
     int maxRetries = 3;
     decimal retryInterval = 1;
-    boolean ackWithFailureAfterMaxRetries = false;
+    boolean ackWithFailureAfterMaxRetries = true;
     Store deadLetterStore?;
 |};
 ```
 
 **Key Features:**
+
 - Configurable polling, retry, and DLQ behavior
 - Attachable service for message processing
 - Graceful and immediate stop operations

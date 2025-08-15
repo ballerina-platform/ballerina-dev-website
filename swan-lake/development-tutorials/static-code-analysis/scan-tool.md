@@ -47,14 +47,15 @@ $ bal scan [OPTIONS] [<package>|<source-file>]
 
 ### Available options
 
-| Option                         | Description                                         |
-|--------------------------------|-----------------------------------------------------|
-| `--target-dir=<path>`          | Specify target directory for analysis reports       |
-| `--scan-report`                | Generate HTML report with detailed analysis results |
-| `--list-rules`                 | Display all available analysis rules                |
-| `--include-rules=<rule1, ...>` | Run analysis for specific rules only                |
-| `--exclude-rules=<rule1, ...>` | Exclude specific rules from analysis                |
-| `--platforms=<platform1, ...>` | Define platforms for result reporting               |
+| Option                         | Description                                            |
+|--------------------------------|--------------------------------------------------------|
+| `--target-dir=<path>`          | Specify target directory for analysis reports          |
+| `--scan-report`                | Generate HTML report with detailed analysis results    |
+| `--format=<ballerina\|sarif>`  | Specify the format of the report. Default is ballerina |
+| `--list-rules`                 | Display all available analysis rules                   |
+| `--include-rules=<rule1, ...>` | Run analysis for specific rules only                   |
+| `--exclude-rules=<rule1, ...>` | Exclude specific rules from analysis                   |
+| `--platforms=<platform1, ...>` | Define platforms for result reporting                  |
 
 ## Running analysis
 
@@ -109,6 +110,20 @@ This is useful if you want to store the results in a specific location or if you
 
 ```
 $ bal scan --target-dir="path/to/your/target/directory"
+```
+
+## Report formats
+
+By default, the scan tool generates reports in `JSON` format.
+However, you can specify the report format using the `--format` option.
+
+The available formats are `ballerina` and `sarif`. The `ballerina` format is the default, while `sarif` is a
+standardized format for static analysis results.
+
+To generate a report in the `sarif` format, use the following command:
+
+```
+$ bal scan --format=sarif
 ```
 
 ## List available rules

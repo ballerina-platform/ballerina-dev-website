@@ -851,7 +851,7 @@
                     ]
                 },
                 {
-                    "dirName": "Static Code Analysis",
+                    "dirName": "Static code analysis",
                     "level": 2,
                     "position": 12,
                     "isDir": true,

@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @dilanSachi @Bhashinee    
 _Reviewers_: @shafreenAnfar @Bhashinee  
 _Created_: 2020/10/28   
-_Updated_: 2022/12/08  
+_Updated_: 2025/08/13  
 _Edition_: Swan Lake    
 
 ## Introduction
@@ -144,6 +144,11 @@ public type ClientConfiguration record {|
     int port = 21;
     # Authentication options
     AuthConfiguration auth?;
+    # If set to `true`, treats the login home directory as the root (`/`) and 
+    # prevents the underlying VFS from attempting to change to the actual server root. 
+    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command 
+    # that can fail on servers restricting root access (e.g., chrooted environments).
+    boolean userDirIsRoot = false;
 |};
 ```
 * InputContent record represents the configurations for the input given for `put` and `append` operations.
@@ -194,7 +199,8 @@ ftp:ClientConfiguration ftpConfig = {
             username: "<The FTP username>",
             password: "<The FTP passowrd>"
         }
-    }
+    },
+    userDirIsRoot: true
 };
 ```
 ### 3.3. Functions
@@ -345,6 +351,11 @@ public type ListenerConfiguration record {|
     string fileNamePattern?;
     # Periodic time interval to check new update
     decimal pollingInterval = 60;
+    # If set to `true`, treats the login home directory as the root (`/`) and 
+    # prevents the underlying VFS from attempting to change to the actual server root. 
+    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command 
+    # that can fail on servers restricting root access (e.g., chrooted environments).
+    boolean userDirIsRoot = false;
 |};
 ```
 * `WatchEvent` record represents the latest status change of the server from the last status change.
@@ -384,7 +395,8 @@ ftp:ListenerConfiguration ftpConfig = {
             path: "<The private key file path>",
             password: "<The private key file password>"
         }
-    }
+    },
+    userDirIsRoot: true
 };
 ```
 #### 4.3. Usage
@@ -646,7 +658,8 @@ ftp:ClientConfiguration sftpClientConfig = {
     protocol: ftp:SFTP,
     host: "ftp.example.com",
     port: 21,
-    auth: authConfig
+    auth: authConfig,
+    userDirIsRoot: true
 };
 
 public function main() returns error? {
@@ -681,7 +694,8 @@ listener ftp:Listener remoteServer = check new({
     port: 21,
     path: "/home/in",
     pollingInterval: 2,
-    fileNamePattern: "(.*).txt"
+    fileNamePattern: "(.*).txt",
+    userDirIsRoot: true
 });
 
 service on remoteServer {

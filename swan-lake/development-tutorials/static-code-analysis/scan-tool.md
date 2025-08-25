@@ -13,8 +13,7 @@ potential code smells, bugs, and vulnerabilities without executing them.
 
 ## Install the tool
 
-Execute the command below to pull the scan tool
-from [Ballerina Central](https://central.ballerina.io/ballerina/scan/latest).
+Execute the command below to pull the scan tool from [Ballerina Central](https://central.ballerina.io/ballerina/scan/latest).
 
 ```
 $ bal tool pull scan
@@ -26,8 +25,7 @@ To verify the installation and check the version:
 $ bal tool list
 ```
 
-For more information about managing Ballerina tools, refer to
-the [Ballerina CLI tool command documentation](https://ballerina.io/learn/cli-commands/#tool-commands).
+For more information about managing Ballerina tools, refer to the [Ballerina CLI tool command documentation](https://ballerina.io/learn/cli-commands/#tool-commands).
 
 ## Command syntax
 
@@ -92,7 +90,7 @@ To generate a detailed HTML report of the analysis results, use the `--scan-repo
 $ bal scan --scan-report
 ```
 
-This will produce a HTML report and scan results in JSON format inside the `target/report` directory.
+This will produce an HTML report and scan results in JSON format inside the `target/report` directory.
 
 The HTML report includes a summary of the number of code smells, bugs, and vulnerabilities found in each file.
 

@@ -264,8 +264,8 @@ readability and potentially hide logical errors.
 
 ```java
 public function main() {
-   int a = 1
-   boolean b = a <= int:MAX_VALUE
+   int a = 1;
+   boolean b = a <= int:MAX_VALUE;
 }
 ```
 
@@ -283,7 +283,7 @@ codebase, make it harder to understand, and potentially hide bugs or unintention
 
 ```java
 public function main() {
-   int a = 1
+   int a = 1;
    boolean b = a <= int:MIN_VALUE;
 }
 ```
@@ -302,7 +302,8 @@ reduce the code readability, and potentially hide logical errors.
 
 ```java
 public function main() {
-   int a = x % 1; // always evaluates to zero
+    int x = 5;
+    int _ = x % 1; // always evaluates to zero
 }
 ```
 

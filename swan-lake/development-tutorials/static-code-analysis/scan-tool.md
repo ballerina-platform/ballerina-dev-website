@@ -186,7 +186,102 @@ To specify more than one platform, separate them with commas:
 $ bal scan --platforms="sonarqube, semgrep, codeql"
 ```
 
-### Publishing static code analysis reports to SonarQube
+## Publish static code analysis reports to SonarQube
 
-To learn how to publish reports to SonarQube, refer
-to [Configuration for Platform Plugins](https://github.com/ballerina-platform/static-code-analysis-tool/blob/main/docs/static-code-analysis-tool/ScanFileConfigurations.md#configuration-for-platform-plugins).
+SonarQube is a popular open-source platform for continuous inspection of code quality.
+It provides static code analysis, code coverage,
+and other features to help developers maintain clean, maintainable codebases.
+The Ballerina scan tool can be integrated with SonarQube to publish static code analysis reports,
+enabling seamless integration into your CI/CD pipelines.
+
+This guide walks you through the process of configuring SonarQube and publishing Ballerina static code analysis reports.
+
+### Prerequisites
+- SonarQube 9.9 LTA Community Edition installed.
+- SonarScanner CLI 4.8.0 or later installed, and added to your system `PATH`.
+- [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146), and [SonarQube platform plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580149) downloaded.
+
+### Configure the SonarQube server
+
+1. Install [Java 17](https://adoptium.net/en-gb/temurin/releases/?version=17) in your machine.
+    - If Java 17 is not the default Java installation, override it.
+
+      **For Unix/macOS:**
+       ```
+       export SONAR_JAVA_PATH="path/to/java17_home/bin/java"
+       ```
+
+      **For Windows:**
+       ```
+       setx SONAR_JAVA_PATH="path\to\java17_home\bin\java"
+       ```
+
+2. Setup SonarQube 9.9 LTA
+    - Download SonarQube 9.9 LTA from [here](https://www.sonarsource.com/products/sonarqube/downloads/historical-downloads/).
+    - Extract the downloaded zip file.
+
+3. Add the [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146).
+    - Download the latest Ballerina SonarQube plugin JAR.
+    - Place the JAR file into the `extensions/plugins/` directory of your SonarQube installation.
+
+4. Navigate to the appropriate `bin/<OS>/` directory and run the SonarQube server.
+   ```
+   $ ./sonar.sh start
+   ```
+
+   You can access the SonarQube dashboard at http://localhost:9000 once the server is up.
+
+5. Create a new project in SonarQube.
+    - Log in to the SonarQube dashboard.
+    - Click on `Create Project`.
+    - Follow the prompts to set up your project.
+
+6. Install and configure SonarScanner CLI.
+    - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-server/9.9/analyzing-source-code/scanners/sonarscanner/).
+    - Add it to your system `PATH`.
+    - Ensure `sonar.host.url` is set correctly (either via a properties file or CLI parameter).
+
+### Configure the Ballerina project
+
+1. Download the [SonarQube platform plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580149).
+
+2. Create a `sonar-project.properties` file at the root of your Ballerina project with the following content.
+   ```properties
+   sonar.projectKey=<your-project-key>
+   sonar.projectName=<your-project-name>
+   ```
+
+3. Create a Scan.toml at the root of your Ballerina project. Add additional SonarQube configurations by referencing the `sonar-project.properties` file.
+   ```toml
+   [[platform]]
+   name = "sonarqube"
+   path = "<path-to-sonar-platform-plugin>"
+   sonarProjectPropertiesPath = "<path-to-sonar-project.properties>"
+   ```
+
+### Publish reports to SonarQube
+
+1. Link a ballerina source repo to the SonarQube server from a DevOps platform or manually.
+
+2. Authenticate using a token.
+    - Generate a token from the `My Account`->`Security` section in the SonarQube UI.
+    - Set the token as an environment variable.
+
+      **For Unix/macOS:**
+       ```
+       $ export SONAR_TOKEN=<your-token>
+       ```
+
+      **For Windows:**
+       ```
+       $ set SONAR_TOKEN=<your-token>
+       ```
+
+3. Run the scan tool to publish the reports to SonarQube.
+   ```
+   $ bal scan
+   ```
+
+### After the scan
+- Once the scan completes, navigate to your project in the SonarQube dashboard.
+- View issues, vulnerabilities, code smells, and other static analysis results directly from the SonarQube UI.

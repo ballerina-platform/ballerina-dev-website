@@ -7,7 +7,7 @@ active: 2201.12.8
 
 ## Overview of Ballerina Swan Lake Update 12 (2201.12.8)
 
-<em>Swan Lake Update 12 (2201.12.8) is the seventh patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of bug fixes to the compiler and runtime.</em>
+<em>Swan Lake Update 12 (2201.12.8) is the eighth patch release of Ballerina 2201.12.0 (Swan Lake Update 12) and it includes a new set of bug fixes to the compiler and runtime.</em>
 
 ## Update Ballerina
 

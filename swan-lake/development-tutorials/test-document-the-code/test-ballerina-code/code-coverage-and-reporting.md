@@ -60,7 +60,7 @@ You can enforce minimum code coverage requirements for your tests by using the `
 $ bal test --code-coverage --min-coverage=80
 ```
 
-This command will fail if the code coverage is below 80%.
+The test run will fail if the code coverage is below 80%.
 
 ## Generate a JaCoCo XML report
 

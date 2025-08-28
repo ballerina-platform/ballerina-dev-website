@@ -1,5 +1,37 @@
 {
     "events": [
+            {
+            "date": "October 12-14, 2025",
+            "day": "Sun-Tue",
+            "time": "",
+            "expire": "2025-10-12T04:30:00+00:000",
+            "location": "Raleigh, North Carolina",
+            "url": "https://2025.allthingsopen.org/sessions/2-for-1-ai-powered-integration-the-future-of-natural-programming-and-intelligent-connectivity-actionable-llm-agent-observability-with-langfuse/",
+            "eventType": "All Things Open Conference",
+            "eventName": "AI-Powered Integration: The Future of Natural Programming and Intelligent Connectivity ",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 19 - Sep 27, 2025",
+            "day": "",
+            "time": "",
+            "expire": "2025-09-29T04:30:00+00:000",
+            "location": "Sri Lanka",
+            "url": "https://innovatewithballerina.com/",
+            "eventType": "Innovate with Ballerina Hackathon",
+            "eventName": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
+            "presenterTwitter": "",
+            "presenter": "",
+            "presenterDesignation": "",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
         {
             "date": "May 21, 2025",
             "day": "Wednesday",

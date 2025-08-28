@@ -49,6 +49,8 @@ metricReporterFlushInterval=15000
 metricReporterClientTimeout=10000
 ```
 
+>**Tip:** User can configure the environment variable `BALLERINA_NEW_RELIC_API_KEY` instead of apiKey in `Config.toml`. If both are configured, apiKey in `Config.toml` will be overwritten by the environment variable value.
+
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
 Configuration key | Description                                                                                   | Default value | Possible values 
@@ -60,6 +62,7 @@ ballerinax.newrelic. tracingReporterFlushInterval | The New Relic tracing client
 ballerinax.newrelic. tracingReporterBufferSize | Queue size of the New Relic tracing client.                                                   | 10000 | Any positive integer value.
 ballerinax.newrelic. metricReporterFlushInterval | The New Relic client will be sending the metrics to the agent at this interval.               | 15000 | Any positive integer value.
 ballerinax.newrelic. metricReporterClientTimeout | Queue size of the New Relic metric client.                                                    | 10000 | Any positive integer value.
+
 
 ## Step 4 - Run the Ballerina service
 

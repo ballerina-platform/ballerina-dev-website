@@ -76,18 +76,7 @@
             "url": "Cloud-Native-Application-Development-OUSL.pdf",
             "buttonText": "View details"
         },
-        {
-            "date": "May 19 - Sep 27, 2025",
-            "expire": "2025-09-29T04:30:00+00:00",
-            "type": "Ballerina Hackathon",
-            "university": "Innovate with Ballerina",
-            "faculty": "",
-            "title": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
-            "isVirtual": false,
-            "location": "Sri Lanka",
-            "url": "https://innovatewithballerina.com/",
-            "buttonText": "View details"
-        },
+        
         {
             "date": "May 08, 2025",
             "expire": "2025-05-08T04:30:00+00:00",

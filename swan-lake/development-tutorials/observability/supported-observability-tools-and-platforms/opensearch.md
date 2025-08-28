@@ -21,8 +21,6 @@ This section focuses on configuring OpenSearch with Docker as a quick installati
 
    ```
    ├── config
-   │   ├── ballerina
-   │   │   └── Config.toml
    │   ├── dashboards
    │   │   └── opensearch_dashboards.yml
    │   ├── data-prepper

@@ -1,0 +1,76 @@
+.introBottomRow ul {
+    padding: 0;
+    margin: 10px 0;
+    display: inline-block;
+    float: right;
+}
+
+.introBottomRow ul li {
+    list-style: none;
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+}
+
+.introLinks {
+    color: #20b6b0;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.introLinks:hover {
+    color: #20b6b0;
+    text-decoration: underline;
+}
+
+.description {
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.description h1 {
+    /* color: #000000; */
+    font-size: 3.45rem;
+    margin: 0 0 30px 0; 
+    /* background-color: #eff0f1;  */
+    width: fit-content;
+    color: #ffffff;
+}
+
+.description p {
+    line-height: 1.3rem;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.desItem {
+    display: flex;
+    flex-direction: row;
+}
+
+.iconBlock {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.introText {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 360px) {
+    .balLogo {
+        margin-top: 30px;
+    }
+    
+    .divider {
+        display: none;
+    }
+}

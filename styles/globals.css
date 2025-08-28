@@ -1806,3 +1806,19 @@ a.join:hover {
       width: 50%;
   }
 }
+
+.hack2025 {
+  background:
+  radial-gradient(87% 900px at 90% 5%, #333264 -20%, transparent 60%),
+  radial-gradient(80% 900px at 1% 15%, #333264 -55%, transparent 54%),
+  /* radial-gradient(80% 900px at 1% 35%, #20B6B0 -55%, transparent 54%), */
+  radial-gradient(90% 1500px at 90% 50%, #333264 -10%, transparent 50%),
+  /* radial-gradient(40% 900px at 0% 40%, #20B6B0 -10%, transparent 80%), */
+  radial-gradient(90% 1500px at 0% 50%, #333264 -10%, transparent 50%),
+  radial-gradient(90% 1500px at 50% 75%, #20B6B0 -10%, transparent 50%),
+  radial-gradient(90% 2000px at 0% 90%, #333264 -10%, transparent 50%),
+  #000000 !important;
+
+background-color: #000000 !important;
+
+}

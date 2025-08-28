@@ -50,6 +50,18 @@ A sample view of the code coverage report is shown below.
 
 ![Sample Code Coverage](/learn/images/code-cov.gif)
 
+## Set minimum code coverage requirements
+
+You can enforce minimum code coverage requirements for your tests by using the `--min-coverage` flag. This flag allows you to specify the minimum percentage of code coverage required for the test execution to be considered successful. If the actual coverage falls below the specified threshold, the test execution will fail.
+
+***Example:***
+
+```
+$ bal test --code-coverage --min-coverage=80
+```
+
+This command will fail if the code coverage is below 80%.
+
 ## Generate a JaCoCo XML report
 
 You can pass the `--coverage-format=xml` flag along with the `--code-coverage` flag in the test execution command and

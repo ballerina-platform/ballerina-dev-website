@@ -1,0 +1,16 @@
+{
+  "title": "Child loggers with context",
+  "description": "BBE on how to create child loggers with context in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "context",
+    "contextual logging",
+    "context",
+    "child logger"
+  ],
+  "permalink": "/learn/by-example/child-loggers-with-context/",
+  "active": "child-loggers-with-context"
+}

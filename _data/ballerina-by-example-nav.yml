@@ -1822,9 +1822,21 @@ sublinks:
           - title: Logging with context
             id: 2
             url: logging-with-context
-          - title: Configure logging
+          - title: Error Logging
             id: 3
+            url: error-logging
+          - title: Configure logging
+            id: 4
             url: logging-configuration
+          - title: Child loggers with context
+            id: 5
+            url: child-loggers-with-context
+          - title: Logger from configuration
+            id: 6
+            url: logger-from-config
+          - title: Custom logger
+            id: 7
+            url: custom-logger
       - title: EDI
         id: 8
         sublinks:

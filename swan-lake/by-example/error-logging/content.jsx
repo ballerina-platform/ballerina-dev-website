@@ -5,58 +5,54 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/uuid;
+  `import ballerina/log;
 
-public function main() returns error? {
-    // Generates a UUID of type 1 as a string.
-    string uuid1String = uuid:createType1AsString();
-    io:println("UUID of type 1 as a string: ", uuid1String);
+function processOrder(int orderId) returns error? {
+    if orderId <= 0 {
+        return error("Invalid order ID", orderId = orderId);
+    }
+    // Simulate processing logic here
+}
 
-    // Generates a UUID of type 1 as a UUID record.
-    uuid:Uuid uuid1Record = check uuid:createType1AsRecord();
-    io:println("UUID of type 1 as a record: ", uuid1Record);
+function connectToDatabase() returns error? {
+    error dbError = error("Connection timeout");
+    return error("Failed to connect to database", dbError, retryCount = 3);
+}
 
-    // Generates a UUID of type 3 as a string.
-    string uuid3String = check uuid:createType3AsString(
-    uuid:NAME_SPACE_DNS, "ballerina.io");
-    io:println("UUID of type 3 as a string: ", uuid3String);
+public function main() {
+    // Basic error logging
+    error simpleError = error("Something went wrong");
+    log:printError("Application encountered an error", simpleError);
 
-    // Generates a UUID of type 3 as a record.
-    uuid:Uuid uuid3Record = check uuid:createType3AsRecord(
-    uuid:NAME_SPACE_DNS, "ballerina.io");
-    io:println("UUID of type 3 as a record: ", uuid3Record);
+    // Error logging with additional context
+    error|() result1 = processOrder(-1);
+    if result1 is error {
+        log:printError("Order processing failed", result1,
+                operation = "processOrder",
+                timestamp = "2025-08-25T10:30:00Z");
+    }
 
-    // Generates a UUID of type 4 as a string.
-    string uuid4String = uuid:createType4AsString();
-    io:println("UUID of type 4 as a string: ", uuid4String);
+    // Error with causes and stack trace
+    error|() result2 = connectToDatabase();
+    if result2 is error {
+        log:printError("Database operation failed", result2,
+                serviceName = "OrderService",
+                severity = "HIGH");
+    }
 
-    // Generates a UUID of type 4 as a UUID record.
-    uuid:Uuid uuid4Record = check uuid:createType4AsRecord();
-    io:println("UUID of type 4 as a record: ", uuid4Record);
-
-    // Generates a UUID of type 5 as a string.
-    string uuid5String = check uuid:createType5AsString(
-                                    uuid:NAME_SPACE_DNS, "ballerina.io");
-    io:println("UUID of type 5 as a string: ", uuid5String);
-
-    // Generates a UUID of type 5 as a record.
-    uuid:Uuid uuid5Record = check uuid:createType5AsRecord(
-                                       uuid:NAME_SPACE_DNS, "ballerina.io");
-    io:println("UUID of type 5 as a record: ", uuid5Record);
-
-    // Generates a nil UUID as a string.
-    string nilUuidString = uuid:nilAsString();
-    io:println("Nil UUID as a string: ", nilUuidString);
-
-    // Generates a nil UUID as a UUID record.
-    uuid:Uuid nilUuidRecord = uuid:nilAsRecord();
-    io:println("Nil UUID as a record: ", nilUuidRecord);
+    // Custom error with detailed information
+    error customError = error("Validation failed",
+                            'field = "email",
+                            value = "invalid-email",
+                            expectedFormat = "user@domain.com");
+    log:printError("User input validation error", customError,
+            userId = "user123",
+            action = "registration");
 }
 `,
 ];
 
-export function UuidGeneration({ codeSnippets }) {
+export function ErrorLogging({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,19 +62,12 @@ export function UuidGeneration({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Generate UUID</h1>
+      <h1>Error logging</h1>
 
       <p>
-        The <code>uuid</code> library provides functions related to UUIDs
-        (Universal Unique Identifiers).
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
-          <code>uuid</code> module
-        </a>
-        .
+        This example demonstrates how to log errors with detailed information
+        including error messages, causes, stack traces, and additional context
+        in Ballerina.
       </p>
 
       <Row
@@ -87,31 +76,9 @@ export function UuidGeneration({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/uuid-generation",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -129,7 +96,7 @@ export function UuidGeneration({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -166,7 +133,9 @@ export function UuidGeneration({ codeSnippets }) {
       </Row>
 
       <p>
-        To run this sample, use the <code>bal run</code> command.
+        Error logging in Ballerina automatically includes the error message,
+        stack trace, and any error details. You can also add additional
+        contextual information to help with debugging and monitoring.
       </p>
 
       <Row
@@ -222,27 +191,51 @@ export function UuidGeneration({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run uuid_generation.bal`}</span>
-              <span>{`UUID of type 1 as a string: 01eb3f05-fbf8-1b92-8711-dc6a5719bb63`}</span>
-              <span>{`UUID of type 1 as a record: {"timeLow":32194310,"timeMid":7997,"timeHiAndVersion":5524,"clockSeqHiAndReserved":170,"clockSeqLo":116,"node":82490221220318}`}</span>
-              <span>{`UUID of type 3 as a string: cea5c405-7d11-3fbb-bdfb-9b68497be28b`}</span>
-              <span>{`UUID of type 3 as a record: {"timeLow":3466970117,"timeMid":32017,"timeHiAndVersion":16315,"clockSeqHiAndReserved":189,"clockSeqLo":251,"node":170872211759755}`}</span>
-              <span>{`UUID of type 4 as a string: 73e0d74e-8a4a-40ce-b1d9-b5b522533852`}</span>
-              <span>{`UUID of type 4 as a record: {"timeLow":2795821625,"timeMid":5327,"timeHiAndVersion":20251,"clockSeqHiAndReserved":161,"clockSeqLo":71,"node":59752348973988}`}</span>
-              <span>{`UUID of type 5 as a string: 08aab8bc-c69e-5ea8-8a52-dbb645c67fb5`}</span>
-              <span>{`UUID of type 5 as a record: {"timeLow":145406140,"timeMid":50846,"timeHiAndVersion":24232,"clockSeqHiAndReserved":138,"clockSeqLo":82,"node":241575901167541}`}</span>
-              <span>{`Nil UUID as a string: 00000000-0000-0000-0000-000000000000`}</span>
-              <span>{`Nil UUID as a record: {"timeLow":0,"timeMid":0,"timeHiAndVersion":0,"clockSeqHiAndReserved":0,"clockSeqLo":0,"node":0}`}</span>
+              <span>{`\$ bal run error-logging.bal`}</span>
+              <span>{`time=2025-08-25T10:35:20.456+05:30 level=ERROR module="" message="Application encountered an error" error={"causes":[],"message":"Something went wrong","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"error-logging.bal","lineNumber":18}]}`}</span>
+              <span>{`time=2025-08-25T10:35:20.458+05:30 level=ERROR module="" message="Order processing failed" error={"causes":[],"message":"Invalid order ID","detail":{"orderId":-1},"stackTrace":[{"callableName":"processOrder","moduleName":(),"fileName":"error-logging.bal","lineNumber":5},{"callableName":"main","moduleName":(),"fileName":"error-logging.bal","lineNumber":21}]} operation="processOrder" timestamp="2025-08-25T10:30:00Z"`}</span>
+              <span>{`time=2025-08-25T10:35:20.460+05:30 level=ERROR module="" message="Database operation failed" error={"causes":[{"message":"Connection timeout","detail":{},"stackTrace":[{"callableName":"connectToDatabase","moduleName":(),"fileName":"error-logging.bal","lineNumber":12}]}],"message":"Failed to connect to database","detail":{"retryCount":3},"stackTrace":[{"callableName":"connectToDatabase","moduleName":(),"fileName":"error-logging.bal","lineNumber":13},{"callableName":"main","moduleName":(),"fileName":"error-logging.bal","lineNumber":28}]} serviceName="OrderService" severity="HIGH"`}</span>
+              <span>{`time=2025-08-25T10:35:20.462+05:30 level=ERROR module="" message="User input validation error" error={"causes":[],"message":"Validation failed","detail":{"field":"email","value":"invalid-email","expectedFormat":"user@domain.com"},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"error-logging.bal","lineNumber":36}]} userId="user123" action="registration"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <p>
+        The logged errors include comprehensive information such as the error
+        message, causes (for nested errors), stack trace showing the call
+        hierarchy, and any additional context provided through key-value pairs.
+      </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/log/#2-logging">
+              <code>log</code> module - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/log/latest">
+              <code>log</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Manage scheduled jobs"
-            href="/learn/by-example/manage-scheduled-jobs/"
+            title="Logging with context"
+            href="/learn/by-example/logging-with-context/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -269,7 +262,7 @@ export function UuidGeneration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Manage scheduled jobs
+                  Logging with context
                 </span>
               </div>
             </div>
@@ -277,8 +270,8 @@ export function UuidGeneration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="UUID operations"
-            href="/learn/by-example/uuid-operations/"
+            title="Configure logging"
+            href="/learn/by-example/logging-configuration/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -288,7 +281,7 @@ export function UuidGeneration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  UUID operations
+                  Configure logging
                 </span>
               </div>
               <svg

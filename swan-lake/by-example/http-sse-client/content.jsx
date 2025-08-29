@@ -51,7 +51,7 @@ export function HttpSseClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/http-sse-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-sse-client",
                 "_blank",
               );
             }}

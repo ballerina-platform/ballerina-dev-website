@@ -1,13 +1,15 @@
 {
   "title": "Configure logging",
-  "description": "BBE on how to configure Ballerina logging.",
+  "description": "BBE on how to configure logging behavior using Config.toml including log level, format, destinations, and root context.",
   "keywords": [
     "ballerina",
     "ballerina by examples",
     "bbe",
     "log",
-    "level",
-    "format"
+    "configuration",
+    "config.toml",
+    "format",
+    "level"
   ],
   "permalink": "/learn/by-example/logging-configuration/",
   "active": "logging-configuration"

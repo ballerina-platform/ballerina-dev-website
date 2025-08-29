@@ -8,14 +8,14 @@ export const codeSnippetData = [
   `import ballerina/log;
 
 // Define specialized logger configurations for different purposes
-log:Config auditConfig = {
+final readonly & log:Config auditConfig = {
     level: log:INFO,
     format: log:JSON_FORMAT,
     destinations: [{path: "./logs/audit.log"}],
     keyValues: {"component": "audit", "compliance": "SOX"}
 };
 
-log:Config metricsConfig = {
+final readonly & log:Config metricsConfig = {
     level: log:DEBUG,
     format: log:LOGFMT,
     destinations: [{path: "./logs/metrics.log"}],
@@ -154,7 +154,7 @@ export function LoggerFromConfig({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Note:</strong> All loggers created from the configuration
-          automatically inherit the root logger default context.
+          automatically inherit the default context of the root logger.
         </p>
       </blockquote>
 

@@ -14,22 +14,13 @@ function processUserRequest(string userId, string requestId) returns error? {
     // Create a child logger with request-specific context
     log:Logger requestLogger = check rootLogger.withContext(userId = userId, requestId = requestId);
 
-    requestLogger.printInfo("Processing user request");
-
     // All logs from this logger will include the userId and requestId context
-    requestLogger.printDebug("Validating user permissions");
     requestLogger.printInfo("User permissions validated successfully");
-
-    requestLogger.printDebug("Fetching user data from database");
-    requestLogger.printInfo("User data retrieved", recordCount = 5);
 
     // Create a nested logger with additional context for a specific operation
     log:Logger operationLogger = check requestLogger.withContext(operation = "dataTransformation");
-    operationLogger.printInfo("Starting data transformation");
     operationLogger.printWarn("Using fallback transformation method", reason = "primary method unavailable");
     operationLogger.printInfo("Data transformation completed", duration = "250ms");
-
-    requestLogger.printInfo("Request processing completed successfully");
 }
 
 public function main() returns error? {
@@ -178,20 +169,12 @@ export function ChildLoggersWithContext({ codeSnippets }) {
               <span>{`\$ bal run child_loggers_with_context.bal`}</span>
               <span>{`
 `}</span>
-              <span>{`time=2025-08-26T08:26:58.477+05:30 level=INFO module="" message="Processing user request" userId="alice123" requestId="req-001"`}</span>
-              <span>{`time=2025-08-26T08:26:58.486+05:30 level=INFO module="" message="User permissions validated successfully" userId="alice123" requestId="req-001"`}</span>
-              <span>{`time=2025-08-26T08:26:58.487+05:30 level=INFO module="" message="User data retrieved" recordCount=5 userId="alice123" requestId="req-001"`}</span>
-              <span>{`time=2025-08-26T08:26:58.489+05:30 level=INFO module="" message="Starting data transformation" userId="alice123" requestId="req-001" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.490+05:30 level=WARN module="" message="Using fallback transformation method" reason="primary method unavailable" userId="alice123" requestId="req-001" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.491+05:30 level=INFO module="" message="Data transformation completed" duration="250ms" userId="alice123" requestId="req-001" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.493+05:30 level=INFO module="" message="Request processing completed successfully" userId="alice123" requestId="req-001"`}</span>
-              <span>{`time=2025-08-26T08:26:58.494+05:30 level=INFO module="" message="Processing user request" userId="bob456" requestId="req-002"`}</span>
-              <span>{`time=2025-08-26T08:26:58.495+05:30 level=INFO module="" message="User permissions validated successfully" userId="bob456" requestId="req-002"`}</span>
-              <span>{`time=2025-08-26T08:26:58.495+05:30 level=INFO module="" message="User data retrieved" recordCount=5 userId="bob456" requestId="req-002"`}</span>
-              <span>{`time=2025-08-26T08:26:58.496+05:30 level=INFO module="" message="Starting data transformation" userId="bob456" requestId="req-002" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.497+05:30 level=WARN module="" message="Using fallback transformation method" reason="primary method unavailable" userId="bob456" requestId="req-002" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.499+05:30 level=INFO module="" message="Data transformation completed" duration="250ms" userId="bob456" requestId="req-002" operation="dataTransformation"`}</span>
-              <span>{`time=2025-08-26T08:26:58.500+05:30 level=INFO module="" message="Request processing completed successfully" userId="bob456" requestId="req-002"`}</span>
+              <span>{`time=2025-08-29T12:28:56.385+05:30 level=INFO module=tharmigan/log_test message="User permissions validated successfully" env="prod" nodeId="server-001" userId="alice123" requestId="req-001"`}</span>
+              <span>{`time=2025-08-29T12:28:56.395+05:30 level=WARN module=tharmigan/log_test message="Using fallback transformation method" reason="primary method unavailable" env="prod" nodeId="server-001" userId="alice123" requestId="req-001" operation="dataTransformation"`}</span>
+              <span>{`time=2025-08-29T12:28:56.397+05:30 level=INFO module=tharmigan/log_test message="Data transformation completed" duration="250ms" env="prod" nodeId="server-001" userId="alice123" requestId="req-001" operation="dataTransformation"`}</span>
+              <span>{`time=2025-08-29T12:28:56.399+05:30 level=INFO module=tharmigan/log_test message="User permissions validated successfully" env="prod" nodeId="server-001" userId="bob456" requestId="req-002"`}</span>
+              <span>{`time=2025-08-29T12:28:56.401+05:30 level=WARN module=tharmigan/log_test message="Using fallback transformation method" reason="primary method unavailable" env="prod" nodeId="server-001" userId="bob456" requestId="req-002" operation="dataTransformation"`}</span>
+              <span>{`time=2025-08-29T12:28:56.402+05:30 level=INFO module=tharmigan/log_test message="Data transformation completed" duration="250ms" env="prod" nodeId="server-001" userId="bob456" requestId="req-002" operation="dataTransformation"`}</span>
             </code>
           </pre>
         </Col>

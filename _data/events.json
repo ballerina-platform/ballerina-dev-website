@@ -1,9 +1,9 @@
 {
     "events": [
             {
-            "date": "October 12-14, 2025",
-            "day": "Sun-Tue",
-            "time": "",
+            "date": "October 13, 2025",
+            "day": "Mon",
+            "time": "2:45 PM–3:30 PM ET",
             "expire": "2025-10-13T17:30:00.00-00:00",
             "location": "Raleigh, North Carolina",
             "url": "https://2025.allthingsopen.org/sessions/2-for-1-ai-powered-integration-the-future-of-natural-programming-and-intelligent-connectivity-actionable-llm-agent-observability-with-langfuse/",

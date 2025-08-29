@@ -1,7 +1,7 @@
 # Specification: Ballerina Log Library
 
-_Authors_: @daneshk @MadhukaHarith92  
-_Reviewers_: @daneshk  
+_Authors_: @daneshk @MadhukaHarith92 @TharmiganK  
+_Reviewers_: @daneshk @ThisaruGuruge  
 _Created_: 2021/11/15  
 _Updated_: 2025/08/20  
 _Edition_: Swan Lake  
@@ -126,7 +126,7 @@ By default, log messages are logged to the console in the LogFmt format. To set 
 format = "json"
 ```
 
-Currently, only `json` and `logfmt` are supported as the log formats
+Currently, only `json` and `logfmt` are supported as the log formats.
 
 ### 3.3. Configure root log context
 
@@ -180,7 +180,7 @@ The Ballerina log module supports contextual logging, which allows developers to
 
 ### 4.1. Logger
 
-Logger define the front end of a log library that developers interact with. Developers can create new loggers by implementing this type.
+Logger defines the front end of a log library that developers interact with. Developers can create new loggers by implementing this type.
 
 ```ballerina
 public type Logger isolated object {
@@ -276,7 +276,7 @@ public type Config record {|
     # Log level to use. Default is the logger level configured in the module level
     Level level = level;
     # List of destinations to log to. Default is the logger destinations configured in the module level
-    readonly & OutputDestination[] = destinations;
+    readonly & OutputDestination[] destinations = destinations;
     # Additional key-value pairs to include in the log messages. Default is the key-values configured in the module level
     readonly & AnydataKeyValues keyValues = {...keyValues};
 |};

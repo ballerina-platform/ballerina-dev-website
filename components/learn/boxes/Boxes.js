@@ -872,6 +872,7 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>A static code analysis tool that checks Ballerina code for security issues and quality improvements.</p>
                       </div>
+
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/consolidate-packages-tool`} className={styles.titleLink}>

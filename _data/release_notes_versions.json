@@ -1570,8 +1570,7 @@
       "rpm-installer":"ballerina-linux-installer-x64-1.2.60.rpm",
       "rpm-installer-size":"195mb",
       "other-artefacts":[
-         "ballerina-1.2.60.zip",
-         "ballerina-1.2.60.vsix"
+         "ballerina-1.2.60.zip"
       ],
       "api-docs":"ballerina-api-docs-1.2.60.zip",
       "release-notes":"ballerina-release-notes-1.2.60.md"
@@ -1588,8 +1587,7 @@
       "rpm-installer":"ballerina-linux-installer-x64-1.2.61.rpm",
       "rpm-installer-size":"195mb",
       "other-artefacts":[
-         "ballerina-1.2.61.zip",
-         "ballerina-1.2.61.vsix"
+         "ballerina-1.2.61.zip"
       ],
       "api-docs":"ballerina-api-docs-1.2.61.zip",
       "release-notes":"ballerina-release-notes-1.2.61.md"

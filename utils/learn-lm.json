@@ -851,12 +851,12 @@
                     ]
                 },
                 {
-                    "dirName": "Static code analysis",
+                    "dirName": "Additional tools",
                     "level": 2,
-                    "position": 12,
+                    "position": 11,
                     "isDir": true,
-                    "url": "/learn/static-code-analysis",
-                    "id": "static-code-analysis",
+                    "url": "/learn/additional-tools",
+                    "id": "additional-tools",
                     "subDirectories": [
                         {
                             "dirName": "Scan tool",
@@ -867,27 +867,9 @@
                             "id": "scan-tool"
                         },
                         {
-                            "dirName": "Scan rules",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/scan-rules",
-                            "id": "scan-rules"
-                        }
-                    ]
-                },
-                {
-                    "dirName": "Additional tools",
-                    "level": 2,
-                    "position": 13,
-                    "isDir": true,
-                    "url": "/learn/additional-tools",
-                    "id": "additional-tools",
-                    "subDirectories": [
-                        {
                             "dirName": "Consolidate-packages tool",
                             "level": 3,
-                            "position": 1,
+                            "position": 2,
                             "isDir": false,
                             "url": "/learn/consolidate-packages-tool",
                             "id": "consolidate-packages-tool"

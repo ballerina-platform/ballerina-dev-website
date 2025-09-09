@@ -510,11 +510,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/scan-tool`,
-        destination: `/${redirectBase}learn/development-tutorials/static-code-analysis/scan-tool`,
-      },
-      {
-        source: `/${redirectBase}learn/scan-rules`,
-        destination: `/${redirectBase}learn/development-tutorials/static-code-analysis/scan-rules`,
+        destination: `/${redirectBase}learn/development-tutorials/additional-tools/scan-tool`,
       },
       {
         source: `/${redirectBase}learn/consolidate-packages-tool`,

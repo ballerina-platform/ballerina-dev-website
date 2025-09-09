@@ -1,22 +1,6 @@
 {
     "events": [
         {
-            "date": "Oct 15 - Oct 16, 2025",
-            "day": "Wed",
-            "time": "",
-            "expire": "2025-10-16T00:00:00.00-00:00",
-            "location": "Manhattan, New York",
-            "url": "https://leaddev.com/staffplus-new-york/",
-            "eventType": "StaffPlus New York 2025",
-            "eventName": "Compiler makeover: How technical debt created happier developers",
-            "presenterTwitter": "https://twitter.com/sameerajayasoma",
-            "presenter": "Sameera Jayasoma",
-            "presenterDesignation": "VP & Distinguished Engineer, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
-        },
-        {
             "date": "October 16, 2025",
             "day": "Thur",
             "time": "",
@@ -28,6 +12,22 @@
             "presenterTwitter": "https://twitter.com/anupama_pathira",
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director/Head of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Oct 15 - Oct 16, 2025",
+            "day": "Wed",
+            "time": "",
+            "expire": "2025-10-16T00:00:00.00-00:00",
+            "location": "Manhattan, New York",
+            "url": "https://leaddev.com/staffplus-new-york/",
+            "eventType": "StaffPlus New York 2025",
+            "eventName": "Compiler makeover: How technical debt created happier developers",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "VP & Distinguished Engineer, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

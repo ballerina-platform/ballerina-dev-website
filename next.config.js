@@ -509,8 +509,12 @@ const nextConfig = {
         destination: `/learn/integration/integration-tutorials/:slug`,
       },
       {
-        source: `/${redirectBase}learn/scan-tool`,
-        destination: `/${redirectBase}learn/development-tutorials/additional-tools/scan-tool`,
+        source: `/learn/scan-tool`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-tool`,
+      },
+      {
+        source: `/learn/scan-rules`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-rules`,
       },
       {
         source: `/${redirectBase}learn/consolidate-packages-tool`,
@@ -519,7 +523,7 @@ const nextConfig = {
     ];
   },
   trailingSlash: true,
-  resolve: [{ path: false, fs: false }],
+  resolve: [{path: false, fs: false}],
   experimental: {
     scrollRestoration: true,
   }

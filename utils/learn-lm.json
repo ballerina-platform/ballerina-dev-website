@@ -725,6 +725,14 @@
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/opensearch",
                                     "id": "opensearch"
+                                },
+                                {
+                                    "dirName": "Moesif",
+                                    "level": 4,
+                                    "position": 8,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/moesif",
+                                    "id": "moesif"
                                 }
                             ]
                         }

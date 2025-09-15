@@ -42,11 +42,12 @@ After you log into Moesif Portal, get your `Moesif Application ID` during the on
    [ballerinax.moesif]
    applicationId = "<MOESIF_APPLICATION_ID>"    # Mandatory Configuration.
    reporterBaseUrl = "https://api.moesif.net"   # Optional Configuration. Default value is 'https://api.moesif.net'
-   tracingReporterFlushInterval = 1000;         # Optional Configuration. Default value is 1000
-   tracingReporterBufferSize = 10000;           # Optional Configuration. Default value is 10000
-   isTraceLoggingEnabled = false;               # Optional Configuration. Default value is false
-   isPayloadLoggingEnabled = false;             # Optional Configuration. Default value is false
+   tracingReporterFlushInterval = 1000          # Optional Configuration. Default value is 1000
+   tracingReporterBufferSize = 10000            # Optional Configuration. Default value is 10000
+   isTraceLoggingEnabled = false                # Optional Configuration. Default value is false
+   isPayloadLoggingEnabled = false              # Optional Configuration. Default value is false
    ```
+
 5. To enable metrics publishing, add the following to the `Config.toml`.
    
    ```toml
@@ -57,10 +58,10 @@ After you log into Moesif Portal, get your `Moesif Application ID` during the on
    [ballerinax.moesif]
    applicationId = "<MOESIF_APPLICATION_ID>"     # Mandatory Configuration.
    reporterBaseUrl = "https://api.moesif.net"   # Optional Configuration. Default value is 'https://api.moesif.net'
-   metricsReporterFlushInterval = 15000;        # Optional Configuration. Default value is 15000
-   metricsReporterClientTimeout = 10000;        # Optional Configuration. Default value is 10000
-   isTraceLoggingEnabled = false;               # Optional Configuration. Default value is false
-   isPayloadLoggingEnabled = false;             # Optional Configuration. Default value is false
+   metricsReporterFlushInterval = 15000         # Optional Configuration. Default value is 15000
+   metricsReporterClientTimeout = 10000         # Optional Configuration. Default value is 10000
+   isTraceLoggingEnabled = false                # Optional Configuration. Default value is false
+   isPayloadLoggingEnabled = false              # Optional Configuration. Default value is false
    
    # Additional attributes for metrics
    [ballerinax.moesif.additionalAttributes]
@@ -281,8 +282,7 @@ This setup leverages `Fluent Bit` to forward logs to an `OTEL Collector`, which 
 2. Run the above components stack using the following command.
    `docker compose up`
 
-3. Create the `Config.toml` file in the package directory to set the runtime configurations. 
-4. Update `Config.toml` to log to a file in `json` format.
+3. Create the `Config.toml` file in the package directory with the following content to log to a file in `json` format.
 
    ```toml
    [ballerina.log]
@@ -346,21 +346,21 @@ Moesif provides a set of pre-built dashboards that help visualize and analyze th
 In addition, custom dashboards can be created to gain deeper, domain-specific insights.
 
 The following sample dashboards illustrate how different types of observability data can be monitored and analyzed.
-</br></br>
+<br><br>
 **Traces Dashboard**
-</br>
+<br>
 Used to filter and view incoming requests. You can drill down into each request to track its related traces in detail.
 
 ![Moesif traces dashboard](/learn/images/moesif-request-view.png)
-</br></br>
+<br><br>
 **Metrics Dashboard**
-</br>
+<br>
 Provides visibility into key performance indicators such as latency, throughput, and error rates.
 
 ![Moesif metrics dashboard](/learn/images/moesif-metrics-view.png)
-</br></br>
+<br><br>
 **Logs Dashboard**
-</br>
+<br>
 Displays log events captured from the application.
 
 ![Moesif logs dashboard](/learn/images/moesif-logs-view.png)

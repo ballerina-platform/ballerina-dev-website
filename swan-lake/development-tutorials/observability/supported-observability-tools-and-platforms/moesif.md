@@ -72,21 +72,21 @@ After you log into Moesif Portal, get your `Moesif Application ID` during the on
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
-| Configuration key                                | Description                                                                 | Default value            | Possible values                                                        |
-| ------------------------------------------------ | --------------------------------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------- |
-| `ballerina.observe.tracingEnabled`               | Enables or disables the collection of trace data.                           | `false`                  | `true` or `false`                                                      |
-| `ballerina.observe.tracingProvider`              | Specifies Moesif as the tracing provider.                                   | `none`                   | `"moesif"`                                                             |
-| `ballerina.observe.metricsEnabled`               | Enables or disables the collection of metrics data.                         | `false`                  | `true` or `false`                                                      |
-| `ballerina.observe.metricsReporter`              | Specifies Moesif as the metrics reporter.                                   | `none`                   | `"moesif"`                                                             |
-| `ballerinax.moesif.applicationId`                | Moesif application ID used for authentication. **Mandatory configuration.** | `none`                   | A valid Moesif application ID string                                   |
-| `ballerinax.moesif.reporterBaseUrl`              | The base URL of the Moesif API.                                             | `https://api.moesif.net` | Any valid Moesif API endpoint URL                                      |
-| `ballerinax.moesif.tracingReporterFlushInterval` | Interval (in milliseconds) for flushing trace data to Moesif.               | `1000`                   | Any positive integer value                                             |
-| `ballerinax.moesif.tracingReporterBufferSize`    | Maximum buffer size for trace data before sending to Moesif.                | `10000`                  | Any positive integer value                                             |
-| `ballerinax.moesif.metricsReporterFlushInterval` | Interval (in milliseconds) for flushing metrics data to Moesif.             | `15000`                  | Any positive integer value                                             |
-| `ballerinax.moesif.metricsReporterClientTimeout` | Timeout (in milliseconds) for the metrics reporter client requests.         | `10000`                  | Any positive integer value                                             |
-| `ballerinax.moesif.isTraceLoggingEnabled`        | Enables or disables trace logging for debugging purposes.                   | `false`                  | `true` or `false`                                                      |
-| `ballerinax.moesif.isPayloadLoggingEnabled`      | Enables or disables payload logging for debugging purposes.                 | `false`                  | `true` or `false`                                                      |
-| `ballerinax.moesif.additionalAttributes`         | Additional key-value attributes to include with metrics reporting.          | `none`                   | Any valid set of key-value pairs, e.g., `key1="value1", key2="value2"` |
+| Configuration key                              | Description                                                                 | Default value | Possible values                      |
+|------------------------------------------------|-----------------------------------------------------------------------------|-------------------------|--------------------------------------|
+| ballerina.observe.tracingEnabled               | Enables or disables the collection of trace data.                           | `false`       | `true` or `false`                    |
+| ballerina.observe.tracingProvider              | Specifies Moesif as the tracing provider.                                   | `none`        | `"moesif"`                           |
+| ballerina.observe.metricsEnabled               | Enables or disables the collection of metrics data.                         | `false`       | `true` or `false`                    |
+| ballerina.observe.metricsReporter              | Specifies Moesif as the metrics reporter.                                   | `none`        | `"moesif"`                           |
+| ballerinax.moesif.applicationId                | Moesif application ID used for authentication. **Mandatory configuration.** | `none`        | A valid Moesif application ID string |
+| ballerinax.moesif.reporterBaseUrl              | The base URL of the Moesif API.                                             | `https://api.moesif.net` | Any valid Moesif API endpoint URL    |
+| ballerinax.moesif.tracingReporterFlushInterval | Interval (in milliseconds) for flushing trace data to Moesif.               | `1000`        | Any positive integer value           |
+| ballerinax.moesif.tracingReporterBufferSize    | Maximum buffer size for trace data before sending to Moesif.                | `10000`       | Any positive integer value           |
+| ballerinax.moesif.metricsReporterFlushInterval | Interval (in milliseconds) for flushing metrics data to Moesif.             | `15000`       | Any positive integer value           |
+| ballerinax.moesif.metricsReporterClientTimeout | Timeout (in milliseconds) for the metrics reporter client requests.         | `10000`       | Any positive integer value           |
+| ballerinax.moesif.isTraceLoggingEnabled        | Enables or disables trace logging for debugging purposes.                   | `false`       | `true` or `false`                    |
+| ballerinax.moesif.isPayloadLoggingEnabled      | Enables or disables payload logging for debugging purposes.                 | `false`       | `true` or `false`                    |
+| ballerinax.moesif.additionalAttributes         | Additional key-value attributes to include with metrics reporting.          | `none`        | Any valid set of key-value pairs.<br/>e.g., `key1="value1", key2="value2"` |
 
 These configurations enable traces and metrics publishing for the Ballerina application and configure the Moesif exporter.
 
@@ -289,7 +289,8 @@ This setup leverages `Fluent Bit` to forward logs to an `OTEL Collector`, which 
    format = "json"
 
    [[ballerina.log.destinations]]
-   path = "<ballerina-log-path>/app.log"
+   # Replace /path/to/your/ballerina/logs with the absolute path to the Ballerina application's log directory
+   path = "/path/to/your/ballerina/logs/app.log"
    ```
 
 ## Step 4 - Run the Ballerina service

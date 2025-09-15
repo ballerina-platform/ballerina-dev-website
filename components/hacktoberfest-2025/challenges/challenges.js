@@ -26,7 +26,7 @@ export default function Intro(props) {
   return (
     <>
       <Col xs={12}>
-        <Container>
+        <Container className={styles.challengeContainer}>
 
           <Row>
             <Col sm={12} className='sectionTitle'>
@@ -55,7 +55,7 @@ export default function Intro(props) {
                 <div>
                   <h3>Code contributions</h3>
 
-                  <Table hover variant="dark" className={styles.customDarkTable}>
+                  <Table hover variant="light" className={styles.customDarkTable}>
                     <thead>
                       <tr>
                         <th>Type</th>
@@ -87,7 +87,7 @@ export default function Intro(props) {
                 <div>
                   <h3>No/Low Code contributions</h3>
 
-                  <Table hover variant="dark" className={styles.customDarkTable}>
+                  <Table hover variant="light" className={styles.customDarkTable}>
                     <thead>
                       <tr>
                         <th>Type</th>
@@ -114,7 +114,7 @@ export default function Intro(props) {
                 <div>
                   <h3>Connector projects</h3>
 
-                  <Table hover variant="dark" className={styles.customDarkTable}>
+                  <Table hover variant="light" className={styles.customDarkTable}>
                     <thead>
                       <tr>
                         <th>Type</th>
@@ -159,7 +159,7 @@ export default function Intro(props) {
                         Get expert help
                       </p>
 
-                      <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.ask} title="Stack Overflow">Ask on Stack Overflow today</a>
+                      <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.ask}`} title="Stack Overflow">Ask on Stack Overflow today</a>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -173,7 +173,7 @@ export default function Intro(props) {
 
                       <p className={styles.msg}>Join our Discord community</p>
 
-                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={styles.join} title='Discord'>Join the Ballerina Server</a>
+                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.join}`} title='Discord'>Join the Ballerina Server</a>
                     </Card.Body>
                   </Card>
                 </Col>

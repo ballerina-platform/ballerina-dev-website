@@ -29,47 +29,33 @@ export default function Intro() {
 
     <Col sm={12}>
       <Container>
+        <Row className={styles.logoRow}>
+          <Col xs={5} align="right">
+            <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" title='Hacktoberfest'>
+              <img src={`${prefix}/images/hacktoberfest/hacktoberfest-2025.svg`} alt="Hacktoberfest" title="Hacktoberfest" height={120} className={styles.hackLogo}/>
+            </a>
+          </Col>
+          <Col xs={2} justify="center" align="center">
+            <img src={`${prefix}/img/body-bg1000.svg`} alt="divider" title="divider" width={2} height={120} className={styles.divider} />
+          </Col>
+          <Col xs={5}>
+            <img src={`${prefix}/images/logo/ballerina_logo_white_m__svg.svg`} alt="Ballerina" title="Ballerina" height={60} className={styles.ballerinaLogo}/>
+          </Col>
+        </Row>
 
-        <Row className={styles.introBottomRow}>
-          <Col xs={12} sm={12} md={12} lg={6} className={`${styles.description} ${styles.introText}`}>
-            <h1>Hacktoberf&shy;est 2024</h1>
+        <Row className={styles.title}>
+          <Col sm={12} className='text-center'>
+            <h1>Hacktoberfest 2025</h1>
+          </Col>
+        </Row>
 
-            <p className={styles.desItem} style={{ fontSize: "25px", lineHeight: "normal" }}>
-              <span>We&apos;re thrilled to have you on board for <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" className={styles.introLinks} title='Hacktoberfest'>Hacktoberfest</a> and have some fantastic opportunities lined up for you. 
+        <Row className={styles.description}>
+          <Col sm={12}>
+            <p>
+              <span>We&apos;re thrilled to have you on board for <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" className={styles.introLinks} title='Hacktoberfest'>Hacktoberfest</a> and have some fantastic opportunities lined up for you.
                 See the many ways you can support the open source community and contribute to Ballerina.</span>
             </p>
           </Col>
-
-          <Col xs={12} sm={12} md={12} lg={1} className={`${styles.description} ${styles.introText}`}>
-            &nbsp;
-          </Col>
-
-
-          <Col xs={12} sm={12} md={12} lg={5} className={`${styles.description} ${styles.iconBlock}`}>
-            <a href="https://hacktoberfest.com" target="_blank" rel="noreferrer" className={styles.join} title='Hacktoberfest'>
-              {/* <img src={`${prefix}/images/hacktoberfest/hack025.webm`} alt="Hacktoberfest" title="Hacktoberfest" height={250} /> */}
-            <video
-    className={styles.joinVideo}
-    width="250"
-    height="250"
-    autoPlay
-    loop
-    muted
-    playsInline
-    preload="auto"
-    poster={`${prefix}/images/hacktoberfest/hack025.png`} // static fallback thumbnail
-    aria-label="Hacktoberfest"
-  >
-    <source src={`${prefix}/images/hacktoberfest/hack025.webm`} type="video/webm" />
-    <source src={`${prefix}/images/hacktoberfest/hack025.mp4`} type="video/mp4" />
-    {/* Last-resort fallback for very old browsers */}
-    <img src={`${prefix}/images/hacktoberfest/hack025.png`} alt="Hacktoberfest" width="250" height="250" />
-  </video>
-            </a>
-            <img src={`${prefix}/img/body-bg.svg`} alt="divider" title="divider" height={250} className={styles.divider}/>
-            <img src={`${prefix}/images/hacktoberfest/ballerina-icon-teal.svg`} alt="Ballerina" title="Ballerina" height={250} className={styles.balLogo}/>
-          </Col>
-
         </Row>
 
 

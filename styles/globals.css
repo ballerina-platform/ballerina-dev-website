@@ -255,7 +255,7 @@ a {
   text-decoration: none;
 }
 
-.mdContent ol + blockquote {
+.mdContent ol+blockquote {
   padding: 10px 20px;
   margin: -10px 0 20px 30px !important;
   font-size: 17.5px;
@@ -315,7 +315,7 @@ a {
   list-style: disc;
 }
 
-:not(pre) > code {
+:not(pre)>code {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
@@ -336,7 +336,8 @@ pre.default {
   margin-bottom: 10px;
 }
 
-.mdContent img, .introImg img {
+.mdContent img,
+.introImg img {
   width: -moz-available;
   width: -webkit-fill-available;
   width: fill-available;
@@ -499,6 +500,7 @@ ul.cInlinelinklist li {
 a.cGreenLinkArrow {
   color: #20b6b0 !important;
 }
+
 a.cGreenLinkArrow:hover {
   color: #000 !important;
 }
@@ -535,7 +537,7 @@ a.cGreenLinkArrow:hover {
 }
 
 .background-image {
-  opacity: 0.1; 
+  opacity: 0.1;
   position: absolute;
   top: 165px;
   left: 0;
@@ -544,11 +546,11 @@ a.cGreenLinkArrow:hover {
   z-index: -1;
 }
 
-.selectedTagContainer{
+.selectedTagContainer {
   margin-bottom: 10px;
 }
 
-.selectedTagBadge{
+.selectedTagBadge {
   margin-right: 5px;
   background-color: #888 !important;
   color: #ffffff;
@@ -559,17 +561,17 @@ a.cGreenLinkArrow:hover {
   align-items: center;
 }
 
-.selectedTagIcon{
+.selectedTagIcon {
   margin-left: 3px;
 }
 
-.selectedTagBadge:hover{
+.selectedTagBadge:hover {
   opacity: 0.8;
   color: #ffffff;
 }
 
 /*--------downloads page -------*/
-.downloads :not(pre) > code[class*="language-"],
+.downloads :not(pre)>code[class*="language-"],
 pre[class*="language-"] {
   background: #f5f5f5 !important;
 }
@@ -669,8 +671,8 @@ pre[class*="language-"] {
   padding: 10px 0;
 }
 
-.newsletterInfo + .newsletterInfo,
-#past-issues + .newsletterInfo {
+.newsletterInfo+.newsletterInfo,
+#past-issues+.newsletterInfo {
   border-bottom: 0.3px solid #d9dadb;
 }
 
@@ -1122,7 +1124,7 @@ table.cTopControlsContainer tbody {
   --button-hover-color-text: #a8dbd9;
 }
 
-.bbeBody > * {
+.bbeBody>* {
   margin: 0 0 20px 0 !important;
   padding: 0 !important;
 }
@@ -1136,7 +1138,7 @@ table.cTopControlsContainer tbody {
   display: flex;
 }
 
-.bbeBody > pre:not(.bbeOutput pre) {
+.bbeBody>pre:not(.bbeOutput pre) {
   background-color: #eeeeee;
 }
 
@@ -1305,11 +1307,11 @@ table.cTopControlsContainer tbody {
   cursor: pointer;
 }
 
-.bbeTable li > div {
+.bbeTable li>div {
   color: #20b6b0 !important;
 }
 
-.bbeTable li:hover > div {
+.bbeTable li:hover>div {
   color: #57595d !important;
 }
 
@@ -1321,7 +1323,7 @@ table.cTopControlsContainer tbody {
   visibility: hidden;
 }
 
-.bbeTable li:hover > .categoryButton {
+.bbeTable li:hover>.categoryButton {
   visibility: visible;
 }
 
@@ -1346,7 +1348,7 @@ table.cTopControlsContainer tbody {
 }
 
 .integration h2,
-.llanding h2, 
+.llanding h2,
 .communityRow h2 {
   /* margin-top: 50px; */
   margin-bottom: 30px;
@@ -1389,7 +1391,7 @@ table.cTopControlsContainer tbody {
 } */
 
 .integration.code pre.shiki,
-:is(#code-container, #agent-code-container)  {
+:is(#code-container, #agent-code-container) {
   background-color: #ffffff !important;
   border: 1px solid #eeeeee;
 }
@@ -1492,7 +1494,7 @@ table.cTopControlsContainer tbody {
 }
 
 /* ----------- draggable code blocks -------------- */
-:is(#code-container, #agent-code-container)  {
+:is(#code-container, #agent-code-container) {
   width: 100%;
   /* height: auto; */
   /* min-height: 600px; */
@@ -1565,7 +1567,7 @@ table.cTopControlsContainer tbody {
   z-index: 1000;
 }
 
-:is(#code-container, #agent-code-container)  .title-new {
+:is(#code-container, #agent-code-container) .title-new {
   background-color: #20b6b0;
   color: #fff;
   padding: 10px;
@@ -1574,18 +1576,18 @@ table.cTopControlsContainer tbody {
   z-index: 999;
 }
 
-:is(#code-container, #agent-code-container)  .title-old {
+:is(#code-container, #agent-code-container) .title-old {
   background-color: #464646;
   color: #fff;
   padding: 10px;
   margin-bottom: 0;
 }
 
-:is(#code-container, #agent-code-container)  li {
+:is(#code-container, #agent-code-container) li {
   white-space: break-spaces;
 }
 
-:is(#code-container, #agent-code-container)  .tab-pane p {
+:is(#code-container, #agent-code-container) .tab-pane p {
   font-family: monospace;
 }
 
@@ -1670,44 +1672,44 @@ table.cTopControlsContainer tbody {
 .cInlineImage-small {
   display: inline-block;
   text-align: center;
-  height:45% !important;
-  width:30% !important;
+  height: 45% !important;
+  width: 30% !important;
   border: 1px solid gray;
 }
-    
+
 .cInlineImage-full {
   display: inline-block;
   text-align: center;
-  height:75% !important;
-  width:90% !important;
+  height: 75% !important;
+  width: 90% !important;
   border: 1px solid gray;
 }
-  
+
 .cInlineImage-threeQuarter {
   display: inline-block;
   text-align: center;
-  width:65%;
+  width: 65%;
   border: 1px solid gray;
 }
-  
+
 .cInlineImage-half {
   display: inline-block;
   text-align: center;
-  width:50% !important;
+  width: 50% !important;
   border: 1px solid gray;
 }
-  
+
 .cInlineImage-bordered {
   display: inline-block;
   text-align: center;
   border: 1px solid gray;
 }
 
-img + blockquote{
+img+blockquote {
   margin-top: 20px;
 }
 
-.mdTable + img {
+.mdTable+img {
   margin-top: 20px;
 }
 
@@ -1726,13 +1728,13 @@ img + blockquote{
 }
 
 .selected .row {
-	opacity:0.5;
+  opacity: 0.5;
 }
 
 .carousel-caption {
-    position: relative;
-    left: auto;
-    right: auto;
+  position: relative;
+  left: auto;
+  right: auto;
 }
 
 .carousel-control.left,
@@ -1803,22 +1805,18 @@ a.join:hover {
 
 @media (min-width: 992px) {
   .applyNow {
-      width: 50%;
+    width: 50%;
   }
 }
 
 .hack2025 {
   background:
-  radial-gradient(87% 900px at 90% 5%, #333264 -20%, transparent 60%),
-  radial-gradient(80% 900px at 1% 15%, #333264 -55%, transparent 54%),
-  /* radial-gradient(80% 900px at 1% 35%, #20B6B0 -55%, transparent 54%), */
-  radial-gradient(90% 1500px at 90% 50%, #333264 -10%, transparent 50%),
-  /* radial-gradient(40% 900px at 0% 40%, #20B6B0 -10%, transparent 80%), */
-  radial-gradient(90% 1500px at 0% 50%, #333264 -10%, transparent 50%),
-  radial-gradient(90% 1500px at 50% 75%, #20B6B0 -10%, transparent 50%),
-  radial-gradient(90% 2000px at 0% 90%, #333264 -10%, transparent 50%),
-  #000000 !important;
+    radial-gradient(84% 900px at 90% 5%, #20B6B0 -20%, transparent 60%),
+    radial-gradient(87% 900px at 1% 30%, #20B6B0 -20%, transparent 54%),
+    radial-gradient(87% 1500px at 90% 55%, #20B6B0 -20%, transparent 54%),
+    radial-gradient(87% 600px at 1% 90%, #20B6B0 -20%, transparent 54%),
+    #1C1C3F !important;
 
-background-color: #000000 !important;
+  background-color: #1C1C3F !important;
 
 }

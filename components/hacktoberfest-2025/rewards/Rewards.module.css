@@ -1,7 +1,17 @@
+.rewardsContainer {
+  /* border: 1px solid #ffffff; */
+  border-radius: 5px;
+  padding: 20px;
+  /* background-color: rgb(255 255 255 / 0.15); */
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
 .boxCol {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 20px !important;
+  /* margin-top: 20px !important; */
 }
 
 .pGroup {
@@ -40,6 +50,10 @@
   margin-left: 10px;
 }
 
+.customUL {
+  padding-left: 0;
+}
+
 .customLi {
   margin: 0;
   padding: 0 0 6px 40px;
@@ -51,7 +65,7 @@
 }
 
 .msg {
-  font-weight: 400;
+  /* font-weight: 400; */
   font-size: 20px;
 }
 

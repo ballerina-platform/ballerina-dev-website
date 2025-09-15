@@ -1,15 +1,27 @@
-.introBottomRow ul {
-    padding: 0;
-    margin: 10px 0;
-    display: inline-block;
-    float: right;
+.logoRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.introBottomRow ul li {
-    list-style: none;
-    display: inline-block;
-    float: right;
-    margin-right: 30px;
+.title {
+    margin: 80px 0;
+    color: #ffffff;
+}
+
+.title h1 {
+    font-size: 48px;
+    font-weight: normal;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1;
+}
+
+.description p {
+    font-size: 24px;
+    margin-bottom: 0;
+    color: #ffffff;
+    text-align: center;
 }
 
 .introLinks {
@@ -24,53 +36,28 @@
     text-decoration: underline;
 }
 
-.description {
-    color: #ffffff;
-    margin-top: 30px;
+.hackLogo {
+    height: 120px;
+    width: auto
 }
 
-.description h1 {
-    /* color: #000000; */
-    font-size: 3.45rem;
-    margin: 0 0 30px 0; 
-    /* background-color: #eff0f1;  */
-    width: fit-content;
-    color: #ffffff;
+.ballerinaLogo {
+    height: 60px;
+    width: auto
 }
 
-.description p {
-    line-height: 1.3rem;
-    margin-bottom: 0;
-    font-size: 16px;
-    color: #ffffff;
-}
 
-.desItem {
-    display: flex;
-    flex-direction: row;
-}
 
-.iconBlock {
-    display: flex;
-    flex-flow: row wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.introText {
-    display: flex;
-    flex-flow: row wrap;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-@media screen and (max-width: 360px) {
-    .balLogo {
-        margin-top: 30px;
+@media (max-width: 768px) {
+    .hackLogo {
+        width: -moz-available !important;
+        width: -webkit-fill-available !important;
+        width: fill-available !important;
     }
-    
-    .divider {
-        display: none;
+
+    .ballerinaLogo {
+        width: -moz-available !important;
+        width: -webkit-fill-available !important;
+        width: fill-available !important;
     }
 }

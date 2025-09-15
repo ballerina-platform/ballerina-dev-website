@@ -20,18 +20,16 @@
   background: #f5f5f5;
 }
 
-.hacktoberfestChallenges, .hacktoberfestChallenges2024, .hacktoberfestChallenges2025,
-.hacktoberfestRules, .hacktoberfestRules2024, .hacktoberfestRules2025,
-.hacktoberfestRewards, .hacktoberfestRewards2024, .hacktoberfestRewards2025 {
+.hacktoberfestChallenges, .hacktoberfestChallenges2024, 
+.hacktoberfestRules, .hacktoberfestRules2024, 
+.hacktoberfestRewards, .hacktoberfestRewards2024 {
   margin-bottom: 0 !important;
   padding-bottom: 4rem;
   padding-top: 4rem;
 }
 
 .hacktoberfestChallenges h2, .hacktoberfestRules h2, .hacktoberfestRewards h2,
-.hacktoberfestChallenges2024 h2, .hacktoberfestRules2024 h2, .hacktoberfestRewards2024 h2,
-.hacktoberfestChallenges2025 h2, .hacktoberfestRules2025 h2, .hacktoberfestRewards2025 h2 {
-
+.hacktoberfestChallenges2024 h2, .hacktoberfestRules2024 h2, .hacktoberfestRewards2024 h2 {
   margin-bottom: 30px;
   display: inline-block;
   scroll-margin-top: 65px;
@@ -64,27 +62,64 @@
 }
 
 /* hack 2025 */
-
-.hack2025 {
+/* comment 3&5 */
+/* .hack2025 {
   background:
   radial-gradient(87% 900px at 90% 5%, #333264 -20%, transparent 60%),
   radial-gradient(80% 900px at 1% 15%, #333264 -55%, transparent 54%),
-  /* radial-gradient(80% 900px at 1% 35%, #20B6B0 -55%, transparent 54%), */
+  radial-gradient(80% 900px at 1% 35%, #20B6B0 -55%, transparent 54%),
   radial-gradient(90% 1500px at 90% 50%, #333264 -10%, transparent 50%),
-  /* radial-gradient(40% 900px at 0% 40%, #20B6B0 -10%, transparent 80%), */
+  radial-gradient(40% 900px at 0% 40%, #20B6B0 -10%, transparent 80%),
   radial-gradient(90% 1500px at 0% 50%, #333264 -10%, transparent 50%),
   radial-gradient(90% 1500px at 50% 75%, #20B6B0 -10%, transparent 50%),
   radial-gradient(90% 2000px at 0% 90%, #333264 -10%, transparent 50%),
   #000000 !important;
 
 background-color: #000000 !important;
+} */
 
-}
+
+.hack2025 {
+  background:
+    radial-gradient(87% 900px at 90% 5%, #1C1C3F -20%, transparent 60%),
+    radial-gradient(80% 900px at 1% 15%, #1C1C3F -55%, transparent 54%),
+    /* radial-gradient(80% 900px at 1% 35%, #20B6B0 -55%, transparent 54%), */
+    radial-gradient(90% 1500px at 90% 50%, #1C1C3F -10%, transparent 50%),
+    /* radial-gradient(40% 900px at 0% 40%, #20B6B0 -10%, transparent 80%), */
+    radial-gradient(90% 1500px at 0% 50%, #1C1C3F -10%, transparent 50%),
+    /* radial-gradient(90% 1500px at 50% 75%, #20B6B0 -10%, transparent 50%), */
+    radial-gradient(90% 2000px at 0% 90%, #1C1C3F -10%, transparent 50%),
+    #000000 !important;
+
+  background-color: #000000 !important;
+} 
 
 .hacktoberfestIntro2025 {
   padding: 80px 0 80px 0;
+    /* padding-bottom: 4rem;
+  padding-top: 4rem; */
 }
 
 .hacktoberfestChallenges2025, .hacktoberfestRules2025, .hacktoberfestRewards2025 {
   color: #fff;
+  margin-bottom: 0 !important;
+  padding-bottom: 80px;
+  padding-top: 0;
 }
+
+.hacktoberfestChallenges2025 h2, .hacktoberfestRules2025 h2, .hacktoberfestRewards2025 h2 {
+  font-size: 30px;
+  font-weight: normal;
+  display: inline-block;
+  scroll-margin-top: 65px;
+  line-height: 1;
+}
+
+.hacktoberfestRules2025 h2, .hacktoberfestRewards2025 h2 {
+  margin-bottom: 20px;
+}
+
+.hacktoberfestChallenges2025 h2 {
+  margin-bottom: 0 !important;
+}
+

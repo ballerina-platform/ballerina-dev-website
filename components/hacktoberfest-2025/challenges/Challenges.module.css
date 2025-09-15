@@ -1,12 +1,25 @@
+.challengeContainer {
+  /* border: 1px solid #ffffff; */
+  border-radius: 5px;
+  padding: 20px;
+  /* background-color: rgb(255 255 255 / 0.15); */
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 .boxCol {
   display: flex;
   flex-flow: row wrap;
   margin-top: 20px !important;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .challengeType {
-  background: #494949;
+  /* background: #494949; */
+  border: 0.5px solid #ffffff;
+  border-radius: 5px;
   padding: 15px;
   width: 100%;
 }
@@ -35,6 +48,7 @@
 .customDarkTable {
   --bs-table-bg: none !important;
   font-size: 15px !important;
+  color: #ffffff;
 }
 
 .reward {
@@ -48,43 +62,58 @@ a.issues {
   transition: none !important;
   font-size: 16px;
   text-align: center;
-  background-color: #000000;
+  /* background-color: #000000; */
+  border: 0.5px solid #ffffff;
   color: #ffffff !important;
   padding: 10px 20px;
   background-repeat: no-repeat;
   background-position: left 25px top 18px;
   text-decoration: none;
-  border: none;
+  /* border: none; */
   font-family: "pragmatica", sans-serif;
   transition: all 0.3s;
   width: 100%;
+  border-radius: 5px;
 }
 
-a.join,
-a.ask {
+a.combtn {
   display: block;
   margin: 0;
   transition: none !important;
   font-size: 16px;
   text-align: center;
-  background-color: #000000;
   color: #ffffff !important;
   padding: 10px 20px;
   background-repeat: no-repeat;
   background-position: left 25px top 18px;
   text-decoration: none;
-  border: none;
   font-family: "pragmatica", sans-serif;
   transition: all 0.3s;
   width: fit-content;
+  border-radius: 5px;
 }
 
+a.ask {
+  border: 1px solid #F48023;
+}
 
-a.join:hover,
-a.ask:hover,
+a.join {
+  border: 1px solid #5865F2;
+}
+
 a.issues:hover {
   background-color: #ffffff;
   color: #000000 !important;
+}
+
+a.join:hover {
+  background-color: #5865F2;
+  color: #ffffff !important;
+}
+
+a.ask:hover {
+  background-color: #F48023;
+  color: #ffffff !important;
 }
 
 .cutomCard {
@@ -94,6 +123,17 @@ a.issues:hover {
   justify-content: space-between;
   border: none;
   border-radius: 0;
+
+  /* keep your existing rules… */
+  --bs-card-bg: transparent;
+  /* overrides Bootstrap */
+  background-color: transparent;
+  /* just in case */
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+
+
 }
 
 .btnCol {
@@ -102,7 +142,7 @@ a.issues:hover {
   width: fill-available !important;
 }
 
-.discord {
+/* .discord {
   background: #5865F2;
   width: 100%;
   color: #ffffff;
@@ -113,20 +153,51 @@ a.issues:hover {
   padding: 15px;
   border: none;
   border-radius: 0;
-}
+} */
 
-.stack {
-  background: #F48024;
+.discord {
+  --t: 88 101 242;
+  /* #5865F2 */
+
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.20),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / 0.55);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+
   width: 100%;
-  color: #000;
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 15px;
-  border: none;
-  border-radius: 0;
+  border-radius: 5px;
 }
+
+
+.stack {
+  --t: 244 128 35;
+  /* #F48023 */
+
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.18),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / 0.60);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+}
+
 
 .discord p,
 .stack p {

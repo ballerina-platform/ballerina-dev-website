@@ -98,9 +98,9 @@ This setup leverages Fluent Bit to forward logs to an OTEL Collector, which then
 
 - docker-compose.yml – Defines the containerized setup for Fluent Bit and OTEL Collector. 
 - fluent-bit.conf – Configures Fluent Bit to read logs from the Ballerina log file and forward them. 
-- otelcol.yaml – Configures the OTEL Collector to process and send logs to Moesif’s log endpoint.
+- otelcol.yml – Configures the OTEL Collector to process and send logs to Moesif’s log endpoint.
 
-Copy the below component configurations from the to a directory in your local file system.
+Copy the below component configurations to a directory in your local file system.
 .
 ├── docker-compose.yml
 ├── fluent-bit.conf
@@ -118,7 +118,7 @@ services:
     container_name: otelcol
     command: ["--config", "/etc/otelcol.yaml"]
     environment:
-      MOESIF_APP_ID: "<moesif-application-id>"
+      MOESIF_APP_ID: "<MOESIF_APPLICATION_ID>"
     ports:
       - "4317:4317"
       - "4318:4318"

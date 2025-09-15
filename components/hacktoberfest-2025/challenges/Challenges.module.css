@@ -1,0 +1,243 @@
+.challengeContainer {
+  /* border: 1px solid #ffffff; */
+  border-radius: 5px;
+  padding: 20px;
+  /* background-color: rgb(255 255 255 / 0.15); */
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.boxCol {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 20px !important;
+  /* margin-bottom: 20px; */
+}
+
+.challengeType {
+  /* background: #494949; */
+  border: 0.5px solid #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+}
+
+.challengeType h3 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.desc,
+.challengeType {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.desc h2 {
+  margin-bottom: 0 !important;
+}
+
+.categories {
+  margin: 30px 0 !important;
+}
+
+.customDarkTable {
+  --bs-table-bg: none !important;
+  font-size: 15px !important;
+  color: #ffffff;
+}
+
+.reward {
+  text-align: center;
+}
+
+
+a.issues {
+  display: block;
+  margin: 0;
+  transition: none !important;
+  font-size: 16px;
+  text-align: center;
+  /* background-color: #000000; */
+  border: 0.5px solid #ffffff;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: left 25px top 18px;
+  text-decoration: none;
+  /* border: none; */
+  font-family: "pragmatica", sans-serif;
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: 5px;
+}
+
+a.combtn {
+  display: block;
+  margin: 0;
+  transition: none !important;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  background-repeat: no-repeat;
+  background-position: left 25px top 18px;
+  text-decoration: none;
+  font-family: "pragmatica", sans-serif;
+  transition: all 0.3s;
+  width: fit-content;
+  border-radius: 5px;
+}
+
+a.ask {
+  border: 1px solid #F48023;
+}
+
+a.join {
+  border: 1px solid #5865F2;
+}
+
+a.issues:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
+}
+
+a.join:hover {
+  background-color: #5865F2;
+  color: #ffffff !important;
+}
+
+a.ask:hover {
+  background-color: #F48023;
+  color: #ffffff !important;
+}
+
+.cutomCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0;
+
+  /* keep your existing rules… */
+  --bs-card-bg: transparent;
+  /* overrides Bootstrap */
+  background-color: transparent;
+  /* just in case */
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+
+
+}
+
+.btnCol {
+  width: -moz-available !important;
+  width: -webkit-fill-available !important;
+  width: fill-available !important;
+}
+
+/* .discord {
+  background: #5865F2;
+  width: 100%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border: none;
+  border-radius: 0;
+} */
+
+.discord {
+  --t: 88 101 242;
+  /* #5865F2 */
+
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.20),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / 0.55);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+.stack {
+  --t: 244 128 35;
+  /* #F48023 */
+
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.18),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / 0.60);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+.discord p,
+.stack p {
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: #20b6b0;
+  font-size: 16px;
+}
+
+.titleLink:hover {
+  color: #57595d;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.cardText {
+  text-align: center !important;
+}
+
+.msg {
+  margin: 30px 0 !important;
+}
+
+.description {
+  color: #57595d;
+  font-size: 14px;
+}
+
+.contentCol {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sub {
+  margin-left: 10px;
+}

@@ -1820,3 +1820,9 @@ a.join:hover {
   background-color: #1C1C3F !important;
 
 }
+
+.hack2025 .mdButton {
+  visibility: hidden;
+  margin-left: -0;
+  cursor: pointer;
+}

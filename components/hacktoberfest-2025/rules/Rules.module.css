@@ -76,3 +76,22 @@
   margin-bottom: 0;
   margin-top: 20px;
 }
+
+/* Base “glass” style – keep once */
+.glass {
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.20),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / var(--border-alpha, 0.55));
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Color tokens (space-separated RGB for rgb(var(--t) / …) syntax) */
+.tInk    { --t: 28 28 63; border: 0.5px solid #A0A0FF; }   /* #1C1C3F */
+.tMist   { --t: 230 234 235; border: 0.5px solid #E6EAEB; }  /* #E6EAEB */
+.tTeal   { --t: 32 182 176; border: 0.5px solid #20B6B0; }   /* #20B6B0 */
+.tPeri   { --t: 160 160 255; border: 0.5px solid #A0A0FF; }  /* #A0A0FF */
+
+/* Optional: tweak border visibility for very light tokens */
+/* .tMist { --border-alpha: 0.35; } */

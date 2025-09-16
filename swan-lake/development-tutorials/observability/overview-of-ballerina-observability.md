@@ -201,3 +201,4 @@ The following contains a guide to set up and observe Ballerina programs in each 
 - [Observe Ballerina programs with Datadog](/learn/supported-observability-tools-and-platforms/datadog)
 - [Observe Ballerina programs with Elastic Stack](/learn/supported-observability-tools-and-platforms/elastic-stack)
 - [Observe Ballerina programs with OpenSearch](/learn/supported-observability-tools-and-platforms/opensearch)
+- [Observe Ballerina programs with Moesif](/learn/supported-observability-tools-and-platforms/moesif)

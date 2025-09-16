@@ -265,6 +265,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opensearch`,
       },
       {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/moesif`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/moesif`,
+      },
+      {
         source: `/${redirectBase}learn/organize-ballerina-code`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/organize-ballerina-code`,
       },

@@ -17,13 +17,32 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Card } from 'react-bootstrap';
 
 import styles from './Rewards.module.css';
 
 export default function Rewards(props) {
 
-  const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
+  // const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
+
+  const rewards = [
+    {
+      title: "Amazon vouchers equivalent to the points you earn. Each point is equal to US$1.",
+      image: "/images/Graphics_amazon-voucher.svg"
+    },
+    {
+      title: "A goodie pack with exclusive Ballerina-branded swag.",
+      image: "/images/Graphics_goodie-pack.svg"
+    },
+    {
+      title: "Free vouchers for WSO2 Practitioner and Developer certifications.",
+      image: "/images/Graphics_certification-vouchers.svg"
+    },
+    {
+      title: "US$1,000 worth of credits for WSO2 cloud products — Choreo, Asgardeo, Devant, and Bijira.",
+      image: "/images/Graphics_wso2-credits.svg"
+    }
+  ];
 
   return (
     <Col sm={12}>
@@ -49,6 +68,36 @@ export default function Rewards(props) {
         </Row>
 
         <Row>
+          <Col xs={12} className={styles.boxCol}>
+            <div className={styles.cardWrapper}>
+              <div>
+                <div className={styles.cardDescription}>
+                  <div className={styles.content}>
+                    <p className={styles.msg}>The contributors who make the most significant contributions to Ballerina during Hacktoberfest will be rewarded with the following prizes:</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+
+        <Row xs={1} md={4} className="g-4">
+      {rewards.map((reward, idx) => (
+        <Col key={idx}>
+          <Card className={styles.rewardCard}>
+            <Card.Img variant="top" src={reward.image} />
+            <Card.Body>
+              {/* <Card.Title>Card title</Card.Title> */}
+              <Card.Text>
+                {reward.title}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+
+        {/* <Row>
 
           <Col xs={12} md={6} lg={8} className={styles.boxCol}>
             <div className={styles.cardWrapper}>
@@ -72,7 +121,7 @@ export default function Rewards(props) {
             <img src="/images/ballerina-swag.png" alt="swags" style={{ width: "75%" }} />
 
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Col>
   );

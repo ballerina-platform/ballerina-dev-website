@@ -98,7 +98,7 @@ export default function Rules(props) {
         </Row>
 
         <Row>
-          <p className={styles.content}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/Hacktoberfest_2024-Terms_and_Conditions.pdf">terms & conditions</a>.</p>
+          <p className={styles.content}>By participating in this competition, you agree to our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/Hacktoberfest_2025-Terms_and_Conditions.pdf">terms & conditions</a>.</p>
         </Row>
       </Container>
     </Col>

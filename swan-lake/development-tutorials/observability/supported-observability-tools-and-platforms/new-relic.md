@@ -55,7 +55,27 @@ key1 = "<VALUE_1>"
 key2 = "<VALUE_2>"
 ```
 
+Users can also configure multiple API keys for different New Relic user accounts as given below.
+
+```toml
+[ballerinax.newrelic]
+apiKey=["<NEW_RELIC_LICENSE_KEY_1>", "<NEW_RELIC_LICENSE_KEY_2>"]
+```
+
 >**Tip:** User can configure the environment variable `BALLERINA_NEW_RELIC_API_KEY` instead of apiKey in `Config.toml`. If both are configured, apiKey in `Config.toml` will be overwritten by the environment variable value.
+> Environment variable can be configured for either a single user or multiple users.
+> 
+> For a single user account:
+> - Linux/Unix: `export BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY>"`
+> - Windows: `set BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY>"`
+>
+> For multiple user accounts:
+> - Linux/Unix: `export BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY_1>,<NEW_RELIC_LICENSE_KEY_2>"`
+> - Windows: `set BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY_1>,<NEW_RELIC_LICENSE_KEY_2>"`
+> 
+> **Note:** When specifying multiple API keys in the environment variable, separate each key with a comma (`,`) and do not include spaces between the keys. Any leading or trailing whitespace around each key will be trimmed automatically. For example:
+> - `export BALLERINA_NEW_RELIC_API_KEY="key1,key2,key3"`
+> - `export BALLERINA_NEW_RELIC_API_KEY="key1, key2 , key3"` (spaces will be trimmed)
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 

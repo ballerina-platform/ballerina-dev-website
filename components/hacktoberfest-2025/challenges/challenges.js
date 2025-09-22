@@ -50,7 +50,7 @@ export default function Intro(props) {
 
           <Row>
 
-            <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
                   <h3>Code contributions</h3>
@@ -82,7 +82,7 @@ export default function Intro(props) {
               </div>
             </Col>
 
-            <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+            <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
                   <h3>No/Low Code contributions</h3>
@@ -109,7 +109,7 @@ export default function Intro(props) {
               </div>
             </Col>
 
-            <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
+            {/* <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
               <div className={styles.challengeType}>
                 <div>
                   <h3>Connector projects</h3>
@@ -142,9 +142,9 @@ export default function Intro(props) {
                   <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
                 </div>
               </div>
-            </Col>
+            </Col> */}
 
-            <Col xs={12} sm={12} md={12} lg={3} className={`sectionTitle ${styles.boxCol}`}>
+            <Col xs={12} sm={12} md={12} lg={4} className={`sectionTitle ${styles.boxCol}`}>
 
               <Row xs={1} md={1} className={`g-4 ${styles.btnCol}`}>
 

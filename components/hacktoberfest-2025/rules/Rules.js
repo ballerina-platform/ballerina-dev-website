@@ -51,7 +51,7 @@ export default function Rules(props) {
           <Col xs={12} md={6}>
             <Card className={`${styles.ruleCard} ${styles.glass} ${styles.tMist} w-100 h-100 d-flex flex-column`}>
               <Card.Body className="d-flex flex-column">
-                <Card.Title className={styles.cardTitle}><FaCode style={{ fontSize: "44px", marginRight: "20px" }} />For Code and connector contributions</Card.Title>
+                <Card.Title className={styles.cardTitle}><FaCode style={{ fontSize: "44px", marginRight: "20px" }} />For Code contributions</Card.Title>
                 <Card.Text>
                   <ul className={styles.customUL}>
                     <li className={styles.customLi}><b>Explore and pick issues:</b> Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/376">project board</a> and select an issue to work on.</li>

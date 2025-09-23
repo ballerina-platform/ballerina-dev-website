@@ -1,16 +1,16 @@
  # Specification: Ballerina SQL Library
 
-_Authors_: @daneshk @niveathika @ThisaruGuruge \
-_Reviewers_: @daneshk \
-_Created_: 2022/01/13 \
-_Updated_: 2025/09/16 \
-_Edition_: Swan Lake
+_Owners_: @daneshk @niveathika  
+_Reviewers_: @daneshk  
+_Created_: 2022/01/13   
+_Updated_: 2023/03/07  
+_Edition_: Swan Lake  
 
 ## Introduction
 
-This is the specification for the SQL standard library of [Ballerina language](https://ballerina.io/), which provides the generic interface and functionality to interact with a SQL database.
+This is the specification for the SQL standard library of [Ballerina language](https://ballerina.io/), which provides the generic interface and functionality to interact with a SQL database.  
 
-The SQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
+The SQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 
 If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
@@ -18,30 +18,30 @@ The conforming implementation of the specification is released and included in t
 
 ## Contents
 
-1. [Overview](#1-overview)
-2. [Client](#2-client)
-   2.1. [Handle connection pools](#21-handle-connection-pools)
+1. [Overview](#1-overview)  
+2. [Client](#2-client)  
+   2.1. [Handle connection pools](#21-handle-connection-pools)  
    2.2. [Closing the Client](#22-close-the-client)
-3. [Queries and Values](#3-queries-and-values)
-   3.1. [ParameterizedQuery and Values](#31-parameterizedquery-and-values)
-   3.2. [ParameterizedCallQuery and Parameters](#32-parameterizedcallquery-and-parameters)
-   3.3. [Query concatenation](#33-query-concatenation)
-4. [Database operations](#4-database-operations)
-   4.1. [Query](#41-query)
-   4.2. [Query row](#42-query-row)
-   4.3. [Execute](#43-execute)
-   4.4. [Batch execute](#44-batch-execute)
-   4.5. [Call](#45-call)
-5. [Metadata operations](#5-metadata-operations)
-   5.1. [Schema client](#51-schema-client)
-   5.2. [Metadata types](#52-metadata-types)
-   5.3. [Metadata methods](#53-metadata-methods)
+3. [Queries and Values](#3-queries-and-values)  
+   3.1. [ParameterizedQuery and Values](#31-parameterizedquery-and-values)  
+   3.2. [ParameterizedCallQuery and Parameters](#32-parameterizedcallquery-and-parameters)  
+   3.3. [Query concatenation](#33-query-concatenation)  
+4. [Database operations](#4-database-operations)  
+   4.1. [Query](#41-query)  
+   4.2. [Query row](#42-query-row)  
+   4.3. [Execute](#43-execute)  
+   4.4. [Batch execute](#44-batch-execute)  
+   4.5. [Call](#45-call)  
+5. [Metadata operations](#5-metadata-operations)  
+   5.1. [Schema client](#51-schema-client)  
+   5.2. [Metadata types](#52-metadata-types)  
+   5.3. [Metadata methods](#53-metadata-methods)  
 6. [Errors](#6-errors)
 
 # 1. Overview
 
 This specification elaborates on the generic `Client` interface used in ballerina SQL connectors
-to interface with a relational database such as MySQL, MSSQL, Postgresql and OracleDB.
+to interface with a relational database such as MySQL, MSSQL, Postgresql and OracleDB. 
 
 `Client` supports five database operations as follows,
 1. Executes the query, which may return multiple results.
@@ -50,213 +50,39 @@ to interface with a relational database such as MySQL, MSSQL, Postgresql and Ora
 4. Executes the SQL query with multiple sets of parameters in a batch. Only the metadata of the execution is returned.
 5. Executes a SQL query, which calls a stored procedure. This can either return results or nil.
 
-All the above operations make use of `ParameterizedQuery` object, backtick surrounded string template to pass
-SQL statements to the database. `ParameterizedQuery` supports passing of Ballerina basic types or Typed SQL Values such
-as `CharValue`, `BigIntValue`, etc. to indicate parameter types in SQL statements.
+All the above operations make use of `ParameterizedQuery` object, backtick surrounded string template to pass 
+SQL statements to the database. `ParameterizedQuery` supports passing of Ballerina basic types or Typed SQL Values such 
+as `CharValue`, `BigIntValue`, etc. to indicate parameter types in SQL statements. 
 
 # 2. Client
 
-Each client represents a pool of connections to the database. The pool of connections is maintained throughout the
-lifetime of the client. The SQL library uses [HikariCP](https://github.com/brettwooldridge/HikariCP) as the underlying
-connection pool implementation, providing high-performance and reliable database connection pooling.
+Each client represents a pool of connections to the database. The pool of connections is maintained throughout the 
+lifetime of the client.
 
 ## 2.1. Handle connection pools
 
 **Configuration available for tweaking the connection pool properties:**
 
-All connection pool configurations can be set through configurable variables or through the `ConnectionPool` record.
-The SQL library exposes most of the commonly used HikariCP configurations to provide fine-grained control over
-connection pool behavior, performance tuning, and recovery from pool exhaustion.
-
    ```ballerina
+   # The properties, which are used to configure a DB connection pool.
+   # Default values of the fields can be set through the configuration API.
+   #
+   # + maxOpenConnections - The maximum number of open connections that the pool is allowed to have.
+   #                        Includes both idle and in-use connections. The default value is 15. This can be changed through
+   #                        the configuration API with the `ballerina.sql.maxOpenConnections` key
+   # + maxConnectionLifeTime - The maximum lifetime (in seconds) of a connection in the pool. The default value is 1800
+   #                           seconds (30 minutes). This can be changed through the configuration API with the
+   #                           `ballerina.sql.maxConnectionLifeTime` key. A value of 0 indicates an unlimited maximum
+   #                           lifetime (infinite lifetime)
+   # + minIdleConnections - The minimum number of idle connections that the pool tries to maintain. The default
+   #                        value is the same as `maxOpenConnections` and it can be changed through the configuration
+   #                        API with the `ballerina.sql.minIdleConnections` key
    public type ConnectionPool record {|
-       # The maximum number of open connections that the pool is allowed to have. Includes both idle and in-use
-       # connections. The default value is 15. This can be changed through the configuration API with the
-       # `ballerina.sql.maxOpenConnections` key
        int maxOpenConnections = maxOpenConnections;
-       # The maximum lifetime (in seconds) of a connection in the pool. The default value is 1800 seconds
-       # (30 minutes). A value of 0 indicates an unlimited maximum lifetime (infinite lifetime). The minimum
-       # allowed value is 30 seconds. This can be changed through the configuration API with the
-       # `ballerina.sql.maxConnectionLifeTime` key.
        decimal maxConnectionLifeTime = maxConnectionLifeTime;
-       # The minimum number of idle connections that the pool tries to maintain. The default value is the same as
-       # `maxOpenConnections` and it can be changed through the configuration API with the
-       # `ballerina.sql.minIdleConnections` key
        int minIdleConnections = minIdleConnections;
-       # Maximum time (in seconds) to wait for a connection from the pool before failing. The default value is
-       # 30 seconds. This can be changed through the configuration API with the `ballerina.sql.connectionTimeout` key
-       decimal connectionTimeout = connectionTimeout;
-       # Maximum time (in seconds) an idle connection is kept before retirement. The default value is 600 seconds
-       # (10 minutes). This can be changed through the configuration API with the `ballerina.sql.idleTimeout` key
-       decimal idleTimeout = idleTimeout;
-       # Maximum time (in seconds) allowed for a connection validation. The default value is 5 seconds. This
-       # can be changed through the configuration API with the `ballerina.sql.validationTimeout` key
-       decimal validationTimeout = validationTimeout;
-       # Threshold (in seconds) to flag a potential connection leak (use `0` to disable leak detection). The default
-       # value is 0 seconds. This can be changed through the configuration API with the
-       # `ballerina.sql.leakDetectionThreshold` key
-       decimal leakDetectionThreshold = leakDetectionThreshold;
-       # Interval (in seconds) to periodically keep idle connections alive (use `0` to disable keep alive). The
-       # default value is 0 seconds. This can be changed through the configuration API with the
-       # `ballerina.sql.keepAliveTime` key
-       decimal keepAliveTime = keepAliveTime;
-       # Pool name for logs/metrics. If unset, an internal name is used. The default value is nil. This can be
-       # changed through the configuration API with the `ballerina.sql.poolName` key
-       string? poolName = poolName;
-       # Controls pool boot behavior: fail fast vs. lazy init. Use negative value to disable failure timeout. The
-       # default value is 1 second. This can be changed through the configuration API with the
-       # `ballerina.sql.initializationFailTimeout` key
-       decimal initializationFailTimeout = initializationFailTimeout;
-       # Default transaction isolation for connections. If unset, driver default is used. Allowed values typically:
-       # `TRANSACTION_READ_UNCOMMITTED`, `TRANSACTION_READ_COMMITTED`, `TRANSACTION_REPEATABLE_READ`,
-       # `TRANSACTION_SERIALIZABLE`.
-       # This can be changed through the configuration API with the `ballerina.sql.transactionIsolation` key
-       TransactionIsolation? transactionIsolation = transactionIsolation;
-       # SQL query to validate a connection. Leave unset to use driver-native validation. The default value is
-       # nil. This can be changed through the configuration API with the `ballerina.sql.connectionTestQuery` key
-       string? connectionTestQuery = connectionTestQuery;
-       # SQL executed when a new connection is created. Useful for session-level settings. The default value is
-       # nil. This can be changed through the configuration API with the `ballerina.sql.connectionInitSql` key
-       string|string[]? connectionInitSql = connectionInitSql;
-       # Marks connections as read-only by default. Use with care when apps issue writes. The default value is
-       # false. This can be changed through the configuration API with the `ballerina.sql.readOnly` key
-       boolean readOnly = readOnly;
-       # Allows suspending the pool for maintenance. Rarely needed; keep disabled. The default value is false.
-       # This can be changed through the configuration API with the `ballerina.sql.allowPoolSuspension` key
-       boolean allowPoolSuspension = allowPoolSuspension;
-       # Isolates pool's internal queries from application transactions. The default value is false. This can
-       # be changed through the configuration API with the `ballerina.sql.isolateInternalQueries` key
-       boolean isolateInternalQueries = isolateInternalQueries;
    |};
-
-   # Represents the transaction isolation level.
-   public enum TransactionIsolation {
-       # Read committed isolation level
-       TRANSACTION_READ_COMMITTED,
-       # Read uncommitted isolation level
-       TRANSACTION_READ_UNCOMMITTED,
-       # Repeatable read isolation level
-       TRANSACTION_REPEATABLE_READ,
-       # Serializable isolation level
-       TRANSACTION_SERIALIZABLE
-   }
    ```
-
-### Connection Pool Configuration Examples
-
-With the enhanced configuration options, you can now fine-tune the connection pool for different scenarios:
-
-**High-traffic application with connection leak detection:**
-```ballerina
-sql:ConnectionPool connPool = {
-    maxOpenConnections: 50,
-    connectionTimeout: 10.0,
-    leakDetectionThreshold: 60.0,  // Log potential leaks after 1 minute
-    keepAliveTime: 30.0           // Keep connections alive every 30 seconds
-};
-```
-
-**Read-only reporting application:**
-```ballerina
-sql:ConnectionPool connPool = {
-    maxOpenConnections: 10,
-    readOnly: true,
-    transactionIsolation: TRANSACTION_READ_COMMITTED,
-    connectionTestQuery: "SELECT 1"
-};
-```
-
-**Development environment with custom initialization:**
-```ballerina
-sql:ConnectionPool connPool = {
-    maxOpenConnections: 5,
-    poolName: "DevPool",
-    connectionInitSql: ["SET session sql_mode = 'STRICT_TRANS_TABLES'", "SET time_zone = '+00:00'"]
-};
-```
-
-### Connection Pool Configurable Variables
-
-The SQL library provides configurable variables for all connection pool properties, allowing you to set default values
-globally across your application through the configuration API. These configurables use the `ballerina.sql.*` key format.
-
-```ballerina
-# The maximum number of open connections that the pool is allowed to have.
-public configurable int maxOpenConnections = 15;
-
-# The maximum lifetime (in seconds) of a connection in the pool.
-public configurable decimal maxConnectionLifeTime = 1800.0;
-
-# The minimum number of idle connections that the pool tries to maintain.
-public configurable int minIdleConnections = 15;
-
-# Maximum time (in seconds) to wait for a connection from the pool before failing.
-public configurable decimal connectionTimeout = 30.0;
-
-# Maximum time (in seconds) an idle connection is kept before retirement.
-public configurable decimal idleTimeout = 600.0;
-
-# Maximum time (in seconds) allowed for a connection validation.
-public configurable decimal validationTimeout = 5.0;
-
-# Threshold (in seconds) to flag a potential connection leak (use `0` to disable leak detection).
-public configurable decimal leakDetectionThreshold = 0.0;
-
-# Interval (in seconds) to periodically keep idle connections alive (use `0` to disable keep alive).
-public configurable decimal keepAliveTime = 0.0;
-
-# Pool name for logs/metrics. If unset, an internal name is used.
-public configurable string? poolName = ();
-
-# Controls pool boot behavior: fail fast vs. lazy init. Use negative value to disable failure timeout.
-public configurable decimal initializationFailTimeout = 1.0;
-
-# Default transaction isolation for connections. If unset, driver default is used.
-public configurable TransactionIsolation? transactionIsolation = ();
-
-# SQL query to validate a connection. Leave unset to use driver-native validation.
-public configurable string? connectionTestQuery = ();
-
-# SQL executed when a new connection is created. Useful for session-level settings.
-public configurable string|string[]? connectionInitSql = ();
-
-# Marks connections as read-only by default. Use with care when apps issue writes.
-public configurable boolean readOnly = false;
-
-# Allows suspending the pool for maintenance. Rarely needed; keep disabled.
-public configurable boolean allowPoolSuspension = false;
-
-# Isolates pool's internal queries from application transactions.
-public configurable boolean isolateInternalQueries = false;
-```
-
-These configurables can be set via:
-
-**Config.toml file:**
-```toml
-[ballerina.sql]
-maxOpenConnections = 25
-connectionTimeout = 20.0
-idleTimeout = 300.0
-leakDetectionThreshold = 60.0
-poolName = "MyAppPool"
-transactionIsolation = "TRANSACTION_READ_COMMITTED"
-```
-
-**Environment variables:**
-```bash
-export BALLERINA_SQL_MAX_OPEN_CONNECTIONS=25
-export BALLERINA_SQL_CONNECTION_TIMEOUT=20.0
-export BALLERINA_SQL_LEAK_DETECTION_THRESHOLD=60.0
-```
-
-**Command line arguments:**
-```bash
-bal run -- -Cballerina.sql.maxOpenConnections=25 -Cballerina.sql.connectionTimeout=20.0
-```
-
-When both configurable variables and `ConnectionPool` record fields are specified, the record fields take precedence
-over the global configurables for that specific client instance.
 
 There are three possible scenarios for connection pool handling,
 1. Global, shareable, default connection pool
@@ -272,32 +98,23 @@ There are three possible scenarios for connection pool handling,
 2. Client-owned, un-sharable connection pool
 
    If the `connectionPool` field is defined inline when creating the database client with the `sql:ConnectionPool` type,
-   an un-sharable connection pool will be created. The JDBC module sample below shows how the client-owned
+   an un-sharable connection pool will be created. The JDBC module sample below shows how the global
    connection pool is used.
 
     ```ballerina
-    jdbc:Client|sql:Error dbClient = new (url = "jdbc:mysql://localhost:3306/testdb",
-                                          connectionPool = {
-                                              maxOpenConnections: 5,
-                                              connectionTimeout: 30.0,
-                                              idleTimeout: 300.0
-                                          });
+    jdbc:Client|sql:Error dbClient =  new (url = "jdbc:mysql://localhost:3306/testdb",
+                                                connectionPool = { maxOpenConnections: 5 });
     ```
 
 3. Local, shareable connection pool
 
    If a record of the `sql:ConnectionPool` type is created and reused in the configuration of multiple clients,
    for each set of clients that connects to the same database instance with the same set of properties, a shared
-   connection pool will be created. The JDBC module sample below shows how the local shareable connection pool is used.
+   connection pool will be created. The JDBC module sample below shows how the global connection pool is used.
 
     ```ballerina
-    sql:ConnectionPool connPool = {
-        maxOpenConnections: 5,
-        connectionTimeout: 30.0,
-        validationTimeout: 5.0,
-        poolName: "SharedPool"
-    };
-
+    sql:ConnectionPool connPool = { maxOpenConnections: 5 };
+    
     jdbc:Client|sql:Error dbClient1 = new (url = "jdbc:mysql://localhost:3306/testdb", connectionPool = connPool);
     jdbc:Client|sql:Error dbClient2 = new (url = "jdbc:mysql://localhost:3306/testdb", connectionPool = connPool);
     jdbc:Client|sql:Error dbClient3 = new (url = "jdbc:mysql://localhost:3306/testdb", connectionPool = connPool);
@@ -319,7 +136,7 @@ operation. This will close the corresponding connection pool if it is not shared
 
 ## 3.1. `ParameterizedQuery` and values
 
-The `sql:ParameterizedQuery` is used to construct the SQL query to be executed by the client. It is backtick string
+The `sql:ParameterizedQuery` is used to construct the SQL query to be executed by the client. It is backtick string 
 template which allows dynamic values for query parameters.
 
 *Query with constant values*
@@ -371,17 +188,17 @@ List of typed values:
 2. NVarcharValue
 3. CharValue
 4. NCharValue
-5. TextValue
+5. TextValue 
 6. ClobValue
 7. NClobValue
 8. SmallIntValue
 9. IntegerValue
 10. BigIntValue
-11. NumericValue
+11. NumericValue 
 12. DecimalValue
 13. RealValue
 14. FloatValue
-15. DoubleValue
+15. DoubleValue 
 16. BitValue
 17. BooleanValue
 18. BinaryValue
@@ -390,15 +207,15 @@ List of typed values:
 21. DateValue
 22. TimeValue
 23. DateTimeValue
-24. TimestampValue
-25. RefValue
-26. StructValue
+24. TimestampValue 
+25. RefValue 
+26. StructValue 
 27. RowValue
 
 ## 3.2. `ParameterizedCallQuery` and parameters
 
 The `sql:ParameterizedCallQuery` is used to construct the SQL CALL Statement to be executed by the client. It is backtick string
-template which allows dynamic values for query parameters. In addition to Values supported by `sql:ParameterizedQuery`,
+template which allows dynamic values for query parameters. In addition to Values supported by `sql:ParameterizedQuery`, 
 `sql:ParameterizedCallQuery` supports following SQL Parameters,
 
 1. InOutParameter
@@ -416,9 +233,9 @@ These types can be used to retrieve values from SQL stored procedures using the 
 
    ```ballerina
    InOutParameter parameter = new ("varchar value");
-
+   
    // Execute the DB call method
-
+   
    string procedureParam = parameter.get();
    ```
    Type of the returned value is inferred from LHS of the expression.
@@ -435,16 +252,16 @@ In addition to the above parameters, it has `CursorOutParameter` to retrieve the
 
    ```ballerina
    CursorOutParameter cursor = new;
-
+   
    // Execute the DB call method
-
+   
    stream<record{}, sql:Error?> resultStream = cursor.get();
    ```
 > **_Note:_** In the case of a stored procedure query that returns a result set along with the mentioned parameters, the `get()` method of these parameters should only be invoked after consuming the result set. Otherwise, consuming the result set fails with a 'Error when iterating the SQL result. The result set is closed.' error.
 
 ## 3.3. Query concatenation
 
-`sql:ParameterizedQuery` can be concatenated using util methods such as `sql:queryConcat()` and
+`sql:ParameterizedQuery` can be concatenated using util methods such as `sql:queryConcat()` and 
 `sql:arrayFlattenQuery()` which makes it easier to create a dynamic/constant complex query.
 
 The `sql:queryConcat()` is used to create a parameterized query by concatenating a set of parameterized queries.
@@ -462,16 +279,16 @@ flattened with a comma separator to add it in the query.
 
 ```ballerina
 int[] ids = [1, 2, 3];
-sql:ParameterizedQuery query = `SELECT count(*) as total FROM DataTable
+sql:ParameterizedQuery query = `SELECT count(*) as total FROM DataTable 
                                 WHERE row_id in (${ids[0]}, ${ids[1]}, ${ids[2]})`;
 ```
 
-The util function `sql:arrayFlattenQuery()` can be used to make the array flatten easier. It makes the inclusion of
+The util function `sql:arrayFlattenQuery()` can be used to make the array flatten easier. It makes the inclusion of 
 varying array elements into the query easier by flattening the array to return a parameterized query.
 
 ```ballerina
 int[] ids = [1, 2];
-sql:ParameterizedQuery sqlQuery = sql:queryConcat(`SELECT * FROM DataTable WHERE id IN (`,
+sql:ParameterizedQuery sqlQuery = sql:queryConcat(`SELECT * FROM DataTable WHERE id IN (`, 
                                           sql:arrayFlattenQuery(ids), `)`);
 ```
 
@@ -489,46 +306,46 @@ The client supports five remote methods, each for one Database operation
 # + sqlQuery - The SQL query
 # + rowType - The `typedesc` of the record to which the result needs to be returned
 # + return - Stream of records in the `rowType` type
-remote isolated function query(ParameterizedQuery sqlQuery, typedesc<record {}> rowType = <>)
+remote isolated function query(ParameterizedQuery sqlQuery, typedesc<record {}> rowType = <>) 
                         returns stream <rowType, Error?>;
 ```
 
 Here the returned stream can consist of following types of records,
-1. Open record
+1. Open record  
    The property name in the open record type will be the same as how the column is defined in the database.
    ```ballerina
    sql:ParameterizedQuery query = `SELECT * FROM students WHERE id < ${id} AND age > ${age}`;
    stream<record {}, sql:Error?> resultStream = dbClient->query(query);
    ```
-
-2. Typed record
+   
+2. Typed record  
    A ballerina record type is created to represent the returned result set. the `SELECT` query is executed
    via the `query` remote method of the client. Once the query is executed, each data record can be retrieved by looping
    the result set. The `stream` returned by the select operation holds a pointer to the actual data in the database, and it
    loads data from the table only when it is accessed. This stream can be iterated only once.
 
-   This record can be defined as an open or a closed record according to the requirement. If an open record is defined,
-   the returned stream type will include both defined fields in the record and additional database columns fetched by
-   the SQL query that are not defined in the record. Additional column names added to the returned record as in the
-   SQL query. If the record is defined as a close record, only defined fields in the record are returned or gives
+   This record can be defined as an open or a closed record according to the requirement. If an open record is defined, 
+   the returned stream type will include both defined fields in the record and additional database columns fetched by 
+   the SQL query that are not defined in the record. Additional column names added to the returned record as in the 
+   SQL query. If the record is defined as a close record, only defined fields in the record are returned or gives 
    an error when additional columns present in the SQL query.
 
    Note the mapping of the database column to the returned record's property is case-insensitive if it is defined in the
    record(i.e., the `ID` column in the result can be mapped to the `id` property in the record).
-
+   
    ```ballerina
    type Student record {
        int id;
        int age;
        string name;
    };
-
+   
    int id = 10;
    int age = 12;
    sql:ParameterizedQuery query = `SELECT * FROM students WHERE id < ${id} AND age > ${age}`;
    stream<Student, sql:Error?> resultStream = dbClient->query(query);
    ```
-
+   
    `sql:Column` annotation can be used to map database columns to Typed record fields of different name. This annotation should be attached to record fields.
    ```ballerina
    type Student record {
@@ -571,7 +388,7 @@ Here the returned stream can consist of following types of records,
    ```
 
 The returned stream needs to be closed properly to release resources. The stream is automatically closed if either it
-is iterated fully or consists of an error. If result is accessed one by one using `next()` method, it should be closed
+is iterated fully or consists of an error. If result is accessed one by one using `next()` method, it should be closed 
 after the required results are accessed.
 ```ballerina
 # Releases the associated resources such as the database connection, results, etc.
@@ -603,7 +420,7 @@ remote isolated function queryRow(ParameterizedQuery sqlQuery, typedesc<anydata>
 The provided return type(inferred from LHS) can be of 2 types,
 1. Ballerina record
    Returns only the first row retrieved by the query as a record.
-
+   
    ```ballerina
    int id = 10;
    sql:ParameterizedQuery query = `SELECT * FROM students WHERE id = ${id}`;
@@ -611,7 +428,7 @@ The provided return type(inferred from LHS) can be of 2 types,
    ```
 2. Ballerina primitive type
    Return the value of the first column of the first row retrieved by the query.
-
+   
    ```ballerina
    int age = 12;
    sql:ParameterizedQuery query = `SELECT COUNT(*) FROM students WHERE age < ${age}`;
@@ -635,13 +452,13 @@ The metadata is returned as `sql:ExecutionResult` record,
 ```ballerina
 # Metadata of the query execution.
 #
-# + affectedRowCount - Number of rows affected by the execution of the query. It may be one of the following,
-#                      (1) A number greater than or equal to zero, the count of affected rows after the successful
-#                          execution of the query
-#                      (2) A value of the `SUCCESS_NO_INFO`, the count of affected rows is unknown after the successful
-#                          execution of the query
+# + affectedRowCount - Number of rows affected by the execution of the query. It may be one of the following,  
+#                      (1) A number greater than or equal to zero, the count of affected rows after the successful 
+#                          execution of the query  
+#                      (2) A value of the `SUCCESS_NO_INFO`, the count of affected rows is unknown after the successful 
+#                          execution of the query  
 #                      (3) A value of the `EXECUTION_FAILED`, the query execution failed
-# + lastInsertId - The ID generated by the database in response to a query execution. This can be `()` in case
+# + lastInsertId - The ID generated by the database in response to a query execution. This can be `()` in case 
 #                  the database does not support this feature
 public type ExecutionResult record {
     int? affectedRowCount;
@@ -718,7 +535,7 @@ public class ProcedureCallResult {
 
     public isolated function init(CustomResultIterator? customResultIterator = ());
 
-    # Updates `executionResult` or `queryResult` field with the succeeding result in the result list.
+    # Updates `executionResult` or `queryResult` field with the succeeding result in the result list. 
     # This will also close the current result when called.
     #
     # + return - True if the next result is `queryResult`
@@ -740,7 +557,7 @@ This sample demonstrates how to execute a stored procedure with a single `INSERT
 int uid = 10;
 sql:IntegerOutParameter insertId = new;
 
-sql:ProcedureCallResult result =
+sql:ProcedureCallResult result = 
                          check dbClient->call(`call InsertPerson(${uid}, ${insertId})`);
 stream<record{}, sql:Error?>? resultStr = result.queryResult;
 if resultStr is stream<record{}, sql:Error?> {
@@ -751,7 +568,7 @@ if resultStr is stream<record{}, sql:Error?> {
 }
 check result.close();
 ```
-The close operation needs to be explicitly invoked on the `sql:ProcedureCallResult` to release the connection resources
+The close operation needs to be explicitly invoked on the `sql:ProcedureCallResult` to release the connection resources 
 and avoid a connection leak as shown above.
 
 # 5. Metadata operations
@@ -811,10 +628,10 @@ The `TableType` type is an enum, which can take one of two values:
 ```ballerina
 # Represents a column in a table.
 #
-# + name - The name of the column
+# + name - The name of the column  
 # + 'type - The SQL data-type associated with the column
-# + defaultValue - The default value of the column
-# + nullable - Whether the column is nullable
+# + defaultValue - The default value of the column  
+# + nullable - Whether the column is nullable  
 # + referentialConstraints - Referential constraints (foreign key relationships) associated with the column
 # + checkConstraints - Check constraints associated with the column
 public type ColumnDefinition record {
@@ -833,7 +650,7 @@ want to retrieve this information.
 ### Referential constraint
 ```ballerina
 # Represents a referential constraint (foriegn key constraint).
-#
+# 
 # + name - The name of the constraint
 # + tableName - The name of the table which contains the referenced column
 # + columnName - The name of the referenced column
@@ -844,7 +661,7 @@ public type ReferentialConstraint record {
     string tableName;
     string columnName;
     ReferentialRule updateRule;
-    ReferentialRule deleteRule;
+    ReferentialRule deleteRule; 
 };
 ```
 
@@ -858,7 +675,7 @@ The `ReferentialRule` type is an enum with four possible values:
 ### Check constraint
 ```ballerina
 # Represents a check constraint.
-#
+# 
 # + name - The name of the constraint
 # + clause - The actual text of the SQL definition statement
 public type CheckConstraint record {
@@ -870,7 +687,7 @@ public type CheckConstraint record {
 ### Routine definition
 ```ballerina
 # Represents a routine.
-#
+# 
 # + name - The name of the routine
 # + 'type - The type of the routine (procedure or function)
 # + returnType - If the routine returns a value, the return data-type. Else ()
@@ -890,7 +707,7 @@ The `RoutineType` type is an enum which can take one of two values
 ### Parameter definition
 ```ballerina
 # Represents a routine parameter.
-#
+# 
 # + mode - The mode of the parameter (IN, OUT, INOUT)
 # + name - The name of the parameter
 # + type - The data-type of the parameter
@@ -950,7 +767,7 @@ This would fetch all relevant information regarding the provided routine (includ
 `sql` package consists of following Errors,
 ```bash
 .
-└── Error                            # Generic error type for the `sql` module.
+└── Error                            # Generic error type for the `sql` module. 
     ├── DatabaseError                # Error caused by an issue related to database accessibility, erroneous queries, etc
     ├── BatchExecuteError            # Error that occurs during the execution of batch queries.
     ├── NoRowsError                  # Error when a query retrieves does not retrieve any rows when at least one row is expected.

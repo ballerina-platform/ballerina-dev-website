@@ -310,7 +310,7 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
   level = "ERROR"
   ```
 
-* Use string templates for log messages that need concatenation:
+* Use log raw templates for log messages that need concatenation:
   ```ballerina
   // Bad practice
   int delay = 15;
@@ -318,26 +318,28 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
   log:printInfo("Application started with delay " + delay.toString() + " seconds and timeout " + timeout.toString());
 
   // Good practice
-  log:printInfo(string `Application started with delay ${delay} seconds and timeout ${timeout}`);
+  log:printInfo(`Application started with delay ${delay} seconds and timeout ${timeout}`);
   ```
 
-* Use key-value pairs for structured logging:
+* Use key-value pairs for contextual logging: 
   ```ballerina
   // Good practice
   log:printInfo("Application started", Delay = delay, Timeout = timeout);
   ```
 
 * Use function pointers to improve performance:
-  ```ballerina
+  ```ballerina  
+  isolated function getDuration() returns float {  
+      log:printInfo("Calculating duration optimally");  
+      return random:createDecimal() * 100.0;  
+  }  
+
   // Bad practice - function executes even if debug log is disabled
   float duration = getDuration();
   log:printDebug("Checking the duration", duration = duration);
 
   // Good practice - function executes only if debug log is enabled
-  log:printDebug("Checking the duration", duration = isolated function() returns float {
-      log:printInfo("Calculating duration optimally");
-      return random:createDecimal() * 100.0;
-  });
+  log:printDebug("Checking the duration", duration = getDuration);  
   ```
 
 * Avoid logging sensitive information like passwords, tokens, or personal data

@@ -1823,6 +1823,6 @@ a.join:hover {
 
 .hack2025 .mdButton {
   visibility: hidden;
-  margin-left: -0;
+  margin-left: 0;
   cursor: pointer;
 }

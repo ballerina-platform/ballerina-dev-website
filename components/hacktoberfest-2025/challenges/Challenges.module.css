@@ -142,18 +142,6 @@ a.ask:hover {
   width: fill-available !important;
 }
 
-/* .discord {
-  background: #5865F2;
-  width: 100%;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 15px;
-  border: none;
-  border-radius: 0;
-} */
 
 .discord {
   --t: 88 101 242;

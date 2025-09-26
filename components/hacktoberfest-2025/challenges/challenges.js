@@ -109,40 +109,6 @@ export default function Intro(props) {
               </div>
             </Col>
 
-            {/* <Col xs={12} sm={12} md={12} lg={3} className={styles.boxCol}>
-              <div className={styles.challengeType}>
-                <div>
-                  <h3>Connector projects</h3>
-
-                  <Table hover variant="light" className={styles.customDarkTable}>
-                    <thead>
-                      <tr>
-                        <th>Type</th>
-                        <th className={styles.reward}>Credits</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Easy</td>
-                        <td className={styles.reward}>+60</td>
-                      </tr>
-                      <tr>
-                        <td>Medium</td>
-                        <td className={styles.reward}>+80</td>
-                      </tr>
-                      <tr>
-                        <td>Hard</td>
-                        <td className={styles.reward}>+100</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
-                <div>
-                  <a className={styles.issues} href="/contributions/connector-contributor-guide/" target="_blank" rel="noreferrer" title='Read the guide' style={{ marginBottom: "10px" }}>Read the guide</a>
-                  <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/5" target="_blank" rel="noreferrer" title='View projects'>View projects</a>
-                </div>
-              </div>
-            </Col> */}
 
             <Col xs={12} sm={12} md={12} lg={4} className={`sectionTitle ${styles.boxCol}`}>
 

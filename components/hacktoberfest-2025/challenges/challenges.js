@@ -49,6 +49,20 @@ export default function Intro(props) {
           </Row>
 
           <Row>
+            <Col xs={12} className={styles.boxCol}>
+              <div className={styles.cardWrapper}>
+                <div>
+                  <div className={styles.cardDescription}>
+                    <div className={styles.content}>
+                      <p className={styles.text}>We have organized several categories of open issues designed for everyone, from first-time contributors to seasoned developers. Whether you&apos;re just starting out or looking to take on more advanced challenges, there&apos;s something for you. There&apos;s no limit — you can contribute as much code as you want!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
 
             <Col xs={12} sm={12} md={12} lg={4} className={styles.boxCol}>
               <div className={styles.challengeType}>

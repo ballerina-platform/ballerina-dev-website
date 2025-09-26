@@ -35,7 +35,7 @@ export default function Layout({ children }) {
           <meta name="author" content="WSO2 LLC" />
           <meta
             name="keywords"
-            content="ballerina, hackoberfest, integration"
+            content="ballerina, hacktoberfest, integration"
           />
           <link rel="shortcut icon" href="/img/favicon.ico" />
           

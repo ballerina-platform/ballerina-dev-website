@@ -97,31 +97,6 @@ export default function Rewards(props) {
       ))}
     </Row>
 
-        {/* <Row>
-
-          <Col xs={12} md={6} lg={8} className={styles.boxCol}>
-            <div className={styles.cardWrapper}>
-              <div>
-                <div className={styles.cardDescription}>
-                  <div className={styles.content}>
-                    <p className={styles.msg}>The contributors who make the most significant contributions to Ballerina during Hacktoberfest will be rewarded with the following prizes:</p>
-                    <ul className={styles.customUL}>
-                      <li className={styles.customLi}>Redeem your points to purchase exclusive Ballerina-branded items from the <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://store.covver.io/wso2/collections/ballerina-swag-store">swag store</a></li>
-                      <li className={styles.customLi}>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
-                      <li className={styles.customLi}><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Col>
-
-          <Col xs={12} md={12} lg={4} style={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-
-            <img src="/images/ballerina-swag.png" alt="swags" style={{ width: "75%" }} />
-
-          </Col>
-        </Row> */}
       </Container>
     </Col>
   );

@@ -62,7 +62,9 @@
 }
 
 /* hack 2025 */
-/* comment 3&5 */
+/* The following .hack2025 CSS block is commented out for future use. 
+   It defines a complex background using multiple radial gradients for the 2025 Hacktoberfest theme.
+   Uncomment and adjust as needed when updating the site's design for Hacktoberfest 2025. */
 /* .hack2025 {
   background:
   radial-gradient(87% 900px at 90% 5%, #333264 -20%, transparent 60%),

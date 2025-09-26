@@ -22,9 +22,7 @@ import { Row, Col, Container, Card } from 'react-bootstrap';
 import styles from './Rewards.module.css';
 
 export default function Rewards(props) {
-
-  // const swags = ["Bag", "Bottles", "Earbuds", "Hat", "Hoodie", "Long-M", "Shirt", "Tote", "Tumbler"];
-
+  
   const rewards = [
     {
       title: "Amazon vouchers equivalent to the points you earn. Each point is equal to US$1.",

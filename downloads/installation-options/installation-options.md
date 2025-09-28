@@ -139,3 +139,10 @@ For example, for the RPM file:
 $ rpm -e ballerina-<VERSION>-swan-lake
 ```
 
+If you installed Ballerina on **macOS** via **Homebrew**, uninstall it with:
+```
+$ brew uninstall bal
+```
+
+
+

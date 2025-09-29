@@ -51,7 +51,7 @@ export function HttpSseClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-sse-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-sse-client",
                 "_blank",
               );
             }}
@@ -234,7 +234,7 @@ export function HttpSseClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="HTTP/2 server push"
-            href="/learn/by-example/http-2-0-client-server-push"
+            href="/learn/by-example/http-2-0-client-server-push/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -270,7 +270,7 @@ export function HttpSseClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Request interceptor"
-            href="/learn/by-example/http-request-interceptor"
+            href="/learn/by-example/http-request-interceptor/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

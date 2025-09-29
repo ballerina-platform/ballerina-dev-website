@@ -110,7 +110,7 @@ export function XmlToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/xml-to-record",
                 "_blank",
               );
             }}
@@ -251,7 +251,7 @@ export function XmlToRecord({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XMLNS declarations"
-            href="/learn/by-example/xmlns-declarations"
+            href="/learn/by-example/xmlns-declarations/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -287,7 +287,7 @@ export function XmlToRecord({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XML to record with projection"
-            href="/learn/by-example/xml-to-record-with-projection"
+            href="/learn/by-example/xml-to-record-with-projection/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

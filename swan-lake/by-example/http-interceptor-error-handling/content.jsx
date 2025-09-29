@@ -107,7 +107,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-interceptor-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-interceptor-error-handling",
                 "_blank",
               );
             }}
@@ -359,7 +359,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error handling"
-            href="/learn/by-example/http-error-handling"
+            href="/learn/by-example/http-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -395,7 +395,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hello world"
-            href="/learn/by-example/graphql-hello-world"
+            href="/learn/by-example/graphql-hello-world/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

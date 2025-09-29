@@ -170,7 +170,7 @@ export function PersistUpdate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-update",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/persist-update",
                 "_blank",
               );
             }}
@@ -340,7 +340,7 @@ export function PersistUpdate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-update",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/persist-update",
                 "_blank",
               );
             }}
@@ -491,7 +491,7 @@ export function PersistUpdate({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create/Create many"
-            href="/learn/by-example/persist-create"
+            href="/learn/by-example/persist-create/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -525,7 +525,7 @@ export function PersistUpdate({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Delete" href="/learn/by-example/persist-delete">
+          <Link title="Delete" href="/learn/by-example/persist-delete/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -2,6 +2,6 @@
   "title": "CORS",
   "description": "This example demonstrates the HTTP service-level and resource-level CORS configurations.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "http", "cors"],
-  "permalink": "/learn/by-example/http-cors",
+  "permalink": "/learn/by-example/http-cors/",
   "active": "http-cors"
 }

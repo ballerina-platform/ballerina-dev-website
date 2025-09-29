@@ -79,7 +79,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/task-one-time-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/task-one-time-job-execution",
                 "_blank",
               );
             }}
@@ -221,7 +221,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Schedule job recurrence by frequency"
-            href="/learn/by-example/task-frequency-job-execution"
+            href="/learn/by-example/task-frequency-job-execution/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -257,7 +257,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Manage scheduled jobs"
-            href="/learn/by-example/manage-scheduled-jobs"
+            href="/learn/by-example/manage-scheduled-jobs/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

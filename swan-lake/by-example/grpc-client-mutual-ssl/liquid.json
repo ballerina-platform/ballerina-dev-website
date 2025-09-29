@@ -10,6 +10,6 @@
     "ssl protocols",
     "ciphers"
   ],
-  "permalink": "/learn/by-example/grpc-client-mutual-ssl",
+  "permalink": "/learn/by-example/grpc-client-mutual-ssl/",
   "active": "grpc-client-mutual-ssl"
 }

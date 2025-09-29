@@ -143,7 +143,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -299,7 +299,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -453,7 +453,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -604,7 +604,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -778,7 +778,7 @@ export function GraphqlDirectives({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Documentation"
-            href="/learn/by-example/graphql-documentation"
+            href="/learn/by-example/graphql-documentation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -814,7 +814,7 @@ export function GraphqlDirectives({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hierarchical resource paths"
-            href="/learn/by-example/graphql-hierarchical-resource-paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -210,7 +210,7 @@ export function AzureFunctionsHttpTriggerWithQueue({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/azure-functions-http-trigger-with-queue",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/azure-functions-http-trigger-with-queue",
                 "_blank",
               );
             }}
@@ -460,7 +460,7 @@ export function AzureFunctionsHttpTriggerWithQueue({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Timer trigger"
-            href="/learn/by-example/azure-functions-timer-trigger"
+            href="/learn/by-example/azure-functions-timer-trigger/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -496,7 +496,7 @@ export function AzureFunctionsHttpTriggerWithQueue({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Cosmos DB trigger"
-            href="/learn/by-example/azure-functions-cosmosdb-trigger"
+            href="/learn/by-example/azure-functions-cosmosdb-trigger/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

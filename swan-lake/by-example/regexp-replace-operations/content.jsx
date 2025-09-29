@@ -53,7 +53,7 @@ export function RegexpReplaceOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/regexp-replace-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/regexp-replace-operations",
                 "_blank",
               );
             }}
@@ -224,7 +224,7 @@ export function RegexpReplaceOperations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="RegExp operations overview"
-            href="/learn/by-example/regexp-operations-overview"
+            href="/learn/by-example/regexp-operations-overview/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -260,7 +260,7 @@ export function RegexpReplaceOperations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="RegExp find operations"
-            href="/learn/by-example/regexp-find-operations"
+            href="/learn/by-example/regexp-find-operations/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

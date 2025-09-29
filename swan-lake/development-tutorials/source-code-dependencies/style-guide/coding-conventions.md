@@ -279,3 +279,69 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
     ```
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
+
+## Logging conventions
+
+* The Ballerina log module has four log levels with their priority in descending order:
+  - ERROR: For critical issues that need immediate attention
+  - WARN: For potentially harmful situations
+  - INFO: For general information about system operation
+  - DEBUG: For detailed information useful during development (By default, all logs of INFO level and above are logged)
+
+* Choose between logging and printing:
+  - Use `io:println` when displaying help/usage information for CLI applications
+  - Use logging when you need:
+    - Diagnostic information (timestamp, module name, etc.)
+    - Selective silencing through log levels
+    - Log analytics capabilities
+
+* Set proper log levels based on application requirements:
+  ```ballerina
+  // Configure different log levels for modules in Config.toml
+  [ballerina.log]
+  level = "WARN"
+
+  [[ballerina.log.modules]]
+  name = "myorg/mypackagename.foo"
+  level = "DEBUG"
+
+  [[ballerina.log.modules]]
+  name = "myorg/mypackagename.bar"
+  level = "ERROR"
+  ```
+
+* Use log raw templates for log messages that need concatenation:
+  ```ballerina
+  // Bad practice
+  int delay = 15;
+  int timeout = 30;
+  log:printInfo("Application started with delay " + delay.toString() + " seconds and timeout " + timeout.toString());
+
+  // Good practice
+  log:printInfo(`Application started with delay ${delay} seconds and timeout ${timeout}`);
+  ```
+
+* Use key-value pairs for contextual logging: 
+  ```ballerina
+  // Good practice
+  log:printInfo("Application started", Delay = delay, Timeout = timeout);
+  ```
+
+* Use function pointers to improve performance:
+  ```ballerina  
+  isolated function getDuration() returns float {  
+      log:printInfo("Calculating duration optimally");  
+      return random:createDecimal() * 100.0;  
+  }  
+
+  // Bad practice - function executes even if debug log is disabled
+  float duration = getDuration();
+  log:printDebug("Checking the duration", duration = duration);
+
+  // Good practice - function executes only if debug log is enabled
+  log:printDebug("Checking the duration", duration = getDuration);  
+  ```
+
+* Avoid logging sensitive information like passwords, tokens, or personal data
+
+<style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

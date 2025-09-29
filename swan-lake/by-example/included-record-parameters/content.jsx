@@ -59,7 +59,7 @@ export function IncludedRecordParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/included-record-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/included-record-parameters",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function IncludedRecordParameters({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Functions" href="/learn/by-example/functions">
+          <Link title="Functions" href="/learn/by-example/functions/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -233,7 +233,7 @@ export function IncludedRecordParameters({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest parameters"
-            href="/learn/by-example/rest-parameters"
+            href="/learn/by-example/rest-parameters/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

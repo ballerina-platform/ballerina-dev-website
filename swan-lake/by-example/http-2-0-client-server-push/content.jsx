@@ -84,7 +84,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-2-0-client-server-push",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-2-0-client-server-push",
                 "_blank",
               );
             }}
@@ -289,7 +289,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="HTTP/2 prior knowledge"
-            href="/learn/by-example/http-2-prior-knowledge-client"
+            href="/learn/by-example/http-2-prior-knowledge-client/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -325,7 +325,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Server-sent events"
-            href="/learn/by-example/http-sse-client"
+            href="/learn/by-example/http-sse-client/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

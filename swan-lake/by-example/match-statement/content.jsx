@@ -81,7 +81,7 @@ export function MatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/match-statement",
                 "_blank",
               );
             }}
@@ -233,7 +233,7 @@ export function MatchStatement({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="If statement" href="/learn/by-example/if-statement">
+          <Link title="If statement" href="/learn/by-example/if-statement/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +268,7 @@ export function MatchStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Match guard in match statement"
-            href="/learn/by-example/match-guard-in-match-statement"
+            href="/learn/by-example/match-guard-in-match-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

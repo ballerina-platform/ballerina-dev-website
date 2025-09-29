@@ -56,7 +56,7 @@ export function HttpDefaultResource({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-default-resource",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-default-resource",
                 "_blank",
               );
             }}
@@ -282,7 +282,7 @@ export function HttpDefaultResource({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Failover" href="/learn/by-example/http-failover">
+          <Link title="Failover" href="/learn/by-example/http-failover/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -317,7 +317,7 @@ export function HttpDefaultResource({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Request/Response object"
-            href="/learn/by-example/http-request-response"
+            href="/learn/by-example/http-request-response/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

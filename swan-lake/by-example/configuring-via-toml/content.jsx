@@ -93,7 +93,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/configuring-via-toml",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/configuring-via-toml",
                 "_blank",
               );
             }}
@@ -182,7 +182,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/configuring-via-toml",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/configuring-via-toml",
                 "_blank",
               );
             }}
@@ -324,7 +324,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
+            href="/learn/by-example/configurable-variables/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -360,7 +360,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configure via CLI arguments"
-            href="/learn/by-example/configuring-via-cli"
+            href="/learn/by-example/configuring-via-cli/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

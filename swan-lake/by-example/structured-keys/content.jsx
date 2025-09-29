@@ -64,7 +64,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/structured-keys",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/structured-keys",
                 "_blank",
               );
             }}
@@ -233,7 +233,7 @@ export function StructuredKeys({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Multiple key fields"
-            href="/learn/by-example/multiple-key-fields"
+            href="/learn/by-example/multiple-key-fields/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -269,7 +269,7 @@ export function StructuredKeys({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query expressions"
-            href="/learn/by-example/query-expressions"
+            href="/learn/by-example/query-expressions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -70,7 +70,7 @@ export function RabbitmqTransactionConsumer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rabbitmq-transaction-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/rabbitmq-transaction-consumer",
                 "_blank",
               );
             }}
@@ -257,7 +257,7 @@ export function RabbitmqTransactionConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume message with acknowledgement"
-            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
+            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -293,7 +293,7 @@ export function RabbitmqTransactionConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Constraint validation"
-            href="/learn/by-example/rabbitmq-service-constraint-validation"
+            href="/learn/by-example/rabbitmq-service-constraint-validation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

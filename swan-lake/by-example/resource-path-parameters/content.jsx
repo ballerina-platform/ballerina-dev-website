@@ -42,7 +42,7 @@ export function ResourcePathParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/resource-path-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/resource-path-parameters",
                 "_blank",
               );
             }}
@@ -245,7 +245,7 @@ export function ResourcePathParameters({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hierarchical resources"
-            href="/learn/by-example/hierarchical-resources"
+            href="/learn/by-example/hierarchical-resources/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,7 +281,7 @@ export function ResourcePathParameters({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
+            href="/learn/by-example/configurable-variables/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

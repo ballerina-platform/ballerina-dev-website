@@ -75,7 +75,7 @@ export function WebsubWebhookSample({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websub-webhook-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/websub-webhook-sample",
                 "_blank",
               );
             }}
@@ -256,7 +256,7 @@ export function WebsubWebhookSample({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/websocket-retry-client">
+          <Link title="Retry" href="/learn/by-example/websocket-retry-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -291,7 +291,7 @@ export function WebsubWebhookSample({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
+            href="/learn/by-example/dynamic-listener/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -74,7 +74,7 @@ export function TcpServiceSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/tcp-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/tcp-service-ssl-tls",
                 "_blank",
               );
             }}
@@ -245,7 +245,7 @@ export function TcpServiceSslTls({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client">
+          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +278,7 @@ export function TcpServiceSslTls({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/tcp-client-ssl-tls">
+          <Link title="SSL/TLS" href="/learn/by-example/tcp-client-ssl-tls/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

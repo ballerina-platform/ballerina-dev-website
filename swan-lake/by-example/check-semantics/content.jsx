@@ -83,7 +83,7 @@ export function CheckSemantics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/check-semantics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/check-semantics",
                 "_blank",
               );
             }}
@@ -224,7 +224,7 @@ export function CheckSemantics({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transaction statement"
-            href="/learn/by-example/transaction-statement"
+            href="/learn/by-example/transaction-statement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +258,7 @@ export function CheckSemantics({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Rollback" href="/learn/by-example/rollback">
+          <Link title="Rollback" href="/learn/by-example/rollback/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

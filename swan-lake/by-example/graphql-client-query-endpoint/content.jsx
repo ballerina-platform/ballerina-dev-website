@@ -70,7 +70,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-client-query-endpoint",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-client-query-endpoint",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query Complexity"
-            href="/learn/by-example/graphql-service-query-complexity"
+            href="/learn/by-example/graphql-service-query-complexity/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +285,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Handle partial response"
-            href="/learn/by-example/graphql-client-handle-partial-response"
+            href="/learn/by-example/graphql-client-handle-partial-response/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

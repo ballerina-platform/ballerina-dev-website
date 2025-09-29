@@ -63,7 +63,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/limit-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/limit-clause",
                 "_blank",
               );
             }}
@@ -311,7 +311,7 @@ export function LimitClause({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Let clause" href="/learn/by-example/let-clause">
+          <Link title="Let clause" href="/learn/by-example/let-clause/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -346,7 +346,7 @@ export function LimitClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Join iterable objects"
-            href="/learn/by-example/joining-iterable-objects"
+            href="/learn/by-example/joining-iterable-objects/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

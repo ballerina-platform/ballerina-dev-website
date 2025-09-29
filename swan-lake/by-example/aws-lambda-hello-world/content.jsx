@@ -151,7 +151,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/aws-lambda-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/aws-lambda-hello-world",
                 "_blank",
               );
             }}
@@ -445,7 +445,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hello world"
-            href="/learn/by-example/kubernetes-hello-world"
+            href="/learn/by-example/kubernetes-hello-world/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -481,7 +481,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Execution context"
-            href="/learn/by-example/aws-lambda-execution-context"
+            href="/learn/by-example/aws-lambda-execution-context/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

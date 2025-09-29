@@ -68,7 +68,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/iterating-over-xml-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/iterating-over-xml-with-query",
                 "_blank",
               );
             }}
@@ -316,7 +316,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Advanced conflict handling"
-            href="/learn/by-example/advanced-conflict-handling"
+            href="/learn/by-example/advanced-conflict-handling/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -352,7 +352,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Nested query expressions"
-            href="/learn/by-example/nested-query-expressions"
+            href="/learn/by-example/nested-query-expressions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

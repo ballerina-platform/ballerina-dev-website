@@ -138,7 +138,7 @@ export function BuiltInIntegerSubtypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/built-in-integer-subtypes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/built-in-integer-subtypes",
                 "_blank",
               );
             }}
@@ -278,7 +278,7 @@ export function BuiltInIntegerSubtypes({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Type inference" href="/learn/by-example/type-inference">
+          <Link title="Type inference" href="/learn/by-example/type-inference/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +313,7 @@ export function BuiltInIntegerSubtypes({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Built-in string subtype"
-            href="/learn/by-example/built-in-string-subtype"
+            href="/learn/by-example/built-in-string-subtype/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -51,7 +51,7 @@ export function FunctionClosure({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/function-closure",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/function-closure",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function FunctionClosure({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Anonymous function"
-            href="/learn/by-example/anonymous-function"
+            href="/learn/by-example/anonymous-function/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +248,7 @@ export function FunctionClosure({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Foreach statement"
-            href="/learn/by-example/foreach-statement"
+            href="/learn/by-example/foreach-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

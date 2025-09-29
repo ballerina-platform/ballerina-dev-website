@@ -61,7 +61,7 @@ export function CsvStringToAnydataArray({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/csv-string-to-anydata-array",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/csv-string-to-anydata-array",
                 "_blank",
               );
             }}
@@ -201,7 +201,7 @@ export function CsvStringToAnydataArray({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Convert CSV string to records"
-            href="/learn/by-example/csv-string-to-record-array"
+            href="/learn/by-example/csv-string-to-record-array/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -237,7 +237,7 @@ export function CsvStringToAnydataArray({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Parse CSV byte streams to records"
-            href="/learn/by-example/csv-streams-to-record-array"
+            href="/learn/by-example/csv-streams-to-record-array/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

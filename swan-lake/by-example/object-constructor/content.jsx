@@ -62,7 +62,7 @@ export function ObjectConstructor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/object-constructor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/object-constructor",
                 "_blank",
               );
             }}
@@ -222,7 +222,7 @@ export function ObjectConstructor({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Defining classes"
-            href="/learn/by-example/defining-classes"
+            href="/learn/by-example/defining-classes/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +258,7 @@ export function ObjectConstructor({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Object value from class definition"
-            href="/learn/by-example/object-value-from-class-definition"
+            href="/learn/by-example/object-value-from-class-definition/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

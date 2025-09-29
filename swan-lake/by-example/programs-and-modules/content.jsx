@@ -48,7 +48,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/programs-and-modules",
                 "_blank",
               );
             }}
@@ -186,7 +186,7 @@ export function ProgramsAndModules({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hello world service"
-            href="/learn/by-example/hello-world-service"
+            href="/learn/by-example/hello-world-service/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -220,7 +220,7 @@ export function ProgramsAndModules({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Main function" href="/learn/by-example/main-function">
+          <Link title="Main function" href="/learn/by-example/main-function/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

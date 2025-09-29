@@ -67,7 +67,7 @@ export function MultipleWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/multiple-wait",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/multiple-wait",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function MultipleWait({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Alternate wait" href="/learn/by-example/alternate-wait">
+          <Link title="Alternate wait" href="/learn/by-example/alternate-wait/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export function MultipleWait({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Named workers and futures"
-            href="/learn/by-example/named-workers-and-futures"
+            href="/learn/by-example/named-workers-and-futures/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

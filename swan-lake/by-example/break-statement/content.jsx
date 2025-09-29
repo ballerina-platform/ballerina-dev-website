@@ -59,7 +59,7 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/break-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/break-statement",
                 "_blank",
               );
             }}
@@ -238,7 +238,7 @@ export function BreakStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="While statement"
-            href="/learn/by-example/while-statement"
+            href="/learn/by-example/while-statement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export function BreakStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Continue statement"
-            href="/learn/by-example/continue-statement"
+            href="/learn/by-example/continue-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

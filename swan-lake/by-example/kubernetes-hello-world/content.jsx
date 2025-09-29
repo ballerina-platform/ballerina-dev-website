@@ -75,7 +75,7 @@ export function KubernetesHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/kubernetes-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/kubernetes-hello-world",
                 "_blank",
               );
             }}
@@ -174,7 +174,7 @@ export function KubernetesHelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/kubernetes-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/kubernetes-hello-world",
                 "_blank",
               );
             }}
@@ -792,7 +792,10 @@ export function KubernetesHelloWorld({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link
+            title="Hello world"
+            href="/learn/by-example/docker-hello-world/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -827,7 +830,7 @@ export function KubernetesHelloWorld({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hello world"
-            href="/learn/by-example/aws-lambda-hello-world"
+            href="/learn/by-example/aws-lambda-hello-world/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

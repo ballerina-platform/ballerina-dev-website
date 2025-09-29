@@ -94,7 +94,7 @@ export function MysqlBatchExecuteOperation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/mysql-batch-execute-operation",
                 "_blank",
               );
             }}
@@ -336,7 +336,7 @@ export function MysqlBatchExecuteOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="DML and DDL operations"
-            href="/learn/by-example/mysql-execute-operation"
+            href="/learn/by-example/mysql-execute-operation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -372,7 +372,7 @@ export function MysqlBatchExecuteOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Atomic transactions"
-            href="/learn/by-example/mysql-atomic-transaction"
+            href="/learn/by-example/mysql-atomic-transaction/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

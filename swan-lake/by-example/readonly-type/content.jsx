@@ -63,7 +63,7 @@ export function ReadonlyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/readonly-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/readonly-type",
                 "_blank",
               );
             }}
@@ -203,7 +203,7 @@ export function ReadonlyType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Isolated functions"
-            href="/learn/by-example/isolated-functions"
+            href="/learn/by-example/isolated-functions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -239,7 +239,7 @@ export function ReadonlyType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Readonly and isolated"
-            href="/learn/by-example/readonly-and-isolated"
+            href="/learn/by-example/readonly-and-isolated/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

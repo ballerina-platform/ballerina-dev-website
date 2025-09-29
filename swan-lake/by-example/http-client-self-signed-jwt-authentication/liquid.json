@@ -9,6 +9,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/http-client-self-signed-jwt-authentication",
+  "permalink": "/learn/by-example/http-client-self-signed-jwt-authentication/",
   "active": "http-client-self-signed-jwt-authentication"
 }

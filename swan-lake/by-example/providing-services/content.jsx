@@ -73,7 +73,7 @@ export function ProvidingServices({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/providing-services",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/providing-services",
                 "_blank",
               );
             }}
@@ -210,7 +210,7 @@ export function ProvidingServices({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume services: client objects"
-            href="/learn/by-example/consuming-services"
+            href="/learn/by-example/consuming-services/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -246,7 +246,7 @@ export function ProvidingServices({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Module lifecycle"
-            href="/learn/by-example/module-lifecycle"
+            href="/learn/by-example/module-lifecycle/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

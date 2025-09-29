@@ -54,7 +54,7 @@ export function WebsocketTimeoutClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websocket-timeout-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/websocket-timeout-client",
                 "_blank",
               );
             }}
@@ -221,7 +221,7 @@ export function WebsocketTimeoutClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="OAuth2 JWT bearer grant type"
-            href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type"
+            href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -255,7 +255,7 @@ export function WebsocketTimeoutClient({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/websocket-retry-client">
+          <Link title="Retry" href="/learn/by-example/websocket-retry-client/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

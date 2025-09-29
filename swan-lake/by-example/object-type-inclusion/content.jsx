@@ -91,7 +91,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/object-type-inclusion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/object-type-inclusion",
                 "_blank",
               );
             }}
@@ -259,7 +259,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Object types" href="/learn/by-example/object-types">
+          <Link title="Object types" href="/learn/by-example/object-types/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -294,7 +294,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Distinct object types"
-            href="/learn/by-example/distinct-object-types"
+            href="/learn/by-example/distinct-object-types/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

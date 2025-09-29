@@ -100,7 +100,7 @@ export function AlternateReceive({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/alternate-receive",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/alternate-receive",
                 "_blank",
               );
             }}
@@ -239,7 +239,7 @@ export function AlternateReceive({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Inter-worker message passing"
-            href="/learn/by-example/inter-worker-message-passing"
+            href="/learn/by-example/inter-worker-message-passing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -275,7 +275,7 @@ export function AlternateReceive({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Multiple receive"
-            href="/learn/by-example/multiple-receive"
+            href="/learn/by-example/multiple-receive/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

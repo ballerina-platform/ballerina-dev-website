@@ -1904,6 +1904,14 @@ import {
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
 import {
+  CdcService,
+  codeSnippetData as CdcServiceCodeSnippetData,
+} from "./cdc-service/content.jsx";
+import {
+  CdcAdvancedService,
+  codeSnippetData as CdcAdvancedServiceCodeSnippetData,
+} from "./cdc-advanced-service/content.jsx";
+import {
   AvroSerdes,
   codeSnippetData as AvroSerdesCodeSnippetData,
 } from "./avro-serdes/content.jsx";
@@ -1976,9 +1984,25 @@ import {
   codeSnippetData as LoggingWithContextCodeSnippetData,
 } from "./logging-with-context/content.jsx";
 import {
+  ErrorLogging,
+  codeSnippetData as ErrorLoggingCodeSnippetData,
+} from "./error-logging/content.jsx";
+import {
   LoggingConfiguration,
   codeSnippetData as LoggingConfigurationCodeSnippetData,
 } from "./logging-configuration/content.jsx";
+import {
+  ChildLoggersWithContext,
+  codeSnippetData as ChildLoggersWithContextCodeSnippetData,
+} from "./child-loggers-with-context/content.jsx";
+import {
+  LoggerFromConfig,
+  codeSnippetData as LoggerFromConfigCodeSnippetData,
+} from "./logger-from-config/content.jsx";
+import {
+  CustomLogger,
+  codeSnippetData as CustomLoggerCodeSnippetData,
+} from "./custom-logger/content.jsx";
 import {
   EdiToRecord,
   codeSnippetData as EdiToRecordCodeSnippetData,
@@ -3135,6 +3159,10 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
+  CdcService,
+  CdcServiceCodeSnippetData,
+  CdcAdvancedService,
+  CdcAdvancedServiceCodeSnippetData,
   AvroSerdes,
   AvroSerdesCodeSnippetData,
   IoBytes,
@@ -3171,8 +3199,16 @@ const BBEs = {
   LoggingCodeSnippetData,
   LoggingWithContext,
   LoggingWithContextCodeSnippetData,
+  ErrorLogging,
+  ErrorLoggingCodeSnippetData,
   LoggingConfiguration,
   LoggingConfigurationCodeSnippetData,
+  ChildLoggersWithContext,
+  ChildLoggersWithContextCodeSnippetData,
+  LoggerFromConfig,
+  LoggerFromConfigCodeSnippetData,
+  CustomLogger,
+  CustomLoggerCodeSnippetData,
   EdiToRecord,
   EdiToRecordCodeSnippetData,
   RecordToEdi,

@@ -48,7 +48,7 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/variables-and-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/variables-and-types",
                 "_blank",
               );
             }}
@@ -184,7 +184,7 @@ export function VariablesAndTypes({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Init function" href="/learn/by-example/init-function">
+          <Link title="Init function" href="/learn/by-example/init-function/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@ export function VariablesAndTypes({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Identifiers" href="/learn/by-example/identifiers">
+          <Link title="Identifiers" href="/learn/by-example/identifiers/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -61,7 +61,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/jms-service-consume-message",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/jms-service-consume-message",
                 "_blank",
               );
             }}
@@ -244,7 +244,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Search for an entry"
-            href="/learn/by-example/ldap-search-entry"
+            href="/learn/by-example/ldap-search-entry/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -280,7 +280,7 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Produce message"
-            href="/learn/by-example/jms-producer-produce-message"
+            href="/learn/by-example/jms-producer-produce-message/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -1735,6 +1735,15 @@ sublinks:
           - title: Call stored procedures
             id: 7
             url: mysql-call-stored-procedures
+      - title: Change data capture
+        id: 64
+        sublinks:
+          - title: Listen to database
+            id: 1
+            url: cdc-service
+          - title: Group events by table
+            id: 2
+            url: cdc-advanced-service
   - title: Common libraries
     id: 3
     sublinks:
@@ -1813,9 +1822,21 @@ sublinks:
           - title: Logging with context
             id: 2
             url: logging-with-context
-          - title: Configure logging
+          - title: Error Logging
             id: 3
+            url: error-logging
+          - title: Configure logging
+            id: 4
             url: logging-configuration
+          - title: Child loggers with context
+            id: 5
+            url: child-loggers-with-context
+          - title: Logger from configuration
+            id: 6
+            url: logger-from-config
+          - title: Custom logger
+            id: 7
+            url: custom-logger
       - title: EDI
         id: 8
         sublinks:

@@ -83,7 +83,7 @@ export function Files({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/files",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/files",
                 "_blank",
               );
             }}
@@ -233,7 +233,7 @@ export function Files({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Directories" href="/learn/by-example/directories">
+          <Link title="Directories" href="/learn/by-example/directories/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +268,7 @@ export function Files({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Temp files and directories"
-            href="/learn/by-example/temp-files-directories"
+            href="/learn/by-example/temp-files-directories/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

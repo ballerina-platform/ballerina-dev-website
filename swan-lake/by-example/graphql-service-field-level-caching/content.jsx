@@ -78,7 +78,7 @@ export function GraphqlServiceFieldLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-field-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-service-field-level-caching",
                 "_blank",
               );
             }}
@@ -227,7 +227,7 @@ export function GraphqlServiceFieldLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-service-field-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-service-field-level-caching",
                 "_blank",
               );
             }}
@@ -401,7 +401,7 @@ export function GraphqlServiceFieldLevelCaching({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Operation-level caching"
-            href="/learn/by-example/graphql-service-operation-level-caching"
+            href="/learn/by-example/graphql-service-operation-level-caching/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -437,7 +437,7 @@ export function GraphqlServiceFieldLevelCaching({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Cache invalidation"
-            href="/learn/by-example/graphql-service-cache-invalidation"
+            href="/learn/by-example/graphql-service-cache-invalidation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

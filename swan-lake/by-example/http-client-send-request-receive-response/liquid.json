@@ -2,6 +2,6 @@
   "title": "Send request/Receive response",
   "description": "This example is on how to interact with an HTTP server using the Ballerina HTTP client connector.",
   "keywords": ["ballerina", "ballerina by examples", "bbe", "http", "client"],
-  "permalink": "/learn/by-example/http-client-send-request-receive-response",
+  "permalink": "/learn/by-example/http-client-send-request-receive-response/",
   "active": "http-client-send-request-receive-response"
 }

@@ -82,7 +82,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-client-handle-partial-response",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-client-handle-partial-response",
                 "_blank",
               );
             }}
@@ -283,7 +283,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query GraphQL endpoint"
-            href="/learn/by-example/graphql-client-query-endpoint"
+            href="/learn/by-example/graphql-client-query-endpoint/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,7 +319,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Handle error response"
-            href="/learn/by-example/graphql-client-error-handling"
+            href="/learn/by-example/graphql-client-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

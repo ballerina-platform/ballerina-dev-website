@@ -51,7 +51,7 @@ export function ConfigurableVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/configurable-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/configurable-variables",
                 "_blank",
               );
             }}
@@ -188,7 +188,7 @@ export function ConfigurableVariables({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Resource path parameters"
-            href="/learn/by-example/resource-path-parameters"
+            href="/learn/by-example/resource-path-parameters/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -224,7 +224,7 @@ export function ConfigurableVariables({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Configure via TOML files"
-            href="/learn/by-example/configuring-via-toml"
+            href="/learn/by-example/configuring-via-toml/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

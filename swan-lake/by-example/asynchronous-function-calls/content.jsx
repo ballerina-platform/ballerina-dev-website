@@ -58,7 +58,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/asynchronous-function-calls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/asynchronous-function-calls",
                 "_blank",
               );
             }}
@@ -194,7 +194,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Immutability" href="/learn/by-example/immutability">
+          <Link title="Immutability" href="/learn/by-example/immutability/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -227,7 +227,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Named workers" href="/learn/by-example/named-workers">
+          <Link title="Named workers" href="/learn/by-example/named-workers/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

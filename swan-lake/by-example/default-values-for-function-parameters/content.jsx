@@ -54,7 +54,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/default-values-for-function-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/default-values-for-function-parameters",
                 "_blank",
               );
             }}
@@ -224,7 +224,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest parameters"
-            href="/learn/by-example/rest-parameters"
+            href="/learn/by-example/rest-parameters/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -260,7 +260,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Provide function arguments by name"
-            href="/learn/by-example/provide-function-arguments-by-name"
+            href="/learn/by-example/provide-function-arguments-by-name/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

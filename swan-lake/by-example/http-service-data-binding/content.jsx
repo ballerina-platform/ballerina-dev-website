@@ -66,7 +66,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-service-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-service-data-binding",
                 "_blank",
               );
             }}
@@ -304,7 +304,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Service and resource paths"
-            href="/learn/by-example/http-service-and-resource-paths"
+            href="/learn/by-example/http-service-and-resource-paths/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -340,7 +340,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Payload constraint validation"
-            href="/learn/by-example/http-service-payload-constraint-validation"
+            href="/learn/by-example/http-service-payload-constraint-validation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

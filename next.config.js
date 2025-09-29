@@ -49,6 +49,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: `/learn/build-a-change-data-capture-service-in-ballerina`,
+        destination: `/learn/resources/featured-scenarios/build-a-change-data-capture-service-in-ballerina`,
+      },
+      {
         source: `/learn/build-a-data-service-in-ballerina`,
         destination: `/learn/resources/featured-scenarios/build-a-data-service-in-ballerina`,
       },
@@ -229,20 +233,40 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/configurability/provide-values-to-configurable-variables`,
       },
       {
-        source: `/${redirectBase}learn/observe-ballerina-programs`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-ballerina-programs`,
+        source: `/${redirectBase}learn/overview-of-ballerina-observability`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/overview-of-ballerina-observability`,
       },
       {
-        source: `/${redirectBase}learn/observe-logs`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-logs`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/prometheus`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/prometheus`,
       },
       {
-        source: `/${redirectBase}learn/observe-metrics`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-metrics`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/jaeger`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/jaeger`,
       },
       {
-        source: `/${redirectBase}learn/observe-tracing`,
-        destination: `/${redirectBase}learn/development-tutorials/observability/observe-tracing`,
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/zipkin`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/zipkin`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/datadog`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/datadog`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/new-relic`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/new-relic`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/elastic-stack`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/elastic-stack`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/opensearch`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opensearch`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/moesif`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/moesif`,
       },
       {
         source: `/${redirectBase}learn/organize-ballerina-code`,
@@ -273,8 +297,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/deployment-guide/deployment-guidelines-overview`,
       },
       {
-        source: `/${redirectBase}learn/virtual-machine-deployment`,
-        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/virtual-machine-deployment`,
+        source: `/${redirectBase}learn/monolithic-deployment`,
+        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/monolithic-deployment`,
       },
       {
         source: `/${redirectBase}learn/containerized-deployment`,
@@ -489,8 +513,12 @@ const nextConfig = {
         destination: `/learn/integration/integration-tutorials/:slug`,
       },
       {
-        source: `/${redirectBase}learn/scan-tool`,
-        destination: `/${redirectBase}learn/development-tutorials/additional-tools/scan-tool`,
+        source: `/learn/scan-tool`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-tool`,
+      },
+      {
+        source: `/learn/scan-rules`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-rules`,
       },
       {
         source: `/${redirectBase}learn/consolidate-packages-tool`,
@@ -499,7 +527,7 @@ const nextConfig = {
     ];
   },
   trailingSlash: true,
-  resolve: [{ path: false, fs: false }],
+  resolve: [{path: false, fs: false}],
   experimental: {
     scrollRestoration: true,
   }

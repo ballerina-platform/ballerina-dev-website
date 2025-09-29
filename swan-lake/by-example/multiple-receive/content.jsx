@@ -74,7 +74,7 @@ export function MultipleReceive({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/multiple-receive",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/multiple-receive",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function MultipleReceive({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Alternate receive"
-            href="/learn/by-example/alternate-receive"
+            href="/learn/by-example/alternate-receive/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +248,7 @@ export function MultipleReceive({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Conditional send"
-            href="/learn/by-example/conditional-send"
+            href="/learn/by-example/conditional-send/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

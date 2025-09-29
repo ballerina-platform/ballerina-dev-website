@@ -69,7 +69,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/create-streams-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/create-streams-with-query",
                 "_blank",
               );
             }}
@@ -312,7 +312,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Create maps with a query"
-            href="/learn/by-example/create-maps-with-query"
+            href="/learn/by-example/create-maps-with-query/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -348,7 +348,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="On conflict clause"
-            href="/learn/by-example/on-conflict-clause"
+            href="/learn/by-example/on-conflict-clause/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -348,6 +348,7 @@ const findPrevNextBBEs = (bbeName, jsonContent) => {
         expand = true;
         bbeTitle = name;
       } else {
+        url = url + '/';
         if (!bbeFound) prevBBE = { url, name };
         else if (bbeFound && Object.keys(nextBBE).length == 0)
           nextBBE = { url, name };
@@ -384,7 +385,7 @@ const generateContent = (
             .split(",")
             .filter((k) => k !== "")
             .map((k) => k.trim()),
-    permalink: `/learn/by-example/${bbeName}`,
+    permalink: `/learn/by-example/${bbeName}/`,
     active: bbeName,
   };
 

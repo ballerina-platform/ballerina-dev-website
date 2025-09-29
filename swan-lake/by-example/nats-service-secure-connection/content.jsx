@@ -66,7 +66,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-service-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/nats-service-secure-connection",
                 "_blank",
               );
             }}
@@ -245,7 +245,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Publish message"
-            href="/learn/by-example/nats-jetstream-pub"
+            href="/learn/by-example/nats-jetstream-pub/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,7 +281,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic authentication"
-            href="/learn/by-example/nats-service-basic-auth"
+            href="/learn/by-example/nats-service-basic-auth/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

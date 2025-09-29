@@ -47,7 +47,7 @@ export function ByteType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/byte-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/byte-type",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function ByteType({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Boolean" href="/learn/by-example/boolean">
+          <Link title="Boolean" href="/learn/by-example/boolean/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +231,7 @@ export function ByteType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Strings" href="/learn/by-example/strings">
+          <Link title="Strings" href="/learn/by-example/strings/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

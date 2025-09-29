@@ -76,7 +76,7 @@ export function TimeZone({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/time-zone",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/time-zone",
                 "_blank",
               );
             }}
@@ -221,7 +221,7 @@ export function TimeZone({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Time formatting/parsing"
-            href="/learn/by-example/time-formatting-and-parsing"
+            href="/learn/by-example/time-formatting-and-parsing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -255,7 +255,7 @@ export function TimeZone({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Cache basics" href="/learn/by-example/cache-basics">
+          <Link title="Cache basics" href="/learn/by-example/cache-basics/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

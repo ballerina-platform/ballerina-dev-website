@@ -1,0 +1,67 @@
+.logoRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 80px 0;
+    color: #ffffff;
+}
+
+.title h1 {
+    font-size: 56px;
+    font-weight: normal;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1;
+}
+
+.description p {
+    font-size: 24px;
+    margin-bottom: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.introLinks {
+    color: #20b6b0;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.introLinks:hover {
+    color: #20b6b0;
+    text-decoration: underline;
+}
+
+.hackLogo {
+    height: 120px;
+    width: auto
+}
+
+.ballerinaLogo {
+    height: 60px;
+    width: auto
+}
+
+@media (max-width: 390px) {
+    .title h1 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hackLogo {
+        width: -moz-available !important;
+        width: -webkit-fill-available !important;
+        width: fill-available !important;
+    }
+
+    .ballerinaLogo {
+        width: -moz-available !important;
+        width: -webkit-fill-available !important;
+        width: fill-available !important;
+    }
+}

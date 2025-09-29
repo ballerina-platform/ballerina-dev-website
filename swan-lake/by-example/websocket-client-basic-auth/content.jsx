@@ -58,7 +58,7 @@ export function WebsocketClientBasicAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websocket-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/websocket-client-basic-auth",
                 "_blank",
               );
             }}
@@ -246,7 +246,7 @@ export function WebsocketClientBasicAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Mutual SSL"
-            href="/learn/by-example/websocket-client-mutual-ssl"
+            href="/learn/by-example/websocket-client-mutual-ssl/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -282,7 +282,7 @@ export function WebsocketClientBasicAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Bearer token authentication"
-            href="/learn/by-example/websocket-client-bearer-token-auth"
+            href="/learn/by-example/websocket-client-bearer-token-auth/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

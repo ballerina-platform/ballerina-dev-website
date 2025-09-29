@@ -6,20 +6,35 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/log;
-import ballerina/random;
 import ballerina/time;
 
+public type User record {|
+    string name;
+    int age;
+|};
+
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
-    // You can pass key/value pairs of which the values are function pointers. These functions can return values, which change dynamically.
-    // The following log prints the current UTC time as a key/value pair.
-    log:printInfo("info log",
-                  current_time = isolated function() returns string {
-                      return time:utcToString(time:utcNow());});
-    // The following log prints a random percentage as a key/value pair.
-    log:printInfo("info log",
-                   percentage = isolated function() returns float {
-                       return random:createDecimal() * 100.0;});
+    // Log with key-value pairs for additional context
+    log:printInfo("User authentication attempt", userId = "john123", sessionId = "abc-def-ghi");
+
+    // Log with different data types
+    log:printInfo("Processing order", orderId = 845315, amount = 99.99, items = 3, success = true);
+
+    // Log with structured data
+    User user = {name: "Alice", age: 25};
+    log:printInfo("User profile loaded", user = user);
+
+    // Log with function pointers for dynamic values
+    log:printInfo("System status",
+            current_time = isolated function() returns string {
+                return time:utcToString(time:utcNow());
+            });
+
+    // Log with templates for formatted context
+    string productName = "Laptop";
+    int quantity = 5;
+    log:printInfo(\`Processing inventory update\`,
+            details = \`Product: \${productName}, Quantity: \${quantity}\`);
 }
 `,
 ];
@@ -37,16 +52,9 @@ export function LoggingWithContext({ codeSnippets }) {
       <h1>Logging with context</h1>
 
       <p>
-        The <code>log</code> library contains the application log handling
-        functions.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">
-          <code>log</code> module
-        </a>
-        .
+        This example demonstrates how to add contextual information to log
+        messages using key-value pairs. This helps in debugging and monitoring
+        by providing additional metadata with each log entry.
       </p>
 
       <Row
@@ -59,7 +67,7 @@ export function LoggingWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/logging-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/logging-with-context",
                 "_blank",
               );
             }}
@@ -134,7 +142,10 @@ export function LoggingWithContext({ codeSnippets }) {
       </Row>
 
       <p>
-        To run this sample, use the <code>bal run</code> command.
+        The key-value pairs can include various data types such as strings,
+        numbers, booleans, records, function pointers, and templates. This
+        contextual information makes logs more informative and easier to
+        analyze.
       </p>
 
       <Row
@@ -191,16 +202,48 @@ export function LoggingWithContext({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run logging_with_context.bal`}</span>
-              <span>{`time=2023-09-04T13:38:09.181+05:30 level=INFO module="" message="info log" current_time="2023-09-04T08:08:09.184211Z"`}</span>
-              <span>{`time=2023-09-04T13:38:09.194+05:30 level=INFO module="" message="info log" percentage=15.125095844268799`}</span>
+              <span>{`time=2025-08-25T18:20:21.418+05:30 level=INFO module="" message="User authentication attempt" userId="john123" sessionId="abc-def-ghi"`}</span>
+              <span>{`time=2025-08-25T18:20:21.433+05:30 level=INFO module="" message="Processing order" orderId=845315 amount=99.99 items=3 success=true`}</span>
+              <span>{`time=2025-08-25T18:20:21.436+05:30 level=INFO module="" message="User profile loaded" user={"name":"Alice","age":25}`}</span>
+              <span>{`time=2025-08-25T18:20:21.438+05:30 level=INFO module="" message="System status" current_time="2025-08-25T12:50:21.440249Z"`}</span>
+              <span>{`time=2025-08-25T18:20:21.449+05:30 level=INFO module="" message="Processing inventory update" details="Product: Laptop, Quantity: 5"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <p>
+        Key-value pairs appear as additional fields in the log output, making it
+        easy to filter and search logs based on specific criteria.
+      </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/log/#2-logging">
+              <code>log</code> module - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/log/latest">
+              <code>log</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Logging" href="/learn/by-example/logging">
+          <Link title="Logging" href="/learn/by-example/logging/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -233,10 +276,7 @@ export function LoggingWithContext({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Configure logging"
-            href="/learn/by-example/logging-configuration"
-          >
+          <Link title="Error Logging" href="/learn/by-example/error-logging/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -245,7 +285,7 @@ export function LoggingWithContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configure logging
+                  Error Logging
                 </span>
               </div>
               <svg

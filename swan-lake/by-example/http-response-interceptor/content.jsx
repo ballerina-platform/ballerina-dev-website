@@ -103,7 +103,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-response-interceptor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-response-interceptor",
                 "_blank",
               );
             }}
@@ -356,7 +356,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Request interceptor"
-            href="/learn/by-example/http-request-interceptor"
+            href="/learn/by-example/http-request-interceptor/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -392,7 +392,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error handling"
-            href="/learn/by-example/http-error-handling"
+            href="/learn/by-example/http-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -178,7 +178,7 @@ export function PersistSelectFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-select-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/persist-select-fields",
                 "_blank",
               );
             }}
@@ -349,7 +349,7 @@ export function PersistSelectFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/persist-select-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/persist-select-fields",
                 "_blank",
               );
             }}
@@ -499,7 +499,7 @@ export function PersistSelectFields({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Get by key" href="/learn/by-example/persist-get-by-key">
+          <Link title="Get by key" href="/learn/by-example/persist-get-by-key/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -534,7 +534,7 @@ export function PersistSelectFields({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Filter and sort"
-            href="/learn/by-example/persist-filtering"
+            href="/learn/by-example/persist-filtering/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

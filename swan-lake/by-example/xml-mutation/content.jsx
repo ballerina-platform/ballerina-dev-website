@@ -52,7 +52,7 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-mutation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/xml-mutation",
                 "_blank",
               );
             }}
@@ -219,7 +219,7 @@ export function XmlMutation({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="XML access" href="/learn/by-example/xml-access">
+          <Link title="XML access" href="/learn/by-example/xml-access/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +252,7 @@ export function XmlMutation({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="XML subtyping" href="/learn/by-example/xml-subtyping">
+          <Link title="XML subtyping" href="/learn/by-example/xml-subtyping/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

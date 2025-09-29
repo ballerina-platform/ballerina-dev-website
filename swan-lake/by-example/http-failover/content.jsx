@@ -62,7 +62,7 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-failover",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-failover",
                 "_blank",
               );
             }}
@@ -240,7 +240,7 @@ export function HttpFailover({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Load balancer"
-            href="/learn/by-example/http-load-balancer"
+            href="/learn/by-example/http-load-balancer/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export function HttpFailover({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Default resource"
-            href="/learn/by-example/http-default-resource"
+            href="/learn/by-example/http-default-resource/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -2,6 +2,6 @@
   "title": "Hello world service",
   "description": "The Hello World HTTP service in Ballerina",
   "keywords": ["ballerina", "ballerina by example", "bbe"],
-  "permalink": "/learn/by-example/hello-world-service",
+  "permalink": "/learn/by-example/hello-world-service/",
   "active": "hello-world-service"
 }

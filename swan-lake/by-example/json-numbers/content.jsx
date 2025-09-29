@@ -81,7 +81,7 @@ export function JsonNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/json-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/json-numbers",
                 "_blank",
               );
             }}
@@ -257,7 +257,7 @@ export function JsonNumbers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Resource method typing"
-            href="/learn/by-example/resource-method-typing"
+            href="/learn/by-example/resource-method-typing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -291,7 +291,7 @@ export function JsonNumbers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="JSON to record" href="/learn/by-example/json-to-record">
+          <Link title="JSON to record" href="/learn/by-example/json-to-record/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

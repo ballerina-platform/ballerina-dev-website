@@ -216,7 +216,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/testerina-mocking-objects",
                 "_blank",
               );
             }}
@@ -300,7 +300,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/testerina-mocking-objects",
                 "_blank",
               );
             }}
@@ -470,7 +470,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Function mocking"
-            href="/learn/by-example/testerina-mocking-functions"
+            href="/learn/by-example/testerina-mocking-functions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -506,7 +506,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic REST service"
-            href="/learn/by-example/http-basic-rest-service"
+            href="/learn/by-example/http-basic-rest-service/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

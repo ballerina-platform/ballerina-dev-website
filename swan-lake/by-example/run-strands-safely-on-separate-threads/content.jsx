@@ -97,7 +97,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/run-strands-safely-on-separate-threads",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/run-strands-safely-on-separate-threads",
                 "_blank",
               );
             }}
@@ -237,7 +237,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Inferring isolated"
-            href="/learn/by-example/inferring-isolated"
+            href="/learn/by-example/inferring-isolated/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -273,7 +273,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Interface to external code"
-            href="/learn/by-example/interface-to-external-code"
+            href="/learn/by-example/interface-to-external-code/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

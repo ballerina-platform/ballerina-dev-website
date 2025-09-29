@@ -58,7 +58,7 @@ export function Strings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/strings",
                 "_blank",
               );
             }}
@@ -195,7 +195,7 @@ export function Strings({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Byte type" href="/learn/by-example/byte-type">
+          <Link title="Byte type" href="/learn/by-example/byte-type/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +230,7 @@ export function Strings({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Binary operators"
-            href="/learn/by-example/binary-operators"
+            href="/learn/by-example/binary-operators/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

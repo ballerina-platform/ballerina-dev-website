@@ -83,7 +83,7 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/receive-email-using-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/receive-email-using-service",
                 "_blank",
               );
             }}
@@ -266,7 +266,7 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send/Receive datagram with connection"
-            href="/learn/by-example/udp-connect-client"
+            href="/learn/by-example/udp-connect-client/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -300,7 +300,7 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Send email" href="/learn/by-example/send-email">
+          <Link title="Send email" href="/learn/by-example/send-email/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

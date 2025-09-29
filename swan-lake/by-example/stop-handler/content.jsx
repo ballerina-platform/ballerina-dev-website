@@ -74,7 +74,7 @@ export function StopHandler({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/stop-handler",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/stop-handler",
                 "_blank",
               );
             }}
@@ -290,7 +290,7 @@ export function StopHandler({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
+            href="/learn/by-example/dynamic-listener/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -324,7 +324,10 @@ export function StopHandler({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-service-simple">
+          <Link
+            title="Simple RPC"
+            href="/learn/by-example/grpc-service-simple/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

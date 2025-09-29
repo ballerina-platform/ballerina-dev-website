@@ -78,7 +78,7 @@ export function TcpListener({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/tcp-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/tcp-listener",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function TcpListener({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Manual acknowledgment"
-            href="/learn/by-example/jms-consumer-acknowledgement"
+            href="/learn/by-example/jms-consumer-acknowledgement/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -283,7 +283,7 @@ export function TcpListener({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client">
+          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

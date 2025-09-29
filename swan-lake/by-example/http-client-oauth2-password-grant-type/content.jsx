@@ -72,7 +72,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-client-oauth2-password-grant-type",
                 "_blank",
               );
             }}
@@ -259,7 +259,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="OAuth2 client credentials grant type"
-            href="/learn/by-example/http-client-oauth2-client-credentials-grant-type"
+            href="/learn/by-example/http-client-oauth2-client-credentials-grant-type/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -295,7 +295,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="OAuth2 refresh token grant type"
-            href="/learn/by-example/http-client-oauth2-refresh-token-grant-type"
+            href="/learn/by-example/http-client-oauth2-refresh-token-grant-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

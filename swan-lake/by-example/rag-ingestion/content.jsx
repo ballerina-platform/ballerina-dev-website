@@ -5,39 +5,51 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/email;
-import ballerina/log;
+  `import ballerina/ai;
+import ballerina/io;
+import ballerinax/ai.pinecone;
 
-listener email:ImapListener emailListener = new ({
-    host: "imap.email.com",
-    username: "reader@email.com",
-    password: "pass456",
-    security: email:SSL,
-    secureSocket: {
-        cert: "../resource/path/to/public.crt"
-    }
-});
+// Configuration for Pinecone.
+configurable string pineconeServiceUrl = ?;
+configurable string pineconeApiKey = ?;
 
-service "observer" on emailListener {
+// Define the vector store to use.
+// The example uses Pinecone. Alternatively, you can use other providers
+// or try out the in-memory vector store (\`ai:InMemoryVectorStore\`).
+final ai:VectorStore vectorStore = 
+            check new pinecone:VectorStore(pineconeServiceUrl, pineconeApiKey);
 
-    remote function onMessage(email:Message email) {
-        log:printInfo("Received an email", subject = email.subject, content = email?.body);
-    }
+// Define the embedding provider to use.
+// The example uses the default embedding provider implementation
+// (with configuration added via a Ballerina VS Code command).
+final ai:EmbeddingProvider embeddingProvider = 
+            check ai:getDefaultEmbeddingProvider();
 
-    remote function onError(email:Error emailError) {
-        log:printError(emailError.message(), stackTrace = emailError.stackTrace());
-    }
+// Create the knowledge base with the vector store and embedding provider.
+final ai:KnowledgeBase knowledgeBase = 
+            new ai:VectorKnowledgeBase(vectorStore, embeddingProvider);
 
-    remote function onClose(email:Error? closeError) {
-        if closeError is email:Error {
-            log:printInfo(closeError.message(), stackTrace = closeError.stackTrace());
-        }
+public function main() returns error? {
+    // Use data loaders to load documents.
+    ai:DataLoader loader = check new ai:TextDataLoader("./leave_policy.pdf");
+    ai:Document|ai:Document[] documents = check loader.load();
+
+    // Ingest the documents into the knowledge base. 
+    // When \`ai:Document\`s are ingested, chunking is handled by the knowledge base.
+    // Alternatively, for finer control, you can use the required chunker
+    // (\`ai:Chunker\` implementations) to chunk documents and pass the chunks
+    // as the argument.
+    ai:Error? ingestionResult = knowledgeBase.ingest(documents);
+    if ingestionResult is () {
+        io:println("Ingestion successful");
+    } else {
+        io:println("Ingestion failed: ", ingestionResult.message());
     }
 }
 `,
 ];
 
-export function EmailServiceSslTls({ codeSnippets }) {
+export function RagIngestion({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -47,28 +59,55 @@ export function EmailServiceSslTls({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Email service - SSL/TLS</h1>
+      <h1>Data ingestion for retrieval-augmented generation (RAG)</h1>
 
       <p>
-        The <code>email:Service</code> receives messages from an email server
-        via IMAP using the <code>email:ImapListener</code>. An{" "}
-        <code>email:ImapListener</code> secured with SSL/TLS is created by
-        providing the <code>secureSocket</code> configuration which requires the
-        certificate of the email server as the <code>cert</code>. In addition to
-        the certificate configuration, an optional <code>security</code>{" "}
-        configuration is available to define the underlying transport protocol
-        which needs to be used. The Ballerina <code>email</code> module supports
-        both <code>STARTTLS</code> and <code>SSL</code> as the transport
-        protocol. Use this to interact with email servers based on SSL/TLS
-        encrypted secured connection.
+        Ballerina has high-level, provider-agnostic APIs to ingest data for
+        retrieval-augmented generation (RAG) workflows. These include
+        abstractions such as <code>ai:DataLoader</code>,{" "}
+        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
+        <code>ai:KnowledgeBase</code>.
+      </p>
+
+      <p>
+        These abstractions enable you to load documents, convert them into
+        semantically meaningful vector representations using embedding models,
+        and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
+        The knowledge base orchestrates this process.
+      </p>
+
+      <p>
+        This example demonstrates how to use <code>ai:TextDataLoader</code> to
+        load documents, generate embeddings with a configured provider, and
+        ingest them into a vector store.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> The Ballerina <code>email</code> module also
-          provides an <code>email:PopListener</code> which can be used likewise.
+          Note: This example uses the default embedding provider implementation
+          and Pinecone. Log in to the Ballerina Copilot, open up the VS Code
+          command palette (<code>Ctrl</code> + <code>Shift</code> +{" "}
+          <code>P</code> or <code>command</code> + <code>shift</code> +{" "}
+          <code>P</code>), and run the{" "}
+          <code>Configure default WSO2 Model Provider</code> command to add your
+          keys to the <code>Config.toml</code> file. Alternatively, to use your
+          own keys, use the relevant <code>ballerinax/ai.&lt;provider&gt;</code>{" "}
+          embedding provider implementation. Follow{" "}
+          <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites">
+            <code>ballerinax/ai.pinecone</code> prerequisites
+          </a>{" "}
+          to extract Pinecone configuration. Alternatively, you can try out the
+          in-memory vector store (<code>ai:InMemoryVectorStore</code>).
         </p>
       </blockquote>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
+        </a>
+        .
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -76,31 +115,9 @@ export function EmailServiceSslTls({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/email-service-ssl-tls",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -118,7 +135,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -153,17 +170,6 @@ export function EmailServiceSslTls({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Email server should be up and running.</span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -218,7 +224,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run email_service_ssl_tls.bal`}</span>
+              <span>{`\$ bal run rag_ingestion.bal`}</span>
+              <span>{`Ingestion successful`}</span>
             </code>
           </pre>
         </Col>
@@ -230,8 +237,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#SecureSocket">
-              <code>email:SecureSocket</code> - API documentation
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rag-ingestion/leave_policy.pdf">
+              Sample policy document
             </a>
           </span>
         </li>
@@ -240,8 +247,46 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#Security">
-              <code>email:Security</code> enum - API documentation
+            <a href="/learn/by-example/rag-query/">RAG query example</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.milvus/latest">
+              The <code>ballerinax/ai.milvus</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+              The <code>ballerinax/ai.pinecone</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
+              The <code>ballerinax/ai.pgvector</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.weaviate/latest">
+              The <code>ballerinax/ai.weaviate</code> module
             </a>
           </span>
         </li>
@@ -251,8 +296,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-client/"
+            title="Direct LLM calls with multimodal input"
+            href="/learn/by-example/direct-llm-calls-with-multimodal-input/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -279,14 +324,17 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Direct LLM calls with multimodal input
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/email-client-ssl-tls/">
+          <Link
+            title="Retrieval-augmented generation"
+            href="/learn/by-example/rag-query/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -295,7 +343,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Retrieval-augmented generation
                 </span>
               </div>
               <svg

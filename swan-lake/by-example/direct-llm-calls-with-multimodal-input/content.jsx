@@ -5,39 +5,61 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/email;
-import ballerina/log;
+  `import ballerina/ai;
+import ballerina/io;
+import ballerinax/ai.anthropic;
 
-listener email:ImapListener emailListener = new ({
-    host: "imap.email.com",
-    username: "reader@email.com",
-    password: "pass456",
-    security: email:SSL,
-    secureSocket: {
-        cert: "../resource/path/to/public.crt"
+// Use \`configurable\` variables for the model name and API key.
+configurable anthropic:ANTHROPIC_MODEL_NAMES modelType = ?;
+configurable string apiKey = ?;
+
+// Create a model provider to interact with the Anthropic API.
+// The \`temperature\` controls the randomness of the output. 
+// This argument is optional and defaults to 0.7 if not specified.
+final ai:ModelProvider model =
+    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0.3);
+
+// The type representing the expected response from the model.
+// The generated JSON schema will also include the documentation.
+# Description of an image.
+type Description record {|
+    # A sentence describing the image.
+    string description;
+    # The confidence of the description, on a scale of 0 to 1.
+    decimal confidence;
+    # Categories that the image falls into.
+    string[] categories;
+|};
+
+public function main() returns error? {
+    // Define an \`ai:ImageDocument\` value with a URL to an image.
+    ai:ImageDocument image = {
+        content: "https://ballerina.io/img/branding/ballerina_logo_dgrey_png.png"
+    };
+
+    // Use the \`generate\` method with an image document as an interpolation.
+    // \`anthropic:ModelProvider\` will detect the multimodal input and handle
+    // constructing the request appropriately.
+    Description? description = check model->generate(\`
+        Describe this image.
+
+        \${image}
+        
+        If it is not possible to describe the image, respond with null\`);
+
+    // Handle the case where the model could not describe the image.
+    if description is () {
+        io:println("Could not describe the image");
+        return;
     }
-});
-
-service "observer" on emailListener {
-
-    remote function onMessage(email:Message email) {
-        log:printInfo("Received an email", subject = email.subject, content = email?.body);
-    }
-
-    remote function onError(email:Error emailError) {
-        log:printError(emailError.message(), stackTrace = emailError.stackTrace());
-    }
-
-    remote function onClose(email:Error? closeError) {
-        if closeError is email:Error {
-            log:printInfo(closeError.message(), stackTrace = closeError.stackTrace());
-        }
-    }
+    
+    // Print the description.
+    io:println(description);
 }
 `,
 ];
 
-export function EmailServiceSslTls({ codeSnippets }) {
+export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -47,28 +69,42 @@ export function EmailServiceSslTls({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Email service - SSL/TLS</h1>
+      <h1>Direct large language model (LLM) calls with multimodal input</h1>
 
       <p>
-        The <code>email:Service</code> receives messages from an email server
-        via IMAP using the <code>email:ImapListener</code>. An{" "}
-        <code>email:ImapListener</code> secured with SSL/TLS is created by
-        providing the <code>secureSocket</code> configuration which requires the
-        certificate of the email server as the <code>cert</code>. In addition to
-        the certificate configuration, an optional <code>security</code>{" "}
-        configuration is available to define the underlying transport protocol
-        which needs to be used. The Ballerina <code>email</code> module supports
-        both <code>STARTTLS</code> and <code>SSL</code> as the transport
-        protocol. Use this to interact with email servers based on SSL/TLS
-        encrypted secured connection.
+        The <code>ai:ModelProvider</code> type is a unified abstraction to
+        integrate with large language models (LLMs) through provider-specific
+        modules such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+          ballerinax/ai.anthropic
+        </a>
+        , etc.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The Ballerina <code>email</code> module also
-          provides an <code>email:PopListener</code> which can be used likewise.
-        </p>
-      </blockquote>
+      <p>
+        If multimodal input is supported by an LLM, the model provider
+        implementation for the LLM handles insertions of the{" "}
+        <code>ai:Document</code> types (<code>ai:ImageDocument</code>,{" "}
+        <code>ai:AudioDocument</code>, and <code>ai:FileDocument</code>) as
+        multimodal input, and creates the request as expected by the LLM API.
+      </p>
+
+      <p>
+        This example demonstrates how to make direct calls to LLMs using the
+        model provider, with multimodal input.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
+        </a>
+        .
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -76,31 +112,9 @@ export function EmailServiceSslTls({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/email-service-ssl-tls",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -118,7 +132,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -153,17 +167,6 @@ export function EmailServiceSslTls({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Email server should be up and running.</span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -218,7 +221,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run email_service_ssl_tls.bal`}</span>
+              <span>{`\$ bal run direct_llm_calls_with_multimodal_input.bal `}</span>
+              <span>{`{"description":"The word 'Ballerina' written in black text, with the letter 'l' stylized to look like a ballet dancer","confidence":0.98,"categories":["text","logo","typography"]}`}</span>
             </code>
           </pre>
         </Col>
@@ -230,8 +234,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#SecureSocket">
-              <code>email:SecureSocket</code> - API documentation
+            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+              The <code>ballerinax/ai.anthropic</code> module
             </a>
           </span>
         </li>
@@ -240,8 +244,48 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#Security">
-              <code>email:Security</code> enum - API documentation
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+              The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
+              The <code>ballerinax/ai.ollama</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
+              The <code>ballerinax/ai.deepseek</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
+              The <code>ballerinax/ai.mistral</code> module
             </a>
           </span>
         </li>
@@ -251,8 +295,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-client/"
+            title="Direct LLM calls with history"
+            href="/learn/by-example/direct-llm-calls-with-history/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -279,14 +323,14 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Direct LLM calls with history
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/email-client-ssl-tls/">
+          <Link title="Data ingestion" href="/learn/by-example/rag-ingestion/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -295,7 +339,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Data ingestion
                 </span>
               </div>
               <svg

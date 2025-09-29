@@ -61,7 +61,7 @@ export default function Ambassadors() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ambassadors/ballerina-ambassador-program-sm-banner.png"
+          content="https://ballerina.io/images/ambassadors/ballerina-student-ambassador-program-sm-banner.png"
         />
 
         {/* <!--LINKED IN  --> */}
@@ -69,7 +69,7 @@ export default function Ambassadors() {
         <meta property="og:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ambassadors/ballerina-ambassador-program-sm-banner.png"
+          content="https://ballerina.io/images/ambassadors/ballerina-student-ambassador-program-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
@@ -78,7 +78,7 @@ export default function Ambassadors() {
         <meta property="twitter:text:description" content="Join the Ballerina Student Ambassador program to lead your community, access exclusive resources, and showcase your programming skills." />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ambassadors/ballerina-ambassador-program-sm-banner.png"
+          content="https://ballerina.io/images/ambassadors/ballerina-student-ambassador-program-sm-banner.png"
         />
       </Head>
       <Layout>
@@ -99,7 +99,7 @@ export default function Ambassadors() {
                     </a>
                   </Col>
                   <Col xs={12} md={12} lg={6} className='introImg'>
-                    <img src="/images/ambassadors/ballerina-ambassador-program-image.png" alt="Project mentorship" />
+                    <img src="/images/ambassadors/ballerina-student-ambassador-program-image.png" alt="Project mentorship" />
                   </Col>
                 </Row>
               </Container>

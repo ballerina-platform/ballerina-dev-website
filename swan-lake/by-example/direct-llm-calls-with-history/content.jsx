@@ -5,39 +5,48 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/email;
-import ballerina/log;
+  `import ballerina/ai;
+import ballerina/io;
 
-listener email:ImapListener emailListener = new ({
-    host: "imap.email.com",
-    username: "reader@email.com",
-    password: "pass456",
-    security: email:SSL,
-    secureSocket: {
-        cert: "../resource/path/to/public.crt"
-    }
-});
+// Use the default model provider (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
-service "observer" on emailListener {
+public function main(string subject) returns error? {
+    // Create a user message with the prompt as the content.
+    ai:ChatUserMessage userMessage = {
+        role: ai:USER,
+        content: \`Tell me a joke about \${subject}!\`
+    };
 
-    remote function onMessage(email:Message email) {
-        log:printInfo("Received an email", subject = email.subject, content = email?.body);
-    }
+    // Use an array to hold the conversation history.
+    ai:ChatMessage[] messages = [userMessage];
 
-    remote function onError(email:Error emailError) {
-        log:printError(emailError.message(), stackTrace = emailError.stackTrace());
-    }
+    // Use the \`chat\` method to make a call with the conversation history.
+    // Alternatively, you can pass a single message (\`userMessage\`) too.
+    ai:ChatAssistantMessage assistantMessage = check model->chat(messages);
 
-    remote function onClose(email:Error? closeError) {
-        if closeError is email:Error {
-            log:printInfo(closeError.message(), stackTrace = closeError.stackTrace());
-        }
-    }
+    // Update the conversation history with the assistant's response.
+    messages.push(assistantMessage);
+
+    // Print the joke from the assistant's response.
+    string? joke = assistantMessage?.content;
+    io:println(joke);
+
+    // Continue the conversation by asking for an explanation.
+    messages.push({
+        role: ai:USER,
+        content: "Can you explain it?"
+    });
+    ai:ChatAssistantMessage assistantMessage2 = check model->chat(messages);
+
+    // Since the conversation history is passed, the model can provide a relevant explanation.
+    string? explanation = assistantMessage2?.content;
+    io:println(explanation);
 }
 `,
 ];
 
-export function EmailServiceSslTls({ codeSnippets }) {
+export function DirectLlmCallsWithHistory({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -47,28 +56,55 @@ export function EmailServiceSslTls({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Email service - SSL/TLS</h1>
+      <h1>Direct large language model (LLM) calls with history</h1>
 
       <p>
-        The <code>email:Service</code> receives messages from an email server
-        via IMAP using the <code>email:ImapListener</code>. An{" "}
-        <code>email:ImapListener</code> secured with SSL/TLS is created by
-        providing the <code>secureSocket</code> configuration which requires the
-        certificate of the email server as the <code>cert</code>. In addition to
-        the certificate configuration, an optional <code>security</code>{" "}
-        configuration is available to define the underlying transport protocol
-        which needs to be used. The Ballerina <code>email</code> module supports
-        both <code>STARTTLS</code> and <code>SSL</code> as the transport
-        protocol. Use this to interact with email servers based on SSL/TLS
-        encrypted secured connection.
+        The <code>ai:ModelProvider</code> type is a unified abstraction to
+        integrate with large language models (LLMs) through provider-specific
+        modules such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+          ballerinax/ai.anthropic
+        </a>
+        , etc.
+      </p>
+
+      <p>
+        The <code>chat</code> method of the model provider accepts a user
+        message or an array of chat messages, makes the call to the LLM with the
+        message(s), and returns the relevant content of the response from the
+        LLM.
+      </p>
+
+      <p>
+        This example demonstrates how to make direct calls to LLMs using the
+        model provider, maintaining the chat history.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> The Ballerina <code>email</code> module also
-          provides an <code>email:PopListener</code> which can be used likewise.
+          Note: This example uses the default model provider implementation. Log
+          in to the Ballerina Copilot, open up the VS Code command palette (
+          <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your keys to the <code>Config.toml</code> file. Alternatively, to use
+          your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
         </p>
       </blockquote>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
+        </a>
+        .
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -76,31 +112,9 @@ export function EmailServiceSslTls({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/email-service-ssl-tls",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -118,7 +132,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -153,17 +167,6 @@ export function EmailServiceSslTls({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Email server should be up and running.</span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -218,7 +221,21 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run email_service_ssl_tls.bal`}</span>
+              <span>{`\$ bal run direct_llm_calls_with_history.bal -- subject=programming`}</span>
+              <span>{`Why do programmers prefer dark mode?`}</span>
+              <span>{`
+`}</span>
+              <span>{`Because light attracts bugs!`}</span>
+              <span>{`Sure! The joke plays on two concepts:`}</span>
+              <span>{`
+`}</span>
+              <span>{`1. **Dark Mode vs. Light Mode**: Many programmers prefer using "dark mode" in their coding environments because it's easier on the eyes, especially during long coding sessions. Dark mode features a dark background with lighter text, while light mode has a light background with darker text.`}</span>
+              <span>{`
+`}</span>
+              <span>{`2. **Bugs**: In programming, a "bug" refers to an error or flaw in the code that can cause it to behave unexpectedly. In a more literal sense, bugs (like insects) are often attracted to light sources.`}</span>
+              <span>{`
+`}</span>
+              <span>{`So the humor comes from the double meaning of "bugs." The joke suggests that if programmers use light mode (which is bright), they might attract actual bugs, just like real insects are drawn to light. Therefore, by using dark mode, they’re avoiding both programming errors and actual bugs!`}</span>
             </code>
           </pre>
         </Col>
@@ -230,8 +247,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#SecureSocket">
-              <code>email:SecureSocket</code> - API documentation
+            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+              The <code>ballerinax/ai.anthropic</code> module
             </a>
           </span>
         </li>
@@ -240,8 +257,48 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest#Security">
-              <code>email:Security</code> enum - API documentation
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+              The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
+              The <code>ballerinax/ai.ollama</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
+              The <code>ballerinax/ai.deepseek</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
+              The <code>ballerinax/ai.mistral</code> module
             </a>
           </span>
         </li>
@@ -251,8 +308,8 @@ export function EmailServiceSslTls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-client/"
+            title="Direct LLM calls"
+            href="/learn/by-example/direct-llm-calls/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -279,14 +336,17 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Direct LLM calls
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/email-client-ssl-tls/">
+          <Link
+            title="Direct LLM calls with multimodal input"
+            href="/learn/by-example/direct-llm-calls-with-multimodal-input/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -295,7 +355,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Direct LLM calls with multimodal input
                 </span>
               </div>
               <svg

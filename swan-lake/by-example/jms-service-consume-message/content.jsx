@@ -9,18 +9,15 @@ export const codeSnippetData = [
 import ballerina/log;
 import ballerinax/activemq.driver as _;
 
-service on new jms:Listener(
-    connectionConfig = {
-        initialContextFactory: "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
-        providerUrl: "tcp://localhost:61616"
-    },
-    consumerOptions = {
-        destination: {
-            'type: jms:QUEUE,
-            name: "order-queue"
-        }
-    }
-) {
+listener jms:Listener jmsListener = check new (
+    initialContextFactory = "org.apache.activemq.jndi.ActiveMQInitialContextFactory",
+    providerUrl = "tcp://localhost:61616"
+);
+
+@jms:ServiceConfig {
+   queueName: "order-queue"
+}
+service on jmsListener {
     remote function onMessage(jms:Message message) returns error? {
         if message is jms:MapMessage {
             log:printInfo("Order message received", content = message.content);
@@ -45,10 +42,11 @@ export function JmsServiceConsumeMessage({ codeSnippets }) {
       <p>
         The <code>jms:Service</code> connects to a given JMS provider via the{" "}
         <code>jms:Listener</code>, and allows receiving messages asynchronously.
-        A <code>jms:Listener</code> is created by providing the connection
-        configurations, session acknowledge mode, and relevant JMS destination.
-        Use this to listen to messages sent to a particular JMS destination
-        asynchronously.
+        A <code>jms:Listener</code> is initialized by providing the connection
+        configurations. A <code>jms:Service</code> must be configured to
+        subscribe to a JMS destination—either a queue or a topic—using the{" "}
+        <code>jms:ServiceConfig</code> annotation. Use this to listen to
+        messages sent to a particular JMS destination asynchronously.
       </p>
 
       <Row

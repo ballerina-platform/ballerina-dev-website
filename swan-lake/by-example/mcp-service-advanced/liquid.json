@@ -1,0 +1,7 @@
+{
+  "title": "MCP advanced service",
+  "description": "This BBE demonstrates how to implement an MCP server, with explicit tool retrieval and usage methods.",
+  "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "mcp"],
+  "permalink": "/learn/by-example/mcp-service-advanced/",
+  "active": "mcp-service-advanced"
+}

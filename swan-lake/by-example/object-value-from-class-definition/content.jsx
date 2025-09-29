@@ -82,7 +82,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/object-value-from-class-definition",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/object-value-from-class-definition",
                 "_blank",
               );
             }}
@@ -247,7 +247,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Object constructor"
-            href="/learn/by-example/object-constructor"
+            href="/learn/by-example/object-constructor/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -283,7 +283,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Visibility of object fields and methods"
-            href="/learn/by-example/visibility-of-object-fields-and-methods"
+            href="/learn/by-example/visibility-of-object-fields-and-methods/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -1,0 +1,97 @@
+.rulesContainer {
+  /* border: 1px solid #ffffff; */
+  border-radius: 5px;
+  padding: 30px;
+  /* background-color: rgb(255 255 255 / 0.15); */
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.titleLink {
+  text-decoration: none;
+  color: #20b6b0;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.titleLink:hover {
+  color: #20b6b0;
+  text-decoration: underline;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.content ul {
+  list-style-type: disc;
+}
+
+.content ul li::marker {
+  color: #20b6b0;
+}
+
+.customUL {
+  padding-left: 0;
+}
+
+.customUL li+li {
+  margin-top: 10px;
+}
+
+.customLi {
+  margin: 0;
+  padding: 0 0 6px 40px;
+  list-style: none;
+  background-image: url("/images/main-right-arrow-home-hover.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 32px;
+}
+
+.ruleCard {
+  background: transparent;
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255);
+  color: #ffffff;
+}
+
+.ruleCard .cardTitle {
+  margin-bottom: 0 !important;
+  font-weight: normal !important;
+}
+
+.ruleCard ul {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.ruleCard ul li+li {
+  margin-top: 10px;
+}
+
+.content {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+/* Base “glass” style – keep once */
+.glass {
+  background: linear-gradient(180deg,
+      rgb(var(--t) / 0.20),
+      rgb(var(--t) / 0.10));
+  border: 1px solid rgb(var(--t) / var(--border-alpha, 0.55));
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Color tokens (space-separated RGB for rgb(var(--t) / …) syntax) */
+.tInk    { --t: 28 28 63; border: 0.5px solid #A0A0FF; }   /* #1C1C3F */
+.tMist   { --t: 230 234 235; border: 0.5px solid #E6EAEB; }  /* #E6EAEB */
+.tTeal   { --t: 32 182 176; border: 0.5px solid #20B6B0; }   /* #20B6B0 */
+.tPeri   { --t: 160 160 255; border: 0.5px solid #A0A0FF; }  /* #A0A0FF */
+
+/* Optional: tweak border visibility for very light tokens */
+/* .tMist { --border-alpha: 0.35; } */

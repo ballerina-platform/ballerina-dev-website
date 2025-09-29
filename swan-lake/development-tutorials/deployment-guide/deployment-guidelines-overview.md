@@ -2,7 +2,7 @@
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: Deployment guidelines overview
 description: This guideline is intended to provide a comprehensive overview of best practices and considerations when deploying Ballerina in a production environment. It covers deployment patterns, recommended configurations, Java compatibility, and security hardening tips to ensure your Ballerina applications run efficiently and securely. 
-keywords: ballerina, programming language, services, cloud, kubernetes, docker
+keywords: ballerina, programming language, services, cloud, kubernetes, docker, monolithic
 active: ballerina-deployment-guidelines
 intro: This guideline is intended to provide a comprehensive overview of best practices and considerations when deploying Ballerina in a production environment. It covers deployment patterns, recommended configurations, Java compatibility, and security hardening tips to ensure your Ballerina applications run efficiently and securely. 
 ---
@@ -10,7 +10,7 @@ intro: This guideline is intended to provide a comprehensive overview of best pr
 When deploying Ballerina applications in production, you can choose from several deployment types depending on your needs.
 Each option balances flexibility, control, and operational overhead based on your specific deployment types:
 
-1. [Virtual Machines or Bare Metal](/learn/virtual-machine-deployment): Provides full control over the infrastructure, making it suitable for high-performance or legacy systems requiring custom configurations or direct hardware access.
+1. [Monolithic Deployment](/learn/monolithic-deployment): Provides full control over the infrastructure, making it suitable for high-performance or legacy systems requiring custom configurations or direct hardware access.
 2. [Containerized Deployment](/learn/containerized-deployment): Ideal for containerized, cloud-native microservices, offering scalability and orchestration with Ballerina’s built-in support for Kubernetes and Docker artifacts.
 3. [Serverless](/learn/serverless-deployment): Suitable for event-driven, cost-critical applications where cloud providers manage the infrastructure, such as Azure Functions or AWS Lambda.
 

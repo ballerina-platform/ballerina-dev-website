@@ -68,7 +68,7 @@ export function HttpMatrixParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-matrix-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-matrix-param",
                 "_blank",
               );
             }}
@@ -294,7 +294,10 @@ export function HttpMatrixParam({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="100 continue" href="/learn/by-example/http-100-continue">
+          <Link
+            title="100 continue"
+            href="/learn/by-example/http-100-continue/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +332,7 @@ export function HttpMatrixParam({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Restrict by media type"
-            href="/learn/by-example/http-restrict-by-media-type"
+            href="/learn/by-example/http-restrict-by-media-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

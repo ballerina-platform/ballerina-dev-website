@@ -54,7 +54,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rest-binding-pattern-in-list-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/rest-binding-pattern-in-list-binding-pattern",
                 "_blank",
               );
             }}
@@ -226,7 +226,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="List binding patterns"
-            href="/learn/by-example/list-binding-pattern"
+            href="/learn/by-example/list-binding-pattern/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -262,7 +262,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Mapping binding pattern"
-            href="/learn/by-example/mapping-binding-pattern"
+            href="/learn/by-example/mapping-binding-pattern/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

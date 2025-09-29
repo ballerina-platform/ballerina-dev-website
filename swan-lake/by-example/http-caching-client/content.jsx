@@ -63,7 +63,7 @@ export function HttpCachingClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-caching-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-caching-client",
                 "_blank",
               );
             }}
@@ -250,7 +250,7 @@ export function HttpCachingClient({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Header parameter"
-            href="/learn/by-example/http-client-header-parameter"
+            href="/learn/by-example/http-client-header-parameter/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -284,7 +284,7 @@ export function HttpCachingClient({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
+          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

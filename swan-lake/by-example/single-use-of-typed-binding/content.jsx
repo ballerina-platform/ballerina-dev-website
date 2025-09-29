@@ -67,7 +67,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/single-use-of-typed-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/single-use-of-typed-binding",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Rest binding pattern in error binding pattern"
-            href="/learn/by-example/rest-binding-pattern-in-error-binding-pattern"
+            href="/learn/by-example/rest-binding-pattern-in-error-binding-pattern/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +285,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Single use of typed binding patterns with on fail clause"
-            href="/learn/by-example/single-use-with-on-fail-clause"
+            href="/learn/by-example/single-use-with-on-fail-clause/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

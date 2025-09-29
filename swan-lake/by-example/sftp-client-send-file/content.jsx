@@ -72,7 +72,7 @@ export function SftpClientSendFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/sftp-client-send-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/sftp-client-send-file",
                 "_blank",
               );
             }}
@@ -251,7 +251,7 @@ export function SftpClientSendFile({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Receive file"
-            href="/learn/by-example/sftp-client-receive-file"
+            href="/learn/by-example/sftp-client-receive-file/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -287,7 +287,7 @@ export function SftpClientSendFile({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Simple query"
-            href="/learn/by-example/mysql-query-operation"
+            href="/learn/by-example/mysql-query-operation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

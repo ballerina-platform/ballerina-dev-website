@@ -119,7 +119,7 @@ export function Tracing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/tracing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/tracing",
                 "_blank",
               );
             }}
@@ -334,7 +334,7 @@ export function Tracing({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Delete" href="/learn/by-example/persist-delete">
+          <Link title="Delete" href="/learn/by-example/persist-delete/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -369,7 +369,7 @@ export function Tracing({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
+            href="/learn/by-example/gauge-metrics/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

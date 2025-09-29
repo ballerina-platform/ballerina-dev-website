@@ -63,7 +63,7 @@ export function AsynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/asynchronize-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/asynchronize-message-passing",
                 "_blank",
               );
             }}
@@ -202,7 +202,7 @@ export function AsynchronizeMessagePassing({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Synchronize message passing"
-            href="/learn/by-example/synchronize-message-passing"
+            href="/learn/by-example/synchronize-message-passing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -236,7 +236,7 @@ export function AsynchronizeMessagePassing({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Flush" href="/learn/by-example/flush">
+          <Link title="Flush" href="/learn/by-example/flush/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -69,7 +69,7 @@ export function KafkaProducerProduceMessage({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/kafka-producer-produce-message",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/kafka-producer-produce-message",
                 "_blank",
               );
             }}
@@ -309,7 +309,7 @@ export function KafkaProducerProduceMessage({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error handling"
-            href="/learn/by-example/kafka-service-error-handling"
+            href="/learn/by-example/kafka-service-error-handling/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -345,7 +345,7 @@ export function KafkaProducerProduceMessage({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Payload data binding"
-            href="/learn/by-example/kafka-consumer-payload-data-binding"
+            href="/learn/by-example/kafka-consumer-payload-data-binding/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

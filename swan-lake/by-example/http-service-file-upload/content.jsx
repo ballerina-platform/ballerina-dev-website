@@ -52,7 +52,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-service-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-service-file-upload",
                 "_blank",
               );
             }}
@@ -233,7 +233,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Restrict by media type"
-            href="/learn/by-example/http-restrict-by-media-type"
+            href="/learn/by-example/http-restrict-by-media-type/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -267,7 +267,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Compression" href="/learn/by-example/http-compression">
+          <Link title="Compression" href="/learn/by-example/http-compression/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

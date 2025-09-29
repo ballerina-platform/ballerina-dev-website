@@ -2,6 +2,6 @@
   "title": "Inter-worker failure propagation",
   "description": "This BBE demonstrates inter-worker failure propagation",
   "keywords": ["ballerina", "ballerina by example", "bbe", "worker", "failure"],
-  "permalink": "/learn/by-example/inter-worker-failure-propagation",
+  "permalink": "/learn/by-example/inter-worker-failure-propagation/",
   "active": "inter-worker-failure-propagation"
 }

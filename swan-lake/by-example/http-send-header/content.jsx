@@ -74,7 +74,7 @@ export function HttpSendHeader({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-send-header",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-send-header",
                 "_blank",
               );
             }}
@@ -322,7 +322,10 @@ export function HttpSendHeader({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chunking" href="/learn/by-example/http-service-chunking">
+          <Link
+            title="Chunking"
+            href="/learn/by-example/http-service-chunking/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +360,7 @@ export function HttpSendHeader({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Response with multiparts"
-            href="/learn/by-example/http-response-with-multiparts"
+            href="/learn/by-example/http-response-with-multiparts/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

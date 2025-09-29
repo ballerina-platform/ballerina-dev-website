@@ -62,7 +62,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rabbitmq-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/rabbitmq-consumer",
                 "_blank",
               );
             }}
@@ -246,7 +246,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Outbound Security"
-            href="/learn/by-example/soap-client-security-outbound-security-config"
+            href="/learn/by-example/soap-client-security-outbound-security-config/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -282,7 +282,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume message with acknowledgement"
-            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
+            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

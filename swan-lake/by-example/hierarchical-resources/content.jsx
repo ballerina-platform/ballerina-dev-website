@@ -47,7 +47,7 @@ export function HierarchicalResources({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/hierarchical-resources",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/hierarchical-resources",
                 "_blank",
               );
             }}
@@ -250,7 +250,7 @@ export function HierarchicalResources({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Resource methods"
-            href="/learn/by-example/resource-methods"
+            href="/learn/by-example/resource-methods/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,7 +286,7 @@ export function HierarchicalResources({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Resource path parameters"
-            href="/learn/by-example/resource-path-parameters"
+            href="/learn/by-example/resource-path-parameters/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -58,7 +58,7 @@ export function TimeUtc({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/time-utc",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/time-utc",
                 "_blank",
               );
             }}
@@ -201,7 +201,7 @@ export function TimeUtc({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="URL encode/decode operations"
-            href="/learn/by-example/url-encode-decode"
+            href="/learn/by-example/url-encode-decode/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -237,7 +237,7 @@ export function TimeUtc({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Time with zone offset"
-            href="/learn/by-example/time-utc-and-civil"
+            href="/learn/by-example/time-utc-and-civil/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

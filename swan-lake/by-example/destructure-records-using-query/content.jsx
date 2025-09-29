@@ -73,7 +73,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/destructure-records-using-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/destructure-records-using-query",
                 "_blank",
               );
             }}
@@ -323,7 +323,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Nested query expressions"
-            href="/learn/by-example/nested-query-expressions"
+            href="/learn/by-example/nested-query-expressions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -359,7 +359,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Querying streams"
-            href="/learn/by-example/querying-with-streams"
+            href="/learn/by-example/querying-with-streams/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

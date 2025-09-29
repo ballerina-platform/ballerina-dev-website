@@ -117,7 +117,7 @@ export function Rollback({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/rollback",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/rollback",
                 "_blank",
               );
             }}
@@ -257,7 +257,7 @@ export function Rollback({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Check semantics"
-            href="/learn/by-example/check-semantics"
+            href="/learn/by-example/check-semantics/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -293,7 +293,7 @@ export function Rollback({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Retry transaction statement"
-            href="/learn/by-example/retry-transaction-statement"
+            href="/learn/by-example/retry-transaction-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

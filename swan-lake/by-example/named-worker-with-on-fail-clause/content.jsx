@@ -55,7 +55,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/named-worker-with-on-fail-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/named-worker-with-on-fail-clause",
                 "_blank",
               );
             }}
@@ -193,7 +193,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Inter-worker failure propagation"
-            href="/learn/by-example/inter-worker-failure-propagation"
+            href="/learn/by-example/inter-worker-failure-propagation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -229,7 +229,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Synchronize message passing"
-            href="/learn/by-example/synchronize-message-passing"
+            href="/learn/by-example/synchronize-message-passing/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -103,7 +103,7 @@ export function GraphqlMutations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-mutations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-mutations",
                 "_blank",
               );
             }}
@@ -250,7 +250,7 @@ export function GraphqlMutations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-mutations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-mutations",
                 "_blank",
               );
             }}
@@ -424,7 +424,7 @@ export function GraphqlMutations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Input types"
-            href="/learn/by-example/graphql-input-types"
+            href="/learn/by-example/graphql-input-types/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -460,7 +460,7 @@ export function GraphqlMutations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Subscriptions"
-            href="/learn/by-example/graphql-subscriptions"
+            href="/learn/by-example/graphql-subscriptions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

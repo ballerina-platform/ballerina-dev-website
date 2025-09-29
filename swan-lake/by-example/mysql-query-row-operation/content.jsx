@@ -95,7 +95,7 @@ export function MysqlQueryRowOperation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/mysql-query-row-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/mysql-query-row-operation",
                 "_blank",
               );
             }}
@@ -338,7 +338,7 @@ export function MysqlQueryRowOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Simple query"
-            href="/learn/by-example/mysql-query-operation"
+            href="/learn/by-example/mysql-query-operation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -374,7 +374,7 @@ export function MysqlQueryRowOperation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Query with advanced mapping"
-            href="/learn/by-example/mysql-query-column-mapping"
+            href="/learn/by-example/mysql-query-column-mapping/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

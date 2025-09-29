@@ -101,7 +101,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -189,7 +189,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -279,7 +279,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -579,7 +579,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -722,10 +722,7 @@ export function EdiToRecord({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Configure logging"
-            href="/learn/by-example/logging-configuration"
-          >
+          <Link title="Custom logger" href="/learn/by-example/custom-logger/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -751,7 +748,7 @@ export function EdiToRecord({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configure logging
+                  Custom logger
                 </span>
               </div>
             </div>
@@ -760,7 +757,7 @@ export function EdiToRecord({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Record to EDI conversion"
-            href="/learn/by-example/record-to-edi"
+            href="/learn/by-example/record-to-edi/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

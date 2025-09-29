@@ -85,7 +85,7 @@ export function InferringIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/inferring-isolated",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/inferring-isolated",
                 "_blank",
               );
             }}
@@ -227,7 +227,7 @@ export function InferringIsolated({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Isolated objects"
-            href="/learn/by-example/isolated-objects"
+            href="/learn/by-example/isolated-objects/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,7 +263,7 @@ export function InferringIsolated({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Run strands safely on separate threads"
-            href="/learn/by-example/run-strands-safely-on-separate-threads"
+            href="/learn/by-example/run-strands-safely-on-separate-threads/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

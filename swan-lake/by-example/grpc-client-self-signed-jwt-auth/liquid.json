@@ -9,6 +9,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/grpc-client-self-signed-jwt-auth",
+  "permalink": "/learn/by-example/grpc-client-self-signed-jwt-auth/",
   "active": "grpc-client-self-signed-jwt-auth"
 }

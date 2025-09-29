@@ -66,7 +66,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/list-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/list-subtyping",
                 "_blank",
               );
             }}
@@ -237,7 +237,7 @@ export function ListSubtyping({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Filler values of a list"
-            href="/learn/by-example/filler-values-of-a-list"
+            href="/learn/by-example/filler-values-of-a-list/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -271,7 +271,7 @@ export function ListSubtyping({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="List equality" href="/learn/by-example/list-equality">
+          <Link title="List equality" href="/learn/by-example/list-equality/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

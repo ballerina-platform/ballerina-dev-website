@@ -2,6 +2,6 @@
   "title": "Lock statement",
   "description": "This BBE introduces lock statement in Ballerina.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "lock statement"],
-  "permalink": "/learn/by-example/lock-statement",
+  "permalink": "/learn/by-example/lock-statement/",
   "active": "lock-statement"
 }

@@ -85,7 +85,7 @@ export function ParseCsvLists({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/parse-csv-lists",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/parse-csv-lists",
                 "_blank",
               );
             }}
@@ -225,7 +225,7 @@ export function ParseCsvLists({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Parse CSV byte streams to records"
-            href="/learn/by-example/csv-streams-to-record-array"
+            href="/learn/by-example/csv-streams-to-record-array/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export function ParseCsvLists({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transform CSV records to custom types"
-            href="/learn/by-example/transform-csv-records-to-custom-types"
+            href="/learn/by-example/transform-csv-records-to-custom-types/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

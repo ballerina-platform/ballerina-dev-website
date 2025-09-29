@@ -48,7 +48,7 @@ export function Identifiers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/identifiers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/identifiers",
                 "_blank",
               );
             }}
@@ -186,7 +186,7 @@ export function Identifiers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Variables and types"
-            href="/learn/by-example/variables-and-types"
+            href="/learn/by-example/variables-and-types/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -220,7 +220,7 @@ export function Identifiers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Integers" href="/learn/by-example/integers">
+          <Link title="Integers" href="/learn/by-example/integers/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

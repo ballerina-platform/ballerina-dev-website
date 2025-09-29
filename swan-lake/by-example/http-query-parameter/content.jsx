@@ -69,7 +69,7 @@ export function HttpQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-query-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-query-parameter",
                 "_blank",
               );
             }}
@@ -306,7 +306,10 @@ export function HttpQueryParameter({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Path parameter" href="/learn/by-example/http-path-param">
+          <Link
+            title="Path parameter"
+            href="/learn/by-example/http-path-param/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -341,7 +344,7 @@ export function HttpQueryParameter({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Header parameter"
-            href="/learn/by-example/http-header-param"
+            href="/learn/by-example/http-header-param/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

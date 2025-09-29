@@ -143,7 +143,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-context",
                 "_blank",
               );
             }}
@@ -292,7 +292,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/graphql-context",
                 "_blank",
               );
             }}
@@ -536,7 +536,7 @@ export function GraphqlContext({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Hierarchical resource paths"
-            href="/learn/by-example/graphql-hierarchical-resource-paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -572,7 +572,7 @@ export function GraphqlContext({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Field object"
-            href="/learn/by-example/graphql-service-field-object"
+            href="/learn/by-example/graphql-service-field-object/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -99,7 +99,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/arrays",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/arrays",
                 "_blank",
               );
             }}
@@ -303,7 +303,7 @@ export function Arrays({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Expression equality"
-            href="/learn/by-example/expression-equality"
+            href="/learn/by-example/expression-equality/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -337,7 +337,7 @@ export function Arrays({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Nested arrays" href="/learn/by-example/nested-arrays">
+          <Link title="Nested arrays" href="/learn/by-example/nested-arrays/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -55,7 +55,7 @@ export function ObjectClosure({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/object-closure",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/object-closure",
                 "_blank",
               );
             }}
@@ -216,7 +216,7 @@ export function ObjectClosure({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Distinct object types"
-            href="/learn/by-example/distinct-object-types"
+            href="/learn/by-example/distinct-object-types/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -250,7 +250,7 @@ export function ObjectClosure({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client class" href="/learn/by-example/client-class">
+          <Link title="Client class" href="/learn/by-example/client-class/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -9,6 +9,6 @@
     "auth",
     "jwt auth"
   ],
-  "permalink": "/learn/by-example/websocket-client-bearer-token-auth",
+  "permalink": "/learn/by-example/websocket-client-bearer-token-auth/",
   "active": "websocket-client-bearer-token-auth"
 }

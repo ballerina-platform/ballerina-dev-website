@@ -89,7 +89,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-service-jwt-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-service-jwt-authentication",
                 "_blank",
               );
             }}
@@ -272,7 +272,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic authentication LDAP user store"
-            href="/learn/by-example/http-service-basic-authentication-ldap-user-store"
+            href="/learn/by-example/http-service-basic-authentication-ldap-user-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -306,7 +306,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2">
+          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

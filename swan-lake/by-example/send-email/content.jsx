@@ -69,7 +69,7 @@ export function SendEmail({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/send-email",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/send-email",
                 "_blank",
               );
             }}
@@ -254,7 +254,7 @@ export function SendEmail({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Receive email"
-            href="/learn/by-example/receive-email-using-service"
+            href="/learn/by-example/receive-email-using-service/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -290,7 +290,7 @@ export function SendEmail({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Receive email"
-            href="/learn/by-example/receive-email-using-client"
+            href="/learn/by-example/receive-email-using-client/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

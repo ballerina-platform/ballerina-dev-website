@@ -65,7 +65,7 @@ export function TrapExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/trap-expression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/trap-expression",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function TrapExpression({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Panics" href="/learn/by-example/panics">
+          <Link title="Panics" href="/learn/by-example/panics/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -247,7 +247,7 @@ export function TrapExpression({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Type intersection for error types"
-            href="/learn/by-example/error-type-intersection"
+            href="/learn/by-example/error-type-intersection/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

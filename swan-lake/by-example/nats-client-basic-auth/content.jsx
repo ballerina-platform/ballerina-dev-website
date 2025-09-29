@@ -77,7 +77,7 @@ export function NatsClientBasicAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/nats-client-basic-auth",
                 "_blank",
               );
             }}
@@ -319,7 +319,7 @@ export function NatsClientBasicAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="SSL/TLS"
-            href="/learn/by-example/nats-client-secure-connection"
+            href="/learn/by-example/nats-client-secure-connection/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -355,7 +355,7 @@ export function NatsClientBasicAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Consume message"
-            href="/learn/by-example/kafka-service-consume-message"
+            href="/learn/by-example/kafka-service-consume-message/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -84,7 +84,7 @@ export function Aggregation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/aggregation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/aggregation",
                 "_blank",
               );
             }}
@@ -324,7 +324,7 @@ export function Aggregation({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Querying streams"
-            href="/learn/by-example/querying-with-streams"
+            href="/learn/by-example/querying-with-streams/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -358,7 +358,7 @@ export function Aggregation({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Query actions" href="/learn/by-example/query-actions">
+          <Link title="Query actions" href="/learn/by-example/query-actions/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -76,7 +76,7 @@ export function DefiningClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/defining-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/defining-classes",
                 "_blank",
               );
             }}
@@ -243,7 +243,7 @@ export function DefiningClasses({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Object" href="/learn/by-example/object">
+          <Link title="Object" href="/learn/by-example/object/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +278,7 @@ export function DefiningClasses({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Object constructor"
-            href="/learn/by-example/object-constructor"
+            href="/learn/by-example/object-constructor/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

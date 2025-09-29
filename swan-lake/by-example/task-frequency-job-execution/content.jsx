@@ -75,7 +75,7 @@ export function TaskFrequencyJobExecution({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/task-frequency-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/task-frequency-job-execution",
                 "_blank",
               );
             }}
@@ -224,7 +224,7 @@ export function TaskFrequencyJobExecution({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Random numbers" href="/learn/by-example/random-numbers">
+          <Link title="Random numbers" href="/learn/by-example/random-numbers/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +259,7 @@ export function TaskFrequencyJobExecution({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Schedule one time job"
-            href="/learn/by-example/task-one-time-job-execution"
+            href="/learn/by-example/task-one-time-job-execution/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -71,7 +71,7 @@ export function GrpcServiceMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/grpc-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/grpc-service-mutual-ssl",
                 "_blank",
               );
             }}
@@ -252,7 +252,7 @@ export function GrpcServiceMutualSsl({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/grpc-service-ssl-tls">
+          <Link title="SSL/TLS" href="/learn/by-example/grpc-service-ssl-tls/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +287,7 @@ export function GrpcServiceMutualSsl({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Basic authentication file user store"
-            href="/learn/by-example/grpc-service-basic-auth-file-user-store"
+            href="/learn/by-example/grpc-service-basic-auth-file-user-store/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

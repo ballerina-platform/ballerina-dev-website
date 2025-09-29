@@ -74,7 +74,7 @@ export function Maps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/maps",
                 "_blank",
               );
             }}
@@ -233,7 +233,7 @@ export function Maps({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Binary data" href="/learn/by-example/binary-data">
+          <Link title="Binary data" href="/learn/by-example/binary-data/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +266,7 @@ export function Maps({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Records" href="/learn/by-example/records">
+          <Link title="Records" href="/learn/by-example/records/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -43,7 +43,7 @@ const TopNav = (props) => {
   const now = new Date();
   let showBanner = false;
 
-  if (now < Date.parse('2024-11-01T00:00:00.00-00:00')) {
+  if (now < Date.parse('2025-11-01T00:00:00.00-00:00')) {
     showBanner = true;
   }
 
@@ -67,7 +67,8 @@ const TopNav = (props) => {
       {
         (showBanner && launcher !== "hack") ?
           <div className={styles.hackathonBanner}>
-            Ballerina Hacktoberfest is happening now. <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>!
+            <div>Ballerina Hacktoberfest is happening now!</div>
+            <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>
           </div>
           : null
       }

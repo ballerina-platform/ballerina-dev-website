@@ -96,7 +96,7 @@ export function CsvUserConfigurations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/csv-user-configurations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/csv-user-configurations",
                 "_blank",
               );
             }}
@@ -235,7 +235,7 @@ export function CsvUserConfigurations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Transform CSV records to custom types"
-            href="/learn/by-example/transform-csv-records-to-custom-types"
+            href="/learn/by-example/transform-csv-records-to-custom-types/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -271,7 +271,7 @@ export function CsvUserConfigurations({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Constraint validations"
-            href="/learn/by-example/constraint-validations"
+            href="/learn/by-example/constraint-validations/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

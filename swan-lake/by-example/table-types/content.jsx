@@ -88,7 +88,7 @@ export function TableTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/table-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/table-types",
                 "_blank",
               );
             }}
@@ -256,7 +256,7 @@ export function TableTypes({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Table" href="/learn/by-example/table">
+          <Link title="Table" href="/learn/by-example/table/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -291,7 +291,7 @@ export function TableTypes({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Multiple key fields"
-            href="/learn/by-example/multiple-key-fields"
+            href="/learn/by-example/multiple-key-fields/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -2,6 +2,6 @@
   "title": "XML to record conversion",
   "description": "This BBE demonstrates the conversion from XML to record in Ballerina.",
   "keywords": ["ballerina", "ballerina by example", "BBE", "record", "xml"],
-  "permalink": "/learn/by-example/xml-to-record-conversion",
+  "permalink": "/learn/by-example/xml-to-record-conversion/",
   "active": "xml-to-record-conversion"
 }

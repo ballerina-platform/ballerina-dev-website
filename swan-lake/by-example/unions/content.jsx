@@ -133,7 +133,7 @@ export function Unions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/unions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/unions",
                 "_blank",
               );
             }}
@@ -274,7 +274,7 @@ export function Unions({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Structural typing"
-            href="/learn/by-example/structural-typing"
+            href="/learn/by-example/structural-typing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -308,7 +308,7 @@ export function Unions({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Errors" href="/learn/by-example/error-reporting">
+          <Link title="Errors" href="/learn/by-example/error-reporting/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

@@ -70,7 +70,7 @@ export function WebsocketClientSelfSignedJwtAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/websocket-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/websocket-client-self-signed-jwt-auth",
                 "_blank",
               );
             }}
@@ -258,7 +258,7 @@ export function WebsocketClientSelfSignedJwtAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Bearer token authentication"
-            href="/learn/by-example/websocket-client-bearer-token-auth"
+            href="/learn/by-example/websocket-client-bearer-token-auth/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -294,7 +294,7 @@ export function WebsocketClientSelfSignedJwtAuth({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="OAuth2 client credentials grant type"
-            href="/learn/by-example/websocket-client-oauth2-client-cred-grant-type"
+            href="/learn/by-example/websocket-client-oauth2-client-cred-grant-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

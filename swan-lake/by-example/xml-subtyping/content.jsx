@@ -128,7 +128,7 @@ export function XmlSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/xml-subtyping",
                 "_blank",
               );
             }}
@@ -303,7 +303,7 @@ export function XmlSubtyping({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="XML mutation" href="/learn/by-example/xml-mutation">
+          <Link title="XML mutation" href="/learn/by-example/xml-mutation/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -336,7 +336,10 @@ export function XmlSubtyping({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="XML navigation " href="/learn/by-example/xml-navigation">
+          <Link
+            title="XML navigation "
+            href="/learn/by-example/xml-navigation/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

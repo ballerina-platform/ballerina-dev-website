@@ -149,7 +149,7 @@ export function CustomPrefetchMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/custom-prefetch-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/custom-prefetch-methods",
                 "_blank",
               );
             }}
@@ -298,7 +298,7 @@ export function CustomPrefetchMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/custom-prefetch-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/custom-prefetch-methods",
                 "_blank",
               );
             }}
@@ -473,7 +473,7 @@ export function CustomPrefetchMethods({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Dataloader" href="/learn/by-example/graphql-dataloader">
+          <Link title="Dataloader" href="/learn/by-example/graphql-dataloader/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -508,7 +508,7 @@ export function CustomPrefetchMethods({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Operation-level caching"
-            href="/learn/by-example/graphql-service-operation-level-caching"
+            href="/learn/by-example/graphql-service-operation-level-caching/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

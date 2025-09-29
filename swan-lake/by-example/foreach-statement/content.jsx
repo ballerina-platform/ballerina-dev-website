@@ -73,7 +73,7 @@ export function ForeachStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/foreach-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/foreach-statement",
                 "_blank",
               );
             }}
@@ -249,7 +249,7 @@ export function ForeachStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Function closure"
-            href="/learn/by-example/function-closure"
+            href="/learn/by-example/function-closure/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +285,7 @@ export function ForeachStatement({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="While statement"
-            href="/learn/by-example/while-statement"
+            href="/learn/by-example/while-statement/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

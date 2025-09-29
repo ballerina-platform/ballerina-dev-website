@@ -55,7 +55,7 @@ export function RandomNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/random-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/random-numbers",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function RandomNumbers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Directory listener"
-            href="/learn/by-example/directory-listener"
+            href="/learn/by-example/directory-listener/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -234,7 +234,7 @@ export function RandomNumbers({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Schedule job recurrence by frequency"
-            href="/learn/by-example/task-frequency-job-execution"
+            href="/learn/by-example/task-frequency-job-execution/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

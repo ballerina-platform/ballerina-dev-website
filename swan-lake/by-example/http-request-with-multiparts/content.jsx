@@ -129,7 +129,7 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/http-request-with-multiparts",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/http-request-with-multiparts",
                 "_blank",
               );
             }}
@@ -471,7 +471,7 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chunking" href="/learn/by-example/http-client-chunking">
+          <Link title="Chunking" href="/learn/by-example/http-client-chunking/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -506,7 +506,7 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="HTTP/2 to HTTP/1.1 downgrade"
-            href="/learn/by-example/http-2-to-1-1-downgrade-client"
+            href="/learn/by-example/http-2-to-1-1-downgrade-client/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -72,7 +72,7 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/strands",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/strands",
                 "_blank",
               );
             }}
@@ -234,7 +234,7 @@ export function Strands({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Wait for workers"
-            href="/learn/by-example/waiting-for-workers"
+            href="/learn/by-example/waiting-for-workers/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -270,7 +270,7 @@ export function Strands({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Named worker return values"
-            href="/learn/by-example/named-worker-return-values"
+            href="/learn/by-example/named-worker-return-values/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

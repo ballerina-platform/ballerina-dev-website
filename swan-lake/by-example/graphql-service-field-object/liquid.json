@@ -2,6 +2,6 @@
   "title": "Field object",
   "description": "This example demonstrates accessing information of a GraphQL field in a document.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "graphql", "field"],
-  "permalink": "/learn/by-example/graphql-service-field-object",
+  "permalink": "/learn/by-example/graphql-service-field-object/",
   "active": "graphql-service-field-object"
 }

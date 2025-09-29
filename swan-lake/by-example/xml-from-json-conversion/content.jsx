@@ -62,7 +62,7 @@ export function XmlFromJsonConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/xml-from-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/xml-from-json-conversion",
                 "_blank",
               );
             }}
@@ -204,7 +204,7 @@ export function XmlFromJsonConversion({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XML to JSON conversion"
-            href="/learn/by-example/xml-to-json-conversion"
+            href="/learn/by-example/xml-to-json-conversion/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -240,7 +240,7 @@ export function XmlFromJsonConversion({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="XML to record conversion"
-            href="/learn/by-example/xml-to-record-conversion"
+            href="/learn/by-example/xml-to-record-conversion/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

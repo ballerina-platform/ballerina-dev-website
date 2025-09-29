@@ -62,7 +62,7 @@ export function NatsBasicSub({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/nats-basic-sub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/nats-basic-sub",
                 "_blank",
               );
             }}
@@ -248,7 +248,7 @@ export function NatsBasicSub({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="OAuth2 JWT bearer grant type"
-            href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type"
+            href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -284,7 +284,7 @@ export function NatsBasicSub({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Send reply to request message"
-            href="/learn/by-example/nats-basic-reply"
+            href="/learn/by-example/nats-basic-reply/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

@@ -1,6 +1,83 @@
 {
     "events": [
         {
+            "date": "August 11, 2025",
+            "expire": "2025-08-11T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Exploring AI Capabilities in Ballerina",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Sasindu Alahakoon",
+                    "twitter": "https://www.linkedin.com/in/sasindu-alahakoon/"
+                }
+            ],
+            "url": "Ballerina-AI-Capabilities.pdf",
+            "buttonText": "View details"
+        },
+        {
+            "date": "July 28, 2025",
+            "expire": "2025-07-28T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "University of Colombo School of Computing (UCSC)",
+            "faculty": "",
+            "title": "The Open Source Way – Contributing, Collaborating, and Building Together",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Thisaru Guruge",
+                    "twitter": "https://www.linkedin.com/in/thisaruguruge/"
+                }
+            ],
+            "url": "The-Open-Source-Way–Contributing-Collaborating-and-Building-Together.pdf",
+            "buttonText": "View details"
+        },
+        {
+            "date": "July 21, 2025",
+            "expire": "2025-07-21T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Data Handling with Ballerina",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Gayal Dassanayake",
+                    "twitter": "https://www.linkedin.com/in/gayaldassanayake/"
+                }
+            ],
+            "url": "Handling-Data-with-Ballerina.pdf",
+            "buttonText": "View details"
+        },
+        {
+            "date": "Jul 20, 2025",
+            "expire": "2025-07-21T15:30:00+00:00",
+            "type": "Workshop",
+            "university": "The Open University of Sri Lanka",
+            "faculty": "",
+            "title": "Cloud native software development",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Tharindu Weerasinghe",
+                    "twitter": "https://www.linkedin.com/in/tharinduweerasinghe"
+                },
+                {
+                    "name": "Ravin Perera",
+                    "twitter": "https://www.linkedin.com/in/ravinperera00/"
+                }
+            ],
+            "url": "Cloud-Native-Application-Development-OUSL.pdf",
+            "buttonText": "View details"
+        },
+        
+        {
             "date": "May 08, 2025",
             "expire": "2025-05-08T04:30:00+00:00",
             "type": "Workshop",
@@ -19,8 +96,8 @@
                     "twitter": "https://www.linkedin.com/in/dulmina-renuke-008423133/"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "APIs-and-AI-Driven-Development.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Apr 09, 2025",
@@ -59,8 +136,8 @@
                     "twitter": "https://twitter.com/shammi0107"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "Backend-Development-with-Ballerina.pdf",
+            "buttonText": "View details"
         },
         {
             "date": "Sep 30 - Nov 02, 2024",

@@ -65,7 +65,7 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/check-expression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/check-expression",
                 "_blank",
               );
             }}
@@ -210,7 +210,7 @@ export function CheckExpression({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Error handling" href="/learn/by-example/error-handling">
+          <Link title="Error handling" href="/learn/by-example/error-handling/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +245,7 @@ export function CheckExpression({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Error subtyping"
-            href="/learn/by-example/error-subtyping"
+            href="/learn/by-example/error-subtyping/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

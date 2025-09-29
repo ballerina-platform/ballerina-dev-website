@@ -117,7 +117,7 @@ export function CounterMetrics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/counter-metrics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/counter-metrics",
                 "_blank",
               );
             }}
@@ -340,7 +340,7 @@ export function CounterMetrics({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
+            href="/learn/by-example/gauge-metrics/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

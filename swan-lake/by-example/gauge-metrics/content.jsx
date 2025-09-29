@@ -171,7 +171,7 @@ export function GaugeMetrics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.3/examples/gauge-metrics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/gauge-metrics",
                 "_blank",
               );
             }}
@@ -413,7 +413,7 @@ export function GaugeMetrics({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Distributed tracing" href="/learn/by-example/tracing">
+          <Link title="Distributed tracing" href="/learn/by-example/tracing/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -448,7 +448,7 @@ export function GaugeMetrics({ codeSnippets }) {
         <Col sm={6}>
           <Link
             title="Counter-based metrics"
-            href="/learn/by-example/counter-metrics"
+            href="/learn/by-example/counter-metrics/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

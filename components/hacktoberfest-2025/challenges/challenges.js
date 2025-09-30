@@ -153,7 +153,7 @@ export default function Intro(props) {
 
                       <p className={styles.msg}>Connect, collaborate, and never miss an update</p>
 
-                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.join}`} title='Discord'>Join the Ballerina Server</a>
+                      <a href="https://discord.gg/kVM39ez3JZ" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.join}`} title='Discord'>Join the Ballerina Server</a>
                     </Card.Body>
                   </Card>
                 </Col>

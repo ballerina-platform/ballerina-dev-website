@@ -148,6 +148,23 @@ You can initialize the client as follows.
 Client sClient = check new();
 ```
 
+When integrating Ballerina Persist with your project, you might encounter Hikari Connection Pool errors. To address this, you can adjust the connection pool size within the `init()` method of your `persist_client.bal` file. Here's an example of how to configure the `sql:ConnectionPool`:
+
+```ballerina
+    public isolated function init() returns persist:Error? {
+        sql:ConnectionPool connectionPool = {
+            maxOpenConnections: 30,
+            maxConnectionLifeTime:3000,
+            minIdleConnections: 10
+        };
+        mysql:Client|error dbClient = new (host = host, user = user, password = password, database = database, port = port, options = connectionOptions,connectionPool = connectionPool);
+        if dbClient is error {
+            return <persist:Error>error(dbClient.message());
+        }
+        self.dbClient = dbClient;
+    }
+```
+
 #### CRUD operations
 
 You can perform CRUD operations on the `Workspace` table in the data store using the client object as follows.

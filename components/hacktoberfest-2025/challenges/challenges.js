@@ -92,7 +92,7 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/1" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
+                <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/8" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 

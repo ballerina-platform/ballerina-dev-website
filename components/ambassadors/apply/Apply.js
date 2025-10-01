@@ -49,7 +49,7 @@ export default function Contact(props) {
         <Row>
           <Col sm={12}>
             <p>
-              Apply today to start your journey as a Ballerina Ambassador. We are excited to have you on board!
+              Apply today to start your journey as a Ballerina Student Ambassador. We are excited to have you on board!
             </p>
           </Col>
         </Row>

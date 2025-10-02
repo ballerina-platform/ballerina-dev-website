@@ -148,22 +148,20 @@ You can initialize the client as follows.
 Client sClient = check new();
 ```
 
-When integrating Ballerina Persist with your project, you might encounter Hikari Connection Pool errors. To address this, you can adjust the connection pool size within the `init()` method of your `persist_client.bal` file. Here's an example of how to configure the `sql:ConnectionPool`:
+When integrating Ballerina Persist with your project, it is recommended to configure the connection pool settings via the `Config.toml` file. This approach is preferred over manually changing generated code (e.g., in `persist_client.bal`), as generated code can be overwritten during regeneration.
 
-```ballerina
-    public isolated function init() returns persist:Error? {
-        sql:ConnectionPool connectionPool = {
-            maxOpenConnections: 30,
-            maxConnectionLifeTime:3000,
-            minIdleConnections: 10
-        };
-        mysql:Client|error dbClient = new (host = host, user = user, password = password, database = database, port = port, options = connectionOptions,connectionPool = connectionPool);
-        if dbClient is error {
-            return <persist:Error>error(dbClient.message());
-        }
-        self.dbClient = dbClient;
-    }
+To configure the connection pool, add the following to your `Config.toml` file:
+
+```toml
+[ballerina.sql]
+maxOpenConnections = 30
+maxConnectionLifeTime = 3000.0
+minIdleConnections = 10
 ```
+
+- `maxOpenConnections`: Specifies the maximum number of active connections that can be open at any given time.
+- `maxConnectionLifeTime`: Defines the maximum lifetime of a connection in the pool (in seconds).
+- `minIdleConnections`: Sets the minimum number of idle connections to maintain in the pool.
 
 #### CRUD operations
 

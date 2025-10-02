@@ -4927,6 +4927,121 @@
     ]
   },
   {
+    "title": "Direct LLM calls",
+    "column": 0,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Direct LLM calls",
+        "url": "direct-llm-calls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with history",
+        "url": "direct-llm-calls-with-history",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Direct LLM calls with multimodal input",
+        "url": "direct-llm-calls-with-multimodal-input",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Retrieval-augmented generation (RAG)",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "RAG ingestion",
+        "url": "rag-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "RAG query",
+        "url": "rag-query",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Model context protocol (MCP)",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP service",
+        "url": "mcp-service"
+      },
+      {
+        "name": "MCP advanced service",
+        "url": "mcp-service-advanced"
+      }
+    ]
+  },
+  {
+    "title": "AI Agents",
+    "column": 2,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with local tools",
+        "url": "ai-agent-local-tools",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with MCP integration",
+        "url": "ai-agent-mcp-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Agent with external endpoint integration",
+        "url": "ai-agent-external-endpoint-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
+    "title": "Natural expressions",
+    "column": 3,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Natural expressions",
+        "url": "natural-expressions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      }
+    ]
+  },
+  {
     "title": "Docker",
     "column": 0,
     "category": "Deployment",
@@ -5168,121 +5283,6 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Direct LLM calls",
-    "column": 0,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Direct LLM calls",
-        "url": "direct-llm-calls",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      },
-      {
-        "name": "Direct LLM calls with history",
-        "url": "direct-llm-calls-with-history",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      },
-      {
-        "name": "Direct LLM calls with multimodal input",
-        "url": "direct-llm-calls-with-multimodal-input",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      }
-    ]
-  },
-  {
-    "title": "Retrieval-augmented generation (RAG)",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Data ingestion",
-        "url": "rag-ingestion",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys",
-        "disablePlayground": true
-      },
-      {
-        "name": "Retrieval-augmented generation",
-        "url": "rag-query",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      }
-    ]
-  },
-  {
-    "title": "Model context protocol (MCP)",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "MCP service",
-        "url": "mcp-service"
-      },
-      {
-        "name": "MCP advanced service",
-        "url": "mcp-service-advanced"
-      }
-    ]
-  },
-  {
-    "title": "AI Agents",
-    "column": 2,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent with local tools",
-        "url": "ai-agent-local-tools",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      },
-      {
-        "name": "Agent with MCP integration",
-        "url": "ai-agent-mcp-integration",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      },
-      {
-        "name": "Agent with external endpoint integration",
-        "url": "ai-agent-external-endpoint-integration",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true
-      }
-    ]
-  },
-  {
-    "title": "Natural expressions",
-    "column": 3,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Natural expressions",
-        "url": "natural-expressions",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys",
-        "disablePlayground": true
       }
     ]
   }

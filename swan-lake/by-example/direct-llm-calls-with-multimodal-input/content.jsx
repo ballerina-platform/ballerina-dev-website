@@ -330,7 +330,7 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Data ingestion" href="/learn/by-example/rag-ingestion/">
+          <Link title="RAG ingestion" href="/learn/by-example/rag-ingestion/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -339,7 +339,7 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Data ingestion
+                  RAG ingestion
                 </span>
               </div>
               <svg

@@ -86,7 +86,7 @@ export function RagQuery({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Retrieval-augmented generation (RAG)</h1>
+      <h1>Retrieval-augmented generation (RAG) query</h1>
 
       <p>
         Retrieval-augmented generation (RAG) is a technique that enhances
@@ -330,7 +330,7 @@ export function RagQuery({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Data ingestion" href="/learn/by-example/rag-ingestion/">
+          <Link title="RAG ingestion" href="/learn/by-example/rag-ingestion/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +356,7 @@ export function RagQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Data ingestion
+                  RAG ingestion
                 </span>
               </div>
             </div>

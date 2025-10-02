@@ -10,35 +10,6 @@ import ballerina/io;
 import ballerina/time;
 import ballerina/uuid;
 
-// Define an AI agent with a system prompt and a set of tools.
-// The agent will use these tools to help manage a to-do list,
-// following the system prompt instructions.
-final ai:Agent todoAgent = check new ({
-    systemPrompt: {
-        role: "Task Assistant",
-        instructions: string \`You are a helpful assistant for 
-            managing a to-do list. You can manage tasks and
-            help a user plan their schedule.\`
-    },
-    // Specify the functions the agent can use as tools.
-    tools: [addTask, listTasks, getCurrentDate],
-    // Use the default model provider (with configuration added
-    // via a Ballerina VS Code command).
-    model: check ai:getDefaultModelProvider()
-});
-
-public function main() returns error? {
-    while true {
-        string userInput = io:readln("User (or 'exit' to quit): ");
-        if userInput == "exit" {
-            break;
-        }
-        // Pass the user input to the agent and get a response.
-        string response = check todoAgent.run(userInput);
-        io:println("Agent: ", response);
-    }
-}
-
 type Task record {|
     string description;
     time:Date dueBy?;
@@ -55,6 +26,7 @@ isolated map<Task> tasks = {
     }
 };
 
+// Define the functions that the agent can use as tools.
 // The LLM will identify the arguments to pass to these functions
 // based on the user input and the tool (function) signatures.
 @ai:AgentTool
@@ -75,6 +47,35 @@ isolated function listTasks() returns Task[] {
 isolated function getCurrentDate() returns time:Date {
     time:Civil {year, month, day} = time:utcToCivil(time:utcNow());
     return {year, month, day};
+}
+
+// Define an AI agent with a system prompt and a set of tools.
+// The agent will use these tools to help manage a task list,
+// following the system prompt instructions.
+final ai:Agent taskAssistantAgent = check new ({
+    systemPrompt: {
+        role: "Task Assistant",
+        instructions: string \`You are a helpful assistant for 
+            managing a to-do list. You can manage tasks and
+            help a user plan their schedule.\`
+    },
+    // Specify the functions the agent can use as tools.
+    tools: [addTask, listTasks, getCurrentDate],
+    // Use the default model provider (with configuration added
+    // via a Ballerina VS Code command).
+    model: check ai:getDefaultModelProvider()
+});
+
+public function main() returns error? {
+    while true {
+        string userInput = io:readln("User (or 'exit' to quit): ");
+        if userInput == "exit" {
+            break;
+        }
+        // Pass the user input to the agent and get a response.
+        string response = check taskAssistantAgent.run(userInput);
+        io:println("Agent: ", response);
+    }
 }
 `,
 ];

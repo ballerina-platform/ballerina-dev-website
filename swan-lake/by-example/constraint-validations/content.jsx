@@ -266,8 +266,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Hello world"
-            href="/learn/by-example/docker-hello-world/"
+            title="Direct LLM calls"
+            href="/learn/by-example/direct-llm-calls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +277,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Direct LLM calls
                 </span>
               </div>
               <svg

@@ -92,7 +92,7 @@ export default function Intro(props) {
                     </tbody>
                   </Table>
                 </div>
-                <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/1" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
+                <a className={styles.issues} href="https://github.com/orgs/ballerina-platform/projects/376/views/8" target="_blank" rel="noreferrer" title='View issues'>View issues</a>
               </div>
             </Col>
 
@@ -153,7 +153,7 @@ export default function Intro(props) {
 
                       <p className={styles.msg}>Connect, collaborate, and never miss an update</p>
 
-                      <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.join}`} title='Discord'>Join the Ballerina Server</a>
+                      <a href="https://discord.gg/kVM39ez3JZ" target="_blank" rel="noreferrer" className={`${styles.combtn} ${styles.join}`} title='Discord'>Join the Ballerina Server</a>
                     </Card.Body>
                   </Card>
                 </Col>

@@ -59,7 +59,7 @@ export function RagIngestion({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Data ingestion for retrieval-augmented generation (RAG)</h1>
+      <h1>Retrieval-augmented generation (RAG) ingestion</h1>
 
       <p>
         Ballerina has high-level, provider-agnostic APIs to ingest data for
@@ -331,10 +331,7 @@ export function RagIngestion({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Retrieval-augmented generation"
-            href="/learn/by-example/rag-query/"
-          >
+          <Link title="RAG query" href="/learn/by-example/rag-query/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -343,7 +340,7 @@ export function RagIngestion({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retrieval-augmented generation
+                  RAG query
                 </span>
               </div>
               <svg

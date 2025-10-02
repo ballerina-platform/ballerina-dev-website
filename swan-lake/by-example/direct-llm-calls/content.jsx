@@ -286,8 +286,8 @@ export function DirectLlmCalls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Counter-based metrics"
-            href="/learn/by-example/counter-metrics/"
+            title="Constraint validations"
+            href="/learn/by-example/constraint-validations/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -314,7 +314,7 @@ export function DirectLlmCalls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Counter-based metrics
+                  Constraint validations
                 </span>
               </div>
             </div>

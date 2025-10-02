@@ -148,7 +148,7 @@ You can initialize the client as follows.
 Client sClient = check new();
 ```
 
-When integrating Ballerina Persist with your project, it is recommended to configure the connection pool settings via the `Config.toml` file. This approach is preferred over manually changing generated code (e.g., in `persist_client.bal`), as generated code can be overwritten during regeneration.
+If you need to do additional connection pool configuration, it is recommended to configure the connection pool settings via the `Config.toml` file. This approach is preferred over manually changing generated code (e.g., in `persist_client.bal`), as generated code can be overwritten during regeneration.
 
 To configure the connection pool, add the following to your `Config.toml` file:
 

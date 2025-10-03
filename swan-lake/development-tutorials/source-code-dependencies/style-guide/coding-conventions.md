@@ -328,18 +328,18 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
   ```
 
 * Use function pointers to improve performance:
-  ```ballerina  
-  isolated function getDuration() returns float {  
-      log:printInfo("Calculating duration optimally");  
-      return random:createDecimal() * 100.0;  
-  }  
+  ```ballerina
+  isolated function getDuration() returns float {
+      log:printInfo("Calculating duration optimally");
+      return random:createDecimal() * 100.0;
+  }
 
   // Bad practice - function executes even if debug log is disabled
   float duration = getDuration();
   log:printDebug("Checking the duration", duration = duration);
 
   // Good practice - function executes only if debug log is enabled
-  log:printDebug("Checking the duration", duration = getDuration);  
+  log:printDebug("Checking the duration", duration = getDuration); 
   ```
 
 * Avoid logging sensitive information like passwords, tokens, or personal data

@@ -29,3 +29,11 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.10)](https://github.com/ballerina-platform/ballerina-lang/milestone/199?closed=1).
+
+## Developer tool updates
+
+### Bug fixes
+
+#### OpenAPI tool
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.12.10) of the OpenAPI tool](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue%20state%3Aclosed%20label%3Amodule%2Fopenapi-tools%20milestone%3A2201.12.10)

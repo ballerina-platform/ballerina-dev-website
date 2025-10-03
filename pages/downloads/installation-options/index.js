@@ -35,7 +35,7 @@ export async function getStaticProps() {
 
     const fileName = fs.readFileSync(`downloads/installation-options/installation-options.md`, "utf-8");
     const { data: frontmatter, content } = matter(fileName);
-    const id = "installation-options";
+    const id = "installation-options/installation-options";
 
     return {
         props: {

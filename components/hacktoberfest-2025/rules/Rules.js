@@ -87,7 +87,7 @@ export default function Rules(props) {
                   <ul className={styles.customUL}>
                     <li className={styles.customLi}><b>Submission deadline:</b> The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/rs5kBkk25ikhgHBg6">form</a> is October 31, 2025, at 11:59 PM PST.</li>
                     <li className={styles.customLi}><b>Ask questions on Stack Overflow:</b> Need any technical help? Raise all your questions in <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" className={styles.titleLink} title="Stack Overflow">Stack Overflow</a>.</li>
-                    <li className={styles.customLi}><b>Stay updated on Discord:</b> All announcements will be held on Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/kVM39ez3JZ">Discord</a> to stay updated on important information.</li>
+                    <li className={styles.customLi}><b>Stay updated on Discord:</b> All announcements will be held on Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.com/channels/957996897782616114/1158350755967799336">Discord</a> to stay updated on important information.</li>
                     <li className={styles.customLi}><b>Contributor recognition:</b> Extra credits may be granted for exceptional contributions.</li>
                     <li className={styles.customLi}><b>Final decisions:</b> All decisions made by the Ballerina Hacktoberfest panel are final, conclusive, and binding.</li>
                   </ul>

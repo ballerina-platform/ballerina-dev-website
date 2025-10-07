@@ -25,7 +25,7 @@ export default function Rewards(props) {
   
   const rewards = [
     {
-      title: "Amazon vouchers equivalent to the points you earn. Each point is equal to US$1.",
+      title: "Amazon vouchers equivalent to the credits you earn. Each credit is equal to US$1.",
       image: "/images/Graphics_amazon-voucher.svg"
     },
     {

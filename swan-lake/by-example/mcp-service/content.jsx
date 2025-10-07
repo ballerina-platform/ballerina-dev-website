@@ -266,7 +266,10 @@ export function McpService({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="RAG query" href="/learn/by-example/rag-query/">
+          <Link
+            title="RAG query with external vector store"
+            href="/learn/by-example/rag-query-with-external-vector-store/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -292,7 +295,7 @@ export function McpService({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG query
+                  RAG query with external vector store
                 </span>
               </div>
             </div>

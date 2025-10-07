@@ -1975,12 +1975,15 @@ sublinks:
       - title: Retrieval-augmented generation (RAG)
         id: 2
         sublinks:
-          - title: RAG ingestion
+          - title: RAG with in-memory vector store
             id: 1
-            url: rag-ingestion
-          - title: RAG query
+            url: rag-with-in-memory-vector-store
+          - title: RAG ingestion with external vector store
             id: 2
-            url: rag-query
+            url: rag-ingestion-with-external-vector-store
+          - title: RAG query with external vector store
+            id: 3
+            url: rag-query-with-external-vector-store
       - title: Model context protocol (MCP)
         id: 3
         sublinks:
@@ -2002,6 +2005,9 @@ sublinks:
           - title: Agent with external endpoint integration
             id: 3
             url: ai-agent-external-endpoint-integration
+          - title: Chat agents
+            id: 4
+            url: chat-agents
       - title: Natural expressions
         id: 5
         sublinks:

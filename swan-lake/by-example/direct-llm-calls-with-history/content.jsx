@@ -86,13 +86,14 @@ export function DirectLlmCallsWithHistory({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Note: This example uses the default model provider implementation. Log
-          in to the Ballerina Copilot, open up the VS Code command palette (
-          <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add
-          your keys to the <code>Config.toml</code> file. Alternatively, to use
-          your own keys, use the relevant{" "}
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
           <code>ballerinax/ai.&lt;provider&gt;</code> model provider
           implementation.
         </p>

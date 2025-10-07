@@ -7,17 +7,9 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
-import ballerinax/ai.pinecone;
 
-// Configuration for Pinecone.
-configurable string pineconeServiceUrl = ?;
-configurable string pineconeApiKey = ?;
-
-// Define the vector store to use.
-// The example uses Pinecone. Alternatively, you can use other providers
-// or try out the in-memory vector store (\`ai:InMemoryVectorStore\`).
-final ai:VectorStore vectorStore = 
-            check new pinecone:VectorStore(pineconeServiceUrl, pineconeApiKey);
+// Define an in-memory vector store.
+final ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
 
 // Define the embedding provider to use.
 // The example uses the default embedding provider implementation
@@ -29,9 +21,15 @@ final ai:EmbeddingProvider embeddingProvider =
 final ai:KnowledgeBase knowledgeBase = 
             new ai:VectorKnowledgeBase(vectorStore, embeddingProvider);
 
+// Define the model provider to use.
+// The example uses the default model provider implementation
+// (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider modelProvider = check ai:getDefaultModelProvider();
+
 public function main() returns error? {
+    // Ingestion process.
     // Use data loaders to load documents.
-    ai:DataLoader loader = check new ai:TextDataLoader("./leave_policy.pdf");
+    ai:DataLoader loader = check new ai:TextDataLoader("./leave_policy.md");
     ai:Document|ai:Document[] documents = check loader.load();
 
     // Ingest the documents into the knowledge base. 
@@ -39,17 +37,31 @@ public function main() returns error? {
     // Alternatively, for finer control, you can use the required chunker
     // (\`ai:Chunker\` implementations) to chunk documents and pass the chunks
     // as the argument.
-    ai:Error? ingestionResult = knowledgeBase.ingest(documents);
-    if ingestionResult is () {
-        io:println("Ingestion successful");
-    } else {
-        io:println("Ingestion failed: ", ingestionResult.message());
-    }
+    check knowledgeBase.ingest(documents);
+    io:println("Ingestion successful");
+
+    // Querying process.
+    string query = 
+        "How many annual leave days can a full-time employee carry forward to the next year?";
+
+    ai:QueryMatch[] queryMatches = check knowledgeBase.retrieve(query, 10);
+    ai:Chunk[] context = from ai:QueryMatch queryMatch in queryMatches
+                            select queryMatch.chunk;
+
+    // The \`augmentUserQuery\` function augments the user query with the context using 
+    // a generic prompt template.
+    ai:ChatUserMessage augmentedQuery = ai:augmentUserQuery(context, query);
+
+    // Use the \`chat\` method with the \`ai:ChatUserMessage\` with the augmented query.
+    ai:ChatAssistantMessage assistantMessage = check modelProvider->chat(augmentedQuery);
+    
+    io:println("\\nQuery: ", query);
+    io:println("Answer: ", assistantMessage.content);
 }
 `,
 ];
 
-export function RagIngestion({ codeSnippets }) {
+export function RagWithInMemoryVectorStore({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -72,32 +84,31 @@ export function RagIngestion({ codeSnippets }) {
       <p>
         These abstractions enable you to load documents, convert them into
         semantically meaningful vector representations using embedding models,
-        and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
-        The knowledge base orchestrates this process.
+        and index them into a vector database. Then at generation/querying, you
+        can query semantically similar content from vector databases and use
+        retrieved context in the request to the LLM to generate more accurate
+        responses. The knowledge base (<code>ai: KnowledgeBase</code>)
+        orchestrates this process.
       </p>
 
       <p>
-        This example demonstrates how to use <code>ai:TextDataLoader</code> to
-        load documents, generate embeddings with a configured provider, and
-        ingest them into a vector store.
+        This example demonstrates implementing RAG workflow using an in-memory
+        vector store.
       </p>
 
       <blockquote>
         <p>
-          Note: This example uses the default embedding provider implementation
-          and Pinecone. Log in to the Ballerina Copilot, open up the VS Code
-          command palette (<code>Ctrl</code> + <code>Shift</code> +{" "}
-          <code>P</code> or <code>command</code> + <code>shift</code> +{" "}
-          <code>P</code>), and run the{" "}
+          Note: This example uses the default embedding provider and model
+          provider implementations. To generate the necessary configuration,
+          open up the VS Code command palette (<code>Ctrl</code> +{" "}
+          <code>Shift</code> + <code>P</code> or <code>command</code> +{" "}
+          <code>shift</code> + <code>P</code>), and run the{" "}
           <code>Configure default WSO2 Model Provider</code> command to add your
-          keys to the <code>Config.toml</code> file. Alternatively, to use your
-          own keys, use the relevant <code>ballerinax/ai.&lt;provider&gt;</code>{" "}
-          embedding provider implementation. Follow{" "}
-          <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites">
-            <code>ballerinax/ai.pinecone</code> prerequisites
-          </a>{" "}
-          to extract Pinecone configuration. Alternatively, you can try out the
-          in-memory vector store (<code>ai:InMemoryVectorStore</code>).
+          configuration to the <code>Config.toml</code> file. If not already
+          logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> embedding provider
+          implementation.
         </p>
       </blockquote>
 
@@ -224,8 +235,12 @@ export function RagIngestion({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run rag_ingestion.bal`}</span>
+              <span>{`\$ bal run rag_with_in_memory_vector_store.bal`}</span>
               <span>{`Ingestion successful`}</span>
+              <span>{`
+`}</span>
+              <span>{`Query: How many annual leave days can a full-time employee carry forward to the next year?`}</span>
+              <span>{`Answer: A full-time employee can carry forward up to 5 unused annual leave days to the next year.`}</span>
             </code>
           </pre>
         </Col>
@@ -237,7 +252,7 @@ export function RagIngestion({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rag-ingestion/leave_policy.pdf">
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rag-with-in-memory-vector-store/leave_policy.md">
               Sample policy document
             </a>
           </span>
@@ -247,7 +262,19 @@ export function RagIngestion({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-query/">RAG query example</a>
+            <a href="/learn/by-example/rag-ingestion-with-external-vector-store/">
+              RAG ingestion with external vector store example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rag-query-with-external-vector-store/">
+              RAG query with external vector store example
+            </a>
           </span>
         </li>
       </ul>
@@ -331,7 +358,10 @@ export function RagIngestion({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="RAG query" href="/learn/by-example/rag-query/">
+          <Link
+            title="RAG ingestion with external vector store"
+            href="/learn/by-example/rag-ingestion-with-external-vector-store/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -340,7 +370,7 @@ export function RagIngestion({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG query
+                  RAG ingestion with external vector store
                 </span>
               </div>
               <svg

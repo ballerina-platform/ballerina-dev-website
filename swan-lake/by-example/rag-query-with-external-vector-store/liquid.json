@@ -1,0 +1,7 @@
+{
+  "title": "RAG query with external vector store",
+  "description": "This BBE demonstrates how to do retrieval-augmented generation (RAG).",
+  "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "rag"],
+  "permalink": "/learn/by-example/rag-query-with-external-vector-store/",
+  "active": "rag-query-with-external-vector-store"
+}

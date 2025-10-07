@@ -7,40 +7,49 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
+import ballerinax/ai.pinecone;
 
-// Define an MCP toolkit to connect to the MCP service.
-// This allows using all the tools registered with the MCP service.
-// Alternatively, specific tools can be used by specifying them as the second 
-// argument (e.g., \`check new ("http://localhost:9090/mcp", ["getCurrentWeather"])\`).
-final ai:McpToolKit weatherMcpConn = check new ("http://localhost:9090/mcp");
+// Configuration for Pinecone.
+configurable string pineconeServiceUrl = ?;
+configurable string pineconeApiKey = ?;
 
-final ai:Agent weatherAgent = check new (
-    systemPrompt = {
-        role: "Weather-aware AI Assistant",
-        instructions: string \`You are a smart AI assistant that can assist 
-            a user based on accurate and timely weather information.\`
-    }, 
-    tools = [weatherMcpConn],
-    // Use the default model provider (with configuration added
-    // via a Ballerina VS Code command).
-    model = check ai:getDefaultModelProvider()
-);
+// Define the vector store to use.
+// The example uses Pinecone. Alternatively, you can use other providers
+// or try out the in-memory vector store (\`ai:InMemoryVectorStore\`).
+final ai:VectorStore vectorStore = 
+            check new pinecone:VectorStore(pineconeServiceUrl, pineconeApiKey);
+
+// Define the embedding provider to use.
+// The example uses the default embedding provider implementation
+// (with configuration added via a Ballerina VS Code command).
+final ai:EmbeddingProvider embeddingProvider = 
+            check ai:getDefaultEmbeddingProvider();
+
+// Create the knowledge base with the vector store and embedding provider.
+final ai:KnowledgeBase knowledgeBase = 
+            new ai:VectorKnowledgeBase(vectorStore, embeddingProvider);
 
 public function main() returns error? {
-    while true {
-        string userInput = io:readln("User (or 'exit' to quit): ");
-        if userInput == "exit" {
-            break;
-        }
-        // Pass the user input to the agent and get a response.
-        string response = check weatherAgent.run(userInput);
-        io:println("Agent: ", response);
+    // Use data loaders to load documents.
+    ai:DataLoader loader = check new ai:TextDataLoader("./leave_policy.pdf");
+    ai:Document|ai:Document[] documents = check loader.load();
+
+    // Ingest the documents into the knowledge base. 
+    // When \`ai:Document\`s are ingested, chunking is handled by the knowledge base.
+    // Alternatively, for finer control, you can use the required chunker
+    // (\`ai:Chunker\` implementations) to chunk documents and pass the chunks
+    // as the argument.
+    ai:Error? ingestionResult = knowledgeBase.ingest(documents);
+    if ingestionResult is () {
+        io:println("Ingestion successful");
+    } else {
+        io:println("Ingestion failed: ", ingestionResult.message());
     }
 }
 `,
 ];
 
-export function AiAgentMcpIntegration({ codeSnippets }) {
+export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,41 +59,48 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>AI agents with MCP tools</h1>
+      <h1>Retrieval-augmented generation (RAG) ingestion</h1>
 
       <p>
-        Ballerina enables developers to easily create intelligent AI agents
-        powered by large language models (LLMs) and integrated with tools,
-        including local tools, MCP tools, and external APIs. These AI agents can
-        automate complex workflows, interact with users through natural
-        language, and seamlessly connect with internal and external systems.
+        Ballerina has high-level, provider-agnostic APIs to ingest data for
+        retrieval-augmented generation (RAG) workflows. These include
+        abstractions such as <code>ai:DataLoader</code>,{" "}
+        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
+        <code>ai:KnowledgeBase</code>.
       </p>
 
       <p>
-        This example demonstrates how to create an AI agent that can access
-        weather information by integrating with a Model Context Protocol (MCP)
-        service, by simply defining an MCP toolkit.
+        These abstractions enable you to load documents, convert them into
+        semantically meaningful vector representations using embedding models,
+        and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
+        The knowledge base (<code>ai: KnowledgeBase</code>) orchestrates this
+        process.
+      </p>
+
+      <p>
+        This example demonstrates how to use <code>ai:TextDataLoader</code> to
+        load documents, generate embeddings with a configured provider, and
+        ingest them into a vector store.
       </p>
 
       <blockquote>
         <p>
-          Note: You can use this agent with the{" "}
-          <a href="/learn/by-example/mcp-service/">MCP service example</a>.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
-          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-          <code>command</code> + <code>shift</code> + <code>P</code>), and run
-          the <code>Configure default WSO2 Model Provider</code> command to add
-          your configuration to the <code>Config.toml</code> file. If not
-          already logged in, log in to the Ballerina Copilot when prompted.
+          Note: This example uses the default embedding provider implementation
+          and Pinecone. To generate the configuration for the embedding
+          provider, open up the VS Code command palette (<code>Ctrl</code> +{" "}
+          <code>Shift</code> + <code>P</code> or <code>command</code> +{" "}
+          <code>shift</code> + <code>P</code>), and run the{" "}
+          <code>Configure default WSO2 Model Provider</code> command to add your
+          configuration to the <code>Config.toml</code> file. If not already
+          logged in, log in to the Ballerina Copilot when prompted.
           Alternatively, to use your own keys, use the relevant{" "}
-          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
-          implementation.
+          <code>ballerinax/ai.&lt;provider&gt;</code> embedding provider
+          implementation. Follow{" "}
+          <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites">
+            <code>ballerinax/ai.pinecone</code> prerequisites
+          </a>{" "}
+          to extract Pinecone configuration. Alternatively, you can try out the
+          in-memory vector store (<code>ai:InMemoryVectorStore</code>).
         </p>
       </blockquote>
 
@@ -211,15 +227,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ai_agent_mcp_integration.bal`}</span>
-              <span>{`User (or 'exit' to quit): Should I go for a walk in Colombo today?`}</span>
-              <span>{`Agent: The current weather in Colombo is sunny with a temperature of 27°C and humidity at 80%. It seems like a great day for a walk! Enjoy your time outdoors!`}</span>
-              <span>{`User (or 'exit' to quit): What about tomorrow?`}</span>
-              <span>{`Agent: Tomorrow in Colombo, the weather is expected to be cloudy with a high of 30°C and a low of 26°C. There's a 65% chance of precipitation, and wind speeds will be around 17 km/h. `}</span>
-              <span>{`
-`}</span>
-              <span>{`While it may not be as sunny as today, you could still go for a walk, but keep an eye on the clouds and the potential for light rain. Enjoy!`}</span>
-              <span>{`User (or 'exit' to quit): exit`}</span>
+              <span>{`\$ bal run rag_ingestion_with_external_vector_store.bal`}</span>
+              <span>{`Ingestion successful`}</span>
             </code>
           </pre>
         </Col>
@@ -231,8 +240,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/ai-agent-local-tools">
-              The Agent with local tools example
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/rag-ingestion-with-external-vector-store/leave_policy.pdf">
+              Sample policy document
             </a>
           </span>
         </li>
@@ -241,8 +250,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/ai-agent-external-endpoint-integration">
-              The Agent with external endpoint integration example
+            <a href="/learn/by-example/rag-query-with-external-vector-store/">
+              RAG query with external vector store example
             </a>
           </span>
         </li>
@@ -251,8 +260,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
-              The <code>ballerinax/ai.anthropic</code> module
+            <a href="https://central.ballerina.io/ballerinax/ai.milvus/latest">
+              The <code>ballerinax/ai.milvus</code> module
             </a>
           </span>
         </li>
@@ -261,8 +270,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-              The <code>ballerinax/ai.azure</code> module
+            <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+              The <code>ballerinax/ai.pinecone</code> module
             </a>
           </span>
         </li>
@@ -271,8 +280,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
-              The <code>ballerinax/ai.openai</code> module
+            <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
+              The <code>ballerinax/ai.pgvector</code> module
             </a>
           </span>
         </li>
@@ -281,28 +290,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
-              The <code>ballerinax/ai.ollama</code> module
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
-              The <code>ballerinax/ai.deepseek</code> module
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
-              The <code>ballerinax/ai.mistral</code> module
+            <a href="https://central.ballerina.io/ballerinax/ai.weaviate/latest">
+              The <code>ballerinax/ai.weaviate</code> module
             </a>
           </span>
         </li>
@@ -312,8 +301,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with local tools"
-            href="/learn/by-example/ai-agent-local-tools/"
+            title="RAG with in-memory vector store"
+            href="/learn/by-example/rag-with-in-memory-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -340,7 +329,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with local tools
+                  RAG with in-memory vector store
                 </span>
               </div>
             </div>
@@ -348,8 +337,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with external endpoint integration"
-            href="/learn/by-example/ai-agent-external-endpoint-integration/"
+            title="RAG query with external vector store"
+            href="/learn/by-example/rag-query-with-external-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -359,7 +348,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with external endpoint integration
+                  RAG query with external vector store
                 </span>
               </div>
               <svg

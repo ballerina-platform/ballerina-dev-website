@@ -6,41 +6,79 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/ai;
-import ballerina/io;
+import ballerina/http;
+import ballerina/time;
+import ballerina/uuid;
 
-// Define an MCP toolkit to connect to the MCP service.
-// This allows using all the tools registered with the MCP service.
-// Alternatively, specific tools can be used by specifying them as the second 
-// argument (e.g., \`check new ("http://localhost:9090/mcp", ["getCurrentWeather"])\`).
-final ai:McpToolKit weatherMcpConn = check new ("http://localhost:9090/mcp");
-
-final ai:Agent weatherAgent = check new (
-    systemPrompt = {
-        role: "Weather-aware AI Assistant",
-        instructions: string \`You are a smart AI assistant that can assist 
-            a user based on accurate and timely weather information.\`
-    }, 
-    tools = [weatherMcpConn],
-    // Use the default model provider (with configuration added
-    // via a Ballerina VS Code command).
-    model = check ai:getDefaultModelProvider()
-);
-
-public function main() returns error? {
-    while true {
-        string userInput = io:readln("User (or 'exit' to quit): ");
-        if userInput == "exit" {
-            break;
-        }
-        // Pass the user input to the agent and get a response.
-        string response = check weatherAgent.run(userInput);
-        io:println("Agent: ", response);
+// Declare a service attached to an \`ai:Listener\` listener 
+// to interact with the agent.
+service /tasks on new ai:Listener(8080) {
+    resource function post chat(@http:Payload ai:ChatReqMessage request) 
+						returns ai:ChatRespMessage|error {
+        string response = check taskAssistantAgent.run(request.message, request.sessionId);
+        return {message: response};
     }
 }
+
+type Task record {|
+    string description;
+    time:Date dueBy?;
+    time:Date createdAt = time:utcToCivil(time:utcNow());
+    time:Date completedAt?;
+    boolean completed = false;
+|};
+
+// Simple in-memory task management.
+isolated map<Task> tasks = {
+    "a2af0faa-3b73-4184-9be1-87b29a963be6": {
+        description: "Buy groceries",
+        dueBy: time:utcToCivil(time:utcAddSeconds(time:utcNow(), 60 * 5))
+    }
+};
+
+// Define the functions that the agent can use as tools.
+// The LLM will identify the arguments to pass to these functions
+// based on the user input and the tool (function) signatures.
+@ai:AgentTool
+isolated function addTask(string description, time:Date? dueBy) returns error? {
+    lock {
+        tasks[uuid:createRandomUuid()] = {description, dueBy: dueBy.clone()};
+    }
+}
+
+@ai:AgentTool
+isolated function listTasks() returns Task[] {
+    lock {
+        return tasks.toArray().clone();
+    }
+}
+
+@ai:AgentTool
+isolated function getCurrentDate() returns time:Date {
+    time:Civil {year, month, day} = time:utcToCivil(time:utcNow());
+    return {year, month, day};
+}
+
+// Define an AI agent with a system prompt and a set of tools.
+// The agent will use these tools to help manage a task list,
+// following the system prompt instructions.
+final ai:Agent taskAssistantAgent = check new ({
+    systemPrompt: {
+        role: "Task Assistant",
+        instructions: string \`You are a helpful assistant for 
+            managing a to-do list. You can manage tasks and
+            help a user plan their schedule.\`
+    },
+    // Specify the functions the agent can use as tools.
+    tools: [addTask, listTasks, getCurrentDate],
+    // Use the default model provider (with configuration added
+    // via a Ballerina VS Code command).
+    model: check ai:getDefaultModelProvider()
+});
 `,
 ];
 
-export function AiAgentMcpIntegration({ codeSnippets }) {
+export function ChatAgents({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,28 +88,27 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>AI agents with MCP tools</h1>
+      <h1>Chat agents</h1>
 
       <p>
-        Ballerina enables developers to easily create intelligent AI agents
+        Ballerina enables developers to easily create intelligent chat agents
         powered by large language models (LLMs) and integrated with tools,
-        including local tools, MCP tools, and external APIs. These AI agents can
-        automate complex workflows, interact with users through natural
-        language, and seamlessly connect with internal and external systems.
+        including local tools, MCP tools, and external APIs. These chat agents
+        can maintain conversations across multiple sessions, handle concurrent
+        users, and seamlessly integrate with web services and external systems.
       </p>
 
       <p>
-        This example demonstrates how to create an AI agent that can access
-        weather information by integrating with a Model Context Protocol (MCP)
-        service, by simply defining an MCP toolkit.
+        This example demonstrates how to create a chat agent service that
+        manages to-do lists while maintaining separate conversation sessions for
+        different users through externally managed session IDs.
       </p>
 
-      <blockquote>
-        <p>
-          Note: You can use this agent with the{" "}
-          <a href="/learn/by-example/mcp-service/">MCP service example</a>.
-        </p>
-      </blockquote>
+      <p>
+        Copy the source to a Ballerina project and use the <code>Try it</code>{" "}
+        CodeLens above the service declaration to use a chat interface within VS
+        Code.
+      </p>
 
       <blockquote>
         <p>
@@ -211,15 +248,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ai_agent_mcp_integration.bal`}</span>
-              <span>{`User (or 'exit' to quit): Should I go for a walk in Colombo today?`}</span>
-              <span>{`Agent: The current weather in Colombo is sunny with a temperature of 27°C and humidity at 80%. It seems like a great day for a walk! Enjoy your time outdoors!`}</span>
-              <span>{`User (or 'exit' to quit): What about tomorrow?`}</span>
-              <span>{`Agent: Tomorrow in Colombo, the weather is expected to be cloudy with a high of 30°C and a low of 26°C. There's a 65% chance of precipitation, and wind speeds will be around 17 km/h. `}</span>
-              <span>{`
-`}</span>
-              <span>{`While it may not be as sunny as today, you could still go for a walk, but keep an eye on the clouds and the potential for light rain. Enjoy!`}</span>
-              <span>{`User (or 'exit' to quit): exit`}</span>
+              <span>{`\$ bal run chat_agents.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -233,6 +262,16 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
           <span>
             <a href="/learn/by-example/ai-agent-local-tools">
               The Agent with local tools example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ai-agent-mcp-integration">
+              The Agent with MCP integration example
             </a>
           </span>
         </li>
@@ -312,8 +351,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with local tools"
-            href="/learn/by-example/ai-agent-local-tools/"
+            title="Agent with external endpoint integration"
+            href="/learn/by-example/ai-agent-external-endpoint-integration/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -340,7 +379,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with local tools
+                  Agent with external endpoint integration
                 </span>
               </div>
             </div>
@@ -348,8 +387,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with external endpoint integration"
-            href="/learn/by-example/ai-agent-external-endpoint-integration/"
+            title="Natural expressions"
+            href="/learn/by-example/natural-expressions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -359,7 +398,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with external endpoint integration
+                  Natural expressions
                 </span>
               </div>
               <svg

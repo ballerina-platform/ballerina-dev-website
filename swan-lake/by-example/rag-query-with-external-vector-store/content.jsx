@@ -76,7 +76,7 @@ public function main() returns error? {
 `,
 ];
 
-export function RagQuery({ codeSnippets }) {
+export function RagQueryWithExternalVectorStore({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -124,13 +124,15 @@ export function RagQuery({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Note: This example uses the default model provider implementation and
-          Pinecone. Log in to the Ballerina Copilot, open up the VS Code command
+          Note: This example uses the default model provider and embedding
+          provider implementations and Pinecone. To generate the configuration
+          for the model and embedding providers, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add
-          your keys to the <code>Config.toml</code> file. Alternatively, to use
-          your own keys, use the relevant{" "}
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
           <code>ballerinax/ai.&lt;provider&gt;</code> embedding provider
           implementation. Follow{" "}
           <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest#prerequisites">
@@ -264,7 +266,7 @@ export function RagQuery({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run rag_query.bal`}</span>
+              <span>{`\$ bal run rag_query_with_external_vector_store.bal`}</span>
               <span>{`Query: What is the process for appealing a rejected leave request?`}</span>
               <span>{`Answer: I don't know.`}</span>
               <span>{`
@@ -330,7 +332,10 @@ export function RagQuery({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="RAG ingestion" href="/learn/by-example/rag-ingestion/">
+          <Link
+            title="RAG ingestion with external vector store"
+            href="/learn/by-example/rag-ingestion-with-external-vector-store/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +361,7 @@ export function RagQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG ingestion
+                  RAG ingestion with external vector store
                 </span>
               </div>
             </div>

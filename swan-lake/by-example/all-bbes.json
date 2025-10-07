@@ -4963,16 +4963,24 @@
     "category": "Generative AI",
     "samples": [
       {
-        "name": "RAG ingestion",
-        "url": "rag-ingestion",
+        "name": "RAG with in-memory vector store",
+        "url": "rag-with-in-memory-vector-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys",
         "disablePlayground": true
       },
       {
-        "name": "RAG query",
-        "url": "rag-query",
+        "name": "RAG ingestion with external vector store",
+        "url": "rag-ingestion-with-external-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true
+      },
+      {
+        "name": "RAG query with external vector store",
+        "url": "rag-query-with-external-vector-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
@@ -5019,6 +5027,14 @@
       {
         "name": "Agent with external endpoint integration",
         "url": "ai-agent-external-endpoint-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true
+      },
+      {
+        "name": "Chat agents",
+        "url": "chat-agents",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",

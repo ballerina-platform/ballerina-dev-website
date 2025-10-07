@@ -2132,13 +2132,17 @@ import {
   codeSnippetData as DirectLlmCallsWithMultimodalInputCodeSnippetData,
 } from "./direct-llm-calls-with-multimodal-input/content.jsx";
 import {
-  RagIngestion,
-  codeSnippetData as RagIngestionCodeSnippetData,
-} from "./rag-ingestion/content.jsx";
+  RagWithInMemoryVectorStore,
+  codeSnippetData as RagWithInMemoryVectorStoreCodeSnippetData,
+} from "./rag-with-in-memory-vector-store/content.jsx";
 import {
-  RagQuery,
-  codeSnippetData as RagQueryCodeSnippetData,
-} from "./rag-query/content.jsx";
+  RagIngestionWithExternalVectorStore,
+  codeSnippetData as RagIngestionWithExternalVectorStoreCodeSnippetData,
+} from "./rag-ingestion-with-external-vector-store/content.jsx";
+import {
+  RagQueryWithExternalVectorStore,
+  codeSnippetData as RagQueryWithExternalVectorStoreCodeSnippetData,
+} from "./rag-query-with-external-vector-store/content.jsx";
 import {
   McpService,
   codeSnippetData as McpServiceCodeSnippetData,
@@ -2159,6 +2163,10 @@ import {
   AiAgentExternalEndpointIntegration,
   codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
 } from "./ai-agent-external-endpoint-integration/content.jsx";
+import {
+  ChatAgents,
+  codeSnippetData as ChatAgentsCodeSnippetData,
+} from "./chat-agents/content.jsx";
 import {
   NaturalExpressions,
   codeSnippetData as NaturalExpressionsCodeSnippetData,
@@ -3317,10 +3325,12 @@ const BBEs = {
   DirectLlmCallsWithHistoryCodeSnippetData,
   DirectLlmCallsWithMultimodalInput,
   DirectLlmCallsWithMultimodalInputCodeSnippetData,
-  RagIngestion,
-  RagIngestionCodeSnippetData,
-  RagQuery,
-  RagQueryCodeSnippetData,
+  RagWithInMemoryVectorStore,
+  RagWithInMemoryVectorStoreCodeSnippetData,
+  RagIngestionWithExternalVectorStore,
+  RagIngestionWithExternalVectorStoreCodeSnippetData,
+  RagQueryWithExternalVectorStore,
+  RagQueryWithExternalVectorStoreCodeSnippetData,
   McpService,
   McpServiceCodeSnippetData,
   McpServiceAdvanced,
@@ -3331,6 +3341,8 @@ const BBEs = {
   AiAgentMcpIntegrationCodeSnippetData,
   AiAgentExternalEndpointIntegration,
   AiAgentExternalEndpointIntegrationCodeSnippetData,
+  ChatAgents,
+  ChatAgentsCodeSnippetData,
   NaturalExpressions,
   NaturalExpressionsCodeSnippetData,
   DockerHelloWorld,

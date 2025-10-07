@@ -1,7 +1,0 @@
-{
-  "title": "RAG query",
-  "description": "This BBE demonstrates how to do retrieval-augmented generation (RAG).",
-  "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "rag"],
-  "permalink": "/learn/by-example/rag-query/",
-  "active": "rag-query"
-}

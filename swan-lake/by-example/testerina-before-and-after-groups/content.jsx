@@ -78,7 +78,7 @@ export function TesterinaBeforeAndAfterGroups({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/testerina-before-and-after-groups",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/testerina-before-and-after-groups",
                 "_blank",
               );
             }}

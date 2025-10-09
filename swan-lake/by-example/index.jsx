@@ -2004,6 +2004,10 @@ import {
   codeSnippetData as CustomLoggerCodeSnippetData,
 } from "./custom-logger/content.jsx";
 import {
+  SensitiveDataLogging,
+  codeSnippetData as SensitiveDataLoggingCodeSnippetData,
+} from "./sensitive-data-logging/content.jsx";
+import {
   EdiToRecord,
   codeSnippetData as EdiToRecordCodeSnippetData,
 } from "./edi-to-record/content.jsx";
@@ -3209,6 +3213,8 @@ const BBEs = {
   LoggerFromConfigCodeSnippetData,
   CustomLogger,
   CustomLoggerCodeSnippetData,
+  SensitiveDataLogging,
+  SensitiveDataLoggingCodeSnippetData,
   EdiToRecord,
   EdiToRecordCodeSnippetData,
   RecordToEdi,

@@ -75,7 +75,7 @@ export function RabbitmqClientSecureConnection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/rabbitmq-client-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/rabbitmq-client-secure-connection",
                 "_blank",
               );
             }}

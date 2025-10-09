@@ -1837,6 +1837,9 @@ sublinks:
           - title: Custom logger
             id: 7
             url: custom-logger
+          - title: Sensitive data logging
+            id: 8
+            url: sensitive-data-logging
       - title: EDI
         id: 8
         sublinks:

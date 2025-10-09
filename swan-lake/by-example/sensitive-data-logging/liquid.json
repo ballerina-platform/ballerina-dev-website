@@ -1,0 +1,18 @@
+{
+  "title": "Sensitive data logging",
+  "description": "BBE on how to mask sensitive data in logs using @log:Sensitive annotation with different masking strategies.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "sensitive data",
+    "masking",
+    "exclude",
+    "replace",
+    "PII",
+    "security"
+  ],
+  "permalink": "/learn/by-example/sensitive-data-logging/",
+  "active": "sensitive-data-logging"
+}

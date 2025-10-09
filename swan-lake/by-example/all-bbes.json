@@ -4632,6 +4632,15 @@
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Sensitive data logging",
+        "url": "sensitive-data-logging",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },

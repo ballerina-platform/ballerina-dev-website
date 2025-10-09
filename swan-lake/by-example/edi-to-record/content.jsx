@@ -101,7 +101,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -189,7 +189,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -279,7 +279,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -579,7 +579,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.9/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -722,7 +722,10 @@ export function EdiToRecord({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Custom logger" href="/learn/by-example/custom-logger/">
+          <Link
+            title="Sensitive data logging"
+            href="/learn/by-example/sensitive-data-logging/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -748,7 +751,7 @@ export function EdiToRecord({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Custom logger
+                  Sensitive data logging
                 </span>
               </div>
             </div>

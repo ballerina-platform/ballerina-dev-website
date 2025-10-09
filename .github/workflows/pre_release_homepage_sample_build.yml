@@ -1,7 +1,6 @@
 # This builds the 'Ballerina.io' home page samples against the releasing distribution.
 
 on:
-  workflow_dispatch:
   pull_request:
     paths:
       - '_data/swanlake-latest/metadata.json'

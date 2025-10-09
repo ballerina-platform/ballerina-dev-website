@@ -765,3 +765,153 @@ if allowed.some(keyword => keyword.equalsIgnoreCaseAscii(input)) {
     });
 }
 ```
+
+### Avoid constructing environment variables from user input without proper sanitization
+
+| Property      | Description    |
+|---------------|----------------|
+| **Rule ID**   | ballerina/os:2 |
+| **Rule Kind** | Vulnerability  |
+
+Environment variables are often used to store sensitive configuration data, credentials, and application settings. When
+applications allow untrusted input to define or modify environment variables without proper validation, they can
+introduce significant security risks.
+
+Using untrusted input to set environment variables can lead to various security concerns because environment variables
+are often globally accessible within a process and can affect child processes.
+
+#### Noncompliant Code Example
+
+```java
+service / on new http:Listener(8080) {
+    resource function get configPath(http:Request req) {
+        string configPath = req.getQueryParamValue("path") ?: "";
+        
+        os:Error? err = os:setEnv("CONFIG_PATH", configPath);
+    }
+}
+```
+
+#### Compliant Code Example
+
+Implement proper input validation by ensuring that only alphanumeric characters are allowed in the environment variable
+value.
+
+```java
+service / on new http:Listener(8080) {
+    resource function get configPath(http:Request req) returns string|error {
+        string configPath = req.getQueryParamValue("path") ?: "";
+        
+        if regex:matches(configPath, "^[a-zA-Z0-9]*$") {
+            os:Error? err = os:setEnv("CONFIG_PATH", configPath);
+            
+            if err is os:Error {
+                return error("Failed to set environment variable");
+            }
+            return "Environment variable set successfully";
+        } else {
+            return error("Invalid input: Only alphanumeric characters are allowed");
+        }
+    }
+}
+```
+
+### Avoid using weak cipher algorithms when signing and verifying JWTs
+
+| Property      | Description     |
+|---------------|-----------------|
+| **Rule ID**   | ballerina/jwt:1 |
+| **Rule Kind** | Vulnerability   |
+
+JSON Web Tokens (JWTs) are a compact, URL-safe means of representing claims between two parties. They're commonly used
+for authentication and authorization in web applications. The security of JWT-based authentication depends critically on
+the signature mechanism used to verify token authenticity.
+
+When JWTs are issued without a signature or with weak algorithms, attackers can forge tokens to impersonate legitimate
+users, modify token claims, bypass authentication entirely, and gain unauthorized access to protected resources.
+
+#### Noncompliant Code Example
+
+```java
+jwt:IssuerConfig issuerConfig = {
+    issuer: "ballerina",
+    expTime: 3600,
+    signatureConfig: {
+        algorithm: jwt:NONE
+    }
+};
+
+string token = check jwt:issue(issuerConfig);
+```
+
+#### Compliant Code Example
+
+Use a strong signing algorithm like RS256, which uses RSA encryption with an SHA-256 hash function.
+
+```java
+jwt:IssuerConfig issuerConfig = {
+    issuer: "ballerina",
+    expTime: 3600,
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {
+            keyFile: "private.key"
+        }
+    }
+};
+
+string token = check jwt:issue(issuerConfig);
+```
+
+### Avoid unverified server hostnames during SSL/TLS connections
+
+| Property      | Description       |
+|---------------|-------------------|
+| **Rule ID**   | ballerina/email:1 |
+| **Rule Kind** | Vulnerability     |
+
+Using outdated or weak SSL/TLS protocols puts application communications at serious risk. These obsolete protocols
+contain known vulnerabilities that attackers can exploit to intercept, decrypt, or manipulate data transmitted between
+clients and servers.
+
+#### Noncompliant Code Example
+
+```java
+
+public function main() returns error? {
+    email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {
+        port: 465,
+        secureSocket: {
+            cert: "path/to/certfile.crt",
+            protocol: {
+                name: email:TLS,
+                versions: ["TLSv1.2", "TLSv1.1"]
+            },
+            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
+            verifyHostName: false
+        }
+    });
+}
+```
+
+#### Compliant Code Example
+
+Enable hostname verification to ensure the server's certificate matches the hostname.
+
+```java
+
+public function main() returns error? {
+    email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {
+        port: 465,
+        secureSocket: {
+            cert: "path/to/certfile.crt",
+            protocol: {
+                name: email:TLS,
+                versions: ["TLSv1.2", "TLSv1.1"]
+            },
+            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
+            verifyHostName: true
+        }
+    });
+}
+```

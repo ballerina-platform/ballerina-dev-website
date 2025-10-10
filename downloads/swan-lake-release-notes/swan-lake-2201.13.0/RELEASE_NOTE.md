@@ -55,6 +55,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)
 - Added support for add/subtract specified durations to/from time values.
 
     ```ballerina
+    import ballerina/io;
     import ballerina/time;
 
     public function main() {

@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 13 (2201.13.0)
 
-<em> Swan Lake Update 13 (2201.13.0) is the twelfth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em> 
+<em> Swan Lake Update 13 (2201.13.0) is the thirteenth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -199,7 +199,43 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)
 
 ## Ballerina library updates
 
-### Deprecations
+### New features
+
+#### `time` package
+
+- Added support for add/subtract specified durations to/from time values.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/time;
+
+    public function main() {
+        time:Civil civil = check time:civilFromString("2025-04-13T17:35:30.120Z");
+        civil = check time:civilAddDuration(civil, {years: 1, months: 3, days: 5, hours: 6, minutes: 9, seconds: 1});
+        io:println(check time:civilToString(civil)); // Prints "2026-07-18T23:44:31.120Z"
+
+        time:TimeZone timeZone = check new("Asia/Colombo");
+        civil = check time:civilFromString("2025-04-13T17:35:30.120-08:00[America/Los_Angeles]");
+        civil = check timeZone.civilAddDuration(civil, {years: 1, months: 3, days: 5, hours: 6, minutes: 9, seconds: 1});
+        io:println(check time:civilToString(civil)); // 2026-07-19T13:14:31.120+05:30[Asia/Colombo]
+    }
+    ```
+
+### Improvements
+
+#### `oauth2` package
+
+- Added support for configuring the connection and request timeouts for the internal HTTP client.
+
+    ```ballerina
+    ClientCredentialsGrantConfig config = {
+        // ... other configurations
+        clientConfig: {
+            connectTimeout: 30,
+            reqTimeout: 60
+        }
+    };
+    ```
 
 ### Bug fixes
 

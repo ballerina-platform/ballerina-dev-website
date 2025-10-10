@@ -5,53 +5,61 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/ai;
+import ballerina/io;
+import ballerinax/ai.anthropic;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
+// Use \`configurable\` variables for the model name and API key.
+configurable anthropic:ANTHROPIC_MODEL_NAMES modelType = ?;
+configurable string apiKey = ?;
 
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
+// Create a model provider to interact with the Anthropic API.
+// The \`temperature\` controls the randomness of the output. 
+// This argument is optional and defaults to 0.7 if not specified.
+final ai:ModelProvider model =
+    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0.3);
+
+// The type representing the expected response from the model.
+// The generated JSON schema will also include the documentation.
+# Description of an image.
+type Description record {|
+    # A sentence describing the image.
+    string description;
+    # The confidence of the description, on a scale of 0 to 1.
+    decimal confidence;
+    # Categories that the image falls into.
+    string[] categories;
 |};
 
 public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
+    // Define an \`ai:ImageDocument\` value with a URL to an image.
+    ai:ImageDocument image = {
+        content: "https://ballerina.io/img/branding/ballerina_logo_dgrey_png.png"
     };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    // Use the \`generate\` method with an image document as an interpolation.
+    // \`anthropic:ModelProvider\` will detect the multimodal input and handle
+    // constructing the request appropriately.
+    Description? description = check model->generate(\`
+        Describe this image.
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+        \${image}
+        
+        If it is not possible to describe the image, respond with null\`);
+
+    // Handle the case where the model could not describe the image.
+    if description is () {
+        io:println("Could not describe the image");
+        return;
+    }
+    
+    // Print the description.
+    io:println(description);
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,24 +69,39 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>Direct large language model (LLM) calls with multimodal input</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
+        The <code>ai:ModelProvider</code> type is a unified abstraction to
+        integrate with large language models (LLMs) through provider-specific
+        modules such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+          ballerinax/ai.anthropic
+        </a>
+        , etc.
       </p>
 
       <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
+        If multimodal input is supported by an LLM, the model provider
+        implementation for the LLM handles insertions of the{" "}
+        <code>ai:Document</code> types (<code>ai:ImageDocument</code>,{" "}
+        <code>ai:AudioDocument</code>, and <code>ai:FileDocument</code>) as
+        multimodal input, and creates the request as expected by the LLM API.
+      </p>
+
+      <p>
+        This example demonstrates how to make direct calls to LLMs using the
+        model provider, with multimodal input.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -89,31 +112,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -131,7 +132,7 @@ export function ConstraintValidations({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -220,18 +221,82 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run direct_llm_calls_with_multimodal_input.bal `}</span>
+              <span>{`{"description":"The word 'Ballerina' written in black text, with the letter 'l' stylized to look like a ballet dancer","confidence":0.98,"categories":["text","logo","typography"]}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+              The <code>ballerinax/ai.anthropic</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+              The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
+              The <code>ballerinax/ai.ollama</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
+              The <code>ballerinax/ai.deepseek</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
+              The <code>ballerinax/ai.mistral</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Handle CSV with custom configurations"
-            href="/learn/by-example/csv-user-configurations/"
+            title="Direct LLM calls with history"
+            href="/learn/by-example/direct-llm-calls-with-history/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +323,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Handle CSV with custom configurations
+                  Direct LLM calls with history
                 </span>
               </div>
             </div>
@@ -266,8 +331,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Direct LLM calls"
-            href="/learn/by-example/direct-llm-calls/"
+            title="RAG with in-memory vector store"
+            href="/learn/by-example/rag-with-in-memory-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +342,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Direct LLM calls
+                  RAG with in-memory vector store
                 </span>
               </div>
               <svg

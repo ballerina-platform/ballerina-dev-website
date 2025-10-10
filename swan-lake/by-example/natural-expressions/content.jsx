@@ -5,53 +5,53 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/ai;
+import ballerina/io;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
+// Use the default model provider (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
+# Represents a tourist attraction.
+type Attraction record {|
+    # The name of the attraction
     string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
+    # The city where the attraction is located
+    string city;
+    # A notable feature or highlight of the attraction
+    string highlight;
 |};
 
+function getAttractions(int count, string country, string interest) 
+                            returns Attraction[]|error {
+    // Use a natural expression to get attractions.
+    // The JSON schema generated for the expected type (\`Attraction[]\`) is 
+    // used in the request to the large language model, and the
+    // result is automatically parsed into an array of \`Attraction\` records.
+    Attraction[]|error attractions = 
+        // Specify the model provider in the natural expression.
+        // Use insertions to insert expressions (e.g., parameters) into the prompt.
+        natural (model) {
+            Give me the top \${count} tourist attractions in \${country} 
+            for visitors interested in \${interest}. 
+            
+            For each attraction, the highlight should be one sentence
+            describing what makes it special or noteworthy.
+        };
+    return attractions;
+}
+
 public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
-    };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
-
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
-
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+    Attraction[] attractions = check getAttractions(3, "Sri Lanka", "Wildlife");
+    foreach Attraction attraction in attractions {
+        io:println("Name: ", attraction.name);
+        io:println("City: ", attraction.city);
+        io:println("Highlight: ", attraction.highlight, "\\n");
+    }
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function NaturalExpressions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,24 +61,60 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>Natural expressions</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
+        Natural expressions provide a language-level abstraction for integrating
+        with large language models (LLMs), enabling developers to seamlessly
+        combine natural language instructions with Ballerina code while
+        maintaining programming language principles and leveraging the strengths
+        of the type system. Unlike simple method calls, natural expressions
+        clearly distinguish between traditional logic and LLM-driven logic.
       </p>
 
       <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
+        Natural expressions use the <code>ai:ModelProvider</code> type as a
+        unified interface for working with different LLM providers such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+          ballerinax/ai.anthropic
+        </a>
+        , and others. The expression automatically generates a JSON schema from
+        the expected return type, sends the prompt to the LLM, and binds the
+        response to the specified type.
       </p>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          Note: This feature is supported on Swan Lake Update 13 - Milestone 3
+          (2201.13.0-m3) or newer versions. This is currently an experimental
+          feature and requires the <code>--experimental</code> flag to be used
+          with <code>bal</code> commands.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -89,31 +125,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -131,7 +145,7 @@ export function ConstraintValidations({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -220,19 +234,103 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run --experimental natural_expressions.bal`}</span>
+              <span>{`Name: Yala National Park`}</span>
+              <span>{`City: Yala`}</span>
+              <span>{`Highlight: Home to the highest density of leopards in the world, Yala offers thrilling wildlife safaris.`}</span>
+              <span>{`
+`}</span>
+              <span>{`Name: Wilpattu National Park`}</span>
+              <span>{`City: Wilpattu`}</span>
+              <span>{`Highlight: Famous for its natural lakes and diverse wildlife, including elephants and sloth bears.`}</span>
+              <span>{`
+`}</span>
+              <span>{`Name: Udawalawe National Park`}</span>
+              <span>{`City: Udawalawe`}</span>
+              <span>{`Highlight: Known for its large herds of elephants, Udawalawe is a sanctuary for these magnificent creatures.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://blog.ballerina.io/posts/2025-04-26-introducing-natural-programming/">
+              Natural Language is Code: A hybrid approach with Natural
+              Programming
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+              The <code>ballerinax/ai.anthropic</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+              The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
+              The <code>ballerinax/ai.ollama</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
+              The <code>ballerinax/ai.deepseek</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
+              The <code>ballerinax/ai.mistral</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Handle CSV with custom configurations"
-            href="/learn/by-example/csv-user-configurations/"
-          >
+          <Link title="Chat agents" href="/learn/by-example/chat-agents/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +356,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Handle CSV with custom configurations
+                  Chat agents
                 </span>
               </div>
             </div>
@@ -266,8 +364,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Direct LLM calls"
-            href="/learn/by-example/direct-llm-calls/"
+            title="Hello world"
+            href="/learn/by-example/docker-hello-world/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +375,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Direct LLM calls
+                  Hello world
                 </span>
               </div>
               <svg

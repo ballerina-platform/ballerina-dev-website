@@ -1960,8 +1960,65 @@ sublinks:
           - title: Constraint validations
             id: 1
             url: constraint-validations
-  - title: Deployment
+  - title: Generative AI
     id: 4
+    sublinks:
+      - title: Direct LLM calls
+        id: 1
+        sublinks:
+          - title: Direct LLM calls
+            id: 1
+            url: direct-llm-calls
+          - title: Direct LLM calls with history
+            id: 2
+            url: direct-llm-calls-with-history
+          - title: Direct LLM calls with multimodal input
+            id: 3
+            url: direct-llm-calls-with-multimodal-input
+      - title: Retrieval-augmented generation (RAG)
+        id: 2
+        sublinks:
+          - title: RAG with in-memory vector store
+            id: 1
+            url: rag-with-in-memory-vector-store
+          - title: RAG ingestion with external vector store
+            id: 2
+            url: rag-ingestion-with-external-vector-store
+          - title: RAG query with external vector store
+            id: 3
+            url: rag-query-with-external-vector-store
+      - title: Model context protocol (MCP)
+        id: 3
+        sublinks:
+          - title: MCP service
+            id: 1
+            url: mcp-service
+          - title: MCP advanced service
+            id: 2
+            url: mcp-service-advanced
+      - title: AI agents
+        id: 4
+        sublinks:
+          - title: Agent with local tools
+            id: 1
+            url: ai-agent-local-tools
+          - title: Agent with MCP integration
+            id: 2
+            url: ai-agent-mcp-integration
+          - title: Agent with external endpoint integration
+            id: 3
+            url: ai-agent-external-endpoint-integration
+          - title: Chat agents
+            id: 4
+            url: chat-agents
+      - title: Natural expressions
+        id: 5
+        sublinks:
+          - title: Natural expressions
+            id: 1
+            url: natural-expressions
+  - title: Deployment
+    id: 5
     sublinks:
       - title: Docker
         id: 1
@@ -2006,7 +2063,7 @@ sublinks:
             id: 4
             url: azure-functions-cosmosdb-trigger
   - title: Bal persist
-    id: 5
+    id: 6
     sublinks:
       - title: Query data
         id: 1
@@ -2039,7 +2096,7 @@ sublinks:
             id: 3
             url: persist-delete
   - title: Observability
-    id: 6
+    id: 7
     sublinks:
       - title: Tracing
         id: 1

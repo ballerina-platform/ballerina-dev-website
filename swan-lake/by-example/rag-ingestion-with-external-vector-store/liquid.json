@@ -1,0 +1,7 @@
+{
+  "title": "RAG ingestion with external vector store",
+  "description": "This BBE demonstrates how to do data ingestion for retrieval-augmented generation (RAG).",
+  "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "rag"],
+  "permalink": "/learn/by-example/rag-ingestion-with-external-vector-store/",
+  "active": "rag-ingestion-with-external-vector-store"
+}

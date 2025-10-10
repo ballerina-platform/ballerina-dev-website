@@ -524,8 +524,8 @@ export function DockerHelloWorld({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations/"
+            title="Natural expressions"
+            href="/learn/by-example/natural-expressions/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -552,7 +552,7 @@ export function DockerHelloWorld({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  Natural expressions
                 </span>
               </div>
             </div>

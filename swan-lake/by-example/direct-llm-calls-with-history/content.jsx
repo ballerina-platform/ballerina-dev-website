@@ -5,53 +5,48 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/ai;
+import ballerina/io;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
+// Use the default model provider (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
-|};
-
-public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
+public function main(string subject) returns error? {
+    // Create a user message with the prompt as the content.
+    ai:ChatUserMessage userMessage = {
+        role: ai:USER,
+        content: \`Tell me a joke about \${subject}!\`
     };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    // Use an array to hold the conversation history.
+    ai:ChatMessage[] messages = [userMessage];
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+    // Use the \`chat\` method to make a call with the conversation history.
+    // Alternatively, you can pass a single message (\`userMessage\`) too.
+    ai:ChatAssistantMessage assistantMessage = check model->chat(messages);
+
+    // Update the conversation history with the assistant's response.
+    messages.push(assistantMessage);
+
+    // Print the joke from the assistant's response.
+    string? joke = assistantMessage?.content;
+    io:println(joke);
+
+    // Continue the conversation by asking for an explanation.
+    messages.push({
+        role: ai:USER,
+        content: "Can you explain it?"
+    });
+    ai:ChatAssistantMessage assistantMessage2 = check model->chat(messages);
+
+    // Since the conversation history is passed, the model can provide a relevant explanation.
+    string? explanation = assistantMessage2?.content;
+    io:println(explanation);
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function DirectLlmCallsWithHistory({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,24 +56,53 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>Direct large language model (LLM) calls with history</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
+        The <code>ai:ModelProvider</code> type is a unified abstraction to
+        integrate with large language models (LLMs) through provider-specific
+        modules such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+          ballerinax/ai.anthropic
+        </a>
+        , etc.
       </p>
 
       <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
+        The <code>chat</code> method of the model provider accepts a user
+        message or an array of chat messages, makes the call to the LLM with the
+        message(s), and returns the relevant content of the response from the
+        LLM.
       </p>
+
+      <p>
+        This example demonstrates how to make direct calls to LLMs using the
+        model provider, maintaining the chat history.
+      </p>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -89,31 +113,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -131,7 +133,7 @@ export function ConstraintValidations({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -220,18 +222,95 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run direct_llm_calls_with_history.bal -- subject=programming`}</span>
+              <span>{`Why do programmers prefer dark mode?`}</span>
+              <span>{`
+`}</span>
+              <span>{`Because light attracts bugs!`}</span>
+              <span>{`Sure! The joke plays on two concepts:`}</span>
+              <span>{`
+`}</span>
+              <span>{`1. **Dark Mode vs. Light Mode**: Many programmers prefer using "dark mode" in their coding environments because it's easier on the eyes, especially during long coding sessions. Dark mode features a dark background with lighter text, while light mode has a light background with darker text.`}</span>
+              <span>{`
+`}</span>
+              <span>{`2. **Bugs**: In programming, a "bug" refers to an error or flaw in the code that can cause it to behave unexpectedly. In a more literal sense, bugs (like insects) are often attracted to light sources.`}</span>
+              <span>{`
+`}</span>
+              <span>{`So the humor comes from the double meaning of "bugs." The joke suggests that if programmers use light mode (which is bright), they might attract actual bugs, just like real insects are drawn to light. Therefore, by using dark mode, they’re avoiding both programming errors and actual bugs!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
+              The <code>ballerinax/ai.anthropic</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+              The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.ollama/latest">
+              The <code>ballerinax/ai.ollama</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.deepseek/latest">
+              The <code>ballerinax/ai.deepseek</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
+              The <code>ballerinax/ai.mistral</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Handle CSV with custom configurations"
-            href="/learn/by-example/csv-user-configurations/"
+            title="Direct LLM calls"
+            href="/learn/by-example/direct-llm-calls/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +337,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Handle CSV with custom configurations
+                  Direct LLM calls
                 </span>
               </div>
             </div>
@@ -266,8 +345,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Direct LLM calls"
-            href="/learn/by-example/direct-llm-calls/"
+            title="Direct LLM calls with multimodal input"
+            href="/learn/by-example/direct-llm-calls-with-multimodal-input/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +356,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Direct LLM calls
+                  Direct LLM calls with multimodal input
                 </span>
               </div>
               <svg

@@ -2124,6 +2124,58 @@ import {
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
 import {
+  DirectLlmCalls,
+  codeSnippetData as DirectLlmCallsCodeSnippetData,
+} from "./direct-llm-calls/content.jsx";
+import {
+  DirectLlmCallsWithHistory,
+  codeSnippetData as DirectLlmCallsWithHistoryCodeSnippetData,
+} from "./direct-llm-calls-with-history/content.jsx";
+import {
+  DirectLlmCallsWithMultimodalInput,
+  codeSnippetData as DirectLlmCallsWithMultimodalInputCodeSnippetData,
+} from "./direct-llm-calls-with-multimodal-input/content.jsx";
+import {
+  RagWithInMemoryVectorStore,
+  codeSnippetData as RagWithInMemoryVectorStoreCodeSnippetData,
+} from "./rag-with-in-memory-vector-store/content.jsx";
+import {
+  RagIngestionWithExternalVectorStore,
+  codeSnippetData as RagIngestionWithExternalVectorStoreCodeSnippetData,
+} from "./rag-ingestion-with-external-vector-store/content.jsx";
+import {
+  RagQueryWithExternalVectorStore,
+  codeSnippetData as RagQueryWithExternalVectorStoreCodeSnippetData,
+} from "./rag-query-with-external-vector-store/content.jsx";
+import {
+  McpService,
+  codeSnippetData as McpServiceCodeSnippetData,
+} from "./mcp-service/content.jsx";
+import {
+  McpServiceAdvanced,
+  codeSnippetData as McpServiceAdvancedCodeSnippetData,
+} from "./mcp-service-advanced/content.jsx";
+import {
+  AiAgentLocalTools,
+  codeSnippetData as AiAgentLocalToolsCodeSnippetData,
+} from "./ai-agent-local-tools/content.jsx";
+import {
+  AiAgentMcpIntegration,
+  codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
+} from "./ai-agent-mcp-integration/content.jsx";
+import {
+  AiAgentExternalEndpointIntegration,
+  codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
+} from "./ai-agent-external-endpoint-integration/content.jsx";
+import {
+  ChatAgents,
+  codeSnippetData as ChatAgentsCodeSnippetData,
+} from "./chat-agents/content.jsx";
+import {
+  NaturalExpressions,
+  codeSnippetData as NaturalExpressionsCodeSnippetData,
+} from "./natural-expressions/content.jsx";
+import {
   DockerHelloWorld,
   codeSnippetData as DockerHelloWorldCodeSnippetData,
 } from "./docker-hello-world/content.jsx";
@@ -3273,6 +3325,32 @@ const BBEs = {
   CsvUserConfigurationsCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  DirectLlmCalls,
+  DirectLlmCallsCodeSnippetData,
+  DirectLlmCallsWithHistory,
+  DirectLlmCallsWithHistoryCodeSnippetData,
+  DirectLlmCallsWithMultimodalInput,
+  DirectLlmCallsWithMultimodalInputCodeSnippetData,
+  RagWithInMemoryVectorStore,
+  RagWithInMemoryVectorStoreCodeSnippetData,
+  RagIngestionWithExternalVectorStore,
+  RagIngestionWithExternalVectorStoreCodeSnippetData,
+  RagQueryWithExternalVectorStore,
+  RagQueryWithExternalVectorStoreCodeSnippetData,
+  McpService,
+  McpServiceCodeSnippetData,
+  McpServiceAdvanced,
+  McpServiceAdvancedCodeSnippetData,
+  AiAgentLocalTools,
+  AiAgentLocalToolsCodeSnippetData,
+  AiAgentMcpIntegration,
+  AiAgentMcpIntegrationCodeSnippetData,
+  AiAgentExternalEndpointIntegration,
+  AiAgentExternalEndpointIntegrationCodeSnippetData,
+  ChatAgents,
+  ChatAgentsCodeSnippetData,
+  NaturalExpressions,
+  NaturalExpressionsCodeSnippetData,
   DockerHelloWorld,
   DockerHelloWorldCodeSnippetData,
   KubernetesHelloWorld,

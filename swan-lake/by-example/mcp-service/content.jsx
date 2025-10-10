@@ -5,53 +5,94 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/constraint;
+  `import ballerina/log;
+import ballerina/mcp;
+import ballerina/random;
+import ballerina/time;
 
-// Constraint on the \`int\` type.
-@constraint:Int {
-    minValue: 18
-}
-type Age int;
-
-type Student record {|
-    // Constraint on the \`string\`-typed record field.
-    @constraint:String {
-        pattern: re\`[0-9]{6}[A-Z|a-z]\`
-    }
-    string id;
-    string name;
-    // Constrained type used as a record field.
-    Age age;
-    // Constraint on the \`string[]\`-typed record field.
-    @constraint:Array {
-        minLength: 1,
-        maxLength: 10
-    }
-    string[] subjects;
+type Weather record {|
+    string location;
+    decimal temperature;
+    int humidity;
+    int pressure;
+    string condition;
+    string timestamp;
 |};
 
-public function main() returns error? {
-    Student student = {
-        id: "200146B",
-        name: "David John",
-        age: 25,
-        subjects: ["Maths", "Science", "English"]
+type ForecastItem record {|
+    string date;
+    int high;
+    int low;
+    string condition;
+    int precipitationChance;
+    int windSpeed;
+|};
+
+type WeatherForecast record {|
+    string location;
+    ForecastItem[] forecast;
+|};
+
+// Define an MCP service attached to the MCP listener on port 9090.
+listener mcp:Listener mcpListener = new (9090);
+
+service mcp:Service /mcp on mcpListener {
+
+    // The remote methods defined in this service become MCP tools.
+    // The MCP listener handles listing and calling the tools on MCP requests.
+    // The tool descriptions and schema are generated from the method signatures 
+    // and the documentation.
+    # Get current weather for a city.
+    # 
+    # + city - City name (e.g., "New York", "Tokyo")
+    # + return - Current weather data for the specified city
+    remote function getCurrentWeather(string city) returns Weather|error {
+        Weather mockWeather = check getMockWeather(city);
+        log:printInfo(string \`Weather data retrieved for \${
+                        city}: \${mockWeather.condition}, \${mockWeather.temperature}°C\`);
+        return mockWeather;
     };
-    // To validate the constraints on the \`Student\` record, the \`validate\` function should be 
-    // called explicitly. If the validation is successful, then, this function returns the type 
-    // descriptor of the value that is validated.
-    student = check constraint:validate(student);
 
-    // Set the student's age to 17, which will violate the \`minValue\` constraint on \`Age\`.
-    student.age = 17;
+    # Get weather forecast for upcoming days.
+    #
+    # + location - City name or coordinates (e.g., "London", "40.7128,-74.0060") 
+    # + days - Number of days to forecast (1 - 7)
+    # + return - Weather forecast for the specified location and days
+    remote function getWeatherForecast(string location, int days) returns WeatherForecast|error {
+        WeatherForecast mockForecast = {
+            forecast: check getMockForecastItems(days), 
+            location
+        };
+        log:printInfo(string \`Forecast generated for \${location}: \${days} days with random data\`);
+        return mockForecast;
+    }
+}
 
-    // When the validation fails, the \`validate\` function returns a \`constraint:Error\`.
-    student = check constraint:validate(student);
+function getMockWeather(string city) returns Weather|error => {
+    condition: "Sunny",
+    humidity: check random:createIntInRange(30, 70),
+    location: city,
+    pressure: check random:createIntInRange(1000, 1025),
+    temperature: <decimal> check random:createIntInRange(15, 30),
+    timestamp: time:utcToString(time:utcNow())
+};
+
+function getMockForecastItems(int days) returns ForecastItem[]|error {
+    string[] conditions = ["Sunny", "Cloudy", "Rainy", "Windy", "Stormy", "Snowy"];
+    return from int i in 1 ... days
+        select {
+            condition: conditions[check random:createIntInRange(0, conditions.length() - 1)],
+            date: time:utcToString(time:utcAddSeconds(time:utcNow(), i * 86400)),
+            high: check random:createIntInRange(20, 30),
+            low: check random:createIntInRange(10, 20),
+            precipitationChance: check random:createIntInRange(10, 50),
+            windSpeed: check random:createIntInRange(5, 20)
+        };
 }
 `,
 ];
 
-export function ConstraintValidations({ codeSnippets }) {
+export function McpService({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,24 +102,29 @@ export function ConstraintValidations({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Constraint validations</h1>
+      <h1>Model Context Protocol (MCP) service</h1>
 
       <p>
-        Validating user input is a common requirement in most applications. This
-        can prevent user entry errors before the app attempts to process the
-        data.
+        The Model Context Protocol (MCP) is a standard for connecting AI
+        applications to external data sources, tools, and workflows (prompts).
       </p>
 
       <p>
-        The <code>constraint</code> library provides such validations for the
-        following Ballerina types: <code>int</code>, <code>float</code>,{" "}
-        <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
+        Ballerina's MCP library allows you to create MCP servers that expose
+        tools. Remote methods of a <code>mcp:Service</code> service declaration
+        automatically become MCP tools that AI assistants can discover and call.
+      </p>
+
+      <p>
+        This example demonstrates how to create an MCP server that exposes
+        weather-related tools, allowing AI assistants to discover and use tools
+        to retrieve current weather data and forecasts for different locations.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
-          <code>constraint</code> module
+        <a href="https://lib.ballerina.io/ballerina/mcp/latest/">
+          <code>ballerina/mcp</code> module
         </a>
         .
       </p>
@@ -89,31 +135,9 @@ export function ConstraintValidations({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/constraint-validations",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -131,7 +155,7 @@ export function ConstraintValidations({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -220,18 +244,31 @@ export function ConstraintValidations({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run constraint_validations.bal`}</span>
-              <span>{`error: Validation failed for '\$.age:minValue' constraint(s).`}</span>
+              <span>{`\$ bal run mcp_service.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ai-agent-mcp-integration/">
+              AI agents integrated with MCP servers example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Handle CSV with custom configurations"
-            href="/learn/by-example/csv-user-configurations/"
+            title="RAG query with external vector store"
+            href="/learn/by-example/rag-query-with-external-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +295,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Handle CSV with custom configurations
+                  RAG query with external vector store
                 </span>
               </div>
             </div>
@@ -266,8 +303,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Direct LLM calls"
-            href="/learn/by-example/direct-llm-calls/"
+            title="MCP advanced service"
+            href="/learn/by-example/mcp-service-advanced/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +314,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Direct LLM calls
+                  MCP advanced service
                 </span>
               </div>
               <svg

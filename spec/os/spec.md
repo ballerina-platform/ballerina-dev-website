@@ -60,7 +60,7 @@ string userHome = os:getUserHome();
 ## 4. Operating System Command execution
 The users can execute OS commands using the `os:exec()` function by passing an `os:Command` record.
 ```ballerina
-os:Process|os:Error result = os:exec({value: "bal", arguments: ["run", filepath]}, BAL_CONFIG_FILE = "/abc/Config.toml");
+os:Process|os:Error result = os:exec({value: "bal", arguments: ["run", filepath]}, BAL_CONFIG_FILES = "/abc/Config.toml");
 ```
 
 The following is the record type definitions of `os:Command`.

@@ -7,17 +7,9 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
-import ballerinax/ai.anthropic;
 
-// Use \`configurable\` variables for the model name and API key.
-configurable anthropic:ANTHROPIC_MODEL_NAMES modelType = ?;
-configurable string apiKey = ?;
-
-// Create a model provider to interact with the Anthropic API.
-// The \`temperature\` controls the randomness of the output. 
-// This argument is optional and defaults to 0.7 if not specified.
-final ai:ModelProvider model =
-    check new anthropic:ModelProvider(apiKey, modelType, temperature = 0.3);
+// Use the default model provider (with configuration added via a Ballerina VS Code command).
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 // The type representing the expected response from the model.
 // The generated JSON schema will also include the documentation.
@@ -97,6 +89,21 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
         This example demonstrates how to make direct calls to LLMs using the
         model provider, with multimodal input.
       </p>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}

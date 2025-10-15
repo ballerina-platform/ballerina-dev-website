@@ -5,24 +5,96 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
+  `import ballerina/log;
+import ballerina/messaging;
+import ballerina/uuid;
+
+// Custom message store implementation using a simple in-memory map
+isolated client class CustomMessageStore {
+    *messaging:Store;
+
+    private final map<readonly & messaging:Message> messages = {};
+    private final map<readonly & messaging:Message> pendingMessages = {};
+
+    isolated remote function store(anydata payload) returns error? {
+        string id = uuid:createType1AsString();
+
+        lock {
+            self.messages[id] = {
+                id,
+                payload: payload.cloneReadOnly()
+            };
+        }
+
+        log:printInfo("Message stored", id = id);
+    }
+
+    isolated remote function retrieve() returns messaging:Message|error? {
+        lock {
+            string[] keys = self.messages.keys();
+            if keys.length() > 0 {
+                string id = keys[0];
+                readonly & messaging:Message message = self.messages.get(id);
+                // Move message to pending state
+                self.pendingMessages[id] = message;
+                _ = self.messages.remove(id);
+                return message;
+            }
+            return;
+        }
+    }
+
+    isolated remote function acknowledge(string id, boolean success = true) returns error? {
+        lock {
+            if self.pendingMessages.hasKey(id) {
+                if success {
+                    _ = self.pendingMessages.remove(id);
+                    log:printInfo("Message acknowledged", id = id);
+                } else {
+                    // Move message back to available state for negative ack
+                    readonly & messaging:Message message = self.pendingMessages.get(id);
+                    self.messages[id] = message;
+                    _ = self.pendingMessages.remove(id);
+                    log:printInfo("Message negative acknowledged", id = id);
+                }
+            }
+        }
+    }
+}
 
 public function main() returns error? {
-    // Initializes the XML file path and content.
-    string xmlFilePath = "./files/xmlFile.xml";
-    xml xmlContent = xml \`<book>The Lost World</book>\`;
+    // Create an instance of the custom message store
+    messaging:Store customStore = new CustomMessageStore();
 
-    // Writes the given XML to a file.
-    check io:fileWriteXml(xmlFilePath, xmlContent);
-    // If the write operation was successful, then,
-    // performs a read operation to read the XML content.
-    xml readXml = check io:fileReadXml(xmlFilePath);
-    io:println(readXml);
+    // Store and process a message
+    check customStore->store("Hello, World!");
+
+    messaging:Message? msg = check customStore->retrieve();
+    if msg is messaging:Message {
+        log:printInfo("Retrieved message", payload = msg.payload, id = msg.id);
+        // Acknowledge the message
+        check customStore->acknowledge(msg.id);
+    }
+
+    // Demonstrate negative acknowledgment
+    check customStore->store("Test message");
+    msg = check customStore->retrieve();
+    if msg is messaging:Message {
+        log:printInfo("Retrieved message for negative ack", payload = msg.payload, id = msg.id);
+        check customStore->acknowledge(msg.id, false);
+
+        // Retrieve the same message again after negative ack
+        msg = check customStore->retrieve();
+        if msg is messaging:Message {
+            log:printInfo("Message available again after negative ack", payload = msg.payload, id = msg.id);
+            check customStore->acknowledge(msg.id);
+        }
+    }
 }
 `,
 ];
 
-export function IoXml({ codeSnippets }) {
+export function MessageStoreType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -32,19 +104,21 @@ export function IoXml({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Read/write XML</h1>
+      <h1>Message Store Type</h1>
 
       <p>
-        The Ballerina <code>io</code> library contains APIs to read/write XML
-        content from/to a file.
+        The <code>messaging</code> package in Ballerina provides messaging
+        capabilities through the <code>Store</code> interface. This example
+        demonstrates how to implement a custom message store by creating your
+        own implementation of the <code>messaging:Store</code> type.
       </p>
 
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">
-          <code>io</code> module
-        </a>
-        .
+        The <code>messaging:Store</code> interface defines the contract for
+        message storage, retrieval, and acknowledgment operations. By
+        implementing this interface, you can create custom message stores that
+        suit your specific requirements while maintaining compatibility with the
+        messaging framework.
       </p>
 
       <Row
@@ -53,31 +127,9 @@ export function IoXml({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/io-xml",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -95,7 +147,7 @@ export function IoXml({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -130,10 +182,6 @@ export function IoXml({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -188,16 +236,59 @@ export function IoXml({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run io_xml.bal`}</span>
-              <span>{`<book>The Lost World</book>`}</span>
+              <span>{`\$ bal run message_store_type.bal`}</span>
+              <span>{`
+`}</span>
+              <span>{`time=2025-10-08T08:54:37.054+05:30 level=INFO module="" message="Message stored" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"`}</span>
+              <span>{`time=2025-10-08T08:54:37.065+05:30 level=INFO module="" message="Retrieved message" payload="Hello, World!" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"`}</span>
+              <span>{`time=2025-10-08T08:54:37.066+05:30 level=INFO module="" message="Message acknowledged" id="01f0a3f6-5150-1888-861d-4d6c2cf6fef8"`}</span>
+              <span>{`time=2025-10-08T08:54:37.068+05:30 level=INFO module="" message="Message stored" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"`}</span>
+              <span>{`time=2025-10-08T08:54:37.069+05:30 level=INFO module="" message="Retrieved message for negative ack" payload="Test message" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"`}</span>
+              <span>{`time=2025-10-08T08:54:37.070+05:30 level=INFO module="" message="Message negative acknowledged" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"`}</span>
+              <span>{`time=2025-10-08T08:54:37.071+05:30 level=INFO module="" message="Message available again after negative ack" payload="Test message" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"`}</span>
+              <span>{`time=2025-10-08T08:54:37.071+05:30 level=INFO module="" message="Message acknowledged" id="01f0a3f6-5150-1888-a339-6e9cd9fc0e8f"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/messaging/latest/">
+              <code>messaging</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/messaging/">
+              <code>messaging</code> module - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/in-memory-message-store/">
+              In-memory message store
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read/write JSON" href="/learn/by-example/io-json/">
+          <Link title="Read/write XML" href="/learn/by-example/io-xml/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +314,7 @@ export function IoXml({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write JSON
+                  Read/write XML
                 </span>
               </div>
             </div>
@@ -231,8 +322,8 @@ export function IoXml({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Message store type"
-            href="/learn/by-example/message-store-type/"
+            title="In-memory message store"
+            href="/learn/by-example/in-memory-message-store/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -242,7 +333,7 @@ export function IoXml({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Message store type
+                  In-memory message store
                 </span>
               </div>
               <svg

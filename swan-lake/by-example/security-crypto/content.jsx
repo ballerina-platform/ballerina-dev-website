@@ -476,7 +476,10 @@ export function SecurityCrypto({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read/write XML" href="/learn/by-example/io-xml/">
+          <Link
+            title="Message Store Listener"
+            href="/learn/by-example/message-store-listener/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -502,7 +505,7 @@ export function SecurityCrypto({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write XML
+                  Message Store Listener
                 </span>
               </div>
             </div>

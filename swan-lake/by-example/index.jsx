@@ -1940,6 +1940,18 @@ import {
   codeSnippetData as IoXmlCodeSnippetData,
 } from "./io-xml/content.jsx";
 import {
+  MessageStoreType,
+  codeSnippetData as MessageStoreTypeCodeSnippetData,
+} from "./message-store-type/content.jsx";
+import {
+  InMemoryMessageStore,
+  codeSnippetData as InMemoryMessageStoreCodeSnippetData,
+} from "./in-memory-message-store/content.jsx";
+import {
+  MessageStoreListener,
+  codeSnippetData as MessageStoreListenerCodeSnippetData,
+} from "./message-store-listener/content.jsx";
+import {
   SecurityCrypto,
   codeSnippetData as SecurityCryptoCodeSnippetData,
 } from "./security-crypto/content.jsx";
@@ -3233,6 +3245,12 @@ const BBEs = {
   IoJsonCodeSnippetData,
   IoXml,
   IoXmlCodeSnippetData,
+  MessageStoreType,
+  MessageStoreTypeCodeSnippetData,
+  InMemoryMessageStore,
+  InMemoryMessageStoreCodeSnippetData,
+  MessageStoreListener,
+  MessageStoreListenerCodeSnippetData,
   SecurityCrypto,
   SecurityCryptoCodeSnippetData,
   SecurityJwtIssueValidate,

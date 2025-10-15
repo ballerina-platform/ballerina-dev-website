@@ -1,0 +1,16 @@
+{
+  "title": "Message store type",
+  "description": "This BBE demonstrates how to implement the messaging:Store type to create a custom message store in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "messaging",
+    "store",
+    "custom",
+    "implementation",
+    "type"
+  ],
+  "permalink": "/learn/by-example/message-store-type/",
+  "active": "message-store-type"
+}

@@ -4473,6 +4473,36 @@
     ]
   },
   {
+    "title": "Messaging",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Message store type",
+        "url": "message-store-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "In-memory message store",
+        "url": "in-memory-message-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Message Store Listener",
+        "url": "message-store-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Security",
     "column": 0,
     "category": "Common libraries",

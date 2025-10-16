@@ -1,0 +1,1 @@
+{"pageProps":{"frontmatter":{},"content":"<div class=\"release_notes\">\n<h1>Overview to Ballerina 0.990.2</h1>\n<p>Fixes an instruction code mismatch issue, causing certain modules on Ballerina Central to fail with Ballerina 0.990.1.</p>\n</div>","id":"0.990.2"},"__N_SSG":true}

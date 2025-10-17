@@ -18,10 +18,10 @@ public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             key: {
-                certFile: "../resource/path/to/public.crt",
-                keyFile: "../resource/path/to/private.key"
+                certFile: "../resource/path/to/client-public.crt",
+                keyFile: "../resource/path/to/client-private.key"
             },
-            cert: "../resource/path/to/public.crt"
+            cert: "../resource/path/to/server-public.crt"
         }
     );
     Album[] payload = check albumClient->/albums;
@@ -67,7 +67,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/http-client-mutual-ssl",
-                "_blank",
+                "_blank"
               );
             }}
             aria-label="Edit on Github"

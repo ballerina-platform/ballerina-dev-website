@@ -16,13 +16,13 @@ type Album readonly & record {|
 listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
-            certFile: "../resource/path/to/public.crt",
-            keyFile: "../resource/path/to/private.key"
+            certFile: "../resource/path/to/client-public.crt",
+            keyFile: "../resource/path/to/client-private.key"
         },
         // Enables mutual SSL.
         mutualSsl: {
             verifyClient: http:REQUIRE,
-            cert: "../resource/path/to/public.crt"
+            cert: "../resource/path/to/server-public.crt"
         }
     }
 );
@@ -79,7 +79,7 @@ export function HttpServiceMutualSsl({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/http-service-mutual-ssl",
-                "_blank",
+                "_blank"
               );
             }}
             aria-label="Edit on Github"

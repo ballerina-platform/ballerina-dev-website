@@ -1,6 +1,42 @@
 {
     "events": [
         {
+            "date": "Oct 10, 2025",
+            "expire": "2025-10-10T13:00:00+00:00",
+            "type": "Workshop",
+            "university": "University of Kelaniya",
+            "faculty": "Department of Industrial Management",
+            "title": "Data Integrations with ETL",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Lakshan Weerasinghe",
+                    "twitter": "https://www.linkedin.com/in/lakshan-weerasinghe/"
+                }
+            ],
+            "url": "Data-Integration-with-ETL.pdf",
+            "buttonText": "View slides"
+        },
+        {
+            "date": "August 28 - 29, 2025",
+            "expire": "2025-08-29T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "NIBM Galle Centre",
+            "faculty": "",
+            "title": "How Apps Really Work – A Fun Intro to APIs & Cloud",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Savindu Supun Sathsara",
+                    "twitter": "https://www.linkedin.com/in/supunsathsara/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "August 11, 2025",
             "expire": "2025-08-11T21:30:00+00:00",
             "type": "Workshop",

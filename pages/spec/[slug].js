@@ -97,6 +97,9 @@ export async function getStaticProps({ params: { slug } }) {
   };
 }
 
+// Define a constant for code block font size
+const CODE_BLOCK_FONT_SIZE = '12.25px';
+
 export default function PostPage({ frontmatter, content, codeSnippets }) {
   const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
 
@@ -171,6 +174,12 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
           property="twitter:text:description"
           content={frontmatter.title || extractLibraryNameFromContent()}
         />
+        <style>
+          {`pre div pre {
+            font-size: ${CODE_BLOCK_FONT_SIZE};
+          }
+        `}
+        </style>
       </Head>
       <Layout>
         <Col xs={12} className="mdContent">
@@ -230,7 +239,7 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
                   pre: ({ node, children, ...props }) => (
                     <pre
                       className="shiki github-light"
-                      style={{ backgroundColor: "#fff", color: "#24292e" }}
+                      style={{ backgroundColor: "#fff", color: "#24292e", fontSize: CODE_BLOCK_FONT_SIZE }}
                       tabIndex={0}
                       id={genrateId(children)}
                       {...props}

@@ -20,7 +20,7 @@ adhere to best practices.
 | **Rule ID**   | ballerina:1 |
 | **Rule Kind** | Code Smell  |
 
-When 'checkpanic' is used, the program terminates abruptly with a panic unless it’s handled explicitly along the call
+When `checkpanic` is used, the program terminates abruptly with a `panic` unless it’s handled explicitly along the call
 stack.
 
 #### Noncompliant Code Example
@@ -57,8 +57,8 @@ public function getResult() returns json|error {
 }
 ```
 
-Make use of the 'check' keyword, which immediately returns the error or transfers control to an on-fail block, in
-contrast to 'checkpanic' and panicking if an expression or action evaluates to an error.
+Make use of the `check` keyword, which immediately returns the error or transfers control to an `on-fail` block, in
+contrast to `checkpanic` and panicking if an expression or action evaluates to an error.
 
 ```ballerina
 public function checkResult() returns error? {
@@ -245,7 +245,7 @@ public type Hashable object {
 Mark public objects as isolated to ensure the object can be used in a concurrent environment.
 
 ```ballerina
-public isolated type Hashable object {
+public type Hashable isolated object {
     function hash() returns int;
 };
 ```
@@ -264,8 +264,8 @@ readability and potentially hide logical errors.
 
 ```ballerina
 public function main() {
-   int a = 1
-   boolean b = a <= int:MAX_VALUE
+   int a = 1;
+   boolean b = a <= int:MAX_VALUE;
 }
 ```
 
@@ -283,7 +283,7 @@ codebase, make it harder to understand, and potentially hide bugs or unintention
 
 ```ballerina
 public function main() {
-   int a = 1
+   int a = 1;
    boolean b = a <= int:MIN_VALUE;
 }
 ```
@@ -421,7 +421,7 @@ Encryption algorithms are essential for protecting sensitive information and ens
 
 #### AES Encryption Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 byte[] cipherText = check crypto:encryptAesEcb(data, key);
@@ -435,7 +435,7 @@ byte[] cipherText = check crypto:encryptAesCbc(data, key, initialVector);
 
 Unauthenticated modes such as CBC (Cipher Block Chaining) may be used but are prone to attacks that manipulate the ciphertext (like padding oracle attacks). They must be used with caution and additional integrity checks.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
@@ -445,7 +445,7 @@ AES-GCM (Galois/Counter Mode) provides authenticated encryption, ensuring both c
 
 #### RSA Encryption Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 // Default padding is PKCS1
@@ -456,7 +456,7 @@ cipherText = check crypto:encryptRsaEcb(data, publicKey, crypto:PKCS1);
 
 For `RSA`, avoid using `PKCS1v1.5` padding as it is vulnerable to various attacks. Instead, use `OAEP` (Optimal Asymmetric Encryption Padding) which provides better security.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 byte[] cipherText = check crypto:encryptRsaEcb(data, publicKey, crypto:OAEPwithMD5andMGF1);
@@ -498,7 +498,7 @@ If performance constraints make these recommendations impractical, the iteration
 
 #### BCrypt Hashing Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 public function main() returns error? {
@@ -509,9 +509,9 @@ public function main() returns error? {
 }
 ```
 
-Using BCrypt with a work factor below 10 is insufficient and vulnerable to brute-force attacks.
+Using `BCrypt` with a work factor below 10 is insufficient and vulnerable to brute-force attacks.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 public function hashPassword() returns error? {
@@ -524,7 +524,7 @@ public function hashPassword() returns error? {
 
 #### Argon2 Hashing Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 public function main() returns error? {
@@ -535,9 +535,9 @@ public function main() returns error? {
 }
 ```
 
-Using Argon2 with insufficient memory (less than 19,456 KB) makes it vulnerable to attacks.
+Using `Argon2` with insufficient memory (less than 19,456 KB) makes it vulnerable to attacks.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 public function hashPassword() returns error? {
@@ -550,7 +550,7 @@ public function hashPassword() returns error? {
 
 #### PBKDF2 Hashing Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 public function main() returns error? {
@@ -561,9 +561,9 @@ public function main() returns error? {
 }
 ```
 
-Using PBKDF2 with insufficient iterations (default 10,000) is vulnerable to brute-force attacks.
+Using `PBKDF2` with insufficient iterations (default 10,000) is vulnerable to brute-force attacks.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 public function hashPassword() returns error? {
@@ -585,7 +585,7 @@ When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, 
 
 #### AES-GCM Encryption Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 public function encryptData(string data) returns byte[]|error {
@@ -598,7 +598,7 @@ public function encryptData(string data) returns byte[]|error {
 
 In this non-compliant example, the initialization vector is hardcoded, meaning every encryption operation uses the same IV. This completely undermines the security of AES-GCM encryption, regardless of key strength.
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 import ballerina/crypto;
@@ -620,7 +620,7 @@ This compliant approach generates a cryptographically secure random initializati
 
 #### AES-CBC Encryption Code Example
 
-##### Noncompliant Code
+##### Noncompliant Code Example
 
 ```ballerina
 public function encryptMessage(string message) returns byte[]|error {
@@ -632,7 +632,7 @@ public function encryptMessage(string message) returns byte[]|error {
 }
 ```
 
-##### Compliant Code
+##### Compliant Code Example
 
 ```ballerina
 import ballerina/crypto;

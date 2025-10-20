@@ -30,7 +30,7 @@ public function main() returns error? {
     };
 
     // Use the \`generate\` method with an image document as an interpolation.
-    // \`anthropic:ModelProvider\` will detect the multimodal input and handle
+    // The model provider implementation will detect the multimodal input and handle
     // constructing the request appropriately.
     Description? description = check model->generate(\`
         Describe this image.

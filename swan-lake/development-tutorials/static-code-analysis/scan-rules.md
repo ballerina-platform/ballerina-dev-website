@@ -569,7 +569,7 @@ Using `PBKDF2` with insufficient iterations (default 10,000) is vulnerable to br
 public function hashPassword() returns error? {
     string password = "mySecurePassword123";
     // Using sufficient iterations as recommended by NIST
-    string hashedPassword = check crypto:hashPbkdf2(password, iterations = 600000, algorithm = SHA256);
+    string hashedPassword = check crypto:hashPbkdf2(password, iterations = 600000, algorithm = crypto:SHA256);
     io:println("Hashed Password: ", hashedPassword);
 }
 ```

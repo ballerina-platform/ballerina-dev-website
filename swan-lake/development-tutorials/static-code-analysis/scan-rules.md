@@ -20,12 +20,12 @@ adhere to best practices.
 | **Rule ID**   | ballerina:1 |
 | **Rule Kind** | Code Smell  |
 
-When 'checkpanic' is used, the program terminates abruptly with a panic unless it’s handled explicitly along the call
+When `checkpanic` is used, the program terminates abruptly with a `panic` unless it’s handled explicitly along the call
 stack.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function checkResult() {
     json result = checkpanic getResult();
     
@@ -41,7 +41,7 @@ public function getResult() returns json|error {
 
 Check and handle the error explicitly.
 
-```java
+```ballerina
 public function checkResult() {
     json|error result = getResult();
 
@@ -57,10 +57,10 @@ public function getResult() returns json|error {
 }
 ```
 
-Make use of the 'check' keyword, which immediately returns the error or transfers control to an on-fail block, in
-contrast to 'checkpanic' and panicking if an expression or action evaluates to an error.
+Make use of the `check` keyword, which immediately returns the error or transfers control to an `on-fail` block, in
+contrast to `checkpanic` and panicking if an expression or action evaluates to an error.
 
-```java
+```ballerina
 public function checkResult() returns error? {
     json result = check getResult();
 }
@@ -83,7 +83,7 @@ implemented.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 import ballerina/io;
 
 function name(int a, int b) {
@@ -100,7 +100,7 @@ public function main() {
 Remove unused function parameters to improve code clarity and maintainability. If the parameter is intended for future
 use or completeness, consider documenting it or refactoring the function to use it.
 
-```java
+```ballerina
 import ballerina/io;
 
 function name(int a) {
@@ -125,7 +125,7 @@ be marked as isolated.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function helperFunction() {
    // isolated code
 }
@@ -135,7 +135,7 @@ public function helperFunction() {
 
 Mark public functions as isolated to ensure the function can be called concurrently.
 
-```java
+```ballerina
 public isolated function helperFunction() {
    // isolated code
 }
@@ -155,7 +155,7 @@ marked as isolated.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 class EvenNumber {
     int i = 1;
 
@@ -169,7 +169,7 @@ class EvenNumber {
 
 Mark public methods as isolated to ensure the method can be called concurrently.
 
-```java
+```ballerina
 class EvenNumber {
     int i = 1;
 
@@ -194,7 +194,7 @@ public class should be marked as isolated.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public class EvenNumber {
     int i = 1;
 
@@ -210,7 +210,7 @@ public class EvenNumber {
 
 Mark public classes as isolated to ensure the class can be used in a concurrent environment.
 
-```java
+```ballerina
 public isolated class EvenNumber {
     int i = 1;
 
@@ -234,7 +234,7 @@ accessed concurrently, a public object should be marked as isolated.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public type Hashable object {
     function hash() returns int;
 };
@@ -244,8 +244,8 @@ public type Hashable object {
 
 Mark public objects as isolated to ensure the object can be used in a concurrent environment.
 
-```java
-public isolated type Hashable object {
+```ballerina
+public type Hashable isolated object {
     function hash() returns int;
 };
 ```
@@ -262,10 +262,10 @@ readability and potentially hide logical errors.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function main() {
-   int a = 1
-   boolean b = a <= int:MAX_VALUE
+   int a = 1;
+   boolean b = a <= int:MAX_VALUE;
 }
 ```
 
@@ -281,9 +281,9 @@ codebase, make it harder to understand, and potentially hide bugs or unintention
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function main() {
-   int a = 1
+   int a = 1;
    boolean b = a <= int:MIN_VALUE;
 }
 ```
@@ -300,7 +300,7 @@ reduce the code readability, and potentially hide logical errors.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function main() {
    int a = x % 1; // always evaluates to zero
 }
@@ -318,7 +318,7 @@ variable. They can indicate incomplete or erroneous logic and make the code hard
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 public function main() {
    int x = 5;
    x = x;
@@ -337,7 +337,7 @@ memory usage, and make the code harder to maintain and understand.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 class A {
   private int[] a = [];
   private int[] b = [];
@@ -357,7 +357,7 @@ public function main() {
 Remove the unused private fields/methods. If the field/method is intended for future use or completeness, consider
 documenting, refactoring the class to use it, or introducing it when ready to implement the rest.
 
-```java
+```ballerina
 class A {
   private int[] a = [];
 
@@ -383,7 +383,7 @@ expression directions can lead to unexpected behavior, making the code harder to
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 import ballerina/io;
 
 public function main() {
@@ -398,7 +398,7 @@ public function main() {
 Ensure the range expression counter moves in the correct direction according to the desired iteration. Use the correct
 range or adjust the range expression logic to achieve the intended behavior.
 
-```java
+```ballerina
 import ballerina/io;
 
 public function main() {
@@ -409,6 +409,213 @@ public function main() {
 ```
 
 ## Library rules
+
+### Avoid using insecure cipher modes or padding schemes
+
+| Property      | Description        |
+|---------------|--------------------|
+| **Rule ID**   | ballerina/crypto:1 |
+| **Rule Kind** | Vulnerability      |
+
+Encryption algorithms are essential for protecting sensitive information and ensuring secure communications. When implementing encryption, it's critical to select not only strong algorithms but also secure modes of operation and padding schemes. Using weak or outdated encryption modes can compromise the security of otherwise strong algorithms.
+
+#### AES Encryption Code Example
+
+##### Noncompliant Code Example
+
+```ballerina
+byte[] cipherText = check crypto:encryptAesEcb(data, key);
+```
+
+For AES, the weakest mode is ECB (Electronic Codebook). Repeated blocks of data are encrypted to the same value, making them easy to identify and reducing the difficulty of recovering the original cleartext.
+
+```ballerina
+byte[] cipherText = check crypto:encryptAesCbc(data, key, initialVector);
+```
+
+Unauthenticated modes such as CBC (Cipher Block Chaining) may be used but are prone to attacks that manipulate the ciphertext (like padding oracle attacks). They must be used with caution and additional integrity checks.
+
+##### Compliant Code Example
+
+```ballerina
+byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
+```
+
+AES-GCM (Galois/Counter Mode) provides authenticated encryption, ensuring both confidentiality and integrity of the encrypted data.
+
+#### RSA Encryption Example
+
+##### Noncompliant Code Example
+
+```ballerina
+// Default padding is PKCS1
+byte[] cipherText = check crypto:encryptRsaEcb(data, publicKey);
+
+cipherText = check crypto:encryptRsaEcb(data, publicKey, crypto:PKCS1);
+```
+
+For `RSA`, avoid using `PKCS1v1.5` padding as it is vulnerable to various attacks. Instead, use `OAEP` (Optimal Asymmetric Encryption Padding) which provides better security.
+
+##### Compliant Code Example
+
+```ballerina
+byte[] cipherText = check crypto:encryptRsaEcb(data, publicKey, crypto:OAEPwithMD5andMGF1);
+```
+
+The `OAEP` paddings such as `OAEPwithMD5andMGF1`, `OAEPWithSHA1AndMGF1`, `OAEPWithSHA256AndMGF1`, `OAEPwithSHA384andMGF1`, and `OAEPwithSHA512andMGF1` should be used for RSA encryption to enhance security.
+
+### Avoid using fast hashing algorithms
+
+| Property      | Description        |
+|---------------|--------------------|
+| **Rule ID**   | ballerina/crypto:2 |
+| **Rule Kind** | Vulnerability      |
+
+Storing passwords in plaintext or using fast hashing algorithms creates significant security vulnerabilities. If an attacker gains access to your database, plaintext passwords are immediately compromised. Similarly, passwords hashed with fast algorithms (like `MD5`, `SHA-1`, or `SHA-256` without sufficient iterations) can be rapidly cracked using modern hardware.
+
+Following are the OWASP (Open Web Application Security Project) recommended parameters:
+
+For `BCrypt`:
+
+- Use a work factor of 10 or more
+- Only use `BCrypt` for password storage in legacy systems where `Argon2` and `scrypt` are not available
+- Be aware of `BCrypt`'s 72-byte password length limit
+
+For `Argon2`:
+
+- Use the `Argon2id` variant (which Ballerina implements)
+- Minimum configuration of 19 MiB (19,456 KB) of memory
+- An iteration count of at least 2
+- At least 1 degree of parallelism (this is enforced by Ballerina)
+
+#### BCrypt Hashing Code Example
+
+##### Noncompliant Code Example
+
+```ballerina
+public function main() returns error? {
+    string password = "mySecurePassword123";
+    // Using insufficient work factor
+    string hashedPassword = check crypto:hashBcrypt(password, 4);
+    io:println("Hashed Password: ", hashedPassword);
+}
+```
+
+Using `BCrypt` with a work factor below 10 is insufficient and vulnerable to brute-force attacks.
+
+##### Compliant Code Example
+
+```ballerina
+public function hashPassword() returns error? {
+    string password = "mySecurePassword123";
+    // Using sufficient work factor (14 or higher for better security)
+    string hashedPassword = check crypto:hashBcrypt(password, 14);
+    io:println("Hashed Password: ", hashedPassword);
+}
+```
+
+#### Argon2 Hashing Code Example
+
+##### Noncompliant Code Example
+
+```ballerina
+public function main() returns error? {
+    string password = "mySecurePassword123";
+    // Using insufficient memory configuration
+    string hashedPassword = check crypto:hashArgon2(password, memory = 4096);
+    io:println("Hashed Password: ", hashedPassword);
+}
+```
+
+Using `Argon2` with insufficient memory (less than 19,456 KB) makes it vulnerable to attacks.
+
+##### Compliant Code Example
+
+```ballerina
+public function hashPassword() returns error? {
+    string password = "mySecurePassword123";
+    // Using recommended parameters: sufficient memory, iterations, and parallelism
+    string hashedPassword = check crypto:hashArgon2(password, iterations = 3, memory = 65536, parallelism = 4);
+    io:println("Hashed Password: ", hashedPassword);
+}
+```
+
+### Avoid reusing counter mode initialization vectors
+
+| Property      | Description        |
+|---------------|--------------------|
+| **Rule ID**   | ballerina/crypto:3 |
+| **Rule Kind** | Vulnerability      |
+
+When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, or `AES-CTR`), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
+
+#### AES-GCM Encryption Code Example
+
+##### Noncompliant Code Example
+
+```ballerina
+public function encryptData(string data) returns byte[]|error {
+    byte[16] initialVector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    byte[16] key = [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    byte[] dataBytes = data.toBytes();
+    return crypto:encryptAesGcm(dataBytes, key, initialVector);
+}
+```
+
+In this non-compliant example, the initialization vector is hardcoded, meaning every encryption operation uses the same IV. This completely undermines the security of AES-GCM encryption, regardless of key strength.
+
+##### Compliant Code Example
+
+```ballerina
+import ballerina/crypto;
+import ballerina/random;
+
+public function encryptData(string data) returns [byte[], byte[16]]|error {
+    byte[16] initialVector = [];
+    foreach int i in 0...15 {
+        initialVector[i] = <byte>(check random:createIntInRange(0, 255));
+    }
+    byte[16] key = [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    byte[] dataBytes = data.toBytes();
+    byte[] encryptedData = check crypto:encryptAesGcm(dataBytes, key, initialVector);
+    return [encryptedData, initialVector];
+}
+```
+
+This compliant approach generates a cryptographically secure random initialization vector for each encryption operation and returns it along with the encrypted data. The IV must be stored alongside the encrypted data (but doesn't need to be kept secret) to allow for decryption later.
+
+#### AES-CBC Encryption Code Example
+
+##### Noncompliant Code Example
+
+```ballerina
+public function encryptMessage(string message) returns byte[]|error {
+    // Static nonce - this is vulnerable!
+    byte[12] nonce = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+    byte[16] key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    byte[] messageBytes = message.toBytes();
+    return crypto:encryptAesCbc(messageBytes, key, nonce);
+}
+```
+
+##### Compliant Code Example
+
+```ballerina
+import ballerina/crypto;
+import ballerina/random;
+
+public function encryptMessage(string message) returns [byte[], byte[12]]|error {
+    // Generate unique nonce for each encryption
+    byte[12] nonce = [];
+    foreach int i in 0...11 {
+        nonce[i] = <byte>(check random:createIntInRange(0, 255));
+    }
+    byte[16] key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    byte[] messageBytes = message.toBytes();
+    byte[] encryptedData = check crypto:encryptAesCbc(messageBytes, key, nonce);
+    return [encryptedData, nonce];
+}
+```
 
 ### Avoid using publicly writable directories for file operations without proper access controls
 
@@ -426,7 +633,7 @@ elevated permissions.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 string tempFolderPath = os:getEnv("TMP");
 check file:create(tempFolderPath + "/" + "myfile.txt");
 check file:getAbsolutePath(tempFolderPath + "/" + "myfile.txt");
@@ -438,7 +645,7 @@ check file:createTempDir((), "prefix");
 
 Use dedicated sub-folders.
 
-```java
+```ballerina
 check file:create("./myDirectory/myfile.txt");
 check file:getAbsolutePath("./myDirectory/myfile.txt");
 ```
@@ -457,7 +664,7 @@ the path to resolve to a location within the filesystem where the user typically
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 listener http:Listener endpoint = new (8080);
 string targetDirectory = "./path/to/target/directory/";
 
@@ -473,7 +680,7 @@ service / on endpoint {
 
 Conduct validation of canonical paths.
 
-```java
+```ballerina
 listener http:Listener endpoint = new (8080);
 string targetDirectory = "./path/to/target/directory/";
 
@@ -539,7 +746,7 @@ resources.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -555,7 +762,7 @@ service / on endpoint {
 For every resource in an application, it’s crucial to explicitly define the type of the HTTP resource, ensuring that
 safe resources are exclusively used for read-only operations.
 
-```java
+```ballerina
 service / on endpoint {
     resource function delete deleteRequest(http:Request clientRequest, string username) returns string {
         // state of the application will be changed here
@@ -577,7 +784,7 @@ browser and modify the access control policy, effectively relaxing the same-orig
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -597,7 +804,7 @@ service / on endpoint {
 
 The resource configuration should be configured exclusively for trusted origins and specific resources.
 
-```java
+```ballerina
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -609,6 +816,80 @@ service / on endpoint {
 
     resource function get example() returns http:Response|error? {
         // Return response
+    }
+}
+```
+
+### Server-side requests should not be vulnerable to traversing attacks
+
+| Property      | Description      |
+|---------------|------------------|
+| **Rule ID**   | ballerina/http:3 |
+| **Rule Kind** | Vulnerability    |
+
+Server-Side Request Forgery (SSRF) is a vulnerability that allows attackers to induce the server-side application to make requests to an unintended location. When applications accept user input that influences server-side HTTP requests without proper validation or sanitization, attackers can manipulate these requests.
+
+#### Noncompliant Code Example
+
+```ballerina
+service /api/v1 on new http:Listener(8080) {
+    resource function get users(string id) returns http:Response|error {
+        http:Client userClient = check new ("http://example.com");
+        // User input is used directly in the URL
+        return userClient->/users/[id];
+    }
+}
+```
+
+#### Compliant Code Example
+
+```ballerina
+service /api/v1 on new http:Listener(8080) {
+    resource function get users(string id) returns http:Response|error {
+        // Validate the user input
+        string validatedId = check getValidatedId(id);
+        http:Client userClient = check new ("http://example.com");
+        return userClient->/users/[validatedId];
+    }
+}
+```
+
+### HTTP request redirections should not be open to forging attacks
+
+| Property      | Description      |
+|---------------|------------------|
+| **Rule ID**   | ballerina/http:4 |
+| **Rule Kind** | Vulnerability    |
+
+Open redirects occur when an application accepts user-controlled input that specifies a URL to which the user will be redirected. When these redirects are implemented without proper validation, attackers can craft redirection URLs to malicious sites.
+
+#### Noncompliant Code Example
+
+```ballerina
+service /api/v1 on new http:Listener(8080) {
+    resource function get redirect(string location) returns http:TemporaryRedirect {
+        return {
+            headers: {
+                // User input is used directly in the Location header
+                "Location": location
+            }
+        };
+    }
+}
+```
+
+#### Compliant Code Example
+
+```ballerina
+service /api/v1 on new http:Listener(8080) {
+    resource function get redirect(string location) returns http:TemporaryRedirect|error {
+        // Validate the user input
+        string validatedLocation = check getValidatedLocation(location);
+        return {
+            headers: {
+                "Location": validatedLocation
+            }
+        };
     }
 }
 ```
@@ -627,7 +908,7 @@ the path to resolve to a location within the filesystem where the user typically
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 import ballerina/io;
 import ballerina/http;
 
@@ -647,7 +928,7 @@ service /fileService on new http:Listener(8080) {
 
 Validate and normalize the path to ensure the accessed file remains within the intended target directory.
 
-```java
+```ballerina
 import ballerina/io;
 import ballerina/http;
 import ballerina/file;
@@ -691,7 +972,7 @@ should obviously not be stored or at least not in clear text.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 import ballerina/log;
 
 configurable string password = ?;
@@ -711,7 +992,7 @@ public function main() {
 
 Avoid using configurable variables inside the logging statement.
 
-```java
+```ballerina
 import ballerina/log;
 
 int id = 12345;
@@ -736,7 +1017,7 @@ Arguments like -delete or -exec for the find command can alter the expected beha
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 string terminalPath = ...;
 string input = request.getQueryParamValue("input").toString();
 string[] cmd = [..., input];
@@ -752,7 +1033,7 @@ os:Process result = check os:exec({
 
 Use an allow-list to restrict the arguments to trusted values.
 
-```java
+```ballerina
 string terminalPath = ...;
 string input = request.getQueryParamValue("input").toString();
 string[] cmd = [..., input];
@@ -782,7 +1063,7 @@ are often globally accessible within a process and can affect child processes.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 service / on new http:Listener(8080) {
     resource function get configPath(http:Request req) {
         string configPath = req.getQueryParamValue("path") ?: "";
@@ -797,7 +1078,7 @@ service / on new http:Listener(8080) {
 Implement proper input validation by ensuring that only alphanumeric characters are allowed in the environment variable
 value.
 
-```java
+```ballerina
 service / on new http:Listener(8080) {
     resource function get configPath(http:Request req) returns string|error {
         string configPath = req.getQueryParamValue("path") ?: "";
@@ -832,7 +1113,7 @@ users, modify token claims, bypass authentication entirely, and gain unauthorize
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 jwt:IssuerConfig issuerConfig = {
     issuer: "ballerina",
     expTime: 3600,
@@ -848,7 +1129,7 @@ string token = check jwt:issue(issuerConfig);
 
 Use a strong signing algorithm like RS256, which uses RSA encryption with an SHA-256 hash function.
 
-```java
+```ballerina
 jwt:IssuerConfig issuerConfig = {
     issuer: "ballerina",
     expTime: 3600,
@@ -876,7 +1157,7 @@ clients and servers.
 
 #### Noncompliant Code Example
 
-```java
+```ballerina
 
 public function main() returns error? {
     email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {
@@ -898,7 +1179,7 @@ public function main() returns error? {
 
 Enable hostname verification to ensure the server's certificate matches the hostname.
 
-```java
+```ballerina
 
 public function main() returns error? {
     email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {

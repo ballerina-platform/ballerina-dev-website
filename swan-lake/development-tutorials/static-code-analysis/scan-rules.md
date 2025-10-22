@@ -488,14 +488,6 @@ For `Argon2`:
 - An iteration count of at least 2
 - At least 1 degree of parallelism (this is enforced by Ballerina)
 
-For `PBKDF2`:
-
-- `PBKDF2-HMAC-SHA1`: 1,300,000 iterations
-- `PBKDF2-HMAC-SHA256`: 600,000 iterations (recommended by NIST)
-- `PBKDF2-HMAC-SHA512`: 210,000 iterations
-
-If performance constraints make these recommendations impractical, the iteration count should never be lower than 100,000.
-
 #### BCrypt Hashing Code Example
 
 ##### Noncompliant Code Example
@@ -544,32 +536,6 @@ public function hashPassword() returns error? {
     string password = "mySecurePassword123";
     // Using recommended parameters: sufficient memory, iterations, and parallelism
     string hashedPassword = check crypto:hashArgon2(password, iterations = 3, memory = 65536, parallelism = 4);
-    io:println("Hashed Password: ", hashedPassword);
-}
-```
-
-#### PBKDF2 Hashing Code Example
-
-##### Noncompliant Code Example
-
-```ballerina
-public function main() returns error? {
-    string password = "mySecurePassword123";
-    // Using default settings with insufficient iterations
-    string hashedPassword = check crypto:hashPbkdf2(password);
-    io:println("Hashed Password: ", hashedPassword);
-}
-```
-
-Using `PBKDF2` with insufficient iterations (default 10,000) is vulnerable to brute-force attacks.
-
-##### Compliant Code Example
-
-```ballerina
-public function hashPassword() returns error? {
-    string password = "mySecurePassword123";
-    // Using sufficient iterations as recommended by NIST
-    string hashedPassword = check crypto:hashPbkdf2(password, iterations = 600000, algorithm = crypto:SHA256);
     io:println("Hashed Password: ", hashedPassword);
 }
 ```

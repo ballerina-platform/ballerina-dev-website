@@ -98,7 +98,7 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 // Define a constant for code block font size
-const CODE_BLOCK_FONT_SIZE = '12.25px';
+const CODE_BLOCK_FONT_SIZE = "12.25px";
 
 export default function PostPage({ frontmatter, content, codeSnippets }) {
   const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
@@ -178,6 +178,9 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
           {`pre div pre {
             font-size: ${CODE_BLOCK_FONT_SIZE};
           }
+            pre pre div {
+            font-size: ${CODE_BLOCK_FONT_SIZE};
+          }
         `}
         </style>
       </Head>
@@ -236,17 +239,6 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
                       {children}
                     </ul>
                   ),
-                  pre: ({ node, children, ...props }) => (
-                    <pre
-                      className="shiki github-light"
-                      style={{ backgroundColor: "#fff", color: "#24292e", fontSize: CODE_BLOCK_FONT_SIZE }}
-                      tabIndex={0}
-                      id={genrateId(children)}
-                      {...props}
-                    >
-                      {children}
-                    </pre>
-                  ),
                   code({ node, inline, className, children, ...props }) {
                     const key = children[0]
                       .trim()
@@ -267,11 +259,13 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
                         {children}
                       </code>
                     ) : match ? (
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: String(children).replace(/\n$/, ""),
-                        }}
-                      />
+                      <pre className="default">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: String(children).replace(/\n$/, ""),
+                          }}
+                        />
+                      </pre>
                     ) : (
                       <pre className="default">
                         <code className={className} {...props}>

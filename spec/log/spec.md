@@ -100,6 +100,10 @@ time=2025-08-20T08:53:29.987+05:30 level=INFO module="" message="info log" curre
 time=2025-08-20T08:53:29.998+05:30 level=INFO module="" message="info log for id: 845315" ctx="{name: foo}"
 ```
 
+> **Note:**
+> The key-value pairs provided for logging must not use the reserved keys `message`, `time`, or `level`.
+> These keys are reserved for the log record fields and will result in a compile-time error if specified.
+
 ## 3. Configure logging
 
 ### 3.1. Configure root log level

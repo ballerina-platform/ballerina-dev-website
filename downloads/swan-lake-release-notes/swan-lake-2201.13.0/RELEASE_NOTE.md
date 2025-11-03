@@ -249,7 +249,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)
 
 #### CLI
 
+##### Decoupled CLI tools from the distribution
+
+Support for independent CLI tool releases has been introduced, allowing commonly used Ballerina CLI tools (`bal openapi`, `bal graphql`, `bal grpc`, `bal persist`) to be updated independently from the main Ballerina distribution. This enhancement enables faster delivery of bug fixes and new features for tools without requiring a full distribution release. 
+
 #### OpenAPI tool
+
+The OpenAPI tool (`bal openapi`) is now decoupled from the main Ballerina distribution as part of the enhanced plugin architecture. This enables independent updates and faster delivery of OpenAPI-specific features and bug fixes without requiring a full distribution release.
 
 ### Improvements
 
@@ -266,7 +272,37 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 13 (2201.13.0) 
 
 ### New features
 
+#### Introduced multi-package workspace support
+
+Multi-package workspace support has been introduced to enable developers to organize and manage multiple interdependent Ballerina packages within a single workspace in a monorepo-style structure. Dependencies within the workspace packages are resolved seamlessly without needing to publish to a package repository.
+
+Below is an example of a multi-package workspace structure:
+
+```bash
+my-workspace/
+├── Ballerina.toml          # Workspace configuration
+├── service-a/
+│   └── Ballerina.toml      # Package configuration
+├── service-b/
+│   └── Ballerina.toml
+└── util/common/
+    └── Ballerina.toml
+```
+
+The workspace-level `Ballerina.toml` file defines the workspace configuration with the packages to include in the workspace:
+
+```toml
+[workspace]
+packages = ["service-a", "service-b", "util/common"]
+```
+
+To create a new workspace, use `bal new --workspace <workspace-name>`, which creates the workspace configuration with a sample project. Core commands such as `bal build`, `bal run`, `bal test`, and `bal pack` are also enhanced to support workspaces.
+
 ### Improvements
+
+#### Improved the compilation time of consecutive builds
+
+Previously, every invocation of `bal build` followed by `bal run` would recompile the entire project from scratch, even when no changes were made to the source files since the last build. With Update 13, the compilation time has been significantly improved by introducing a mechanism to detect unchanged projects and skip redundant compilation steps after the first build. 
 
 ### Bug fixes
 

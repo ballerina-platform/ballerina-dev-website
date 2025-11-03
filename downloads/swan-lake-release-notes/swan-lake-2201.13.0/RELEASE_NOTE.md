@@ -274,9 +274,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 13 (2201.13.0) 
 
 #### Introduced multi-package workspace support
 
-Multi-package workspace support has been introduced to enable developers to organize and manage multiple related Ballerina packages within a single workspace. This feature allows organizing interdependent packages together in a monorepo-style structure. Dependencies within the workspace packages are resolved seamlessly without needing to publish to a package repository.
+Multi-package workspace support has been introduced to enable developers to organize and manage multiple interdependent Ballerina packages within a single workspace in a monorepo-style structure. Dependencies within the workspace packages are resolved seamlessly without needing to publish to a package repository.
 
-Below is an example of a multi-package workspace structure
+Below is an example of a multi-package workspace structure:
 
 ```bash
 my-workspace/

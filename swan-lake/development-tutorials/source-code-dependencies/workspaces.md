@@ -1,11 +1,11 @@
 ---
 layout: ballerina-workspaces-left-nav-pages-swanlake
 title: Workspaces
-description: The sections below explains how to organize multiple Ballerina packages within a single workspace.
+description: The sections below explain how to organize multiple Ballerina packages within a single workspace.
 keywords: ballerina, programming language, ballerina packages, workspace, multi-package, monorepo
 permalink: /learn/workspaces/
 active: workspaces
-intro: The sections below explains how to organize multiple Ballerina packages within a single workspace.
+intro: The sections below explain how to organize multiple Ballerina packages within a single workspace.
 ---
 
 ## Workspace Structure

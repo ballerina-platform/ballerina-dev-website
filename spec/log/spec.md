@@ -3,7 +3,7 @@
 _Authors_: @daneshk @MadhukaHarith92 @TharmiganK  
 _Reviewers_: @daneshk @ThisaruGuruge  
 _Created_: 2021/11/15  
-_Updated_: 2025/10/08  
+_Updated_: 2025/08/20  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -31,10 +31,6 @@ The conforming implementation of the specification is released and included in t
    * 4.3. [Child logger](#43-child-logger)
      * 4.3.1. [Loggers with additional context](#431-loggers-with-additional-context)
      * 4.3.2. [Loggers with unique logging configuration](#432-loggers-with-unique-logging-configuration)
-5. [Sensitive data masking](#5-sensitive-data-masking)
-   * 5.1. [Sensitive data annotation](#51-sensitive-data-annotation)
-   * 5.2. [Masked string function](#52-masked-string-function)
-   * 5.3. [Type-based masking](#53-type-based-masking)
 
 ## 1. Overview
 
@@ -99,10 +95,6 @@ time=2025-08-20T08:53:29.973+05:30 level=INFO module="" message="info log" id=84
 time=2025-08-20T08:53:29.987+05:30 level=INFO module="" message="info log" current_time="2025-08-20T03:23:29.989160Z"
 time=2025-08-20T08:53:29.998+05:30 level=INFO module="" message="info log for id: 845315" ctx="{name: foo}"
 ```
-
-> **Note:**
-> The key-value pairs provided for logging must not use the reserved keys `message`, `time`, or `level`.
-> These keys are reserved for the log record fields and will result in a compile-time error if specified.
 
 ## 3. Configure logging
 
@@ -232,10 +224,10 @@ public type Logger isolated object {
 };
 ```
 
-> **Note:** The Ballerina log module provides a function to evaluate the `PrintableRawTemplate` to obtain the evaluated string. This can be used when implementing a logger from the above type.
+> **Note:** The Ballerina log module provides a function to process the PrintableRawTemplate to obtain the processed string. This can be used when implementing a logger from the above type.
 >
 > ```ballerina
-> public isolated function evaluateTemplate(PrintableRawTemplate rawTemplate, boolean enableSensitiveDataMasking = false) returns string;
+> public isolated function processTemplate(PrintableRawTemplate) returns string;
 > ```
 
 ### 4.2. Root logger
@@ -287,8 +279,6 @@ public type Config record {|
     readonly & OutputDestination[] destinations = destinations;
     # Additional key-value pairs to include in the log messages. Default is the key-values configured in the module level
     readonly & AnydataKeyValues keyValues = {...keyValues};
-    # Enable sensitive data masking in the logs. Default is false
-    boolean enableSensitiveDataMasking = false;
 |};
 ```
 
@@ -303,166 +293,4 @@ log:Config auditLogConfig = {
 
 log:Logger auditLogger = log:fromConfig(auditLogConfig);
 auditLogger.printInfo("Hello World from the audit logger!");
-```
-
-## 5. Sensitive data masking
-
-The Ballerina log module provides the capability to mask sensitive data in log messages. This is crucial for maintaining data privacy and security, especially when dealing with personally identifiable information (PII) or other sensitive data.
-
-> **Note**: By default, sensitive data masking is disabled. Enable it in `Config.toml`:
->
-> ```toml
-> [ballerina.log]
-> enableSensitiveDataMasking = true
-> ```
->
-> Or configure it per logger:
->
-> ```ballerina
-> log:Config secureConfig = {
->     enableSensitiveDataMasking: true
-> };
-> log:Logger secureLogger = log:fromConfig(secureConfig);
-> ```
-
-### 5.1. Sensitive data annotation
-
-The `@log:Sensitive` annotation can be used to mark fields in a record as sensitive. When such fields are logged, their values will be excluded or masked to prevent exposure of sensitive information.
-
-```ballerina
-import ballerina/log;
-
-type User record {
-    string id;
-    @log:Sensitive
-    string password;
-    string name;
-};
-
-public function main() {
-    User user = {id: "U001", password: "mypassword", name: "John Doe"};
-    log:printInfo("user details", user = user);
-}
-```
-
-Output:
-
-```log
-time=2025-08-20T09:15:30.123+05:30 level=INFO module="" message="user details" user={"id":"U001","name":"John Doe"}
-```
-
-The `@log:Sensitive` annotation will exclude the sensitive field from the log output when sensitive data masking is enabled.
-
-Additionally, the masking strategy can be configured using the `strategy` field of the annotation. The available strategies are:
-1. `EXCLUDE`: Excludes the field from the log output (default behavior).
-2. `Replacement`: Replaces the field value with a specified replacement string or a function that generates a masked version of the value.
-
-Example:
-
-```ballerina
-import ballerina/log;
-
-isolated function maskString(string input) returns string {
-    if input.length() <= 2 {
-        return "****";
-    }
-    return input.substring(0, 1) + "****" + input.substring(input.length() - 1);
-}
-
-type User record {
-    string id;
-    @log:Sensitive {
-        strategy: {
-            replacement: "****"
-        }   
-    }
-    string password;
-    @log:Sensitive {
-        strategy: {
-            replacement: maskString
-        }
-    }
-    string ssn;
-    string name;
-};
-
-public function main() {
-    User user = {id: "U001", password: "mypassword", ssn: "123-45-6789", name: "John Doe"};
-    log:printInfo("user details", user = user);
-}
-```
-
-Output:
-
-```log
-time=2025-08-20T09:20:45.456+05:30 level=INFO module="" message="user details" user={"id":"U001","password":"****","ssn":"1****9","name":"John Doe"}
-```
-
-### 5.2. Masked string function
-
-The `log:toMaskedString()` function can be used to obtain the masked version of a value. This is useful when developers want to implement custom loggers and need to mask sensitive data.
-
-```ballerina
-import ballerina/log;
-import ballerina/io;
-
-type User record {
-    string id;
-    @log:Sensitive
-    string password;
-    string name;
-};
-
-public function main() {
-    User user = {id: "U001", password: "mypassword", name: "John Doe"};
-    string maskedUser = log:toMaskedString(user);
-    io:println(maskedUser);
-}
-```
-
-Output:
-
-```log
-{"id":"U001","name":"John Doe"}
-```
-
-### 5.3. Type-based masking
-
-The masking is based on the type of the value. Since, Ballerina is a structurally typed language, same value can be assigned to different typed variables. So the masking is based on the actual value type which is determined at the value creation time. The original type information can be extracted using the `typeof` operator.
-
-Example:
-
-```ballerina
-type User record {
-   string id;
-   @log:Sensitive
-   string password;
-   string name;
-};
-
-type Student record {
-   string id;
-   string password; // Not marked as sensitive
-   string name;
-};
-
-public function main() returns error? {
-   User user = {id: "U001", password: "mypassword", name: "John Doe"};
-   // password will be masked
-   string maskedUser = log:toMaskedString(user);
-
-   Student student = user; // Allowed since both have the same structure 
-   // password will be masked since the type at value creation is User
-   string maskedStudent = log:toMaskedString(student);
-
-   student = {id: "S001", password: "studentpass", name: "Jane Doe"}; 
-   user = student; // Allowed since both have the same structure
-   // password will not be masked since the type at value creation is Student
-   maskedStudent = log:toMaskedString(user);
-
-   // Explicity creating a value with type
-   user = check student.cloneWithType();
-   // password will be masked since the type at value creation is User
-   maskedUser = log:toMaskedString(user);
-}    
 ```

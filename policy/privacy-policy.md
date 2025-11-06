@@ -68,19 +68,13 @@ We may share your data with our subsidiaries or affiliates within our corporate 
 
 WSO2 operates globally, with businesses both inside and outside of the European Economic Area ("EEA") and the UK. We may transfer your Personal Data to countries other than the one in which you live, including transfers to the United States. Additionally, third-party service providers who handle data on our behalf may be based in locations around the world. For these reasons, your personal information may be transferred to other countries both inside and outside of the UK and the EEA. As privacy laws in other countries may not be equivalent to those in your home country, we only make arrangements to transfer data overseas where we are satisfied that adequate levels of protection are in place to protect any information held in that country or that the service provider acts at all times in compliance with applicable privacy laws. Where required under applicable laws, we will take measures to ensure that personal information handled in other countries will receive at least the same level of protection as it is given in your home country.
 
-In July 2023, EU regulators approved the United States as a third-party country to which EU personal data may be transferred, under an Adequacy Decision. Subsequent to this, the EU-US Data Privacy Framework was set up (which replaces the previous Privacy Shield Framework). When we transfer personal information to the US, we do so on the following basis:
-
-WSO2 is a participant in the EU-U.S. Data Privacy Framework (“DPF”) as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of personal information transferred from the European Union to the United States. WSO2 has certified to the Department of Commerce that it adheres to the DPF Principles. If there is any conflict between the terms in this privacy policy and the DPF Principles, the DPF Principles shall govern. To learn more about the DPF program, and to view our certification, please visit <a target="_blank" href="https://www.dataprivacyframework.gov/s/">https://www.dataprivacyframework.gov/s/</a>.
-
-Data transferred from the EU, EEA, and the United Kingdom to other WSO2 affiliate entities located around the world is transferred on the basis of Data Transfer Agreements containing the New EU Standard Contractual Clauses set out by the European Commission in June 2021 and their UK equivalent, which guarantee uniform levels of protection to your data as specified by the EU and the UK.
+Data transferred from the EU, EEA, and the United Kingdom to other WSO2 affiliate entities located around the world including the USA is transferred on the basis of Data Transfer Agreements containing the New EU Standard Contractual Clauses set out by the European Commission in June 2021 and their UK equivalent, which guarantee uniform levels of protection to your data as specified by the EU and the UK.
 
 We may also release your information when we believe release is necessary to comply with the law subject to our (Governmental and law enforcement Data Access Policy), enforce our privacy policy, or protect our or others’ rights, property, or safety.
 
 ### Dispute resolution
 
-In compliance with the Data Privacy Framework Principles, we commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints regarding our DPF policy should first reach out to us using the information in the [Information about data controllers, processors, and how to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
-
-WSO2 has committed to refer unresolved DTF complaints to JAMS, an alternative dispute resolution provider located in the United States. If you do not receive timely acknowledgment of your complaint from us, or if we have not addressed your complaint to your satisfaction, please contact or visit <a target="_blank" href="https://www.jamsadr.com/eu-us-data-privacy-framework">EU-US Data Privacy Framework | JAMS Mediation, Arbitration, ADR Services</a> for more information or to file a complaint. The services of JAMS are provided at no cost to you. Under certain conditions, more fully described on the DTF website, you may invoke binding arbitration when other dispute resolution procedures have been exhausted.
+We commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints should first reach out to us using the information in the Information about data controllers, processors, and how to contact us section below.
 
 Within the USA, we are also subject to the investigatory and enforcement powers of the Federal Trade Commission (FTC).
 
@@ -124,4 +118,4 @@ We reserve the right to amend this privacy policy at any time. We will not send 
 
 By using the Sites, you consent to our privacy policy and any revisions thereto. If you do not agree with our privacy policy or any changes we make to it, you may delete your profile.
 
-**Effective August 11, 2023**
+**Effective November 06, 2025**

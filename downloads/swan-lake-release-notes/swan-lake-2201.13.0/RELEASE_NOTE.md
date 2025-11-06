@@ -240,7 +240,7 @@ public function main() returns error? {
 
 #### `time` package
 
-- Added support for add/subtract specified durations to/from time values.
+Added support for add/subtract specified durations to/from time values.
 
     ```ballerina
     import ballerina/io;
@@ -262,7 +262,7 @@ public function main() returns error? {
 
 #### `oauth2` package
 
-- Added support for configuring the connection and request timeouts for the internal HTTP client.
+Added support for configuring the connection and request timeouts for the internal HTTP client.
 
     ```ballerina
     ClientCredentialsGrantConfig config = {

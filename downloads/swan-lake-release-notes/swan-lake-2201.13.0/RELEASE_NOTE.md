@@ -181,6 +181,22 @@ Compile-time code generation is of two variants.
 
     Note that this currently works with the Ballerina Copilot configuration. To generate the configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Use these values as the `BAL_CODEGEN_URL` and `BAL_CODEGEN_TOKEN` environment variables for compile-time code generation.
 
+### Improvements
+
+#### Improved XML parsing to support XML declarations
+
+Previously, the `xml:fromString()` function did not capture XML declaration(`<?xml version="1.1" encoding="UTF-8"?>`) when converting a string into a xml value. With this update, the XML declaration is now correctly recognized and preserved during parsing.
+
+```ballerina
+import ballerina/io;
+
+public function main() returns error? {
+    string str = string `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>`;
+    xml xmlVal = check xml:fromString(str);
+    io:println(xmlVal); // prints `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>` 
+} 
+```
+
 ## Ballerina library updates
 
 ### New features

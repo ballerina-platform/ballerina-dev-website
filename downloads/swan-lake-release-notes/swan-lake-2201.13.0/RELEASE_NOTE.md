@@ -181,7 +181,7 @@ Compile-time code generation is of two variants.
 
     Note that this currently works with the Ballerina Copilot configuration. To generate the configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Use these values as the `BAL_CODEGEN_URL` and `BAL_CODEGEN_TOKEN` environment variables for compile-time code generation.
 
-#### OpenShift Support
+#### OpenShift support
 Ballerina code to cloud plugin now supports generation of OpenShift artifacts.
 The artifacts can be generated using the following command:
 

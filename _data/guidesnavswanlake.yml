@@ -30,7 +30,7 @@
       url: /learn/organize-ballerina-code/modules/
       active: modules
 
-- title: Teste Ballerina code
+- title: Test Ballerina code
   url: '#'
   sublinks:
     - title: Quick start on testing

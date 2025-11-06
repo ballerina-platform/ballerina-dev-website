@@ -50,6 +50,16 @@ $ bal grpc --input <proto-file-path>
          [--proto-path <proto-directory>]
 ```
 
+### Update the tool
+
+Execute the command below to update the grpc tool to the latest compatible version..
+
+```
+$ bal tool update grpc
+```
+
+For more information on tool command, run `bal tool --help`.
+
 ## Command options
 
 | Parameter      | Description                                                                                                                                                                                                                                                                                                                                                  | Mandatory/Optional |

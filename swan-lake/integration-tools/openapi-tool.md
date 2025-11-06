@@ -19,6 +19,16 @@ The Ballerina OpenAPI tool support provides the following capabilities.
  3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
   >**Info:** The OpenAPI compiler plugin allows you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
+### Update the tool
+
+Execute the command below to update the openapi tool to the latest compatible version..
+
+```
+$ bal tool update openapi
+```
+
+For more information on tool command, run `bal tool --help`.
+
 ### OpenAPI to Ballerina CLI usage
 
 The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.

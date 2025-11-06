@@ -183,6 +183,20 @@ Compile-time code generation is of two variants.
 
 ### Improvements
 
+#### Improved XML parsing to support XML declarations
+
+Previously, the `xml:fromString()` function did not capture XML declaration(`<?xml version="1.1" encoding="UTF8"?>`) when converting a string into a xml value. With this update, the XML declaration is now correctly recognized and preserved during parsing.
+
+```ballerina
+import ballerina/io;
+
+public function main() returns error? {
+    string str = string `<?xml version="1.1" encoding="UTF8"?><A><B>123</B></A>`;
+    xml xmlVal = check xml:fromString(str);
+    io:println(xmlVal); // prints `<?xml version="1.1" encoding="UTF8"?><A><B>123</B></A>` 
+} 
+```
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.13.0+is%3Aclosed+label%3AType%2FBug).

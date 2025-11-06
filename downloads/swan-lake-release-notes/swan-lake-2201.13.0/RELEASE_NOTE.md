@@ -181,36 +181,6 @@ Compile-time code generation is of two variants.
 
     Note that this currently works with the Ballerina Copilot configuration. To generate the configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Use these values as the `BAL_CODEGEN_URL` and `BAL_CODEGEN_TOKEN` environment variables for compile-time code generation.
 
-### Improvements
-
-#### Improved XML parsing to support XML declarations
-
-Previously, the `xml:fromString()` function did not capture XML declaration(`<?xml version="1.1" encoding="UTF-8"?>`) when converting a string into a xml value. With this update, the XML declaration is now correctly recognized and preserved during parsing.
-
-```ballerina
-import ballerina/io;
-
-public function main() returns error? {
-    string str = string `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>`;
-    xml xmlVal = check xml:fromString(str);
-    io:println(xmlVal); // prints `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>` 
-} 
-```
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.13.0+is%3Aclosed+label%3AType%2FBug).
-
-## Runtime updates
-
-### New features
-
-### Improvements
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.13.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
-
 ## Ballerina library updates
 
 ### New features
@@ -251,15 +221,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)
     };
     ```
 
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.13.0%22+label%3AType%2FBug).
-
 ## Developer tools updates
 
 ### New features
-
-#### Language Server
 
 #### CLI
 
@@ -267,20 +231,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0)
 
 Support for independent CLI tool releases has been introduced, allowing commonly used Ballerina CLI tools (`bal openapi`, `bal graphql`, `bal grpc`, `bal persist`) to be updated independently from the main Ballerina distribution. This enhancement enables faster delivery of bug fixes and new features for tools without requiring a full distribution release. 
 
-#### OpenAPI tool
+Below is an example on how to update the `openapi` tool to the latest version compatible with the current distribution.
 
-The OpenAPI tool (`bal openapi`) is now decoupled from the main Ballerina distribution as part of the enhanced plugin architecture. This enables independent updates and faster delivery of OpenAPI-specific features and bug fixes without requiring a full distribution release.
+```
+$ bal tool update openapi
+```
 
 ### Improvements
 
-#### Language Server
+Introduced the `--dependency-cache` flag to `bal clean` command. This cleans the caches of the dependencies of a package in addition to the cache of the user's package.
 
-### Bug fixes
-
-To view bug fixes, see the GitHub milestone for Swan Lake Update 13 (2201.13.0) of the repositories below.
-
-- [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.13.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.13.0%22+is%3Aclosed)
+```
+$ bal clean --dependency-cache
+```
 
 ## Ballerina packages updates
 
@@ -292,25 +255,30 @@ Multi-package workspace support has been introduced to enable developers to orga
 
 Below is an example of a multi-package workspace structure:
 
-```bash
+```
 my-workspace/
 ├── Ballerina.toml          # Workspace configuration
-├── service-a/
-│   └── Ballerina.toml      # Package configuration
-├── service-b/
-│   └── Ballerina.toml
-└── util/common/
-    └── Ballerina.toml
+├── order-service/
+│   ├── Ballerina.toml      # Package configuration
+│   └── service.bal
+├── menu-service/
+│   ├── Ballerina.toml
+│   └── service.bal
+└── utils/
+    ├── Ballerina.toml
+    └── utils.bal
 ```
 
 The workspace-level `Ballerina.toml` file defines the workspace configuration with the packages to include in the workspace:
 
 ```toml
 [workspace]
-packages = ["service-a", "service-b", "util/common"]
+packages = ["order-service", "menu-service", "utils"]
 ```
 
 To create a new workspace, use `bal new --workspace <workspace-name>`, which creates the workspace configuration with a sample project. Core commands such as `bal build`, `bal run`, `bal test`, and `bal pack` are also enhanced to support workspaces.
+
+For more information, see the [Workspaces](https://ballerina.io/learn/workspaces/) documentation.
 
 ### Improvements
 
@@ -328,8 +296,10 @@ Generating executable (UP-TO-DATE)
 	myorg/target/bin/hello_app.jar
 ```
 
-Run `bal clean` to delete the caches and force a full recompilation on the next build.
+Running `bal clean` will delete the caches and force a full recompilation on the next build.
 
-### Bug fixes
+## Bug fixes
 
-## Backward-incompatible changes
+To view all the bug fixes related to the compiler, runtime, and developer tools, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0) for Ballerina platform](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue%20state%3Aclosed%20milestone%3A2201.13.0%20label%3AType%2FBug).
+
+To view all the bug fixes related to the Ballerina library, see the [GitHub milestone for Swan Lake Update 13 (2201.13.0) for Ballerina Library](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.13.0%22+label%3AType%2FBug).

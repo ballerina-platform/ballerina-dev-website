@@ -239,7 +239,7 @@ $ bal tool update openapi
 
 ### Improvements
 
-Introduced the `--dependency-cache` flag to `bal clean` command. This clean the caches of the dependencies of a package in addition to the cache of the user's package.
+Introduced the `--dependency-cache` flag to `bal clean` command. This cleans the caches of the dependencies of a package in addition to the cache of the user's package.
 
 ```
 $ bal clean --dependency-cache

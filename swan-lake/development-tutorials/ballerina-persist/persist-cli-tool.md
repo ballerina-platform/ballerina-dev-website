@@ -16,7 +16,7 @@ There are two ways that you can use the `bal persist` feature.
 
 ### Update the tool
 
-Execute the command below to update the persist tool to the latest compatible version..
+Execute the command below to update the persist tool to the latest compatible version.
 
 ```
 $ bal tool update persist

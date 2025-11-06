@@ -21,7 +21,7 @@ The Ballerina OpenAPI tool support provides the following capabilities.
 
 ### Update the tool
 
-Execute the command below to update the openapi tool to the latest compatible version..
+Execute the command below to update the openapi tool to the latest compatible version.
 
 ```
 $ bal tool update openapi

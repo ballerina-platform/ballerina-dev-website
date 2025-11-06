@@ -14,7 +14,7 @@ The Ballerina AsyncAPI tool makes it easy for you to start the development of an
 
 ### Update the tool
 
-Execute the command below to update the asynapi tool to the latest compatible version..
+Execute the command below to update the asyncapi tool to the latest compatible version.
 
 ```
 $ bal tool update asyncapi

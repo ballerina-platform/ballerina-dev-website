@@ -302,7 +302,19 @@ To create a new workspace, use `bal new --workspace <workspace-name>`, which cre
 
 #### Improved the compilation time of consecutive builds
 
-Previously, every invocation of `bal build` followed by `bal run` would recompile the entire project from scratch, even when no changes were made to the source files since the last build. With Update 13, the compilation time has been significantly improved by introducing a mechanism to detect unchanged projects and skip redundant compilation steps after the first build. 
+Previously, every invocation of `bal build` followed by `bal run` would recompile the entire project from scratch, even when no changes were made to the source files since the last build. With this update, the build system now detects unchanged projects and skips redundant compilation steps after the first build run within the next 24 hours.
+
+The example below shows the output when sources are up to date:
+
+```
+Compiling source (UP-TO-DATE)
+	myorg/hello_app:0.1.0
+
+Generating executable (UP-TO-DATE)
+	myorg/target/bin/hello_app.jar
+```
+
+Run `bal clean` to delete the caches and force a full recompilation on the next build.
 
 ### Bug fixes
 

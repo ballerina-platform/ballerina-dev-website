@@ -185,15 +185,15 @@ Compile-time code generation is of two variants.
 
 #### Improved XML parsing to support XML declarations
 
-Previously, the `xml:fromString()` function did not capture XML declaration(`<?xml version="1.1" encoding="UTF8"?>`) when converting a string into a xml value. With this update, the XML declaration is now correctly recognized and preserved during parsing.
+Previously, the `xml:fromString()` function did not capture XML declaration(`<?xml version="1.1" encoding="UTF-8"?>`) when converting a string into a xml value. With this update, the XML declaration is now correctly recognized and preserved during parsing.
 
 ```ballerina
 import ballerina/io;
 
 public function main() returns error? {
-    string str = string `<?xml version="1.1" encoding="UTF8"?><A><B>123</B></A>`;
+    string str = string `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>`;
     xml xmlVal = check xml:fromString(str);
-    io:println(xmlVal); // prints `<?xml version="1.1" encoding="UTF8"?><A><B>123</B></A>` 
+    io:println(xmlVal); // prints `<?xml version="1.1" encoding="UTF-8"?><A><B>123</B></A>` 
 } 
 ```
 

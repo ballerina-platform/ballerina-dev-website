@@ -42,7 +42,7 @@ Use the `bal new` command with the `--workspace` flag to create a new workspace:
 $ bal new --workspace my-workspace
 ```
 
-This creates a new workspace directory with the following structure:
+This creates a new workspace directory with a sample package as shown below:
 
 ```
 my-workspace/
@@ -95,7 +95,6 @@ You can import and use modules from other packages in the workspace using standa
 **Example:**
 
 ```ballerina
-
 import myorg/utils;        // Import the utils package in workspace
 
 public function main() {

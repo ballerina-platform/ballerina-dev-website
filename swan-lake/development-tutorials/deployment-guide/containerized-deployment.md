@@ -520,7 +520,7 @@ Follow the steps below to execute the Kubernetes service.
 ## OpenShift deployment
 
 ### Create the Ballerina package
-The sample below describes a Ballerina application that reads a greeting string from a ConfigMap and greets the user upon an HTTP request. By following the steps below, you can make a OpenShift deployment that has container resource limits, horizontal pod autoscaling, ConfigMaps, and liveness and readiness probes with the help of Code to Cloud.
+The sample below describes a Ballerina application that reads a greeting string from a ConfigMap and greets the user upon an HTTP request. By following the steps below, you can make an OpenShift deployment that has container resource limits, horizontal pod autoscaling, ConfigMaps, and liveness and readiness probes with the help of Code to Cloud.
 
 1. Execute the `bal new hello_openshift` command to create a new package named `hello_openshift` and go inside that directory.
 
@@ -575,7 +575,7 @@ The sample below describes a Ballerina application that reads a greeting string 
     cloud = "openshift"
     ```
 
-5. Create a file named `Cloud.toml` in the package directory and add the content below. You can use some properties from the docker sample here since the `cloud="k8s"` option builds both a Docker image and Kubernetes. You can see a brief description of the properties in the comments.
+5. Create a file named `Cloud.toml` in the package directory and add the content below. You can use some properties from the Docker sample here since the `cloud="k8s"` option builds both a Docker image and Kubernetes. You can see a brief description of the properties in the comments.
 
    ***Cloud.toml***
 
@@ -636,7 +636,7 @@ Generating artifacts...
         target/bin/hello_openshift.jar
 ```
 
->**Note:** Before invoking the Kubernetes service, observe the Openshift yaml that have been generated. You should be able to find services for ports that have been exposed, `HorizontalPodAutoscaler` for scaling and Deployment, and ConfigMaps.
+>**Note:** Before invoking the Kubernetes service, observe the OpenShift YAML that has been generated. You should be able to find services for ports that have been exposed, `HorizontalPodAutoscaler` for scaling and Deployment, and ConfigMaps.
 
 ***target/openshift/hello_openshift.yaml***
 
@@ -751,7 +751,7 @@ spec:
 ### Execute the OpenShift service
 
 Follow the steps below to execute the Kubernetes service.
-1. Execute `docker push <repository>/<name>:<tag>` to push the container to docker hub. 
+1. Execute `docker push <repository>/<name>:<tag>` to push the container to Docker Hub. 
     ```
     $ docker push wso2inc/hello-openshift:v0.1.0
     ```

@@ -387,6 +387,14 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/workspaces`} className={styles.titleLink}>
+                            Workspaces
+                          </a>
+                        </p>
+                        <p className={styles.description}>Manage and organize Ballerina packages in a workspace.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/style-guide/coding-conventions`} className={styles.titleLink}>
                             Style guide
                           </a>

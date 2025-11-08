@@ -15,6 +15,24 @@
             "id": "swan-lake-release-notes",
             "subDirectories": [
                 {
+                    "dirName": "Swan Lake Update 13",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.13",
+                    "id": "swan-lake-2201.13",
+                    "subDirectories": [
+                        {
+                            "dirName": "2201.13.0 (Swan Lake Update 13)",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/downloads/swan-lake-release-notes/swan-lake-2201.13.0",
+                            "id": "swan-lake-2201.13.0"
+                        }
+                    ]
+                },
+                {
                     "dirName": "Swan Lake Update 12",
                     "level": 2,
                     "position": 1,

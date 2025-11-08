@@ -313,9 +313,17 @@
                             "id": "manage-dependencies"
                         },
                         {
-                            "dirName": "Style guide",
+                            "dirName": "Workspaces",
                             "level": 3,
                             "position": 4,
+                            "isDir": false,
+                            "url": "/learn/workspaces",
+                            "id": "workspaces"
+                        },
+                        {
+                            "dirName": "Style guide",
+                            "level": 3,
+                            "position": 5,
                             "isDir": true,
                             "url": "/learn/style-guide",
                             "id": "style-guide",
@@ -373,7 +381,7 @@
                         {
                             "dirName": "Customize formatting",
                             "level": 3,
-                            "position": 5,
+                            "position": 6,
                             "isDir": false,
                             "url": "/learn/customize-formatting",
                             "id": "customize-formatting"

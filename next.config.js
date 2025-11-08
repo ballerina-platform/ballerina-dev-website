@@ -221,6 +221,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/manage-dependencies`,
       },
       {
+        source: `/${redirectBase}learn/workspaces`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/workspaces`,
+      },
+      {
         source: `/${redirectBase}learn/configure-a-sample-ballerina-service`,
         destination: `/${redirectBase}learn/development-tutorials/configurability/configure-a-sample-ballerina-service`,
       },

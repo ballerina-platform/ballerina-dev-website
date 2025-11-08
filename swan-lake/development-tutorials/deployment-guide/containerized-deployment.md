@@ -13,6 +13,7 @@ As of now, Ballerina Code to Cloud supports generating the deployment artifacts 
 
 1. Docker
 2. Kubernetes
+3. OpenShift
 
 ## Set up the prerequisites
 
@@ -46,7 +47,9 @@ Ballerina encourages having one microservice per package. To adhere to that rule
     ├── bin
     │   └── <module>.jar
     ├── docker
-    │       └── Dockerfile                        
+    │       └── Dockerfile        
+    ├── openshift
+    │       └── <module>-0.0.1.yaml                     
     └── kubernetes
             └── <module>-0.0.1.yaml 
 ```
@@ -220,7 +223,7 @@ Follow the steps below to execute the Docker image separately.
 ## Kubernetes deployment
 
 ### Create the Ballerina package
-Below sample describes a Ballerina application that reads a greeting string from a config map and greets the user upon HTTP request. By following the steps below, you can make a Kubernetes deployment that has container resource limits, horizontal pod autoscaling, config maps and liveness, readiness probes with the help of Code to Cloud.
+Below sample describes a Ballerina application that reads a greeting string from a ConfigMap and greets the user upon HTTP request. By following the steps below, you can make a Kubernetes deployment that has container resource limits, horizontal pod autoscaling, ConfigMaps and liveness, readiness probes with the help of Code to Cloud.
 
 1. Execute the `bal new hello_k8s` command to create a new package named `hello_k8s` and go inside that directory.
 
@@ -275,7 +278,7 @@ Below sample describes a Ballerina application that reads a greeting string from
     cloud = "k8s"
     ```
 
-5. Create a file named `Cloud.toml` in the package directory and add the content below. You can use some properties from the docker sample here since `cloud="k8s"` option builds both Docker image and Kubernetes. You can see a brief description of the properties in the comments.
+5. Create a file named `Cloud.toml` in the package directory and add the content below. You can use some properties from the Docker sample here since the`cloud="k8s"` option builds both a Docker image and Kubernetes. You can see a brief description of the properties in the comments.
 
    ***Cloud.toml***
 
@@ -296,7 +299,7 @@ Below sample describes a Ballerina application that reads a greeting string from
     max_replicas=5 # Maximum number of replicas of the container can scale up to
     cpu=60 # Average CPU utilization of pods
 
-    [[cloud.config.files]] # Mounts the `Config.toml` file as a config map in Kubernetes.
+    [[cloud.config.files]] # Mounts the `Config.toml` file as a ConfigMap in Kubernetes.
     file="./Config.toml"
 
     [cloud.deployment.probes.liveness]
@@ -341,7 +344,7 @@ Generating artifacts...
         target/bin/hello_k8s.jar
 ```
 
->**Note:** Before invoking the Kubernetes service, observe the Kubernetes yamls that have been generated. You should be able to find services for ports that have been exposed, `HorizontalPodAutoscaler` for scaling and Deployment, and Config maps.
+>**Note:** Before invoking the Kubernetes service, observe the Kubernetes yamls that have been generated. You should be able to find services for ports that have been exposed, `HorizontalPodAutoscaler` for scaling and Deployment, and ConfigMaps.
 
 ***target/kubernetes/hello_k8s***
 
@@ -514,7 +517,291 @@ Follow the steps below to execute the Kubernetes service.
 >**Note:** You can visit the <a href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md" target="_blank">Code to Cloud specification</a> for detailed information about all the supported features. As mentioned in the beginning, Code to Cloud is a tool created to make the development process easier. It does not cover the operational properties in Kubernetes. If you want to have these additional features in your deployment, or you need to change the generated Kubernetes artifacts, you can use <a href="https://kustomize.io" target="_blank">Kustomize</a> for modifying the generated YAML.
 
 
-## Kubernetes deployment with Kustomize
+## OpenShift deployment
+
+### Create the Ballerina package
+The sample below describes a Ballerina application that reads a greeting string from a ConfigMap and greets the user upon an HTTP request. By following the steps below, you can make an OpenShift deployment that has container resource limits, horizontal pod autoscaling, ConfigMaps, and liveness and readiness probes with the help of Code to Cloud.
+
+1. Execute the `bal new hello_openshift` command to create a new package named `hello_openshift` and go inside that directory.
+
+2. Replace the content of the `main.bal` file with the content below.
+
+   ***main.bal***
+
+    ```ballerina
+    import ballerina/http;
+
+    listener http:Listener helloEP = new (9090);
+
+    configurable string greeting = ?;
+
+    service /helloWorld on helloEP {
+        resource function get sayHello() returns string|error? {
+            return greeting + ", Openshift!";
+        }
+    }
+    ```
+2. Create `probes.bal` with the following contents.
+
+   ***probes.bal***
+
+    ```ballerina
+    import ballerina/http;
+
+    listener http:Listener probeEP = new (9091);
+    
+    service /probes on probeEP {
+        resource function get healthz() returns boolean {
+            return true;
+        }
+        resource function get readyz() returns boolean {
+            return true;
+        }
+    }
+    ```
+3. Create the `Config.toml` file in the package directory and paste the following content into it.
+
+   ***Config.toml***
+    ```toml
+    greeting = "Hello"
+    ```
+
+4. Add `cloud = "openshift"` under the `[build-options]` table into the `Ballerina.toml` file in the package.
+
+   ***Ballerina.toml***
+
+    ```toml
+    [build-options]
+    cloud = "openshift"
+    ```
+
+5. Create a file named `Cloud.toml` in the package directory and add the content below. You can use some properties from the Docker sample here since the `cloud="k8s"` option builds both a Docker image and Kubernetes. You can see a brief description of the properties in the comments.
+
+   ***Cloud.toml***
+
+    ```toml
+    [container.image]
+    repository="wso2inc" # Ex - Docker hub repository name.
+    name="hello-k8s" # Container name
+    tag="v0.1.0"
+
+    [cloud.deployment]
+    min_memory="100Mi" # Minimum memory required for the container.
+    max_memory="256Mi" # Maximum memory a single container can take.
+    min_cpu="500m"  # Minimum CPU required for the container.
+    max_cpu="500m" # Maximum CPU a single container can take.
+
+    [cloud.deployment.autoscaling]
+    min_replicas=2 # Minimum number of container instances ran at a given time
+    max_replicas=5 # Maximum number of replicas of the container can scale up to
+    cpu=60 # Average CPU utilization of pods
+
+    [[cloud.config.files]] # Mounts the `Config.toml` file as a ConfigMap in Kubernetes.
+    file="./Config.toml"
+
+    [cloud.deployment.probes.liveness]
+    port=9091
+    path="/probes/healthz"
+
+    [cloud.deployment.probes.readiness]
+    port=9091
+    path="/probes/readyz"
+    ```
+
+### Generate the artifacts
+
+Once you build the Ballerina package, the compiler extension will generate the artifacts required for the OpenShift deployment.
+
+>**Tip:** If you don't have the `cloud="openshift"` entry on the `Ballerina.toml`, you can execute the `bal build --cloud=openshift` command to provide the build option inline.
+
+```
+$ bal build
+Compiling source
+        wso2/hello_openshift:0.1.0
+
+Generating executable
+
+Generating artifacts...
+
+        @kubernetes:Service                      - complete 1/2
+        @kubernetes:Service                      - complete 2/2
+        @kubernetes:ConfigMap                    - complete 1/1
+        @kubernetes:Deployment                   - complete 1/1
+        @kubernetes:HPA                          - complete 1/1
+        @kubernetes:Docker                       - complete 2/2 
+
+        Execute the below command to deploy the Kubernetes artifacts: 
+        oc apply -f /home/wso2/c2c-guide/hello_openshift/target/openshift/hello_openshift
+
+        target/bin/hello_openshift.jar
+```
+
+>**Note:** Before invoking the Kubernetes service, observe the OpenShift YAML that has been generated. You should be able to find services for ports that have been exposed, `HorizontalPodAutoscaler` for scaling and Deployment, and ConfigMaps.
+
+***target/openshift/hello_openshift.yaml***
+
+```yaml
+---
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  labels:
+    app: "hello_openshift"
+  name: "hello-openshift-svc"
+spec:
+  ports:
+  - name: "port-1-hello-openshift"
+    port: 9090
+    protocol: "TCP"
+    targetPort: 9090
+  - name: "port-2-hello-openshift"
+    port: 9091
+    protocol: "TCP"
+    targetPort: 9091
+  selector:
+    app: "hello_openshift"
+  type: "ClusterIP"
+---
+apiVersion: "v1"
+kind: "ConfigMap"
+metadata:
+  name: "config-config-map"
+data:
+  Config.toml: "greeting = \"Hello\"\n"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  labels:
+    app: "hello_openshift"
+  name: "hello-openshift-deployment"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "hello_openshift"
+  template:
+    metadata:
+      labels:
+        app: "hello_openshift"
+    spec:
+      containers:
+      - env:
+        - name: "BAL_CONFIG_FILES"
+          value: "/home/ballerina/conf/Config.toml:"
+        image: "wso2inc/hello-openshift:v0.1.0"
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - "sleep"
+              - "15"
+        livenessProbe:
+          httpGet:
+            path: "/probes/healthz"
+            port: 9091
+          initialDelaySeconds: 30
+        name: "hello-openshift-deployment"
+        ports:
+        - containerPort: 9090
+          name: "port-1-hello-openshift"
+          protocol: "TCP"
+        - containerPort: 9091
+          name: "port-2-hello-openshift"
+          protocol: "TCP"
+        readinessProbe:
+          httpGet:
+            path: "/probes/readyz"
+            port: 9091
+          initialDelaySeconds: 30
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "100Mi"
+            cpu: "500m"
+        volumeMounts:
+        - mountPath: "/home/ballerina/conf/"
+          name: "config-config-map-volume"
+          readOnly: false
+      nodeSelector: {}
+      volumes:
+      - configMap:
+          name: "config-config-map"
+        name: "config-config-map-volume"
+---
+apiVersion: "autoscaling/v1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  labels:
+    app: "hello_openshift"
+  name: "hello-openshift-hpa"
+spec:
+  maxReplicas: 5
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: "apps/v1"
+    kind: "Deployment"
+    name: "hello-openshift-deployment"
+  targetCPUUtilizationPercentage: 60
+```
+
+### Execute the OpenShift service
+
+Follow the steps below to execute the Kubernetes service.
+1. Execute `docker push <repository>/<name>:<tag>` to push the container to Docker Hub. 
+    ```
+    $ docker push wso2inc/hello-openshift:v0.1.0
+    ```
+
+2. Execute the `oc apply -f target/openshift/hello_openshift` command to execute the service.
+
+    ```
+    $ oc apply -f target/openshift/hello_openshift
+    service/hello-openshift-svc created
+    configmap/hello-openshift-config-json created
+    deployment.apps/hello-openshift-deployment created
+    horizontalpodautoscaler.autoscaling/hello-openshift-hpa created
+    ```
+
+3. Execute the `oc get pods` command to verify the Kubernetes pods.
+
+    ```
+    $ oc get pods
+    NAME                                        READY   STATUS    RESTARTS   AGE
+    hello-openshift-deployment-577d8dbf8-p8zg5   1/1     Running   0          37s
+    hello-openshift-deployment-577d8dbf8-p8zg5   1/1     Running   0          57s
+    ```
+
+4. Execute the `oc expose deployment hello-openshift-deployment --type=NodePort --name=hello-openshift-svc-local` command to expose the service via NodePort to test in the development environment.
+
+    ```
+    $ oc expose deployment hello-openshift-deployment --type=NodePort --name=hello-openshift-svc-local
+    service/hello-openshift-svc-local exposed
+    ```
+
+5. Execute the `oc get svc` command to get the EXTERNAL-IP and port of the Kubernetes service.
+
+    ```
+    $ oc get svc
+    NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                        AGE
+    hello-openshift-svc         ClusterIP   10.96.173.207   <none>        9090/TCP,9091/TCP               5m11s
+    hello-openshift-svc-local   NodePort    10.99.245.41    <none>        9090:30342/TCP,9091:30515/TCP   66s
+    ```
+
+6. Execute the `curl http://192.168.49.2:30342/helloWorld/sayHello` command to access the deployed service via cURL.
+
+    ```
+    $ curl http://192.168.49.2:30342/helloWorld/sayHello
+    Hello, Openshift!
+    ```
+
+>**Note:** You can visit the <a href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md" target="_blank">Code to Cloud specification</a> for detailed information about all the supported features. As mentioned in the beginning, Code to Cloud is a tool created to make the development process easier. It does not cover the operational properties in Kubernetes. If you want to have these additional features in your deployment, or you need to change the generated Kubernetes artifacts, you can use <a href="https://kustomize.io" target="_blank">Kustomize</a> for modifying the generated YAML.
+
+
+## Kubernetes/Openshift deployment with Kustomize
 
 [Kustomize](https://kustomize.io/) is a tool that allows you to modify Kubernetes YAML files without altering the original files. It can enhance the generated YAML from code-to-cloud deployments by applying additional customizations. The `kustomization.yaml` file in the root directory demonstrates how to combine and manage the generated YAML files from multiple projects. Using Kustomize patches, you can add environment variables, such as specifying the location of the `Config.toml` file for a service, to enable additional configuration.
 
@@ -530,13 +817,13 @@ patchesStrategicMerge:
 
 ```
 
-## CI/CD with Kubernetes
+## CI/CD with Kubernetes/Openshift
 
 This [Ballerina GitHub](https://github.com/ballerina-platform/ballerina-action) action workflow automates the continuous integration and continuous deployment (CI/CD) process for a Ballerina project. It is triggered by every push to the repository and automatically builds the project.
 
 ```yaml
 
-name: Ballerina CI/CD with Kubernetes and Ballerina Central Push
+name: Ballerina CI/CD
 on: [push]
 
 jobs:

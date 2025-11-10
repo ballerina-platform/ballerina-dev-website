@@ -118,4 +118,4 @@ We reserve the right to amend this privacy policy at any time. We will not send 
 
 By using the Sites, you consent to our privacy policy and any revisions thereto. If you do not agree with our privacy policy or any changes we make to it, you may delete your profile.
 
-**Effective November 06, 2025**
+**Effective August 11, 2023**

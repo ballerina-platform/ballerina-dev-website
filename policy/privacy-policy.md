@@ -74,7 +74,7 @@ We may also release your information when we believe release is necessary to com
 
 ### Dispute resolution
 
-We commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints should first reach out to us using the information in the Information about data controllers, processors, and how to contact us section below.
+We commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints should first reach out to us using the information in the [Information about data controllers, processors, and how to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
 
 Within the USA, we are also subject to the investigatory and enforcement powers of the Federal Trade Commission (FTC).
 

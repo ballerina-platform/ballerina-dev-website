@@ -92,7 +92,7 @@ public function main() returns error? {
         Describe this image.
         ${image}
         
-        If it is not possible to describe the image, respond with null
+        If it is not possible to describe the image, respond with null.
     };
 
     io:println(description);

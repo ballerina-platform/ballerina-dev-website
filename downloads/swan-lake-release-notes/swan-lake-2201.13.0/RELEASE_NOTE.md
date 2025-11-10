@@ -85,14 +85,15 @@ public function main() returns error? {
         content: "https://ballerina.io/img/branding/ballerina_logo_dgrey_png.png"
     };
 
-    // Use the `generate` method with an image document as an insertion (`${...}`).
+    // Include the image document as an insertion (`${...}`) in the natural expression.
     // The model provider will detect the multimodal input and handle
     // constructing the request appropriately.
-    string? description = check model->generate(`
+    string? description = check natural (model) {
         Describe this image.
         ${image}
         
-        If it is not possible to describe the image, respond with null.`);
+        If it is not possible to describe the image, respond with null
+    };
 
     io:println(description);
 }

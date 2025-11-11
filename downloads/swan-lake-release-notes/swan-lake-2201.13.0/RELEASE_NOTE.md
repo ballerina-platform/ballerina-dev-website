@@ -107,7 +107,7 @@ For more information, see [Natural Language is Code: A hybrid approach with Natu
 
 #### Compile-time code generation
 
-Experimental support for compile-time code generation has also been introduced as a part of [Natural Programming](https://blog.ballerina.io/posts/2025-04-26-introducing-natural-programming/). This allows users to describe what data (e.g., test data) should look like or what the implementation of a function should be in natural language in the source code, and have the data or implementation be generated at compile time with the help of a generative AI model. Inspired by literate programming, this allows for more expressive source code.
+Initial experimental support for compile-time code generation has also been introduced as a part of [Natural Programming](https://blog.ballerina.io/posts/2025-04-26-introducing-natural-programming/). This allows users to describe what data (e.g., test data) should look like or what the implementation of a function should be in natural language in the source code, and have the data or implementation be generated at compile time with the help of a generative AI model. Inspired by literate programming, this allows for more expressive source code.
 
 Compile-time code generation is of two variants.
 
@@ -134,7 +134,7 @@ Compile-time code generation is of two variants.
     function testFilterEmployees() {
         // Use a const natural expression to generate a dataset of employees.
         Employee[] employees = const natural {
-            Generate data sets of employees with varying departments and salaries to test a 
+            Generate employee data with varying departments and salaries to test a 
             function that filters employees belonging to a specific department and earning 
             above a certain salary threshold.
             
@@ -181,6 +181,8 @@ Compile-time code generation is of two variants.
     ```
 
     Note that this currently works with the Ballerina Copilot configuration. To generate the configuration, open up the VS Code command palette (`Ctrl` + `Shift` + `P` or `command` + `shift` + `P`), and run the `Configure default WSO2 Model Provider` command to add your configuration to the `Config.toml` file. If not already logged in, log in to the Ballerina Copilot when prompted. Use these values as the `BAL_CODEGEN_URL` and `BAL_CODEGEN_TOKEN` environment variables for compile-time code generation.
+
+    Note that since the code generation happens at compile-time, compilation could take longer than usual.
 
 #### OpenShift support
 Ballerina code to cloud plugin now supports generation of OpenShift artifacts.

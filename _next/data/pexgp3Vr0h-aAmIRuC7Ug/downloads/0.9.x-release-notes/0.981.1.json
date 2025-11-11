@@ -1,0 +1,1 @@
+{"pageProps":{"frontmatter":{},"content":"<div class=\"release_notes\">\n<h1>Overview to Ballerina 0.981.1</h1>\n<p>Memory management of http passthrough service has been improved. This will avoid out of memory issues which can be caused with high number connections.</p>\n</div>","id":"0.981.1"},"__N_SSG":true}

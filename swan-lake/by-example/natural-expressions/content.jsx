@@ -104,8 +104,7 @@ export function NaturalExpressions({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Note: This feature is supported on Swan Lake Update 13 - Milestone 3
-          (2201.13.0-m3) or newer versions. This is currently an experimental
+          Note: This feature is supported on Swan Lake Update 13 or newer versions. This is currently an experimental
           feature and requires the <code>--experimental</code> flag to be used
           with <code>bal</code> commands.
         </p>

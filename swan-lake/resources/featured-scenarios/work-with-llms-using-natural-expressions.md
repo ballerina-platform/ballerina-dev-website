@@ -12,10 +12,10 @@ intro: This guide helps you understand the basics of using natural expressions i
 
 To complete this tutorial, you need:
 
-1. Ballerina 2201.13.0-m3 (Swan Lake) or greater. Install [Ballerina](/downloads/) and use the `bal dist pull` command to pull the milestone version.
+1. Ballerina 2201.13.0 (Swan Lake) or greater. Install [Ballerina](/downloads/) and use the `bal dist pull` command to pull the milestone version.
 
     ```
-    $ bal dist pull 2201.13.0-m3
+    $ bal dist pull 2201.13.0
     ```
 
 2. A text editor

@@ -8,7 +8,7 @@ active: workspaces
 intro: The sections below explain how to organize multiple Ballerina packages within a single workspace.
 ---
 
-## Workspace Structure
+## Workspace structure
 
 A workspace is a collection of related Ballerina packages that can be organized and managed together in a single directory structure. This feature enables you to develop interdependent packages in a monorepo-style structure, where packages can depend on each other without needing to publish to a repository during development. Workspaces allow packages to reference each other directly, build and test all related packages together, and keep related packages organized in a single project structure.
 

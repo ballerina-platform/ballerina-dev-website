@@ -59,4 +59,4 @@ jobs:
           VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
           export PATH=$PATH:/home/runner/work/ballerina-dev-website/ballerina-dev-website/ballerina-$VERSION/bin
           python3 components/home-page/bal-action/generate-bal-script.py $sample_name
-          bal build $bal_file_name --experimental
+          bal build --experimental $bal_file_name

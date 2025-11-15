@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: Swan Lake Update `13` (2201.13.1)
+title: Swan Lake Update 13 (2201.13.1)
 permalink: /downloads/swan-lake-release-notes/2201.13.1/
 active: 2201.13.1
 ---

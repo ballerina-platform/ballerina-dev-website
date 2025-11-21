@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @dilanSachi @Bhashinee    
 _Reviewers_: @shafreenAnfar @Bhashinee  
 _Created_: 2020/10/28   
-_Updated_: 2025/08/13  
+_Updated_: 2025/11/20  
 _Edition_: Swan Lake    
 
 ## Introduction
@@ -16,28 +16,32 @@ If you have any feedback or suggestions about the library, start a discussion vi
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
 ## Contents
-1. [Overview](#1-overview)
-2. [Configurations](#2-configurations)
-    *  2.1. [Security Configurations](#21-security-configurations)
-    *  2.2. [FileInfo](#22-fileinfo)
-3. [Client](#3-client)
-    *  3.1. [Configurations](#31-configurations)
-    *  3.2. [Initialization](#32-initialization)
-        *    3.2.1. [Insecure Client](#321-insecure-client)
-        *    3.2.2. [Secure Client](#322-secure-client)
-    *  3.3. [Functions](#33-functions)
-4. [Listener](#4-listener)
-    *  4.1. [Configurations](#41-configurations)
-    *  4.2. [Initialization](#42-initialization)
-        *  4.2.1. [Insecure Listener](#421-insecure-listener)
-        *  4.2.2. [Secure Listener](#422-secure-listener)
-    *   4.3. [Usage](#43-usage)
-5. [Caller](#5-caller)
-    *  5.1. [Initialization](#51-initialization)
-    *  5.2. [Functions](#52-functions)
-6. [Samples](#6-samples)
-    *  6.1. [Sending Files](#61-sending-files)
-    *  6.2. [Listening to File Changes](#62-listening-to-file-changes)
+- [Specification: Ballerina FTP Library](#specification-ballerina-ftp-library)
+  - [Introduction](#introduction)
+  - [Contents](#contents)
+  - [1. Overview](#1-overview)
+  - [2. Configurations](#2-configurations)
+    - [2.1. Security Configurations](#21-security-configurations)
+    - [2.2. FileInfo](#22-fileinfo)
+  - [3. Client](#3-client)
+    - [3.1. Configurations](#31-configurations)
+    - [3.2. Initialization](#32-initialization)
+      - [3.2.1. Insecure Client](#321-insecure-client)
+      - [3.2.2. Secure Client](#322-secure-client)
+    - [3.3. Functions](#33-functions)
+  - [4. Listener](#4-listener)
+    - [4.1. Configurations](#41-configurations)
+    - [4.2. Initialization](#42-initialization)
+      - [4.2.1. Insecure Listener](#421-insecure-listener)
+      - [4.2.2. Secure Listener](#422-secure-listener)
+      - [4.3. Usage](#43-usage)
+      - [4.3.1. Format-Specific Listener Callbacks](#431-format-specific-listener-callbacks)
+  - [5. Caller](#5-caller)
+    - [5.1. Initialization](#51-initialization)
+    - [5.2. Functions](#52-functions)
+  - [6. Samples](#6-samples)
+    - [6.1. Sending Files](#61-sending-files)
+    - [6.2. Listening to file changes](#62-listening-to-file-changes)
 
 ## 1. Overview
 FTP is a file transfer protocol. It’s a basic way of using the Internet to share files.
@@ -68,7 +72,7 @@ public type Credentials record {|
     # Username of the user
     string username;
     # Password of the user
-    string password;
+    string password?;
 |};
 ```
 * AuthConfiguration record represents the configurations needed for facilitating secure communication with a remote FTP server.
@@ -78,7 +82,22 @@ public type AuthConfiguration record {|
     Credentials credentials?;
     # Private key to be used
     PrivateKey privateKey?;
+    # Preferred authentication methods and their order of preference
+    PreferredMethod[] preferredMethods?;
 |};
+```
+* PreferredMethod enum specifies the supported authentication methods.
+```ballerina
+public enum PreferredMethod {
+    # Security key file authentication
+    PUBLICKEY,
+    # Username and password authentication
+    PASSWORD,
+    # Interactive authentication (question and answer)
+    KEYBOARD_INTERACTIVE,
+    # Enterprise authentication system
+    GSSAPI_WITH_MIC
+}
 ```
 ### 2.2. FileInfo
 * `FileInfo` record contains the metadata of the files.
@@ -129,9 +148,7 @@ public type FileInfo record {|
 |};
 ```
 ## 3. Client
-The `ftp:Client` connects to FTP server and performs various operations on the files. Currently, it supports the
-generic FTP operations; `get`, `delete`, `put`, `append`, `mkdir`, `rmdir`, `isDirectory`, `rename`, `size`, and
-`list`.
+The `ftp:Client` connects to FTP server and performs various operations on the files. It supports reading files in multiple formats (bytes, text, JSON, XML, CSV) with streaming support for large files, writing files in multiple formats, and file management operations including create, delete, rename, move, copy, and list.
 ### 3.1. Configurations
 * When initializing the `ftp:Client`, `ftp:ClientConfiguration` configuration can be provided.
 ```ballerina
@@ -144,11 +161,13 @@ public type ClientConfiguration record {|
     int port = 21;
     # Authentication options
     AuthConfiguration auth?;
-    # If set to `true`, treats the login home directory as the root (`/`) and 
-    # prevents the underlying VFS from attempting to change to the actual server root. 
-    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command 
+    # If set to `true`, treats the login home directory as the root (`/`) and
+    # prevents the underlying VFS from attempting to change to the actual server root.
+    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command
     # that can fail on servers restricting root access (e.g., chrooted environments).
     boolean userDirIsRoot = false;
+    # If set to `true`, allows missing or null values when reading files in structured formats
+    boolean laxDataBinding = false;
 |};
 ```
 * InputContent record represents the configurations for the input given for `put` and `append` operations.
@@ -166,13 +185,22 @@ public type InputContent record{|
     boolean compressInput = false;
 |};
 ```
-* Following Compression options can be used when adding a file to the FTP server. 
+* Following Compression options can be used when adding a file to the FTP server.
 ```ballerina
 public enum Compression {
     # Zip compression
     ZIP,
     # No compression used
     NONE
+}
+```
+* FileWriteOption enum specifies how a file should be written to the server.
+```ballerina
+public enum FileWriteOption {
+    # Replace the entire file with new content
+    OVERWRITE,
+    # Add new content to the end of the file
+    APPEND
 }
 ```
 ### 3.2. Initialization
@@ -233,6 +261,99 @@ remote isolated function put(string path, stream<byte[] & readonly, io:Error?>|s
 #            the communication with the FTP server
 remote isolated function append(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content) returns Error?;
 ```
+* `putBytes()` can be used to write bytes to a file.
+```ballerina
+# Write bytes to a file.
+# ```ballerina
+# ftp:Error? response = client->putBytes(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Binary data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putBytes(string path, byte[] content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putText()` can be used to write text to a file.
+```ballerina
+# Write text to a file.
+# ```ballerina
+# ftp:Error? response = client->putText(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Text to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putText(string path, string content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putJson()` can be used to write JSON data to a file.
+```ballerina
+# Write JSON data to a file.
+# ```ballerina
+# ftp:Error? response = client->putJson(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - JSON data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putJson(string path, json|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putXml()` can be used to write XML data to a file.
+```ballerina
+# Write XML data to a file.
+# ```ballerina
+# ftp:Error? response = client->putXml(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - XML data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putXml(string path, xml|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putCsv()` can be used to write CSV data to a file.
+```ballerina
+# Write CSV data to a file.
+# ```ballerina
+# ftp:Error? response = client->putCsv(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - CSV data (table or records) to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putCsv(string path, string[][]|record {}[] content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putBytesAsStream()` can be used to write bytes from a stream to a file.
+```ballerina
+# Write bytes from a stream to a file.
+# Useful for processing and uploading large files without loading everything into memory.
+# ```ballerina
+# ftp:Error? response = client->putBytesAsStream(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Stream of byte chunks to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putBytesAsStream(string path, stream<byte[], error?> content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putCsvAsStream()` can be used to write CSV data from a stream to a file.
+```ballerina
+# Write CSV data from a stream to a file.
+# Useful for processing and uploading large CSV files without loading everything into memory.
+# ```ballerina
+# ftp:Error? response = client->putCsvAsStream(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Stream of CSV rows to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putCsvAsStream(string path, stream<string[]|record {}, error?> content, FileWriteOption option = OVERWRITE) returns Error?;
+```
 * To retrieve file content from FTP server, `get()` can be used.
 ```ballerina
 # Retrieves the file content from a remote resource.
@@ -243,6 +364,91 @@ remote isolated function append(string path, stream<byte[] & readonly, io:Error?
 # + path - The resource path
 # + return - A byte stream from which the file can be read or `ftp:Error` in case of errors
 remote isolated function get(string path) returns stream<byte[] & readonly, io:Error?>|Error;
+```
+* `getBytes()` can be used to read file content as bytes.
+```ballerina
+# Read file content as bytes (raw binary data).
+# ```ballerina
+# byte[] content = check client->getBytes(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - File content as bytes, or an error if the operation fails
+remote isolated function getBytes(string path) returns byte[]|Error;
+```
+* `getText()` can be used to read file content as text.
+```ballerina
+# Read file content as text.
+# ```ballerina
+# string content = check client->getText(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - File content as text, or an error if the operation fails
+remote isolated function getText(string path) returns string|Error;
+```
+* `getJson()` can be used to read a file as JSON data.
+```ballerina
+# Read a file as JSON data.
+# ```ballerina
+# json content = check client->getJson(path);
+# ```
+#
+# + path - Location of the file on the server
+# + targetType - What format should the data have? (JSON, structured data, or a custom format)
+# + return - The file content as JSON or an error if the operation fails
+remote isolated function getJson(string path, typedesc<json|record {}> targetType = <>) returns targetType|Error;
+```
+* `getXml()` can be used to read a file as XML data.
+```ballerina
+# Read a file as XML data.
+# ```ballerina
+# xml content = check client->getXml(path);
+# ```
+#
+# + path - Location of the file on the server
+# + targetType - What format should the data have? (XML, structured data, or a custom format)
+# + return - The file content as XML or an error if the operation fails
+remote isolated function getXml(string path, typedesc<xml|record {}> targetType = <>) returns targetType|Error;
+```
+* `getCsv()` can be used to read a CSV file from the server.
+```ballerina
+# Read a CSV (comma-separated) file from the server.
+# The first row of the CSV file should contain column names (headers).
+# ```ballerina
+# string[][] content = check client->getCsv(path);
+# ```
+#
+# + path - Location of the CSV file on the server
+# + targetType - What format should the data have? (Table or structured records)
+# + return - The CSV file content as a table or records, or an error if the operation fails
+remote isolated function getCsv(string path, typedesc<string[][]|record {}[]> targetType = <>) returns targetType|Error;
+```
+* `getBytesAsStream()` can be used to read file content as a stream of byte chunks.
+```ballerina
+# Read file content as a stream of byte chunks.
+# Useful for processing large files without loading the entire file into memory.
+# ```ballerina
+# stream<byte[], error?> response = check client->getBytesAsStream(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - A continuous stream of byte chunks, or an error if the operation fails
+remote isolated function getBytesAsStream(string path) returns stream<byte[], error?>|Error;
+```
+* `getCsvAsStream()` can be used to read a CSV file as a continuous stream of rows.
+```ballerina
+# Read a CSV file as a continuous stream of rows.
+# Useful for processing very large files one row at a time.
+# The first row of the CSV file should contain column names (headers).
+# ```ballerina
+# stream<string[], error?> response = check client->getCsvAsStream(path);
+# ```
+#
+# + path - Location of the CSV file on the server
+# + targetType - What format should each row have? (Row values or structured record)
+# + return - A stream of rows from the CSV file, or an error if the operation fails
+remote isolated function getCsvAsStream(string path, typedesc<string[]|record {}> targetType = <>) returns stream<targetType, error?>|Error;
 ```
 * `mkdir()` can be used to create a new directory in FTP server.
 ```ballerina
@@ -292,6 +498,41 @@ remote isolated function delete(string path) returns Error?;
 # + return - `()` or else an `ftp:Error` if failed to establish
 #            the communication with the FTP server
 remote isolated function rename(string origin, string destination) returns Error?;
+```
+* `move()` can be used to move a file to a different location on the file server.
+```ballerina
+# Move a file to a different location on the file server.
+# ```ballerina
+# ftp:Error? response = client->move(sourcePath, destinationPath);
+# ```
+#
+# + sourcePath - The current file location
+# + destinationPath - The new file location
+# + return - An error if the operation fails
+remote isolated function move(string sourcePath, string destinationPath) returns Error?;
+```
+* `copy()` can be used to copy a file to a different location on the file server.
+```ballerina
+# Copy a file to a different location on the file server.
+# ```ballerina
+# ftp:Error? response = client->copy(sourcePath, destinationPath);
+# ```
+#
+# + sourcePath - The file to copy
+# + destinationPath - Where to create the copy
+# + return - An error if the operation fails
+remote isolated function copy(string sourcePath, string destinationPath) returns Error?;
+```
+* `exists()` can be used to check if a file or folder exists on the file server.
+```ballerina
+# Check if a file or folder exists on the file server.
+# ```ballerina
+# boolean|ftp:Error response = client->exists(path);
+# ```
+#
+# + path - File or folder location to check
+# + return - True if it exists, false if it doesn't, or an error if the check fails
+remote isolated function exists(string path) returns boolean|Error;
 ```
 * `size()` function can be used to get the size of a file.
 ```ballerina
@@ -351,11 +592,13 @@ public type ListenerConfiguration record {|
     string fileNamePattern?;
     # Periodic time interval to check new update
     decimal pollingInterval = 60;
-    # If set to `true`, treats the login home directory as the root (`/`) and 
-    # prevents the underlying VFS from attempting to change to the actual server root. 
-    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command 
+    # If set to `true`, treats the login home directory as the root (`/`) and
+    # prevents the underlying VFS from attempting to change to the actual server root.
+    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command
     # that can fail on servers restricting root access (e.g., chrooted environments).
     boolean userDirIsRoot = false;
+    # If set to `true`, allows missing or null values when reading files in structured formats
+    boolean laxDataBinding = false;
 |};
 ```
 * `WatchEvent` record represents the latest status change of the server from the last status change.
@@ -420,6 +663,102 @@ ftp:Service ftpListener = service object {
 ```
 The remote method `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
 having both `ftp:WatchEvent` and `ftp:Caller` parameters or having only `ftp:WatchEvent` parameter.
+
+#### 4.3.1. Format-Specific Listener Callbacks
+
+In addition to the generic `onFileChange()` callback, the listener supports specialized format-specific callbacks that automatically parse files into structured data formats. These callbacks simplify handling files of specific types.
+
+**File extension routing:** Files are automatically routed to handlers based on their extensions. `.txt` → `onFileText()`, `.json` → `onFileJson()`, `.xml` → `onFileXml()`, `.csv` → `onFileCsv()`. Other extensions use `onFile()`. Routing can be customized using the `@ftp:FunctionConfig` annotation.
+
+* `onFileJson()` - Triggered when a JSON file (`.json`) is added. Supports two overloads for different content types:
+```ballerina
+# JSON content overload
+remote function onFileJson(json content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process parsed JSON content directly
+    // fileInfo contains metadata about the file
+    // caller allows you to perform FTP operations
+}
+
+# Data-bound record overload
+remote function onFileJson(record {} content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process JSON automatically data-bound to your record type
+}
+```
+
+* `onFileXml()` - Triggered when an XML file (`.xml`) is added. Supports two overloads:
+```ballerina
+# XML content overload
+remote function onFileXml(xml content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process parsed XML content directly
+}
+
+# Data-bound record overload
+remote function onFileXml(record {} content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process XML automatically data-bound to your record type
+}
+```
+
+* `onFileCsv()` - Triggered when a CSV file (`.csv`) is added with RFC4180 defaults. Supports four overloads for different processing modes:
+```ballerina
+# String array overload (in-memory, all rows)
+remote function onFileCsv(string[][] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // content contains all rows as arrays of strings
+    // First row contains column headers
+}
+
+# Record array overload (in-memory, type-safe)
+remote function onFileCsv(record {} [] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // content automatically data-bound to record array
+    // Headers automatically mapped to record fields
+}
+
+# Stream of string arrays (streaming, large files)
+remote function onFileCsv(stream<string[], error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process rows one at a time from stream
+    // Memory-efficient for large files
+}
+
+# Stream of records (streaming, type-safe)
+remote function onFileCsv(stream<record {}, error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process rows as records from stream
+    // Data-bound and memory-efficient
+}
+```
+
+* `onFileText()` - Triggered when a text file (`.txt`) is added:
+```ballerina
+remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process entire file content as UTF-8 text
+}
+```
+
+* `onFile()` - Triggered when any other file type is added (generic binary handling). Supports two overloads:
+```ballerina
+# In-memory byte array overload
+remote function onFile(byte[] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // content contains entire file as bytes
+}
+
+# Streaming overload for large files
+remote function onFile(stream<byte[], error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    // Process file chunks from stream
+    // Memory-efficient for large files
+}
+```
+
+* `onFileDeleted()` - Triggered when files are deleted from the monitored directory:
+```ballerina
+remote function onFileDeleted(string[] deletedFiles, ftp:Caller caller) returns error? {
+    // Handle file deletion
+    // deletedFiles contains array of deleted file paths
+}
+```
+
+**Optional parameters:** The `fileInfo` and `caller` parameters can be omitted if not needed in your implementation.
+
+All format-specific callbacks receive `fileInfo` (metadata about the file) and optionally `caller`
+(to perform additional FTP operations). The data is automatically parsed based on the callback type.
+
 
 The Listener has following functions to manage a service.
 * `attach()` - can be used to bind a service to the `ftp:Listener`.
@@ -534,7 +873,7 @@ remote isolated function put(string path, stream<byte[] & readonly, io:Error?>|s
 ```ballerina
 # Appends the content to an existing file in FTP server.
 # ```ballerina
-# ftp:Error? response = client->caller(path, content);
+# ftp:Error? response = caller->append(path, content);
 # ```
 #
 # + path - The resource path
@@ -542,6 +881,99 @@ remote isolated function put(string path, stream<byte[] & readonly, io:Error?>|s
 # + return - `()` or else an `ftp:Error` if failed to establish
 #            the communication with the FTP server
 remote isolated function append(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content) returns Error?;
+```
+* `putBytes()` can be used to write bytes to a file.
+```ballerina
+# Write bytes to a file.
+# ```ballerina
+# ftp:Error? response = caller->putBytes(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Binary data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putBytes(string path, byte[] content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putText()` can be used to write text to a file.
+```ballerina
+# Write text to a file.
+# ```ballerina
+# ftp:Error? response = caller->putText(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Text to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putText(string path, string content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putJson()` can be used to write JSON data to a file.
+```ballerina
+# Write JSON data to a file.
+# ```ballerina
+# ftp:Error? response = caller->putJson(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - JSON data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putJson(string path, json|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putXml()` can be used to write XML data to a file.
+```ballerina
+# Write XML data to a file.
+# ```ballerina
+# ftp:Error? response = caller->putXml(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - XML data to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putXml(string path, xml|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putCsv()` can be used to write CSV data to a file.
+```ballerina
+# Write CSV data to a file.
+# ```ballerina
+# ftp:Error? response = caller->putCsv(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - CSV data (table or records) to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putCsv(string path, string[][]|record {}[] content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putBytesAsStream()` can be used to write bytes from a stream to a file.
+```ballerina
+# Write bytes from a stream to a file.
+# Useful for processing and uploading large files without loading everything into memory.
+# ```ballerina
+# ftp:Error? response = caller->putBytesAsStream(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Stream of byte chunks to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putBytesAsStream(string path, stream<byte[], error?> content, FileWriteOption option = OVERWRITE) returns Error?;
+```
+* `putCsvAsStream()` can be used to write CSV data from a stream to a file.
+```ballerina
+# Write CSV data from a stream to a file.
+# Useful for processing and uploading large CSV files without loading everything into memory.
+# ```ballerina
+# ftp:Error? response = caller->putCsvAsStream(path, content, option);
+# ```
+#
+# + path - File location on the server
+# + content - Stream of CSV rows to write
+# + option - Replace or add to the file?
+# + return - An error if the operation fails
+remote isolated function putCsvAsStream(string path, stream<string[]|record {}, error?> content, FileWriteOption option = OVERWRITE) returns Error?;
 ```
 * To retrieve file content from FTP server, `get()` can be used.
 ```ballerina
@@ -553,6 +985,91 @@ remote isolated function append(string path, stream<byte[] & readonly, io:Error?
 # + path - The resource path
 # + return - A byte stream from which the file can be read or `ftp:Error` in case of errors
 remote isolated function get(string path) returns stream<byte[] & readonly, io:Error?>|Error;
+```
+* `getBytes()` can be used to read file content as bytes.
+```ballerina
+# Read file content as bytes (raw binary data).
+# ```ballerina
+# byte[] content = check caller->getBytes(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - File content as bytes, or an error if the operation fails
+remote isolated function getBytes(string path) returns byte[]|Error;
+```
+* `getText()` can be used to read file content as text.
+```ballerina
+# Read file content as text.
+# ```ballerina
+# string content = check caller->getText(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - File content as text, or an error if the operation fails
+remote isolated function getText(string path) returns string|Error;
+```
+* `getJson()` can be used to read a file as JSON data.
+```ballerina
+# Read a file as JSON data.
+# ```ballerina
+# json content = check caller->getJson(path);
+# ```
+#
+# + path - Location of the file on the server
+# + targetType - What format should the data have? (JSON, structured data, or a custom format)
+# + return - The file content as JSON or an error if the operation fails
+remote isolated function getJson(string path, typedesc<json|record {}> targetType = <>) returns targetType|Error;
+```
+* `getXml()` can be used to read a file as XML data.
+```ballerina
+# Read a file as XML data.
+# ```ballerina
+# xml content = check caller->getXml(path);
+# ```
+#
+# + path - Location of the file on the server
+# + targetType - What format should the data have? (XML, structured data, or a custom format)
+# + return - The file content as XML or an error if the operation fails
+remote isolated function getXml(string path, typedesc<xml|record {}> targetType = <>) returns targetType|Error;
+```
+* `getCsv()` can be used to read a CSV file from the server.
+```ballerina
+# Read a CSV (comma-separated) file from the server.
+# The first row of the CSV file should contain column names (headers).
+# ```ballerina
+# string[][] content = check caller->getCsv(path);
+# ```
+#
+# + path - Location of the CSV file on the server
+# + targetType - What format should the data have? (Table or structured records)
+# + return - The CSV file content as a table or records, or an error if the operation fails
+remote isolated function getCsv(string path, typedesc<string[][]|record {}[]> targetType = <>) returns targetType|Error;
+```
+* `getBytesAsStream()` can be used to read file content as a stream of byte chunks.
+```ballerina
+# Read file content as a stream of byte chunks.
+# Useful for processing large files without loading the entire file into memory.
+# ```ballerina
+# stream<byte[], error?> response = check caller->getBytesAsStream(path);
+# ```
+#
+# + path - File or folder location on the server
+# + return - A continuous stream of byte chunks, or an error if the operation fails
+remote isolated function getBytesAsStream(string path) returns stream<byte[], error?>|Error;
+```
+* `getCsvAsStream()` can be used to read a CSV file as a continuous stream of rows.
+```ballerina
+# Read a CSV file as a continuous stream of rows.
+# Useful for processing very large files one row at a time.
+# The first row of the CSV file should contain column names (headers).
+# ```ballerina
+# stream<string[], error?> response = check caller->getCsvAsStream(path);
+# ```
+#
+# + path - Location of the CSV file on the server
+# + targetType - What format should each row have? (Row values or structured record)
+# + return - A stream of rows from the CSV file, or an error if the operation fails
+remote isolated function getCsvAsStream(string path, typedesc<string[]|record {}> targetType = <>) returns stream<targetType, error?>|Error;
 ```
 * `mkdir()` can be used to create a new directory in FTP server.
 ```ballerina
@@ -602,6 +1119,41 @@ remote isolated function delete(string path) returns Error?;
 # + return - `()` or else an `ftp:Error` if failed to establish
 #            the communication with the FTP server
 remote isolated function rename(string origin, string destination) returns Error?;
+```
+* `move()` can be used to move a file to a different location on the file server.
+```ballerina
+# Move a file to a different location on the file server.
+# ```ballerina
+# ftp:Error? response = caller->move(sourcePath, destinationPath);
+# ```
+#
+# + sourcePath - The current file location
+# + destinationPath - The new file location
+# + return - An error if the operation fails
+remote isolated function move(string sourcePath, string destinationPath) returns Error?;
+```
+* `copy()` can be used to copy a file to a different location on the file server.
+```ballerina
+# Copy a file to a different location on the file server.
+# ```ballerina
+# ftp:Error? response = caller->copy(sourcePath, destinationPath);
+# ```
+#
+# + sourcePath - The file to copy
+# + destinationPath - Where to create the copy
+# + return - An error if the operation fails
+remote isolated function copy(string sourcePath, string destinationPath) returns Error?;
+```
+* `exists()` can be used to check if a file or folder exists on the file server.
+```ballerina
+# Check if a file or folder exists on the file server.
+# ```ballerina
+# boolean|ftp:Error response = caller->exists(path);
+# ```
+#
+# + path - File or folder location to check
+# + return - True if it exists, false if it doesn't, or an error if the check fails
+remote isolated function exists(string path) returns boolean|Error;
 ```
 * `size()` function can be used to get the size of a file.
 ```ballerina

@@ -3,7 +3,7 @@
 _Authors_: @daneshk @niveathika @ThisaruGuruge \
 _Reviewers_: @daneshk \
 _Created_: 2022/01/13 \
-_Updated_: 2025/09/16 \
+_Updated_: 2025/11/07 \
 _Edition_: Swan Lake
 
 ## Introduction
@@ -322,13 +322,13 @@ operation. This will close the corresponding connection pool if it is not shared
 The `sql:ParameterizedQuery` is used to construct the SQL query to be executed by the client. It is backtick string
 template which allows dynamic values for query parameters.
 
-*Query with constant values*
+**Query with constant values**
 
 ```ballerina
 sql:ParameterizedQuery query = `SELECT * FROM students WHERE id < 10 AND age > 12`;
 ```
 
-*Query with dynamic values*
+**Query with dynamic values**
 
 ```ballerina
 int[] ids = [10, 50];
@@ -394,6 +394,44 @@ List of typed values:
 25. RefValue
 26. StructValue
 27. RowValue
+
+**Query with dynamic identifiers**
+
+In SQL, parameterization safely inserts user-provided values into queries using placeholders that are bound at runtime. Only values can be parameterized, while identifiers such as table names, column names, or file paths cannot.
+
+This restriction is intentional and consistent across all major database APIs, as allowing identifier parameterization could compromise query structure, reduce compatibility, and increase the risk of SQL injection attacks.
+
+The `sql:ParameterizedQuery` follows the same standard. It does not support parameterizing or updating identifiers and allows only safe substitution for query values.
+
+When dynamic identifiers are required, queries can be constructed using string interpolation. This approach enables identifiers to be inserted dynamically at runtime but bypasses the built-in safety guarantees of sql:ParameterizedQuery and should therefore be used with caution.
+
+>**Note**: Dynamic identifiers such as table names or column names should be used with caution. Since this approach bypasses the built-in safety guarantees of sql:ParameterizedQuery, all input values must be sanitized and validated before embedding them into queries. Use this method at your own risk to prevent potential SQL injection vulnerabilities and to maintain query integrity.
+
+The following example demonstrates how to dynamically include an identifier, such as a table name, using string interpolation. If the provided table name is validated successfully, a dynamic SQL statement is constructed with the table name embedded in the query. Finally, the query is assigned to a `sql:ParameterizedQuery` object for execution.
+
+```bal
+import ballerina/sql;
+import ballerina/regex;
+
+// Validates table name format using a simple regex
+function validateTableName(string tableName) returns boolean {
+    // Allows only alphanumeric characters and underscores, starting with a letter
+    regexp:RegExp pattern = re `^[A-Za-z][A-Za-z0-9_]*$`;
+    return pattern.isFullMatch(tableName);
+}
+
+function getEmployeeData(string tableName) returns error? {
+    if !validateTableName(tableName) {
+        return error("Invalid table name format. Only alphanumeric and underscore characters are allowed.");
+    }
+
+    // Dynamically build the query string with the validated table name
+    string queryString = string `SELECT id, name, department FROM ${tableName} WHERE is_active = true`;
+
+    sql:ParameterizedQuery selectQuery = ``;
+    selectQuery.strings = [queryString];
+}
+```
 
 ## 3.2. `ParameterizedCallQuery` and parameters
 

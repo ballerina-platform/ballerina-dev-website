@@ -9,7 +9,7 @@ intro: The Ballerina XSD tool generates Ballerina record types from an XSD speci
 --- 
 ## Install the tool
 
-Execute the command below to pull the XSD tool from [Ballerina Central](https://central.ballerina.io/ballerina/xsd/latest).
+Execute the command below to pull the XSD tool from [Ballerina Central](https://central.ballerina.io/ballerina/xsdtool/latest).
 
 ```
 $ bal tool pull xsd

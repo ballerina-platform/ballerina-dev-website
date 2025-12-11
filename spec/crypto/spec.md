@@ -73,18 +73,20 @@ The conforming implementation of the specification is released and included in t
         - 6.1.3. [RSA-SHA256](#613-rsa-sha256)
         - 6.1.4. [RSA-SHA384](#614-rsa-sha384)
         - 6.1.5. [RSA-SHA512](#615-rsa-sha512)
-        - 6.1.6. [SHA384withECDSA](#616-sha384withecdsa)
-        - 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
-        - 6.1.8. [ML-DSA-65](#618-ml-dsa-65)
+        - 6.1.6. [RSASSA-PSS-SHA256](#616-rsassa-pss-sha256)
+        - 6.1.7. [SHA384withECDSA](#617-sha384withecdsa)
+        - 6.1.8. [SHA256withECDSA](#618-sha256withecdsa)
+        - 6.1.9. [ML-DSA-65](#619-mldsa65)
     - 6.2. [Verify signature](#62-verify-signature)
         - 6.2.1. [RSA-MD5](#621-rsa-md5)
         - 6.2.2. [RSA-SHA1](#622-rsa-sha1)
         - 6.2.3. [RSA-SHA256](#623-rsa-sha256)
         - 6.2.4. [RSA-SHA384](#624-rsa-sha384)
         - 6.2.5. [RSA-SHA512](#625-rsa-sha512)
-        - 6.2.6. [SHA384withECDSA](#626-sha384withecdsa)
-        - 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
-        - 6.2.8. [ML-DSA-65](#628-ml-dsa-65)
+        - 6.2.6. [RSASSA-PSS-SHA256](#626-rsassa-pss-sha256)
+        - 6.2.7. [SHA384withECDSA](#627-sha384withecdsa)
+        - 6.2.8. [SHA256withECDSA](#628-sha256withecdsa)
+        - 6.2.9. [ML-DSA-65](#629-mldsa65)
 7. [Key Derivation Function (KDF)](#7-key-derivation-function-kdf)
     - 7.1. [HKDF-SHA256](#71-hkdf-sha256)
 8. [Key Exchange Mechanism (KEM)](#8-key-exchange-mechanism-kem)
@@ -741,7 +743,22 @@ crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyS
 byte[] signature = check crypto:signRsaSha512(data, privateKey);
 ```
 
-#### 6.1.6. SHA384withECDSA
+#### 6.1.6. RSASSA-PSS-SHA256
+
+This API can be used to create the RSASSA-PSS based signature value for the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signRsaSsaPss256(data, privateKey);
+```
+
+#### 6.1.7. SHA384withECDSA
 
 This API can be used to create the SHA384withECDSA based signature value for the given data.
 
@@ -756,7 +773,7 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha384withEcdsa(data, privateKey);
 ```
 
-#### 6.1.7. SHA256withECDSA
+#### 6.1.8. SHA256withECDSA
 
 This API can be used to create the SHA256withECDSA based signature value for the given data.
 
@@ -771,7 +788,7 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
 ```
 
-#### 6.1.8. ML-DSA-65
+#### 6.1.9. ML-DSA-65
 
 This API can be used to create the ML-DSA-65 based signature value for the given data.
 
@@ -873,7 +890,24 @@ crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(keySt
 boolean validity = check crypto:verifyRsaSha512Signature(data, signature, publicKey);
 ```
 
-#### 6.2.6. SHA384withECDSA
+#### 6.2.6. RSASSA-PSS-SHA256
+
+This API can be used to verify the RSASSA-PSS based signature.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signRsaSsaPss256(data, privateKey);
+crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(keyStore, "keyAlias");
+boolean validity = check crypto:verifyRsaSsaPss256Signature(data, signature, publicKey);
+```
+
+#### 6.2.7. SHA384withECDSA
 
 This API can be used to verify the SHA384withECDSA based signature.
 
@@ -890,7 +924,7 @@ crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keySto
 boolean validity = check crypto:verifySha384withEcdsaSignature(data, signature, publicKey);
 ```
 
-#### 6.2.7. SHA256withECDSA
+#### 6.2.8. SHA256withECDSA
 
 This API can be used to verify the SHA256withECDSA based signature.
 
@@ -907,7 +941,7 @@ crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keySto
 boolean validity = check crypto:verifySha256withEcdsaSignature(data, signature, publicKey);
 ```
 
-#### 6.2.8. ML-DSA-65
+#### 6.2.9. ML-DSA-65
 
 This API can be used to verify the ML-DSA-65 based signature.
 

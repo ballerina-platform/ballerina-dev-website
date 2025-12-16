@@ -746,11 +746,11 @@ remote function onFile(stream<byte[], error> content, ftp:FileInfo fileInfo, ftp
 }
 ```
 
-* `onFileDeleted()` - Triggered when files are deleted from the monitored directory:
+* `onFileDelete()` - Triggered when files are deleted from the monitored directory:
 ```ballerina
-remote function onFileDeleted(string[] deletedFiles, ftp:Caller caller) returns error? {
+remote function onFileDelete(string deletedFile, ftp:Caller caller) returns error? {
     // Handle file deletion
-    // deletedFiles contains array of deleted file paths
+    // deletedFile contains the deleted file path
 }
 ```
 

@@ -154,7 +154,7 @@
            content="hello world, basics, network interaction, working with data, concurrency, transactions, concurrency safety, testing, rest api, rest client, rest api security, rest api advanced, http2, graphql, graphql security, websockets, websocket security, websub, resiliency, listeners, grpc, nats, stan, kafka, rabbitmq, tcp, udp, email, mysql, jdbc, io, security, url, time, cache, log, file, random, task, uuid, xslt, regex, os, xml data, tracing, metrics, code to cloud, function as a service"
          />
          <link rel="shortcut icon" href="/img/favicon.ico" />
-         <title>Ballerina by Example - The Ballerina programming language</title>
+         <title>Ballerina by Example | The Ballerina Programming Language</title>
  
          {/* FB */}
          <meta property="og:type" content="article" />
@@ -223,12 +223,12 @@
          <Col xs={12} sm={9} xxl={10} className="mdContent">
            <Container fluid="xl">
              <h1 className="mt-2 mb-4 pb-2 bbeHomeTitle">
-               Ballerina By Example
+               Ballerina by Example
              </h1>
              <p className="mb-5">
-               Ballerina by Example enables you to have complete coverage over
-               the language, while emphasizing incremental learning. This is a
-               series of commented example programs.
+               Ballerina by Example enables complete coverage of the language while
+             emphasizing incremental learning. This is a series of commented
+             example programs.
              </p>
              <ListBBEs />
            </Container>

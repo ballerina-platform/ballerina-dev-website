@@ -25,7 +25,7 @@ California residents may view WSO2's California-specific privacy policy at <a ta
 
 2. **Information collected automatically from your devices**
 
-    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites, and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our <a target="_blank" href="https://ballerina.io/cookie-policy/">cookie policy</a> on how we use and store cookies. 
+    We also collect certain standard information that your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites, and to track and analyze your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our <a target="_blank" href="https://ballerina.io/cookie-policy/">cookie policy</a> on how we use and store cookies. 
 
 4. **Information received from third parties**
 

@@ -2004,6 +2004,10 @@ import {
   codeSnippetData as LoggingConfigurationCodeSnippetData,
 } from "./logging-configuration/content.jsx";
 import {
+  LogFileRotation,
+  codeSnippetData as LogFileRotationCodeSnippetData,
+} from "./log-file-rotation/content.jsx";
+import {
   ChildLoggersWithContext,
   codeSnippetData as ChildLoggersWithContextCodeSnippetData,
 } from "./child-loggers-with-context/content.jsx";
@@ -2183,6 +2187,10 @@ import {
   ChatAgents,
   codeSnippetData as ChatAgentsCodeSnippetData,
 } from "./chat-agents/content.jsx";
+import {
+  AiAgentToolKit,
+  codeSnippetData as AiAgentToolKitCodeSnippetData,
+} from "./ai-agent-tool-kit/content.jsx";
 import {
   NaturalExpressions,
   codeSnippetData as NaturalExpressionsCodeSnippetData,
@@ -3277,6 +3285,8 @@ const BBEs = {
   ErrorLoggingCodeSnippetData,
   LoggingConfiguration,
   LoggingConfigurationCodeSnippetData,
+  LogFileRotation,
+  LogFileRotationCodeSnippetData,
   ChildLoggersWithContext,
   ChildLoggersWithContextCodeSnippetData,
   LoggerFromConfig,
@@ -3367,6 +3377,8 @@ const BBEs = {
   AiAgentExternalEndpointIntegrationCodeSnippetData,
   ChatAgents,
   ChatAgentsCodeSnippetData,
+  AiAgentToolKit,
+  AiAgentToolKitCodeSnippetData,
   NaturalExpressions,
   NaturalExpressionsCodeSnippetData,
   DockerHelloWorld,

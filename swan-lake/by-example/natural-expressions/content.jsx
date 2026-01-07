@@ -104,7 +104,8 @@ export function NaturalExpressions({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Note: This feature is supported on Swan Lake Update 13 or newer versions. This is currently an experimental
+          Note: This feature is supported on Swan Lake Update 13 - Milestone 3
+          (2201.13.0-m3) or newer versions. This is currently an experimental
           feature and requires the <code>--experimental</code> flag to be used
           with <code>bal</code> commands.
         </p>
@@ -124,9 +125,31 @@ export function NaturalExpressions({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/natural-expressions",
+                "_blank",
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2  ms-auto"
+              className="bg-transparent border-0 m-0 p-2 "
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -144,7 +167,7 @@ export function NaturalExpressions({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2  ms-auto"
+              className="bg-transparent border-0 m-0 p-2 "
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -329,7 +352,10 @@ export function NaturalExpressions({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chat agents" href="/learn/by-example/chat-agents/">
+          <Link
+            title="Agent with tool kits"
+            href="/learn/by-example/ai-agent-tool-kit/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -355,7 +381,7 @@ export function NaturalExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chat agents
+                  Agent with tool kits
                 </span>
               </div>
             </div>

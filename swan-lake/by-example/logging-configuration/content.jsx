@@ -11,6 +11,10 @@ format = "json"
 
 [[ballerina.log.destinations]]
 path = "./logs/app.log"
+[ballerina.log.destinations.rotation]
+policy = "TIME_BASED"
+maxAge = 5  # 5 seconds for demo (use 86400 = 24 hours in production)
+maxBackupFiles = 5
 
 [ballerina.log.keyValues]
 env = "prod"
@@ -52,8 +56,8 @@ export function LoggingConfiguration({ codeSnippets }) {
       <p>
         This example demonstrates how to configure logging behavior using the{" "}
         <code>Config.toml</code> file. You can control the log level, format,
-        output destinations, and add root context that appears in all log
-        messages.
+        output destinations, file rotation, and add root context that appears in
+        all log messages.
       </p>
 
       <Row
@@ -66,7 +70,7 @@ export function LoggingConfiguration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/logging-configuration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/logging-configuration",
                 "_blank",
               );
             }}
@@ -165,7 +169,35 @@ export function LoggingConfiguration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <strong>destinations</strong>: Logs to a file
+            <strong>destinations</strong>: Logs to a file with automatic
+            rotation
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <strong>rotation</strong>: TIME_BASED policy to rotate log files
+            based on age
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "16px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>maxAge</code>: Maximum age of log files in seconds (5 seconds
+            for demo)
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "16px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>maxBackupFiles</code>: Number of rotated backup files to
+            retain
           </span>
         </li>
       </ul>
@@ -188,7 +220,7 @@ export function LoggingConfiguration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/logging-configuration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/logging-configuration",
                 "_blank",
               );
             }}
@@ -269,7 +301,8 @@ export function LoggingConfiguration({ codeSnippets }) {
 
       <p>
         The log messages will be written to the specified file (
-        <code>./logs/app.log</code>).
+        <code>./logs/app.log</code>) and will automatically rotate based on the
+        configured policy.
       </p>
 
       <blockquote>
@@ -360,7 +393,7 @@ export function LoggingConfiguration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/logging-configuration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/logging-configuration",
                 "_blank",
               );
             }}
@@ -494,8 +527,8 @@ export function LoggingConfiguration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Child loggers with context"
-            href="/learn/by-example/child-loggers-with-context/"
+            title="Log file rotation"
+            href="/learn/by-example/log-file-rotation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -505,7 +538,7 @@ export function LoggingConfiguration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Child loggers with context
+                  Log file rotation
                 </span>
               </div>
               <svg

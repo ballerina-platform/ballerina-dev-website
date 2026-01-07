@@ -11,14 +11,28 @@ export const codeSnippetData = [
 final readonly & log:Config auditConfig = {
     level: log:INFO,
     format: log:JSON_FORMAT,
-    destinations: [{path: "./logs/audit.log"}],
+    destinations: [{
+        path: "./logs/audit.log",
+        rotation: {
+            policy: log:SIZE_BASED,
+            maxFileSize: 10485760,  // 10MB
+            maxBackupFiles: 10
+        }
+    }],
     keyValues: {"component": "audit", "compliance": "SOX"}
 };
 
 final readonly & log:Config metricsConfig = {
     level: log:DEBUG,
     format: log:LOGFMT,
-    destinations: [{path: "./logs/metrics.log"}],
+    destinations: [{
+        path: "./logs/metrics.log",
+        rotation: {
+            policy: log:TIME_BASED,
+            maxAge: 86400,  // 24 hours
+            maxBackupFiles: 7
+        }
+    }],
     keyValues: {"component": "metrics", "retention": "30days"}
 };
 
@@ -86,7 +100,7 @@ export function LoggerFromConfig({ codeSnippets }) {
       <p>
         This example demonstrates how to create specialized loggers with unique
         configurations. Each logger can have its own format, destinations, log
-        level, and default context.
+        level, file rotation policy, and default context.
       </p>
 
       <Row
@@ -99,7 +113,7 @@ export function LoggerFromConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/logger-from-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/logger-from-config",
                 "_blank",
               );
             }}
@@ -173,6 +187,27 @@ export function LoggerFromConfig({ codeSnippets }) {
         </Col>
       </Row>
 
+      <p>The example creates two specialized loggers:</p>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <strong>Audit logger</strong>: Uses SIZE_BASED rotation (10MB file
+            size limit) with JSON format
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <strong>Metrics logger</strong>: Uses TIME_BASED rotation (24-hour
+            age limit) with LOGFMT format
+          </span>
+        </li>
+      </ul>
+
       <blockquote>
         <p>
           <strong>Note:</strong> All loggers created from the configuration
@@ -190,7 +225,7 @@ export function LoggerFromConfig({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/logger-from-config",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/logger-from-config",
                 "_blank",
               );
             }}
@@ -322,8 +357,8 @@ export function LoggerFromConfig({ codeSnippets }) {
               <span>{`\$ bal run logger_from_config.bal`}</span>
               <span>{`
 `}</span>
-              <span>{`time=2025-08-26T08:38:34.351+05:30 level=INFO module="" message="Application started" version="1.2.0" env="prod" nodeId="server-001"`}</span>
-              <span>{`time=2025-08-26T08:38:34.391+05:30 level=INFO module="" message="Application processing completed" env="prod" nodeId="server-001"`}</span>
+              <span>{`time=2026-01-05T21:22:17.128+05:30 level=INFO module="" message="Application started" version="1.2.0" env="prod" nodeId="server-001"`}</span>
+              <span>{`time=2026-01-05T21:22:17.188+05:30 level=INFO module="" message="Application processing completed" env="prod" nodeId="server-001"`}</span>
             </code>
           </pre>
         </Col>
@@ -384,8 +419,8 @@ export function LoggerFromConfig({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`{"time":"2025-08-26T08:38:34.372+05:30", "level":"INFO", "module":"", "message":"User action recorded", "action":"login", "userId":"alice123", "env":"prod", "nodeId":"server-001", "component":"audit", "compliance":"SOX"}`}</span>
-              <span>{`{"time":"2025-08-26T08:38:34.381+05:30", "level":"INFO", "module":"", "message":"User action recorded", "action":"file_access", "userId":"bob456", "env":"prod", "nodeId":"server-001", "component":"audit", "compliance":"SOX"}`}</span>
+              <span>{`{"time":"2026-01-05T21:22:17.164+05:30", "level":"INFO", "module":"", "message":"User action recorded", "action":"login", "userId":"alice123", "env":"prod", "nodeId":"server-001", "component":"audit", "compliance":"SOX"}`}</span>
+              <span>{`{"time":"2026-01-05T21:22:17.176+05:30", "level":"INFO", "module":"", "message":"User action recorded", "action":"file_access", "userId":"bob456", "env":"prod", "nodeId":"server-001", "component":"audit", "compliance":"SOX"}`}</span>
             </code>
           </pre>
         </Col>
@@ -446,10 +481,10 @@ export function LoggerFromConfig({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`time=2025-08-26T08:38:34.384+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
-              <span>{`time=2025-08-26T08:38:34.386+05:30 level=INFO module="" message="Performance metric recorded" metric="response_time" value=245.5 unit="ms" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
-              <span>{`time=2025-08-26T08:38:34.388+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
-              <span>{`time=2025-08-26T08:38:34.389+05:30 level=INFO module="" message="Performance metric recorded" metric="memory_usage" value=78.2 unit="percent" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
+              <span>{`time=2026-01-05T21:22:17.179+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
+              <span>{`time=2026-01-05T21:22:17.183+05:30 level=INFO module="" message="Performance metric recorded" metric="response_time" value=245.5 unit="ms" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
+              <span>{`time=2026-01-05T21:22:17.185+05:30 level=DEBUG module="" message="Recording performance metric" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
+              <span>{`time=2026-01-05T21:22:17.187+05:30 level=INFO module="" message="Performance metric recorded" metric="memory_usage" value=78.2 unit="percent" env="prod" nodeId="server-001" component="metrics" retention="30days" operation="performance_monitoring"`}</span>
             </code>
           </pre>
         </Col>
@@ -457,9 +492,12 @@ export function LoggerFromConfig({ codeSnippets }) {
 
       <p>
         Notice how each logger type produces different output but all share the
-        default context. This pattern is ideal for applications that need
-        different logging behaviors for different concerns (audit trails,
-        performance monitoring, security events, etc.).
+        default context. Each logger can also have its own rotation policy - the
+        audit logger rotates based on file size (ideal for high-volume logs),
+        while the metrics logger rotates based on time (ideal for daily
+        rollover). This pattern is ideal for applications that need different
+        logging behaviors for different concerns (audit trails, performance
+        monitoring, security events, etc.).
       </p>
 
       <h2>Related links</h2>

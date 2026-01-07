@@ -1,7 +1,0 @@
-{
-  "title": "MCP service",
-  "description": "This BBE demonstrates how to implement an MCP server.",
-  "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "mcp"],
-  "permalink": "/learn/by-example/mcp-service/",
-  "active": "mcp-service"
-}

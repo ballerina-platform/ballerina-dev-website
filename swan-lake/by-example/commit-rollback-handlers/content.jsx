@@ -74,7 +74,7 @@ export function CommitRollbackHandlers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/commit-rollback-handlers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/commit-rollback-handlers",
                 "_blank",
               );
             }}

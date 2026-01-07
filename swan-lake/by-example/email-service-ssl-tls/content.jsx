@@ -52,7 +52,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
       <p>
         The <code>email:Service</code> receives messages from an email server
         via IMAP using the <code>email:ImapListener</code>. An{" "}
-        <code>email:ImapListener</code> secured with SSL/TLC is created by
+        <code>email:ImapListener</code> secured with SSL/TLS is created by
         providing the <code>secureSocket</code> configuration which requires the
         certificate of the email server as the <code>cert</code>. In addition to
         the certificate configuration, an optional <code>security</code>{" "}
@@ -80,7 +80,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/email-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/email-service-ssl-tls",
                 "_blank",
               );
             }}

@@ -77,7 +77,7 @@ export function Arrays({ codeSnippets }) {
       <p>
         An array can be used to hold a set of values of the same type. The array
         type can be defined as <code>T[n]</code> in which <code>T</code> is the
-        element type and <code>n</code> is the length of the array.{" "}
+        element type and <code>n</code> is the fixed length of the array.{" "}
         <code>n</code> must be an integer literal or constant reference of type{" "}
         <code>int</code>. Optionally, you can create a variable-length array by
         defining an array without <code>n</code> as <code>T[]</code>.
@@ -87,6 +87,11 @@ export function Arrays({ codeSnippets }) {
         The length of the array can be inferred from the context by defining the
         array as <code>T[*]</code>. The length of the array should be known in
         compile time.
+      </p>
+
+      <p>
+        An array with an inferred length is also a fixed-length array, where the
+        length, inferred from the context, cannot be changed afterward.
       </p>
 
       <Row
@@ -99,7 +104,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/arrays",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/arrays",
                 "_blank",
               );
             }}

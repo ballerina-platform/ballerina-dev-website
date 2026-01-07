@@ -1840,17 +1840,20 @@ sublinks:
           - title: Configure logging
             id: 4
             url: logging-configuration
-          - title: Child loggers with context
+          - title: Log file rotation
             id: 5
+            url: log-file-rotation
+          - title: Child loggers with context
+            id: 6
             url: child-loggers-with-context
           - title: Logger from configuration
-            id: 6
+            id: 7
             url: logger-from-config
           - title: Custom logger
-            id: 7
+            id: 8
             url: custom-logger
           - title: Sensitive data logging
-            id: 8
+            id: 9
             url: sensitive-data-logging
       - title: EDI
         id: 9
@@ -2023,6 +2026,9 @@ sublinks:
           - title: Chat agents
             id: 4
             url: chat-agents
+          - title: Agent with tool kits
+            id: 5
+            url: ai-agent-tool-kit
       - title: Natural expressions
         id: 5
         sublinks:

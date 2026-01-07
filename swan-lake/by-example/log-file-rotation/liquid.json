@@ -1,0 +1,17 @@
+{
+  "title": "Log file rotation",
+  "description": "BBE on how to configure log file rotation in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "rotation",
+    "file rotation",
+    "log management",
+    "size based",
+    "time based"
+  ],
+  "permalink": "/learn/by-example/log-file-rotation/",
+  "active": "log-file-rotation"
+}

@@ -80,7 +80,7 @@ export function ErrorLogging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/error-logging",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/error-logging",
                 "_blank",
               );
             }}

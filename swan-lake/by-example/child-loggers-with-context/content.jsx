@@ -61,7 +61,7 @@ export function ChildLoggersWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.10/examples/child-loggers-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/child-loggers-with-context",
                 "_blank",
               );
             }}
@@ -235,8 +235,8 @@ export function ChildLoggersWithContext({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Configure logging"
-            href="/learn/by-example/logging-configuration/"
+            title="Log file rotation"
+            href="/learn/by-example/log-file-rotation/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,7 +263,7 @@ export function ChildLoggersWithContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configure logging
+                  Log file rotation
                 </span>
               </div>
             </div>

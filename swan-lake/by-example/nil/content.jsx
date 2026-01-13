@@ -41,7 +41,7 @@ export function Nil({ codeSnippets }) {
       <h1>Nil</h1>
 
       <p>
-        Ballerina's version of <code>null</code> is called nil and written as{" "}
+        Ballerina’s version of <code>null</code> is called nil and written as{" "}
         <code>()</code>. Ballerina types do not implicitly allow nil. Type{" "}
         <code>T?</code> means <code>T</code> or nil. You can use <code>==</code>{" "}
         and <code>!=</code> to test whether a value is nil: no implicit

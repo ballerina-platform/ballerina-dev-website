@@ -32,7 +32,7 @@ export function HelloWorldService({ codeSnippets }) {
       <h1>Hello world service</h1>
 
       <p>
-        Let's write a simple HTTP service in Ballerina. This example
+        Let’s write a simple HTTP service in Ballerina. This example
         demonstrates the network primitives in the language that make it simpler
         to develop services.
       </p>

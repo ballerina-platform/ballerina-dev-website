@@ -176,7 +176,7 @@ export function SensitiveDataLogging({ codeSnippets }) {
           <span>2.</span>
           <span>
             <strong>Fixed replacement</strong>: The sensitive field is replaced
-            with a fixed string (e.g., &quot;****&quot;).
+            with a fixed string (e.g., “****”).
           </span>
         </li>
       </ul>

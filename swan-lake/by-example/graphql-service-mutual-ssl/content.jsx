@@ -57,12 +57,12 @@ export function GraphqlServiceMutualSsl({ codeSnippets }) {
         allows exposing a connection secured with mutual SSL, which is a
         certificate-based authentication process in which two parties (the
         client and server) authenticate each other by verifying the digital
-        certificates. It ensures that both parties are assured of each other's
+        certificates. It ensures that both parties are assured of each other’s
         identity. The <code>graphql:Listener</code> secured with mutual SSL is
         created by providing the <code>secureSocket</code> configurations, which
         require the word <code>require</code> as the <code>verifyClient</code>,
-        the server's public certificate as the <code>certFile</code>, the
-        server's private key as the <code>keyFile</code>, and the client's
+        the server’s public certificate as the <code>certFile</code>, the
+        server’s private key as the <code>keyFile</code>, and the client’s
         certificate as the <code>cert</code>. Use this to secure the GraphQL
         connection over mutual SSL.
       </p>

@@ -51,7 +51,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
       <p>
         Use <code>-&gt; W</code> or <code>&lt;- W</code> to send a message to or
         receive a message from worker <code>W</code> (use <code>function</code>{" "}
-        to refer to the function's default worker). The messages are copied
+        to refer to the function’s default worker). The messages are copied
         using <code>clone()</code>. It implies immutable values are passed
         without a copy.
       </p>

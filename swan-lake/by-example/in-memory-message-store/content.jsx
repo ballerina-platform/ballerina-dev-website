@@ -51,8 +51,8 @@ export function InMemoryMessageStore({ codeSnippets }) {
         <code>InMemoryMessageStore</code> implementation provided by the{" "}
         <code>messaging</code> library. The <code>InMemoryMessageStore</code> is
         a ready-to-use implementation of the <code>messaging:Store</code>{" "}
-        interface that's ideal for quick testing and development scenarios where
-        you don't need persistence.
+        interface that’s ideal for quick testing and development scenarios where
+        you don’t need persistence.
       </p>
 
       <Row

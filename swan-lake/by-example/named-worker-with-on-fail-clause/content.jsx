@@ -42,7 +42,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
 
       <p>
         The <code>on fail</code> clause can be used with a named worker, to
-        handle any errors that occur within the worker's body.
+        handle any errors that occur within the worker’s body.
       </p>
 
       <Row

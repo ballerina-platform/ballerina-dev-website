@@ -65,7 +65,7 @@ export function Table({ codeSnippets }) {
         there is an entry with a given key or add a new entry otherwise, while
         the <code>add</code> method will panic if there is an entry with the
         given key. The <code>foreach</code> statement will iterate over a
-        table's rows in their order. Use <code>t[k]</code> to access a row using
+        table’s rows in their order. Use <code>t[k]</code> to access a row using
         its key.
       </p>
 

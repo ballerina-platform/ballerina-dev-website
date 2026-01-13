@@ -149,8 +149,8 @@ export function StopHandler({ codeSnippets }) {
       </Row>
 
       <p>
-        Navigate to the directory that contains the 'stop_handler.bal' file, and
-        run the 'bal run' command.
+        Navigate to the directory that contains the ‘stop_handler.bal’ file, and
+        run the ‘bal run’ command.
       </p>
 
       <Row

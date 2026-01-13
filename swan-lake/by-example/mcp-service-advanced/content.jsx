@@ -162,7 +162,7 @@ export function McpServiceAdvanced({ codeSnippets }) {
       </p>
 
       <p>
-        Ballerina's MCP library allows you to create MCP servers that expose
+        Ballerina’s MCP library allows you to create MCP servers that expose
         tools. A <code>mcp:AdvancedService</code> service expects two remote
         methods, namely <code>onListTools</code> and <code>onCallTool</code>, to
         allow AI assistants to discover and call tools respectively.

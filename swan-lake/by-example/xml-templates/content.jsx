@@ -38,7 +38,7 @@ export function XmlTemplates({ codeSnippets }) {
       <p>
         <code>xml</code> values can be constructed using an XML template
         expression. Phase 2 processing for <code>xml</code> template tag parses
-        strings using the XML 1.0 Recommendation's grammar for content (what XML
+        strings using the XML 1.0 Recommendation’s grammar for content (what XML
         allows between a start-tag and an end-tag).
       </p>
 

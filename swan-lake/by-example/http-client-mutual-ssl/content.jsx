@@ -47,11 +47,11 @@ export function HttpClientMutualSsl({ codeSnippets }) {
         mutual SSL (mTLS), which is a certificate-based authentication process
         in which two parties (the client and server) authenticate each other by
         verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity. The <code>http:Client</code> secured
+        assured of each other’s identity. The <code>http:Client</code> secured
         with mutual SSL is created by providing the <code>secureSocket</code>{" "}
-        configurations, which require the client's public certificate as the{" "}
-        <code>certFile</code>, the client's private key as the{" "}
-        <code>keyFile</code>, and the server's certificate as the{" "}
+        configurations, which require the client’s public certificate as the{" "}
+        <code>certFile</code>, the client’s private key as the{" "}
+        <code>keyFile</code>, and the server’s certificate as the{" "}
         <code>cert</code>. Use this to interact with mTLS-encrypted HTTP
         servers.
       </p>

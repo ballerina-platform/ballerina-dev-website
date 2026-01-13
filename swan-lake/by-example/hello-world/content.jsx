@@ -26,7 +26,7 @@ export function HelloWorld({ codeSnippets }) {
       <h1>Hello world main</h1>
 
       <p>
-        Let's write the <code>Hello World</code> program in Ballerina.
+        Let’s write the <code>Hello World</code> program in Ballerina.
       </p>
 
       <Row

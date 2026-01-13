@@ -17,7 +17,12 @@
  */
 
 // imports
-const md = require("markdown-it")({ xhtmlOut: true });
+const md = require("markdown-it")({ 
+  xhtmlOut: true,
+  html: true,
+  linkify: true,
+  typographer: true
+});
 const container = require("markdown-it-container");
 const fs = require("fs");
 const axios = require("axios");
@@ -326,6 +331,23 @@ md.use(container, "out", {
   },
 });
 
+// Custom table renderer to wrap tables in a div for proper styling
+const defaultTableOpenRenderer = md.renderer.rules.table_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+const defaultTableCloseRenderer = md.renderer.rules.table_close || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.table_open = function(tokens, idx, options, env, self) {
+  return '<div class="mdTable">' + defaultTableOpenRenderer(tokens, idx, options, env, self);
+};
+
+md.renderer.rules.table_close = function(tokens, idx, options, env, self) {
+  return defaultTableCloseRenderer(tokens, idx, options, env, self) + '</div>';
+};
+
 // find previous/next bbes
 const findPrevNextBBEs = (bbeName, jsonContent) => {
   let bbeTitle = "",
@@ -559,7 +581,7 @@ const generate = async (examplesDir, outputDir) => {
         : /description:\s*(?<description>.+)\nkeywords:\s*(?<keywords>.+)/;
 
     // edit on github base url
-    const editOnGithubBaseUrl = generateEditOnGithubLink(examplesDir);
+    const editOnGithubBaseUrl = '#'; //generateEditOnGithubLink(examplesDir);
 
     // index.json file
     const indexContent = fs.readFileSync(`${examplesDir}/index.json`, "utf-8");
@@ -579,14 +601,14 @@ const generate = async (examplesDir, outputDir) => {
           editOnGithubLink = "";
 
         // Check whether the BBE can be edited in github
-        try {
-          const response = await axios.get(`${editOnGithubBaseUrl}/${url}`);
-          if (response.status === 200) {
-            editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
-          }
-        } catch (err) {
-          console.error(err)
-        }
+        // try {
+        //   const response = await axios.get(`${editOnGithubBaseUrl}/${url}`);
+        //   if (response.status === 200) {
+        //     editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
+        //   }
+        // } catch (err) {
+        //   console.error(err)
+        // }
 
         indexArray.push(url);
 
@@ -620,8 +642,8 @@ const generate = async (examplesDir, outputDir) => {
               const match = metaReg.exec(
                 fs.readFileSync(fileRelPath, "utf-8").trim()
               );
-              description = match.groups.description;
-              keywords = match.groups.keywords;
+              // description = match.groups.description;
+              // keywords = match.groups.keywords;
 
               // markdown file
             } else if (file.includes(".md")) {
@@ -633,7 +655,10 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetMarginLeftMultiplier = 0,
                 codeSnippetLang,
                 codeSnippetArray = [],
-                listRegex = /^(\s*)(\d+|-)(?:\.?)+\s*(.*)/;
+                listRegex = /^(\s*)(\d+|-)(?:\.?)+\s*(.*)/,
+                tableRegex = /^\s*\|.*\|.*$/,
+                tableFound = false,
+                tableArray = [],
                 relatedLinks = false;
 
               for (const line of contentArray) {
@@ -653,6 +678,23 @@ const generate = async (examplesDir, outputDir) => {
 
                   if (line.includes("## Related links")) {
                     relatedLinks = true;
+                  }
+
+                  // Check if this line is part of a table
+                  if (tableRegex.test(line)) {
+                    if (!tableFound) {
+                      tableFound = true;
+                      tableArray = [];
+                    }
+                    tableArray.push(line);
+                    continue; // Skip to next line to accumulate table rows
+                  } else if (tableFound) {
+                    // We've finished collecting table lines
+                    tableFound = false;
+                    convertedLine = md.render(tableArray.join("\n"));
+                    updatedArray.push(convertedLine);
+                    tableArray = [];
+                    // Now process the current non-table line
                   }
 
                   if (line.includes("::: code")) {
@@ -734,6 +776,12 @@ const generate = async (examplesDir, outputDir) => {
                 if (!codeSnippetFound) {
                   updatedArray.push(convertedLine);
                 }
+              }
+
+              // Handle tables at the end of the file
+              if (tableFound && tableArray.length > 0) {
+                const convertedLine = md.render(tableArray.join("\n"));
+                updatedArray.push(convertedLine);
               }
 
               codeSection = updatedArray.join("\n");

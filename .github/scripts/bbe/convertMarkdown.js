@@ -581,7 +581,7 @@ const generate = async (examplesDir, outputDir) => {
         : /description:\s*(?<description>.+)\nkeywords:\s*(?<keywords>.+)/;
 
     // edit on github base url
-    const editOnGithubBaseUrl = '#'; //generateEditOnGithubLink(examplesDir);
+    const editOnGithubBaseUrl = generateEditOnGithubLink(examplesDir);
 
     // index.json file
     const indexContent = fs.readFileSync(`${examplesDir}/index.json`, "utf-8");
@@ -601,14 +601,14 @@ const generate = async (examplesDir, outputDir) => {
           editOnGithubLink = "";
 
         // Check whether the BBE can be edited in github
-        // try {
-        //   const response = await axios.get(`${editOnGithubBaseUrl}/${url}`);
-        //   if (response.status === 200) {
-        //     editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
-        //   }
-        // } catch (err) {
-        //   console.error(err)
-        // }
+        try {
+          const response = await axios.get(`${editOnGithubBaseUrl}/${url}`);
+          if (response.status === 200) {
+            editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
+          }
+        } catch (err) {
+          console.error(err)
+        }
 
         indexArray.push(url);
 
@@ -642,8 +642,8 @@ const generate = async (examplesDir, outputDir) => {
               const match = metaReg.exec(
                 fs.readFileSync(fileRelPath, "utf-8").trim()
               );
-              // description = match.groups.description;
-              // keywords = match.groups.keywords;
+              description = match.groups.description;
+              keywords = match.groups.keywords;
 
               // markdown file
             } else if (file.includes(".md")) {
@@ -689,12 +689,10 @@ const generate = async (examplesDir, outputDir) => {
                     tableArray.push(line);
                     continue; // Skip to next line to accumulate table rows
                   } else if (tableFound) {
-                    // We've finished collecting table lines
                     tableFound = false;
                     convertedLine = md.render(tableArray.join("\n"));
                     updatedArray.push(convertedLine);
                     tableArray = [];
-                    // Now process the current non-table line
                   }
 
                   if (line.includes("::: code")) {

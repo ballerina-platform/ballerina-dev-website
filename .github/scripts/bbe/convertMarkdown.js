@@ -607,7 +607,7 @@ const generate = async (examplesDir, outputDir) => {
             editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
           }
         } catch (err) {
-          console.error(err)
+          // Silently skip - example may not exist on GitHub yet
         }
 
         indexArray.push(url);

@@ -51,7 +51,7 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
 
       <p>
         Ballerina allows default values for record fields as part of the
-        record's type descriptor. A default value is an expression. Default
+        record’s type descriptor. A default value is an expression. Default
         values do not affect static typing. They only affect the use of type
         descriptors to construct records. Calling the{" "}
         <code>value:cloneWithType()</code> function with a record type

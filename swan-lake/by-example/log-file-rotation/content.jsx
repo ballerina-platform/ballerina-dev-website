@@ -67,7 +67,7 @@ export function LogFileRotation({ codeSnippets }) {
         <code>Config.toml</code>.
       </p>
 
-      <h2>Configuring File Rotation</h2>
+      <h2>Configuring file rotation</h2>
 
       <p>
         The root logger is configured in <code>Config.toml</code> with
@@ -260,14 +260,14 @@ export function LogFileRotation({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>How Rotation Works</h2>
+      <h2>How rotation works</h2>
 
       <p>
-        When a log file rotates, it's renamed with a timestamp suffix and a new
+        When a log file rotates, it’s renamed with a timestamp suffix and a new
         file is created:
       </p>
 
-      <pre style={{ marginLeft: "0px" }} className="p-3 rounded bash">
+      <pre style={{ marginLeft: "0px" }} className="p-3 rounded plaintext">
         <code>
           logs/ app.log (current log file) app-20251223-225602.log (rotated
           backup) app-20251223-223015.log (older backup)
@@ -279,7 +279,7 @@ export function LogFileRotation({ codeSnippets }) {
         deleted.
       </p>
 
-      <h3>Application Log Rotation Output</h3>
+      <h3>Application log rotation output</h3>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -365,34 +365,63 @@ export function LogFileRotation({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Configuration Options</h2>
+      <h2>Configuration options</h2>
 
       <p>Rotation policies support these configuration parameters:</p>
 
-      <p>| Parameter | Default | Description |</p>
-
-      <p>|-----------|---------|-------------|</p>
-
-      <p>
-        | <code>policy</code> | <code>&quot;BOTH&quot;</code> | Rotation
-        trigger: <code>&quot;SIZE_BASED&quot;</code>,{" "}
-        <code>&quot;TIME_BASED&quot;</code>, or <code>&quot;BOTH&quot;</code> |
-      </p>
-
-      <p>
-        | <code>maxFileSize</code> | 10485760 | Maximum file size in bytes (10MB
-        default) |
-      </p>
-
-      <p>
-        | <code>maxAge</code> | 86400 | Maximum file age in seconds (24 hours
-        default) |
-      </p>
-
-      <p>
-        | <code>maxBackupFiles</code> | 10 | Number of rotated backup files to
-        retain |
-      </p>
+      <div class="mdTable">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:center">Parameter</th>
+              <th style="text-align:center">Default</th>
+              <th style="text-align:center">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center">
+                <code>policy</code>
+              </td>
+              <td style="text-align:center">
+                <code>&quot;BOTH&quot;</code>
+              </td>
+              <td style="text-align:center">
+                Rotation trigger: <code>&quot;SIZE_BASED&quot;</code>,{" "}
+                <code>&quot;TIME_BASED&quot;</code>, or{" "}
+                <code>&quot;BOTH&quot;</code>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center">
+                <code>maxFileSize</code>
+              </td>
+              <td style="text-align:center">10485760</td>
+              <td style="text-align:center">
+                Maximum file size in bytes (10MB default)
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center">
+                <code>maxAge</code>
+              </td>
+              <td style="text-align:center">86400</td>
+              <td style="text-align:center">
+                Maximum file age in seconds (24 hours default)
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center">
+                <code>maxBackupFiles</code>
+              </td>
+              <td style="text-align:center">10</td>
+              <td style="text-align:center">
+                Number of rotated backup files to retain
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <blockquote>
         <p>

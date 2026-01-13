@@ -39,7 +39,7 @@ export function ModuleLifecycle({ codeSnippets }) {
       </p>
 
       <p>
-        A module's listeners are registered during module initialization. If
+        A module’s listeners are registered during module initialization. If
         there are registered listeners, then the initialization phase is
         followed by the listening phase.
       </p>

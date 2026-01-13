@@ -110,7 +110,7 @@ export function McpService({ codeSnippets }) {
       </p>
 
       <p>
-        Ballerina's MCP library allows you to create MCP servers that expose
+        Ballerina’s MCP library allows you to create MCP servers that expose
         tools. Remote methods of a <code>mcp:Service</code> service declaration
         automatically become MCP tools that AI assistants can discover and call.
       </p>

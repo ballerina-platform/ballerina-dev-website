@@ -50,7 +50,7 @@ export function InferringIsolated({ codeSnippets }) {
         consists of a single module that imports multiple library modules.
         Within a single module, the compiler infers <code>isolated</code>{" "}
         qualifiers. An object without mutable fields is inherently{" "}
-        <code>isolated</code>. It is the application developer's responsibility
+        <code>isolated</code>. It is the application developer’s responsibility
         to use <code>lock</code> statements where needed. E.g.,
       </p>
 

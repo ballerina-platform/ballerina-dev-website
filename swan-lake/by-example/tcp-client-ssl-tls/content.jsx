@@ -41,7 +41,7 @@ export function TcpClientSslTls({ codeSnippets }) {
         SSL/TLS-secured TCP server socket, and then sends and receives byte
         streams. A <code>tcp:Client</code> secured with SSL/TLS is created by
         additionally giving <code>secureSocket</code> configurations which
-        require the server's certificate as the <code>cert</code>. Once
+        require the server’s certificate as the <code>cert</code>. Once
         connected, <code>writeBytes</code> and <code>readBytes</code>{" "}
         synchronous methods are used to send and receive byte streams over an
         encrypted TLS connection. Use this to interact with TCP servers or

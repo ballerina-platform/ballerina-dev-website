@@ -65,7 +65,7 @@ export function JsonNumbers({ codeSnippets }) {
 
       <p>
         <code>cloneWithType()</code> or <code>ensureType()</code> will convert
-        from <code>int</code> or <code>decimal</code> into the user's chosen
+        from <code>int</code> or <code>decimal</code> into the user’s chosen
         numeric type. The net result is that you can use JSON to exchange the
         full range of all three Ballerina numeric types. <code>-0</code> is an
         edge case: it is represented as a <code>float</code>.

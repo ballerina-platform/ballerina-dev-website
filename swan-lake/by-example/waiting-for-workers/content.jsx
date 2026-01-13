@@ -37,7 +37,7 @@ export function WaitingForWorkers({ codeSnippets }) {
       <h1>Waiting for workers</h1>
 
       <p>
-        Named workers can continue to execute after the function's default
+        Named workers can continue to execute after the function’s default
         worker terminates and the function returns.
       </p>
 

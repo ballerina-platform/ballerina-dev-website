@@ -59,7 +59,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
         <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
         The required configurations for this grant type can be specified in the{" "}
         <code>auth</code> field of the client configuration. Use this grant type
-        when you need to exchange the user's credentials for an access token.
+        when you need to exchange the user’s credentials for an access token.
       </p>
 
       <Row

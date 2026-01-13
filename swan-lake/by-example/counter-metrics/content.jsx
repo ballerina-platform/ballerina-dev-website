@@ -84,9 +84,10 @@ export function CounterMetrics({ codeSnippets }) {
 
       <p>
         Ballerina supports Observability out of the box and Metrics is one of
-        the three important aspects of Observability.To observe Ballerina code,
-        the <code>--observability-included</code> build time flag should be
-        given along with the <code>Config.toml</code> file when starting the
+        the three important aspects of{" "}
+        <a href="http://Observability.To">Observability.To</a> observe Ballerina
+        code, the <code>--observability-included</code> build time flag should
+        be given along with the <code>Config.toml</code> file when starting the
         service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>

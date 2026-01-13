@@ -82,7 +82,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
         For more explicit control over object type relations you can use{" "}
         <code>distinct</code> object types. Each distinct object type
         declaration has a unique type ID. When you include a distinct object
-        type within another object type declaration, the new type's type ID set
+        type within another object type declaration, the new type’s type ID set
         will include the type IDs of the included type. When checking if a given
         object type <code>OSub</code> is a subtype of a distinct object type{" "}
         <code>OSuper</code> there is the additional requirement that the{" "}
@@ -92,7 +92,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
 
       <p>
         This way you can achieve the same behavior as a nominal type system
-        within Ballerina's structured type system, which is useful to support
+        within Ballerina’s structured type system, which is useful to support
         features such as GraphQL API interfaces.
       </p>
 

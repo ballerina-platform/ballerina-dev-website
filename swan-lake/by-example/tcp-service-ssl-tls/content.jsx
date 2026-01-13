@@ -57,8 +57,8 @@ export function TcpServiceSslTls({ codeSnippets }) {
         The <code>tcp:Listener</code> configured with allows you to expose a
         connection secured with one-way SSL/TLS. A <code>tcp:Listener</code>{" "}
         secured with SSL/TLS is created by providing the{" "}
-        <code>secureSocket</code> configurations which require the server's
-        certificate as the <code>certFile</code> and the server's private key as
+        <code>secureSocket</code> configurations which require the server’s
+        certificate as the <code>certFile</code> and the server’s private key as
         the <code>keyFile</code>. Use this to interact with TCP clients or
         implement high-level protocols based on TLS-encrypted secured TCP
         connection.

@@ -17,7 +17,12 @@
  */
 
 // imports
-const md = require("markdown-it")({ xhtmlOut: true });
+const md = require("markdown-it")({ 
+  xhtmlOut: true,
+  html: true,
+  linkify: true,
+  typographer: true
+});
 const container = require("markdown-it-container");
 const fs = require("fs");
 const axios = require("axios");
@@ -326,6 +331,23 @@ md.use(container, "out", {
   },
 });
 
+// Custom table renderer to wrap tables in a div for proper styling
+const defaultTableOpenRenderer = md.renderer.rules.table_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+const defaultTableCloseRenderer = md.renderer.rules.table_close || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.table_open = function(tokens, idx, options, env, self) {
+  return '<div class="mdTable">' + defaultTableOpenRenderer(tokens, idx, options, env, self);
+};
+
+md.renderer.rules.table_close = function(tokens, idx, options, env, self) {
+  return defaultTableCloseRenderer(tokens, idx, options, env, self) + '</div>';
+};
+
 // find previous/next bbes
 const findPrevNextBBEs = (bbeName, jsonContent) => {
   let bbeTitle = "",
@@ -633,7 +655,10 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetMarginLeftMultiplier = 0,
                 codeSnippetLang,
                 codeSnippetArray = [],
-                listRegex = /^(\s*)(\d+|-)(?:\.?)+\s*(.*)/;
+                listRegex = /^(\s*)(\d+|-)(?:\.?)+\s*(.*)/,
+                tableRegex = /^\s*\|.*\|.*$/,
+                tableFound = false,
+                tableArray = [],
                 relatedLinks = false;
 
               for (const line of contentArray) {
@@ -653,6 +678,21 @@ const generate = async (examplesDir, outputDir) => {
 
                   if (line.includes("## Related links")) {
                     relatedLinks = true;
+                  }
+
+                  // Check if this line is part of a table
+                  if (tableRegex.test(line)) {
+                    if (!tableFound) {
+                      tableFound = true;
+                      tableArray = [];
+                    }
+                    tableArray.push(line);
+                    continue; // Skip to next line to accumulate table rows
+                  } else if (tableFound) {
+                    tableFound = false;
+                    convertedLine = md.render(tableArray.join("\n"));
+                    updatedArray.push(convertedLine);
+                    tableArray = [];
                   }
 
                   if (line.includes("::: code")) {
@@ -734,6 +774,12 @@ const generate = async (examplesDir, outputDir) => {
                 if (!codeSnippetFound) {
                   updatedArray.push(convertedLine);
                 }
+              }
+
+              // Handle tables at the end of the file
+              if (tableFound && tableArray.length > 0) {
+                const convertedLine = md.render(tableArray.join("\n"));
+                updatedArray.push(convertedLine);
               }
 
               codeSection = updatedArray.join("\n");

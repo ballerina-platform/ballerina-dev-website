@@ -373,51 +373,45 @@ export function LogFileRotation({ codeSnippets }) {
         <table>
           <thead>
             <tr>
-              <th style="text-align:center">Parameter</th>
-              <th style="text-align:center">Default</th>
-              <th style="text-align:center">Description</th>
+              <th>Parameter</th>
+              <th>Default</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="text-align:center">
+              <td>
                 <code>policy</code>
               </td>
-              <td style="text-align:center">
+              <td>
                 <code>&quot;BOTH&quot;</code>
               </td>
-              <td style="text-align:center">
+              <td>
                 Rotation trigger: <code>&quot;SIZE_BASED&quot;</code>,{" "}
                 <code>&quot;TIME_BASED&quot;</code>, or{" "}
                 <code>&quot;BOTH&quot;</code>
               </td>
             </tr>
             <tr>
-              <td style="text-align:center">
+              <td>
                 <code>maxFileSize</code>
               </td>
-              <td style="text-align:center">10485760</td>
-              <td style="text-align:center">
-                Maximum file size in bytes (10MB default)
-              </td>
+              <td>10485760</td>
+              <td>Maximum file size in bytes (10MB default)</td>
             </tr>
             <tr>
-              <td style="text-align:center">
+              <td>
                 <code>maxAge</code>
               </td>
-              <td style="text-align:center">86400</td>
-              <td style="text-align:center">
-                Maximum file age in seconds (24 hours default)
-              </td>
+              <td>86400</td>
+              <td>Maximum file age in seconds (24 hours default)</td>
             </tr>
             <tr>
-              <td style="text-align:center">
+              <td>
                 <code>maxBackupFiles</code>
               </td>
-              <td style="text-align:center">10</td>
-              <td style="text-align:center">
-                Number of rotated backup files to retain
-              </td>
+              <td>10</td>
+              <td>Number of rotated backup files to retain</td>
             </tr>
           </tbody>
         </table>

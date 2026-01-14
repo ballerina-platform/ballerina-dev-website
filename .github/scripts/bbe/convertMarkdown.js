@@ -135,8 +135,10 @@ const sleep = (timeout) => {
 
 // render code snippet
 const codeSnippetGenerator = (code, marginLeftMultiplier, lang) => {
+  const lines = code.split('\n');
+  const formattedCode = lines.map(line => line.replace(/</g, '&lt;').replace(/>/g, '&gt;')).join('\n');
   let output = `<pre style={{ marginLeft: "${marginLeftMultiplier * 8}px" }} 
-    className="p-3 rounded ${lang}"><code>${code}</code></pre>`;
+    className="p-3 rounded ${lang}"><code>${formattedCode}</code></pre>`;
 
   return output;
 };
@@ -346,6 +348,15 @@ md.renderer.rules.table_open = function(tokens, idx, options, env, self) {
 
 md.renderer.rules.table_close = function(tokens, idx, options, env, self) {
   return defaultTableCloseRenderer(tokens, idx, options, env, self) + '</div>';
+};
+
+// Remove inline styles from table cells
+md.renderer.rules.td_open = function(tokens, idx, options, env, self) {
+  return '<td>';
+};
+
+md.renderer.rules.th_open = function(tokens, idx, options, env, self) {
+  return '<th>';
 };
 
 // find previous/next bbes

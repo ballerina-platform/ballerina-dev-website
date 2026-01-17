@@ -378,9 +378,10 @@ Follow the steps below to use the generated API templates by running the cloned 
     ```
     $ bal run
     Compiling source
-            healthcare_samples/health.fhir.r4.uscore501.practitioner:1.0.0
+        wso2/cds_service:1.0.0
 
     Running executable
+
     ```
 
 4. Invoke the API to try it out.
@@ -561,9 +562,10 @@ isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRe
    ```
    $ bal run
    Compiling source
-           healthcare_samples/health.fhir.r4.uscore501.practitioner:1.0.0
+        wso2/cds_service:1.0.0
 
    Running executable
+
    ```
 
 4. Invoke the API to try it out.
@@ -617,28 +619,48 @@ isolated function connectDecisionSystemForBookImagingCenter(cds:CdsRequest cdsRe
 
    ```json
    {
-     "resourceType": "Practitioner",
-     "identifier": [
-       {
-         "system": "http://hl7.org/fhir/sid/us-npi",
-         "use": "official",
-         "value": "1234567890"
-       }
-     ],
-     "meta": {
-       "lastUpdated": "2021-08-24T10:10:10Z",
-       "profile": [
-         "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
-       ]
-     },
-     "name": [
-       {
-         "given": ["John", "Jacob"],
-         "prefix": ["Dr."],
-         "use": "official",
-         "family": "Smith"
-       }
-     ],
-     "id": "1"
+   "cards": [
+    {
+      "summary": "Prior authorization",
+      "detail": "Obtain prior authorization to avoid claim denials and patient financial liability. Contact: For questions, reach out to the insurance provider or billing department.",
+      "indicator": "critical",
+      "source": {
+        "label": "Static CDS Service Example",
+        "url": "https://example.com",
+        "icon": "https://example.com/img/icon-100px.png"
+      },
+      "suggestions": [
+        {
+          "label": "Kindly get pri-authorization"
+        }
+      ],
+      "selectionBehavior": "at-most-one",
+      "links": [
+        {
+          "label": "Prior-auth",
+          "url": "https://www.acmehealth.com/policies/lab-coverage",
+          "type": "absolute"
+        }
+      ]
+    },
+    {
+      "summary": "Alternative centers",
+      "detail": "Discuss alternative imaging centers with patients to enhance access and affordability. For assistance, reach out to the facility's scheduling department or insurance provider.",
+      "indicator": "info",
+      "source": {
+        "label": "Static CDS Service Example",
+        "url": "https://example.com",
+        "icon": "https://example.com/img/icon-100px.png"
+      },
+      "suggestions": [
+        {
+          "label": "The selected imaging center is far away from your location. Please select nearby one. Suggested: Asiri labs : Col - 3"
+        }
+      ],
+      "selectionBehavior": "any"
+    }
+    ],
+    "systemActions": []
    }
+
    ```

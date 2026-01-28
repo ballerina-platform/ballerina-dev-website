@@ -3,7 +3,7 @@
 _Authors_: @Nuvindu \
 _Reviewers_: @NipunaRanasinghe @ayeshLK @DimuthuMadushan \
 _Created_: 2024/08/11 \
-_Updated_: 2024/08/11 \
+_Updated_: 2026/01/19 \
 _Edition_: Swan Lake
 
 ## Introduction
@@ -35,9 +35,10 @@ The conforming implementation of the specification is released and included in t
     * 3.2 [Modify operation](#32-modify-operation)
     * 3.3 [ModifyDN operation](#33-modifydn-operation)
     * 3.4 [Compare operation](#34-compare-operation)
-    * 3.5 [Search operation](#35-search-operation)
-    * 3.6 [Search with type operation](#36-search-with-type-operation)
-    * 3.7 [Delete operation](#37-delete-operation)
+    * 3.5 [Get operation](#35-get-operation)
+    * 3.6 [Search operation](#36-search-operation)
+    * 3.7 [Search with type operation](#37-search-with-type-operation)
+    * 3.8 [Delete operation](#38-delete-operation)
 
 ## 1. Overview
 
@@ -200,7 +201,29 @@ Determines whether a given entry has a specified attribute value.
 remote isolated function compare(string dN, string attributeName, string assertionValue) returns boolean|Error;
 ```
 
-### 3.5 Search operation
+### 3.5 Get operation
+
+Gets information of an entry from the directory server.
+
+```ballerina
+# Gets information of an entry.
+#
+# + dN - The distinguished name of the entry
+# + attributes - Optional array of attribute names to retrieve. If not provided, attributes are determined based on the target type
+# + targetType - Default parameter use to infer the user specified type
+# + return - An entry result with the given type or else `ldap:Error`
+remote isolated function getEntry(string dN, string[]? attributes = (), typedesc<Entry> targetType = <>) returns targetType|Error;
+```
+
+The `attributes` parameter allows for selective attribute retrieval in two ways:
+
+1. **Explicit attributes**: When specific attribute names are provided in the array, only those attributes will be retrieved from LDAP and included in the response. This takes precedence over type-inferred attributes.
+
+2. **Type-inferred attributes**: When `attributes` is `nil` or not provided, the operation automatically extracts attribute names from the target record type definition. For example, if the target type is a record with fields `sn`, `cn`, and `objectClass`, only those three attributes will be retrieved. If the target type has a rest field (e.g., `record {|string...;|}`), all user attributes are retrieved since the exact attributes cannot be determined from the type.
+
+This feature is particularly useful for Active Directory scenarios where directory entries may have numerous attributes, allowing you to retrieve only the attributes you need, thereby improving performance and reducing network overhead.
+
+### 3.6 Search operation
 
 Returns a record containing search result entries and references that match the given search parameters.
 
@@ -210,11 +233,14 @@ Returns a record containing search result entries and references that match the 
 # + baseDn - The base distinguished name of the entry
 # + filter - The filter to be used in the search
 # + scope - The scope of the search
+# + attributes - Optional array of attribute names to retrieve. If not provided, all attributes are retrieved
 # + return - An `ldap:SearchResult` if successful, or else `ldap:Error`
-remote isolated function search(string baseDn, string filter, SearchScope scope) returns SearchResult|Error;
+remote isolated function search(string baseDn, string filter, SearchScope scope, string[]? attributes = ()) returns SearchResult|Error;
 ```
 
-### 3.6 Search with type operation
+The `attributes` parameter allows for selective attribute retrieval, which is particularly useful for Active Directory scenarios where you may want to retrieve only specific attributes rather than all attributes. When `attributes` is `nil` or an empty array, all user attributes are returned. When specific attribute names are provided, only those attributes will be included in the response.
+
+### 3.7 Search with type operation
 
 Returns a list of entries that match the given search parameters.
 
@@ -224,12 +250,21 @@ Returns a list of entries that match the given search parameters.
 # + baseDn - The base distinguished name of the entry
 # + filter - The filter to be used in the search
 # + scope - The scope of the search
+# + attributes - Optional array of attribute names to retrieve. If not provided, attributes are determined based on the target type
 # + targetType - Default parameter use to infer the user specified type
 # + return - An array of entries with the given type or else `ldap:Error`
-remote isolated function searchWithType(string baseDn, string filter, SearchScope scope, typedesc<record{}[]> targetType = <>) returns targetType|Error;
+remote isolated function searchWithType(string baseDn, string filter, SearchScope scope, string[]? attributes = (), typedesc<record {}[]> targetType = <>) returns targetType|Error;
 ```
 
-### 3.6.1 Search scope
+The `searchWithType` operation provides flexible selective attribute retrieval in two ways:
+
+1. **Explicit attributes**: When specific attribute names are provided in the `attributes` parameter, only those attributes will be retrieved from LDAP. This takes precedence over type-inferred attributes and allows you to retrieve a different set of attributes than what's defined in the target type.
+
+2. **Type-inferred attributes**: When `attributes` is `nil` or not provided, the operation automatically extracts the attribute names from the target record type definition and retrieves only those attributes from the LDAP directory. For example, if you specify a return type like `UserConfig[]` where `UserConfig` has fields `sn`, `cn`, and `objectClass`, only those three attributes will be retrieved from LDAP. If the target record type has a rest field, all user attributes are retrieved since the exact attributes cannot be determined from the type.
+
+This provides an efficient and type-safe way to perform selective attribute retrieval without explicitly specifying the attributes list in most cases, while still allowing explicit control when needed. This is particularly beneficial for Active Directory use cases where directory entries may have numerous attributes, improving performance and reducing network overhead.
+
+### 3.7.1 Search scope
 
 The `ldap:SearchScope` defines the part of the target subtree that should be included in the search.
 
@@ -251,11 +286,11 @@ public enum SearchScope {
 };
 ```
 
-### 3.6.2 Search filter
+### 3.7.2 Search filter
 
 Filters are essential for specifying the criteria used to locate entries in search requests. [Learn more](https://ldap.com/ldap-filters/).
 
-### 3.7 Delete operation
+### 3.8 Delete operation
 
 Removes an entry from a directory server.
 

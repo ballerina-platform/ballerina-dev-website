@@ -1,16 +1,16 @@
 title: Ballerina By Example Navigation
 url: learn/by-example
 sublinks:
-  - title: Language concepts
+  - title: Language Concepts
     id: 1
     sublinks:
       - title: Hello World
         id: 1
         sublinks:
-          - title: Hello world main
+          - title: Hello World main
             id: 1
             url: hello-world
-          - title: Hello world service
+          - title: Hello World service
             id: 2
             url: hello-world-service
       - title: Basics
@@ -505,7 +505,7 @@ sublinks:
           - title: XML subtyping
             id: 6
             url: xml-subtyping
-          - title: 'XML navigation '
+          - title: XML Navigation
             id: 7
             url: xml-navigation
           - title: XML templates and query
@@ -625,7 +625,7 @@ sublinks:
           - title: Identity
             id: 1
             url: identity
-          - title: 'Const and final '
+          - title: Const and Final
             id: 2
             url: const-and-final
           - title: Enumerations
@@ -1039,7 +1039,7 @@ sublinks:
       - title: GraphQL service
         id: 9
         sublinks:
-          - title: Hello world
+          - title: Hello World
             id: 1
             url: graphql-hello-world
           - title: Service as output object
@@ -1087,7 +1087,7 @@ sublinks:
           - title: Hierarchical resource paths
             id: 16
             url: graphql-hierarchical-resource-paths
-      - title: '  GraphQL service advanced'
+      - title: GraphQL Service Advanced
         id: 10
         sublinks:
           - title: Context object
@@ -2041,19 +2041,19 @@ sublinks:
       - title: Docker
         id: 1
         sublinks:
-          - title: Hello world
+          - title: Hello World
             id: 1
             url: docker-hello-world
       - title: Kubernetes
         id: 2
         sublinks:
-          - title: Hello world
+          - title: Hello World
             id: 1
             url: kubernetes-hello-world
       - title: AWS Lambda
         id: 3
         sublinks:
-          - title: Hello world
+          - title: Hello World
             id: 1
             url: aws-lambda-hello-world
           - title: Execution context
@@ -2068,7 +2068,7 @@ sublinks:
       - title: Azure Functions
         id: 4
         sublinks:
-          - title: Hello world
+          - title: Hello World
             id: 1
             url: azure-functions-hello-world
           - title: Timer trigger

@@ -1,10 +1,10 @@
 ---
 title: "Avinya Academy excels with Ballerina for effective education delivery"
-description: The Avinya Academy is a non-profit organization focused on aiding underprivileged individuals aged 17 to 22 who have opted out of traditional higher education. Its mission is to provide them with 21st-century skills and guide them toward practical training programs that foster the necessary knowledge and skills to seize employment opportunities. 
+description: The Avinya Foundation is a non-profit philanthropic organization dedicated to assisting underprivileged students aged 17 to 22 who have abandoned the traditional higher education route. Our mission is to provide them with the opportunity to achieve life success by equipping them with essential 21st-century skills. Furthermore, we guide them into skills training programs that pave the way to the world of work.
 keywords: ballerina, programming language, education, avinya foundation, academy
 permalink: /learn/case-studies/avinya-foundation
 active: avinya-foundation
-intro: The Avinya Academy is a non-profit organization focused on aiding underprivileged individuals aged 17 to 22 who have opted out of traditional higher education. Its mission is to provide them with 21st-century skills and guide them toward practical training programs that foster the necessary knowledge and skills to seize employment opportunities. 
+intro: The Avinya Foundation is a non-profit philanthropic organization dedicated to assisting underprivileged students aged 17 to 22 who have abandoned the traditional higher education route. Our mission is to provide them with the opportunity to achieve life success by equipping them with essential 21st-century skills. Furthermore, we guide them into skills training programs that pave the way to the world of work. 
 logo: '/images/home-page/user-logos/avinya-foundation.webp'
 user: 'avinya-foundation'
 ---
@@ -13,7 +13,7 @@ user: 'avinya-foundation'
 
 The project-based learning method used at the [Avinya Academy](https://avinyafoundation.org/2023/09/04/avinya-academy-bandaragama-embarks-on-its-second-journey-welcoming-126-new-students/) aims to equip these students with essential resources, enabling them to shape their futures, pursue their passions, and contribute meaningfully to the society through their unique talents.
 
-In the course of advancing its mission, the Avinya Academy found it essential to implement a digital platform to serve the critical function of systematically capturing and recording information about all stakeholders involved, encompassing not only students and instructors but also extending to the proficient management of various assets, business functions, and operations. Integrating such a technology solution is pivotal in ensuring the effectiveness of the [Avinya Foundation](https://avinyafoundation.org/) in managing its diverse stakeholders and optimizing its overall operational efficiency.
+In the course of advancing its mission, the Avinya Academy found it essential to implement a digital platform to serve the critical function of systematically capturing and recording information about all stakeholders involved, encompassing not only students and educators but also extending to the proficient management of various assets, business functions, and operations. Integrating such a technology solution is pivotal in ensuring the effectiveness of the [Avinya Foundation](https://avinyafoundation.org/) in managing its diverse stakeholders and optimizing its overall operational efficiency.
 
 ## Challenges
 
@@ -21,7 +21,7 @@ The Avinya Academy team faced several challenges, including those listed below.
 
 - **Creating a holistic platform:** 
 
-    The primary hurdle faced by the Avinya Academy was creating a comprehensive platform that could effectively connect students and teachers. This challenge necessitated the incorporation of critical functionalities, including the accurate recording of student attendance, the evaluation of student progress, providing access to learning materials, and facilitating efficient class scheduling. The foundation aimed to build a platform that addressed the current needs and anticipated future requirements, emphasizing the importance of fostering effective communication and collaboration between students and teachers.
+    The primary hurdle faced by the Avinya Academy was creating a comprehensive platform that could effectively connect students and educators. This challenge necessitated the incorporation of critical functionalities, including the accurate recording of student attendance, the evaluation of student progress, providing access to learning materials, facilitating efficient class scheduling, enrollements, alumni details maintaining and maintenance tracking . The foundation aimed to build a platform that addressed the current needs and anticipated future requirements, emphasizing the importance of fostering effective communication and collaboration between students and educators.
 
 - **Handling integrations seamlessly:** 
 
@@ -33,23 +33,23 @@ The Avinya Academy team faced several challenges, including those listed below.
 
 - **Implementing the data layer:**
 
-    The implementation of a robust data layer was a critical requirement on the technical front. This layer needed to encompass administrative, strategic, and operational data for different stakeholders, including students and tutors in making informative decisions. The challenge lay in creating a system that not only efficiently managed the diverse data types but also ensured its accessibility and security, catering to the distinct needs of each stakeholder group.
+    The implementation of a robust data layer was a critical requirement on the technical front. This layer needed to encompass administrative, strategic, and operational data for different stakeholders, including students and educators in making informative decisions. The challenge lay in creating a system that not only efficiently managed the diverse data types but also ensured its accessibility and security, catering to the distinct needs of each stakeholder group.
 
 - **Implementing the cloud architecture:**
 
-    Implementing a resilient cloud-based architecture demanded a balance between robustness, scalability, and concurrency. Meeting the specific requirement of serving concurrent requests from students, trainers, and administrative staff added an additional layer of complexity. Successfully overcoming this challenge was pivotal in establishing a reliable and scalable foundation for the organization's operations.
+    Implementing a resilient cloud-based architecture demanded a balance between robustness, scalability, and concurrency. Meeting the specific requirement of serving concurrent requests from students, educators, and administrative staff added an additional layer of complexity. Successfully overcoming this challenge was pivotal in establishing a reliable and scalable foundation for the organization's operations.
 
 - **Adopting security and user management best practices:**
 
-    The Avinya Academy faced the imperative of implementing robust security measures to safeguard sensitive data, including the personal details of students and teachers. Adhering to proper user management practices and procedures was crucial for maintaining stringent security standards. This challenge underscored the importance of ensuring data privacy and protecting user information within the system.
+    The Avinya Academy faced the imperative of implementing robust security measures to safeguard sensitive data, including the personal details of students and educators. Adhering to proper user management practices and procedures was crucial for maintaining stringent security standards. This challenge underscored the importance of ensuring data privacy and protecting user information within the system.
 
 - **Enabling observability and analytics:**
 
-    Addressing the challenge of enabling observability and analytics involved monitoring the system's performance via logging and troubleshooting errors and generating comprehensive reports and dashboards. This was essential for analyzing business performance concerning students and tutors. Conquering this challenge required the implementation of effective tools and practices to gather insights and optimize the platform's functionality based on observed patterns and user interactions.
+    Addressing the challenge of enabling observability and analytics involved monitoring the system's performance via logging and troubleshooting errors and generating comprehensive reports and dashboards. This was essential for analyzing business performance concerning students and educators. Conquering this challenge required the implementation of effective tools and practices to gather insights and optimize the platform's functionality based on observed patterns and user interactions.
 
 ## Solution
 
-The backend of the solution for Avinya Academy comprises a modular architecture featuring three main modules: Finance, Campus (PCTI - project, class, teacher, instance), and Admissions. Also, there will be separate modules for the functions of attendance (for staff and students), admission (for student applications), asset management (for laptops, mobile phones, other equipment, etc.), managing day-to-day classroom activities (pick tee), and viewing reports. 
+The backend of the solution for Avinya Academy comprises a modular architecture featuring five main modules: Finance, Campus (PCTI - project, class, teacher, instance), Admissions, Alumni and Maintenance. Also, there will be separate modules for the functions of attendance (for staff and students), admission (for student applications), asset management (for laptops, mobile phones, other equipment, etc.), managing day-to-day classroom activities (pick tee), and viewing reports. 
 
 Ballerina's concurrency model and built-in understanding of networked application patterns are leveraged to create a robust Backend for Frontend (BFF) services, which act as an intermediary layer facilitating the communication between the Flutter frontend and the core backend services. These BFFs, written in Ballerina, are optimized for specific user interface requirements, ensuring a seamless and efficient user experience.
 

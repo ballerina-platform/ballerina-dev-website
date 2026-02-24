@@ -1,15 +1,15 @@
 {
-  "version": "1.2.66",
+  "version": "1.2.67",
   "release-date": "2026-02-10",
-  "windows-installer": "ballerina-windows-installer-x64-1.2.66.msi",
+  "windows-installer": "ballerina-windows-installer-x64-1.2.67.msi",
   "windows-installer-size": "148mb",
-  "linux-installer": "ballerina-linux-installer-x64-1.2.66.deb",
+  "linux-installer": "ballerina-linux-installer-x64-1.2.67.deb",
   "linux-installer-size": "145mb",
-  "macos-installer": "ballerina-macos-installer-x64-1.2.66.pkg",
+  "macos-installer": "ballerina-macos-installer-x64-1.2.67.pkg",
   "macos-installer-size": "165mb",
-  "rpm-installer": "ballerina-linux-installer-x64-1.2.66.rpm",
+  "rpm-installer": "ballerina-linux-installer-x64-1.2.67.rpm",
   "rpm-installer-size": "168mb",
-  "other-artefacts": ["ballerina-1.2.66.zip", "ballerina-1.2.66.vsix"],
-  "api-docs": "ballerina-api-docs-1.2.66.zip",
-  "release-notes": "ballerina-release-notes-1.2.66.md"
+  "other-artefacts": ["ballerina-1.2.67.zip", "ballerina-1.2.67.vsix"],
+  "api-docs": "ballerina-api-docs-1.2.67.zip",
+  "release-notes": "ballerina-release-notes-1.2.67.md"
 }

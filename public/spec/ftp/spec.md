@@ -23,6 +23,7 @@ The conforming implementation of the specification is released and included in t
   - [2. Configurations](#2-configurations)
     - [2.1. Security Configurations](#21-security-configurations)
     - [2.2. FileInfo](#22-fileinfo)
+    - [2.3. Error Types](#23-error-types)
   - [3. Client](#3-client)
     - [3.1. Configurations](#31-configurations)
     - [3.2. Initialization](#32-initialization)
@@ -146,6 +147,52 @@ public type FileInfo record {|
     # A "friendly path" is a path, which can be accessed without a password
     string friendlyURI;
 |};
+```
+### 2.3. Error Types
+The FTP module provides a hierarchy of error types for better error handling and more precise error identification.
+
+* `Error` - The base error type for all FTP-related errors.
+```ballerina
+public type Error distinct error;
+```
+
+* `ConnectionError` - Represents errors that occur when connecting to the FTP/SFTP server. This includes network failures, host unreachable, connection refused, etc.
+```ballerina
+# Represents an error that occurs when connecting to the FTP/SFTP server.
+public type ConnectionError distinct Error;
+```
+
+* `FileNotFoundError` - Represents errors that occur when a requested file or directory is not found on the remote server.
+```ballerina
+public type FileNotFoundError distinct Error;
+```
+
+* `FileAlreadyExistsError` - Represents errors that occur when attempting to create a file or directory that already exists.
+```ballerina
+public type FileAlreadyExistsError distinct Error;
+```
+
+* `InvalidConfigError` - Represents errors that occur when FTP/SFTP configuration is invalid (e.g., invalid port numbers, invalid regex patterns, invalid timeout values).
+```ballerina
+public type InvalidConfigError distinct Error;
+```
+
+* `ServiceUnavailableError` - Represents errors that occur when the FTP/SFTP service is temporarily unavailable. This is a transient error indicating the operation may succeed on retry. Common causes include server overload (FTP code 421), connection issues (425, 426), temporary file locks (450), or server-side processing errors (451). This error type is designed for use with retry and circuit breaker patterns.
+```ballerina
+public type ServiceUnavailableError distinct Error;
+```
+
+All specific error types are subtypes of the base `Error` type, allowing for both specific and general error handling:
+```ballerina
+// Handle specific error types
+ftp:Client|ftp:Error result = new(config);
+if result is ftp:ConnectionError {
+    // Handle connection failures specifically
+} else if result is ftp:ServiceUnavailableError {
+    // Transient error - retry the operation
+} else if result is ftp:Error {
+    // Handle any other FTP error
+}
 ```
 ## 3. Client
 The `ftp:Client` connects to FTP server and performs various operations on the files. It supports reading files in multiple formats (bytes, text, JSON, XML, CSV) with streaming support for large files, writing files in multiple formats, and file management operations including create, delete, rename, move, copy, and list.

@@ -3,7 +3,7 @@
 _Authors_: @daneshk @MadhukaHarith92 @TharmiganK  
 _Reviewers_: @daneshk @ThisaruGuruge  
 _Created_: 2021/11/15  
-_Updated_: 2025/10/08  
+_Updated_: 2026/02/17
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -32,10 +32,16 @@ The conforming implementation of the specification is released and included in t
    * 4.3. [Child logger](#43-child-logger)
      * 4.3.1. [Loggers with additional context](#431-loggers-with-additional-context)
      * 4.3.2. [Loggers with unique logging configuration](#432-loggers-with-unique-logging-configuration)
-5. [Sensitive data masking](#5-sensitive-data-masking)
-   * 5.1. [Sensitive data annotation](#51-sensitive-data-annotation)
-   * 5.2. [Masked string function](#52-masked-string-function)
-   * 5.3. [Type-based masking](#53-type-based-masking)
+5. [Runtime log level modification](#5-runtime-log-level-modification)
+   * 5.1. [Logger level APIs](#51-logger-level-apis)
+   * 5.2. [Logger identification](#52-logger-identification)
+   * 5.3. [Logger registry](#53-logger-registry)
+   * 5.4. [Module log levels](#54-module-log-levels)
+   * 5.5. [Child logger level inheritance](#55-child-logger-level-inheritance)
+6. [Sensitive data masking](#6-sensitive-data-masking)
+   * 6.1. [Sensitive data annotation](#61-sensitive-data-annotation)
+   * 6.2. [Masked string function](#62-masked-string-function)
+   * 6.3. [Type-based masking](#63-type-based-masking)
 
 ## 1. Overview
 
@@ -284,7 +290,7 @@ public type Logger isolated object {
    public isolated function printDebug(string|PrintableRawTemplate msg, error? 'error = (), error:StackFrame[]? stackTrace = (), *KeyValues keyValues);
 
    # Prints info logs.
-   # 
+   #
    # + msg - The message to be logged
    # + 'error - The error struct to be logged
    # + stackTrace - The error stack trace to be logged
@@ -292,7 +298,7 @@ public type Logger isolated object {
    public isolated function printInfo(string|PrintableRawTemplate msg, error? 'error = (), error:StackFrame[]? stackTrace = (), *KeyValues keyValues);
 
    # Prints warn logs.
-   # 
+   #
    # + msg - The message to be logged
    # + 'error - The error struct to be logged
    # + stackTrace - The error stack trace to be logged
@@ -300,7 +306,7 @@ public type Logger isolated object {
    public isolated function printWarn(string|PrintableRawTemplate msg, error? 'error = (), error:StackFrame[]? stackTrace = (), *KeyValues keyValues);
 
    # Prints error logs.
-   # 
+   #
    # + msg - The message to be logged
    # + 'error - The error struct to be logged
    # + stackTrace - The error stack trace to be logged
@@ -312,6 +318,20 @@ public type Logger isolated object {
    # + keyValues - The key-value pairs to be added to the logger context
    # + return - A new Logger instance with the given key-values added to its context
    public isolated function withContext(*KeyValues keyValues) returns Logger|error;
+
+   # Gets the effective log level of this logger.
+   # For root and custom loggers, returns the explicitly set level.
+   # For child loggers, returns the inherited level from the parent logger.
+   #
+   # + return - The effective log level
+   public isolated function getLevel() returns Level;
+
+   # Sets the log level of this logger at runtime.
+   # Returns an error if the operation is not supported (e.g., on child loggers).
+   #
+   # + level - The new log level to set
+   # + return - An error if the operation is not supported, nil on success
+   public isolated function setLevel(Level level) returns error?;
 };
 ```
 
@@ -362,6 +382,11 @@ The following type defines the configuration options for a Ballerina logger:
 ```ballerina
 # Configuration for the Ballerina logger
 public type Config record {|
+    # Optional unique identifier for this logger. If provided, this ID is module-prefixed
+    # to produce a fully qualified ID: <org>/<module>:<user_id> (e.g., "myorg/payment:payment-service").
+    # If not provided, a readable identifier is auto-generated using the pattern:
+    # <module>:<function> for the first logger, <module>:<function>-<counter> for subsequent ones.
+    string id?;
     # Log format to use. Default is the logger format configured in the module level
     LogFormat format = format;
     # Log level to use. Default is the logger level configured in the module level
@@ -384,11 +409,159 @@ log:Config auditLogConfig = {
     destinations: [{path: "./logs/audit.log"}]
 };
 
-log:Logger auditLogger = log:fromConfig(auditLogConfig);
+log:Logger auditLogger = check log:fromConfig(auditLogConfig);
 auditLogger.printInfo("Hello World from the audit logger!");
 ```
 
-## 5. Sensitive data masking
+To create a logger with a unique identifier that allows runtime log level modification:
+
+```ballerina
+log:Logger auditLogger = check log:fromConfig(id = "audit-logger", level = log:INFO, format = log:JSON_FORMAT);
+auditLogger.printInfo("Hello World from the audit logger!");
+```
+
+> **Note:** The `id` must be unique across all loggers in the application. If a logger with the same ID already exists, an error will be returned.
+
+## 5. Runtime log level modification
+
+The Ballerina log module supports runtime log level modification, enabling developers and the ICP (Integration Control Panel) to dynamically adjust log levels without restarting the application.
+
+### 5.1. Logger level APIs
+
+Two methods are available on the `Logger` interface for runtime level management:
+
+- `getLevel()` returns the effective log level. For root and custom loggers, this is the explicitly set level. For child loggers, this is the inherited level from the parent.
+- `setLevel()` updates the log level at runtime. Returns an error on child loggers (which always inherit from their parent).
+
+```ballerina
+log:Logger logger = check log:fromConfig(id = "payment-service", level = log:INFO);
+
+// Get current level
+log:Level currentLevel = logger.getLevel(); // INFO
+
+// Change level at runtime
+check logger.setLevel(log:DEBUG);
+logger.getLevel(); // DEBUG
+```
+
+### 5.2. Logger identification
+
+All loggers created via `fromConfig` are registered in the logger registry and are identifiable by a unique ID.
+
+**User-provided IDs** are module-prefixed to produce a fully qualified ID of the form `<org>/<module>:<user_id>`:
+
+```ballerina
+// In module "myorg/payment":
+log:Logger paymentLogger = check log:fromConfig(id = "payment-service", level = log:INFO);
+// Registered as: "myorg/payment:payment-service"
+```
+
+**Auto-generated IDs** are created when no `id` is provided, using the module name and caller function name:
+
+- `<module>:<functionName>` for the first logger in a function
+- `<module>:<functionName>-<counter>` for subsequent loggers in the same function
+
+```ballerina
+// In function "processOrder" of module "myorg/payment":
+log:Logger logger1 = check log:fromConfig(level = log:DEBUG);
+// Registered as: "myorg/payment:processOrder"
+
+log:Logger logger2 = check log:fromConfig(level = log:DEBUG);
+// Registered as: "myorg/payment:processOrder-2"
+```
+
+Stack frame inspection is performed only once at logger creation time — there is no runtime performance impact on logging operations.
+
+> **Note:** The `id` must be unique across all loggers in the application. If a logger with the same ID already exists, an error is returned.
+
+### 5.3. Logger registry
+
+The log module maintains an internal logger registry that tracks all registered loggers. Access to the registry is provided via the `LoggerRegistry` class, obtained by calling `getLoggerRegistry()`.
+
+The registry tracks:
+- The root logger (registered with the well-known ID `"root"`)
+- All loggers created via `fromConfig` (with module-prefixed or auto-generated IDs)
+
+Child loggers (created via `withContext`) are **not** registered in the registry.
+
+```ballerina
+# Provides access to the logger registry for discovering and managing registered loggers.
+public isolated class LoggerRegistry {
+
+    # Returns the IDs of all registered loggers.
+    # + return - An array of logger IDs
+    public isolated function getIds() returns string[];
+
+    # Returns a logger by its registered ID.
+    # + id - The logger ID to look up
+    # + return - The Logger instance if found, nil otherwise
+    public isolated function getById(string id) returns Logger?;
+}
+
+# Returns the logger registry for discovering and managing registered loggers.
+# + return - The LoggerRegistry instance
+public isolated function getLoggerRegistry() returns LoggerRegistry;
+```
+
+Usage example:
+
+```ballerina
+log:LoggerRegistry registry = log:getLoggerRegistry();
+
+// List all registered logger IDs
+string[] ids = registry.getIds();
+// e.g., ["root", "myorg/payment:payment-service", "myorg/payment:init"]
+
+// Look up a logger by ID and change its level
+log:Logger? logger = registry.getById("myorg/payment:payment-service");
+if logger is log:Logger {
+    check logger.setLevel(log:DEBUG);
+}
+```
+
+### 5.4. Module log levels
+
+Per-module log levels configured in `Config.toml` are applied at the start of the program and filter log statements from each module statically. Module log levels are **not** registered in the logger registry and cannot be modified at runtime.
+
+```toml
+[ballerina.log]
+level = "INFO"
+
+[[ballerina.log.modules]]
+name = "myorg/payment"
+level = "DEBUG"
+```
+
+When code in `myorg/payment` logs a message, the root logger checks the configured module level (DEBUG) before deciding whether to emit the log, regardless of the root logger's own level (INFO). This check happens on the hot logging path using a lock-free lookup.
+
+> **Note:** Module log levels are a static, configuration-time feature. To change a module's effective log level at runtime, use a logger created via `fromConfig` and control it through the `LoggerRegistry`.
+
+### 5.5. Child logger level inheritance
+
+Child loggers (created via `withContext`) always inherit their log level from the parent logger:
+
+- `getLevel()` on a child logger always delegates to the parent's `getLevel()`. When the parent's level changes, the child's effective level changes automatically.
+- `setLevel()` on a child logger returns an unsupported operation error. To change a child's effective level, change the parent's level instead.
+- Child loggers are **not** registered in the logger registry.
+- Grandchild loggers chain correctly — each delegates `getLevel()` up the chain to the nearest root/custom logger.
+
+```ballerina
+log:Logger parent = check log:fromConfig(id = "payment-service", level = log:INFO);
+log:Logger child = check parent.withContext(component = "order-handler");
+
+// Child inherits parent's level
+child.getLevel(); // INFO
+
+// Change parent level — child follows
+check parent.setLevel(log:DEBUG);
+child.getLevel(); // DEBUG
+
+// setLevel() on child returns an error
+error? result = child.setLevel(log:ERROR);
+// result is error("Unsupported operation: cannot set log level on a child logger...")
+```
+
+## 6. Sensitive data masking
 
 The Ballerina log module provides the capability to mask sensitive data in log messages. This is crucial for maintaining data privacy and security, especially when dealing with personally identifiable information (PII) or other sensitive data.
 
@@ -408,7 +581,7 @@ The Ballerina log module provides the capability to mask sensitive data in log m
 > log:Logger secureLogger = log:fromConfig(secureConfig);
 > ```
 
-### 5.1. Sensitive data annotation
+### 6.1. Sensitive data annotation
 
 The `@log:Sensitive` annotation can be used to mark fields in a record as sensitive. When such fields are logged, their values will be excluded or masked to prevent exposure of sensitive information.
 
@@ -481,7 +654,7 @@ Output:
 time=2025-08-20T09:20:45.456+05:30 level=INFO module="" message="user details" user={"id":"U001","password":"****","ssn":"1****9","name":"John Doe"}
 ```
 
-### 5.2. Masked string function
+### 6.2. Masked string function
 
 The `log:toMaskedString()` function can be used to obtain the masked version of a value. This is useful when developers want to implement custom loggers and need to mask sensitive data.
 
@@ -509,7 +682,7 @@ Output:
 {"id":"U001","name":"John Doe"}
 ```
 
-### 5.3. Type-based masking
+### 6.3. Type-based masking
 
 The masking is based on the type of the value. Since, Ballerina is a structurally typed language, same value can be assigned to different typed variables. So the masking is based on the actual value type which is determined at the value creation time. The original type information can be extracted using the `typeof` operator.
 

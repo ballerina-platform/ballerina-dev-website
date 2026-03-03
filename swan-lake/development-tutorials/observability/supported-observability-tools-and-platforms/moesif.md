@@ -62,6 +62,7 @@ After you log into Moesif Portal, get your `Moesif Application ID` during the on
    metricsReporterClientTimeout = 10000         # Optional Configuration. Default value is 10000
    isTraceLoggingEnabled = false                # Optional Configuration. Default value is false
    isPayloadLoggingEnabled = false              # Optional Configuration. Default value is false
+   idleTimePublishingEnabled = false            # Optional Configuration. Default value is false
    
    # Additional attributes for metrics
    [ballerinax.moesif.additionalAttributes]
@@ -86,6 +87,7 @@ The table below provides the descriptions of each configuration option and possi
 | ballerinax.moesif.metricsReporterClientTimeout | Timeout (in milliseconds) for the metrics reporter client requests.         | `10000`       | Any positive integer value           |
 | ballerinax.moesif.isTraceLoggingEnabled        | Enables or disables trace logging for debugging purposes.                   | `false`       | `true` or `false`                    |
 | ballerinax.moesif.isPayloadLoggingEnabled      | Enables or disables payload logging for debugging purposes.                 | `false`       | `true` or `false`                    |
+| ballerinax.moesif.idleTimePublishingEnabled    | Enables or disables publishing metrics in idle time.                        | `false`       | `true` or `false`                    |
 | ballerinax.moesif.additionalAttributes         | Additional key-value attributes to include with metrics reporting.          | `none`        | Any valid set of key-value pairs.<br/>e.g., `key1="value1", key2="value2"` |
 
 These configurations enable traces and metrics publishing for the Ballerina application and configure the Moesif exporter.

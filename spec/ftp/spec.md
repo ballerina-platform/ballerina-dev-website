@@ -170,6 +170,7 @@ public type Error distinct error;
 
 * `ConnectionError` - Represents errors that occur when connecting to the FTP/SFTP server. This includes network failures, host unreachable, connection refused, etc.
 ```ballerina
+# Represents an error that occurs when connecting to the FTP/SFTP server.
 public type ConnectionError distinct Error;
 ```
 
@@ -188,32 +189,9 @@ public type FileAlreadyExistsError distinct Error;
 public type InvalidConfigError distinct Error;
 ```
 
-* `ServiceUnavailableError` - Represents errors that occur when the FTP/SFTP service is temporarily unavailable. This is a transient error indicating the operation may succeed on retry. Common causes include server overload (FTP code 421), connection issues (425, 426), temporary file locks (450), or server-side processing errors (451).
+* `ServiceUnavailableError` - Represents errors that occur when the FTP/SFTP service is temporarily unavailable. This is a transient error indicating the operation may succeed on retry. Common causes include server overload (FTP code 421), connection issues (425, 426), temporary file locks (450), or server-side processing errors (451). This error type is designed for use with retry and circuit breaker patterns.
 ```ballerina
 public type ServiceUnavailableError distinct Error;
-```
-
-* `ContentBindingError` - Represents errors that occur when file content cannot be converted to the expected type. This includes JSON/XML parsing errors, CSV format errors, and record type binding failures. This error type is applicable to both Client operations and Listener callbacks. When used with the Listener, if an `onError` remote function is defined in the service, it will be invoked with this error type.
-```ballerina
-public type ContentBindingError distinct Error<ContentBindingErrorDetail>;
-```
-
-The `ContentBindingError` includes a detail record providing additional context:
-```ballerina
-public type ContentBindingErrorDetail record {|
-    string filePath?;   // The file path that caused the error
-    byte[] content?;    // The raw file content as bytes that failed to bind
-|};
-```
-
-* `AllRetryAttemptsFailedError` - Represents an error that occurs when all retry attempts have been exhausted. This error wraps the last failure encountered during retry attempts.
-```ballerina
-public type AllRetryAttemptsFailedError distinct Error;
-```
-
-* `CircuitBreakerOpenError` - Error returned when the circuit breaker is in OPEN state. This indicates the FTP server is unavailable and requests are being blocked to prevent cascade failures. This is a distinct subtype of `ServiceUnavailableError`.
-```ballerina
-public type CircuitBreakerOpenError distinct ServiceUnavailableError;
 ```
 
 All specific error types are subtypes of the base `Error` type, allowing for both specific and general error handling:
@@ -222,34 +200,12 @@ All specific error types are subtypes of the base `Error` type, allowing for bot
 ftp:Client|ftp:Error result = new(config);
 if result is ftp:ConnectionError {
     // Handle connection failures specifically
-} else if result is ftp:CircuitBreakerOpenError {
-    // Circuit breaker is open - implement fallback logic
-} else if result is ftp:AllRetryAttemptsFailedError {
-    // All retries exhausted - consider alerting
 } else if result is ftp:ServiceUnavailableError {
     // Transient error - retry the operation
 } else if result is ftp:Error {
     // Handle any other FTP error
 }
 ```
-### 2.4. Retry Configuration
-* `RetryConfig` record represents the configuration for automatic retries of operations.
-```ballerina
-# Retry configuration for FTP operations
-#
-# + count - Maximum number of retry attempts 
-# + interval - Initial retry interval in seconds 
-# + backOffFactor - Multiplier for exponential backoff 
-# + maxWaitInterval - Maximum wait interval between retries in seconds
-public type RetryConfig record {|
-    int count = 3;
-    decimal interval = 1.0;
-    decimal backOffFactor = 2.0;
-    decimal maxWaitInterval = 30.0;
-|};
-```
-The retry mechanism uses exponential backoff to progressively increase wait times between retry attempts.
-
 ## 3. Client
 The `ftp:Client` connects to FTP server and performs various operations on the files. It supports reading files in multiple formats (bytes, text, JSON, XML, CSV) with streaming support for large files, writing files in multiple formats, and file management operations including create, delete, rename, move, copy, and list.
 ### 3.1. Configurations

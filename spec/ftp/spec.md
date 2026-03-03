@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @dilanSachi @Bhashinee    
 _Reviewers_: @shafreenAnfar @Bhashinee  
 _Created_: 2020/10/28   
-_Updated_: 2025/11/20  
+_Updated_: 2026/02/05  
 _Edition_: Swan Lake    
 
 ## Introduction
@@ -24,19 +24,31 @@ The conforming implementation of the specification is released and included in t
     - [2.1. Security Configurations](#21-security-configurations)
     - [2.2. FileInfo](#22-fileinfo)
     - [2.3. Error Types](#23-error-types)
+    - [2.4. Retry Configuration](#24-retry-configuration)
   - [3. Client](#3-client)
     - [3.1. Configurations](#31-configurations)
     - [3.2. Initialization](#32-initialization)
       - [3.2.1. Insecure Client](#321-insecure-client)
       - [3.2.2. Secure Client](#322-secure-client)
+      - [3.2.3. Client with Retry Configuration](#323-client-with-retry-configuration)
     - [3.3. Functions](#33-functions)
+    - [3.4. Circuit Breaker](#34-circuit-breaker)
+      - [State Machine](#state-machine)
+      - [Configuration](#configuration)
+      - [Usage Example](#usage-example)
   - [4. Listener](#4-listener)
     - [4.1. Configurations](#41-configurations)
-    - [4.2. Initialization](#42-initialization)
-      - [4.2.1. Insecure Listener](#421-insecure-listener)
-      - [4.2.2. Secure Listener](#422-secure-listener)
-      - [4.3. Usage](#43-usage)
-      - [4.3.1. Format-Specific Listener Callbacks](#431-format-specific-listener-callbacks)
+    - [4.2. Service Configuration Annotation](#42-service-configuration-annotation)
+    - [4.3. Initialization](#43-initialization)
+      - [4.3.1. Insecure Listener](#431-insecure-listener)
+      - [4.3.2. Secure Listener](#432-secure-listener)
+    - [4.4. Usage](#44-usage)
+      - [4.4.1. Service-Level Monitoring Configuration](#441-service-level-monitoring-configuration)
+      - [4.4.2. Format-Specific Listener Callbacks](#442-format-specific-listener-callbacks)
+      - [4.4.3. Post-Processing Actions](#443-post-processing-actions)
+    - [4.5. Distributed Coordination](#45-distributed-coordination)
+      - [4.5.1. Coordination Configuration](#451-coordination-configuration)
+      - [4.5.2. Coordination Mechanism](#452-coordination-mechanism)
   - [5. Caller](#5-caller)
     - [5.1. Initialization](#51-initialization)
     - [5.2. Functions](#52-functions)
@@ -215,6 +227,10 @@ public type ClientConfiguration record {|
     boolean userDirIsRoot = false;
     # If set to `true`, allows missing or null values when reading files in structured formats
     boolean laxDataBinding = false;
+    # Retry configuration for read operations
+    RetryConfig retryConfig?;
+    # Circuit breaker configuration to prevent cascade failures
+    CircuitBreakerConfig circuitBreaker?;
 |};
 ```
 * InputContent record represents the configurations for the input given for `put` and `append` operations.
@@ -277,6 +293,26 @@ ftp:ClientConfiguration ftpConfig = {
     },
     userDirIsRoot: true
 };
+```
+#### 3.2.3. Client with Retry Configuration
+A client can be initialized with retry configuration to automatically retry failed read operations:
+```ballerina
+ftp:ClientConfiguration ftpConfig = {
+    protocol: ftp:FTP,
+    host: "<The FTP host>",
+    port: <The FTP port>,
+    retryConfig: {
+        count: 5,              // Retry up to 5 times
+        interval: 2.0,         // Start with 2 second wait
+        backOffFactor: 1.5,    // Increase wait by 1.5x each time
+        maxWaitInterval: 20.0  // Cap wait time at 20 seconds
+    }
+};
+
+ftp:Client ftpClient = check new(ftpConfig);
+
+// Non-streaming read operations (getBytes, getText, getJson, getXml, getCsv) will automatically retry on failure
+byte[] bytes = check ftpClient->getBytes("/path/to/file.txt");
 ```
 ### 3.3. Functions
 * FTP Client API can be used to put files on the FTP server. For this, the `put()` method can be used.
@@ -434,7 +470,7 @@ remote isolated function getBytes(string path) returns byte[]|Error;
 # + return - File content as text, or an error if the operation fails
 remote isolated function getText(string path) returns string|Error;
 ```
-* `getJson()` can be used to read a file as JSON data.
+* `getJson()` can be used to read a file as JSON data. Returns `ContentBindingError` if the file content cannot be parsed as JSON or bound to the target type.
 ```ballerina
 # Read a file as JSON data.
 # ```ballerina
@@ -443,10 +479,10 @@ remote isolated function getText(string path) returns string|Error;
 #
 # + path - Location of the file on the server
 # + targetType - What format should the data have? (JSON, structured data, or a custom format)
-# + return - The file content as JSON or an error if the operation fails
+# + return - The file content as JSON, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
 remote isolated function getJson(string path, typedesc<json|record {}> targetType = <>) returns targetType|Error;
 ```
-* `getXml()` can be used to read a file as XML data.
+* `getXml()` can be used to read a file as XML data. Returns `ContentBindingError` if the file content cannot be parsed as XML or bound to the target type.
 ```ballerina
 # Read a file as XML data.
 # ```ballerina
@@ -455,10 +491,10 @@ remote isolated function getJson(string path, typedesc<json|record {}> targetTyp
 #
 # + path - Location of the file on the server
 # + targetType - What format should the data have? (XML, structured data, or a custom format)
-# + return - The file content as XML or an error if the operation fails
+# + return - The file content as XML, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
 remote isolated function getXml(string path, typedesc<xml|record {}> targetType = <>) returns targetType|Error;
 ```
-* `getCsv()` can be used to read a CSV file from the server.
+* `getCsv()` can be used to read a CSV file from the server. Returns `ContentBindingError` if the file content cannot be parsed or bound to the target type.
 ```ballerina
 # Read a CSV (comma-separated) file from the server.
 # The first row of the CSV file should contain column names (headers).
@@ -468,7 +504,7 @@ remote isolated function getXml(string path, typedesc<xml|record {}> targetType 
 #
 # + path - Location of the CSV file on the server
 # + targetType - What format should the data have? (Table or structured records)
-# + return - The CSV file content as a table or records, or an error if the operation fails
+# + return - The CSV file content as a table or records, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
 remote isolated function getCsv(string path, typedesc<string[][]|record {}[]> targetType = <>) returns targetType|Error;
 ```
 * `getBytesAsStream()` can be used to read file content as a stream of byte chunks.
@@ -617,12 +653,93 @@ remote isolated function list(string path) returns FileInfo[]|Error;
 #            an error occurred while checking the path
 remote isolated function isDirectory(string path) returns boolean|Error;
 ```
+
+### 3.4. Circuit Breaker
+The circuit breaker pattern prevents cascade failures by temporarily blocking requests to an FTP server experiencing issues. When failures reach a threshold, the circuit "opens" and subsequent requests fail fast with `CircuitBreakerOpenError` without attempting the actual operation.
+
+#### State Machine
+The circuit breaker operates in three states:
+- **CLOSED**: Normal operation. Requests are allowed and failures are tracked.
+- **OPEN**: Circuit is tripped. All requests are rejected immediately with `CircuitBreakerOpenError`.
+- **HALF_OPEN**: After the reset time elapses, one trial request is allowed. Success returns to CLOSED; failure returns to OPEN.
+
+#### Configuration
+* CircuitBreakerConfig record contains the circuit breaker settings.
+```ballerina
+public type CircuitBreakerConfig record {|
+    # Rolling window configuration for failure tracking
+    RollingWindow rollingWindow = {};
+    # Failure ratio threshold (0.0 to 1.0) that trips the circuit
+    float failureThreshold = 0.5;
+    # Time in seconds to wait before transitioning from OPEN to HALF_OPEN
+    decimal resetTime = 30;
+    # Categories of failures that count towards tripping the circuit
+    FailureCategory[] failureCategories = [CONNECTION_ERROR, TRANSIENT_ERROR];
+|};
+```
+* RollingWindow record configures the sliding window for tracking failures.
+```ballerina
+public type RollingWindow record {|
+    # Minimum number of requests in the window before the circuit can trip
+    int requestVolumeThreshold = 10;
+    # Time window in seconds for tracking failures
+    decimal timeWindow = 60;
+    # Size of each time bucket in seconds (timeWindow / bucketSize = number of buckets)
+    decimal bucketSize = 10;
+|};
+```
+* FailureCategory enum specifies which types of failures count towards tripping the circuit.
+```ballerina
+public enum FailureCategory {
+    # Connection failures (network issues, timeouts)
+    CONNECTION_ERROR,
+    # Authentication failures (invalid credentials)
+    AUTHENTICATION_ERROR,
+    # Server disconnection during operation
+    TRANSIENT_ERROR,
+    # All errors count as failures
+    ALL_ERRORS
+}
+```
+#### Usage Example
+```ballerina
+ftp:ClientConfiguration ftpConfig = {
+    protocol: ftp:FTP,
+    host: "ftp.example.com",
+    port: 21,
+    auth: {
+        credentials: {username: "user", password: "pass"}
+    },
+    circuitBreaker: {
+        failureThreshold: 0.5,
+        resetTime: 30,
+        rollingWindow: {
+            requestVolumeThreshold: 5,
+            timeWindow: 60,
+            bucketSize: 10
+        },
+        failureCategories: [ftp:CONNECTION_ERROR, ftp:TRANSIENT_ERROR]
+    }
+};
+
+ftp:Client ftpClient = check new(ftpConfig);
+
+// Operations will fail fast with CircuitBreakerOpenError when circuit is open
+byte[]|ftp:Error content = ftpClient->getBytes("/file.txt");
+if content is ftp:CircuitBreakerOpenError {
+    // Handle circuit breaker open state - server is unavailable
+}
+```
+
 ## 4. Listener
 The `ftp:Listener` is used to listen to a remote FTP location and trigger a `WatchEvent` type of event when new
 files are added to or deleted from the directory. The `onFileChange` function is invoked when a new file is added
 and/or deleted.
 ### 4.1. Configurations
 * When initializing the `ftp:Listener`, following configurations can be provided.
+
+> **Note:** The monitoring-related fields (`path`, `fileNamePattern`, `fileAgeFilter`, `fileDependencyConditions`) are deprecated at the listener level. Use the `@ftp:ServiceConfig` annotation on services instead. See [Section 4.2](#42-service-configuration-annotation) for details.
+
 ```ballerina
 public type ListenerConfiguration record {|
     # Supported FTP protocols
@@ -633,8 +750,10 @@ public type ListenerConfiguration record {|
     int port = 21;
     # Authentication options
     AuthConfiguration auth?;
+    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
     # Remote FTP directory location
     string path = "/";
+    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
     # File name pattern that event need to trigger
     string fileNamePattern?;
     # Periodic time interval to check new update
@@ -644,10 +763,29 @@ public type ListenerConfiguration record {|
     # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command
     # that can fail on servers restricting root access (e.g., chrooted environments).
     boolean userDirIsRoot = false;
+    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
+    # Configuration for filtering files based on age
+    FileAgeFilter fileAgeFilter?;
+    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
+    # Array of dependency conditions for conditional file processing
+    FileDependencyCondition[] fileDependencyConditions = [];
     # If set to `true`, allows missing or null values when reading files in structured formats
     boolean laxDataBinding = false;
+    # Configuration for distributed task coordination using warm backup approach.
+    # When configured, only one member in the group will actively poll while others act as standby.
+    CoordinationConfig coordination?;
 |};
 ```
+
+**Deprecated Fields Migration:**
+
+| Deprecated Field | Migration |
+|-----------------|-----------|
+| `path` | Move to `@ftp:ServiceConfig { path: "..." }` on service |
+| `fileNamePattern` | Move to `@ftp:ServiceConfig { fileNamePattern: "..." }` on service |
+| `fileAgeFilter` | Move to `@ftp:ServiceConfig { fileAgeFilter: {...} }` on service |
+| `fileDependencyConditions` | Move to `@ftp:ServiceConfig { fileDependencyConditions: [...] }` on service |
+
 * `WatchEvent` record represents the latest status change of the server from the last status change.
 ```ballerina
 public type WatchEvent record {|
@@ -657,8 +795,83 @@ public type WatchEvent record {|
     string[] deletedFiles;
 |};
 ```
-### 4.2. Initialization
-#### 4.2.1. Insecure Listener
+### 4.2. Service Configuration Annotation
+
+The `@ftp:ServiceConfig` annotation allows configuring monitoring paths and file patterns at the service level rather than the listener level. This enables multiple services attached to a single listener to monitor different directories independently.
+
+```ballerina
+# Configuration for FTP service monitoring.
+# Use this to specify the directory path and file patterns this service should monitor.
+#
+# + path - Directory path on the FTP server to monitor for file changes
+# + fileNamePattern - File name pattern (regex) to filter which files trigger events
+# + fileAgeFilter - Configuration for filtering files based on age (optional)
+# + fileDependencyConditions - Array of dependency conditions for conditional file processing
+public type ServiceConfiguration record {|
+    string path;
+    string fileNamePattern?;
+    FileAgeFilter fileAgeFilter?;
+    FileDependencyCondition[] fileDependencyConditions = [];
+|};
+
+# Annotation to configure FTP service monitoring path and file patterns.
+public annotation ServiceConfiguration ServiceConfig on service;
+```
+
+**Usage Rules:**
+
+1. **Consistency Requirement**: If any service attached to a listener uses `@ftp:ServiceConfig`, then ALL services attached to that listener must use it.
+
+2. **Mutual Exclusion**: When `@ftp:ServiceConfig` is used:
+   - The deprecated listener-level fields (`path`, `fileNamePattern`, `fileAgeFilter`, `fileDependencyConditions`) are completely ignored
+   - A deprecation warning is logged if these fields were set in listener configuration
+
+3. **Required Field**: The `path` field is mandatory in `@ftp:ServiceConfig`
+
+**Validation Error Messages:**
+
+| Scenario | Error Type | Message |
+|----------|-----------|---------|
+| Mixed usage (some services with annotation, some without) | InvalidConfigError | "All services attached to a listener must use @ftp:ServiceConfig annotation when any service uses it. Service '{serviceName}' is missing the annotation." |
+| Invalid path pattern | InvalidConfigError | "Invalid path '{path}' in @ftp:ServiceConfig. Path must be an absolute path starting with '/'." |
+| Invalid fileNamePattern regex | InvalidConfigError | "Invalid regex pattern '{pattern}' in @ftp:ServiceConfig.fileNamePattern: {error}" |
+
+**Example: Multiple Services Monitoring Different Directories**
+
+```ballerina
+listener ftp:Listener ftpListener = check new({
+    protocol: ftp:SFTP,
+    host: "ftp.example.com",
+    port: 22,
+    auth: {
+        credentials: {username: "user", password: "pass"}
+    },
+    pollingInterval: 30
+});
+
+@ftp:ServiceConfig {
+    path: "/incoming/csv",
+    fileNamePattern: ".*\\.csv"
+}
+service on ftpListener {
+    remote function onFileCsv(record {}[] content, ftp:FileInfo fileInfo) returns error? {
+        // Processes CSV files from /incoming/csv
+    }
+}
+
+@ftp:ServiceConfig {
+    path: "/incoming/json",
+    fileNamePattern: ".*\\.json"
+}
+service on ftpListener {
+    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
+        // Processes JSON files from /incoming/json
+    }
+}
+```
+
+### 4.3. Initialization
+#### 4.3.1. Insecure Listener
 An insecure FTP listener can be initialized by providing the mandatory `protocol`, `host`, and  `path` parameters to the 
 `ftp:ListenerConfiguration`.
 ```ballerina
@@ -668,17 +881,19 @@ An insecure FTP listener can be initialized by providing the mandatory `protocol
 # + return - `()` or else an `ftp:Error` upon failure to initialize the listener
 public isolated function init(*ListenerConfiguration listenerConfig) returns Error?;
 ```
-#### 4.2.2. Secure Listener
+#### 4.3.2. Secure Listener
 A secure listener can be initialized by providing `ftp:SFTP` as the protocol and by providing `ftp:Credentials`
 and `ftp:PrivateKey` to `ftp:AuthConfiguration`.
+
+**Using deprecated listener-level configuration (for backward compatibility):**
 ```ballerina
 ftp:ListenerConfiguration ftpConfig = {
     protocol: ftp:SFTP,
     host: "<The SFTP host>",
     port: <The SFTP port>,
-    path: "<The remote SFTP directory location>",
+    path: "<The remote SFTP directory location>",        // Deprecated - use @ftp:ServiceConfig instead
     pollingInterval: <Polling interval>,
-    fileNamePattern: "<File name pattern>",
+    fileNamePattern: "<File name pattern>",              // Deprecated - use @ftp:ServiceConfig instead
     auth: {
         credentials: {username: "<The SFTP username>", password: "<The SFTP password>"},
         privateKey: {
@@ -689,7 +904,36 @@ ftp:ListenerConfiguration ftpConfig = {
     userDirIsRoot: true
 };
 ```
-#### 4.3. Usage
+
+**Recommended approach using @ftp:ServiceConfig:**
+```ballerina
+ftp:ListenerConfiguration ftpConfig = {
+    protocol: ftp:SFTP,
+    host: "<The SFTP host>",
+    port: <The SFTP port>,
+    pollingInterval: <Polling interval>,
+    auth: {
+        credentials: {username: "<The SFTP username>", password: "<The SFTP password>"},
+        privateKey: {
+            path: "<The private key file path>",
+            password: "<The private key file password>"
+        }
+    },
+    userDirIsRoot: true
+};
+
+listener ftp:Listener ftpListener = check new(ftpConfig);
+
+@ftp:ServiceConfig {
+    path: "<The remote SFTP directory location>",
+    fileNamePattern: "<File name pattern>"
+}
+service on ftpListener {
+    // Service implementation
+}
+```
+
+### 4.4. Usage
 After initializing the listener, a service must be attached to the listener. There are two ways for this.
 1. Attach the service to the listener directly.
 ```ballerina
@@ -711,7 +955,50 @@ ftp:Service ftpListener = service object {
 The remote method `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
 having both `ftp:WatchEvent` and `ftp:Caller` parameters or having only `ftp:WatchEvent` parameter.
 
-#### 4.3.1. Format-Specific Listener Callbacks
+#### 4.4.1. Service-Level Monitoring Configuration
+
+When using the `@ftp:ServiceConfig` annotation, each service can specify its own monitoring path and file patterns:
+
+```ballerina
+listener ftp:Listener ftpListener = check new({
+    host: "ftp.example.com",
+    pollingInterval: 30
+});
+
+// Service monitoring /incoming/orders for CSV files
+@ftp:ServiceConfig {
+    path: "/incoming/orders",
+    fileNamePattern: "order_.*\\.csv",
+    fileDependencyConditions: [
+        {
+            targetPattern: "order_(\\d+)\\.csv",
+            requiredFiles: ["order_$1.marker"],
+            matchingMode: ALL
+        }
+    ]
+}
+service on ftpListener {
+    remote function onFileCsv(record {}[] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+        // Process order CSV files only when marker file exists
+        check caller->move(fileInfo.path, "/processed/orders/" + fileInfo.name);
+    }
+}
+
+// Service monitoring /incoming/configs for JSON files
+@ftp:ServiceConfig {
+    path: "/incoming/configs",
+    fileNamePattern: ".*\\.json"
+}
+service on ftpListener {
+    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
+        // Process configuration JSON files
+    }
+}
+```
+
+Each service operates independently, receiving events only for files in its configured path that match its pattern.
+
+#### 4.4.2. Format-Specific Listener Callbacks
 
 In addition to the generic `onFileChange()` callback, the listener supports specialized format-specific callbacks that automatically parse files into structured data formats. These callbacks simplify handling files of specific types.
 
@@ -801,11 +1088,152 @@ remote function onFileDelete(string deletedFile, ftp:Caller caller) returns erro
 }
 ```
 
-**Optional parameters:** The `fileInfo` and `caller` parameters can be omitted if not needed in your implementation.
+* `onError()` - Triggered when a content binding error occurs during file processing. This allows centralized error handling for data binding failures:
+```ballerina
+remote function onError(ftp:Error err, ftp:Caller caller) returns error? {
+    // Check if it's a content binding error to access details
+    if err is ftp:ContentBindingError {
+        string? filePath = err.detail().filePath;
+        byte[]? content = err.detail().content;
+
+        log:printError("Failed to process file: " + (filePath ?: "unknown"), err);
+        if filePath is string {
+            check caller->move(filePath, "/error/failed_file");
+        }
+    }
+}
+```
+
+The `onError` handler receives:
+- `err`: The base `ftp:Error` type. For content binding failures, this will be a `ContentBindingError`. Users should type-check with `if err is ftp:ContentBindingError` to access the detail record containing `filePath` and `content`.
+- `caller` (optional): FTP caller for performing recovery operations
+
+**Supported parameter signatures:**
+- `onError(error err)` - Using Ballerina's error type descriptor
+- `onError(ftp:Error err)` - Using the FTP module's Error type
+- `onError(ftp:Error err, ftp:Caller caller)` - With caller for recovery operations
+
+If `onError` is not defined, binding errors are logged and the file is skipped.
+
+**Optional parameters:** The `caller` parameter can be omitted if not needed in your implementation.
 
 All format-specific callbacks receive `fileInfo` (metadata about the file) and optionally `caller`
 (to perform additional FTP operations). The data is automatically parsed based on the callback type.
 
+#### 4.4.3. Post-Processing Actions
+
+The `@ftp:FunctionConfig` annotation supports automatic file actions after processing completes. This enables common patterns like moving processed files to an archive directory or deleting files after successful processing.
+
+**Configuration Types:**
+
+* `DELETE` - Delete the file after processing
+```ballerina
+public const DELETE = "DELETE";
+```
+
+* `Move` - Move the file to a specified directory
+```ballerina
+# Type alias for Move record, used in union types for post-processing actions.
+public type MOVE Move;
+
+# Configuration for moving a file after processing.
+#
+# + moveTo - Destination directory path where the file will be moved
+# + preserveSubDirs - If true, preserves the subdirectory structure relative to the
+#                     listener's root path. Defaults to true.
+public type Move record {|
+    string moveTo;
+    boolean preserveSubDirs = true;
+|};
+```
+
+**Updated FtpFunctionConfig:**
+```ballerina
+public type FtpFunctionConfig record {|
+    string fileNamePattern?;
+    MOVE|DELETE afterProcess?;
+    MOVE|DELETE afterError?;
+|};
+```
+
+**Action Fields:**
+- `afterProcess` - Action to perform after successful processing. If not specified, no action is taken.
+- `afterError` - Action to perform after the handler returns an error or panics. If not specified, no action is taken.
+
+**Prerequisites:**
+- When using `MOVE` action with `preserveSubDirs: true`, the destination directory structure must be pre-created on the FTP server. The move operation will fail if the destination parent directories do not exist.
+
+**Behavior:**
+1. **After Successful Processing:** If the handler returns successfully (no error), the `afterProcess` action is executed.
+2. **After Error:** If the handler returns an error, the `afterError` action is executed.
+3. **Subdirectory Preservation:** When using `MOVE` with `preserveSubDirs: true` (default), the subdirectory structure relative to the listener's monitored path is preserved. For example, if listening to `/input/` and processing `/input/orders/2024/file.csv` with `moveTo: "/archive/"`, the file is moved to `/archive/orders/2024/file.csv`.
+
+**Examples:**
+
+Delete after successful processing:
+```ballerina
+service on ftpListener {
+    @ftp:FunctionConfig {
+        fileNamePattern: ".*\\.json",
+        afterProcess: ftp:DELETE
+    }
+    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
+        // Process JSON - file is automatically deleted after successful return
+        processJson(content);
+    }
+}
+```
+
+Move to archive after processing:
+```ballerina
+service on ftpListener {
+    @ftp:FunctionConfig {
+        fileNamePattern: ".*\\.csv",
+        afterProcess: {
+            moveTo: "/archive/processed/"
+        }
+    }
+    remote function onFileCsv(Employee[] content, ftp:FileInfo fileInfo) returns error? {
+        // Process CSV - file is moved to archive after success
+        saveEmployees(content);
+    }
+}
+```
+
+Different actions for success and error:
+```ballerina
+service on ftpListener {
+    @ftp:FunctionConfig {
+        fileNamePattern: ".*\\.xml",
+        afterProcess: {
+            moveTo: "/archive/success/"
+        },
+        afterError: {
+            moveTo: "/archive/failed/"
+        }
+    }
+    remote function onFileXml(xml content, ftp:FileInfo fileInfo) returns error? {
+        // On success: moved to /archive/success/
+        // On error: moved to /archive/failed/
+        check processXml(content);
+    }
+}
+```
+
+Move without preserving subdirectories:
+```ballerina
+service on ftpListener {
+    @ftp:FunctionConfig {
+        afterProcess: {
+            moveTo: "/archive/flat/",
+            preserveSubDirs: false
+        }
+    }
+    remote function onFile(byte[] content, ftp:FileInfo fileInfo) returns error? {
+        // All files moved directly to /archive/flat/ regardless of source subdirectory
+    }
+}
+```
 
 The Listener has following functions to manage a service.
 * `attach()` - can be used to bind a service to the `ftp:Listener`.
@@ -885,6 +1313,57 @@ public isolated function poll() returns error?
 #            server
 public isolated function register(Service ftpService, string? name) returns error?
 ```
+
+### 4.5. Distributed Coordination
+
+The FTP listener supports distributed coordination for high availability deployments. When multiple listener instances are deployed across different nodes, coordination ensures that only one instance actively polls the FTP server while others act as warm standby nodes. This prevents duplicate file processing and provides automatic failover.
+
+#### 4.5.1. Coordination Configuration
+* `CoordinationConfig` record represents the configuration for distributed task coordination.
+```ballerina
+public type CoordinationConfig record {|
+    # The database configuration for task coordination
+    task:DatabaseConfig databaseConfig;
+    # The interval (in seconds) to check the liveness of the active node. Default is 30 seconds.
+    int livenessCheckInterval = 30;
+    # Unique identifier for the current member. Must be distinct for each node in the distributed system.
+    string memberId;
+    # The name of the coordination group of FTP listeners that coordinate together.
+    # It is recommended to use a unique name for each group.
+    string coordinationGroup;
+    # The interval (in seconds) for the node to update its heartbeat status. Default is 1 second.
+    int heartbeatFrequency = 1;
+|};
+```
+
+* The `databaseConfig` field accepts either `task:MysqlConfig` or `task:PostgresqlConfig`:
+```ballerina
+# MySQL configuration
+public type MysqlConfig record {
+    string host = "localhost";
+    string? user = ();
+    string? password = ();
+    int port = 3306;
+    string? database = ();
+};
+
+# PostgreSQL configuration
+public type PostgresqlConfig record {
+    string host = "localhost";
+    string? user = ();
+    string? password = ();
+    int port = 5432;
+    string? database = ();
+};
+```
+
+#### 4.5.2. Coordination Mechanism
+1. **Leader election**: Members in the same `coordinationGroup` coordinate via the database to elect an active member
+2. **Heartbeat**: The active member updates its heartbeat at `heartbeatFrequency` intervals
+3. **Liveness monitoring**: Standby members check the active member's heartbeat every `livenessCheckInterval` seconds
+4. **Failover**: If the active member's heartbeat becomes stale, a standby member takes over as the new active member
+5. **Polling**: Only the active member's `poll()` function executes; standby members skip polling
+
 ## 5. Caller
 `ftp:Caller` is like a wrapper on the `ftp:Client`. It has an `ftp:Client` defined inside and contains all the APIs of `ftp:Client` like `get()`, `put()`, `append()` etc. However, `ftp:Caller` can only be created internally to be passed to the `onFileChange` method.
 `ftp:Caller` is created in the runtime when the `ftp:Listener` gets attached to a `ftp:Service` by checking whether the user has added `ftp:Caller` as a parameter in the `onFileChange` method.
@@ -1273,6 +1752,8 @@ public function main() returns error? {
 }
 ```
 ### 6.2. Listening to file changes
+
+**Recommended approach using @ftp:ServiceConfig:**
 ```ballerina
 import ballerina/ftp;
 import ballerina/io;
@@ -1291,9 +1772,50 @@ listener ftp:Listener remoteServer = check new({
         }
     },
     port: 21,
-    path: "/home/in",
     pollingInterval: 2,
-    fileNamePattern: "(.*).txt",
+    userDirIsRoot: true
+});
+
+@ftp:ServiceConfig {
+    path: "/home/in",
+    fileNamePattern: "(.*).txt"
+}
+service on remoteServer {
+
+    remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+        io:println("Processing file: " + fileInfo.path);
+        io:println("Content: " + content);
+        check caller->delete(fileInfo.path);
+    }
+
+    remote function onFileDelete(string deletedFile) {
+        io:println("Deleted file path: " + deletedFile);
+    }
+}
+```
+
+**Legacy approach (deprecated):**
+```ballerina
+import ballerina/ftp;
+import ballerina/io;
+
+listener ftp:Listener remoteServer = check new({
+    protocol: ftp:SFTP,
+    host: "ftp.example.com",
+    auth: {
+        credentials: {
+            username: "wso2",
+            password: "wso2123"
+        },
+        privateKey: {
+            path: "resources/keys/sftp.private.key",
+            password: "password"
+        }
+    },
+    port: 21,
+    path: "/home/in",                    // Deprecated
+    pollingInterval: 2,
+    fileNamePattern: "(.*).txt",         // Deprecated
     userDirIsRoot: true
 });
 

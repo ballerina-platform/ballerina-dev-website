@@ -23,7 +23,7 @@
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
-    "isomorphic-dompurify": "^0.20.0",
+    "isomorphic-dompurify": "^3.0.0",
     "jquery": "^3.6.0",
     "js-yaml": "^4.1.0",
     "lightgallery": "^2.7.1",

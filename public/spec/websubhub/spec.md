@@ -36,6 +36,7 @@ The conforming implementation of the specification is released and included in t
        * 2.2.2.8. [onUnsubscriptionValidation](#2228-onunsubscriptionvalidation)
        * 2.2.2.9. [onUnsubscriptionIntenVerified](#2229-onunsubscriptionintenverified)
      * 2.2.3. [Controller](#223-controller)
+     * 2.2.4. [Subscriber notifications](#224-subscriber-notifications)
    * 2.3. [Hub Client](#23-hub-client)
      * 2.3.1. [Initialization](#231-initialization)
      * 2.3.2. [Distribute Content](#232-distribute-content)
@@ -405,6 +406,22 @@ type Controller object {
 ```
 
 > Note: The `websubhub:Controller` will be available only as an optional parameter in the `onSubscription` and `onUnsubscription` remote methods of the `websubhub:Service`.
+
+#### 2.2.4. Subscriber notifications
+
+In the event of a transient failure occurring at the WebSub **hub** level, the hub SHOULD notify the subscriber once the **subscription intent** or **unsubscription intent** has been successfully verified.
+
+To communicate such failures, the WebSubHub framework sends an **HTTP GET** request to the subscriber’s callback endpoint with the following parameters:
+
+* `hub.mode` — MUST be set to `"hub-error"` to indicate that the request represents a hub-level error notification.
+* `hub.topic` — The topic URL associated with the subscription.
+* `hub.reason` — A descriptive error message.
+
+**Example Notification Request**
+
+```sh
+GET https://subscriber.com/callback?hub.mode=hub-error&hub.topic=http://example.com/topic&hub.reason=Broker+unavailable
+```
 
 ### 2.3. Hub Client
 

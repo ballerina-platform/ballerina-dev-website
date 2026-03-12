@@ -112,6 +112,7 @@ The conforming implementation of the specification is released and included in t
       * 8.2.2. [Error types](#822-error-types)
       * 8.2.3. [Trace log](#823-trace-log)
       * 8.2.4. [Access log](#824-access-log)
+        * 8.2.4.1 [Access log rotation](#8241-access-log-rotation)
       * 8.2.5. [Panic inside resource](#825-panic-inside-resource)
 9. [Security](#9-security)
     * 9.1. [Authentication and Authorization](#91-authentication-and-authorization)
@@ -2704,13 +2705,25 @@ and can select the format and specific attributes to log.
 [ballerina.http.accessLogConfig]
 # Enable printing access logs in console
 console = true              # Default is false
-# Specify the file path to save the access logs
-path = "testAccessLog.txt"  # Optional, omit to disable file logging
 # Select the format of the access logs
 format = "json"             # Options: "flat", "json"; Default is "flat". Omit to stick to the default.
 # Specify which attributes to log. Omit to stick to the default set.
 attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
 # Default attributes: ip, date_time, request, status, response_body_size, http_referrer, http_user_agent
+
+# Enable access log file destination
+[ballerina.http.accessLogConfig.file]
+# The file path to store access logs
+path = "./logs/access.log"
+
+# Enable access logs rotation
+[ballerina.http.accessLogConfig.file.rotation]
+# The rotation policy to use (SIZE_BASED, TIME_BASED, or BOTH). Default is BOTH
+policy = "SIZE_BASED"      # Default: BOTH
+# Maximum file size in bytes before rotation occurs (applies to SIZE_BASED and BOTH policies)
+maxFileSize = 52428800     # Default: 10 MB (in bytes)
+# Maximum number of backup files to retain (older backups are automatically deleted)
+maxBackupFiles = 30        # Default: 10
 ```
 
 ##### Configurable Attributes
@@ -2733,6 +2746,86 @@ This allows for tailored logging that can focus on particular details relevant t
 |    http_user_agent     |                                 User-Agent header, identifying the client software                                 |
 |  http_x_forwarded_for  |                                      Originating IP address if using a proxy                                       |
 | http_(X-Custom-Header) | Header fields. Referring to them with `http` followed by the header name. (`x-request-id` ->; `http_x-request-id`) |
+
+##### 8.2.4.1 Access log rotation
+Access log rotation helps manage log file sizes by automatically creating backup files when certain conditions are met. This prevents log files from growing indefinitely and consuming excessive disk space.
+
+Access log rotation is optional and can be configured for file destinations. If no rotation configuration is provided, logs are written without rotation. When rotation is enabled, a rotation policy determines when log files are rotated. The following rotation policies are available.
+
+```ballerina
+public enum RotationPolicy {
+    SIZE_BASED,  # Rotate based on file size only
+    TIME_BASED,  # Rotate based on time interval only
+    BOTH         # Rotate when either size or time threshold is met (whichever comes first)
+};
+```
+
+The rotation configuration is defined as follows:
+
+```ballerina
+public type RotationConfig record {|
+    RotationPolicy policy = BOTH;
+    int maxFileSize = 10485760;   # Default: 10MB (in bytes)
+    int maxAge = 86400;           # Default: 24 hours (in seconds)
+    int maxBackupFiles = 10;      # Default: 10 backup files
+|};
+```
+
+Configuration parameters:
+- `policy`: The rotation policy to use (SIZE_BASED, TIME_BASED, or BOTH). Default is BOTH
+- `maxFileSize`: Maximum file size in bytes before rotation occurs (applies to SIZE_BASED and BOTH policies)
+- `maxAge`: Maximum age in seconds before rotation occurs (applies to TIME_BASED and BOTH policies)
+- `maxBackupFiles`: Maximum number of backup files to retain (older backups are automatically deleted)
+
+Example configuration for size-based rotation:
+
+```toml
+[ballerina.http.accessLogConfig.file]
+path = "./logs/http-access.log"
+
+[ballerina.http.accessLogConfig.file.rotation]
+policy = "SIZE_BASED"
+maxFileSize = 52428800    # 50MB
+maxBackupFiles = 30
+```
+
+Time-based rotation example:
+
+```toml
+[ballerina.http.accessLogConfig.file]
+path = "./logs/http-access.log"
+
+[ballerina.http.accessLogConfig.file.rotation]
+policy = "TIME_BASED"
+maxAge = 86400        # Rotate daily
+maxBackupFiles = 7    # Keep one week of access
+```
+
+Rotation using both size and time (default policy):
+
+```toml
+[ballerina.http.accessLogConfig.file]
+path = "./logs/http-access.log"
+
+[ballerina.http.accessLogConfig.file.rotation]
+policy = "BOTH"
+maxFileSize = 52428800    # 50MB
+maxAge = 86400            # 24 hours
+maxBackupFiles = 30       # One month of backups
+```
+
+When rotation occurs:
+- The current access log file is renamed with a timestamp suffix (e.g., `http-access-20260303-130530432.log`)
+- A new log file is created with the original name
+- If the number of backup files exceeds `maxBackupFiles`, the oldest backups are automatically deleted
+- With `BOTH` policy, rotation happens when either the size limit OR time interval is reached (whichever comes first)
+
+> **Note:**
+>
+> - Log rotation only applies to file destinations, not to stderr or stdout
+> - Backup files are named using the pattern: `{basename}-{timestamp}.{ext}` (e.g., `http-access-20260303-130530432.log`)
+> - The timestamp format is `yyyyMMdd-HHmmssSSS` (uses system default timezone)
+> - Rotation checks happen during log write operations, so timing may vary slightly based on application logging activity
 
 #### 8.2.5 Panic inside resource
 

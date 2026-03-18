@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @chamil321 @ayeshLK    
 _Reviewers_: @chamil321    
 _Created_: 2022/01/31  
-_Updated_: 2023/09/14  
+_Updated_: 2026/03/10  
 _Edition_: Swan Lake  
 
 ## Introduction 
@@ -29,6 +29,7 @@ The conforming implementation of the specification is released and included in t
         * 2.2.1.2. [onSubscriptionVerification](#2212-onsubscriptionverification)
         * 2.2.1.3. [onUnsubscriptionVerification](#2213-onunsubscriptionverification)
         * 2.2.1.4. [onEventNotification](#2214-oneventnotification)
+        * 2.2.1.5. [onHubError](#2215-onhuberror)
       * 2.2.2. [Annotation](#222-annotation)
       * 2.2.3. [Callback URL Generation](#223-callback-url-generation)
         * 2.2.3.1 [Service Path Generation](#2231-service-path-generation)
@@ -205,6 +206,10 @@ public type SubscriberService distinct service object {
     // Sample 202 ACCEPTED response or 410 GONE
     remote function onEventNotification(websub:ContentDistributionMessage event)
         returns websub:Acknowledgement|websub:SubscriptionDeletedError|error?;
+
+    // Sample GET request hub.mode=hub-error&hub.topic=test&hub.reason=broker+error
+    // Sample 200 OK response or 4xx if there is an error on the received request
+    remote function onHubError(websub:InternalHubError 'error) returns websub:Acknowledgement|error?;
 };
 ```
 
@@ -261,6 +266,20 @@ This remote method is invoked when the `hub` sends a content-distribution reques
 #           executing the method or else `()`
 remote function onEventNotification(websub:ContentDistributionMessage event) 
     returns websub:Acknowledgement|websub:SubscriptionDeletedError|error?;
+```
+
+##### 2.2.1.5. onHubError
+
+This remote method is invoked when the **hub** sends an error notification after a subscription/unsubscription has been successfully verified. The notification indicates that a hub-level error has occurred that may affect message delivery or subscription processing.
+
+```ballerina
+# Invoked when the hub notifies a subscriber about an error that occurred
+# after the subscription has been successfully verified.
+#
+# + error - Details of the hub-level error that occurred
+# + return - Returns `error` if an issue occurs while processing the notification;
+#            otherwise returns `websub:Acknowledgement` or `()`
+remote function onHubError(websub:InternalHubError 'error) returns websub:Acknowledgement|error?;
 ```
 
 #### 2.2.2. Annotation 

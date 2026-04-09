@@ -13,19 +13,19 @@ jobs:
     runs-on: macos-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ""
-      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node-version: [16.x]
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.source_branch }}
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -40,7 +40,7 @@ jobs:
           mkdir gh-pages
           cd gh-pages
           git init
-          git remote add origin https://ballerina-cicd-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-dev-website.git
+          git remote add origin https://x-access-token:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-dev-website.git
           git fetch origin
           git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
 
@@ -60,8 +60,8 @@ jobs:
         run: |
           cp -r .github CNAME robots.txt gh-pages/.git utils out
           cd out
-          git config --global user.email "ballerina-cicd-bot@ballerina.org"
-          git config --global user.name "ballerina-cicd-bot"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git add .
           git commit --allow-empty -m 'Deploy website'
           git push origin deploy-website-$GITHUB_SHA

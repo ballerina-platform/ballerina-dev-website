@@ -9,10 +9,10 @@ jobs:
   prod-sync:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+      WEBSITE_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
     steps:   
     - name: Clone production b.io
-      run: git clone https://ballerina-cicd-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-platform.github.io.git
+      run: git clone https://x-access-token:$WEBSITE_TOKEN@github.com/ballerina-platform/ballerina-platform.github.io.git
 
     - name: Checkout new branch & backup spec/lang folder
       run: |
@@ -22,8 +22,8 @@ jobs:
         cp -r ./spec/lang/* ./lang-bk
         rm -rf ./_next/* ./learn/*
         
-        git config --global user.email "ballerina-cicd-bot@ballerina.org"
-        git config --global user.name "ballerina-cicd-bot"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
 
     - name: Clone dev b.io
       run: git clone -b gh-pages https://github.com/ballerina-platform/ballerina-dev-website.git

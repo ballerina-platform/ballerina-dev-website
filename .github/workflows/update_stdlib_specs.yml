@@ -8,10 +8,12 @@ jobs:
   update-specs:
     name: Update Spcefications
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: master
 
@@ -42,8 +44,8 @@ jobs:
         run: |
           git checkout automate-specs-$SHORT_NAME-$GITHUB_SHA 2>/dev/null || git checkout -b automate-specs-$SHORT_NAME-$GITHUB_SHA
 
-          git config --global user.email "ballerina-cicd-bot@ballerina.org"
-          git config --global user.name "ballerina-cicd-bot"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
 
           git add spec
           git add public/spec

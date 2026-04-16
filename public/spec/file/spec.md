@@ -218,3 +218,14 @@ supported events are
 * On file create
 * On file delete
 * On file modification
+
+Each remote function accepts a `file:FileEvent` parameter and may optionally return `error?`. If no return type is
+specified, the function is treated as returning `()`.
+
+```ballerina
+remote function onCreate(file:FileEvent m) returns error? {
+}
+```
+
+When a remote function returns an error, the error stack trace is printed. The listener continues processing
+subsequent events without terminating.

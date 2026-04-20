@@ -25,4 +25,4 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 12 (2201.13.3)](https://github.com/ballerina-platform/ballerina-lang/milestone/202?closed=1).
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 13 (2201.13.3)](https://github.com/ballerina-platform/ballerina-lang/milestone/202?closed=1).

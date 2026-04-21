@@ -93,7 +93,7 @@ public function main() returns error? {
 
 ## Specify dependency versions
 
-When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository (if specified).
+When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, custom repositories, and the local repository (if specified).
 
 When you execute `bal build` for the first time on the package, the CLI operation will generate the `Dependencies.toml` in the package root. 
 This will contain the latest compatible dependency versions. From thereon, the versions locked in the `Dependencies.toml` are considered as the minimum required versions for the subsequent builds. The `Dependencies.toml` file is generated and managed by the Ballerina CLI and does not need user intervention.
@@ -158,7 +158,7 @@ At this point, the compiler resolves the latest version and ignores the dependen
 
 ## Use custom repositories for package management
 
-Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. 
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/), and [GitLab packages](https://docs.gitlab.com/user/packages/package_registry/) to be set up as custom repositories. 
 
 ### Define the custom repository
 
@@ -176,19 +176,19 @@ Below is a sample repository configuration.
 
 ```toml
 [[repository.maven]]
-id = "github_1" # This ID is used when pushing/ pulling balas
-url = "https://maven.pkg.github.com/jackson12/jackson-encrypt-module"
+id = "gitlab_1" # This ID is used when pushing/pulling balas
+url = "https://gitlab.com/api/v4/projects/12345678/packages/maven"
 username = "jackson12"
-accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"
+accesstoken = "glpat-hnMlJsjshhdtdt5367389920020hHfrdrd"
 ```
 
-The sections below show how to configure the above GitHub package repository to resolve a specific dependency.
+The sections below show how to configure the above GitLab package repository to resolve a specific dependency.
 
-### Publish a Ballerina archive to the custom repository
+### Publish a Ballerina package to the custom repository
 
-Follow the steps below to publish a Ballerina archive to the custom repository you configured above.
+Follow the steps below to publish a Ballerina package to the custom repository you configured above.
 
-1. Generate the Ballerina archive. 
+1. Generate the Ballerina archive for the package. 
 
    ```
    $ bal pack
@@ -205,30 +205,6 @@ Follow the steps below to publish a Ballerina archive to the custom repository y
     ```
     $ bal push --repository <repository-id> <path-to-bala-archive>
     ```
-
-### Use the package from the custom repository
-
-You can use the package you pushed to the custom repository in the ways below.
-
-#### Specify the dependency in the `Ballerina.toml`
-
-Similar to the local repository, dependencies from the custom repository can be specified in the Ballerina.toml file and utilized as shown below.
-
-```toml
-[[dependency]]
-org = "jackson"
-name = "encrypter"
-version = "2.1.1"
-repository = "github_1" # Must match a repository ID configured in the Settings.toml file.
-```
-
-#### Pull the package from a custom repository
-
-Execute the command below to pull a Ballerina package from a custom repository.
-
-```
-$ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
-```
 
 ## Achieve reproducible builds
 

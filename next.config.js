@@ -285,6 +285,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/configure-a-network-proxy`,
       },
       {
+        source: `/${redirectBase}learn/proxy-ballerina-central-with-maven-repository`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/proxy-ballerina-central-with-maven-repository`,
+      },
+      {
         source: `/${redirectBase}learn/code-to-cloud-deployment`,
         destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/code-to-cloud-deployment`,
       },

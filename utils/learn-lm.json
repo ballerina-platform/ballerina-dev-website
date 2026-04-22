@@ -837,6 +837,14 @@
                             "isDir": false,
                             "url": "/learn/configure-a-network-proxy",
                             "id": "configure-a-network-proxy"
+                        },
+                        {
+                            "dirName": "Proxy Ballerina Central with a Maven Repository",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/proxy-ballerina-central-with-maven-repository",
+                            "id": "proxy-ballerina-central-with-maven-repository"
                         }
                     ]
                 },

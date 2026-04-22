@@ -813,7 +813,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/proxy-ballerina-central-with-maven-repository`} className={styles.titleLink}>
-                            Proxy Ballerina Central with a Maven repository
+                            Proxy Ballerina Central with a Maven Repository
                           </a>
                         </p>
                         <p className={styles.description}>Use a Maven repository as a proxy for Ballerina Central.</p>

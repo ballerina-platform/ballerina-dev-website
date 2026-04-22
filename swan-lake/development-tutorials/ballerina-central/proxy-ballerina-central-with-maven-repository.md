@@ -1,22 +1,22 @@
 ---
-layout: proxy-ballerina-central-with-maven-repository-left-nav-pages-swanlake
+layout: ballerina-proxy-ballerina-central-with-maven-repository-left-nav-pages-swanlake
 title: Proxy Ballerina Central with a Maven Repository
-description: Organizations use repository managers such as Nexus or Artifactory to serve as a caching proxy for a remotely managed repository. The sections below include information about configuring such caching proxy for Ballerina Central.
+description: Organizations use repository managers such as JFrog Artifactory or Sonatype Nexus to serve as a caching proxy for a remotely managed repository. The sections below include information about configuring such a caching proxy for Ballerina Central.
 keywords: ballerina, programming language, ballerina packages, proxy alternative, caching proxy, ballerina central proxy
 permalink: /learn/proxy-ballerina-central-with-maven-repository/
-active: publish-packages-to-ballerina-central
-intro: Organizations use repository managers such as Nexus or Artifactory to serve as a caching proxy for a remotely managed repository. The sections below include information about configuring such caching proxy for Ballerina Central.
+active: proxy-ballerina-central-with-maven-repository
+intro: Organizations use repository managers such as [JFrog Artifactory](https://jfrog.com/artifactory/) or [Sonatype Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) to serve as a caching proxy for a remotely managed repository. The sections below include information about configuring such a caching proxy for Ballerina Central.
 ---
 
 ## Setting up the repository
 
 The organization should have a repository manager hosted on-premises or in the cloud with the following requirements satisfied.
 
-- Should support Maven repository format
-- Should support caching proxy repositories
-- Should support flexible MIME types
+- Support for Maven repository format
+- Support for caching proxy repositories
+- Support for flexible MIME types
 
-Both JFrog Artifactory and Sonatype Nexus have been tested and verified against the above requirements. The sections below describe how to configure each of them.
+Both [JFrog Artifactory](https://jfrog.com/artifactory/) and [Sonatype Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) have been tested and verified against the above requirements. The sections below describe how to configure each of them.
 
 ### Configure Sonatype Nexus
 
@@ -84,8 +84,8 @@ You can configure only one proxy repository in the `<USER_HOME>/.ballerina/Setti
 [[repository.maven]]
 id = "<repository-id>"        # This ID is used when pushing/pulling packages
 url = "<repository-url>"
-username = "<username>/<userId>"
-accesstoken = "<password>/<accesstoken>"
+username = "<username> or <userId>"
+accesstoken = "<password> or <accesstoken>"
 proxyCentral = true
 ```
 
@@ -95,9 +95,9 @@ Replace the placeholders as follows.
 | --- | --- |
 | `<repository-id>` | A unique identifier for the repository entry (e.g., `nexus-ballerina-proxy` or `artifactory-ballerina-proxy`) |
 | `<repository-url>` | The full URL of the proxy repository you created in Nexus or Artifactory |
-| `<username>/<userId>` | Your Nexus or Artifactory username or user ID |
-| `<password>/<accesstoken>` | Your Nexus or Artifactory password or access token |
+| `<username> or <userId>` | Your Nexus or Artifactory username or user ID |
+| `<password> or <accesstoken>` | Your Nexus or Artifactory password or access token |
 
 Once the configuration is done, all Ballerina Central calls will be redirected through this Maven-based proxy repository.
 
-> **Note:** Only one `[[repository.maven]]` entry with `proxyCentral = true` is allowed at a time. If multiple entries have `proxyCentral = true`, the Ballerina will return an error.
+> **Note:** Only one `[[repository.maven]]` entry with `proxyCentral = true` is allowed at a time. If multiple entries have `proxyCentral = true`, Ballerina will return an error.

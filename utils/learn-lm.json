@@ -839,7 +839,7 @@
                             "id": "configure-a-network-proxy"
                         },
                         {
-                            "dirName": "Proxy Ballerina Central with a Maven repository",
+                            "dirName": "Proxy Ballerina Central with a Maven Repository",
                             "level": 3,
                             "position": 3,
                             "isDir": false,

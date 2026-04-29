@@ -46,7 +46,7 @@ export function XmlAccess({ codeSnippets }) {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML access</h1>
 
-      <p>It is possible to access elements in XML.</p>
+      <p>It is possible to access both elements and attributes in XML. The x[i] syntax retrieves the i-th item in the XML sequence. The x.id syntax accesses a required attribute, while x?.id accesses an optional attribute. The lang.xml langlib provides the other operations.</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>

@@ -159,7 +159,7 @@ There are custom tags in this YAML starting with `x-ballerina`. It is very impor
 
   > **Note:** This tag is optional. When absent, no auth code is generated.
 
-## Usage
+## http usage
 
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
@@ -174,7 +174,7 @@ For example,
 $ bal asyncapi http -i hello.yaml
 ```
 
-## Command options
+## http command options
 
 The below command-line arguments can be used with the command.
 
@@ -333,7 +333,7 @@ There are custom tags in this YAML starting with `x-`. It is very important that
 
 > **Note:** The spec must define exactly one channel.
 
-## Usage
+## ws usage
 
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
@@ -348,7 +348,7 @@ For example,
 $ bal asyncapi ws -i chat_service.yaml
 ```
 
-## Command options
+## ws command options
 
 The below command-line arguments can be used with the command.
 

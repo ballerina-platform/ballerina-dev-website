@@ -181,13 +181,14 @@ The trigger configuration defines how and when a task should be executed. It spe
 #               start immediately
 # + endTime - The trigger end time in Ballerina `time:Civil`
 # + taskPolicy - The policy used to handle errors and waiting during the trigger time
+# + retryConfig - The retry configurations for job executions
 public type TriggerConfiguration record {|
   decimal interval;
   int maxCount = -1;
   time:Civil startTime?;
   time:Civil endTime?;
   task:TaskPolicy taskPolicy = {};
-  task:RetryConfig retryConfig = ();
+  task:RetryConfiguration? retryConfig = ();
 |};
 ```
 
@@ -205,7 +206,9 @@ The warm backup configuration enables high availability for distributed task exe
 #             coordinating the task. It is recommended to use a unique identifier for each group of tasks.
 # + heartbeatFrequency - The interval (in seconds) for the node to update its heartbeat. Default is one second.
 public type WarmBackupConfig record {
-  DatabaseConfig databaseConfig = <MysqlConfig>{};
+  DatabaseConfig databaseConfig = {
+      dbType: "mysql"
+  };
   int livenessCheckInterval = 30;
   string taskId;
   string groupId;
@@ -214,6 +217,12 @@ public type WarmBackupConfig record {
 
 # Represents the configuration required to connect to a database related to task coordination.
 public type DatabaseConfig MysqlConfig|PostgresqlConfig;
+
+# Identifies a MySQL database type.
+public type Mysql "mysql";
+
+# Identifies a PostgreSQL database type.
+public type Postgresql "postgresql";
 ```
 
 #### 7.1.3. Retry Configuration
@@ -230,7 +239,7 @@ The initial retry attempt occurs after the time period specified by retryInterva
 
 * **FIXED**: The retry interval remains constant for all retry attempts. For example, if `retryInterval` is set to 5 seconds, each retry will occur exactly 5 seconds after the previous failure.
 
-* **EXPONENTIAL**: The retry interval increases exponentially with each attempt. For instance, with an initial `retryInterval` of 2 seconds, subsequent retries might occur at 4, 8, 16, 32 seconds, and so on.
+* **EXPONENTIAL**: The retry interval increases exponentially(doubled) with each attempt. For instance, with an initial `retryInterval` of 2 seconds, subsequent retries might occur at 4, 8, 16, 32 seconds, and so on.
 
 If the time taken for retry attempts exceeds the trigger's execution interval, retries are automatically stopped. This prevents scenarios where retry attempts would occur after the next scheduled execution.
 
@@ -247,7 +256,7 @@ public type RetryConfiguration record {|
   int maxAttempts;
   int retryInterval;
   RetryStrategy backoffStrategy;
-  int maxInterval;
+  int maxInterval?;
 |};
 
 # Supported retry strategies for job execution.
@@ -335,42 +344,48 @@ The task coordination system can be configured using the `WarmBackupConfig` reco
 
 The `databaseConfig` can be either MySQL or PostgreSQL. This is defined using a union type as `DatabaseConfig`. Users can choose either `task:MysqlConfig` or `task:PostgresqlConfig` based on their preferred database.
 
+The `dbType` field acts as a discriminator that makes the two record types structurally distinct, allowing the compiler to resolve the union type unambiguously. Users can omit the explicit type cast and use `{dbType: "mysql", ...}` or `{dbType: "postgresql", ...}` directly.
+
 **For PostgreSQL:**
 
 ```ballerina
-# Represents the configuration required to connect to a database related to task coordination.
+# Represents the configuration required to connect to a PostgreSQL database related to task coordination.
 #
+# + dbType - The database type identifier, always `"postgresql"`
 # + host - The hostname of the database server
 # + user - The username for the database connection
 # + password - The password for the database connection
 # + port - The port number of the database server
 # + database - The name of the database to connect to
-public type PostgresqlConfig record {
+public type PostgresqlConfig record {|
+  Postgresql dbType = "postgresql";
   string host = "localhost";
   string? user = ();
   string? password = ();
   int port = 5432;
   string? database = ();
-};
+|};
 ```
 
 **For MySQL:**
 
 ```ballerina
-# Represents the configuration required to connect to a database related to task coordination.
+# Represents the configuration required to connect to a MySQL database related to task coordination.
 #
+# + dbType - The database type identifier, always `"mysql"`
 # + host - The hostname of the database server
 # + user - The username for the database connection
 # + password - The password for the database connection
 # + port - The port number of the database server
 # + database - The name of the database to connect to
-public type MysqlConfig record {
+public type MysqlConfig record {|
+  Mysql dbType = "mysql";
   string host = "localhost";
   string? user = ();
   string? password = ();
   int port = 3306;
   string? database = ();
-};
+|};
 ```
 
 ## 8.2. Task Coordination Example

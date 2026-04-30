@@ -1,14 +1,14 @@
 {
   "title": "Logging with context",
-  "description": "BBE on how to log messages in Ballerina with context values.",
+  "description": "BBE on how to add contextual information to log messages using key-value pairs in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by examples",
     "bbe",
     "log",
-    "function pointer",
     "context",
-    "dynamic"
+    "key-value",
+    "metadata"
   ],
   "permalink": "/learn/by-example/logging-with-context/",
   "active": "logging-with-context"

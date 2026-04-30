@@ -1,7 +1,17 @@
 {
   "title": "Logging",
   "description": "BBE on how to log messages in Ballerina at different log levels including 'DEBUG', 'ERROR', 'INFO', and 'WARN'.",
-  "keywords": ["ballerina", "ballerina by examples", "bbe", "log", "level"],
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "level",
+    "debug",
+    "info",
+    "warn",
+    "error"
+  ],
   "permalink": "/learn/by-example/logging/",
   "active": "logging"
 }

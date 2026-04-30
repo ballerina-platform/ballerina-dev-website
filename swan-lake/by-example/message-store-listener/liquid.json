@@ -1,0 +1,18 @@
+{
+  "title": "Message Store Listener",
+  "description": "This BBE demonstrates how to implement a message store listener using the messaging library in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "messaging",
+    "store",
+    "in-memory",
+    "store listener",
+    "dead-letter store",
+    "dlq",
+    "poll"
+  ],
+  "permalink": "/learn/by-example/message-store-listener/",
+  "active": "message-store-listener"
+}

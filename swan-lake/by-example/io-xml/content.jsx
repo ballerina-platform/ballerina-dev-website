@@ -57,7 +57,7 @@ export function IoXml({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/io-xml",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/io-xml",
                 "_blank",
               );
             }}
@@ -231,8 +231,8 @@ export function IoXml({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Cryptographic operations"
-            href="/learn/by-example/security-crypto/"
+            title="Message store type"
+            href="/learn/by-example/message-store-type/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -242,7 +242,7 @@ export function IoXml({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cryptographic operations
+                  Message store type
                 </span>
               </div>
               <svg

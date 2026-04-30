@@ -55,8 +55,8 @@ export function WebsocketServiceSslTls({ codeSnippets }) {
         to expose a connection secured with one-way SSL/TLS. A{" "}
         <code>websocket:Listener</code> secured with TLS/SSL is created by
         providing the <code>secureSocket</code> configurations which require the
-        server's public certificate as the <code>certFile</code> and the
-        server's private key as the <code>keyFile</code>. Use this to expose a
+        server’s public certificate as the <code>certFile</code> and the
+        server’s private key as the <code>keyFile</code>. Use this to expose a
         WSS connection.
       </p>
 
@@ -70,7 +70,7 @@ export function WebsocketServiceSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/websocket-service-ssl-tls",
                 "_blank",
               );
             }}

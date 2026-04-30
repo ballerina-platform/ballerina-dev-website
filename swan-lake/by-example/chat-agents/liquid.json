@@ -1,0 +1,16 @@
+{
+  "title": "Chat agents",
+  "description": "This BBE demonstrates chat agents.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "model-provider",
+    "agent",
+    "chat"
+  ],
+  "permalink": "/learn/by-example/chat-agents/",
+  "active": "chat-agents"
+}

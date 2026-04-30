@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/constraint-validations",
                 "_blank",
               );
             }}
@@ -266,8 +266,8 @@ export function ConstraintValidations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Hello world"
-            href="/learn/by-example/docker-hello-world/"
+            title="Direct LLM calls"
+            href="/learn/by-example/direct-llm-calls/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -277,7 +277,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Direct LLM calls
                 </span>
               </div>
               <svg

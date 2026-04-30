@@ -42,7 +42,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
 
       <p>
         The <code>on fail</code> clause can be used with a named worker, to
-        handle any errors that occur within the worker's body.
+        handle any errors that occur within the worker’s body.
       </p>
 
       <Row
@@ -55,7 +55,7 @@ export function NamedWorkerWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/named-worker-with-on-fail-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/named-worker-with-on-fail-clause",
                 "_blank",
               );
             }}

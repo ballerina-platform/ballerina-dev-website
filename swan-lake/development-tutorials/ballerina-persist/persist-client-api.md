@@ -148,6 +148,21 @@ You can initialize the client as follows.
 Client sClient = check new();
 ```
 
+If you need to do additional connection pool configuration, it is recommended to configure the connection pool settings via the `Config.toml` file. This approach is preferred over manually changing generated code (e.g., in `persist_client.bal`), as generated code can be overwritten during regeneration.
+
+To configure the connection pool, add the following to your `Config.toml` file:
+
+```toml
+[ballerina.sql]
+maxOpenConnections = 30
+maxConnectionLifeTime = 3000.0
+minIdleConnections = 10
+```
+
+- `maxOpenConnections`: Specifies the maximum number of active connections that can be open at any given time.
+- `maxConnectionLifeTime`: Defines the maximum lifetime of a connection in the pool (in seconds).
+- `minIdleConnections`: Sets the minimum number of idle connections to maintain in the pool.
+
 #### CRUD operations
 
 You can perform CRUD operations on the `Workspace` table in the data store using the client object as follows.

@@ -54,7 +54,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
       <p>
         Casting to a user-defined type will work on mutable structure only if
         the inherent type (a structured value has an inherent type, which is a
-        type descriptor that is part of the structured value's runtime value) of
+        type descriptor that is part of the structured value’s runtime value) of
         that structure is a subtype of the user-defined type.
       </p>
 
@@ -73,7 +73,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/casting-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/casting-json-to-user-defined-type",
                 "_blank",
               );
             }}

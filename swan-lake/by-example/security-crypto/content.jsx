@@ -264,7 +264,7 @@ export function SecurityCrypto({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/security-crypto",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/security-crypto",
                 "_blank",
               );
             }}
@@ -476,7 +476,10 @@ export function SecurityCrypto({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read/write XML" href="/learn/by-example/io-xml/">
+          <Link
+            title="Message Store Listener"
+            href="/learn/by-example/message-store-listener/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -502,7 +505,7 @@ export function SecurityCrypto({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write XML
+                  Message Store Listener
                 </span>
               </div>
             </div>

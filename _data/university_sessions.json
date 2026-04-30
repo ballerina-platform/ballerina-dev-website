@@ -1,6 +1,60 @@
 {
     "events": [
         {
+            "date": "Oct 10, 2025",
+            "expire": "2025-10-10T13:00:00+00:00",
+            "type": "Workshop",
+            "university": "University of Kelaniya",
+            "faculty": "Department of Industrial Management",
+            "title": "Data Integrations with ETL",
+            "isVirtual": false,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Lakshan Weerasinghe",
+                    "twitter": "https://www.linkedin.com/in/lakshan-weerasinghe/"
+                }
+            ],
+            "url": "Data-Integration-with-ETL.pdf",
+            "buttonText": "View slides"
+        },
+        {
+            "date": "August 28 - 29, 2025",
+            "expire": "2025-08-29T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "NIBM Galle Centre",
+            "faculty": "",
+            "title": "How Apps Really Work – A Fun Intro to APIs & Cloud",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Savindu Supun Sathsara",
+                    "twitter": "https://www.linkedin.com/in/supunsathsara/"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "August 11, 2025",
+            "expire": "2025-08-11T21:30:00+00:00",
+            "type": "Workshop",
+            "university": "Innovate with Ballerina",
+            "faculty": "",
+            "title": "Exploring AI Capabilities in Ballerina",
+            "isVirtual": true,
+            "location": "Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Sasindu Alahakoon",
+                    "twitter": "https://www.linkedin.com/in/sasindu-alahakoon/"
+                }
+            ],
+            "url": "Ballerina-AI-Capabilities.pdf",
+            "buttonText": "View details"
+        },
+        {
             "date": "July 28, 2025",
             "expire": "2025-07-28T21:30:00+00:00",
             "type": "Workshop",
@@ -58,18 +112,7 @@
             "url": "Cloud-Native-Application-Development-OUSL.pdf",
             "buttonText": "View details"
         },
-        {
-            "date": "May 19 - Sep 27, 2025",
-            "expire": "2025-09-29T04:30:00+00:00",
-            "type": "Ballerina Hackathon",
-            "university": "Innovate with Ballerina",
-            "faculty": "",
-            "title": "Inter-university hackathon organized by the IEEE student branch of University of Moratuwa",
-            "isVirtual": false,
-            "location": "Sri Lanka",
-            "url": "https://innovatewithballerina.com/",
-            "buttonText": "View details"
-        },
+        
         {
             "date": "May 08, 2025",
             "expire": "2025-05-08T04:30:00+00:00",
@@ -129,8 +172,8 @@
                     "twitter": "https://twitter.com/shammi0107"
                 }
             ],
-            "url": "",
-            "buttonText": ""
+            "url": "Backend-Development-with-Ballerina.pdf",
+            "buttonText": "View details"
         },
         {
             "date": "Sep 30 - Nov 02, 2024",

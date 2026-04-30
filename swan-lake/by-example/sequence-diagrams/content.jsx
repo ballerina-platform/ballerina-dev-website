@@ -49,7 +49,7 @@ export function SequenceDiagrams({ codeSnippets }) {
 
       <p>
         The diagram has a lifeline (vertical line) for each worker (both named
-        worker and function's default worker). The diagram also has a lifeline
+        worker and function’s default worker). The diagram also has a lifeline
         for each client object parameter or variable in the initialization
         section, representing the remote system to which the client object is
         sending messages. Each remote method call on a client object is
@@ -67,7 +67,7 @@ export function SequenceDiagrams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/sequence-diagrams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/sequence-diagrams",
                 "_blank",
               );
             }}

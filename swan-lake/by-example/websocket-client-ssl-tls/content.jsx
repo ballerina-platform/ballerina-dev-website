@@ -42,7 +42,7 @@ export function WebsocketClientSslTls({ codeSnippets }) {
         given SSL/TLS-secured WebSocket server (WSS). A{" "}
         <code>websocket:Client</code> secured with SSL/TLS is created by
         providing the <code>secureSocket</code> configurations which require the
-        server's public certificate as the <code>cert</code>. Use this to
+        server’s public certificate as the <code>cert</code>. Use this to
         interact with TLS-encrypted WebSocket servers.
       </p>
 
@@ -56,7 +56,7 @@ export function WebsocketClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-client-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/websocket-client-ssl-tls",
                 "_blank",
               );
             }}

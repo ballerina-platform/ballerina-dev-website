@@ -1,6 +1,7 @@
 # This builds the 'Ballerina.io' home page samples against the releasing distribution.
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - '_data/swanlake-latest/metadata.json'
@@ -58,4 +59,4 @@ jobs:
           VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
           export PATH=$PATH:/home/runner/work/ballerina-dev-website/ballerina-dev-website/ballerina-$VERSION/bin
           python3 components/home-page/bal-action/generate-bal-script.py $sample_name
-          bal build $bal_file_name
+          bal build --experimental $bal_file_name

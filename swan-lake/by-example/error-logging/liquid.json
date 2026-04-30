@@ -1,0 +1,15 @@
+{
+  "title": "Error Logging",
+  "description": "BBE on how to log error messages with detailed error information and context in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "error",
+    "exception",
+    "stack trace"
+  ],
+  "permalink": "/learn/by-example/error-logging/",
+  "active": "error-logging"
+}

@@ -42,9 +42,9 @@ export function NamedWorkers({ codeSnippets }) {
       <h1>Named workers</h1>
 
       <p>
-        Normally, all of a function's code belongs to the function's default
+        Normally, all of a function’s code belongs to the function’s default
         worker, which has a single logical thread of control. A function can
-        also declare named workers, which run concurrently with the function's
+        also declare named workers, which run concurrently with the function’s
         default worker and other named workers.
       </p>
 
@@ -64,7 +64,7 @@ export function NamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/named-workers",
                 "_blank",
               );
             }}

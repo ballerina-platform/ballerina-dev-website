@@ -58,11 +58,11 @@ export function GraphqlClientSecurityMutualSsl({ codeSnippets }) {
         with mutual SSL (mTLS), which is a certificate-based authentication
         process in which two parties (the client and server) authenticate each
         other by verifying the digital certificates. It ensures that both
-        parties are assured of each other's identity. The{" "}
+        parties are assured of each other’s identity. The{" "}
         <code>graphql:Client</code> secured with mutual SSL is created by
         providing the <code>secureSocket</code> configurations, which require
-        the client's public certificate as the <code>certFile</code>, the
-        client's private key as the <code>keyFile</code>, and the server's
+        the client’s public certificate as the <code>certFile</code>, the
+        client’s private key as the <code>keyFile</code>, and the server’s
         certificate as the <code>cert</code>. Use this to interact with
         mTLS-encrypted GraphQL servers.
       </p>
@@ -77,7 +77,7 @@ export function GraphqlClientSecurityMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/graphql-client-security-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/graphql-client-security-mutual-ssl",
                 "_blank",
               );
             }}

@@ -57,7 +57,7 @@ export function WebsocketClientOauth2PasswordGrantType({ codeSnippets }) {
         <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
         HTTP request. The required configurations for this grant type can be
         specified in the <code>auth</code> field of the client configuration.
-        Use this grant type when you need to exchange the user's credentials for
+        Use this grant type when you need to exchange the user’s credentials for
         an access token.
       </p>
 
@@ -71,7 +71,7 @@ export function WebsocketClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/websocket-client-oauth2-password-grant-type",
                 "_blank",
               );
             }}

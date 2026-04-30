@@ -25,6 +25,16 @@ $ bal graphql [-i | --input] <graphql-schema-file-path | graphql-service-file-pa
               [-s | --service] <service-base-path>
 ```
 
+### Update the tool
+
+Execute the command below to update the graphql tool to the latest compatible version.
+
+```
+$ bal tool update graphql
+```
+
+For more information on tool command, run `bal tool --help`.
+
 ## Command options
 
 The general use of the above command options are as follows.

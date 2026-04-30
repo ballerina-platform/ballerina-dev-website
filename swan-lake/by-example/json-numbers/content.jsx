@@ -65,7 +65,7 @@ export function JsonNumbers({ codeSnippets }) {
 
       <p>
         <code>cloneWithType()</code> or <code>ensureType()</code> will convert
-        from <code>int</code> or <code>decimal</code> into the user's chosen
+        from <code>int</code> or <code>decimal</code> into the user’s chosen
         numeric type. The net result is that you can use JSON to exchange the
         full range of all three Ballerina numeric types. <code>-0</code> is an
         edge case: it is represented as a <code>float</code>.
@@ -81,7 +81,7 @@ export function JsonNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/json-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/json-numbers",
                 "_blank",
               );
             }}

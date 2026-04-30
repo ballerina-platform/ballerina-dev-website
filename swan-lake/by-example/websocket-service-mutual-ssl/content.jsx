@@ -59,12 +59,12 @@ export function WebsocketServiceMutualSsl({ codeSnippets }) {
         you to expose a connection secured with mutual SSL, which is a
         certificate-based authentication process in which two parties (the
         client and server) authenticate each other by verifying the digital
-        certificates. It ensures that both parties are assured of each other's
+        certificates. It ensures that both parties are assured of each other’s
         identity. A <code>websocket:Listener</code> secured with mutual SSL is
         created by providing the <code>secureSocket</code> configurations which
         require the word <code>require</code> as the <code>verifyClient</code>,
-        the server's public certificate as the <code>certFile</code>, server's
-        private key as the <code>keyFile</code> and the client's certificate as
+        the server’s public certificate as the <code>certFile</code>, server’s
+        private key as the <code>keyFile</code> and the client’s certificate as
         the <code>cert</code>. Use this to secure the WebSocket connection over
         mutual SSL.
       </p>
@@ -79,7 +79,7 @@ export function WebsocketServiceMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/websocket-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/websocket-service-mutual-ssl",
                 "_blank",
               );
             }}

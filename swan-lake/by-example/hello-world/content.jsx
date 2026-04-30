@@ -26,7 +26,7 @@ export function HelloWorld({ codeSnippets }) {
       <h1>Hello world main</h1>
 
       <p>
-        Let's write the <code>Hello World</code> program in Ballerina.
+        Let’s write the <code>Hello World</code> program in Ballerina.
       </p>
 
       <Row
@@ -39,7 +39,7 @@ export function HelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/hello-world",
                 "_blank",
               );
             }}

@@ -56,10 +56,10 @@ export function Strands({ codeSnippets }) {
 
       <p>
         By default, named workers are multitasked cooperatively, not
-        preemptively. Each named worker has a &quot;strand&quot; (logical thread
-        of control) and execution switches between strands only at specific
-        &quot;yield&quot; points such as doing a wait or when a library function
-        invokes a system call that would block.
+        preemptively. Each named worker has a “strand” (logical thread of
+        control) and execution switches between strands only at specific “yield”
+        points such as doing a wait or when a library function invokes a system
+        call that would block.
       </p>
 
       <Row
@@ -72,7 +72,7 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/strands",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/strands",
                 "_blank",
               );
             }}

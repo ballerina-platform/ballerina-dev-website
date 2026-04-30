@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400">
+  <defs>
+    <filter id="drop-shadow-2" x="105.67" y="102.07" width="184.56" height="250.8" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2.1" dy="1.05"/>
+      <feGaussianBlur result="blur" stdDeviation="5.26"/>
+      <feFlood flood-color="#000" flood-opacity=".3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g>
+    <polygon points="123.74 132.37 178.96 116.88 276.26 132.37 276.26 314.46 232.87 335.77 123.74 300.9 123.74 132.37" fill="#d8d8d8" filter="url(#drop-shadow-2)"/>
+    <path d="M184.39,121.94c-.17-33.79,18.46-57.47,34.22-59.6,14.34-1.94,23.22,10.12,26.64,14.65,14.22,18.81,14.47,45.77,16.09,56.42" fill="none" stroke="#050505" stroke-miterlimit="10" stroke-width="3"/>
+    <polygon points="124.09 133.41 177.85 116.67 275.91 131.65 229.46 150.15 124.09 133.41" fill="#d8d8d8"/>
+    <polygon points="229.46 150.15 229.46 337.87 251.99 305.51 251.99 141.18 229.46 150.15" fill="#e6e6e6"/>
+    <polygon points="275.91 315.69 251.99 305.51 251.99 141.18 275.91 131.65 275.91 315.69" fill="#f7f7f7"/>
+    <path d="M144.03,139.47c-.17-31.43,20.81-54.01,36.61-55.66,15.54-1.63,22.1,7.96,25.19,12.43,11.87,17.19,13.53,44,15.15,53.9" fill="none" stroke="#050505" stroke-miterlimit="10" stroke-width="2.9"/>
+    <path d="M124.09,302.35v-168.94c6.13.97,12.26,1.95,18.39,2.92,28.99,4.6,57.99,9.21,86.98,13.81v187.73l-105.37-35.52Z" fill="#f7f7f7"/>
+  </g>
+  <g>
+    <g>
+      <polygon points="148.75 203.16 148.9 177.87 168.46 183.17 168.26 216.55 148.75 203.16" fill="#46a6a1"/>
+      <polygon points="148.71 211.07 162.06 220.24 148.64 222.16 148.71 211.07" fill="#46a6a1"/>
+      <polygon points="168.2 227.27 168.13 239.52 158.42 270.68 148.38 267.96 148.6 230.07 168.2 227.27" fill="#46a6a1"/>
+    </g>
+    <g>
+      <polygon points="194.64 215.58 194.79 190.29 175.23 185 175.04 218.38 194.64 215.58" fill="#46a6a1"/>
+      <polygon points="194.59 223.5 181.18 225.41 194.53 234.58 194.59 223.5" fill="#46a6a1"/>
+      <polygon points="174.98 229.1 174.9 241.35 184.21 277.66 194.26 280.38 194.48 242.49 174.98 229.1" fill="#46a6a1"/>
+    </g>
+  </g>
+</svg>

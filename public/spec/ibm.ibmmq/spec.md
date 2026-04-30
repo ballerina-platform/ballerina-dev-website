@@ -34,8 +34,15 @@ The conforming implementation of the specification is released to Ballerina Cent
     * 5.1. [Functions](#51-functions)
 6. [Topic](#6-topic)
     * 6.1. [Functions](#61-functions)
-7. [Listener](#7-listener)
-8. [Service](#8-service)
+7. [Message listener](#7-message-listener)
+   * 7.1. [Initialization](#71-initialization)
+   * 7.2. [Functions](#72-functions)
+   * 7.3. [Service](#73-service)
+     * 7.3.1. [Configuration](#731-configuration)
+     * 7.3.2. [Functions](#732-functions)
+   * 7.4. [Caller](#74-caller)
+     * 7.4.1. [Functions](#741-functions)
+   * 7.5. [Usage](#75-usage)
 
 ## 1. Overview
 
@@ -553,44 +560,232 @@ isolated remote function get(*ibmmq:GetMessageOptions getMessageOptions) returns
  isolated remote function send(Message message) returns Error?
  ```
 
-## 7. Listener
+## 7. Message listener
+
+The IBM MQ listener in Ballerina enables applications to receive messages **asynchronously** from IBM MQ.
+
+### 7.1. Initialization
 
 The IBM MQ listener enables applications to interact with an IBM MQ listener to receive messages. The Ballerina IBM MQ listener is mapped to an IBM MQ Queue manager. Therefore, the listener can be initialized with the relevant configurations defined in the `ibmmq:QueueManagerConfiguration` record.
 
 ```ballerina
-import ballerinax/ibm.ibmmq;
-
-configurable string name = ?;
-configurable string host = ?;
-configurable int port = ?;
-configurable string channel = ?;
-configurable string userID = ?;
-configurable string password = ?;
-
-listener ibmmq:Listener ibmmqListener = new({
-    name,
-    host,
-    port,
-    channel,
-    userID,
-    password
-});
+# Initializes the IBMMQ listener.
+#
+# + configurations - The configurations to be used when initializing the IBMMQ listener
+# + return - An error if the initialization failed, nil otherwise
+public isolated function init(*ibmmq:QueueManagerConfiguration configurations) returns ibmmq:Error?;
 ```
 
-## 8. Service
+### 7.2. Functions
 
-The IBM MQ service enables applications to interact with an IBM MQ service to send messages. The Ballerina IBM MQ
-service is mapped to a single connection to the IBMMQ broker, with either a queue or a topic configuration. The service
-can be configured using the `ibmmq:ServiceConfig` annotation.
+To attach a service to the listener, `attach` function can be used.
+```ballerina
+# Attaches an IBMMQ service to the IBMMQ listener.
+#
+# + s - The IBMMQ Service to attach
+# + name - The name of the queue/topic to attach to
+# + return - An error if the attaching failed, nil otherwise
+public isolated function attach(ibmmq:Service s, string[]|string? name = ()) returns ibmmq:Error?;
+```
+
+To detach a service from the listener, `detach` function can be used.
+```ballerina
+# Detaches an IBMMQ service from the IBMMQ listener.
+#
+# + s - The IBMMQ Service to detach
+# + return - An error if the detaching failed, nil otherwise
+public isolated function detach(ibmmq:Service s) returns Error?;
+```
+
+To start the listener, `'start` function can be used.
+```ballerina
+# Starts the IBMMQ listener.
+#
+# + return - An error if the starting failed, nil otherwise
+public isolated function 'start() returns ibmmq:Error?;
+```
+
+To stop the listener gracefully, `gracefulStop` function can be used.
+```ballerina
+# Gracefully stops the IBMMQ listener.
+#
+# + return - An error if the stopping failed, nil otherwise
+public isolated function gracefulStop() returns ibmmq:Error?;
+```
+
+To stop the listener immediately, `immediateStop` function can be used.
+```ballerina
+# Immediately stops the IBMMQ listener.
+#
+# + return - An error if the stopping failed, nil otherwise
+public isolated function immediateStop() returns ibmmq:Error?;
+```
+### 7.3. Service
+
+An IBM MQ service in Ballerina is used to receive messages from IBM MQ. It is attached to an `ibmmq:Listener` and bound to a specific queue or a topic.
+
+#### 7.3.1. Configuration
+
+To subscribe a service to a IBM MQ queue or a topic, the subscription configurations should be provided using the `ibmmq:ServiceConfig` annotation.
 
 ```ballerina
-service on ibmmqListener {
-    remote function onMessage(ibmmq:Message message) {
-        // Handle the message
-    }
+# Defines the supported JMS message consumer types for IBM MQ.
+public enum ConsumerType {
+    # Represents JMS durable subscriber
+    DURABLE,
+    # Represents JMS shared consumer
+    SHARED,
+    # Represents JMS shared durable subscriber
+    SHARED_DURABLE,
+    # Represents JMS default consumer
+    DEFAULT
+}
 
-    remote function onError(error err) {
-        // Handle the error
+# Defines the JMS session acknowledgement modes for IBM MQ.
+public enum AcknowledgementMode {
+    # Indicates that the session will use a local transaction which may subsequently 
+    # be committed or rolled back by calling the session's `commit` or `rollback` methods. 
+    SESSION_TRANSACTED,
+    # Indicates that the session automatically acknowledges a client's receipt of a message 
+    # either when the session has successfully returned from a call to `receive` or when 
+    # the message listener the session has called to process the message successfully returns.
+    AUTO_ACKNOWLEDGE,
+    # Indicates that the client acknowledges a consumed message by calling the 
+    # MessageConsumer's or Caller's `acknowledge` method. Acknowledging a consumed message 
+    # acknowledges all messages that the session has consumed.
+    CLIENT_ACKNOWLEDGE,
+    # Indicates that the session to lazily acknowledge the delivery of messages. 
+    # This is likely to result in the delivery of some duplicate messages if the JMS provider fails, 
+    # so it should only be used by consumers that can tolerate duplicate messages. 
+    # Use of this mode can reduce session overhead by minimizing the work the session does to prevent duplicates.
+    DUPS_OK_ACKNOWLEDGE
+}
+
+# Configuration for an IBM MQ queue.
+#
+# + sessionAckMode - Configuration indicating how messages received by the session will be acknowledged
+# + queueName - The name of the queue to consume messages from
+# + messageSelector - Only messages with properties matching the message selector expression are delivered. 
+#                     If this value is not set that indicates that there is no message selector for the message consumer
+#                     For example, to only receive messages with a property `priority` set to `'high'`, use:
+#                     `"priority = 'high'"`. If this value is not set, all messages in the queue will be delivered.
+# + pollingInterval - The polling interval in seconds
+# + receiveTimeout - The timeout to wait till a `receive` action finishes when there are no messages
+public type QueueConfig record {|
+  AcknowledgementMode sessionAckMode = AUTO_ACKNOWLEDGE;
+  string queueName;
+  string messageSelector?;
+  decimal pollingInterval = 10;
+  decimal receiveTimeout = 5;
+|};
+
+# Configuration for an IBM MQ topic subscription.
+#
+# + sessionAckMode - Configuration indicating how messages received by the session will be acknowledged
+# + topicName - The name of the topic to subscribe to
+# + messageSelector - Only messages with properties matching the message selector expression are delivered. 
+#                     If this value is not set that indicates that there is no message selector for the message consumer
+#                     For example, to only receive messages with a property `priority` set to `'high'`, use:
+#                     `"priority = 'high'"`. If this value is not set, all messages in the queue will be delivered.
+# + noLocal - If true then any messages published to the topic using this session's connection, or any other connection 
+#             with the same client identifier, will not be added to the durable subscription.
+# + consumerType - The message consumer type
+# + subscriberName - the name used to identify the subscription
+# + pollingInterval - The polling interval in seconds
+# + receiveTimeout - The timeout to wait till a `receive` action finishes when there are no messages
+public type TopicConfig record {|
+  AcknowledgementMode sessionAckMode = AUTO_ACKNOWLEDGE;
+  string topicName;
+  string messageSelector?;
+  boolean noLocal = false;
+  ConsumerType consumerType = DEFAULT;
+  string subscriberName?;
+  decimal pollingInterval = 10;
+  decimal receiveTimeout = 5;
+|};
+
+# The service configuration type for the `ibmmq:Service`.
+public type ServiceConfiguration QueueConfig|TopicConfig;
+
+# Annotation to configure the `ibmmq:Service`.
+public annotation ServiceConfiguration ServiceConfig on service;
+```
+
+#### 7.3.2. Functions
+
+To receive messages from an IBM MQ queue or a topic, the `onMessage` function can be used.
+```ballerina
+# Invoked when a message is received at a subscribed IBM MQ queue or a topic.
+#
+# + message - Received IBM MQ message
+# + caller - Optional `ibmmq:Caller` to control transactions and message acknowledgement
+# + return - A `error` if there is an error during message processing or else `()`
+remote function onMessage(ibmmq:Message message, ibmmq:Caller caller) returns error?;
+```
+
+To handle runtime errors that occur during message reception or while dispatching a message to the `onMessage` function, the `onError` function can be used.
+```ballerina
+# Invoked when a runtime error occurs during message reception or while dispatching a message to the `onMessage` method.
+#
+# + err - The `ibmmq:Error` containing details of the error encountered
+# + return - A `error` if an error occurs while handling the error, or else `()`
+remote function onError(ibmmq:Error err) returns error?;
+```
+
+
+### 7.4. Caller
+
+The `ibmmq:Caller` object is used in conjunction with a `ibmmq:Service` to manage message acknowledgments and transactions.
+
+* It allows explicitly acknowledging messages to mark them as received.
+* When using the `ibmmq:SESSION_TRANSACTED` session mode, it also enables transaction control through `commit` and `rollback` operations.
+
+#### 7.4.1. Functions
+
+To mark an IBM MQ message as received, `acknowledge` function can be used.
+```ballerina
+# Mark a IBM MQ message as received.
+# ```
+# check caller->acknowledge(message);
+# ```
+#
+# + message - IBM MQ message record
+# + return - A `ibmmq:Error` if there is an error in the execution or else `()`
+isolated remote function acknowledge(ibmmq:Message message) returns ibmmq:Error?;
+```
+
+To commit all the messages received in this transaction and release any locks currently held, `'commit` function can be used.
+```ballerina
+# Commits all messages received in this transaction and releases any locks currently held.
+# ```
+# check caller->'commit();
+# ```
+# 
+# + return - A `ibmmq:Error` if there is an error or else `()`
+isolated remote function 'commit() returns ibmmq:Error?;
+```
+
+To rollback all the messages received in this transaction and release any locks currently held, `'rollback` function can be used.
+```ballerina
+# Rolls back any messages received in this transaction and releases any locks currently held.
+# ```
+# check caller->'rollback();
+# ```
+# 
+# + return - A `ibmmq:Error` if there is an error or else `()`
+isolated remote function 'rollback() returns ibmmq:Error?;
+```
+
+### 7.5. Usage
+
+After initializing the `ibmmq:Listener` a `ibmmq:Service` must be attached to it.
+```ballerina
+@ibmmq:ServiceConfig {
+   queueName: "MyQueue"
+}
+service ibmmq:Service "consumer-service" on messageListener {
+    remote function onMessage(ibmmq:Caller caller, ibmmq:Message message) returns error? {
+        // process results
     }
 }
-```
+``

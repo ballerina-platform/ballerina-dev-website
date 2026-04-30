@@ -1940,6 +1940,18 @@ import {
   codeSnippetData as IoXmlCodeSnippetData,
 } from "./io-xml/content.jsx";
 import {
+  MessageStoreType,
+  codeSnippetData as MessageStoreTypeCodeSnippetData,
+} from "./message-store-type/content.jsx";
+import {
+  InMemoryMessageStore,
+  codeSnippetData as InMemoryMessageStoreCodeSnippetData,
+} from "./in-memory-message-store/content.jsx";
+import {
+  MessageStoreListener,
+  codeSnippetData as MessageStoreListenerCodeSnippetData,
+} from "./message-store-listener/content.jsx";
+import {
   SecurityCrypto,
   codeSnippetData as SecurityCryptoCodeSnippetData,
 } from "./security-crypto/content.jsx";
@@ -1984,9 +1996,33 @@ import {
   codeSnippetData as LoggingWithContextCodeSnippetData,
 } from "./logging-with-context/content.jsx";
 import {
+  ErrorLogging,
+  codeSnippetData as ErrorLoggingCodeSnippetData,
+} from "./error-logging/content.jsx";
+import {
   LoggingConfiguration,
   codeSnippetData as LoggingConfigurationCodeSnippetData,
 } from "./logging-configuration/content.jsx";
+import {
+  LogFileRotation,
+  codeSnippetData as LogFileRotationCodeSnippetData,
+} from "./log-file-rotation/content.jsx";
+import {
+  ChildLoggersWithContext,
+  codeSnippetData as ChildLoggersWithContextCodeSnippetData,
+} from "./child-loggers-with-context/content.jsx";
+import {
+  LoggerFromConfig,
+  codeSnippetData as LoggerFromConfigCodeSnippetData,
+} from "./logger-from-config/content.jsx";
+import {
+  CustomLogger,
+  codeSnippetData as CustomLoggerCodeSnippetData,
+} from "./custom-logger/content.jsx";
+import {
+  SensitiveDataLogging,
+  codeSnippetData as SensitiveDataLoggingCodeSnippetData,
+} from "./sensitive-data-logging/content.jsx";
 import {
   EdiToRecord,
   codeSnippetData as EdiToRecordCodeSnippetData,
@@ -2103,6 +2139,62 @@ import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
+import {
+  DirectLlmCalls,
+  codeSnippetData as DirectLlmCallsCodeSnippetData,
+} from "./direct-llm-calls/content.jsx";
+import {
+  DirectLlmCallsWithHistory,
+  codeSnippetData as DirectLlmCallsWithHistoryCodeSnippetData,
+} from "./direct-llm-calls-with-history/content.jsx";
+import {
+  DirectLlmCallsWithMultimodalInput,
+  codeSnippetData as DirectLlmCallsWithMultimodalInputCodeSnippetData,
+} from "./direct-llm-calls-with-multimodal-input/content.jsx";
+import {
+  RagWithInMemoryVectorStore,
+  codeSnippetData as RagWithInMemoryVectorStoreCodeSnippetData,
+} from "./rag-with-in-memory-vector-store/content.jsx";
+import {
+  RagIngestionWithExternalVectorStore,
+  codeSnippetData as RagIngestionWithExternalVectorStoreCodeSnippetData,
+} from "./rag-ingestion-with-external-vector-store/content.jsx";
+import {
+  RagQueryWithExternalVectorStore,
+  codeSnippetData as RagQueryWithExternalVectorStoreCodeSnippetData,
+} from "./rag-query-with-external-vector-store/content.jsx";
+import {
+  McpService,
+  codeSnippetData as McpServiceCodeSnippetData,
+} from "./mcp-service/content.jsx";
+import {
+  McpServiceAdvanced,
+  codeSnippetData as McpServiceAdvancedCodeSnippetData,
+} from "./mcp-service-advanced/content.jsx";
+import {
+  AiAgentLocalTools,
+  codeSnippetData as AiAgentLocalToolsCodeSnippetData,
+} from "./ai-agent-local-tools/content.jsx";
+import {
+  AiAgentMcpIntegration,
+  codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
+} from "./ai-agent-mcp-integration/content.jsx";
+import {
+  AiAgentExternalEndpointIntegration,
+  codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
+} from "./ai-agent-external-endpoint-integration/content.jsx";
+import {
+  ChatAgents,
+  codeSnippetData as ChatAgentsCodeSnippetData,
+} from "./chat-agents/content.jsx";
+import {
+  AiAgentToolKit,
+  codeSnippetData as AiAgentToolKitCodeSnippetData,
+} from "./ai-agent-tool-kit/content.jsx";
+import {
+  NaturalExpressions,
+  codeSnippetData as NaturalExpressionsCodeSnippetData,
+} from "./natural-expressions/content.jsx";
 import {
   DockerHelloWorld,
   codeSnippetData as DockerHelloWorldCodeSnippetData,
@@ -3161,6 +3253,12 @@ const BBEs = {
   IoJsonCodeSnippetData,
   IoXml,
   IoXmlCodeSnippetData,
+  MessageStoreType,
+  MessageStoreTypeCodeSnippetData,
+  InMemoryMessageStore,
+  InMemoryMessageStoreCodeSnippetData,
+  MessageStoreListener,
+  MessageStoreListenerCodeSnippetData,
   SecurityCrypto,
   SecurityCryptoCodeSnippetData,
   SecurityJwtIssueValidate,
@@ -3183,8 +3281,20 @@ const BBEs = {
   LoggingCodeSnippetData,
   LoggingWithContext,
   LoggingWithContextCodeSnippetData,
+  ErrorLogging,
+  ErrorLoggingCodeSnippetData,
   LoggingConfiguration,
   LoggingConfigurationCodeSnippetData,
+  LogFileRotation,
+  LogFileRotationCodeSnippetData,
+  ChildLoggersWithContext,
+  ChildLoggersWithContextCodeSnippetData,
+  LoggerFromConfig,
+  LoggerFromConfigCodeSnippetData,
+  CustomLogger,
+  CustomLoggerCodeSnippetData,
+  SensitiveDataLogging,
+  SensitiveDataLoggingCodeSnippetData,
   EdiToRecord,
   EdiToRecordCodeSnippetData,
   RecordToEdi,
@@ -3243,6 +3353,34 @@ const BBEs = {
   CsvUserConfigurationsCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  DirectLlmCalls,
+  DirectLlmCallsCodeSnippetData,
+  DirectLlmCallsWithHistory,
+  DirectLlmCallsWithHistoryCodeSnippetData,
+  DirectLlmCallsWithMultimodalInput,
+  DirectLlmCallsWithMultimodalInputCodeSnippetData,
+  RagWithInMemoryVectorStore,
+  RagWithInMemoryVectorStoreCodeSnippetData,
+  RagIngestionWithExternalVectorStore,
+  RagIngestionWithExternalVectorStoreCodeSnippetData,
+  RagQueryWithExternalVectorStore,
+  RagQueryWithExternalVectorStoreCodeSnippetData,
+  McpService,
+  McpServiceCodeSnippetData,
+  McpServiceAdvanced,
+  McpServiceAdvancedCodeSnippetData,
+  AiAgentLocalTools,
+  AiAgentLocalToolsCodeSnippetData,
+  AiAgentMcpIntegration,
+  AiAgentMcpIntegrationCodeSnippetData,
+  AiAgentExternalEndpointIntegration,
+  AiAgentExternalEndpointIntegrationCodeSnippetData,
+  ChatAgents,
+  ChatAgentsCodeSnippetData,
+  AiAgentToolKit,
+  AiAgentToolKitCodeSnippetData,
+  NaturalExpressions,
+  NaturalExpressionsCodeSnippetData,
   DockerHelloWorld,
   DockerHelloWorldCodeSnippetData,
   KubernetesHelloWorld,

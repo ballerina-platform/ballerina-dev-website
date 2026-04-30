@@ -83,7 +83,7 @@ export function PersistCreate({ codeSnippets }) {
 
       <p>
         The bal persist feature provides support to manage data persistence in a
-        Ballerina package. It starts with defining the application's data model.
+        Ballerina package. It starts with defining the application’s data model.
         Once the model is defined, the client API is generated with resources
         based on the model. The generated API can be used to query and
         manipulate the persistent data in the application.
@@ -195,7 +195,7 @@ export function PersistCreate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/persist-create",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/persist-create",
                 "_blank",
               );
             }}
@@ -340,7 +340,7 @@ export function PersistCreate({ codeSnippets }) {
           <strong>Note:</strong> The <code>bal persist generate</code> command
           is a one-time generation task, and the generated client code is a part
           of the project. We can also integrate the client code generation with
-          the project's build process by executing the{" "}
+          the project’s build process by executing the{" "}
           <code>bal persist add</code> command. This command will add the client
           code generation as a build task in the <code>Ballerina.toml</code>{" "}
           file. See <a href="learn/persist-cli-tool/">Persist CLI Commands</a>{" "}
@@ -365,7 +365,7 @@ export function PersistCreate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/persist-create",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/persist-create",
                 "_blank",
               );
             }}

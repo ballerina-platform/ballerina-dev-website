@@ -8,9 +8,21 @@ active: persist_cli
 intro: The CLI tool is used to initialize the project with the bal persist command and generate the required files.
 ---
 
+## Usage
+
 There are two ways that you can use the `bal persist` feature.
 1. Integrate the client code generation with the package build.
 2. One-time generation of the client code against the data model.
+
+### Update the tool
+
+Execute the command below to update the persist tool to the latest compatible version.
+
+```
+$ bal tool update persist
+```
+
+For more information on tool command, run `bal tool --help`.
 
 ## 1. Integrate the client code generation with the package build
 

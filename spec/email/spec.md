@@ -24,6 +24,8 @@ The conforming implementation of the specification is released and included in t
 3. [Client](#3-client)
     * 3.1. [SMTP Client](#31-smtp-client)
        * 3.1.1. [`init` function](#311-init-function)
+          * 3.1.1.1. [Authenticated Mode](#3111-authenticated-mode)
+          * 3.1.1.2. [Unauthenticated Mode](#3112-unauthenticated-mode)
        * 3.1.2. [`sendMessage` function](#312-sendmessage-function)
        * 3.1.3. [`send` function](#313-send-function)
     * 3.2. [POP3 Client](#32-pop3-client)
@@ -41,6 +43,8 @@ The conforming implementation of the specification is released and included in t
 5. [Samples](#5-samples)
     * 5.1. [Clients](#51-clients)
         * 5.1.1. [SMTP Client](#511-smtp-client)
+           * 5.1.1.1. [With Authentication](#5111-with-authentication)
+           * 5.1.1.2. [Without Authentication](#5112-without-authentication)
         * 5.1.2. [POP3 Client](#512-pop3-client)
         * 5.1.3. [IMAP Client](#513-imap-client)
     * 5.2. [Services](#52-services)
@@ -64,12 +68,28 @@ Sends an email to with SMTP protocol.
 Either this client can be used to send an email from a pre-defined `email:Message` record or directly sending the email by passing all the parameters as arguments.
 
 #### 3.1.1 `init` function
+
 If there are certificates to be added or in the case where the port number is different from `465` with SSL a configuration has to be passed.
-Otherwise, only the host address, username, and the password has to be provided.
+The SMTP client supports both authenticated and unauthenticated modes.
+
+##### 3.1.1.1 Authenticated Mode
+
+For authenticated SMTP servers, provide the host address, username, and password:
 
 ```ballerina
 email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com" , "pass123");
 ```
+
+##### 3.1.1.2 Unauthenticated Mode
+For SMTP servers that don't require authentication (e.g., internal relay servers), omit the username and password or explicitly pass `()`:
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.email.com");
+```
+
+> **Note:**
+> - Both `username` and `password` must either be provided together or both omitted. Providing only one will result in an error.
+> - When using the unauthenticated mode, the `from` field is **mandatory** in the email message, as there is no authenticated username to fall back on.
 
 #### 3.1.2 `sendMessage` function
 The `email:Message` record has to be defined first as follows.
@@ -206,9 +226,30 @@ When the listener is getting closed `onClose` method get called.
 ### 5.1 Clients
 
 #### 5.1.1 SMTP Client
+
+##### 5.1.1.1 With Authentication
 ```ballerina
 public function main() returns error? {
     email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com" , "pass123");
+    email:Message email = {
+        to: ["receiver1@email.com", "receiver2@email.com"],
+        subject: "Sample Email",
+        body: "This is a sample email.",
+        'from: "author@email.com",
+        replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
+    };
+    check smtpClient->sendMessage(email);
+}
+```
+
+##### 5.1.1.2 Without Authentication
+```ballerina
+public function main() returns error? {
+    email:SmtpConfiguration smtpConfig = {
+        port: 25,
+        security: email:START_TLS_AUTO
+    };
+    email:SmtpClient smtpClient = check new ("smtp.relay.com", clientConfig = smtpConfig);
     email:Message email = {
         to: ["receiver1@email.com", "receiver2@email.com"],
         subject: "Sample Email",

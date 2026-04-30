@@ -387,6 +387,14 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/workspaces`} className={styles.titleLink}>
+                            Workspaces
+                          </a>
+                        </p>
+                        <p className={styles.description}>Manage and organize Ballerina packages in a workspace.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/style-guide/coding-conventions`} className={styles.titleLink}>
                             Style guide
                           </a>
@@ -801,6 +809,14 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Perform operations with the Ballerina Central over an HTTP proxy.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/proxy-ballerina-central-with-maven-repository`} className={styles.titleLink}>
+                            Proxy Ballerina Central with a Maven Repository
+                          </a>
+                        </p>
+                        <p className={styles.description}>Use a Maven repository as a proxy for Ballerina Central.</p>
                       </div>
                     </div>
                   </div>

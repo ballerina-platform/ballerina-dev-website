@@ -60,10 +60,10 @@ export function ErrorTypeIntersection({ codeSnippets }) {
       <h1>Type intersection for error types</h1>
 
       <p>
-        If you intersect two <code>error</code> types, the resulting type's
+        If you intersect two <code>error</code> types, the resulting type’s
         detail type is the intersection of the detail types of both types.
         Furthermore, if any of the types being intersected is a distinct type,
-        then the resultant type's type ID set includes all the type IDs of that
+        then the resultant type’s type ID set includes all the type IDs of that
         type. Thus it is a subtype of both types. This way, you can create an
         error type that is a subtype of multiple distinct types and also use a
         more specific detail type.
@@ -79,7 +79,7 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/error-type-intersection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/error-type-intersection",
                 "_blank",
               );
             }}

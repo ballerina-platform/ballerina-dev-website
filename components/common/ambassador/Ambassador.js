@@ -36,7 +36,7 @@ export default function Ambassador(props) {
             <Container>
                 <Row>
                     <Col xs={12}>
-                        <h2 id='ballerina-ambassador-program' className='section'>
+                        <h2 id='ballerina-student-ambassador-program' className='section'>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="30"
@@ -44,12 +44,12 @@ export default function Ambassador(props) {
                                 fill="currentColor"
                                 className="bi bi-link-45deg mdButton pe-2"
                                 viewBox="0 0 16 16"
-                                onClick={(e) => props.getLink(e.target, 'ballerina-ambassador-program')}
+                                onClick={(e) => props.getLink(e.target, 'ballerina-student-ambassador-program')}
                             >
                                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                             </svg>
-                            Ballerina Ambassador program
+                            Ballerina Student Ambassador program
                         </h2>
                     </Col>
                 </Row>
@@ -57,7 +57,7 @@ export default function Ambassador(props) {
                 <Row>
                     <Col sm={12} md={6} lg={6}>
                         <p>
-                        If you are passionate about technology and eager to grow as a leader in the developer community, the Ballerina Ambassador program is your chance. Enhance your Ballerina knowledge and inspire others by representing Ballerina in your community.
+                        If you are passionate about technology and eager to grow as a leader in the developer community, the Ballerina Student Ambassador program is your chance. Enhance your Ballerina knowledge and inspire others by representing Ballerina in your community.
                         </p>
                         <p className={styles.linkWrap}
                             onMouseEnter={() => {
@@ -74,7 +74,7 @@ export default function Ambassador(props) {
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>
-                        <img src={prefix + '/images/community/ballerina-ambassador-program-banner.png'} alt='Ballerina Ambassador program' style={{ width: "100%" }} />
+                        <img src={prefix + '/images/community/ballerina-student-ambassador-program-banner.png'} alt='Ballerina Student Ambassador program' style={{ width: "100%" }} />
                     </Col>
                 </Row>
             </Container>

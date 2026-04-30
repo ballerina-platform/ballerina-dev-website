@@ -51,7 +51,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
       <p>
         Use <code>-&gt; W</code> or <code>&lt;- W</code> to send a message to or
         receive a message from worker <code>W</code> (use <code>function</code>{" "}
-        to refer to the function's default worker). The messages are copied
+        to refer to the function’s default worker). The messages are copied
         using <code>clone()</code>. It implies immutable values are passed
         without a copy.
       </p>
@@ -72,7 +72,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/inter-worker-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/inter-worker-message-passing",
                 "_blank",
               );
             }}

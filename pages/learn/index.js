@@ -69,7 +69,6 @@ export default function Learn() {
         />
         <meta
           property="og:image"
-          itemProp="image"
           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
 
@@ -81,16 +80,14 @@ export default function Learn() {
         />
         <meta
           property="og:description"
-          itemProp="image"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
         />
 
         {/* TWITTER */}
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
         <meta name="twitter:title" content="Learn - The Ballerina programming language" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -99,48 +96,33 @@ export default function Learn() {
           name="twitter:image"
           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
-        <meta
-          property="twitter:text:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-        />
-        <meta
-          property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
-        />
       </Head>
 
       <Layout>
-        
         <Col sm={12}>
           <Row className="pageHeader pageContentRow llanding">
-           
             <Col xs={12}>
-            <Container>
-              <h1>Learn Ballerina</h1>
-            </Container>
-            </Col>
-            
-           
-          </Row>
-
-          <Row className="pageContentRow llanding" style={{paddingBottom:"0"}}>
-            
-            <Col xs={12} md={12}>
-            <Container>
-              <p>
-                Ballerina is a comprehensive language that is easy to grasp for
-                anyone with prior programming experience. Let&apos;s start
-                learning Ballerina.
-              </p>
+              <Container>
+                <h1>Learn Ballerina</h1>
               </Container>
             </Col>
           </Row>
 
-          <Boxes getLink={getLink}/>
+          <Row className="pageContentRow llanding" style={{ paddingBottom: "0" }}>
+            <Col xs={12} md={12}>
+              <Container>
+                <p>
+                  Ballerina is a comprehensive language that is easy to grasp for
+                  anyone with prior programming experience. Let&apos;s start
+                  learning Ballerina.
+                </p>
+              </Container>
+            </Col>
+          </Row>
+
+          <Boxes getLink={getLink} />
 
         </Col>
-        
-        
       </Layout>
     </>
   );

@@ -1,0 +1,15 @@
+{
+  "title": "Agent with local tools",
+  "description": "This BBE demonstrates AI agents.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "model-provider",
+    "agent"
+  ],
+  "permalink": "/learn/by-example/ai-agent-local-tools/",
+  "active": "ai-agent-local-tools"
+}

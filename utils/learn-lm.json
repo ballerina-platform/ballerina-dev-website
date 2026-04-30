@@ -313,9 +313,17 @@
                             "id": "manage-dependencies"
                         },
                         {
-                            "dirName": "Style guide",
+                            "dirName": "Workspaces",
                             "level": 3,
                             "position": 4,
+                            "isDir": false,
+                            "url": "/learn/workspaces",
+                            "id": "workspaces"
+                        },
+                        {
+                            "dirName": "Style guide",
+                            "level": 3,
+                            "position": 5,
                             "isDir": true,
                             "url": "/learn/style-guide",
                             "id": "style-guide",
@@ -373,7 +381,7 @@
                         {
                             "dirName": "Customize formatting",
                             "level": 3,
-                            "position": 5,
+                            "position": 6,
                             "isDir": false,
                             "url": "/learn/customize-formatting",
                             "id": "customize-formatting"
@@ -717,6 +725,22 @@
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
                                     "id": "elastic-stack"
+                                },
+                                {
+                                    "dirName": "OpenSearch",
+                                    "level": 4,
+                                    "position": 7,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/opensearch",
+                                    "id": "opensearch"
+                                },
+                                {
+                                    "dirName": "Moesif",
+                                    "level": 4,
+                                    "position": 8,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/moesif",
+                                    "id": "moesif"
                                 }
                             ]
                         }
@@ -813,6 +837,14 @@
                             "isDir": false,
                             "url": "/learn/configure-a-network-proxy",
                             "id": "configure-a-network-proxy"
+                        },
+                        {
+                            "dirName": "Proxy Ballerina Central with a Maven Repository",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/proxy-ballerina-central-with-maven-repository",
+                            "id": "proxy-ballerina-central-with-maven-repository"
                         }
                     ]
                 },
@@ -843,12 +875,12 @@
                     ]
                 },
                 {
-                    "dirName": "Additional tools",
+                    "dirName": "Static code analysis",
                     "level": 2,
                     "position": 11,
                     "isDir": true,
-                    "url": "/learn/additional-tools",
-                    "id": "additional-tools",
+                    "url": "/learn/static-code-analysis",
+                    "id": "static-code-analysis",
                     "subDirectories": [
                         {
                             "dirName": "Scan tool",
@@ -858,6 +890,24 @@
                             "url": "/learn/scan-tool",
                             "id": "scan-tool"
                         },
+                        {
+                            "dirName": "Scan rules",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/scan-rules",
+                            "id": "scan-rules"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Additional tools",
+                    "level": 2,
+                    "position": 12,
+                    "isDir": true,
+                    "url": "/learn/additional-tools",
+                    "id": "additional-tools",
+                    "subDirectories": [
                         {
                             "dirName": "Consolidate-packages tool",
                             "level": 3,

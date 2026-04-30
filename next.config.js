@@ -221,6 +221,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/manage-dependencies`,
       },
       {
+        source: `/${redirectBase}learn/workspaces`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/workspaces`,
+      },
+      {
         source: `/${redirectBase}learn/configure-a-sample-ballerina-service`,
         destination: `/${redirectBase}learn/development-tutorials/configurability/configure-a-sample-ballerina-service`,
       },
@@ -261,6 +265,14 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/elastic-stack`,
       },
       {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/opensearch`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opensearch`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/moesif`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/moesif`,
+      },
+      {
         source: `/${redirectBase}learn/organize-ballerina-code`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/organize-ballerina-code`,
       },
@@ -271,6 +283,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/configure-a-network-proxy`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/configure-a-network-proxy`,
+      },
+      {
+        source: `/${redirectBase}learn/proxy-ballerina-central-with-maven-repository`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/proxy-ballerina-central-with-maven-repository`,
       },
       {
         source: `/${redirectBase}learn/code-to-cloud-deployment`,
@@ -505,8 +521,12 @@ const nextConfig = {
         destination: `/learn/integration/integration-tutorials/:slug`,
       },
       {
-        source: `/${redirectBase}learn/scan-tool`,
-        destination: `/${redirectBase}learn/development-tutorials/additional-tools/scan-tool`,
+        source: `/learn/scan-tool`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-tool`,
+      },
+      {
+        source: `/learn/scan-rules`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-rules`,
       },
       {
         source: `/${redirectBase}learn/consolidate-packages-tool`,
@@ -515,7 +535,7 @@ const nextConfig = {
     ];
   },
   trailingSlash: true,
-  resolve: [{ path: false, fs: false }],
+  resolve: [{path: false, fs: false}],
   experimental: {
     scrollRestoration: true,
   }

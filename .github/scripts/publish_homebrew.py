@@ -71,7 +71,7 @@ update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_con
 # Opening a PR in Homebrew/homebrew-core repo
 
 body = '''
-This PR is created by @ballerina-bot.
+This PR is created by @ballerina-cicd-bot.
 In case any issue arises, please feel free to contact @NipunaMadhushan or @keizer619.
 Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns.
 '''

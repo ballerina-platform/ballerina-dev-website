@@ -32,7 +32,7 @@ export function HelloWorldService({ codeSnippets }) {
       <h1>Hello world service</h1>
 
       <p>
-        Let's write a simple HTTP service in Ballerina. This example
+        Let’s write a simple HTTP service in Ballerina. This example
         demonstrates the network primitives in the language that make it simpler
         to develop services.
       </p>
@@ -47,7 +47,7 @@ export function HelloWorldService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/hello-world-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/hello-world-service",
                 "_blank",
               );
             }}

@@ -37,7 +37,7 @@ export function WaitingForWorkers({ codeSnippets }) {
       <h1>Waiting for workers</h1>
 
       <p>
-        Named workers can continue to execute after the function's default
+        Named workers can continue to execute after the function’s default
         worker terminates and the function returns.
       </p>
 
@@ -56,7 +56,7 @@ export function WaitingForWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.12.7/examples/waiting-for-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/waiting-for-workers",
                 "_blank",
               );
             }}

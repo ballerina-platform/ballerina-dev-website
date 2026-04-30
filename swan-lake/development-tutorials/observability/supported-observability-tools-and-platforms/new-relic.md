@@ -40,14 +40,42 @@ metricsEnabled=true
 metricsReporter="newrelic"
 
 [ballerinax.newrelic]
-apiKey="<NEW_RELIC_LICENSE_KEY>"    
-tracingSamplerType="const"          
-tracingSamplerParam=1               
-tracingReporterFlushInterval=15000  
-tracingReporterBufferSize=10000     
-metricReporterFlushInterval=15000   
-metricReporterClientTimeout=10000
+apiKey="<NEW_RELIC_LICENSE_KEY>"    # Mandatory Configuration.
+tracingSamplerType="const"          # Optional Configuration. Default value is 'const'
+tracingSamplerParam=1               # Optional Configuration. Default value is 1
+tracingReporterFlushInterval=15000  # Optional Configuration. Default value is 15000 milliseconds
+tracingReporterBufferSize=10000     # Optional Configuration. Default value is 10000
+metricReporterFlushInterval=15000   # Optional Configuration. Default value is 15000 milliseconds
+metricReporterClientTimeout=10000   # Optional Configuration. Default value is 10000 milliseconds
+isTraceLoggingEnabled=false         # Optional Configuration. Default value is false
+isPayloadLoggingEnabled=false       # Optional Configuration. Default value is false
+
+[ballerinax.newrelic.additionalAttributes]      # Optional Configuration. Add custom attributes (key & value pair) to metrics
+key1 = "<VALUE_1>"
+key2 = "<VALUE_2>"
 ```
+
+Users can also configure multiple API keys for different New Relic user accounts as given below.
+
+```toml
+[ballerinax.newrelic]
+apiKey=["<NEW_RELIC_LICENSE_KEY_1>", "<NEW_RELIC_LICENSE_KEY_2>"]
+```
+
+>**Tip:** User can configure the environment variable `BALLERINA_NEW_RELIC_API_KEY` instead of apiKey in `Config.toml`. If both are configured, apiKey in `Config.toml` will be overwritten by the environment variable value.
+> Environment variable can be configured for either a single user or multiple users.
+> 
+> For a single user account:
+> - Linux/Unix: `export BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY>"`
+> - Windows: `set BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY>"`
+>
+> For multiple user accounts:
+> - Linux/Unix: `export BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY_1>,<NEW_RELIC_LICENSE_KEY_2>"`
+> - Windows: `set BALLERINA_NEW_RELIC_API_KEY="<NEW_RELIC_LICENSE_KEY_1>,<NEW_RELIC_LICENSE_KEY_2>"`
+> 
+> **Note:** When specifying multiple API keys in the environment variable, separate each key with a comma (`,`) and do not include spaces between the keys. Any leading or trailing whitespace around each key will be trimmed automatically. For example:
+> - `export BALLERINA_NEW_RELIC_API_KEY="key1,key2,key3"`
+> - `export BALLERINA_NEW_RELIC_API_KEY="key1, key2 , key3"` (spaces will be trimmed)
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 
@@ -60,6 +88,7 @@ ballerinax.newrelic. tracingReporterFlushInterval | The New Relic tracing client
 ballerinax.newrelic. tracingReporterBufferSize | Queue size of the New Relic tracing client.                                                   | 10000 | Any positive integer value.
 ballerinax.newrelic. metricReporterFlushInterval | The New Relic client will be sending the metrics to the agent at this interval.               | 15000 | Any positive integer value.
 ballerinax.newrelic. metricReporterClientTimeout | Queue size of the New Relic metric client.                                                    | 10000 | Any positive integer value.
+
 
 ## Step 4 - Run the Ballerina service
 

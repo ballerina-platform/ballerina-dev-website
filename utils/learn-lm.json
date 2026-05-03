@@ -1067,6 +1067,24 @@
                             "id": "data"
                         }
                     ]
+                },
+                {
+                    "dirName": "Security",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": true,
+                    "url": "/learn/security",
+                    "id": "security",
+                    "subDirectories": [
+                        {
+                            "dirName": "Keystores and truststores",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/security/keystore-truststore",
+                            "id": "keystore-truststore"
+                        }
+                    ]
                 }
             ]
         },

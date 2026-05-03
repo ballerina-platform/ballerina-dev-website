@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Keystores and truststores
 description: Create, configure, and manage keystores and truststores for TLS, mutual TLS, and secure connections in Ballerina services.
 keywords: ballerina, programming language, security, keystore, truststore, TLS, mutual TLS, mTLS, secureSocket, PKCS12
-permalink: /learn/security/keystore-truststore/
+permalink: /learn/keystore-truststore/
 active: keystore-truststore
 intro: Keystores and truststores are foundational to securing communication in production deployments. This guide explains what each is, how to create them, and how to configure them in Ballerina services and clients.
 ---

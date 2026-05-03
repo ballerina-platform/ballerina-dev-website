@@ -931,7 +931,7 @@
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/security/keystore-truststore",
+                            "url": "/learn/keystore-truststore",
                             "id": "keystore-truststore"
                         }
                     ]

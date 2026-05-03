@@ -279,15 +279,22 @@ listener grpc:Listener secureGrpcListener = new (9090, {
 
 ### Externalizing passwords
 
-All keystore and truststore paths and passwords are declared as `configurable` variables in the examples above. Supply their values through `Config.toml` or environment variables — never hardcode them in source code.
+All keystore and truststore paths and passwords are declared as `configurable` variables in the examples above. Never hardcode them in source code.
+
+**Environment variables:**
+
+Ballerina maps `BAL_CONFIG_VAR_<name>` environment variables to `configurable` variables at runtime. Use this for secrets so they are never written to disk:
+
+```bash
+export BAL_CONFIG_VAR_keystorePassword="<keystore-password>"
+export BAL_CONFIG_VAR_truststorePassword="<truststore-password>"
+```
 
 **Config.toml:**
 
 ```toml
 keystorePath = "/opt/ballerina/security/keystore.p12"
-keystorePassword = "<keystore-password>"
 truststorePath = "/opt/ballerina/security/truststore.p12"
-truststorePassword = "<truststore-password>"
 ```
 
 ## References

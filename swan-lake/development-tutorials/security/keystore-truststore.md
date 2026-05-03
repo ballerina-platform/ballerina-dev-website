@@ -17,8 +17,8 @@ intro: Keystores and truststores are foundational to securing communication in p
 
 The examples below use the **Java `keytool`** utility, which is bundled with every JDK. Verify it is available:
 
-```bash
-keytool -version
+```
+$ keytool -version
 ```
 
 For production deployments you will also need access to a **Certificate Authority (CA)** or a **PKCS12 certificate bundle** (`.p12`) already issued by your CA.
@@ -31,8 +31,8 @@ A keystore stores your service's private key and its certificate. Use the follow
 
 Use a self-signed certificate during development and testing only. **Always replace it with a CA-signed certificate in production.**
 
-```bash
-keytool -genkeypair \
+```
+$ keytool -genkeypair \
   -alias integration \
   -keyalg RSA \
   -keysize 2048 \
@@ -59,8 +59,8 @@ keytool -genkeypair \
 
 This step is required for production environments. Skip it if you are using a self-signed certificate.
 
-```bash
-keytool -certreq \
+```
+$ keytool -certreq \
   -alias integration \
   -keystore keystore.p12 \
   -storetype PKCS12 \
@@ -74,9 +74,9 @@ Submit `integration.csr` to your CA. The CA returns a signed certificate file (e
 
 Skip this step if you are using a self-signed certificate. Otherwise, import the CA certificate chain (root and any intermediates) so that `keytool` can verify the chain of trust.
 
-```bash
+```
 # Import the root CA certificate
-keytool -importcert \
+$ keytool -importcert \
   -alias rootCA \
   -file rootCA.crt \
   -keystore keystore.p12 \
@@ -85,7 +85,7 @@ keytool -importcert \
   -noprompt
 
 # Import an intermediate CA certificate (if present)
-keytool -importcert \
+$ keytool -importcert \
   -alias intermediateCA \
   -file intermediateCA.crt \
   -keystore keystore.p12 \
@@ -96,8 +96,8 @@ keytool -importcert \
 
 Then import the signed service certificate under the same alias used when generating the key pair:
 
-```bash
-keytool -importcert \
+```
+$ keytool -importcert \
   -alias integration \
   -file integration.crt \
   -keystore keystore.p12 \
@@ -107,8 +107,8 @@ keytool -importcert \
 
 ### Verify the keystore
 
-```bash
-keytool -list -keystore keystore.p12 -storetype PKCS12 -storepass <keystore-password> -v
+```
+$ keytool -list -keystore keystore.p12 -storetype PKCS12 -storepass <keystore-password> -v
 ```
 
 The output lists all entries. Confirm the `integration` entry shows type **PrivateKeyEntry** and that the certificate chain is complete.
@@ -121,8 +121,8 @@ A truststore holds the public certificates of CAs (or specific peers) that your 
 
 Import the root CA certificate (and any intermediates) from your CA into the truststore. You do not need to import individual service certificates — any certificate signed by a trusted CA is automatically trusted.
 
-```bash
-keytool -importcert \
+```
+$ keytool -importcert \
   -alias rootCA \
   -file rootCA.crt \
   -keystore truststore.p12 \
@@ -139,8 +139,8 @@ With self-signed certificates, there is no CA, so you must import each peer's ce
 
 First, export the certificate from the peer's keystore:
 
-```bash
-keytool -exportcert \
+```
+$ keytool -exportcert \
   -alias integration \
   -keystore keystore.p12 \
   -storetype PKCS12 \
@@ -151,8 +151,8 @@ keytool -exportcert \
 
 Then import the exported certificate into your truststore:
 
-```bash
-keytool -importcert \
+```
+$ keytool -importcert \
   -alias integration \
   -file integration.crt \
   -keystore truststore.p12 \
@@ -165,8 +165,8 @@ Repeat this for every peer that uses a self-signed certificate, using a unique `
 
 ### Verify the truststore
 
-```bash
-keytool -list -keystore truststore.p12 -storetype PKCS12 -storepass <truststore-password>
+```
+$ keytool -list -keystore truststore.p12 -storetype PKCS12 -storepass <truststore-password>
 ```
 
 ## Configure Ballerina services
@@ -285,9 +285,9 @@ All keystore and truststore paths and passwords are declared as `configurable` v
 
 Ballerina maps `BAL_CONFIG_VAR_<name>` environment variables to `configurable` variables at runtime. Use this for secrets so they are never written to disk:
 
-```bash
-export BAL_CONFIG_VAR_keystorePassword="<keystore-password>"
-export BAL_CONFIG_VAR_truststorePassword="<truststore-password>"
+```
+$ export BAL_CONFIG_VAR_keystorePassword="<keystore-password>"
+$ export BAL_CONFIG_VAR_truststorePassword="<truststore-password>"
 ```
 
 **Config.toml:**

@@ -700,7 +700,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/development-tutorials/security/keystore-truststore`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/security/keystore-truststore`} className={styles.titleLink}>
                             Keystores and truststores
                           </a>
                         </p>

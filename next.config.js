@@ -534,7 +534,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/keystore-truststore`,
-        destination: `/${redirectBase}learn/development-tutorials/security/keystore-truststore`,
+        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/keystore-truststore`,
       }
     ];
   },

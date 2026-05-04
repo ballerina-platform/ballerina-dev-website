@@ -593,6 +593,14 @@
                             "isDir": false,
                             "url": "/learn/serverless-deployment",
                             "id": "serverless-deployment"
+                        },
+                        {
+                            "dirName": "Keystores and truststores",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/keystore-truststore",
+                            "id": "keystore-truststore"
                         }
                     ]
                 },
@@ -915,24 +923,6 @@
                             "isDir": false,
                             "url": "/learn/consolidate-packages-tool",
                             "id": "consolidate-packages-tool"
-                        }
-                    ]
-                },
-                {
-                    "dirName": "Security",
-                    "level": 2,
-                    "position": 13,
-                    "isDir": true,
-                    "url": "/learn/security",
-                    "id": "security",
-                    "subDirectories": [
-                        {
-                            "dirName": "Keystores and truststores",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/keystore-truststore",
-                            "id": "keystore-truststore"
                         }
                     ]
                 }

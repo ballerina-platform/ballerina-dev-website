@@ -299,7 +299,7 @@ truststorePath = "/opt/ballerina/security/truststore.p12"
 
 ## References
 
-- [Ballerina HTTP Module — SSL/TLS](https://lib.ballerina.io/ballerina/http/latest)
-- [Ballerina gRPC Module — Secured Communication](https://lib.ballerina.io/ballerina/grpc/latest)
+- [Ballerina HTTP Module](https://central.ballerina.io/ballerina/http/latest)
+- [Ballerina gRPC Module](https://central.ballerina.io/ballerina/grpc/latest)
 - [Ballerina Crypto Module](https://central.ballerina.io/ballerina/crypto/latest)
 - [Java keytool documentation](https://docs.oracle.com/en/java/javase/17/docs/specs/man/keytool.html)

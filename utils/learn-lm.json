@@ -593,6 +593,14 @@
                             "isDir": false,
                             "url": "/learn/serverless-deployment",
                             "id": "serverless-deployment"
+                        },
+                        {
+                            "dirName": "Keystores and truststores",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/keystore-truststore",
+                            "id": "keystore-truststore"
                         }
                     ]
                 },

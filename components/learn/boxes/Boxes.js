@@ -571,6 +571,15 @@ export default function Boxes(props) {
                         <p className={styles.description}>Guidelines for deployment in Serverless.</p>
                       </div>
 
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/keystore-truststore`} className={styles.titleLink}>
+                            Keystores and truststores
+                          </a>
+                        </p>
+                        <p className={styles.description}>Create, configure, and manage keystores and truststores for TLS and mutual TLS.</p>
+                      </div>
+
                     </div>
                   </div>
                 </div>

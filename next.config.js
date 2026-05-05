@@ -531,6 +531,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/consolidate-packages-tool`,
         destination: `/${redirectBase}learn/development-tutorials/additional-tools/consolidate-packages-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/keystore-truststore`,
+        destination: `/${redirectBase}learn/development-tutorials/deployment-guide/keystore-truststore`,
       }
     ];
   },

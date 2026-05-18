@@ -493,7 +493,7 @@ export default function UseCases(props) {
                                         (apisNewDll.frontmatter.url && apisNewDll.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={apisNewDll.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with Devant by WSO2 for free
+                                                    Get started with WSO2 Integration Platform for free
                                                 </a>
                                             </div>
                                             : null
@@ -511,7 +511,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (apisNewDll.frontmatter.image && apisNewDll.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title}  />
                                         : null
                                 }
                             </Col>

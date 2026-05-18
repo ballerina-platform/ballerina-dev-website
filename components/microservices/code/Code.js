@@ -446,7 +446,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (networkAware.frontmatter.image && networkAware.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${networkAware.frontmatter.image}`} alt={networkAware.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${networkAware.frontmatter.image}`} alt={networkAware.frontmatter.title}  />
                                         : null
                                 }
                             </Col>

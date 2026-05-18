@@ -617,7 +617,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (persist.frontmatter.image && persist.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${persist.frontmatter.image}`} alt={persist.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${persist.frontmatter.image}`} alt={persist.frontmatter.title}  />
                                         : null
                                 }
                                 </Row>
@@ -661,7 +661,7 @@ export default function UseCases(props) {
                                         (deployment.frontmatter.url && deployment.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={deployment.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with Devant by WSO2 for free
+                                                    Get started with WSO2 Integration Platform for free
                                                 </a>
                                             </div>
                                             : null
@@ -679,7 +679,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (deployment.frontmatter.image && deployment.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${deployment.frontmatter.image}`} alt={deployment.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${deployment.frontmatter.image}`} alt={deployment.frontmatter.title}  />
                                         : null
                                 }
                             </Col>

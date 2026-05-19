@@ -88,6 +88,8 @@ The workspace configuration is automatically updated to include the new package:
 packages = ["hello-app", "utils"]
 ```
 
+>**Note:** Workspaces do not support multiple organizations. If packages in the workspace declare different organizations, the workspace defaults to a single organization.
+
 ## Import packages from the same workspace
 
 You can import and use modules from other packages in the workspace using standard import statements. The packages are resolved automatically from the workspace without needing to publish them to a repository.
@@ -101,8 +103,6 @@ public function main() {
     string result = utils:sanitize("sample data !");
 }
 ```
-
->**Note:** Workspaces do not support multiple organizations. If packages in the workspace declare different organizations, the workspace defaults to a single organization.
 
 ## Dependency resolution in workspaces
 

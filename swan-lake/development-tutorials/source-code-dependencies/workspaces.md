@@ -102,6 +102,8 @@ public function main() {
 }
 ```
 
+>**Note:** Workspaces do not support multiple organizations. If packages in the workspace declare different organizations, the workspace defaults to a single organization.
+
 ## Dependency resolution in workspaces
 
 When working with workspaces, the dependency resolution algorithm prioritizes workspace packages over the distribution and Ballerina Central repositories. By default, package imports are searched within the workspace first. If a matching package is found in the workspace, the resolution request is not sent to other repositories. Only if the package is not available in the workspace will the resolver search in the distribution and Ballerina Central repositories.

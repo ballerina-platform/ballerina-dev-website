@@ -60,7 +60,7 @@ export default function Users(props) {
           <Col sm={18} md={12} className={styles.logo}>
               <a href={`${prefix}/case-studies/ballerina-central`}><img src={`${prefix}/images/home-page/user-logos/ballerina-central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
               <a href={`${prefix}/case-studies/raapid-ai`}><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
-              <a href="https://console.choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
+              <a href="https://console.choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={400} alt="WSO2 Developer Platform" title="WSO2 Developer Platform" /></a>
           </Col>
         </Row>
         <Row>

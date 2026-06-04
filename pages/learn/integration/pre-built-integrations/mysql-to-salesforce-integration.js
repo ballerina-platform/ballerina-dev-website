@@ -45,7 +45,7 @@ type Product record {
     string CurrencyIsoCode;
 };
 
-type ProductRecieved record {
+type ProductReceived record {
     string name;
     string unitType;
     string currencyISO;
@@ -74,19 +74,19 @@ sf:Client salesforce = check new ({
 
 public function main() returns error? {
     mysql:Client mysql = check new (host, user, password, database, port);
-    stream<ProductRecieved, error?> streamOutput = mysql->query(
+    stream<ProductReceived, error?> streamOutput = mysql->query(
         \`SELECT name, unitType, currencyISO, productId FROM products WHERE processed = false\`);
-    ProductRecieved[] productsRecieved = check from ProductRecieved items in streamOutput
+    ProductReceived[] productsReceived = check from ProductReceived items in streamOutput
         select items;
-    foreach ProductRecieved prductRecieved in productsRecieved {
+    foreach ProductReceived productReceived in productsReceived {
         Product product = {
-            Name: prductRecieved.name,
-            Product_Unit__c: prductRecieved.unitType,
-            CurrencyIsoCode: prductRecieved.currencyISO
+            Name: productReceived.name,
+            Product_Unit__c: productReceived.unitType,
+            CurrencyIsoCode: productReceived.currencyISO
         };
         _ = check salesforce->create("Product2", product);
         _ = check mysql->execute(
-            \`UPDATE products SET processed = true WHERE productId = \${prductRecieved.productId}\`);
+            \`UPDATE products SET processed = true WHERE productId = \${productReceived.productId}\`);
     }
 }
   

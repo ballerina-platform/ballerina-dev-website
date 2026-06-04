@@ -119,7 +119,7 @@ function removeLabels(gmail:Client gmail, gmail:MailThread[] mailThreads, string
     foreach gmail:MailThread mailThread in mailThreads {
         gmail:MailThread|error removeLabelResponse = gmail->modifyThread(mailThread.id, [], labelIds);
         if removeLabelResponse is error {
-            log:printError("An error occured in removing the labels from the thread.",
+            log:printError("An error occurred in removing the labels from the thread.",
                 removeLabelResponse, removeLabelResponse.stackTrace(), threadId = mailThread.id, labelIds = labelIds);
         }
     }
@@ -131,7 +131,7 @@ function getMatchingEmails(gmail:Client gmail, gmail:MailThread[] mailThreads) r
     foreach gmail:MailThread mailThread in mailThreads {
         gmail:MailThread|error response = gmail->readThread(mailThread.id);
         if response is error {
-            log:printError("An error occured while reading the email.", 
+            log:printError("An error occurred while reading the email.", 
                 response, response.stackTrace(), threadId = mailThread.id);
             continue;
         }
@@ -159,7 +159,7 @@ function parseEmail(gmail:Message message) returns Email|error {
             body: body
         };
     } on fail error e {
-        log:printError("An error occured while parsing the email.", e, e.stackTrace(), message = message);
+        log:printError("An error occurred while parsing the email.", e, e.stackTrace(), message = message);
         return e;
     }
 }
@@ -200,7 +200,7 @@ function generateLead(Email email) returns Lead? {
         string content = check response.choices[0].message?.content.ensureType(string);
         return check content.fromJsonStringWithType(Lead);
     } on fail error e {
-        log:printError("An error occured while generating the lead.", e, e.stackTrace(), email = email);
+        log:printError("An error occurred while generating the lead.", e, e.stackTrace(), email = email);
         return;
     }
 }
@@ -210,7 +210,7 @@ function addLeadsToSalesforce(Lead[] leads) {
     do {
         sf:CreationResponse|error createResponse = salesforce->create("EmailLead__c", lead);
         if createResponse is error {
-            log:printError("An error occured while creating a Lead object on salesforce.", 
+            log:printError("An error occurred while creating a Lead object on salesforce.", 
                 createResponse, createResponse.stackTrace(), lead = lead);
         } else {
             log:printInfo("Lead successfully created.", lead = lead);

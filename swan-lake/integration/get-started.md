@@ -73,7 +73,7 @@ Running executable
 Hello, World!
 ```
 
-Alternatively, you can generate an executable file with `bal build`,
+Alternatively, you can generate an executable file using `bal build`.
 
 ```
 $ bal build

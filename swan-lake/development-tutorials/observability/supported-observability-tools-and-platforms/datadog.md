@@ -223,7 +223,7 @@ You can add filters and use functions in Datadog to visualize what you want with
 
 Ballerina provides a [dashboard](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-prometheus/refs/heads/main/metrics-dashboards/datadog/ballerina_metrics_dashboard.json) in Datadog to observe metrics in Ballerina applications.
 
-You can add a new dashboard in Datadog under the **Dashboards** tab in the left navigation. After creating the new dashboard, go to the **Configure** tab in the dashboard. Import the `dashboard.json` file provided above.
+You can add a new dashboard in Datadog under the **Dashboards** tab in the left navigation. After creating the new dashboard, go to the **Configure** tab in the dashboard. Import the `ballerina_metrics_dashboard.json` file provided above.
 
 ![Importing a dashboard json](/learn/images/datadog-importing-dashboard.png "Importing a dashboard json")
 

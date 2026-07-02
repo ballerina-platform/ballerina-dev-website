@@ -149,7 +149,7 @@ keyValues={service="shop_service", env="dev"}       # Optional: fixed key-value 
 path="path/to/logs/shop_service.log"
 ```
 
-The `[ballerina.log]` section configures structured log output. Setting `format="json"` produces one JSON object per log line that Datadog parses automatically into individual searchable fields. The `keyValues` map attaches fixed labels to every log entry. The two `[[ballerina.log.destinations]]` entries write logs to both the console and a file; the Datadog Agent tails the file through the volume mount configured in Step 2.
+The `[ballerina.log]` section configures structured log output. Setting `format="json"` produces one JSON object per log line that Datadog parses automatically into individual searchable fields. The `keyValues` map attaches fixed labels to every log entry. The `[[ballerina.log.destinations]]` entry write logs to a file; the Datadog Agent tails the file through the volume mount configured in Step 2.
 
 The table below provides the descriptions of each configuration option and possible values that can be assigned.
 

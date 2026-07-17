@@ -137,7 +137,7 @@ In a package, which has the default module containing the `main.bal` file and a 
 ```ballerina
 import hello_world.util;
 
-String formattedMsg = util:properCaseMessage("hello world!");
+string formattedMsg = util:properCaseMessage("hello world!");
 ```
 
 Since the `import-prefix` is not given, the module name `util` is used to refer to the symbols in the `hello_world.util` module. 

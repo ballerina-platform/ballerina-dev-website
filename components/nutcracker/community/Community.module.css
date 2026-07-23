@@ -1,0 +1,77 @@
+.header {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: #20b6b0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.header h2 {
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.lead {
+  color: #c0c0c0;
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.lead strong {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.primaryBtn {
+  background-color: #20b6b0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: 1px solid #20b6b0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.primaryBtn:hover {
+  background-color: #1a9a95;
+  border-color: #1a9a95;
+  color: #ffffff;
+}
+
+.secondaryBtn {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 24px;
+  border: 1px solid #5f5f5f;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  border-color: #20b6b0;
+  color: #20b6b0;
+}

@@ -37,8 +37,8 @@ export default function Intro({ repo }) {
                 </span>
                 <a className={styles.openFull}
                   href="https://play.ballerina.io/tmp/examples/02-http-client.bal"
-                  target="_blank" rel="noreferrer" title="Open in the full playground">
-                  Open full <i className="bi bi-box-arrow-up-right" />
+                  target="_blank" rel="noreferrer" title="Open in the Ballerina Playground">
+                  Open in Playground <i className="bi bi-box-arrow-up-right" />
                 </a>
               </div>
               <iframe
@@ -56,7 +56,7 @@ export default function Intro({ repo }) {
           {/* RIGHT: messaging + CTAs */}
           <Col xs={{ span: 12, order: 1 }} lg={{ span: 6, order: 2 }} className={styles.description}>
             <span className={styles.eyebrow}>Ballerina Nutcracker</span>
-            <h1>A native Ballerina,<br />reimagined in Go</h1>
+            <h1>A native Ballerina,<br />reimagined</h1>
             <p className={styles.tagline}>
               A ground-up, native interpreter for the Ballerina language, written in Go
               &mdash; built for fast startup, a small footprint, and instant execution as a

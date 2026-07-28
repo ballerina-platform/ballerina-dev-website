@@ -54,11 +54,11 @@ export default function Nutcracker({ release }) {
       <Head>
         <meta name="description" content={description} />
         <meta name="keywords" content="ballerina, nutcracker, native interpreter, go, ballerina runtime, integration" />
-        <title>Ballerina Nutcracker - A native Ballerina interpreter written in Go</title>
+        <title>Ballerina Nutcracker - A native Ballerina interpreter</title>
 
         {/* FB */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ballerina Nutcracker - A native Ballerina interpreter written in Go" />
+        <meta property="og:title" content="Ballerina Nutcracker - A native Ballerina interpreter" />
         <meta property="og:description" content={description} />
         <meta property="og:image" itemProp="image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
@@ -66,7 +66,7 @@ export default function Nutcracker({ release }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina Nutcracker - A native Ballerina interpreter written in Go" />
+        <meta name="twitter:title" content="Ballerina Nutcracker - A native Ballerina interpreter" />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
       </Head>

@@ -116,6 +116,7 @@ export async function getStaticProps() {
         assets: (data.assets || []).map((a) => ({
           name: a.name,
           url: a.browser_download_url,
+          size: a.size || null,
         })),
       };
     }

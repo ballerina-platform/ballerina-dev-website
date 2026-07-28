@@ -19,6 +19,7 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 
+import { prefix } from '../../../utils/prefix';
 import styles from './Release.module.css';
 
 // Map a release asset filename to a friendly platform label and icon.
@@ -37,12 +38,20 @@ function describeAsset(name) {
   return { os, arch, icon };
 }
 
-// Display order for the platform blocks.
+// Display order for the platform blocks (img matches /images/downloads/*.svg).
 const OS_ORDER = [
-  { os: 'macOS', icon: 'bi-apple' },
-  { os: 'Linux', icon: 'bi-ubuntu' },
-  { os: 'Windows', icon: 'bi-windows' },
+  { os: 'Windows', img: 'windows' },
+  { os: 'Linux', img: 'linux' },
+  { os: 'macOS', img: 'mac' },
 ];
+
+// Bytes -> human-readable size (matches the sizes shown on /downloads).
+function fmtSize(bytes) {
+  if (!bytes) return '';
+  const mb = bytes / (1024 * 1024);
+  if (mb >= 1) return `${mb.toFixed(1)} MB`;
+  return `${Math.round(bytes / 1024)} KB`;
+}
 
 // Group release assets by operating system so each platform is one block
 // with a sub-part per architecture.
@@ -99,16 +108,18 @@ export default function Release({ release, repo }) {
               <div className={styles.downloadBody}>
                 {assets.length > 0 ?
                   <div className={styles.osGrid}>
-                    {OS_ORDER.filter((o) => groups[o.os]).map(({ os, icon }) => (
-                      <div className={styles.osBlock} key={os}>
-                        <div className={styles.osHead}>
-                          <i className={`bi ${icon} ${styles.osIcon}`} />
-                          <span className={styles.osName}>{os}</span>
-                        </div>
-                        <div className={styles.archRow}>
+                    {OS_ORDER.filter((o) => groups[o.os]).map(({ os, img }) => (
+                      <div className={styles.osCol} key={os}>
+                        <h3 className={styles.platform}
+                          style={{ backgroundImage: `url(${prefix}/images/downloads/${img}.svg)` }}>
+                          {os}
+                        </h3>
+                        <div className={styles.dVersions}>
                           {groups[os].map((a) => (
-                            <a className={styles.archBtn} href={a.url} key={a.name} title={a.name}>
-                              <i className="bi bi-download" />&nbsp;{a.arch || 'Download'}
+                            <a className={styles.cDownload} href={a.url} key={a.name} title={a.name}>
+                              <div className={styles.cSize}>
+                                zip{a.arch ? ` (${a.arch})` : ''}{a.size ? ` · ${fmtSize(a.size)}` : ''}
+                              </div>
                             </a>
                           ))}
                         </div>
@@ -138,13 +149,19 @@ export default function Release({ release, repo }) {
           <Col sm={12}>
             <div className={styles.getStarted}>
               <h3>Get started</h3>
-              <p>Download the archive for your platform, extract it, and add the <code>bal</code> binary to your <code>PATH</code>:</p>
-              <pre className={styles.codeBlock}>{`# macOS / Linux
-unzip ballerina-bal-*.zip -d ballerina-nutcracker
-export PATH="$PWD/ballerina-nutcracker:$PATH"
+              <p>
+                Download the archive for your platform and run it directly &mdash; no install,
+                and it won&rsquo;t affect an existing <code>bal</code> (e.g. Swan Lake) on your <code>PATH</code>:
+              </p>
+              <pre className={styles.codeBlock}>{`# macOS / Linux — the zip extracts a ballerina-<version>/ folder
+unzip ballerina-bal-*.zip
 
-# Run a Ballerina program
-bal run hello.bal`}</pre>
+# Run it by path — no PATH changes, works alongside Swan Lake
+./ballerina-*/bal run hello.bal`}</pre>
+              <p className={styles.getStartedNote}>
+                Want Nutcracker as your default <code>bal</code>? Add its folder to your <code>PATH</code>
+                &mdash; just note it will then shadow any other <code>bal</code> in that shell.
+              </p>
             </div>
           </Col>
         </Row>

@@ -1,7 +1,7 @@
 .heading {
   font-size: 32px;
   margin-top: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
   font-weight: 600;
   color: #464646;
   border-bottom: 2px solid #464646;
@@ -10,8 +10,16 @@
   scroll-margin-top: 65px;
 }
 
+.subheading {
+  color: #585a5e;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin-bottom: 12px;
+}
+
 .cardRow {
-  padding-bottom: 3rem;
+  padding-bottom: 1.5rem;
 }
 
 .cardCol {
@@ -22,7 +30,7 @@
   background: #ffffff;
   border: 1px solid #e6e6e6;
   border-radius: 8px;
-  padding: 28px 24px;
+  padding: 28px 28px 30px;
   height: 100%;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
@@ -32,23 +40,154 @@
   transform: translateY(-3px);
 }
 
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
 .icon {
   color: #20b6b0;
-  font-size: 30px;
-  display: block;
-  margin-bottom: 14px;
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .card h3 {
   color: #464646;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
-.card p {
+.body {
   color: #585a5e;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 96px 1fr 58px;
+  align-items: center;
+  gap: 10px;
+}
+
+.barRowNut .barLabel,
+.barRowNut .barVal {
+  color: #20b6b0;
+  font-weight: 700;
+}
+
+.barLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #585a5e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barTrack {
+  background: #eeeeee;
+  border-radius: 4px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  min-width: 6px;
+}
+
+.barNut {
+  background: #20b6b0;
+}
+
+.barSwan {
+  background: #b8b8b8;
+}
+
+.barVal {
+  font-size: 13px;
+  font-weight: 600;
+  color: #464646;
+  text-align: right;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+}
+
+/* Integration-first strip */
+.integrationLead {
+  color: #464646;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 14px 0 22px;
+}
+
+.integrationLead strong {
+  color: #20b6b0;
+}
+
+.intRow {
+  margin-bottom: 8px;
+}
+
+.intCol {
+  margin-bottom: 20px;
+}
+
+.intCard {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  border-top: 3px solid #20b6b0;
+  padding: 22px 22px 24px;
+  height: 100%;
+}
+
+.intIcon {
+  color: #20b6b0;
+  font-size: 26px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.intCard h3 {
+  color: #464646;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.intCard p {
+  color: #585a5e;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.intCaveat {
+  color: #585a5e;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.caption {
+  color: #8a8a8a;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 6px;
+  margin-bottom: 3rem;
 }

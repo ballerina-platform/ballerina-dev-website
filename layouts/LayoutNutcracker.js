@@ -43,7 +43,14 @@ export default function Layout({ children }) {
       </Head>
       <Meta />
       <Stack gap={0} className='main-wrapper home'>
-        <TopNav launcher='home' />
+        <TopNav
+          launcher='home'
+          logo='/images/nutcracker/ballerina-nutcracker-logo-inverted.svg'
+          logoOffcanvas='/images/nutcracker/ballerina-nutcracker-logo.svg'
+          logoWidth={165}
+          logoHeight={50}
+          logoAlt='Ballerina Nutcracker'
+        />
         <div className='wrap-page-content'>
           <Row className='contentRow'>
             {children}

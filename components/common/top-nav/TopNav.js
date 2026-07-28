@@ -35,6 +35,14 @@ const TopNav = (props) => {
 
   const expand = 'lg';
 
+  // Optional per-page logo override (e.g. the Nutcracker page). Defaults keep
+  // the standard Ballerina logo on every other page.
+  const brandLogo = props.logo ? `${prefix}${props.logo}` : null;
+  const brandLogoOffcanvas = props.logoOffcanvas ? `${prefix}${props.logoOffcanvas}` : null;
+  const brandLogoW = props.logoWidth || 150;
+  const brandLogoH = props.logoHeight || 50;
+  const brandAlt = props.logoAlt || 'Ballerina Logo';
+
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -76,7 +84,7 @@ const TopNav = (props) => {
         <Container fluid>
           {(launcher === "home" || launcher === "hack") ?
             <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
+              <Image src={brandLogo || `${prefix}/images/logo/ballerina-logo-white.svg`} height={brandLogoH} width={brandLogoW} alt={brandAlt} unoptimized={true} />
             </Navbar.Brand>
             : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
               <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
@@ -90,7 +98,7 @@ const TopNav = (props) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
+                <Image src={brandLogoOffcanvas || `${prefix}/images/logo/ballerina-logo-grey.svg`} height={brandLogoH} width={brandLogoW} alt={brandAlt} unoptimized={true} />
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>

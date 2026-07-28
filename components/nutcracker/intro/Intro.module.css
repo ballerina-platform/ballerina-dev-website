@@ -153,6 +153,7 @@ a.ghostButton:hover {
 }
 
 .openFull:hover {
+  color: #57595d;
   text-decoration: underline;
 }
 

@@ -42,7 +42,7 @@ export default function Layout({ children }) {
         <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
       </Head>
       <Meta />
-      <Stack gap={0} className='main-wrapper other'>
+      <Stack gap={0} className='main-wrapper other nutcracker'>
         <TopNav
           launcher='other'
           logo='/images/nutcracker/ballerina-nutcracker-logo.svg'

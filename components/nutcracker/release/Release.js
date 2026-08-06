@@ -117,8 +117,13 @@ export default function Release({ release, repo }) {
                         <div className={styles.dVersions}>
                           {groups[os].map((a) => (
                             <a className={styles.cDownload} href={a.url} key={a.name} title={a.name}>
+                              {/* Keep each token unbreakable so a narrow column
+                                  wraps at most once, never mid-value. */}
                               <div className={styles.cSize}>
-                                zip{a.arch ? ` (${a.arch})` : ''}{a.size ? ` · ${fmtSize(a.size)}` : ''}
+                                <span className={styles.token}>zip{a.arch ? ` (${a.arch})` : ''}</span>
+                                {a.size &&
+                                  <>{' '}&middot; <span className={styles.token}>{fmtSize(a.size)}</span></>
+                                }
                               </div>
                             </a>
                           ))}

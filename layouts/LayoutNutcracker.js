@@ -42,10 +42,10 @@ export default function Layout({ children }) {
         <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
       </Head>
       <Meta />
-      <Stack gap={0} className='main-wrapper home'>
+      <Stack gap={0} className='main-wrapper other'>
         <TopNav
-          launcher='home'
-          logo='/images/nutcracker/ballerina-nutcracker-logo-inverted.svg'
+          launcher='other'
+          logo='/images/nutcracker/ballerina-nutcracker-logo.svg'
           logoOffcanvas='/images/nutcracker/ballerina-nutcracker-logo.svg'
           logoWidth={165}
           logoHeight={50}

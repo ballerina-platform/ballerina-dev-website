@@ -43,6 +43,9 @@ const TopNav = (props) => {
   const brandLogoH = props.logoHeight || 50;
   const brandAlt = props.logoAlt || 'Ballerina Logo';
 
+  // Optional announcement strip: { text, href, cta }. `href` is site-relative.
+  const announcement = props.announcement;
+
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -80,6 +83,16 @@ const TopNav = (props) => {
           </div>
           : null
       }
+      {
+        /* Optional announcement strip. Opt-in per page, so nothing changes
+           unless a layout passes it. */
+        announcement ?
+          <div className={styles.announcementBanner}>
+            <div>{announcement.text}</div>
+            <a href={`${prefix}${announcement.href}`}>{announcement.cta}</a>
+          </div>
+          : null
+      }
       <Navbar key={expand} expand={expand} className={(launcher === 'home' || launcher === "hack") ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
         <Container fluid>
           {(launcher === "home" || launcher === "hack") ?
@@ -87,7 +100,7 @@ const TopNav = (props) => {
               <Image src={brandLogo || `${prefix}/images/logo/ballerina-logo-white.svg`} height={brandLogoH} width={brandLogoW} alt={brandAlt} unoptimized={true} />
             </Navbar.Brand>
             : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" unoptimized={true} />
+              <Image src={brandLogo || `${prefix}/images/logo/ballerina-logo-grey.svg`} height={brandLogoH} width={brandLogoW} alt={brandAlt} unoptimized={true} />
             </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

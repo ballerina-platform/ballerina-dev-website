@@ -21,16 +21,20 @@ import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Features.module.css';
 
-// Passthrough (HTTP proxy) benchmark — 100 concurrent users, 10 KB payload,
-// AWS m6a.xlarge (4 vCPU). Same test, same machine, across runtimes.
+// Passthrough (HTTP proxy) benchmark — Nutcracker v0.6.0, 200 concurrent users,
+// 10 KB payload, AWS m6a.xlarge (4 vCPU), 0% errors. Same test, same machine.
+// `startup` is launch-to-listening on a cold process; `memory` is peak RSS
+// under sustained load.
 const RUNTIMES = [
-  { name: 'Rust', startup: 0.013, memory: 19.6 },
-  { name: 'Go', startup: 0.016, memory: 37.1 },
-  { name: 'Nutcracker', startup: 0.023, memory: 41.5, nut: true },
-  { name: 'Node.js', startup: 0.042, memory: 110.1 },
-  { name: '.NET', startup: 0.223, memory: 136.7 },
-  { name: 'Spring Boot', startup: 2.326, memory: 768.6 },
-  { name: 'Swan Lake', startup: 4.883, memory: 729.4 },
+  { name: 'Rust', startup: 0.016, memory: 34.1 },
+  { name: 'Go', startup: 0.016, memory: 60.7 },
+  { name: 'Nutcracker', startup: 0.022, memory: 79.2, nut: true },
+  { name: '.NET AOT', startup: 0.045, memory: 75.0 },
+  { name: 'Node.js', startup: 0.040, memory: 509.5 },
+  { name: '.NET', startup: 0.246, memory: 120.1 },
+  { name: 'Python', startup: 0.707, memory: 266.2 },
+  { name: 'Swan Lake', startup: 1.007, memory: 727.4 },
+  { name: 'Spring Boot', startup: 2.295, memory: 653.1 },
 ];
 
 const fmtSec = (s) => `${s < 1 ? s.toFixed(2) : s.toFixed(1)} s`;
@@ -150,9 +154,11 @@ export default function Features() {
         <Row>
           <Col sm={12}>
             <p className={styles.caption}>
-              Passthrough (HTTP proxy) &middot; 100 concurrent users &middot; 10&nbsp;KB payload &middot;
-              AWS m6a.xlarge, 4&nbsp;vCPU. On raw throughput the compiled stacks (Rust, .NET, Go) lead,
-              while Nutcracker tracks the JVM runtimes (~13k req/s). Preliminary figures &mdash; indicative, not final.
+              Nutcracker v0.6.0 &middot; passthrough (HTTP proxy) &middot; 200 concurrent users &middot;
+              10&nbsp;KB payload &middot; AWS m6a.xlarge, 4&nbsp;vCPU &middot; 0% errors. Startup is
+              launch-to-listening on a cold process; memory is peak RSS under sustained load.
+              On raw throughput Rust and .NET lead; Nutcracker (~15k req/s) sits just behind Go and
+              Spring Boot, and ahead of Swan Lake (~12.8k). Preliminary figures &mdash; indicative, not final.
             </p>
           </Col>
         </Row>

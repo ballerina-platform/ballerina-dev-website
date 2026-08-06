@@ -18,59 +18,43 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import { BsCheck } from 'react-icons/bs';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
 
+const PLAYGROUND_EXAMPLE = 'https://play.ballerina.io/tmp/examples/02-http-client.bal';
+
 export default function Intro({ repo }) {
+  // The playground is cropped to hide its Examples sidebar, which shifts the
+  // frame left. Until the editor renders, the playground's own boot screen
+  // centres on the shifted frame rather than on this box, so cover that period
+  // with a loading state of our own that is centred correctly.
+  const [booting, setBooting] = React.useState(true);
+
+  const handleFrameLoad = React.useCallback(() => {
+    // The document is up, but the WASM runtime still needs a moment to boot.
+    const timer = setTimeout(() => setBooting(false), 1800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Col sm={12}>
       <Container>
-        <Row className={styles.introRow}>
-          {/* LEFT: embedded, runnable HTTP client example */}
-          <Col xs={{ span: 12, order: 2 }} lg={{ span: 6, order: 1 }} className={styles.tryCol}>
-            <div className={styles.playgroundBox}>
-              <div className={styles.playgroundBar}>
-                <span className={styles.playgroundTitle}>
-                  <i className="bi bi-play-circle" />&nbsp;Try it &mdash; HTTP client
-                </span>
-                <a className={styles.openFull}
-                  href="https://play.ballerina.io/tmp/examples/02-http-client.bal"
-                  target="_blank" rel="noreferrer" title="Open in the Ballerina Playground">
-                  Open in Playground <i className="bi bi-box-arrow-up-right" />
-                </a>
-              </div>
-              <iframe
-                className={styles.playgroundFrame}
-                src="https://play.ballerina.io/tmp/examples/02-http-client.bal"
-                title="Ballerina Nutcracker playground - HTTP client example"
-                loading="lazy"
-              />
-            </div>
-            <p className={styles.tryHintLine}>
-              Edit the code and hit <strong>Run</strong> &mdash; it executes right in your browser via WebAssembly.
-            </p>
-          </Col>
-
-          {/* RIGHT: messaging + CTAs */}
-          <Col xs={{ span: 12, order: 1 }} lg={{ span: 6, order: 2 }} className={styles.description}>
-            <span className={styles.eyebrow}>Ballerina Nutcracker</span>
-            <h1>A native Ballerina,<br />reimagined</h1>
-            <p className={styles.tagline}>
-              A ground-up, native interpreter for the Ballerina language, written in Go
-              &mdash; built for fast startup, a small footprint, and instant execution as a
-              lightweight alternative to the JVM-based Swan Lake distribution.
+        {/* Centered pitch */}
+        <Row>
+          <Col xs={12} className={styles.heroText}>
+            <h1>Ballerina, natively &mdash; a fast, self-contained platform</h1>
+            <p className={styles.subtitle}>
+              Starts instantly, ships as one self-contained binary, and keeps the footprint
+              small &mdash; made for CLIs, functions, and short-lived cloud-native workloads.
             </p>
 
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Native single-binary interpreter &mdash; no JVM required</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Runs in the browser via WebAssembly &mdash; try it with zero install</span></p>
-
+            {/* Secondary actions — the live editor below is the primary CTA. */}
             <div className={styles.heroCtas}>
-              <a className={`${styles.introButton} ${styles.tryButton}`} href="#latest-release">
+              <a className={styles.btnSecondary} href="#latest-release">
                 <i className="bi bi-download" />&nbsp;Download
               </a>
-              <a className={`${styles.introButton} ${styles.ghostButton}`}
+              <a className={styles.btnSecondary}
                 target="_blank" rel="noreferrer" href={`https://github.com/${repo}`}>
                 <i className="bi bi-github" />&nbsp;GitHub
               </a>
@@ -79,6 +63,55 @@ export default function Intro({ repo }) {
             <p className={styles.experimental}>
               <i className="bi bi-cone-striped" />&nbsp;Experimental project. <a href={`${prefix}/downloads/`} className={styles.introLinks}>Ballerina Swan Lake</a> remains the production distribution.
             </p>
+          </Col>
+        </Row>
+
+        {/* Full-width, window-framed playground */}
+        <Row>
+          <Col xs={12}>
+            <div className={styles.playgroundWindow}>
+              {/* Prominent instruction — sits above the editor, next to Run. */}
+              <div className={styles.runBand}>
+                <span className={styles.liveBadge}>
+                  <span className={styles.liveDot} />Live editor
+                </span>
+                <span className={styles.runBandText}>
+                  Edit the code, then hit
+                  <span className={styles.runChip}><i className="bi bi-play" />Run</span>
+                  to execute it in your browser.
+                </span>
+              </div>
+
+              {/* The playground shows an Examples sidebar we don't want; clip it
+                  off the left and shield its toggle so the crop stays stable. */}
+              <div className={styles.embedClip}>
+                <iframe
+                  className={styles.playgroundFrame}
+                  src={PLAYGROUND_EXAMPLE}
+                  title="Ballerina Nutcracker playground - HTTP client example"
+                  loading="lazy"
+                  onLoad={handleFrameLoad}
+                />
+                <div className={styles.toggleShield} aria-hidden="true" />
+
+                {booting &&
+                  <div className={styles.booting}>
+                    <span className={styles.spinner} aria-hidden="true" />
+                    <span className={styles.bootingText}>Starting the live editor&hellip;</span>
+                  </div>
+                }
+              </div>
+
+              <div className={styles.windowFoot}>
+                <span className={styles.footHint}>
+                  Runs on WebAssembly &mdash; nothing to install.
+                </span>
+                <a className={styles.openPlaygroundBtn}
+                  href={PLAYGROUND_EXAMPLE} target="_blank" rel="noreferrer">
+                  Open in Playground <i className="bi bi-arrow-right" />
+                </a>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

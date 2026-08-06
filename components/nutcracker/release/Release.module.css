@@ -70,9 +70,11 @@
   padding: 28px;
 }
 
+/* auto-fit so columns reflow on the space actually available — a fixed
+   3-column grid squeezed the button labels until they wrapped mid-value. */
 .osGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
   gap: 28px;
   max-width: 820px;
   margin: 0 auto;
@@ -129,6 +131,10 @@ a.cDownload:hover {
   font-size: 14px;
   color: #d9dadb;
   margin-top: -4px;
+}
+
+.token {
+  white-space: nowrap;
 }
 
 .fallbackBtn {
@@ -209,8 +215,14 @@ a.cDownload:hover {
 }
 
 
+/* Narrow screens: shrink the arrow and padding so the label keeps its width. */
 @media (max-width: 576px) {
-  .osGrid {
-    grid-template-columns: 1fr;
+  a.cDownload,
+  a.cDownload:hover {
+    padding: 15px 12px 15px 50px;
+    min-height: 52px;
+    line-height: 28px;
+    background-position: left 12px top 11px;
+    background-size: 30px 30px;
   }
 }

@@ -1,0 +1,7 @@
+{
+  "title": "Listen to file changes",
+  "description": "This example demonstrates listening to file changes on a remote FTP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-listener-file-changes/",
+  "active": "ftp-listener-file-changes"
+}

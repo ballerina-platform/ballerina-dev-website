@@ -1,0 +1,7 @@
+{
+  "title": "Format-specific callbacks",
+  "description": "This example demonstrates using format-specific listener callbacks for automatic file parsing.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-listener-format-callbacks/",
+  "active": "ftp-listener-format-callbacks"
+}

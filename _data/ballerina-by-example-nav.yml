@@ -1675,42 +1675,54 @@ sublinks:
           - title: SSL/TLS
             id: 1
             url: email-client-ssl-tls
-      - title: FTP Service
+      - title: FTP client
         id: 59
         sublinks:
-          - title: Receive file
+          - title: Read file
             id: 1
-            url: ftp-service-receive-file
-          - title: Send file
+            url: ftp-client-read-file
+          - title: Write file
             id: 2
-            url: ftp-service-send-file
-      - title: FTP client
+            url: ftp-client-write-file
+          - title: File operations
+            id: 3
+            url: ftp-client-file-operations
+      - title: FTP listener
         id: 60
         sublinks:
-          - title: Receive file
+          - title: Listen to file changes
             id: 1
-            url: ftp-client-receive-file
-          - title: Send file
+            url: ftp-listener-file-changes
+          - title: Format-specific callbacks
             id: 2
-            url: ftp-client-send-file
-      - title: SFTP Service
+            url: ftp-listener-format-callbacks
+          - title: Post-processing actions
+            id: 3
+            url: ftp-listener-post-processing
+      - title: SFTP client
         id: 61
         sublinks:
-          - title: Receive file
+          - title: Read file
             id: 1
-            url: sftp-service-receive-file
-          - title: Send file
+            url: sftp-client-read-file
+          - title: Write file
             id: 2
-            url: sftp-service-send-file
-      - title: SFTP client
+            url: sftp-client-write-file
+          - title: File operations
+            id: 3
+            url: sftp-client-file-operations
+      - title: SFTP listener
         id: 62
         sublinks:
-          - title: Receive file
+          - title: Listen to file changes
             id: 1
-            url: sftp-client-receive-file
-          - title: Send file
+            url: sftp-listener-file-changes
+          - title: Format-specific callbacks
             id: 2
-            url: sftp-client-send-file
+            url: sftp-listener-format-callbacks
+          - title: Post-processing actions
+            id: 3
+            url: sftp-listener-post-processing
       - title: Database access
         id: 63
         sublinks:

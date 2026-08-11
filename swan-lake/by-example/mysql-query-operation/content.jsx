@@ -333,8 +333,8 @@ export function MysqlQueryOperation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send file"
-            href="/learn/by-example/sftp-client-send-file/"
+            title="Post-processing actions"
+            href="/learn/by-example/sftp-listener-post-processing/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -361,7 +361,7 @@ export function MysqlQueryOperation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Post-processing actions
                 </span>
               </div>
             </div>

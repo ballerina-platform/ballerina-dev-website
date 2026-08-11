@@ -278,8 +278,8 @@ export function EmailClientSslTls({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/ftp-service-receive-file/"
+            title="Read file"
+            href="/learn/by-example/ftp-client-read-file/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -289,7 +289,7 @@ export function EmailClientSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Read file
                 </span>
               </div>
               <svg

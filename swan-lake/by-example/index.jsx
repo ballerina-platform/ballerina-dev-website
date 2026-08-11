@@ -1844,37 +1844,53 @@ import {
   codeSnippetData as EmailClientSslTlsCodeSnippetData,
 } from "./email-client-ssl-tls/content.jsx";
 import {
-  FtpServiceReceiveFile,
-  codeSnippetData as FtpServiceReceiveFileCodeSnippetData,
-} from "./ftp-service-receive-file/content.jsx";
+  FtpClientReadFile,
+  codeSnippetData as FtpClientReadFileCodeSnippetData,
+} from "./ftp-client-read-file/content.jsx";
 import {
-  FtpServiceSendFile,
-  codeSnippetData as FtpServiceSendFileCodeSnippetData,
-} from "./ftp-service-send-file/content.jsx";
+  FtpClientWriteFile,
+  codeSnippetData as FtpClientWriteFileCodeSnippetData,
+} from "./ftp-client-write-file/content.jsx";
 import {
-  FtpClientReceiveFile,
-  codeSnippetData as FtpClientReceiveFileCodeSnippetData,
-} from "./ftp-client-receive-file/content.jsx";
+  FtpClientFileOperations,
+  codeSnippetData as FtpClientFileOperationsCodeSnippetData,
+} from "./ftp-client-file-operations/content.jsx";
 import {
-  FtpClientSendFile,
-  codeSnippetData as FtpClientSendFileCodeSnippetData,
-} from "./ftp-client-send-file/content.jsx";
+  FtpListenerFileChanges,
+  codeSnippetData as FtpListenerFileChangesCodeSnippetData,
+} from "./ftp-listener-file-changes/content.jsx";
 import {
-  SftpServiceReceiveFile,
-  codeSnippetData as SftpServiceReceiveFileCodeSnippetData,
-} from "./sftp-service-receive-file/content.jsx";
+  FtpListenerFormatCallbacks,
+  codeSnippetData as FtpListenerFormatCallbacksCodeSnippetData,
+} from "./ftp-listener-format-callbacks/content.jsx";
 import {
-  SftpServiceSendFile,
-  codeSnippetData as SftpServiceSendFileCodeSnippetData,
-} from "./sftp-service-send-file/content.jsx";
+  FtpListenerPostProcessing,
+  codeSnippetData as FtpListenerPostProcessingCodeSnippetData,
+} from "./ftp-listener-post-processing/content.jsx";
 import {
-  SftpClientReceiveFile,
-  codeSnippetData as SftpClientReceiveFileCodeSnippetData,
-} from "./sftp-client-receive-file/content.jsx";
+  SftpClientReadFile,
+  codeSnippetData as SftpClientReadFileCodeSnippetData,
+} from "./sftp-client-read-file/content.jsx";
 import {
-  SftpClientSendFile,
-  codeSnippetData as SftpClientSendFileCodeSnippetData,
-} from "./sftp-client-send-file/content.jsx";
+  SftpClientWriteFile,
+  codeSnippetData as SftpClientWriteFileCodeSnippetData,
+} from "./sftp-client-write-file/content.jsx";
+import {
+  SftpClientFileOperations,
+  codeSnippetData as SftpClientFileOperationsCodeSnippetData,
+} from "./sftp-client-file-operations/content.jsx";
+import {
+  SftpListenerFileChanges,
+  codeSnippetData as SftpListenerFileChangesCodeSnippetData,
+} from "./sftp-listener-file-changes/content.jsx";
+import {
+  SftpListenerFormatCallbacks,
+  codeSnippetData as SftpListenerFormatCallbacksCodeSnippetData,
+} from "./sftp-listener-format-callbacks/content.jsx";
+import {
+  SftpListenerPostProcessing,
+  codeSnippetData as SftpListenerPostProcessingCodeSnippetData,
+} from "./sftp-listener-post-processing/content.jsx";
 import {
   MysqlQueryOperation,
   codeSnippetData as MysqlQueryOperationCodeSnippetData,
@@ -3205,22 +3221,30 @@ const BBEs = {
   EmailServiceSslTlsCodeSnippetData,
   EmailClientSslTls,
   EmailClientSslTlsCodeSnippetData,
-  FtpServiceReceiveFile,
-  FtpServiceReceiveFileCodeSnippetData,
-  FtpServiceSendFile,
-  FtpServiceSendFileCodeSnippetData,
-  FtpClientReceiveFile,
-  FtpClientReceiveFileCodeSnippetData,
-  FtpClientSendFile,
-  FtpClientSendFileCodeSnippetData,
-  SftpServiceReceiveFile,
-  SftpServiceReceiveFileCodeSnippetData,
-  SftpServiceSendFile,
-  SftpServiceSendFileCodeSnippetData,
-  SftpClientReceiveFile,
-  SftpClientReceiveFileCodeSnippetData,
-  SftpClientSendFile,
-  SftpClientSendFileCodeSnippetData,
+  FtpClientReadFile,
+  FtpClientReadFileCodeSnippetData,
+  FtpClientWriteFile,
+  FtpClientWriteFileCodeSnippetData,
+  FtpClientFileOperations,
+  FtpClientFileOperationsCodeSnippetData,
+  FtpListenerFileChanges,
+  FtpListenerFileChangesCodeSnippetData,
+  FtpListenerFormatCallbacks,
+  FtpListenerFormatCallbacksCodeSnippetData,
+  FtpListenerPostProcessing,
+  FtpListenerPostProcessingCodeSnippetData,
+  SftpClientReadFile,
+  SftpClientReadFileCodeSnippetData,
+  SftpClientWriteFile,
+  SftpClientWriteFileCodeSnippetData,
+  SftpClientFileOperations,
+  SftpClientFileOperationsCodeSnippetData,
+  SftpListenerFileChanges,
+  SftpListenerFileChangesCodeSnippetData,
+  SftpListenerFormatCallbacks,
+  SftpListenerFormatCallbacksCodeSnippetData,
+  SftpListenerPostProcessing,
+  SftpListenerPostProcessingCodeSnippetData,
   MysqlQueryOperation,
   MysqlQueryOperationCodeSnippetData,
   MysqlQueryRowOperation,

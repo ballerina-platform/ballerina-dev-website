@@ -4677,40 +4677,13 @@
     ]
   },
   {
-    "title": "FTP Service",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Receive file",
-        "url": "ftp-service-receive-file",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": false
-      },
-      {
-        "name": "Send file",
-        "url": "ftp-service-send-file",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": false
-      }
-    ]
-  },
-  {
     "title": "FTP client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "ftp-client-receive-file",
+        "name": "Read file",
+        "url": "ftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4719,8 +4692,18 @@
         "needCentral": false
       },
       {
-        "name": "Send file",
-        "url": "ftp-client-send-file",
+        "name": "Write file",
+        "url": "ftp-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "File operations",
+        "url": "ftp-client-file-operations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4731,13 +4714,13 @@
     ]
   },
   {
-    "title": "SFTP Service",
+    "title": "FTP listener",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "sftp-service-receive-file",
+        "name": "Listen to file changes",
+        "url": "ftp-listener-file-changes",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4746,8 +4729,18 @@
         "needCentral": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-service-send-file",
+        "name": "Format-specific callbacks",
+        "url": "ftp-listener-format-callbacks",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Post-processing actions",
+        "url": "ftp-listener-post-processing",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4763,8 +4756,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Receive file",
-        "url": "sftp-client-receive-file",
+        "name": "Read file",
+        "url": "sftp-client-read-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4773,8 +4766,55 @@
         "needCentral": false
       },
       {
-        "name": "Send file",
-        "url": "sftp-client-send-file",
+        "name": "Write file",
+        "url": "sftp-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "File operations",
+        "url": "sftp-client-file-operations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "SFTP listener",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Listen to file changes",
+        "url": "sftp-listener-file-changes",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Format-specific callbacks",
+        "url": "sftp-listener-format-callbacks",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Post-processing actions",
+        "url": "sftp-listener-post-processing",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

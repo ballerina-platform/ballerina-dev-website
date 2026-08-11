@@ -1,0 +1,7 @@
+{
+  "title": "Post-processing actions",
+  "description": "This example demonstrates automatic post-processing actions after file handling over SFTP.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "SFTP"],
+  "permalink": "/learn/by-example/sftp-listener-post-processing/",
+  "active": "sftp-listener-post-processing"
+}

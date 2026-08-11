@@ -1,0 +1,7 @@
+{
+  "title": "Post-processing actions",
+  "description": "This example demonstrates automatic post-processing actions after file handling.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-listener-post-processing/",
+  "active": "ftp-listener-post-processing"
+}

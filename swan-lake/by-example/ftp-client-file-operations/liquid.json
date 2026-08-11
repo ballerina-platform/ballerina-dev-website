@@ -1,0 +1,7 @@
+{
+  "title": "File operations",
+  "description": "This example demonstrates file management operations on a remote FTP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-client-file-operations/",
+  "active": "ftp-client-file-operations"
+}

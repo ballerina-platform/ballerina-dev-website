@@ -1,0 +1,7 @@
+{
+  "title": "Write file",
+  "description": "This example demonstrates writing files in different formats to a remote FTP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-client-write-file/",
+  "active": "ftp-client-write-file"
+}

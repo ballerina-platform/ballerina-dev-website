@@ -119,6 +119,8 @@ service /claims on new http:Listener(8080) {
     }
 
     resource function get [string workflowId]() returns json|error {
+        // Check the status first instead of blocking on the result:
+        // getWorkflowResult waits until the workflow completes.
         management:WorkflowExecutionInfo info = check management:getWorkflowInfo(workflowId);
         if info.status != "COMPLETED" {
             return {workflowId, status: info.status};
@@ -136,9 +138,11 @@ The status resource deliberately does **not** call `workflow:getWorkflowResult` 
 Ballerina does not ship a task inbox application — instead, the workflow module exposes a **management API** over HTTP, and you point any UI or tool at it. Importing `ballerina/workflow.management` (already done above) brings the API in; enable it in `Config.toml`:
 
 ```toml
+# Workflow engine — runs against a local Temporal development server.
 [ballerina.workflow]
 mode = "LOCAL"
 
+# Management API — exposed at http://localhost:8234/workflow/
 [ballerina.workflow.management]
 enableManagementApi = true
 port = 8234

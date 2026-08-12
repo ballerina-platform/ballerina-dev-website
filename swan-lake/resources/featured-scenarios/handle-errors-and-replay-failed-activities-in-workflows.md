@@ -96,9 +96,11 @@ Now, when `depositPayout` fails, the workflow does not fail. Instead, the engine
 The decisions are made through the workflow **management API**. Enable it in `Config.toml` (and import `ballerina/workflow.management` in the code):
 
 ```toml
+# Workflow engine — runs against a local Temporal development server.
 [ballerina.workflow]
 mode = "LOCAL"
 
+# Management API — exposed at http://localhost:8234/workflow/
 [ballerina.workflow.management]
 enableManagementApi = true
 port = 8234

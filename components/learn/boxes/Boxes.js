@@ -1037,6 +1037,30 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Generate custom connectors using the Ballerina OpenAPI tool.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/write-a-workflow-with-ballerina/`} className={styles.titleLink}>
+                            Write a workflow with Ballerina
+                          </a>
+                        </p>
+                        <p className={styles.description}>Write a durable workflow with activities.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/write-a-workflow-with-a-human-task/`} className={styles.titleLink}>
+                            Write a workflow with a human task
+                          </a>
+                        </p>
+                        <p className={styles.description}>Pause a workflow for a human decision.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/handle-errors-and-replay-failed-activities-in-workflows/`} className={styles.titleLink}>
+                            Handle errors and replay failed activities in workflows
+                          </a>
+                        </p>
+                        <p className={styles.description}>Recover from activity failures with automatic retries and manual replay.</p>
+                      </div>
                     </div>
                   </div>
                 </div>

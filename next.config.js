@@ -89,6 +89,18 @@ const nextConfig = {
         destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-restful-api-with-ballerina`,
       },
       {
+        source: `/${redirectBase}learn/write-a-workflow-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-workflow-with-ballerina`,
+      },
+      {
+        source: `/${redirectBase}learn/write-a-workflow-with-a-human-task`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-workflow-with-a-human-task`,
+      },
+      {
+        source: `/${redirectBase}learn/handle-errors-and-replay-failed-activities-in-workflows`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/handle-errors-and-replay-failed-activities-in-workflows`,
+      },
+      {
         source: `/${redirectBase}learn/get-started`,
         destination: `/${redirectBase}learn/integration/get-started`,
       },

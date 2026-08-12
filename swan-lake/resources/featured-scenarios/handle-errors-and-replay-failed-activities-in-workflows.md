@@ -97,8 +97,11 @@ The decisions are made through the workflow **management API**. Enable it in `Co
 
 ```toml
 # Workflow engine — runs against a local Temporal development server.
+# Each integration needs its own task queue so samples sharing the same
+# Temporal server do not conflict.
 [ballerina.workflow]
 mode = "LOCAL"
+taskQueue = "CLAIM_PAYOUT_QUEUE"
 
 # Management API — exposed at http://localhost:8234/workflow/
 [ballerina.workflow.management]
@@ -172,7 +175,7 @@ $ curl http://localhost:8080/payouts/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
 ```
 
-The example also includes a minimal single-page React dashboard (under `ui/`) — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision.
+The example also includes a minimal single-page React dashboard (under `ui/`) — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision. Items from other integrations sharing the same Temporal server appear grayed out with their actions disabled, since no worker in this integration serves them.
 
 ## Learn more
 

@@ -139,8 +139,11 @@ Ballerina does not ship a task inbox application — instead, the workflow modul
 
 ```toml
 # Workflow engine — runs against a local Temporal development server.
+# Each integration needs its own task queue so samples sharing the same
+# Temporal server do not conflict.
 [ballerina.workflow]
 mode = "LOCAL"
+taskQueue = "CLAIM_APPROVAL_QUEUE"
 
 # Management API — exposed at http://localhost:8234/workflow/
 [ballerina.workflow.management]
@@ -148,6 +151,8 @@ enableManagementApi = true
 port = 8234
 enableBasicAuth = false
 ```
+
+The `taskQueue` names the queue this integration's worker serves. Every integration sharing a Temporal server must use a unique task queue — otherwise workers pick up each other's workflows and fail.
 
 This serves the API at `http://localhost:8234/workflow/`. The endpoints used for human tasks are:
 
@@ -219,6 +224,8 @@ Anything that can call the management API can be a task inbox or a monitoring da
 - **Workflows** — lists the workflow instances (`GET /workflow/workflows`); opening one shows the workflow input and every activity with its input, output, started time, and status (`GET .../history` and `GET .../activity-tree`).
 - **Human Tasks** — the pending approvals, with Approve/Reject posting to the `complete` endpoint.
 - **Failed Activities** — failed activities waiting for review (covered in the [error-handling guide](/learn/handle-errors-and-replay-failed-activities-in-workflows/)).
+
+Listings are namespace-wide, so workflows and tasks from *other* integrations sharing the same Temporal server show up too. The dashboard grays those out and disables their actions — an item is actionable only if it belongs to this integration's task queue and its workflow type has an active worker (checked through `GET /workflow/definitions`).
 
 ```
 $ cd ui

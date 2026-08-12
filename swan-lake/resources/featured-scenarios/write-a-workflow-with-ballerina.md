@@ -153,11 +153,12 @@ To try it locally, install the <a href="https://docs.temporal.io/cli" target="_b
 $ temporal server start-dev
 ```
 
-Then, change the mode in `Config.toml`:
+Then, change the mode in `Config.toml`, and give the integration its own task queue — every integration sharing a Temporal server must use a unique task queue so workers do not pick up each other's workflows:
 
 ```toml
 [ballerina.workflow]
 mode = "LOCAL"
+taskQueue = "CLAIM_PROCESSING_QUEUE"
 ```
 
 Run the program again with `bal run`. The behavior is the same, but now every step is recorded in the Temporal server. You can watch the workflow execute in the Temporal Web UI at <a href="http://localhost:8233" target="_blank">http://localhost:8233</a> — and if you stop the program between two activities and start it again, the workflow resumes from where it stopped.

@@ -145,7 +145,7 @@ temporal server start-dev
 Run the Ballerina service in another terminal:
 
 ```shell
-cd workflow-error-handling/ballerina
+cd workflow-error-handling
 bal run
 ```
 

@@ -172,7 +172,7 @@ $ curl http://localhost:8080/payouts/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
 ```
 
-The example also includes a single-page React app (under `ui/`) that lists the pending review tasks with their error messages, lets you edit the activity input, and posts the replay decision — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>.
+The example also includes a minimal single-page React dashboard (under `ui/`) — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision.
 
 ## Learn more
 

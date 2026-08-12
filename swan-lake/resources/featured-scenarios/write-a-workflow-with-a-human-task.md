@@ -212,9 +212,13 @@ $ curl http://localhost:8080/claims/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-100 approved. Payment reference: PAY-CLM-100"}
 ```
 
-## Add a simple approval UI
+## Add a simple dashboard UI
 
-Anything that can call the management API can be a task inbox. The <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-human-task" target="_blank">complete example</a> includes a single-page React app (under `ui/`) that does exactly what the `curl` commands above did: it polls `GET /workflow/human-tasks?status=PENDING`, shows each task's payload, and posts the manager's decision to the `complete` endpoint.
+Anything that can call the management API can be a task inbox or a monitoring dashboard. The <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-human-task" target="_blank">complete example</a> includes a minimal single-page React dashboard (under `ui/`) with three tabs, all backed by the endpoints you used above:
+
+- **Workflows** — lists the workflow instances (`GET /workflow/workflows`); opening one shows the workflow input and every activity with its input, output, started time, and status (`GET .../history` and `GET .../activity-tree`).
+- **Human Tasks** — the pending approvals, with Approve/Reject posting to the `complete` endpoint.
+- **Failed Activities** — failed activities waiting for review (covered in the [error-handling guide](/learn/handle-errors-and-replay-failed-activities-in-workflows/)).
 
 ```
 $ cd ui
@@ -222,7 +226,7 @@ $ npm install
 $ npm run dev
 ```
 
-Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, and approve it from the browser.
+Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**.
 
 ## Learn more
 

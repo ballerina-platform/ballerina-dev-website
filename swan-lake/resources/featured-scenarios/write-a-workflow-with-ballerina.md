@@ -114,10 +114,13 @@ public function main() returns error? {
             {claimId: "CLM-001", policyNo: "POL-1234", amount: 750.0d});
     io:println("Workflow started with ID: " + workflowId);
 
-    anydata result = check workflow:getWorkflowResult(workflowId);
+    // Blocks until the workflow completes or the timeout (in seconds) is reached.
+    anydata result = check workflow:getWorkflowResult(workflowId, 60);
     io:println("Result: " + result.toString());
 }
 ```
+
+Note that `workflow:run` only *starts* the workflow — it returns the ID immediately, while the workflow runs in the background. `workflow:getWorkflowResult` then **blocks** until the workflow completes, or returns an error if it does not complete within the given timeout (in seconds). Waiting like this is convenient in a short demo, but workflows often run for hours or days — a real application should return the workflow ID to the caller and check the status later instead of blocking. The follow-up guides listed at the end show this pattern with an HTTP service.
 
 ## Configure the engine and run
 

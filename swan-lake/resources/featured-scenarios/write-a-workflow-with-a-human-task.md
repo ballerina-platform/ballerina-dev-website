@@ -120,14 +120,16 @@ service /claims on new http:Listener(8080) {
 
     resource function get [string workflowId]() returns json|error {
         management:WorkflowExecutionInfo info = check management:getWorkflowInfo(workflowId);
-        if info.status == "RUNNING" {
-            return {workflowId, status: "IN_PROGRESS"};
+        if info.status != "COMPLETED" {
+            return {workflowId, status: info.status};
         }
         anydata result = check workflow:getWorkflowResult(workflowId);
-        return {workflowId, result: check result.cloneWithType(json)};
+        return {workflowId, status: info.status, result: check result.cloneWithType(json)};
     }
 }
 ```
+
+The status resource deliberately does **not** call `workflow:getWorkflowResult` right away — that function blocks until the workflow completes, and a claim can wait on the manager for days. Instead, it checks the workflow status through `management:getWorkflowInfo` and fetches the result only once the workflow has completed, so the resource always responds immediately.
 
 ## Enable the management API
 
@@ -176,7 +178,14 @@ $ curl -X POST http://localhost:8080/claims \
 {"claimId":"CLM-100", "workflowId":"019ff629-dbc0-7ed1-a35e-2f91c5811782", "status":"PENDING_APPROVAL"}
 ```
 
-The workflow verifies the claim and pauses at the human task. List the pending tasks as a manager:
+The workflow verifies the claim and pauses at the human task. Checking the status now shows the workflow is still running (durably waiting for the manager):
+
+```
+$ curl http://localhost:8080/claims/<workflowId>
+{"workflowId":"...", "status":"RUNNING"}
+```
+
+List the pending tasks as a manager:
 
 ```
 $ curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
@@ -196,7 +205,7 @@ The workflow resumes immediately and pays the claim:
 
 ```
 $ curl http://localhost:8080/claims/<workflowId>
-{"workflowId":"...", "result":"Claim CLM-100 approved. Payment reference: PAY-CLM-100"}
+{"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-100 approved. Payment reference: PAY-CLM-100"}
 ```
 
 ## Add a simple approval UI

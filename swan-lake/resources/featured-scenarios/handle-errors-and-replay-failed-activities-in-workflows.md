@@ -167,7 +167,7 @@ The deposit succeeds with the corrected input, the customer is notified, and the
 
 ```
 $ curl http://localhost:8080/payouts/<workflowId>
-{"workflowId":"...", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
+{"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
 ```
 
 The example also includes a single-page React app (under `ui/`) that lists the pending review tasks with their error messages, lets you edit the activity input, and posts the replay decision — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>.

@@ -113,7 +113,7 @@ The relevant endpoints under `http://localhost:8234/workflow/` are:
 - `POST /review-activities/{taskId}/proceed-with-input` — retry with a corrected input, e.g. `{"input": {"accountNo": "ACC-12345", "amount": 225000.0}}`.
 - `POST /review-activities/{taskId}/reject` — fail the activity; the workflow sees the error.
 
-Like human tasks, review requests carry the caller's identity in the `x-user-id` and `x-user-roles` headers, and only callers with a matching role — `OPS` here — may decide.
+Like human tasks, review requests carry the caller's identity in the `x-user-id` and `x-user-roles` headers. The role given to `retryPolicy` — `OPS` here — is used to *filter* the review tasks: an operations dashboard queries with `x-user-roles: OPS` and sees only the failures routed to that role, and the decision is recorded against the `x-user-id`. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module, for example by a gateway or backend that sets them from the logged-in user.
 
 ## Every activity is a store-and-forward stage
 

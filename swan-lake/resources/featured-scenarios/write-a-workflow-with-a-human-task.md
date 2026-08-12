@@ -69,7 +69,7 @@ type ApprovalDecision record {|
 
 ## Write the workflow with a human task
 
-The human task sits between the two activities. Use `ctx->awaitHumanTask(...)` with a task name, the role that may complete it, and a payload that tells the approver what they are deciding on:
+The human task sits between the two activities. Use `ctx->awaitHumanTask(...)` with a task name, the role the task is routed to, and a payload that tells the approver what they are deciding on:
 
 ```ballerina
 @workflow:Workflow
@@ -151,9 +151,9 @@ This serves the API at `http://localhost:8234/workflow/`. The endpoints used for
 - `GET /workflow/human-tasks/{taskId}` — task details, including the payload and the form schema.
 - `POST /workflow/human-tasks/{taskId}/complete` — complete a task with a body such as `{"result": {"approved": true, "comment": "..."}}`.
 
-Requests carry the caller's identity in two headers: `x-user-id` and `x-user-roles`. A task can only be completed by a caller whose roles include one of the roles given to `awaitHumanTask` — `MANAGER` in this guide.
+Requests carry the caller's identity in two headers: `x-user-id` and `x-user-roles`. The role given to `awaitHumanTask` — `MANAGER` in this guide — is used to *filter* tasks: a manager's inbox queries with `x-user-roles: MANAGER` and sees only the tasks routed to that role, and the completion is recorded against the `x-user-id`. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module. In a real deployment, your identity provider authenticates the user, and your backend or gateway sets the identity headers from the logged-in user.
 
->**Info:** For production, the management API supports TLS and basic, JWT, OAuth2, and API-key authentication. `enableBasicAuth = false` keeps this tutorial simple. In a real deployment, your identity provider authenticates the user, and your backend or gateway sets the identity headers.
+>**Info:** To protect access to the management API endpoint itself, it supports TLS and basic, JWT, OAuth2, and API-key authentication. `enableBasicAuth = false` keeps this tutorial simple.
 
 ## Try it out
 

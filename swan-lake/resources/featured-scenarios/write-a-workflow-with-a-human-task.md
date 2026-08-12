@@ -104,6 +104,8 @@ function makePayment(string claimId, decimal amount) returns string|error {
 
 When the workflow reaches `awaitHumanTask`, it suspends durably — no thread is blocked, no resources are held, and the wait survives restarts. The typed result (`ApprovalDecision`) does double duty: the engine derives a JSON form schema from it for UIs, and validates the submitted result against it.
 
+Note that `verifyClaim` now only checks that the claim is well-formed. The amount-based approval rule from the [previous guide](/learn/write-a-workflow-with-ballerina/) is gone — deciding whether to pay is exactly what the manager's human task is for.
+
 >**Tip:** You can pass `timeout = {days: 3}` to `awaitHumanTask` to bound the wait. If nobody completes the task in time, the call returns a `workflow:HumanTaskTimeoutError` that the workflow can handle — for example, by escalating.
 
 ## Expose the workflow as a service
@@ -162,7 +164,18 @@ This serves the API at `http://localhost:8234/workflow/`. The endpoints used for
 
 Requests carry the caller's identity in two headers: `x-user-id` and `x-user-roles`. The role given to `awaitHumanTask` — `MANAGER` in this guide — is used to *filter* tasks: a manager's inbox queries with `x-user-roles: MANAGER` and sees only the tasks routed to that role, and the completion is recorded against the `x-user-id`. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module. In a real deployment, your identity provider authenticates the user, and your backend or gateway sets the identity headers from the logged-in user.
 
->**Info:** To protect access to the management API endpoint itself, it supports TLS and basic, JWT, OAuth2, and API-key authentication. `enableBasicAuth = false` keeps this tutorial simple.
+>**Caution:** `enableBasicAuth = false` leaves the management API unauthenticated and is for **local development only** — never expose an unauthenticated management API. In production, enable TLS and one of basic, JWT, OAuth2, or API-key authentication. For example, with basic authentication, callers must present credentials from the configured user store:
+
+```toml
+[ballerina.workflow.management]
+enableManagementApi = true
+enableBasicAuth = true
+
+[[ballerina.auth.users]]
+username = "admin"
+password = "<strong-password>"
+scopes = ["admin"]
+```
 
 ## Try it out
 

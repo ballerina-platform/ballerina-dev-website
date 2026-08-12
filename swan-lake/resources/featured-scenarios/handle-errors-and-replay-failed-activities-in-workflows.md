@@ -55,24 +55,25 @@ Transient failures usually go away if you try again a little later. Declare an a
 
 ```ballerina
 decimal localAmount = check ctx->callActivity(convertCurrency,
-        {"amount": request.amount, "currency": request.currency},
+        {"claimId": request.claimId, "amount": request.amount, "currency": request.currency},
         retryPolicy = {maxRetries: 3, retryDelay: 2.0, retryBackoff: 2.0});
 ```
 
 This retries the failed activity up to 3 times, waiting 2 seconds before the first retry and doubling the delay each time (2s, 4s, 8s). Only the activity is re-executed — the workflow itself, and every activity that already completed, are untouched. If all retries fail, the final error reaches the workflow as a normal error value.
 
-The activity in this guide simulates a flaky service that fails twice and succeeds on the third attempt:
+The activity in this guide simulates a flaky service that, for each claim, fails twice and succeeds on the third attempt:
 
 ```ballerina
-int convertAttempts = 0;
+map<int> convertAttempts = {};
 
 @workflow:Activity
-function convertCurrency(decimal amount, string currency) returns decimal|error {
-    convertAttempts += 1;
-    if convertAttempts % 3 != 0 {
-        return error(string `Exchange rate service is unavailable (attempt ${convertAttempts})`);
+function convertCurrency(string claimId, decimal amount, string currency) returns decimal|error {
+    int attempts = (convertAttempts[claimId] ?: 0) + 1;
+    convertAttempts[claimId] = attempts;
+    if attempts < 3 {
+        return error(string `Exchange rate service is unavailable (attempt ${attempts})`);
     }
-    io:println(string `Converted ${amount} ${currency} on attempt ${convertAttempts}`);
+    io:println(string `Converted ${amount} ${currency} on attempt ${attempts}`);
     return currency == "USD" ? amount * 300.0d : amount;
 }
 ```
@@ -109,6 +110,8 @@ enableManagementApi = true
 port = 8234
 enableBasicAuth = false
 ```
+
+>**Caution:** `enableBasicAuth = false` leaves the management API unauthenticated and is for **local development only**. See [Write a workflow with a human task](/learn/write-a-workflow-with-a-human-task/) for securing the management API in production.
 
 The relevant endpoints under `http://localhost:8234/workflow/` are:
 

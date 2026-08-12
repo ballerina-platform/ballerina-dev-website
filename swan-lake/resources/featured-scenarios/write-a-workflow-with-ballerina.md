@@ -161,7 +161,9 @@ mode = "LOCAL"
 taskQueue = "CLAIM_PROCESSING_QUEUE"
 ```
 
-Run the program again with `bal run`. The behavior is the same, but now every step is recorded in the Temporal server. You can watch the workflow execute in the Temporal Web UI at <a href="http://localhost:8233" target="_blank">http://localhost:8233</a> — and if you stop the program between two activities and start it again, the workflow resumes from where it stopped.
+Run the program again with `bal run`. The behavior is the same, but now every step is recorded in the Temporal server, and you can watch the workflow execute in the Temporal Web UI at <a href="http://localhost:8233" target="_blank">http://localhost:8233</a>.
+
+Durability shows when things go wrong: if the program stops while a workflow instance is in progress, the engine resumes that instance from its last recorded step as soon as the program is running again — no work is repeated or lost. Note that restarting this particular program also runs `main()` again, which starts a *new, separate* workflow instance alongside the resumed one; in a real application, the code that starts workflows (e.g., an HTTP service, as in the follow-up guides) is separate from this kind of one-shot `main()`.
 
 ## Learn more
 

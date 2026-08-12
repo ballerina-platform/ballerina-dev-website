@@ -138,52 +138,52 @@ So instead of one message store feeding one forwarder, the payout workflow above
 
 The complete example, including an HTTP service to submit payouts, is in the <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-error-handling" target="_blank">integration samples</a> repository. Clone it and start a local Temporal development server in one terminal:
 
-```
-$ temporal server start-dev
+```shell
+temporal server start-dev
 ```
 
 Run the Ballerina service in another terminal:
 
-```
-$ cd workflow-error-handling/ballerina
-$ bal run
+```shell
+cd workflow-error-handling/ballerina
+bal run
 ```
 
 Submit a payout with a **bad account number** (a valid one starts with `ACC-`):
 
-```
-$ curl -X POST http://localhost:8080/payouts \
-       -H 'Content-Type: application/json' \
-       -d '{"claimId": "CLM-001", "accountNo": "12345", "amount": 750.0, "currency": "USD"}'
+```shell
+curl -X POST http://localhost:8080/payouts \
+     -H 'Content-Type: application/json' \
+     -d '{"claimId": "CLM-001", "accountNo": "12345", "amount": 750.0, "currency": "USD"}'
 ```
 
 Watch the service logs: `convertCurrency` fails twice and recovers on the third automatic retry. Then `depositPayout` fails, and the workflow suspends for review:
 
-```
-$ curl 'http://localhost:8234/workflow/review-activities?status=PENDING' -H 'x-user-roles: OPS'
+```shell
+curl 'http://localhost:8234/workflow/review-activities?status=PENDING' -H 'x-user-roles: OPS'
 ```
 
 Replay it with the corrected account number, using the `taskId` from the listing:
 
-```
-$ curl -X POST 'http://localhost:8234/workflow/review-activities/<taskId>/proceed-with-input' \
-       -H 'Content-Type: application/json' -H 'x-user-id: olivia' -H 'x-user-roles: OPS' \
-       -d '{"input": {"accountNo": "ACC-12345", "amount": 225000.0}}'
+```shell
+curl -X POST 'http://localhost:8234/workflow/review-activities/<taskId>/proceed-with-input' \
+     -H 'Content-Type: application/json' -H 'x-user-id: olivia' -H 'x-user-roles: OPS' \
+     -d '{"input": {"accountNo": "ACC-12345", "amount": 225000.0}}'
 ```
 
 The deposit succeeds with the corrected input, the customer is notified, and the workflow completes:
 
-```
+```shell
 $ curl http://localhost:8080/payouts/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
 ```
 
-The samples repository also includes a minimal single-page React dashboard shared by all the workflow samples — <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-dashboard" target="_blank">`workflow-dashboard`</a>. Run it with this integration's task queue and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>:
+The samples repository also includes a minimal single-page React dashboard shared by all the workflow samples — <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-dashboard" target="_blank">`workflow-dashboard`</a>. In a new terminal at the repository root, run it with this integration's task queue and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>:
 
-```
-$ cd ../workflow-dashboard
-$ npm install
-$ VITE_TASK_QUEUE=CLAIM_PAYOUT_QUEUE npm run dev
+```shell
+cd workflow-dashboard
+npm install
+VITE_TASK_QUEUE=CLAIM_PAYOUT_QUEUE npm run dev
 ```
 
 Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision. Items from other integrations sharing the same Temporal server are hidden by default; the **Show inactive integrations** filter lists them grayed out with the reason (their integration is not active) and their actions disabled.

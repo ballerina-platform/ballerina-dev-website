@@ -41,8 +41,8 @@ A human task needs two more pieces around it:
 
 Use the `bal new` command to create a new package.
 
-```
-$ bal new workflow_human_task
+```shell
+bal new workflow_human_task
 ```
 
 ## Define the data types
@@ -92,7 +92,7 @@ function claimApprovalWorkflow(workflow:Context ctx, Claim claim) returns string
 @workflow:Activity
 function verifyClaim(Claim claim) returns boolean|error {
     io:println(string `Verifying claim ${claim.claimId} against policy ${claim.policyNo}`);
-    return claim.amount > 0.0d;
+    return claim.amount <= 1000.0d;
 }
 
 @workflow:Activity
@@ -104,7 +104,7 @@ function makePayment(string claimId, decimal amount) returns string|error {
 
 When the workflow reaches `awaitHumanTask`, it suspends durably — no thread is blocked, no resources are held, and the wait survives restarts. The typed result (`ApprovalDecision`) does double duty: the engine derives a JSON form schema from it for UIs, and validates the submitted result against it.
 
-Note that `verifyClaim` now only checks that the claim is well-formed. The amount-based approval rule from the [previous guide](/learn/write-a-workflow-with-ballerina/) is gone — deciding whether to pay is exactly what the manager's human task is for.
+Note that `verifyClaim` applies the same automated rule as the [previous guide](/learn/write-a-workflow-with-ballerina/) — claims over 1,000 are rejected outright. What is new is that a verified claim no longer goes straight to payment: the manager decides.
 
 >**Tip:** You can pass `timeout = {days: 3}` to `awaitHumanTask` to bound the wait. If nobody completes the task in time, the call returns a `workflow:HumanTaskTimeoutError` that the workflow can handle — for example, by escalating.
 
@@ -181,41 +181,41 @@ scopes = ["admin"]
 
 Start a local Temporal development server in one terminal:
 
-```
-$ temporal server start-dev
+```shell
+temporal server start-dev
 ```
 
 Run the package in another terminal:
 
-```
-$ bal run
+```shell
+bal run
 ```
 
 Submit a claim:
 
-```
+```shell
 $ curl -X POST http://localhost:8080/claims \
        -H 'Content-Type: application/json' \
-       -d '{"claimId": "CLM-100", "policyNo": "POL-9876", "amount": 1250.0}'
+       -d '{"claimId": "CLM-100", "policyNo": "POL-9876", "amount": 750.0}'
 {"claimId":"CLM-100", "workflowId":"019ff629-dbc0-7ed1-a35e-2f91c5811782", "status":"PENDING_APPROVAL"}
 ```
 
 The workflow verifies the claim and pauses at the human task. Checking the status now shows the workflow is still running (durably waiting for the manager):
 
-```
+```shell
 $ curl http://localhost:8080/claims/<workflowId>
 {"workflowId":"...", "status":"RUNNING"}
 ```
 
 List the pending tasks as a manager:
 
-```
-$ curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
+```shell
+curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
 ```
 
 Complete the task using the `taskId` from the listing:
 
-```
+```shell
 $ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/complete' \
        -H 'Content-Type: application/json' \
        -H 'x-user-id: alice' -H 'x-user-roles: MANAGER' \
@@ -225,7 +225,7 @@ $ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/complete' \
 
 The workflow resumes immediately and pays the claim:
 
-```
+```shell
 $ curl http://localhost:8080/claims/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-100 approved. Payment reference: PAY-CLM-100"}
 ```
@@ -240,12 +240,13 @@ Anything that can call the management API can be a task inbox or a monitoring da
 
 Listings are namespace-wide, so workflows and tasks from *other* integrations sharing the same Temporal server show up too. The dashboard hides those by default — an item counts as active only if it belongs to this integration's task queue and its workflow type has an active worker (checked through `GET /workflow/definitions`). Ticking **Show inactive integrations** lists them grayed out, labeled with the reason, and with their actions disabled.
 
-Start the dashboard with this integration's task queue:
+Clone the samples repository and start the dashboard with this integration's task queue:
 
-```
-$ cd ../workflow-dashboard
-$ npm install
-$ VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
+```shell
+git clone https://github.com/ballerina-guides/integration-samples.git
+cd integration-samples/workflow-dashboard
+npm install
+VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
 ```
 
 Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**.

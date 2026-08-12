@@ -178,7 +178,15 @@ $ curl http://localhost:8080/payouts/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-001 paid. Deposit reference: DEP-ACC-12345"}
 ```
 
-The example also includes a minimal single-page React dashboard (under `ui/`) — run it with `npm install && npm run dev` and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>. Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision. Items from other integrations sharing the same Temporal server appear grayed out with their actions disabled, since no worker in this integration serves them.
+The samples repository also includes a minimal single-page React dashboard shared by all the workflow samples — <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-dashboard" target="_blank">`workflow-dashboard`</a>. Run it with this integration's task queue and open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>:
+
+```
+$ cd ../workflow-dashboard
+$ npm install
+$ VITE_TASK_QUEUE=CLAIM_PAYOUT_QUEUE npm run dev
+```
+
+Its **Workflows** tab lists the workflow instances, and the detail view shows the workflow input and every activity with its input, output, started time, and status — including the failed `depositPayout` attempt, the review decision, and the replayed attempt. The **Failed Activities** tab lists the pending reviews with their error messages, lets you edit the activity input, and posts the replay decision. Items from other integrations sharing the same Temporal server are hidden by default; the **Show inactive integrations** filter lists them grayed out with the reason (their integration is not active) and their actions disabled.
 
 ## Learn more
 

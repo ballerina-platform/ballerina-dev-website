@@ -232,18 +232,20 @@ $ curl http://localhost:8080/claims/<workflowId>
 
 ## Add a simple dashboard UI
 
-Anything that can call the management API can be a task inbox or a monitoring dashboard. The <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-human-task" target="_blank">complete example</a> includes a minimal single-page React dashboard (under `ui/`) with three tabs, all backed by the endpoints you used above:
+Anything that can call the management API can be a task inbox or a monitoring dashboard. The integration samples repository includes a minimal single-page React dashboard — <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-dashboard" target="_blank">`workflow-dashboard`</a> — shared by all the workflow samples, with three tabs backed by the endpoints you used above:
 
 - **Workflows** — lists the workflow instances (`GET /workflow/workflows`); opening one shows the workflow input and every activity with its input, output, started time, and status (`GET .../history` and `GET .../activity-tree`).
 - **Human Tasks** — the pending approvals, with Approve/Reject posting to the `complete` endpoint.
 - **Failed Activities** — failed activities waiting for review (covered in the [error-handling guide](/learn/handle-errors-and-replay-failed-activities-in-workflows/)).
 
-Listings are namespace-wide, so workflows and tasks from *other* integrations sharing the same Temporal server show up too. The dashboard grays those out and disables their actions — an item is actionable only if it belongs to this integration's task queue and its workflow type has an active worker (checked through `GET /workflow/definitions`).
+Listings are namespace-wide, so workflows and tasks from *other* integrations sharing the same Temporal server show up too. The dashboard hides those by default — an item counts as active only if it belongs to this integration's task queue and its workflow type has an active worker (checked through `GET /workflow/definitions`). Ticking **Show inactive integrations** lists them grayed out, labeled with the reason, and with their actions disabled.
+
+Start the dashboard with this integration's task queue:
 
 ```
-$ cd ui
+$ cd ../workflow-dashboard
 $ npm install
-$ npm run dev
+$ VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
 ```
 
 Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**.

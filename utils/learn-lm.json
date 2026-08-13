@@ -1023,6 +1023,30 @@
                             "isDir": false,
                             "url": "/learn/create-your-first-connector-with-ballerina",
                             "id": "create-your-first-connector-with-ballerina"
+                        },
+                        {
+                            "dirName": "Write a workflow with Ballerina",
+                            "level": 3,
+                            "position": 11,
+                            "isDir": false,
+                            "url": "/learn/write-a-workflow-with-ballerina",
+                            "id": "write-a-workflow-with-ballerina"
+                        },
+                        {
+                            "dirName": "Write a workflow with a human task",
+                            "level": 3,
+                            "position": 12,
+                            "isDir": false,
+                            "url": "/learn/write-a-workflow-with-a-human-task",
+                            "id": "write-a-workflow-with-a-human-task"
+                        },
+                        {
+                            "dirName": "Handle errors and replay failed activities in workflows",
+                            "level": 3,
+                            "position": 13,
+                            "isDir": false,
+                            "url": "/learn/handle-errors-and-replay-failed-activities-in-workflows",
+                            "id": "handle-errors-and-replay-failed-activities-in-workflows"
                         }
                     ]
                 },

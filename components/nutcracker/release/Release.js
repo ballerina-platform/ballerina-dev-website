@@ -48,6 +48,13 @@ const OS_ORDER = [
   { os: 'macOS', img: 'mac' },
 ];
 
+// Display tags more readably: v0.6.0 -> v0.6. A non-zero patch is kept, so
+// v0.6.1 still shows in full. Display only — links keep the exact tag.
+function fmtVersion(tag) {
+  if (!tag) return '';
+  return tag.replace(/^(v?\d+\.\d+)\.0$/, '$1');
+}
+
 // Bytes -> human-readable size (matches the sizes shown on /downloads).
 function fmtSize(bytes) {
   if (!bytes) return '';
@@ -99,7 +106,7 @@ export default function Release({ release, repo }) {
               <div className={styles.releaseHeader}>
                 <div className={styles.versionInfo}>
                   <span className={styles.versionLabel}>Latest release</span>
-                  <span className={styles.version}>{release?.tag || release?.name}</span>
+                  <span className={styles.version}>{fmtVersion(release?.tag || release?.name)}</span>
                   {release?.publishedAt &&
                     <span className={styles.date}>&middot; {formatDate(release.publishedAt)}</span>
                   }

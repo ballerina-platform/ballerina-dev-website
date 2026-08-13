@@ -39,8 +39,8 @@ The claim processing workflow in this guide has two activities:
 
 Use the `bal new` command to create a new package.
 
-```shell
-bal new workflow_claim_processing
+```
+$ bal new workflow_claim_processing
 ```
 
 This creates a directory named `workflow_claim_processing` with a sample `main.bal` file. Replace its content as you follow the sections below.
@@ -133,7 +133,7 @@ mode = "IN_MEMORY"
 
 Now, run the package:
 
-```shell
+```
 $ bal run
 Workflow started with ID: 019ff622-bbf6-7180-baf7-0d113009196a
 Verifying claim CLM-001 against policy POL-1234
@@ -149,8 +149,8 @@ The in-memory engine is great for development, but the workflow state lives insi
 
 To try it locally, install the <a href="https://docs.temporal.io/cli" target="_blank">Temporal CLI</a> and start a development server:
 
-```shell
-temporal server start-dev
+```
+$ temporal server start-dev
 ```
 
 Then, change the mode in `Config.toml`, and give the integration its own task queue — every integration sharing a Temporal server must use a unique task queue so workers do not pick up each other's workflows:

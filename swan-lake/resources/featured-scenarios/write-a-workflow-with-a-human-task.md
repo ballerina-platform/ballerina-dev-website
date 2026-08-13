@@ -41,8 +41,8 @@ A human task needs two more pieces around it:
 
 Use the `bal new` command to create a new package.
 
-```shell
-bal new workflow_human_task
+```
+$ bal new workflow_human_task
 ```
 
 ## Define the data types
@@ -181,19 +181,19 @@ scopes = ["admin"]
 
 Start a local Temporal development server in one terminal:
 
-```shell
-temporal server start-dev
+```
+$ temporal server start-dev
 ```
 
 Run the package in another terminal:
 
-```shell
-bal run
+```
+$ bal run
 ```
 
 Submit a claim:
 
-```shell
+```
 $ curl -X POST http://localhost:8080/claims \
        -H 'Content-Type: application/json' \
        -d '{"claimId": "CLM-100", "policyNo": "POL-9876", "amount": 750.0}'
@@ -202,20 +202,20 @@ $ curl -X POST http://localhost:8080/claims \
 
 The workflow verifies the claim and pauses at the human task. Checking the status now shows the workflow is still running (durably waiting for the manager):
 
-```shell
+```
 $ curl http://localhost:8080/claims/<workflowId>
 {"workflowId":"...", "status":"RUNNING"}
 ```
 
 List the pending tasks as a manager:
 
-```shell
-curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
+```
+$ curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
 ```
 
 Complete the task using the `taskId` from the listing:
 
-```shell
+```
 $ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/complete' \
        -H 'Content-Type: application/json' \
        -H 'x-user-id: alice' -H 'x-user-roles: MANAGER' \
@@ -225,7 +225,7 @@ $ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/complete' \
 
 The workflow resumes immediately and pays the claim:
 
-```shell
+```
 $ curl http://localhost:8080/claims/<workflowId>
 {"workflowId":"...", "status":"COMPLETED", "result":"Claim CLM-100 approved. Payment reference: PAY-CLM-100"}
 ```
@@ -242,11 +242,11 @@ Listings are namespace-wide, so workflows and tasks from *other* integrations sh
 
 Clone the samples repository and start the dashboard with this integration's task queue:
 
-```shell
-git clone https://github.com/ballerina-guides/integration-samples.git
-cd integration-samples/workflow-dashboard
-npm install
-VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
+```
+$ git clone https://github.com/ballerina-guides/integration-samples.git
+$ cd integration-samples/workflow-dashboard
+$ npm install
+$ VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
 ```
 
 Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**.

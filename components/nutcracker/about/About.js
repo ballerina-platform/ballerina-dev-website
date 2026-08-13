@@ -31,8 +31,9 @@ export default function About() {
           </Col>
         </Row>
 
+        {/* Nutcracker is introduced on its own terms — no Swan Lake comparison. */}
         <Row className={styles.introText}>
-          <Col xs={12} lg={7}>
+          <Col xs={12} lg={10}>
             <p>
               <strong>Ballerina Nutcracker</strong> is a native interpreter for the Ballerina
               language, written from the ground up in <strong>Go</strong>. It runs Ballerina
@@ -45,34 +46,6 @@ export default function About() {
               staying faithful to Ballerina&rsquo;s semantics. It is developed openly and released
               incrementally as it grows its coverage of the language and standard library.
             </p>
-            <p className={styles.note}>
-              Nutcracker is an <strong>experimental</strong> companion to <strong>Ballerina Swan
-              Lake</strong> &mdash; the mature, JVM-based distribution that remains the recommended
-              choice for production integrations today.
-            </p>
-          </Col>
-
-          <Col xs={12} lg={5}>
-            <div className={styles.compareCard}>
-              <div className={styles.compareRowHead}>
-                <span />
-                <span className={styles.colSwan}>Swan Lake</span>
-                <span className={styles.colNut}>Nutcracker</span>
-              </div>
-              {[
-                ['Implementation', 'Java / JVM', 'Go, native'],
-                ['Runtime', 'JVM bytecode', 'Native interpreter'],
-                ['Startup', 'JVM warm-up', 'Near-instant'],
-                ['Footprint', 'Larger', 'Small binary'],
-                ['Maturity', 'Production', 'Experimental'],
-              ].map(([label, swan, nut]) => (
-                <div className={styles.compareRow} key={label}>
-                  <span className={styles.compareLabel}>{label}</span>
-                  <span className={styles.colSwan}>{swan}</span>
-                  <span className={styles.colNut}>{nut}</span>
-                </div>
-              ))}
-            </div>
           </Col>
         </Row>
       </Container>

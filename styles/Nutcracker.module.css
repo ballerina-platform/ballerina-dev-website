@@ -6,12 +6,9 @@
   background: #ffffff;
 }
 
-.nutcrackerFeatures {
-  background: #f5f5f5;
-}
-
+/* Alternates with the white section above it. */
 .nutcrackerRelease {
-  background: #ffffff;
+  background: #f5f5f5;
 }
 
 .nutcrackerCommunity {

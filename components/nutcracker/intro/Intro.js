@@ -22,7 +22,9 @@ import { Row, Col, Container } from 'react-bootstrap';
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
 
-const PLAYGROUND_EXAMPLE = 'https://play.ballerina.io/tmp/examples/02-http-client.bal';
+// The playground's examples are Ballerina packages, so this points at the
+// package's main.bal. Keep in sync if the playground restructures its examples.
+const PLAYGROUND_EXAMPLE = 'https://play.ballerina.io/tmp/examples/01-http-client/main.bal';
 
 export default function Intro({ repo }) {
   // The playground is cropped to hide its Examples sidebar, which shifts the
@@ -43,10 +45,10 @@ export default function Intro({ repo }) {
         {/* Centered pitch */}
         <Row>
           <Col xs={12} className={styles.heroText}>
-            <h1>Ballerina, natively &mdash; a fast, self-contained platform</h1>
+            <h1>Ballerina Nutcracker</h1>
             <p className={styles.subtitle}>
               Starts instantly, ships as one self-contained binary, and keeps the footprint
-              small &mdash; made for CLIs, functions, and short-lived cloud-native workloads.
+              small. Made for CLIs, functions, and short-lived cloud-native workloads.
             </p>
 
             {/* Secondary actions — the live editor below is the primary CTA. */}
@@ -56,7 +58,7 @@ export default function Intro({ repo }) {
               </a>
               <a className={styles.btnSecondary}
                 target="_blank" rel="noreferrer" href={`https://github.com/${repo}`}>
-                <i className="bi bi-github" />&nbsp;GitHub
+                <i className="bi bi-github" />&nbsp;View on GitHub
               </a>
             </div>
 

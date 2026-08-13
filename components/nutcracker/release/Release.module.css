@@ -10,7 +10,9 @@
   scroll-margin-top: 65px;
 }
 
+/* White so the card stands out against the grey section. */
 .releaseCard {
+  background: #ffffff;
   border: 1px solid #e6e6e6;
   border-radius: 8px;
   overflow: hidden;
@@ -187,9 +189,11 @@ a.cDownload:hover {
   margin-bottom: 14px;
 }
 
+/* White chips — they sit on the grey section background. */
 .getStarted code,
 .getStartedNote code {
-  background: #f5f5f5;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;

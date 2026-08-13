@@ -23,7 +23,6 @@ import Head from 'next/head';
 import Layout from '../../layouts/LayoutNutcracker';
 import Intro from '../../components/nutcracker/intro/Intro';
 import About from '../../components/nutcracker/about/About';
-import Features from '../../components/nutcracker/features/Features';
 import Release from '../../components/nutcracker/release/Release';
 import Community from '../../components/nutcracker/community/Community';
 import styles from '../../styles/Nutcracker.module.css';
@@ -47,18 +46,18 @@ const FALLBACK_RELEASE = {
 
 export default function Nutcracker({ release }) {
 
-  const description = "Ballerina Nutcracker is an experimental, native interpreter for the Ballerina language, written in Go. It brings fast startup, a small footprint, and instant execution as a lightweight alternative to the JVM-based Swan Lake distribution.";
+  const description = "Ballerina Nutcracker is a fast, lightweight implementation of the Ballerina language, written in Go that provides fast startup time, a small footprint, and instant execution.";
 
   return (
     <>
       <Head>
         <meta name="description" content={description} />
         <meta name="keywords" content="ballerina, nutcracker, native interpreter, go, ballerina runtime, integration" />
-        <title>Ballerina Nutcracker - A native Ballerina interpreter</title>
+        <title>Ballerina Nutcracker</title>
 
         {/* FB */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ballerina Nutcracker - A native Ballerina interpreter" />
+        <meta property="og:title" content="Ballerina Nutcracker" />
         <meta property="og:description" content={description} />
         <meta property="og:image" itemProp="image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
@@ -66,7 +65,7 @@ export default function Nutcracker({ release }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina Nutcracker - A native Ballerina interpreter" />
+        <meta name="twitter:title" content="Ballerina Nutcracker" />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
       </Head>
@@ -79,10 +78,6 @@ export default function Nutcracker({ release }) {
 
           <Row className={styles.nutcrackerAbout}>
             <About />
-          </Row>
-
-          <Row className={styles.nutcrackerFeatures}>
-            <Features />
           </Row>
 
           <Row className={styles.nutcrackerRelease}>

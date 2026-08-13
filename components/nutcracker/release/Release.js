@@ -101,7 +101,7 @@ export default function Release({ release, repo }) {
                 <a className={styles.notesLink}
                   href={release?.htmlUrl || `https://github.com/${repo}/releases`}
                   target="_blank" rel="noreferrer">
-                  View on GitHub <i className="bi bi-box-arrow-up-right" />
+                  Release notes <i className="bi bi-box-arrow-up-right" />
                 </a>
               </div>
 

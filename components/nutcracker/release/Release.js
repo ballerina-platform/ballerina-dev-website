@@ -35,7 +35,10 @@ function describeAsset(name) {
   if (n.includes('arm64') || n.includes('aarch64')) arch = 'ARM64';
   else if (n.includes('amd64') || n.includes('x86_64') || n.includes('x64')) arch = 'x64';
 
-  return { os, arch, icon };
+  // Label the archive by its actual extension rather than assuming zip.
+  const format = /\.(tar\.gz|tgz)$/i.test(n) ? 'tar.gz' : 'zip';
+
+  return { os, arch, icon, format };
 }
 
 // Display order for the platform blocks (img matches /images/downloads/*.svg).
@@ -58,9 +61,9 @@ function fmtSize(bytes) {
 function groupAssets(assets) {
   const groups = {};
   assets.forEach((a) => {
-    const { os, arch } = describeAsset(a.name);
+    const { os, arch, format } = describeAsset(a.name);
     if (!groups[os]) groups[os] = [];
-    groups[os].push({ ...a, arch });
+    groups[os].push({ ...a, arch, format });
   });
   return groups;
 }
@@ -77,6 +80,9 @@ function formatDate(iso) {
 export default function Release({ release, repo }) {
   const assets = (release?.assets || []).filter((a) => /\.(zip|tar\.gz|tgz)$/i.test(a.name));
   const groups = groupAssets(assets);
+  // Only platforms we can render count — otherwise a release of solely
+  // unrecognised assets would show an empty block instead of the fallback.
+  const platforms = OS_ORDER.filter((o) => groups[o.os]);
 
   return (
     <Col sm={12}>
@@ -106,9 +112,9 @@ export default function Release({ release, repo }) {
               </div>
 
               <div className={styles.downloadBody}>
-                {assets.length > 0 ?
+                {platforms.length > 0 ?
                   <div className={styles.osGrid}>
-                    {OS_ORDER.filter((o) => groups[o.os]).map(({ os, img }) => (
+                    {platforms.map(({ os, img }) => (
                       <div className={styles.osCol} key={os}>
                         <h3 className={styles.platform}
                           style={{ backgroundImage: `url(${prefix}/images/downloads/${img}.svg)` }}>
@@ -120,7 +126,7 @@ export default function Release({ release, repo }) {
                               {/* Keep each token unbreakable so a narrow column
                                   wraps at most once, never mid-value. */}
                               <div className={styles.cSize}>
-                                <span className={styles.token}>zip{a.arch ? ` (${a.arch})` : ''}</span>
+                                <span className={styles.token}>{a.format}{a.arch ? ` (${a.arch})` : ''}</span>
                                 {a.size &&
                                   <>{' '}&middot; <span className={styles.token}>{fmtSize(a.size)}</span></>
                                 }

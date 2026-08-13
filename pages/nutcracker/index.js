@@ -96,9 +96,14 @@ export default function Nutcracker({ release }) {
 export async function getStaticProps() {
   let release = FALLBACK_RELEASE;
 
+  // Don't let an unresponsive API stall the build; fall back instead.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+
   try {
     const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {
       headers: { Accept: 'application/vnd.github+json' },
+      signal: controller.signal,
     });
 
     if (res.ok) {
@@ -116,8 +121,10 @@ export async function getStaticProps() {
       };
     }
   } catch (e) {
-    // Keep the fallback release if the API is unreachable during the build.
+    // Keep the fallback release if the API is unreachable or times out.
     console.warn('Nutcracker: could not fetch latest release, using fallback.', e);
+  } finally {
+    clearTimeout(timeout);
   }
 
   return {

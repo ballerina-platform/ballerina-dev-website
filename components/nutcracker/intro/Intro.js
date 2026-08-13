@@ -48,11 +48,17 @@ export default function Intro({ repo }) {
   // with a loading state of our own that is centred correctly.
   const [booting, setBooting] = React.useState(true);
 
+  // `onLoad` ignores returned cleanups, so the timer is tracked in a ref and
+  // cleared on unmount (and before re-arming on a sample switch).
+  const bootTimer = React.useRef(null);
+
   const handleFrameLoad = React.useCallback(() => {
     // The document is up, but the WASM runtime still needs a moment to boot.
-    const timer = setTimeout(() => setBooting(false), 1800);
-    return () => clearTimeout(timer);
+    clearTimeout(bootTimer.current);
+    bootTimer.current = setTimeout(() => setBooting(false), 1800);
   }, []);
+
+  React.useEffect(() => () => clearTimeout(bootTimer.current), []);
 
   // Switching reloads the iframe, so show the boot state again.
   const selectSample = React.useCallback((next) => {
@@ -122,11 +128,16 @@ export default function Intro({ repo }) {
               {/* The playground shows an Examples sidebar we don't want; clip it
                   off the left and shield its toggle so the crop stays stable. */}
               <div className={styles.embedClip}>
+                {/* Least-privilege sandbox: the playground needs scripts and
+                    its own origin (web worker + WASM), and opens GitHub in a new
+                    tab. Withholding allow-top-navigation keeps it from
+                    navigating this page. */}
                 <iframe
                   key={sample.key}
                   className={styles.playgroundFrame}
                   src={sample.url}
                   title={`Ballerina Nutcracker playground - ${sample.label} example`}
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
                   loading="lazy"
                   onLoad={handleFrameLoad}
                 />

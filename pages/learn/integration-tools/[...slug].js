@@ -73,7 +73,7 @@ export async function getStaticPaths() {
     .filter((fileName) => fileName.endsWith(".md"))
     .map((fileName) => ({
       params: {
-        slug: fileName.replace(".md", "").split("/"),
+        slug: fileName.replace(/\.md$/, "").split("/"),
       },
     }));
 

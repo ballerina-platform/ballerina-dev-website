@@ -163,7 +163,7 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     font-size: 18px;
     background: #20b6b0;
     display: flex;
-    grid-gap: 16px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;

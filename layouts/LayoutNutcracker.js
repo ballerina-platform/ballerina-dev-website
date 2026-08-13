@@ -39,6 +39,9 @@ export default function Layout({ children }) {
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
 
+        {/* Loaded here rather than via next/script: components/common/search/Search.js
+            calls the global `docsearch(...)` on mount, so deferring it to
+            afterInteractive throws a ReferenceError. Matches the other layouts. */}
         <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
       </Head>
       <Meta />

@@ -156,6 +156,45 @@ a.btnSecondary:hover {
   background: #ffffff;
 }
 
+/* Sample switcher — stands in for the playground's cropped Examples sidebar. */
+.sampleSwitch {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid #d3e3e2;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.sampleBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #585a5e;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.sampleBtn + .sampleBtn {
+  border-left: 1px solid #d3e3e2;
+}
+
+.sampleBtn:hover {
+  background: #f0f8f8;
+  color: #20b6b0;
+}
+
+.sampleBtnActive,
+.sampleBtnActive:hover {
+  background: #20b6b0;
+  color: #ffffff;
+}
+
 /* Our own boot state, centred on this box (the cropped iframe is not). */
 .booting {
   position: absolute;

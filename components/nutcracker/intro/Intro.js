@@ -22,11 +22,26 @@ import { Row, Col, Container } from 'react-bootstrap';
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
 
-// The playground's examples are Ballerina packages, so this points at the
+// The playground's examples are Ballerina packages, so these point at each
 // package's main.bal. Keep in sync if the playground restructures its examples.
-const PLAYGROUND_EXAMPLE = 'https://play.ballerina.io/tmp/examples/01-http-client/main.bal';
+const SAMPLES = [
+  {
+    key: 'client',
+    label: 'HTTP client',
+    url: 'https://play.ballerina.io/tmp/examples/01-http-client/main.bal',
+  },
+  {
+    key: 'service',
+    label: 'HTTP service',
+    url: 'https://play.ballerina.io/tmp/examples/02-http-service/main.bal',
+  },
+];
 
 export default function Intro({ repo }) {
+  // Our own sample switcher, so the playground's Examples sidebar can stay
+  // cropped out of the embed.
+  const [sample, setSample] = React.useState(SAMPLES[0]);
+
   // The playground is cropped to hide its Examples sidebar, which shifts the
   // frame left. Until the editor renders, the playground's own boot screen
   // centres on the shifted frame rather than on this box, so cover that period
@@ -39,6 +54,13 @@ export default function Intro({ repo }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Switching reloads the iframe, so show the boot state again.
+  const selectSample = React.useCallback((next) => {
+    if (next.key === sample.key) return;
+    setBooting(true);
+    setSample(next);
+  }, [sample.key]);
+
   return (
     <Col sm={12}>
       <Container>
@@ -47,8 +69,7 @@ export default function Intro({ repo }) {
           <Col xs={12} className={styles.heroText}>
             <h1>Ballerina Nutcracker</h1>
             <p className={styles.subtitle}>
-              Starts instantly, ships as one self-contained binary, and keeps the footprint
-              small. Made for CLIs, functions, and short-lived cloud-native workloads.
+              Starts instantly, ships as one self-contained binary, and keeps the footprint small.
             </p>
 
             {/* Secondary actions — the live editor below is the primary CTA. */}
@@ -82,15 +103,30 @@ export default function Intro({ repo }) {
                   <span className={styles.runChip}><i className="bi bi-play" />Run</span>
                   to execute it in your browser.
                 </span>
+
+                {/* Sample switcher — replaces the playground's own file list. */}
+                <div className={styles.sampleSwitch} role="group" aria-label="Choose a sample">
+                  {SAMPLES.map((s) => (
+                    <button
+                      type="button"
+                      key={s.key}
+                      className={`${styles.sampleBtn} ${s.key === sample.key ? styles.sampleBtnActive : ''}`}
+                      aria-pressed={s.key === sample.key}
+                      onClick={() => selectSample(s)}>
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* The playground shows an Examples sidebar we don't want; clip it
                   off the left and shield its toggle so the crop stays stable. */}
               <div className={styles.embedClip}>
                 <iframe
+                  key={sample.key}
                   className={styles.playgroundFrame}
-                  src={PLAYGROUND_EXAMPLE}
-                  title="Ballerina Nutcracker playground - HTTP client example"
+                  src={sample.url}
+                  title={`Ballerina Nutcracker playground - ${sample.label} example`}
                   loading="lazy"
                   onLoad={handleFrameLoad}
                 />
@@ -109,7 +145,7 @@ export default function Intro({ repo }) {
                   Runs on WebAssembly &mdash; nothing to install.
                 </span>
                 <a className={styles.openPlaygroundBtn}
-                  href={PLAYGROUND_EXAMPLE} target="_blank" rel="noreferrer">
+                  href={sample.url} target="_blank" rel="noreferrer">
                   Open in Playground <i className="bi bi-arrow-right" />
                 </a>
               </div>

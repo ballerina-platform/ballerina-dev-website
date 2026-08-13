@@ -165,7 +165,7 @@ Run the program again with `bal run`. The behavior is the same, but now every st
 
 Durability shows when things go wrong: if the program stops while a workflow instance is in progress, the engine resumes that instance from its last recorded step as soon as a worker is running again — no work is repeated or lost. Resuming is always automatic; restarting the program is never how you resume a workflow.
 
->**Info:** Starting a workflow from `main()` keeps this demo small, but it is demo-only wiring: every `bal run` starts a *new* workflow instance, so after a restart the resumed instance and the new one both run. In a real deployment, the program is a long-running service — its workers stay registered with the engine, and workflows are started by external triggers such as HTTP requests, as in the follow-up guides.
+>**Info:** Starting a workflow from `main()` keeps this demo small, but it is demo-only wiring: `workflow:run` starts a *new* workflow instance on every call, and since `main()` runs on each program start, restarting the demo leaves both the resumed instance and a new one running. In a real deployment, the program is a long-running service — its workers stay registered with the engine, and `workflow:run` is called from external triggers such as HTTP requests, as in the follow-up guides.
 
 ## Learn more
 

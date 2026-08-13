@@ -163,7 +163,9 @@ taskQueue = "CLAIM_PROCESSING_QUEUE"
 
 Run the program again with `bal run`. The behavior is the same, but now every step is recorded in the Temporal server, and you can watch the workflow execute in the Temporal Web UI at <a href="http://localhost:8233" target="_blank">http://localhost:8233</a>.
 
-Durability shows when things go wrong: if the program stops while a workflow instance is in progress, the engine resumes that instance from its last recorded step as soon as the program is running again — no work is repeated or lost. Note that restarting this particular program also runs `main()` again, which starts a *new, separate* workflow instance alongside the resumed one; in a real application, the code that starts workflows (e.g., an HTTP service, as in the follow-up guides) is separate from this kind of one-shot `main()`.
+Durability shows when things go wrong: if the program stops while a workflow instance is in progress, the engine resumes that instance from its last recorded step as soon as a worker is running again — no work is repeated or lost. Resuming is always automatic; restarting the program is never how you resume a workflow.
+
+>**Info:** Starting a workflow from `main()` keeps this demo small, but it is demo-only wiring: every `bal run` starts a *new* workflow instance, so after a restart the resumed instance and the new one both run. In a real deployment, the program is a long-running service — its workers stay registered with the engine, and workflows are started by external triggers such as HTTP requests, as in the follow-up guides.
 
 ## Learn more
 

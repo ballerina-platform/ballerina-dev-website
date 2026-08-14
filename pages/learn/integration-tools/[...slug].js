@@ -48,6 +48,10 @@ var traverseFolder = function (dir) {
   var results = [];
   var list = fs.readdirSync(dir);
   list.forEach(function (file) {
+    /* Skip dotfiles/dot-directories (e.g. .gitignore, .DS_Store, .github) */
+    if (file.startsWith(".")) {
+      return;
+    }
     var filex = dir + "/" + file;
     var stat = fs.statSync(filex);
     if (stat && stat.isDirectory()) {
@@ -63,13 +67,15 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticPaths() {
-  // Retrieve all our slugs
+  // Retrieve all our slugs (only Markdown content maps to a page)
   const files = traverseFolder("swan-lake/integration-tools");
-  const paths = files.map((fileName) => ({
-    params: {
-      slug: fileName.replace(".md", "").split("/"),
-    },
-  }));
+  const paths = files
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map((fileName) => ({
+      params: {
+        slug: fileName.replace(/\.md$/, "").split("/"),
+      },
+    }));
 
   return {
     paths,

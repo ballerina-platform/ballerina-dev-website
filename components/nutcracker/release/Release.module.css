@@ -1,0 +1,234 @@
+.heading {
+  font-size: 32px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #464646;
+  border-bottom: 2px solid #464646;
+  display: inline-block;
+  padding-bottom: 10px;
+  scroll-margin-top: 65px;
+}
+
+/* White so the card stands out against the grey section. */
+.releaseCard {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.releaseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 20px 28px;
+}
+
+.versionInfo {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.versionLabel {
+  color: #585a5e;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.version {
+  font-size: 24px;
+  font-weight: 700;
+  color: #20b6b0;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+}
+
+.date {
+  color: #585a5e;
+  font-size: 15px;
+}
+
+.notesLink {
+  color: #20b6b0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Same hover treatment as .allReleases a — see the note there. */
+.notesLink:hover {
+  color: #57595d;
+  text-decoration: underline;
+}
+
+.downloadBody {
+  padding: 28px;
+}
+
+/* auto-fit so columns reflow on the space actually available — a fixed
+   3-column grid squeezed the button labels until they wrapped mid-value. */
+.osGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 28px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* Platform heading — matches /downloads (icon + name) */
+.platform {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 26px;
+  padding-left: 36px;
+  min-height: 30px;
+  line-height: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #464646;
+  margin: 0 0 12px 0;
+}
+
+.dVersions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Download button — same styling as the main /downloads page */
+a.cDownload {
+  display: block;
+  transition: none;
+  font-size: 25px;
+  font-weight: 200;
+  background-color: #57595d;
+  color: #ffffff;
+  padding: 20px 8px 20px 60px;
+  text-decoration: none;
+  min-height: 60px;
+  line-height: 35px;
+  background-image: url('/images/main-right-arrow-home-hover.svg');
+  background-repeat: no-repeat;
+  background-position: left 20px top 14px;
+  background-size: 40px 40px;
+}
+
+a.cDownload:hover {
+  background-image: url('/images/main-right-arrow-home.svg');
+  background-color: #20b6b0;
+  background-repeat: no-repeat;
+  background-position: left 20px top 14px;
+  background-size: 40px 40px;
+}
+
+.cSize {
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-size: 14px;
+  color: #d9dadb;
+  margin-top: -4px;
+}
+
+.token {
+  white-space: nowrap;
+}
+
+.fallbackBtn {
+  display: inline-block;
+  background: #20b6b0;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.fallbackBtn:hover {
+  background: #1a9a95;
+  color: #fff;
+}
+
+.allReleases {
+  margin-top: -1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 14px;
+  /* Matches body text — the inherited 300 read as too faint at this size. */
+  font-weight: 400;
+  color: #585a5e;
+}
+
+.allReleases a {
+  color: #20b6b0;
+  text-decoration: none;
+}
+
+/* Underline on hover. The site sets text-decoration: none on its hover states,
+   so this is a deliberate deviation: it gives a non-colour cue on interaction,
+   which matters because the teal sits at only 1.33:1 against the body grey. */
+.allReleases a:hover {
+  color: #57595d;
+  text-decoration: underline;
+}
+
+.getStarted {
+  padding-bottom: 4rem;
+}
+
+.getStarted h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #464646;
+  margin-bottom: 12px;
+}
+
+.getStarted p {
+  color: #585a5e;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+/* White chips — they sit on the grey section background. */
+.getStarted code,
+.getStartedNote code {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+  color: #585a5e;
+}
+
+.codeBlock {
+  background: var(--output-color-background, #585a5e);
+  color: var(--output-color-text, #3ad1ca);
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: auto;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+}
+
+.getStartedNote {
+  margin-top: 12px;
+  color: #8a8a8a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* Narrow screens: shrink the arrow and padding so the label keeps its width. */
+@media (max-width: 576px) {
+  a.cDownload,
+  a.cDownload:hover {
+    padding: 15px 12px 15px 50px;
+    min-height: 52px;
+    line-height: 28px;
+    background-position: left 12px top 11px;
+    background-size: 30px 30px;
+  }
+}

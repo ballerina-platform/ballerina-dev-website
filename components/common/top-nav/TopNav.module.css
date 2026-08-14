@@ -153,6 +153,40 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     }
 }
 
+/* Announcement strip — same shape as the hackathon banner so it reads as
+   part of the site, in the Ballerina brand teal. */
+.announcementBanner {
+    text-align: center;
+    color: #fff;
+    padding: 10px 16px;
+    font-weight: 400;
+    font-size: 18px;
+    background: #20b6b0;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.announcementBanner a {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff !important;
+    border: 0.5px solid #ffffff;
+    padding: 7px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.announcementBanner a:hover {
+    background: #ffffff;
+    color: #20b6b0 !important;
+}
+
 .hackathonBanner {
     text-align: center;
     color: #fff;

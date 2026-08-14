@@ -1417,6 +1417,12 @@ table.cTopControlsContainer tbody {
   font-size: 18px;
 }
 
+/* The Nutcracker page's last section is full-bleed dark, so drop the default
+   bottom padding that would otherwise show as a white gap above the footer. */
+.nutcracker .wrap-page-content {
+  padding-bottom: 0;
+}
+
 .backToLanding {
   display: flex;
   justify-content: flex-start;

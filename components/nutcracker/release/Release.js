@@ -1,0 +1,200 @@
+/**
+ * Copyright (c) 2026, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ *
+ * WSO2 LLC licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import * as React from 'react';
+import { Row, Col, Container } from 'react-bootstrap';
+
+import { prefix } from '../../../utils/prefix';
+import styles from './Release.module.css';
+
+// Map a release asset filename to a friendly platform label and icon.
+function describeAsset(name) {
+  const n = name.toLowerCase();
+  let os = 'Download';
+  let icon = 'bi-download';
+  if (n.includes('darwin') || n.includes('macos')) { os = 'macOS'; icon = 'bi-apple'; }
+  else if (n.includes('linux')) { os = 'Linux'; icon = 'bi-ubuntu'; }
+  else if (n.includes('windows') || n.includes('win')) { os = 'Windows'; icon = 'bi-windows'; }
+
+  let arch = '';
+  if (n.includes('arm64') || n.includes('aarch64')) arch = 'ARM64';
+  else if (n.includes('amd64') || n.includes('x86_64') || n.includes('x64')) arch = 'x64';
+
+  // Label the archive by its actual extension rather than assuming zip.
+  const format = /\.(tar\.gz|tgz)$/i.test(n) ? 'tar.gz' : 'zip';
+
+  return { os, arch, icon, format };
+}
+
+// Display order for the platform blocks (img matches /images/downloads/*.svg).
+const OS_ORDER = [
+  { os: 'Windows', img: 'windows' },
+  { os: 'Linux', img: 'linux' },
+  { os: 'macOS', img: 'mac' },
+];
+
+// Display tags more readably: v0.6.0 -> v0.6. A non-zero patch is kept, so
+// v0.6.1 still shows in full. Display only — links keep the exact tag.
+function fmtVersion(tag) {
+  if (!tag) return '';
+  return tag.replace(/^(v?\d+\.\d+)\.0$/, '$1');
+}
+
+// Bytes -> human-readable size (matches the sizes shown on /downloads).
+function fmtSize(bytes) {
+  if (!bytes) return '';
+  const mb = bytes / (1024 * 1024);
+  if (mb >= 1) return `${mb.toFixed(1)} MB`;
+  return `${Math.round(bytes / 1024)} KB`;
+}
+
+// Group release assets by operating system so each platform is one block
+// with a sub-part per architecture.
+function groupAssets(assets) {
+  const groups = {};
+  assets.forEach((a) => {
+    const { os, arch, format } = describeAsset(a.name);
+    if (!groups[os]) groups[os] = [];
+    groups[os].push({ ...a, arch, format });
+  });
+  return groups;
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const months = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return '';
+  return `${months[d.getUTCMonth()]} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
+}
+
+export default function Release({ release, repo }) {
+  const assets = (release?.assets || []).filter((a) => /\.(zip|tar\.gz|tgz)$/i.test(a.name));
+  const groups = groupAssets(assets);
+  // Only platforms we can render count — otherwise a release of solely
+  // unrecognised assets would show an empty block instead of the fallback.
+  const platforms = OS_ORDER.filter((o) => groups[o.os]);
+
+  return (
+    <Col sm={12}>
+      <Container>
+        <Row>
+          <Col sm={12}>
+            <h2 id="latest-release" className={styles.heading}>Download</h2>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col sm={12}>
+            <div className={styles.releaseCard}>
+              <div className={styles.releaseHeader}>
+                <div className={styles.versionInfo}>
+                  <span className={styles.versionLabel}>Latest release</span>
+                  <span className={styles.version}>{fmtVersion(release?.tag || release?.name)}</span>
+                  {release?.publishedAt &&
+                    <span className={styles.date}>&middot; {formatDate(release.publishedAt)}</span>
+                  }
+                </div>
+                <a className={styles.notesLink}
+                  href={release?.htmlUrl || `https://github.com/${repo}/releases`}
+                  target="_blank" rel="noreferrer">
+                  Release notes <i className="bi bi-box-arrow-up-right" />
+                </a>
+              </div>
+
+              <div className={styles.downloadBody}>
+                {platforms.length > 0 ?
+                  <div className={styles.osGrid}>
+                    {platforms.map(({ os, img }) => (
+                      <div className={styles.osCol} key={os}>
+                        <h3 className={styles.platform}
+                          style={{ backgroundImage: `url(${prefix}/images/downloads/${img}.svg)` }}>
+                          {os}
+                        </h3>
+                        <div className={styles.dVersions}>
+                          {groups[os].map((a) => (
+                            /* The visible label is only "zip (x64) · 27 MB", so spell
+                               out the platform for screen readers. `cGTMDownload` +
+                               data attributes match the /downloads page hooks. */
+                            <a
+                              className={`${styles.cDownload} cGTMDownload`}
+                              href={a.url}
+                              key={a.name}
+                              title={a.name}
+                              id={`nutcrackerDownload-${os.toLowerCase()}${a.arch ? `-${a.arch.toLowerCase()}` : ''}`}
+                              data-download="nutcracker"
+                              data-pack={a.name}
+                              aria-label={`Download Ballerina Nutcracker ${fmtVersion(release?.tag || '')} for ${os}${a.arch ? ` (${a.arch})` : ''}, ${a.format}${a.size ? `, ${fmtSize(a.size)}` : ''}`}>
+                              {/* Keep each token unbreakable so a narrow column
+                                  wraps at most once, never mid-value. */}
+                              <div className={styles.cSize}>
+                                <span className={styles.token}>{a.format}{a.arch ? ` (${a.arch})` : ''}</span>
+                                {a.size &&
+                                  <>{' '}&middot; <span className={styles.token}>{fmtSize(a.size)}</span></>
+                                }
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  :
+                  <a className={styles.fallbackBtn}
+                    href={release?.htmlUrl || `https://github.com/${repo}/releases`}
+                    target="_blank" rel="noreferrer">
+                    View assets on GitHub
+                  </a>
+                }
+              </div>
+            </div>
+
+            <p className={styles.allReleases}>
+              Looking for another version or release details?{' '}
+              <a href={`https://github.com/${repo}/releases`} target="_blank" rel="noreferrer">
+                Browse all releases on GitHub
+              </a>
+            </p>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col sm={12}>
+            <div className={styles.getStarted}>
+              <h3>Get started</h3>
+              <p>
+                Download the archive for your platform and run it directly &mdash; no install,
+                and it won&rsquo;t affect an existing <code>bal</code> (e.g. Swan Lake) on your <code>PATH</code>:
+              </p>
+              <pre className={styles.codeBlock}>{`# macOS / Linux — the zip extracts a ballerina-<version>/ folder
+unzip ballerina-bal-*.zip
+
+# Run it by path — no PATH changes, works alongside Swan Lake
+./ballerina-*/bal run hello.bal`}</pre>
+              <p className={styles.getStartedNote}>
+                Want Nutcracker as your default <code>bal</code>? Add its folder to your <code>PATH</code>
+                &mdash; just note it will then shadow any other <code>bal</code> in that shell.
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </Col>
+  );
+}

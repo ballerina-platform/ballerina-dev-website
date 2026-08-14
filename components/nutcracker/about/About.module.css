@@ -1,0 +1,26 @@
+.heading {
+  font-size: 32px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #464646;
+  border-bottom: 2px solid #464646;
+  display: inline-block;
+  padding-bottom: 10px;
+  scroll-margin-top: 65px;
+}
+
+.introText {
+  padding-bottom: 3rem;
+}
+
+.introText p {
+  color: #585a5e;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+}
+
+.introText strong {
+  color: #464646;
+}

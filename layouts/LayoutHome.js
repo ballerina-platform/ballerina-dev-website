@@ -83,7 +83,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
       </Head>
       <Meta />
       <Stack gap={0} className='main-wrapper home'>
-        <TopNav launcher='home' />
+        <TopNav
+          launcher='home'
+          announcement={{
+            text: 'Introducing Ballerina Nutcracker — a native Ballerina interpreter.',
+            href: '/nutcracker/',
+            cta: 'Learn more',
+          }}
+        />
         <div className='wrap-page-content'>
           <Row className='contentRow'>
             {children}

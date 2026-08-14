@@ -1,0 +1,359 @@
+/* Centered pitch */
+.heroText {
+  text-align: center;
+  padding: 64px 0 36px;
+}
+
+.heroText h1 {
+  color: #464646;
+  font-size: 2.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 auto 20px;
+  max-width: 900px;
+}
+
+.subtitle {
+  color: #585a5e;
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+.heroCtas {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+/* Secondary actions — deliberately quiet so the live editor is the primary CTA. */
+a.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 18px;
+  text-decoration: none;
+  background-color: transparent;
+  color: #585a5e;
+  border: 1px solid #d9d9d9;
+  transition: all 0.2s ease;
+}
+
+a.btnSecondary:hover {
+  border-color: #20b6b0;
+  color: #20b6b0;
+  background-color: #ffffff;
+}
+
+.experimental {
+  /* #8a8a8a was 3.22:1 on the hero background — below AA. */
+  color: #6e6e6e;
+  font-size: 14px;
+  /* Matches body text — inherited 300 was the lightest type on the page at the
+     smallest size, which read as too faint. */
+  font-weight: 400;
+  margin: 0;
+}
+
+/* The site's standard link treatment: brand teal, no underline, #57595d on
+   hover. Note this is 2.34:1 on this background, below WCAG AA — brand
+   consistency with the rest of ballerina.io was chosen over the contrast gain. */
+.introLinks {
+  color: #20b6b0;
+  text-decoration: none;
+}
+
+/* Underline on hover — a non-colour cue on interaction. The site's own hover
+   states set text-decoration: none, so this is a deliberate deviation. */
+.introLinks:hover {
+  color: #57595d;
+  text-decoration: underline;
+}
+
+/* Window-framed playground */
+.playgroundWindow {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  margin-bottom: 40px;
+}
+
+/* Instruction band — the primary "this is interactive" signal */
+.runBand {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: rgba(32, 182, 176, 0.08);
+  border-bottom: 1px solid rgba(32, 182, 176, 0.3);
+  padding: 14px 20px;
+}
+
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #20b6b0;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: inline-block;
+}
+
+.runBandText {
+  color: #3d4144;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Names the real Run button in the editor below so the eye can match them up.
+   Deliberately NOT boxed: with a border and white fill it read as a button and
+   reviewers instinctively clicked it, which can never work — the Run control
+   lives inside a cross-origin iframe we can't call into. Bold monospace plus
+   the play glyph keeps the visual link without the false affordance. */
+.runChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  /* No horizontal margin — the surrounding spaces are real text now. */
+  margin: 0;
+  color: #3d4144;
+  font-weight: 700;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+
+/* Embedded playground with its Examples sidebar clipped off the left.
+   Frames are stacked absolutely inside it, so this needs its own height —
+   the active sample's. */
+.embedClip {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  height: var(--frame-height, 600px);
+}
+
+.playgroundFrame {
+  /* Stacked: every visited sample keeps a mounted frame in this same box. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border: 0;
+  /* Per-sample — see SAMPLES in Intro.js. */
+  height: var(--frame-height, 600px);
+  /* Shift the ~18rem examples sidebar out of view; widen to refill.
+     A transform rather than a negative margin, so the offset is applied at
+     paint time instead of in layout — Firefox left unpainted white bands with
+     margin-left. Deliberately NO will-change here: the transform is static, and
+     forcing a permanent compositing layer for a frame this size costs ~14MB of
+     GPU texture on top of the playground's own layers. */
+  width: calc(100% + 288px);
+  transform: translateX(-288px);
+  background: #ffffff;
+}
+
+/* A visited-but-inactive sample. `visibility` rather than `display: none` on
+   purpose: it keeps the frame's layout box at full size, so its editor is never
+   resized to 0 and forced to re-measure on the way back, while still dropping
+   it from paint, hit-testing, the tab order and the accessibility tree. */
+.frameHidden {
+  visibility: hidden;
+}
+
+/* Sample switcher — stands in for the playground's cropped Examples sidebar. */
+.sampleSwitch {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid #d3e3e2;
+  overflow: hidden;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.sampleBtn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #585a5e;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.sampleBtn + .sampleBtn {
+  border-left: 1px solid #d3e3e2;
+}
+
+.sampleBtn:hover {
+  background: #f0f8f8;
+  color: #20b6b0;
+}
+
+.sampleBtnActive,
+.sampleBtnActive:hover {
+  background: #20b6b0;
+  color: #ffffff;
+}
+
+/* Our own boot state, centred on this box (the cropped iframe is not). */
+.booting {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #e6e6e6;
+  border-top-color: #20b6b0;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.bootingText {
+  color: #8a8a8a;
+  font-size: 14px;
+}
+
+/* Transparent shield over the playground's "toggle sidebar" control so a
+   click can't collapse the sidebar and break the crop. */
+.toggleShield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 66px;
+  z-index: 2;
+}
+
+.windowFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #fafafa;
+  border-top: 1px solid #e6e6e6;
+  padding: 14px 20px;
+}
+
+.footHint {
+  color: #585a5e;
+  font-size: 14px;
+}
+
+.footHint strong {
+  color: #464646;
+}
+
+/* Grey at rest, teal on hover — the site's filled-button convention (a.join on
+   /community, and a.cDownload in the download blade below). Deliberately
+   quieter than a teal fill: the embedded editor is the primary CTA and this
+   link leads away from it. Sized for this compact footer rather than copying
+   a.join's 18px/60px page-header proportions. */
+a.openPlaygroundBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #57595d;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 22px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+a.openPlaygroundBtn:hover {
+  background: #20b6b0;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .heroText {
+    padding: 44px 0 28px;
+  }
+
+  .heroText h1 {
+    font-size: 2.1rem;
+  }
+
+  /* Cap the taller samples, but don't stretch a short one back up. Clip and
+     frame must stay in step, since the clip now sets the visible height. */
+  .embedClip,
+  .playgroundFrame {
+    height: min(var(--frame-height, 600px), 480px);
+  }
+
+  .windowFoot {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* On phones the playground uses its own mobile layout (sidebar already hidden),
+   so don't clip — that would cut into the editor. */
+@media (max-width: 480px) {
+  .playgroundFrame {
+    width: 100%;
+    transform: none;
+  }
+
+  .toggleShield {
+    display: none;
+  }
+
+  /* Three samples no longer fit beside the instruction text, and the window
+     clips its overflow — so give the switcher its own full-width row and let
+     the buttons share it evenly. */
+  .sampleSwitch {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Equal thirds, and labels may wrap — on the narrowest phones the three
+     labels can't fit on one line, and the switcher would clip the last one. */
+  .sampleBtn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 7px 6px;
+    font-size: 12px;
+    white-space: normal;
+  }
+}

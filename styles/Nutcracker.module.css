@@ -1,0 +1,19 @@
+.nutcrackerIntro {
+  background: #f7f7f7;
+}
+
+.nutcrackerAbout {
+  background: #ffffff;
+}
+
+/* Alternates with the white section above it. */
+.nutcrackerRelease {
+  background: #f5f5f5;
+}
+
+/* The site footer is also #494949, so this blade would otherwise bleed straight
+   into it with no boundary. A hairline marks where the page ends. */
+.nutcrackerCommunity {
+  background: #494949;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}

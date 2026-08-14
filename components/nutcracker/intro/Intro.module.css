@@ -153,12 +153,13 @@ a.btnSecondary:hover {
   /* Per-sample — see SAMPLES in Intro.js. */
   height: var(--frame-height, 600px);
   /* Shift the ~18rem examples sidebar out of view; widen to refill.
-     A transform rather than a negative margin: it promotes the frame to its
-     own compositing layer, so scrolling re-composites instead of repainting
-     an offset box. Firefox left unpainted white bands with margin-left. */
+     A transform rather than a negative margin, so the offset is applied at
+     paint time instead of in layout — Firefox left unpainted white bands with
+     margin-left. Deliberately NO will-change here: the transform is static, and
+     forcing a permanent compositing layer for a frame this size costs ~14MB of
+     GPU texture on top of the playground's own layers. */
   width: calc(100% + 288px);
   transform: translateX(-288px);
-  will-change: transform;
   background: #ffffff;
 }
 
@@ -307,7 +308,6 @@ a.openPlaygroundBtn:hover {
   .playgroundFrame {
     width: 100%;
     transform: none;
-    will-change: auto;
   }
 
   .toggleShield {

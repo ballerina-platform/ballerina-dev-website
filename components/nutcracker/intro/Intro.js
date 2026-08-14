@@ -152,6 +152,7 @@ export default function Intro({ repo }) {
                   src={sample.url}
                   title={`Ballerina Nutcracker playground - ${sample.label} example`}
                   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+                  loading="lazy"
                   onLoad={handleFrameLoad}
                 />
                 <div className={styles.toggleShield} aria-hidden="true" />

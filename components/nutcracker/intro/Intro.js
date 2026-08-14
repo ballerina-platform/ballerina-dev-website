@@ -54,30 +54,43 @@ export default function Intro({ repo }) {
   // cropped out of the embed.
   const [sample, setSample] = React.useState(SAMPLES[0]);
 
+  // Every sample gets its own iframe, mounted up front and kept mounted, with
+  // only the active one visible. Switching then never reboots the playground:
+  // we can't drive its client-side router from here (cross-origin), and changing
+  // an iframe's src is a full document navigation. The trade is that all three
+  // playground instances boot during initial page load and stay resident.
+
+  // Samples whose playground has finished booting. The boot overlay is only
+  // needed the first time each frame loads; later switches are instant.
+  const [readyKeys, setReadyKeys] = React.useState([]);
+
+  // `onLoad` ignores returned cleanups, so timers are tracked per sample in a
+  // ref and cleared on unmount.
+  const bootTimers = React.useRef({});
+
+  const handleFrameLoad = React.useCallback((key) => {
+    // The document is up, but the WASM runtime still needs a moment to boot.
+    clearTimeout(bootTimers.current[key]);
+    bootTimers.current[key] = setTimeout(() => {
+      setReadyKeys((prev) => (prev.includes(key) ? prev : [...prev, key]));
+    }, 1800);
+  }, []);
+
+  React.useEffect(() => {
+    const timers = bootTimers.current;
+    return () => Object.keys(timers).forEach((k) => clearTimeout(timers[k]));
+  }, []);
+
+  const selectSample = React.useCallback((next) => {
+    if (next.key === sample.key) return;
+    setSample(next);
+  }, [sample.key]);
+
   // The playground is cropped to hide its Examples sidebar, which shifts the
   // frame left. Until the editor renders, the playground's own boot screen
   // centres on the shifted frame rather than on this box, so cover that period
   // with a loading state of our own that is centred correctly.
-  const [booting, setBooting] = React.useState(true);
-
-  // `onLoad` ignores returned cleanups, so the timer is tracked in a ref and
-  // cleared on unmount (and before re-arming on a sample switch).
-  const bootTimer = React.useRef(null);
-
-  const handleFrameLoad = React.useCallback(() => {
-    // The document is up, but the WASM runtime still needs a moment to boot.
-    clearTimeout(bootTimer.current);
-    bootTimer.current = setTimeout(() => setBooting(false), 1800);
-  }, []);
-
-  React.useEffect(() => () => clearTimeout(bootTimer.current), []);
-
-  // Switching reloads the iframe, so show the boot state again.
-  const selectSample = React.useCallback((next) => {
-    if (next.key === sample.key) return;
-    setBooting(true);
-    setSample(next);
-  }, [sample.key]);
+  const booting = !readyKeys.includes(sample.key);
 
   return (
     <Col sm={12}>
@@ -117,8 +130,11 @@ export default function Intro({ repo }) {
                   <span className={styles.liveDot} />Live editor
                 </span>
                 <span className={styles.runBandText}>
-                  Edit the code, then hit
-                  <span className={styles.runChip}><i className="bi bi-play" />Run</span>
+                  {/* Explicit spaces: JSX drops the whitespace around a newline,
+                      so without these the text is literally "hitRunto execute" —
+                      it only looked spaced because of the chip's margin. */}
+                  Edit the code, then hit{' '}
+                  <span className={styles.runChip}><i className="bi bi-play" />Run</span>{' '}
                   to execute it in your browser.
                 </span>
 
@@ -140,21 +156,30 @@ export default function Intro({ repo }) {
               {/* The playground shows an Examples sidebar we don't want; clip it
                   off the left and shield its toggle so the crop stays stable. */}
               {/* Height comes through a custom property so the responsive
-                  caps below can still clamp it. */}
+                  caps below can still clamp it. The clip follows the active
+                  sample; each frame keeps its own so a hidden frame is never
+                  resized (a resize would make its editor re-measure). */}
               <div className={styles.embedClip} style={{ '--frame-height': `${sample.height}px` }}>
-                {/* Least-privilege sandbox: the playground needs scripts and
-                    its own origin (web worker + WASM), and opens GitHub in a new
-                    tab. Withholding allow-top-navigation keeps it from
-                    navigating this page. */}
-                <iframe
-                  key={sample.key}
-                  className={styles.playgroundFrame}
-                  src={sample.url}
-                  title={`Ballerina Nutcracker playground - ${sample.label} example`}
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
-                  loading="lazy"
-                  onLoad={handleFrameLoad}
-                />
+                {SAMPLES.map((s) => {
+                  const isActive = s.key === sample.key;
+                  return (
+                    /* Least-privilege sandbox: the playground needs scripts and
+                       its own origin (web worker + WASM), and opens GitHub in a
+                       new tab. Withholding allow-top-navigation keeps it from
+                       navigating this page. */
+                    <iframe
+                      key={s.key}
+                      className={`${styles.playgroundFrame} ${isActive ? '' : styles.frameHidden}`}
+                      style={{ '--frame-height': `${s.height}px` }}
+                      src={s.url}
+                      title={`Ballerina Nutcracker playground - ${s.label} example`}
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+                      loading="lazy"
+                      aria-hidden={isActive ? undefined : 'true'}
+                      onLoad={() => handleFrameLoad(s.key)}
+                    />
+                  );
+                })}
                 <div className={styles.toggleShield} aria-hidden="true" />
 
                 {booting &&

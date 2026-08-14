@@ -63,11 +63,14 @@
   color: #ffffff;
 }
 
+/* Font size and padding match .primaryBtn so the pair is the same height —
+   at 16px/24px this sat 3px shorter, which read as a mistake rather than as
+   hierarchy. The fill and the heavier weight carry the hierarchy instead. */
 .secondaryBtn {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
-  padding: 14px 24px;
+  padding: 14px 32px;
   border: 1px solid #5f5f5f;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -76,4 +79,14 @@
 .secondaryBtn:hover {
   border-color: #20b6b0;
   color: #20b6b0;
+}
+
+/* Stacked and centred, the two labels give the buttons different widths, which
+   reads as ragged. Full width makes the pair uniform. */
+@media (max-width: 576px) {
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    text-align: center;
+  }
 }

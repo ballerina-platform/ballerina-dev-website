@@ -62,9 +62,10 @@
   font-size: 15px;
 }
 
+/* Same hover treatment as .allReleases a — see the note there. */
 .notesLink:hover {
   color: #57595d;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .downloadBody {
@@ -157,6 +158,8 @@ a.cDownload:hover {
   margin-bottom: 2.5rem;
   text-align: center;
   font-size: 14px;
+  /* Matches body text — the inherited 300 read as too faint at this size. */
+  font-weight: 400;
   color: #585a5e;
 }
 
@@ -165,9 +168,12 @@ a.cDownload:hover {
   text-decoration: none;
 }
 
+/* Underline on hover. The site sets text-decoration: none on its hover states,
+   so this is a deliberate deviation: it gives a non-colour cue on interaction,
+   which matters because the teal sits at only 1.33:1 against the body grey. */
 .allReleases a:hover {
   color: #57595d;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .getStarted {

@@ -68,9 +68,11 @@ a.btnSecondary:hover {
   text-decoration: none;
 }
 
+/* Underline on hover — a non-colour cue on interaction. The site's own hover
+   states set text-decoration: none, so this is a deliberate deviation. */
 .introLinks:hover {
   color: #57595d;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* Window-framed playground */
@@ -122,19 +124,18 @@ a.btnSecondary:hover {
   line-height: 1.5;
 }
 
-/* Inline chip mirroring the real Run button so the eye can match them up.
-   Kept neutral to match the playground's current ghost-styled Run button.
-   When ballerina-nutcracker/playground#105 ships the teal Run button, switch
-   the border and colour here to #20b6b0 so the two match again. */
+/* Names the real Run button in the editor below so the eye can match them up.
+   Deliberately NOT boxed: with a border and white fill it read as a button and
+   reviewers instinctively clicked it, which can never work — the Run control
+   lives inside a cross-origin iframe we can't call into. Bold monospace plus
+   the play glyph keeps the visual link without the false affordance. */
 .runChip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin: 0 6px;
-  padding: 2px 10px;
-  border: 1px solid #dcdcdc;
-  background: #ffffff;
-  color: #333333;
+  gap: 3px;
+  /* No horizontal margin — the surrounding spaces are real text now. */
+  margin: 0;
+  color: #3d4144;
   font-weight: 700;
   font-family: monaco, Consolas, "Lucida Console", monospace;
   font-size: 14px;
@@ -142,14 +143,21 @@ a.btnSecondary:hover {
 }
 
 
-/* Embedded playground with its Examples sidebar clipped off the left */
+/* Embedded playground with its Examples sidebar clipped off the left.
+   Frames are stacked absolutely inside it, so this needs its own height —
+   the active sample's. */
 .embedClip {
   position: relative;
   overflow: hidden;
   background: #ffffff;
+  height: var(--frame-height, 600px);
 }
 
 .playgroundFrame {
+  /* Stacked: every visited sample keeps a mounted frame in this same box. */
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   border: 0;
   /* Per-sample — see SAMPLES in Intro.js. */
@@ -163,6 +171,14 @@ a.btnSecondary:hover {
   width: calc(100% + 288px);
   transform: translateX(-288px);
   background: #ffffff;
+}
+
+/* A visited-but-inactive sample. `visibility` rather than `display: none` on
+   purpose: it keeps the frame's layout box at full size, so its editor is never
+   resized to 0 and forced to re-measure on the way back, while still dropping
+   it from paint, hit-testing, the tab order and the accessibility tree. */
+.frameHidden {
+  visibility: hidden;
 }
 
 /* Sample switcher — stands in for the playground's cropped Examples sidebar. */
@@ -298,7 +314,9 @@ a.openPlaygroundBtn:hover {
     font-size: 2.1rem;
   }
 
-  /* Cap the taller samples, but don't stretch a short one back up. */
+  /* Cap the taller samples, but don't stretch a short one back up. Clip and
+     frame must stay in step, since the clip now sets the visible height. */
+  .embedClip,
   .playgroundFrame {
     height: min(var(--frame-height, 600px), 480px);
   }

@@ -57,18 +57,17 @@ a.btnSecondary:hover {
   margin: 0;
 }
 
-/* Underlined: this sits inside a sentence, so colour alone isn't enough.
-   A darker teal than the brand #20b6b0, which is only 2.34:1 on this
-   background; this clears AA while still reading as Ballerina teal. */
+/* The site's standard link treatment: brand teal, no underline, #57595d on
+   hover. Note this is 2.34:1 on this background, below WCAG AA — brand
+   consistency with the rest of ballerina.io was chosen over the contrast gain. */
 .introLinks {
-  color: #0f7a74;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: #20b6b0;
+  text-decoration: none;
 }
 
 .introLinks:hover {
   color: #57595d;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Window-framed playground */

@@ -46,7 +46,7 @@
 .version {
   font-size: 24px;
   font-weight: 700;
-  color: #0f7a74;
+  color: #20b6b0;
   font-family: monaco, Consolas, "Lucida Console", monospace;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .notesLink {
-  color: #0f7a74;
+  color: #20b6b0;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
@@ -64,7 +64,7 @@
 
 .notesLink:hover {
   color: #57595d;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .downloadBody {
@@ -160,16 +160,14 @@ a.cDownload:hover {
   color: #585a5e;
 }
 
-/* Underlined: this sits inside a sentence, so colour alone isn't enough. */
 .allReleases a {
-  color: #0f7a74;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  color: #20b6b0;
+  text-decoration: none;
 }
 
 .allReleases a:hover {
   color: #57595d;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .getStarted {

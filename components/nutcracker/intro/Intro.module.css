@@ -54,6 +54,9 @@ a.btnSecondary:hover {
   /* #8a8a8a was 3.22:1 on the hero background — below AA. */
   color: #6e6e6e;
   font-size: 14px;
+  /* Matches body text — inherited 300 was the lightest type on the page at the
+     smallest size, which read as too faint. */
+  font-weight: 400;
   margin: 0;
 }
 
@@ -262,11 +265,16 @@ a.btnSecondary:hover {
   color: #464646;
 }
 
+/* Grey at rest, teal on hover — the site's filled-button convention (a.join on
+   /community, and a.cDownload in the download blade below). Deliberately
+   quieter than a teal fill: the embedded editor is the primary CTA and this
+   link leads away from it. Sized for this compact footer rather than copying
+   a.join's 18px/60px page-header proportions. */
 a.openPlaygroundBtn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #20b6b0;
+  background: #57595d;
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
@@ -277,7 +285,7 @@ a.openPlaygroundBtn {
 }
 
 a.openPlaygroundBtn:hover {
-  background: #1a9a95;
+  background: #20b6b0;
   color: #ffffff;
 }
 

@@ -59,7 +59,8 @@ export default function Nutcracker({ release }) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Ballerina Nutcracker" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" itemProp="image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="og:image" itemProp="image" content="https://ballerina.io/images/nutcracker/ballerina-nutcracker-social-media-image.jpg" />
+        <meta property="og:image:alt" content="Ballerina Nutcracker" />
 
         {/* TWITTER */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -67,7 +68,8 @@ export default function Nutcracker({ release }) {
         <meta name="twitter:creator" content="@ballerinalang" />
         <meta name="twitter:title" content="Ballerina Nutcracker" />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta name="twitter:image" content="https://ballerina.io/images/nutcracker/ballerina-nutcracker-social-media-image.jpg" />
+        <meta name="twitter:image:alt" content="Ballerina Nutcracker" />
       </Head>
 
       <Layout>

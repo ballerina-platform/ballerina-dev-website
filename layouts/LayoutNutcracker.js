@@ -54,14 +54,15 @@ export default function Layout({ children }) {
           logoHeight={50}
           logoAlt='Ballerina Nutcracker'
         />
-        <div className='wrap-page-content'>
+        {/* `main` landmark so assistive tech (and Lighthouse) can find the
+            primary content region. */}
+        <main className='wrap-page-content'>
           <Row className='contentRow'>
             {children}
           </Row>
-        </div>
+        </main>
 
-        {/* Promo blocks (newsletter, RSS, acknowledgements) hidden for this focused page. */}
-        <Footer hidePromo />
+        <Footer />
 
       </Stack>
 

@@ -14,7 +14,6 @@
 .releaseCard {
   background: #ffffff;
   border: 1px solid #e6e6e6;
-  border-radius: 8px;
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
@@ -47,7 +46,7 @@
 .version {
   font-size: 24px;
   font-weight: 700;
-  color: #20b6b0;
+  color: #0f7a74;
   font-family: monaco, Consolas, "Lucida Console", monospace;
 }
 
@@ -57,7 +56,7 @@
 }
 
 .notesLink {
-  color: #20b6b0;
+  color: #0f7a74;
   text-decoration: none;
   font-weight: 500;
   font-size: 15px;
@@ -144,7 +143,6 @@ a.cDownload:hover {
   background: #20b6b0;
   color: #fff;
   padding: 12px 24px;
-  border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
 }
@@ -162,9 +160,11 @@ a.cDownload:hover {
   color: #585a5e;
 }
 
+/* Underlined: this sits inside a sentence, so colour alone isn't enough. */
 .allReleases a {
-  color: #20b6b0;
-  text-decoration: none;
+  color: #0f7a74;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .allReleases a:hover {
@@ -195,7 +195,6 @@ a.cDownload:hover {
   background: #ffffff;
   border: 1px solid #e6e6e6;
   padding: 0.15em 0.4em;
-  border-radius: 4px;
   font-size: 0.9em;
   color: #585a5e;
 }
@@ -204,7 +203,6 @@ a.cDownload:hover {
   background: var(--output-color-background, #585a5e);
   color: var(--output-color-text, #3ad1ca);
   padding: 16px 20px;
-  border-radius: 6px;
   font-size: 14px;
   line-height: 1.6;
   overflow-x: auto;

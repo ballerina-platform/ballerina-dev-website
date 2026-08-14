@@ -81,27 +81,23 @@ export default function Footer(props) {
                 </div>
 
               </Col>
-              {!props.hidePromo &&
-                <Col xs={12} sm={12} md={12} lg={6}>
-                  <div className={styles.subscription}>
-                    <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
-                      <Link className={props.year && props.year === "2024" ? styles.subscribeBtn2024 : styles.subscribeBtn} href={`/community/#subscribe-to-our-newsletter`}>Subscribe to our newsletter</Link>
-                    </div>
-                    <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
-                      <a className={props.year && props.year === "2024" ? styles.subRss2024 : styles.subRss} href="https://blog.ballerina.io/feed.xml" target="_blank" rel="noreferrer">Subscribe via RSS</a>
-                    </div>
+              <Col xs={12} sm={12} md={12} lg={6}>
+                <div className={styles.subscription}>
+                  <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
+                    <Link className={props.year && props.year === "2024" ? styles.subscribeBtn2024 : styles.subscribeBtn} href={`/community/#subscribe-to-our-newsletter`}>Subscribe to our newsletter</Link>
                   </div>
+                  <div className={props.year && props.year === "2024" ? styles.subscribe2024 : styles.subscribe}>
+                    <a className={props.year && props.year === "2024" ? styles.subRss2024 : styles.subRss} href="https://blog.ballerina.io/feed.xml" target="_blank" rel="noreferrer">Subscribe via RSS</a>
+                  </div>
+                </div>
 
-                </Col>
-              }
+              </Col>
             </Row>
           </Col>
 
-          {!props.hidePromo &&
-            <Col xs={12} sm={12} md={6} lg={6} className={styles.inspire}>
-              <p>In the creation of Ballerina, we were inspired by many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub, and WSO2.</p>
-            </Col>
-          }
+          <Col xs={12} sm={12} md={6} lg={6} className={styles.inspire}>
+            <p>In the creation of Ballerina, we were inspired by many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub, and WSO2.</p>
+          </Col>
         </Row>
 
         <Row className={styles.policyLinks}>

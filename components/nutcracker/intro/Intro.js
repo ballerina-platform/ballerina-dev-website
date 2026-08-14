@@ -24,16 +24,28 @@ import styles from './Intro.module.css';
 
 // The playground's examples are Ballerina packages, so these point at each
 // package's main.bal. Keep in sync if the playground restructures its examples.
+//
+// `height` sizes the embed to the sample: hello world is 6 lines, so the 600px
+// the HTTP samples need would leave it three-quarters empty. Both HTTP samples
+// share a height, so switching between them shifts nothing.
 const SAMPLES = [
+  {
+    key: 'hello',
+    label: 'Hello world',
+    url: 'https://play.ballerina.io/tmp/examples/01-hello-world/main.bal',
+    height: 420,
+  },
   {
     key: 'client',
     label: 'HTTP client',
-    url: 'https://play.ballerina.io/tmp/examples/01-http-client/main.bal',
+    url: 'https://play.ballerina.io/tmp/examples/02-http-client/main.bal',
+    height: 600,
   },
   {
     key: 'service',
     label: 'HTTP service',
-    url: 'https://play.ballerina.io/tmp/examples/02-http-service/main.bal',
+    url: 'https://play.ballerina.io/tmp/examples/03-http-service/main.bal',
+    height: 600,
   },
 ];
 
@@ -127,7 +139,9 @@ export default function Intro({ repo }) {
 
               {/* The playground shows an Examples sidebar we don't want; clip it
                   off the left and shield its toggle so the crop stays stable. */}
-              <div className={styles.embedClip}>
+              {/* Height comes through a custom property so the responsive
+                  caps below can still clamp it. */}
+              <div className={styles.embedClip} style={{ '--frame-height': `${sample.height}px` }}>
                 {/* Least-privilege sandbox: the playground needs scripts and
                     its own origin (web worker + WASM), and opens GitHub in a new
                     tab. Withholding allow-top-navigation keeps it from
@@ -138,7 +152,6 @@ export default function Intro({ repo }) {
                   src={sample.url}
                   title={`Ballerina Nutcracker playground - ${sample.label} example`}
                   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
-                  loading="lazy"
                   onLoad={handleFrameLoad}
                 />
                 <div className={styles.toggleShield} aria-hidden="true" />

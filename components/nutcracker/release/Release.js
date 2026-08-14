@@ -129,7 +129,18 @@ export default function Release({ release, repo }) {
                         </h3>
                         <div className={styles.dVersions}>
                           {groups[os].map((a) => (
-                            <a className={styles.cDownload} href={a.url} key={a.name} title={a.name}>
+                            /* The visible label is only "zip (x64) · 27 MB", so spell
+                               out the platform for screen readers. `cGTMDownload` +
+                               data attributes match the /downloads page hooks. */
+                            <a
+                              className={`${styles.cDownload} cGTMDownload`}
+                              href={a.url}
+                              key={a.name}
+                              title={a.name}
+                              id={`nutcrackerDownload-${os.toLowerCase()}${a.arch ? `-${a.arch.toLowerCase()}` : ''}`}
+                              data-download="nutcracker"
+                              data-pack={a.name}
+                              aria-label={`Download Ballerina Nutcracker ${fmtVersion(release?.tag || '')} for ${os}${a.arch ? ` (${a.arch})` : ''}, ${a.format}${a.size ? `, ${fmtSize(a.size)}` : ''}`}>
                               {/* Keep each token unbreakable so a narrow column
                                   wraps at most once, never mid-value. */}
                               <div className={styles.cSize}>

@@ -41,7 +41,9 @@
   align-items: center;
   gap: 16px;
   margin-top: 40px;
-  padding-bottom: 20px;
+  /* Generous, because the footer's own teal Subscribe buttons sit just below —
+     at 20px the two teal blocks read as one cluster. */
+  padding-bottom: 80px;
 }
 
 .primaryBtn {

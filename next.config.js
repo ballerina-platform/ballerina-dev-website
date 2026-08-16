@@ -547,6 +547,22 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/keystore-truststore`,
         destination: `/${redirectBase}learn/development-tutorials/deployment-guide/keystore-truststore`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/ftp-client-receive-file`,
+        destination: `/${redirectBase}learn/by-example/ftp-client-read-file`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/ftp-client-send-file`,
+        destination: `/${redirectBase}learn/by-example/ftp-client-write-file`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/sftp-client-receive-file`,
+        destination: `/${redirectBase}learn/by-example/sftp-client-read-file`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/sftp-client-send-file`,
+        destination: `/${redirectBase}learn/by-example/sftp-client-write-file`,
       }
     ];
   },

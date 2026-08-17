@@ -9,36 +9,52 @@ export const codeSnippetData = [
 import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The listener listens to the files
-// with the given file name pattern located in the specified path.
-listener ftp:Listener fileListener = new ({
+// configuration.
+listener ftp:Listener fileListener = check new ({
     host: "ftp.example.com",
     auth: {
         credentials: {
             username: "user1",
             password: "pass456"
         }
-    },
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
+    }
 });
 
-// One or many services can listen to the FTP listener for the periodically-polled
-// file related events.
-service on fileListener {
+// One or many services can listen to the FTP listener. Each service watches the
+// directory given in \`path\`, and only the files whose names match
+// \`fileNamePattern\`.
+@ftp:ServiceConfig {
+    path: "/home/in",
+    fileNamePattern: "(.*).txt"
+}
+service "shipmentNoteArchiver" on fileListener {
 
-    // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
-        // \`addedFiles\` contains the paths of the newly-added files/directories
-        // after the last polling was called.
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            // Get the newly added file from the FTP server as a \`byte[]\` stream.
-            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.pathDecoded);
-
-            // Write the content to a file.
-            check io:fileWriteBlocksFromStream(string \`./local/\${addedFile.name}\`, fileStream);
-            check fileStream.close();
+    // The listener selects the handler by file extension and binds the file
+    // content to the first parameter, so the handler never reads the file
+    // itself. \`onFileText\` receives the file as a string, while \`onFileJson\`,
+    // \`onFileXml\`, and \`onFileCsv\` bind the other content types, and \`onFile\`
+    // handles any remaining extension.
+    // The file is moved once the handler returns, so the handler is left with
+    // no file management to do. \`afterProcess\` and \`afterError\` also accept
+    // \`ftp:DELETE\` to remove the file instead of moving it.
+    @ftp:FunctionConfig {
+        afterProcess: {
+            moveTo: "/home/processed"
+        },
+        afterError: {
+            moveTo: "/home/failed"
         }
+    }
+    remote function onFileText(string note, ftp:FileInfo fileInfo) returns error? {
+        // Archives the note on the local file system.
+        check io:fileWriteString(string \`./archive/\${fileInfo.name}\`, note);
+        io:println(string \`Archived \${fileInfo.name} (\${fileInfo.size} bytes)\`);
+    }
+
+    // \`onError\` is called when a file cannot be read, cannot be bound to the
+    // handler parameter, or the handler itself fails.
+    remote function onError(error err) returns error? {
+        io:println("Failed to archive the shipment note: ", err.message());
     }
 }
 `,
@@ -58,16 +74,21 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
 
       <p>
         The <code>ftp:Service</code> connects to a given FTP server via the{" "}
-        <code>ftp:Listener</code>. A <code>ftp:Listener</code> is created by
-        providing the host-name and required credentials. Once connected, the
-        service starts receiving events every time a file is deleted or added to
-        the server. To take action for these events <code>ftp:Caller</code> is
-        used. The <code>ftp:Caller</code> can be specified as a parameter of{" "}
-        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
-        allows interacting with the server via <code>get</code>,{" "}
-        <code>append</code>, <code>delete</code>, etc remote methods. Use this
-        to listen to file changes occurring in a remote file system and take
-        action for those changes.
+        <code>ftp:Listener</code>. An <code>ftp:Listener</code> is created by
+        providing the host-name and required credentials. The directory each
+        service watches is given by the <code>@ftp:ServiceConfig</code>{" "}
+        annotation. Once connected, the listener polls that directory and
+        dispatches every file it finds to the service. The handler is selected
+        by the file extension and the content is bound to its first parameter,
+        so <code>onFileText</code> receives the file as a string and the handler
+        never reads it. <code>onFileJson</code>, <code>onFileXml</code>, and{" "}
+        <code>onFileCsv</code> bind the other content types. The{" "}
+        <code>afterProcess</code> and <code>afterError</code> actions of{" "}
+        <code>@ftp:FunctionConfig</code> then move the file, keeping file
+        management out of the handler, and <code>onError</code> is called when a
+        file cannot be read, cannot be bound to the handler parameter, or the
+        handler itself fails. Use this to act on files as they arrive on a
+        remote file system.
       </p>
 
       <Row
@@ -80,7 +101,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/ftp-service-receive-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/ftp-service-receive-file",
                 "_blank",
               );
             }}
@@ -160,18 +181,30 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
+            Start an{" "}
             <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
               FTP server
             </a>{" "}
-            instance.
+            instance containing the <code>/home/in</code>,{" "}
+            <code>/home/processed</code>, and <code>/home/failed</code>{" "}
+            directories.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Create an <code>archive</code> directory in the directory you run
+            the program from.
           </span>
         </li>
       </ul>
 
       <p>
-        Run the program by executing the following command. Each newly added
-        file in the SFTP server will be saved in the local file system.
+        Run the program by executing the following command. Each new shipment
+        note in the watched directory is archived on the local file system and
+        then moved to <code>/home/processed</code>.
       </p>
 
       <Row
@@ -227,7 +260,8 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ftp_service_read.bal`}</span>
+              <span>{`\$ bal run ftp_service_receive_file.bal`}</span>
+              <span>{`Archived shipment-1042.txt (47 bytes)`}</span>
             </code>
           </pre>
         </Col>
@@ -235,11 +269,8 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> Run the FTP client given in the{" "}
-          <a href="/learn/by-example/ftp-client-send-file">
-            FTP client - Send file
-          </a>{" "}
-          example to put a file in the FTP server.
+          <strong>Tip:</strong> Place a <code>.txt</code> file in{" "}
+          <code>/home/in</code> on the FTP server to trigger the service.
         </p>
       </blockquote>
 
@@ -250,7 +281,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest#Listener">
-              <code>ftp:Listener</code> client object - API documentation
+              <code>ftp:Listener</code> listener object - API documentation
             </a>
           </span>
         </li>
@@ -259,7 +290,17 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#422-secure-listener">
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#FunctionConfig">
+              <code>ftp:FunctionConfig</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/ftp/#431-insecure-listener">
               FTP service - Specification
             </a>
           </span>
@@ -302,10 +343,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Send file"
-            href="/learn/by-example/ftp-service-send-file/"
-          >
+          <Link title="Caller object" href="/learn/by-example/ftp-caller/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -314,7 +352,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Caller object
                 </span>
               </div>
               <svg

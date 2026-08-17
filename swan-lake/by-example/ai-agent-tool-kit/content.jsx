@@ -148,7 +148,7 @@ export function AiAgentToolKit({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/ai-agent-tool-kit",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/ai-agent-tool-kit",
                 "_blank",
               );
             }}

@@ -22,19 +22,18 @@ public function main() returns error? {
         }
     });
 
-    // Reads a file from an FTP server for a given file path. In error cases,
-    // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
+    // Reads the local file that is sent to the server.
+    string content = check io:fileReadString("./local/logFile.txt");
 
-    // Write the content to a file.
-    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
-    // Closes the file stream to finish the \`get\` operation.
-    check fileStream.close();
+    // Writes the content to the given file location. In error cases, an error
+    // is returned. \`putBytes\`, \`putJson\`, \`putXml\`, and \`putCsv\` write the
+    // other content types, and each takes an \`ftp:APPEND\` option.
+    check fileClient->putText("/server/logFile.txt", content);
 }
 `,
 ];
 
-export function FtpClientReceiveFile({ codeSnippets }) {
+export function FtpClientWriteFile({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -44,15 +43,17 @@ export function FtpClientReceiveFile({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>FTP client - Receive file</h1>
+      <h1>FTP client - Write file</h1>
 
       <p>
         The <code>ftp:Client</code> connects to a given FTP server, and then
-        sends and receives files as byte streams. An <code>ftp:Client</code> is
-        created by giving the host-name and required credentials. Once
-        connected, <code>get</code> method is used to read files as byte streams
-        from the FTP server. Use this to transfer files from a remote file
-        system to a local file system.
+        reads and writes files on it. An <code>ftp:Client</code> is created by
+        giving the host-name and required credentials. Once connected,{" "}
+        <code>putText</code>, <code>putJson</code>, <code>putXml</code>,{" "}
+        <code>putCsv</code>, and <code>putBytes</code> write a value of the
+        matching type to the FTP server, so the content does not have to be
+        serialized first. Use this to transfer files from a local file system to
+        a remote file system.
       </p>
 
       <Row
@@ -61,31 +62,9 @@ export function FtpClientReceiveFile({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/ftp-client-receive-file",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -103,7 +82,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -145,7 +124,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
+            Start an{" "}
             <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
               FTP server
             </a>{" "}
@@ -153,22 +132,10 @@ export function FtpClientReceiveFile({ codeSnippets }) {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the FTP client given in the{" "}
-            <a href="/learn/by-example/ftp-client-send-file">
-              FTP client - Send file
-            </a>{" "}
-            example to put a file in the FTP server.
-          </span>
-        </li>
-      </ul>
 
       <p>
         Run the program by executing the following command. The newly-added file
-        will appear in the local directory.
+        will appear in the FTP server.
       </p>
 
       <Row
@@ -224,7 +191,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ftp_client_read.bal`}</span>
+              <span>{`\$ bal run ftp_client_write_file.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -236,8 +203,8 @@ export function FtpClientReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#get">
-              <code>ftp:Client-&gt;get</code> method - API documentation
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#putText">
+              <code>ftp:Client-&gt;putText</code> method - API documentation
             </a>
           </span>
         </li>
@@ -256,10 +223,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Send file"
-            href="/learn/by-example/ftp-service-send-file/"
-          >
+          <Link title="Caller object" href="/learn/by-example/ftp-caller/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -285,7 +249,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Caller object
                 </span>
               </div>
             </div>
@@ -293,8 +257,8 @@ export function FtpClientReceiveFile({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send file"
-            href="/learn/by-example/ftp-client-send-file/"
+            title="Read file"
+            href="/learn/by-example/ftp-client-read-file/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -304,7 +268,7 @@ export function FtpClientReceiveFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Read file
                 </span>
               </div>
               <svg

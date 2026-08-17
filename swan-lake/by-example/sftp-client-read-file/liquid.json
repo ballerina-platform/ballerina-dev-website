@@ -1,5 +1,5 @@
 {
-  "title": "Receive file",
+  "title": "Read file",
   "description": "This example demonstrates getting file content from a remote SFTP server.",
   "keywords": [
     "ballerina",
@@ -8,6 +8,6 @@
     "SFTP",
     "FTP security"
   ],
-  "permalink": "/learn/by-example/sftp-client-receive-file/",
-  "active": "sftp-client-receive-file"
+  "permalink": "/learn/by-example/sftp-client-read-file/",
+  "active": "sftp-client-read-file"
 }

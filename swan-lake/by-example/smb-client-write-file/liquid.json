@@ -1,0 +1,13 @@
+{
+  "title": "Write file",
+  "description": "This example demonstrates writing a string and a record to a share on a remote SMB server.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "SMB",
+    "remote file"
+  ],
+  "permalink": "/learn/by-example/smb-client-write-file/",
+  "active": "smb-client-write-file"
+}

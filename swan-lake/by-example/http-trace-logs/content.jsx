@@ -24,11 +24,23 @@ service /info on new http:Listener(9095) {
   `[ballerina.http.traceLogAdvancedConfig]
 # Enable printing trace logs on the Console. The default value is \`false\`.
 console = true
-# Specify the file path to save the trace logs. This is optional.
-path = "testTraceLog.txt"
 # Specify the hostname and port of a socket service to publish the trace logs. These are optional.
 host = "localhost"
-port = 8080 
+port = 8080
+
+[ballerina.http.traceLogAdvancedConfig.file]
+# Specify the file path to store trace logs.
+path = "http-trace.log"
+
+[ballerina.http.traceLogAdvancedConfig.file.rotation]
+# Specify the rotation policy. Options are \`BOTH\`, \`SIZE_BASED\`, or \`TIME_BASED\`.
+policy = "BOTH"
+# Specify the maximum file size in bytes for log rotation.
+maxFileSize = 52428800
+# Specify the maximum age of log files in seconds for log rotation.
+maxAge = 86400
+# Specify the maximum number of backup log files to keep for log rotation.
+maxBackupFiles = 30
 `,
 ];
 
@@ -65,7 +77,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/http-trace-logs",
                 "_blank",
               );
             }}
@@ -347,10 +359,12 @@ export function HttpTraceLogs({ codeSnippets }) {
       </Row>
 
       <p>
-        Additionally, the following configurations can be added to the{" "}
-        <code>Config.toml</code> file for advanced use cases such as specifying
-        the file path to save the trace logs to a file and the hostname and port
-        of a socket service to publish the trace logs.
+        Additionally, the <code>Config.toml</code> file supports further
+        configurations for advanced use cases, such as configuring the{" "}
+        <code>hostname</code> and <code>port</code> of a socket service to
+        publish the trace logs and writing trace logs to a file using the{" "}
+        <code>file</code> configuration, which allows specifying the log file
+        location and rotation settings.
       </p>
 
       <Row
@@ -363,7 +377,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/http-trace-logs",
                 "_blank",
               );
             }}

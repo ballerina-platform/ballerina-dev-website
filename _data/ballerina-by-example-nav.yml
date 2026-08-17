@@ -1675,44 +1675,62 @@ sublinks:
           - title: SSL/TLS
             id: 1
             url: email-client-ssl-tls
-      - title: FTP Service
+      - title: FTP service
         id: 59
         sublinks:
           - title: Receive file
             id: 1
             url: ftp-service-receive-file
-          - title: Send file
+          - title: Caller object
             id: 2
-            url: ftp-service-send-file
+            url: ftp-caller
       - title: FTP client
         id: 60
         sublinks:
-          - title: Receive file
+          - title: Write file
             id: 1
-            url: ftp-client-receive-file
-          - title: Send file
+            url: ftp-client-write-file
+          - title: Read file
             id: 2
-            url: ftp-client-send-file
-      - title: SFTP Service
+            url: ftp-client-read-file
+      - title: SFTP service
         id: 61
         sublinks:
           - title: Receive file
             id: 1
             url: sftp-service-receive-file
-          - title: Send file
+          - title: Caller object
             id: 2
-            url: sftp-service-send-file
+            url: sftp-caller
       - title: SFTP client
         id: 62
         sublinks:
+          - title: Write file
+            id: 1
+            url: sftp-client-write-file
+          - title: Read file
+            id: 2
+            url: sftp-client-read-file
+      - title: SMB service
+        id: 63
+        sublinks:
           - title: Receive file
             id: 1
-            url: sftp-client-receive-file
-          - title: Send file
+            url: smb-service-receive-file
+          - title: Caller object
             id: 2
-            url: sftp-client-send-file
+            url: smb-caller
+      - title: SMB client
+        id: 64
+        sublinks:
+          - title: Write file
+            id: 1
+            url: smb-client-write-file
+          - title: Read file
+            id: 2
+            url: smb-client-read-file
       - title: Database access
-        id: 63
+        id: 65
         sublinks:
           - title: Simple query
             id: 1
@@ -1736,7 +1754,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: Change data capture
-        id: 64
+        id: 66
         sublinks:
           - title: Listen to database
             id: 1
@@ -1969,8 +1987,23 @@ sublinks:
           - title: Handle CSV with custom configurations
             id: 6
             url: csv-user-configurations
-      - title: Constraint
+      - title: XLSX data
         id: 19
+        sublinks:
+          - title: Parse Excel file to records
+            id: 1
+            url: xlsx-to-records
+          - title: Write records to Excel file
+            id: 2
+            url: records-to-xlsx
+          - title: Work with Excel tables
+            id: 3
+            url: xlsx-tables
+          - title: Parse Excel file to records - advanced
+            id: 4
+            url: xlsx-to-records-advanced
+      - title: Constraint
+        id: 20
         sublinks:
           - title: Constraint validations
             id: 1

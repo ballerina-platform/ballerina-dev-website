@@ -1,0 +1,17 @@
+{
+  "title": "Write records to Excel file",
+  "description": "This BBE demonstrates writing an array of Ballerina records to a sheet in a Microsoft Excel (XLSX) file.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xlsx",
+    "excel",
+    "spreadsheet",
+    "writeSheet",
+    "record",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/records-to-xlsx/",
+  "active": "records-to-xlsx"
+}

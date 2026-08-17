@@ -1848,33 +1848,49 @@ import {
   codeSnippetData as FtpServiceReceiveFileCodeSnippetData,
 } from "./ftp-service-receive-file/content.jsx";
 import {
-  FtpServiceSendFile,
-  codeSnippetData as FtpServiceSendFileCodeSnippetData,
-} from "./ftp-service-send-file/content.jsx";
+  FtpCaller,
+  codeSnippetData as FtpCallerCodeSnippetData,
+} from "./ftp-caller/content.jsx";
 import {
-  FtpClientReceiveFile,
-  codeSnippetData as FtpClientReceiveFileCodeSnippetData,
-} from "./ftp-client-receive-file/content.jsx";
+  FtpClientWriteFile,
+  codeSnippetData as FtpClientWriteFileCodeSnippetData,
+} from "./ftp-client-write-file/content.jsx";
 import {
-  FtpClientSendFile,
-  codeSnippetData as FtpClientSendFileCodeSnippetData,
-} from "./ftp-client-send-file/content.jsx";
+  FtpClientReadFile,
+  codeSnippetData as FtpClientReadFileCodeSnippetData,
+} from "./ftp-client-read-file/content.jsx";
 import {
   SftpServiceReceiveFile,
   codeSnippetData as SftpServiceReceiveFileCodeSnippetData,
 } from "./sftp-service-receive-file/content.jsx";
 import {
-  SftpServiceSendFile,
-  codeSnippetData as SftpServiceSendFileCodeSnippetData,
-} from "./sftp-service-send-file/content.jsx";
+  SftpCaller,
+  codeSnippetData as SftpCallerCodeSnippetData,
+} from "./sftp-caller/content.jsx";
 import {
-  SftpClientReceiveFile,
-  codeSnippetData as SftpClientReceiveFileCodeSnippetData,
-} from "./sftp-client-receive-file/content.jsx";
+  SftpClientWriteFile,
+  codeSnippetData as SftpClientWriteFileCodeSnippetData,
+} from "./sftp-client-write-file/content.jsx";
 import {
-  SftpClientSendFile,
-  codeSnippetData as SftpClientSendFileCodeSnippetData,
-} from "./sftp-client-send-file/content.jsx";
+  SftpClientReadFile,
+  codeSnippetData as SftpClientReadFileCodeSnippetData,
+} from "./sftp-client-read-file/content.jsx";
+import {
+  SmbServiceReceiveFile,
+  codeSnippetData as SmbServiceReceiveFileCodeSnippetData,
+} from "./smb-service-receive-file/content.jsx";
+import {
+  SmbCaller,
+  codeSnippetData as SmbCallerCodeSnippetData,
+} from "./smb-caller/content.jsx";
+import {
+  SmbClientWriteFile,
+  codeSnippetData as SmbClientWriteFileCodeSnippetData,
+} from "./smb-client-write-file/content.jsx";
+import {
+  SmbClientReadFile,
+  codeSnippetData as SmbClientReadFileCodeSnippetData,
+} from "./smb-client-read-file/content.jsx";
 import {
   MysqlQueryOperation,
   codeSnippetData as MysqlQueryOperationCodeSnippetData,
@@ -2135,6 +2151,22 @@ import {
   CsvUserConfigurations,
   codeSnippetData as CsvUserConfigurationsCodeSnippetData,
 } from "./csv-user-configurations/content.jsx";
+import {
+  XlsxToRecords,
+  codeSnippetData as XlsxToRecordsCodeSnippetData,
+} from "./xlsx-to-records/content.jsx";
+import {
+  RecordsToXlsx,
+  codeSnippetData as RecordsToXlsxCodeSnippetData,
+} from "./records-to-xlsx/content.jsx";
+import {
+  XlsxTables,
+  codeSnippetData as XlsxTablesCodeSnippetData,
+} from "./xlsx-tables/content.jsx";
+import {
+  XlsxToRecordsAdvanced,
+  codeSnippetData as XlsxToRecordsAdvancedCodeSnippetData,
+} from "./xlsx-to-records-advanced/content.jsx";
 import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
@@ -3207,20 +3239,28 @@ const BBEs = {
   EmailClientSslTlsCodeSnippetData,
   FtpServiceReceiveFile,
   FtpServiceReceiveFileCodeSnippetData,
-  FtpServiceSendFile,
-  FtpServiceSendFileCodeSnippetData,
-  FtpClientReceiveFile,
-  FtpClientReceiveFileCodeSnippetData,
-  FtpClientSendFile,
-  FtpClientSendFileCodeSnippetData,
+  FtpCaller,
+  FtpCallerCodeSnippetData,
+  FtpClientWriteFile,
+  FtpClientWriteFileCodeSnippetData,
+  FtpClientReadFile,
+  FtpClientReadFileCodeSnippetData,
   SftpServiceReceiveFile,
   SftpServiceReceiveFileCodeSnippetData,
-  SftpServiceSendFile,
-  SftpServiceSendFileCodeSnippetData,
-  SftpClientReceiveFile,
-  SftpClientReceiveFileCodeSnippetData,
-  SftpClientSendFile,
-  SftpClientSendFileCodeSnippetData,
+  SftpCaller,
+  SftpCallerCodeSnippetData,
+  SftpClientWriteFile,
+  SftpClientWriteFileCodeSnippetData,
+  SftpClientReadFile,
+  SftpClientReadFileCodeSnippetData,
+  SmbServiceReceiveFile,
+  SmbServiceReceiveFileCodeSnippetData,
+  SmbCaller,
+  SmbCallerCodeSnippetData,
+  SmbClientWriteFile,
+  SmbClientWriteFileCodeSnippetData,
+  SmbClientReadFile,
+  SmbClientReadFileCodeSnippetData,
   MysqlQueryOperation,
   MysqlQueryOperationCodeSnippetData,
   MysqlQueryRowOperation,
@@ -3351,6 +3391,14 @@ const BBEs = {
   TransformCsvRecordsToCustomTypesCodeSnippetData,
   CsvUserConfigurations,
   CsvUserConfigurationsCodeSnippetData,
+  XlsxToRecords,
+  XlsxToRecordsCodeSnippetData,
+  RecordsToXlsx,
+  RecordsToXlsxCodeSnippetData,
+  XlsxTables,
+  XlsxTablesCodeSnippetData,
+  XlsxToRecordsAdvanced,
+  XlsxToRecordsAdvancedCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
   DirectLlmCalls,

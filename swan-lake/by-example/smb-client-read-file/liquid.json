@@ -1,0 +1,14 @@
+{
+  "title": "Read file",
+  "description": "This example demonstrates reading a file from a remote SMB share as a string and binding JSON content to a record.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "SMB",
+    "remote file",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/smb-client-read-file/",
+  "active": "smb-client-read-file"
+}

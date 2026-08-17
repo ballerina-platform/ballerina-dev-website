@@ -31,8 +31,20 @@ console = true
 format = "flat"
 # List of attributes to include in the access logs. This field is optional.
 attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
-# Specify the file path to save the access logs. This is optional.  
-path = "testAccessLog.txt"
+
+[ballerina.http.accessLogConfig.file]
+# Specify the file path to store access logs.
+path = "http-access.log"
+
+[ballerina.http.accessLogConfig.file.rotation]
+# Specify the rotation policy. Options are \`BOTH\`, \`SIZE_BASED\`, or \`TIME_BASED\`.
+policy = "BOTH"
+# Specify the maximum file size in bytes for log rotation.
+maxFileSize = 52428800
+# Specify the maximum age of log files in seconds for log rotation.
+maxAge = 86400
+# Specify the maximum number of backup log files to keep for log rotation.
+maxBackupFiles = 30
 `,
 ];
 
@@ -52,16 +64,25 @@ export function HttpAccessLogs({ codeSnippets }) {
       <h1>HTTP service - Access logs</h1>
 
       <p>
-        Ballerina allows enabling HTTP access logs, which can be used to record
-        the HTTP requests handled by the application. HTTP access logs are
-        disabled by default. Set <code>console=true</code> under{" "}
+        Ballerina allows enabling HTTP access logs to record the HTTP requests
+        handled by an application. HTTP access logs are disabled by default. To
+        enable them, set <code>console=true</code> under{" "}
         <code>ballerina.http.accessLogConfig</code> in the{" "}
-        <code>Config.toml</code> file to enable them. Additionally, the{" "}
-        <code>path</code> field can be used to specify the file path to save the
-        access logs. The log format can be specified as either <code>flat</code>{" "}
-        or <code>json</code> using the optional <code>format</code> field
-        (defaults to <code>flat</code>). Furthermore, you can customize the
-        logged attributes using the optional <code>attributes</code> field.
+        <code>Config.toml</code> file.
+      </p>
+
+      <p>
+        In addition to logging to the console, logs can be written to a file
+        using the <code>file</code> configuration. This configuration allows
+        specifying the log file location and related settings, including log
+        rotation.
+      </p>
+
+      <p>
+        The log format can be specified as either <code>flat</code> or{" "}
+        <code>json</code> using the optional <code>format</code> field (defaults
+        to <code>flat</code>). Furthermore, you can customize the logged
+        attributes using the optional <code>attributes</code> field.
       </p>
 
       <Row
@@ -74,7 +95,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/http-access-logs",
                 "_blank",
               );
             }}
@@ -170,7 +191,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/http-access-logs",
                 "_blank",
               );
             }}

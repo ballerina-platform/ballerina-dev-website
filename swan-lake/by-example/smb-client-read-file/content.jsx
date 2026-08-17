@@ -5,35 +5,48 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/ftp;
-import ballerina/io;
+  `import ballerina/io;
+import ballerina/smb;
+
+type DailySummary record {|
+    string date;
+    int processed;
+|};
 
 public function main() returns error? {
-    // Creates the client with the connection parameters, host, username, and
-    // password. An error is returned in a failure. The default port number
-    // \`21\` is used with these configurations.
-    ftp:Client fileClient = check new ({
-        host: "ftp.example.com",
+    // Creates the client with the connection parameters: the host, the share to
+    // work on, and the required credentials. An error is returned in a failure.
+    // The default port number \`445\` is used with these configurations.
+    smb:Client fileClient = check new ({
+        host: "smb.example.com",
+        share: "reports",
         auth: {
             credentials: {
                 username: "user1",
-                password: "pass456"
+                password: "pass456",
+                domain: "WORKGROUP"
             }
         }
     });
 
-    // Add a new file to the given file location. In error cases,
-    // an error is returned. The local file is provided as a stream of
-    // \`io:Block\` in which 1024 is the block size.
-    stream<io:Block, io:Error?> fileStream
-        = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    check fileClient->put("/server/logFile.txt", fileStream);
-    check fileStream.close();
+    // Reads the file as a string. An error is returned when the file is missing
+    // or cannot be read.
+    string summary = check fileClient->getText("/reports/summary.txt");
+    io:println(summary);
+
+    // Reads JSON straight into a record. The client binds the content to the
+    // type expected at the call site, so no conversion step is needed.
+    // \`getXml\`, \`getCsv\`, and \`getBytes\` read the other content types.
+    DailySummary daily = check fileClient->getJson("/reports/summary.json");
+    io:println(daily.processed);
+
+    // Releases the connection to the share.
+    check fileClient->close();
 }
 `,
 ];
 
-export function FtpClientSendFile({ codeSnippets }) {
+export function SmbClientReadFile({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -43,15 +56,17 @@ export function FtpClientSendFile({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>FTP client - Send file</h1>
+      <h1>SMB client - Read file</h1>
 
       <p>
-        The <code>ftp:Client</code> connects to a given FTP server, and then
-        sends and receives files as byte streams. An <code>ftp:Client</code> is
-        created by giving the host-name and required credentials. Once
-        connected, <code>put</code> method is used to write files as byte
-        streams to the FTP server. Use this to transfer files from a local file
-        system to a remote file system.
+        The <code>smb:Client</code> connects to a directory share on a given SMB
+        server, and then reads and writes files on it. Once connected,{" "}
+        <code>getText</code>, <code>getJson</code>, <code>getXml</code>,{" "}
+        <code>getCsv</code>, and <code>getBytes</code> read a file as a value of
+        the matching type. <code>getJson</code>, <code>getXml</code>, and{" "}
+        <code>getCsv</code> bind the content to the type expected at the call
+        site, so a file can be read straight into a record. Use this to read
+        files from a Windows file server, a NAS appliance, or a Samba share.
       </p>
 
       <Row
@@ -60,31 +75,9 @@ export function FtpClientSendFile({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/ftp-client-send-file",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -102,7 +95,7 @@ export function FtpClientSendFile({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -145,18 +138,25 @@ export function FtpClientSendFile({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
-              FTP server
-            </a>{" "}
-            instance.
+            <a href="https://hub.docker.com/r/dperson/samba">Samba server</a>{" "}
+            instance with a share named <code>reports</code>, holding a{" "}
+            <code>/reports</code> directory. The image creates no users, so add{" "}
+            <code>user1</code> with the password <code>pass456</code> in the{" "}
+            <code>WORKGROUP</code> domain.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Place <code>summary.txt</code> and <code>summary.json</code> in{" "}
+            <code>/reports</code> on the share.
           </span>
         </li>
       </ul>
 
-      <p>
-        Run the program by executing the following command. The newly-added file
-        will appear in the FTP server.
-      </p>
+      <p>Run the program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -211,11 +211,23 @@ export function FtpClientSendFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ftp_client_write.bal`}</span>
+              <span>{`\$ bal run smb_client_read_file.bal`}</span>
+              <span>{`All systems nominal`}</span>
+              <span>{`42`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the SMB client given in the{" "}
+          <a href="/learn/by-example/smb-client-write-file">
+            SMB client - Write file
+          </a>{" "}
+          example to create both files at the paths this example reads.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -223,8 +235,8 @@ export function FtpClientSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#put">
-              <code>ftp:Client-&gt;put</code> method - API documentation
+            <a href="https://lib.ballerina.io/ballerina/smb/latest#Client#getText">
+              <code>smb:Client-&gt;getText</code> method - API documentation
             </a>
           </span>
         </li>
@@ -233,8 +245,18 @@ export function FtpClientSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#321-insecure-client">
-              FTP client - Specification
+            <a href="https://lib.ballerina.io/ballerina/smb/latest#Client#getJson">
+              <code>smb:Client-&gt;getJson</code> method - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/smb/latest#Client">
+              <code>smb:Client</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -244,8 +266,8 @@ export function FtpClientSendFile({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/ftp-client-receive-file/"
+            title="Write file"
+            href="/learn/by-example/smb-client-write-file/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -272,7 +294,7 @@ export function FtpClientSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Write file
                 </span>
               </div>
             </div>
@@ -280,8 +302,8 @@ export function FtpClientSendFile({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/sftp-service-receive-file/"
+            title="Simple query"
+            href="/learn/by-example/mysql-query-operation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -291,7 +313,7 @@ export function FtpClientSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Simple query
                 </span>
               </div>
               <svg

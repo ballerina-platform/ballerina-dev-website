@@ -5,8 +5,8 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/xmldata;
+  `import ballerina/data.xmldata;
+import ballerina/io;
 
 // Defines a record type with annotations.
 @xmldata:Namespace {
@@ -17,13 +17,11 @@ type Invoice record {
     int id;
     Item[] purchased_item;
     @xmldata:Attribute
-    string 'xmlns?;
-    @xmldata:Attribute
     string status?;
 };
 
 @xmldata:Namespace {
-    uri: "http://example2.com"
+    uri: "example.com"
 }
 type Item record {
     string itemCode;
@@ -45,7 +43,7 @@ public function main() returns error? {
                     </ns:Invoice>\`;
 
     // Converts an XML representation to its \`record\` representation.
-    Invoice output = check xmldata:fromXml(data);
+    Invoice output = check xmldata:parseAsType(data);
     io:println(output);
 }
 `,
@@ -64,14 +62,14 @@ export function XmlToRecordConversion({ codeSnippets }) {
       <h1>XML to Record conversion</h1>
 
       <p>
-        The <code>xmldata</code> library provides an API to perform the
-        conversion from XML to <code>Ballerina record/map&lt;anydata&gt;</code>.
+        The <code>data.xmldata</code> library provides an API to perform the
+        conversion from XML to a Ballerina record.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/xmldata/latest/">
-          <code>xmldata</code> module
+        <a href="https://lib.ballerina.io/ballerina/data.xmldata/latest/">
+          <code>data.xmldata</code> module
         </a>
         .
       </p>
@@ -86,7 +84,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/xml-to-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/xml-to-record-conversion",
                 "_blank",
               );
             }}
@@ -218,7 +216,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run xml_to_record_conversion.bal`}</span>
-              <span>{`{"id":1,"purchased_item":[{"itemCode":"223345","item_count":1},{"itemCode":"223300","item_count":7}],"xmlns":"example.com","status":"paid"}`}</span>
+              <span>{`{"id":1,"purchased_item":[{"itemCode":"223345","item_count":1},{"itemCode":"223300","item_count":7}],"status":"paid"}`}</span>
             </code>
           </pre>
         </Col>

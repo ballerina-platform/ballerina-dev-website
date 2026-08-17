@@ -1,0 +1,15 @@
+{
+  "title": "Caller object",
+  "description": "This example demonstrates using an ftp:Caller to write back to a remote SFTP server while handling a file that arrived on it.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "SFTP",
+    "remote file",
+    "listener",
+    "caller"
+  ],
+  "permalink": "/learn/by-example/sftp-caller/",
+  "active": "sftp-caller"
+}

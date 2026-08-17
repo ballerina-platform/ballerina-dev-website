@@ -1,0 +1,17 @@
+{
+  "title": "Parse Excel file to records",
+  "description": "This BBE demonstrates parsing a sheet in a Microsoft Excel (XLSX) file into an array of Ballerina records.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xlsx",
+    "excel",
+    "spreadsheet",
+    "parseSheet",
+    "record",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/xlsx-to-records/",
+  "active": "xlsx-to-records"
+}

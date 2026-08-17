@@ -135,7 +135,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>6.</span>
+          <span>7.</span>
           <span>
             Go to the <strong>Keys</strong> tab of the Cosmos DB page.
           </span>
@@ -143,7 +143,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>7.</span>
+          <span>8.</span>
           <span>
             Copy the value of the <code>PRIMARY CONNECTION STRING</code>.
           </span>
@@ -151,7 +151,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>8.</span>
+          <span>9.</span>
           <span>
             Click the <strong>Configuration</strong> tab on the function app
             page.
@@ -160,7 +160,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>9.</span>
+          <span>10.</span>
           <span>
             Select <strong>New Application Setting</strong>, and paste the data
             you copied above as the value.
@@ -296,7 +296,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/azure-functions-cosmosdb-trigger",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/azure-functions-cosmosdb-trigger",
                 "_blank",
               );
             }}

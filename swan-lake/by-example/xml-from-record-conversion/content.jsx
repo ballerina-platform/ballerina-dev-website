@@ -5,8 +5,8 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/xmldata;
+  `import ballerina/data.xmldata;
+import ballerina/io;
 
 // Defines a record type with annotations.
 @xmldata:Namespace {
@@ -61,14 +61,14 @@ export function XmlFromRecordConversion({ codeSnippets }) {
       <h1>Record to XML conversion</h1>
 
       <p>
-        The <code>xmldata</code> library provides APIs to perform the conversion
-        from <code>Ballerina record/map&lt;anydata&gt;</code> to XML.
+        The <code>data.xmldata</code> library provides APIs to perform the
+        conversion from a Ballerina record to XML.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/xmldata/latest/">
-          <code>xmldata</code> module
+        <a href="https://lib.ballerina.io/ballerina/data.xmldata/latest/">
+          <code>data.xmldata</code> module
         </a>
         .
       </p>
@@ -83,7 +83,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/xml-from-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/xml-from-record-conversion",
                 "_blank",
               );
             }}

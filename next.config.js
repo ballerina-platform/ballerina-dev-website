@@ -563,6 +563,14 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/by-example/sftp-client-send-file`,
         destination: `/${redirectBase}learn/by-example/sftp-client-write-file`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/ftp-service-send-file`,
+        destination: `/${redirectBase}learn/by-example/ftp-caller`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/sftp-service-send-file`,
+        destination: `/${redirectBase}learn/by-example/sftp-caller`,
       }
     ];
   },

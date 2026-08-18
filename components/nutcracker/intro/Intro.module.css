@@ -143,9 +143,8 @@ a.btnSecondary:hover {
 }
 
 
-/* Embedded playground with its Examples sidebar clipped off the left.
-   Frames are stacked absolutely inside it, so this needs its own height —
-   the active sample's. */
+/* Holds the embedded playground. Frames are stacked absolutely inside it, so it
+   needs its own height — the active sample's. */
 .embedClip {
   position: relative;
   overflow: hidden;
@@ -162,14 +161,12 @@ a.btnSecondary:hover {
   border: 0;
   /* Per-sample — see SAMPLES in Intro.js. */
   height: var(--frame-height, 600px);
-  /* Shift the ~18rem examples sidebar out of view; widen to refill.
-     A transform rather than a negative margin, so the offset is applied at
-     paint time instead of in layout — Firefox left unpainted white bands with
-     margin-left. Deliberately NO will-change here: the transform is static, and
-     forcing a permanent compositing layer for a frame this size costs ~14MB of
-     GPU texture on top of the playground's own layers. */
-  width: calc(100% + 288px);
-  transform: translateX(-288px);
+  /* Full width, no crop. The playground hides its own sidebar via
+     ?sidebar=collapsed, so there is nothing to clip. The previous approach
+     shifted the frame left by a hardcoded 288px (the sidebar's 18rem); that
+     assumed the sidebar computed to exactly 288px in every visitor's browser,
+     and when it didn't the offset ate into the code instead. */
+  width: 100%;
   background: #ffffff;
 }
 
@@ -181,7 +178,7 @@ a.btnSecondary:hover {
   visibility: hidden;
 }
 
-/* Sample switcher — stands in for the playground's cropped Examples sidebar. */
+/* Sample switcher — stands in for the playground's hidden Examples sidebar. */
 .sampleSwitch {
   display: inline-flex;
   margin-left: auto;
@@ -217,48 +214,6 @@ a.btnSecondary:hover {
 .sampleBtnActive:hover {
   background: #20b6b0;
   color: #ffffff;
-}
-
-/* Our own boot state, centred on this box (the cropped iframe is not). */
-.booting {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-
-.spinner {
-  width: 26px;
-  height: 26px;
-  border: 2px solid #e6e6e6;
-  border-top-color: #20b6b0;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.bootingText {
-  color: #8a8a8a;
-  font-size: 14px;
-}
-
-/* Transparent shield over the playground's "toggle sidebar" control so a
-   click can't collapse the sidebar and break the crop. */
-.toggleShield {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 64px;
-  height: 66px;
-  z-index: 2;
 }
 
 .windowFoot {
@@ -327,18 +282,7 @@ a.openPlaygroundBtn:hover {
   }
 }
 
-/* On phones the playground uses its own mobile layout (sidebar already hidden),
-   so don't clip — that would cut into the editor. */
 @media (max-width: 480px) {
-  .playgroundFrame {
-    width: 100%;
-    transform: none;
-  }
-
-  .toggleShield {
-    display: none;
-  }
-
   /* Three samples no longer fit beside the instruction text, and the window
      clips its overflow — so give the switcher its own full-width row and let
      the buttons share it evenly. */

@@ -44,7 +44,7 @@ const FALLBACK_RELEASE = {
   ],
 };
 
-export default function Nutcracker({ release }) {
+export default function Nutcracker({ release, ogImage }) {
 
   const description = "Ballerina Nutcracker is a fast, lightweight implementation of the Ballerina language, written in Go that provides fast startup time, a small footprint, and instant execution.";
 
@@ -59,7 +59,7 @@ export default function Nutcracker({ release }) {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Ballerina Nutcracker" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" itemProp="image" content="https://ballerina.io/images/nutcracker/ballerina-nutcracker-social-media-image.jpg" />
+        <meta property="og:image" itemProp="image" content={ogImage} />
         <meta property="og:image:alt" content="Ballerina Nutcracker" />
 
         {/* TWITTER */}
@@ -68,7 +68,7 @@ export default function Nutcracker({ release }) {
         <meta name="twitter:creator" content="@ballerinalang" />
         <meta name="twitter:title" content="Ballerina Nutcracker" />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://ballerina.io/images/nutcracker/ballerina-nutcracker-social-media-image.jpg" />
+        <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:image:alt" content="Ballerina Nutcracker" />
       </Head>
 
@@ -129,7 +129,23 @@ export async function getStaticProps() {
     clearTimeout(timeout);
   }
 
+  // The card lives at an absolute URL. Preview deployments serve their own copy
+  // of the assets, so pointing them at ballerina.io means a newly added image
+  // resolves to a 404 there and no card renders. Send previews to themselves and
+  // keep production on the canonical domain — on production builds VERCEL_URL is
+  // the ephemeral deployment host, not ballerina.io, so gate on VERCEL_ENV.
+  // Resolved here rather than in the component so the value is identical on the
+  // server and the client (a bare process.env read in the component would be
+  // undefined during hydration and mismatch).
+  const origin =
+    process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'https://ballerina.io';
+
   return {
-    props: { release },
+    props: {
+      release,
+      ogImage: `${origin}/images/nutcracker/ballerina-nutcracker-social-media-image.jpg`,
+    },
   };
 }

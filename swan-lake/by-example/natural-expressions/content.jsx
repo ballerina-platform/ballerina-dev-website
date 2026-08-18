@@ -104,10 +104,10 @@ export function NaturalExpressions({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Note: This feature is supported on Swan Lake Update 13 - Milestone 3
-          (2201.13.0-m3) or newer versions. This is currently an experimental
-          feature and requires the <code>--experimental</code> flag to be used
-          with <code>bal</code> commands.
+          Note: This feature is supported on Swan Lake Update 13 or newer
+          versions. This is currently an experimental feature and requires the{" "}
+          <code>--experimental</code> flag to be used with <code>bal</code>{" "}
+          commands.
         </p>
       </blockquote>
 
@@ -129,7 +129,7 @@ export function NaturalExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/natural-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/natural-expressions",
                 "_blank",
               );
             }}

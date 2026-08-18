@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/constraint-validations",
                 "_blank",
               );
             }}
@@ -230,8 +230,8 @@ export function ConstraintValidations({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Handle CSV with custom configurations"
-            href="/learn/by-example/csv-user-configurations/"
+            title="Parse Excel file to records - advanced"
+            href="/learn/by-example/xlsx-to-records-advanced/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,7 +258,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Handle CSV with custom configurations
+                  Parse Excel file to records - advanced
                 </span>
               </div>
             </div>

@@ -1,0 +1,18 @@
+{
+  "title": "Parse Excel file to records - advanced",
+  "description": "This BBE demonstrates parsing Excel sheets with custom configurations such as header name mapping and row limits.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xlsx",
+    "excel",
+    "parse options",
+    "Name annotation",
+    "header mapping",
+    "caseInsensitiveHeaders",
+    "rowCount"
+  ],
+  "permalink": "/learn/by-example/xlsx-to-records-advanced/",
+  "active": "xlsx-to-records-advanced"
+}

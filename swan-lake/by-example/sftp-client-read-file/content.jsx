@@ -30,20 +30,21 @@ public function main() returns error? {
         }
     });
 
-    // Reads a file from a FTP server for a given file path. In error cases,
-    // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
+    // Reads the file as a string. In error cases, an error is returned.
+    // \`getBytes\`, \`getJson\`, \`getXml\`, and \`getCsv\` read the other content
+    // types, and \`getJson\`, \`getXml\`, and \`getCsv\` bind the content to the type
+    // expected at the call site.
+    string content = check fileClient->getText("/server/logFile.txt");
+
+    io:println(content);
 
     // Write the content to a file.
-    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
-
-    // Closes the file stream to finish the \`get\` operation.
-    check fileStream.close();
+    check io:fileWriteString("./local/newLogFile.txt", content);
 }
 `,
 ];
 
-export function SftpClientReceiveFile({ codeSnippets }) {
+export function SftpClientReadFile({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -53,16 +54,19 @@ export function SftpClientReceiveFile({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SFTP client - Receive file</h1>
+      <h1>SFTP client - Read file</h1>
 
       <p>
         The <code>ftp:Client</code> connects to a given SFTP server, and then
-        sends and receives files as byte streams. An <code>ftp:Client</code>{" "}
-        with SFTP protocol is created by giving the protocol, host-name and
-        required credentials and the private key. Once connected,{" "}
-        <code>get</code> method is used to read files as byte streams from the
-        SFTP server. Use this to transfer files from a remote file system to a
-        local file system.
+        reads and writes files on it. An <code>ftp:Client</code> with SFTP
+        protocol is created by giving the protocol, host-name, required
+        credentials, and the private key. Once connected, <code>getText</code>,{" "}
+        <code>getJson</code>, <code>getXml</code>, <code>getCsv</code>, and{" "}
+        <code>getBytes</code> read a file as a value of the matching type from
+        the SFTP server. <code>getJson</code>, <code>getXml</code>, and{" "}
+        <code>getCsv</code> bind the content to the type expected at the call
+        site. Use this to transfer files from a remote file system to a local
+        file system.
       </p>
 
       <Row
@@ -71,31 +75,9 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/sftp-client-receive-file",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -113,7 +95,7 @@ export function SftpClientReceiveFile({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -155,7 +137,7 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
+            Start an{" "}
             <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
             instance.
           </span>
@@ -166,8 +148,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the SFTP client given in the{" "}
-            <a href="/learn/by-example/sftp-client-send-file">
-              SFTP client - Send file
+            <a href="/learn/by-example/sftp-client-write-file">
+              SFTP client - Write file
             </a>{" "}
             example to put a file in the SFTP server.
           </span>
@@ -175,8 +157,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
       </ul>
 
       <p>
-        Run the program by executing the following command. The newly-added file
-        will appear in the local directory.
+        Run the program by executing the following command. The content is
+        printed, and the newly-added file will appear in the local directory.
       </p>
 
       <Row
@@ -232,7 +214,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run sftp_client.bal`}</span>
+              <span>{`\$ bal run sftp_client_read_file.bal`}</span>
+              <span>{`Batch 42 completed with 0 errors`}</span>
             </code>
           </pre>
         </Col>
@@ -244,8 +227,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#get">
-              <code>ftp:Client-&gt;get</code> method - API documentation
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#getText">
+              <code>ftp:Client-&gt;getText</code> method - API documentation
             </a>
           </span>
         </li>
@@ -265,8 +248,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send file"
-            href="/learn/by-example/sftp-service-send-file/"
+            title="Write file"
+            href="/learn/by-example/sftp-client-write-file/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -293,7 +276,7 @@ export function SftpClientReceiveFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Write file
                 </span>
               </div>
             </div>
@@ -301,8 +284,8 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send file"
-            href="/learn/by-example/sftp-client-send-file/"
+            title="Receive file"
+            href="/learn/by-example/smb-service-receive-file/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -312,7 +295,7 @@ export function SftpClientReceiveFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Receive file
                 </span>
               </div>
               <svg

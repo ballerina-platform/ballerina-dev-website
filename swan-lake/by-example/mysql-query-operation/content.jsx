@@ -91,7 +91,7 @@ export function MysqlQueryOperation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/mysql-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/mysql-query-operation",
                 "_blank",
               );
             }}
@@ -333,8 +333,8 @@ export function MysqlQueryOperation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send file"
-            href="/learn/by-example/sftp-client-send-file/"
+            title="Read file"
+            href="/learn/by-example/smb-client-read-file/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -361,7 +361,7 @@ export function MysqlQueryOperation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send file
+                  Read file
                 </span>
               </div>
             </div>

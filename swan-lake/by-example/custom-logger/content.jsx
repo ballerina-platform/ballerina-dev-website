@@ -14,11 +14,26 @@ public isolated class ApplicationLogger {
     private final string applicationName;
     private final string version;
     private final readonly & log:KeyValues context;
+    private log:Level level;
 
-    public isolated function init(string applicationName, string version, log:KeyValues context = {}) {
+    public isolated function init(string applicationName, string version, log:KeyValues context = {},
+            log:Level level = log:INFO) {
         self.applicationName = applicationName;
         self.version = version;
         self.context = context.cloneReadOnly();
+        self.level = level;
+    }
+
+    public isolated function getLevel() returns log:Level {
+        lock {
+            return self.level;
+        }
+    }
+
+    public isolated function setLevel(log:Level level) returns error? {
+        lock {
+            self.level = level;
+        }
     }
 
     public isolated function printInfo(string|log:PrintableRawTemplate msg, error? 'error = (),
@@ -52,7 +67,13 @@ public isolated class ApplicationLogger {
         foreach [string, log:Value] [k, v] in keyValues.entries() {
             newContext[k] = v;
         }
-        return new ApplicationLogger(self.applicationName, self.version, newContext);
+
+        log:Level parentLevel;
+        lock {
+            // Child loggers inherit the level from the parent logger
+            parentLevel = self.level;
+        }
+        return new ApplicationLogger(self.applicationName, self.version, newContext, parentLevel);
     }
 }
 
@@ -101,7 +122,7 @@ export function CustomLogger({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/custom-logger",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/custom-logger",
                 "_blank",
               );
             }}

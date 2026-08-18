@@ -1,0 +1,18 @@
+{
+  "title": "Work with Excel tables",
+  "description": "This BBE demonstrates creating an Excel table from Ballerina records and reading it back by its table name.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xlsx",
+    "excel",
+    "spreadsheet",
+    "excel table",
+    "createTableFromData",
+    "parseTable",
+    "workbook"
+  ],
+  "permalink": "/learn/by-example/xlsx-tables/",
+  "active": "xlsx-tables"
+}

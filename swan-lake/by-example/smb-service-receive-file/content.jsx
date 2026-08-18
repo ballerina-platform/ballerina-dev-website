@@ -5,43 +5,63 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/ftp;
-import ballerina/io;
+  `import ballerina/io;
+import ballerina/smb;
 
-public function main() returns error? {
-    // Creates the client with the connection parameters, host, username, and
-    // password. An error is returned in a failure. The default port number
-    // \`22\` for SSH is used with these configurations.
-    ftp:Client fileClient = check new ({
-        protocol: ftp:SFTP,
-        host: "sftp.example.com",
-        port: 22,
-        auth: {
-            credentials: {
-                username: "user1",
-                password: "pass456"
-            },
-            // Private key file location and its password (if encrypted) is
-            // given corresponding to the SSH key file used in the SFTP client.
-            privateKey: {
-                path: "../resource/path/to/private.key",
-                password: "keyPass123"
-            }
+// Creates the listener with the connection parameters, the share to watch, and
+// the polling interval in seconds.
+listener smb:Listener fileListener = check new ({
+    host: "smb.example.com",
+    share: "reports",
+    auth: {
+        credentials: {
+            username: "user1",
+            password: "pass456",
+            domain: "WORKGROUP"
         }
-    });
+    },
+    pollingInterval: 10
+});
 
-    // Add a new file to the given file location. In error cases,
-    // an error is returned. The local file is provided as a stream of
-    // \`io:Block\` in which 1024 is the block size.
-    stream<io:Block, io:Error?> fileStream
-        = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    check fileClient->put("/server/logFile.txt", fileStream);
-    check fileStream.close();
+// The type the JSON content of each file is bound to.
+type SalesReport record {|
+    string storeId;
+    string saleDate;
+    decimal total;
+|};
+
+// One or many services can listen to the SMB listener. Each service watches the
+// directory given in \`path\`, which is relative to the share.
+@smb:ServiceConfig {
+    path: "/sales/new"
+}
+service "salesProcessor" on fileListener {
+
+    // The listener picks the handler by file extension and binds the file
+    // content to the first parameter, so the handler never reads the file
+    // itself. \`onFileJson\` handles every \`.json\` file, and the content is bound
+    // to \`SalesReport\`. The other handlers are \`onFileText\`, \`onFileXml\`,
+    // \`onFileCsv\`, and \`onFile\` for any remaining extension.
+    // The file is moved to \`/sales/processed\` once the handler returns.
+    @smb:FunctionConfig {
+        afterProcess: {
+            moveTo: "/sales/processed"
+        }
+    }
+    remote function onFileJson(SalesReport report, smb:FileInfo fileInfo) returns error? {
+        io:println(string \`Processed \${fileInfo.name}: store \${report.storeId} reported \${report.total}\`);
+    }
+
+    // \`onError\` is called when a file cannot be read, cannot be bound to the
+    // handler parameter, or the handler itself fails.
+    remote function onError(error err) returns error? {
+        io:println("Failed to process the sales report: ", err.message());
+    }
 }
 `,
 ];
 
-export function SftpClientSendFile({ codeSnippets }) {
+export function SmbServiceReceiveFile({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -51,15 +71,21 @@ export function SftpClientSendFile({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SFTP client - Send file</h1>
+      <h1>SMB service - Receive file</h1>
 
       <p>
-        The <code>ftp:Client</code> connects to a given SFTP server, and then
-        sends and receives files as byte streams. A <code>ftp:Client</code> with
-        SFTP protocol is created by giving the protocol, host-name, required
-        credentials and the private key. Once connected, <code>put</code> method
-        is used to write files as byte streams to the SFTP server. Use this to
-        transfer files from a local file system to a remote file system.
+        An SMB service connects to a directory share on a given SMB server via
+        the <code>smb:Listener</code>. An <code>smb:Listener</code> is created
+        by providing the host-name, the share, and the required credentials.
+        Once connected, the listener polls the directory given in{" "}
+        <code>@smb:ServiceConfig</code> and dispatches every file it finds to
+        the service. The handler is selected by the file extension and the
+        content is bound to its first parameter, so <code>onFileJson</code>{" "}
+        receives a value mapped from the JSON content and the handler never
+        reads the file itself. The <code>afterProcess</code> action of{" "}
+        <code>@smb:FunctionConfig</code> then moves the file, keeping file
+        management out of the handler. Use this to act on files as they arrive
+        on a remote file system.
       </p>
 
       <Row
@@ -68,31 +94,9 @@ export function SftpClientSendFile({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.1/examples/sftp-client-send-file",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -110,7 +114,7 @@ export function SftpClientSendFile({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -153,15 +157,20 @@ export function SftpClientSendFile({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
-            instance.
+            <a href="https://hub.docker.com/r/dperson/samba">Samba server</a>{" "}
+            instance with a share named <code>reports</code>, containing the{" "}
+            <code>/sales/new</code> and <code>/sales/processed</code>{" "}
+            directories. The image creates no users, so add <code>user1</code>{" "}
+            with the password <code>pass456</code> in the <code>WORKGROUP</code>{" "}
+            domain.
           </span>
         </li>
       </ul>
 
       <p>
-        Run the program by executing the following command. The newly-added file
-        will appear in the SFTP server.
+        Run the program by executing the following command. Each new file in the
+        watched directory is dispatched to the handler and then moved to{" "}
+        <code>/sales/processed</code>.
       </p>
 
       <Row
@@ -217,11 +226,20 @@ export function SftpClientSendFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run sftp_client.bal`}</span>
+              <span>{`\$ bal run smb_service_receive_file.bal`}</span>
+              <span>{`Processed store-14.json: store 14 reported 1820.50`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Place a <code>.json</code> file holding{" "}
+          <code>storeId</code>, <code>saleDate</code>, and <code>total</code> in{" "}
+          <code>/sales/new</code> on the share to trigger the service.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -229,8 +247,8 @@ export function SftpClientSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#put">
-              <code>ftp:Client-&gt;put</code> method - API documentation
+            <a href="https://lib.ballerina.io/ballerina/smb/latest#Listener">
+              <code>smb:Listener</code> listener object - API documentation
             </a>
           </span>
         </li>
@@ -239,8 +257,8 @@ export function SftpClientSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#322-secure-client">
-              SFTP client - Specification
+            <a href="https://lib.ballerina.io/ballerina/smb/latest#FunctionConfig">
+              <code>smb:FunctionConfig</code> annotation - API documentation
             </a>
           </span>
         </li>
@@ -250,8 +268,8 @@ export function SftpClientSendFile({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/sftp-client-receive-file/"
+            title="Read file"
+            href="/learn/by-example/sftp-client-read-file/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -278,17 +296,14 @@ export function SftpClientSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Read file
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Simple query"
-            href="/learn/by-example/mysql-query-operation/"
-          >
+          <Link title="Caller object" href="/learn/by-example/smb-caller/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -297,7 +312,7 @@ export function SftpClientSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple query
+                  Caller object
                 </span>
               </div>
               <svg

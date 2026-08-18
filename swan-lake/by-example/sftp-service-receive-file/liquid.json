@@ -1,6 +1,6 @@
 {
   "title": "Receive file",
-  "description": "This example demonstrates receiving file/directory changes that occur in a remote SFTP server and using an ftp:Caller to read the contents of the newly added files.",
+  "description": "This example demonstrates receiving files that arrive on a remote SFTP server and binding the text content to the service handler.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -8,6 +8,7 @@
     "SFTP",
     "remote file",
     "listener",
+    "data binding",
     "FTP security"
   ],
   "permalink": "/learn/by-example/sftp-service-receive-file/",

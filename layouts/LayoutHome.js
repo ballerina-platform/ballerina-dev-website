@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
         <TopNav
           launcher='home'
           announcement={{
-            text: 'Introducing Ballerina Nutcracker — a native Ballerina interpreter.',
+            text: 'Introducing Ballerina Nutcracker — a native interpreter.',
             href: '/nutcracker/',
             cta: 'Learn more',
           }}

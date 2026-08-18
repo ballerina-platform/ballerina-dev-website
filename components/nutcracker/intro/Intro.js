@@ -25,6 +25,11 @@ import styles from './Intro.module.css';
 // The playground's examples are Ballerina packages, so these point at each
 // package's main.bal. Keep in sync if the playground restructures its examples.
 //
+// `?sidebar=collapsed` (ballerina-nutcracker/playground#107) makes the playground
+// render without its Examples sidebar. Only the embed uses it — the "Open in
+// Playground" link deliberately omits it, since the file list is useful there.
+const embedSrc = (url) => `${url}?sidebar=collapsed`;
+//
 // `height` sizes the embed to the sample: hello world is 6 lines, so the 600px
 // the HTTP samples need would leave it three-quarters empty. Both HTTP samples
 // share a height, so switching between them shifts nothing.
@@ -50,8 +55,7 @@ const SAMPLES = [
 ];
 
 export default function Intro({ repo }) {
-  // Our own sample switcher, so the playground's Examples sidebar can stay
-  // cropped out of the embed.
+  // Our own sample switcher, so the playground's Examples sidebar stays hidden.
   const [sample, setSample] = React.useState(SAMPLES[0]);
 
   // Every sample gets its own iframe, mounted up front and kept mounted, with
@@ -59,38 +63,18 @@ export default function Intro({ repo }) {
   // we can't drive its client-side router from here (cross-origin), and changing
   // an iframe's src is a full document navigation. The trade is that all three
   // playground instances boot during initial page load and stay resident.
-
-  // Samples whose playground has finished booting. The boot overlay is only
-  // needed the first time each frame loads; later switches are instant.
-  const [readyKeys, setReadyKeys] = React.useState([]);
-
-  // `onLoad` ignores returned cleanups, so timers are tracked per sample in a
-  // ref and cleared on unmount.
-  const bootTimers = React.useRef({});
-
-  const handleFrameLoad = React.useCallback((key) => {
-    // The document is up, but the WASM runtime still needs a moment to boot.
-    clearTimeout(bootTimers.current[key]);
-    bootTimers.current[key] = setTimeout(() => {
-      setReadyKeys((prev) => (prev.includes(key) ? prev : [...prev, key]));
-    }, 1800);
-  }, []);
-
-  React.useEffect(() => {
-    const timers = bootTimers.current;
-    return () => Object.keys(timers).forEach((k) => clearTimeout(timers[k]));
-  }, []);
+  //
+  // There is no loading overlay of our own. One used to be needed because the
+  // frame was shifted left to crop the sidebar, which threw the playground's own
+  // boot screen off-centre. The frame is full width now, so the playground's
+  // loading state lands where it should — and the overlay it replaced was driven
+  // by a fixed 1.8s timer that StrictMode's simulated unmount could clear before
+  // it fired, leaving the spinner up forever.
 
   const selectSample = React.useCallback((next) => {
     if (next.key === sample.key) return;
     setSample(next);
   }, [sample.key]);
-
-  // The playground is cropped to hide its Examples sidebar, which shifts the
-  // frame left. Until the editor renders, the playground's own boot screen
-  // centres on the shifted frame rather than on this box, so cover that period
-  // with a loading state of our own that is centred correctly.
-  const booting = !readyKeys.includes(sample.key);
 
   return (
     <Col sm={12}>
@@ -153,8 +137,8 @@ export default function Intro({ repo }) {
                 </div>
               </div>
 
-              {/* The playground shows an Examples sidebar we don't want; clip it
-                  off the left and shield its toggle so the crop stays stable. */}
+              {/* The playground hides its own Examples sidebar via the query
+                  param, so nothing here needs clipping. */}
               {/* Height comes through a custom property so the responsive
                   caps below can still clamp it. The clip follows the active
                   sample; each frame keeps its own so a hidden frame is never
@@ -171,23 +155,14 @@ export default function Intro({ repo }) {
                       key={s.key}
                       className={`${styles.playgroundFrame} ${isActive ? '' : styles.frameHidden}`}
                       style={{ '--frame-height': `${s.height}px` }}
-                      src={s.url}
+                      src={embedSrc(s.url)}
                       title={`Ballerina Nutcracker playground - ${s.label} example`}
                       sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
                       loading="lazy"
                       aria-hidden={isActive ? undefined : 'true'}
-                      onLoad={() => handleFrameLoad(s.key)}
                     />
                   );
                 })}
-                <div className={styles.toggleShield} aria-hidden="true" />
-
-                {booting &&
-                  <div className={styles.booting}>
-                    <span className={styles.spinner} aria-hidden="true" />
-                    <span className={styles.bootingText}>Starting the live editor&hellip;</span>
-                  </div>
-                }
               </div>
 
               <div className={styles.windowFoot}>

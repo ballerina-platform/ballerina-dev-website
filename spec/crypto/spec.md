@@ -1,9 +1,9 @@
 # Specification: Ballerina Crypto Library
 
-_Owners_: @shafreenAnfar @bhashinee  
-_Reviewers_: @shafreenAnfar  
-_Created_: 2022/08/23  
-_Updated_: 2025/01/20  
+_Authors_: @shafreenAnfar @bhashinee @Nuvindu
+_Reviewers_: @shafreenAnfar
+_Created_: 2022/08/23
+_Updated_: 2026/05/13
 _Edition_: Swan Lake
 
 ## Introduction
@@ -109,10 +109,12 @@ The conforming implementation of the specification is released and included in t
     - 10.1 [BCrypt](#101-bcrypt)
     - 10.2 [Argon2](#102-argon2)
     - 10.3 [PBKDF2](#103-pbkdf2)
-11. [Static Code Rules](#11-static-code-rules)
-    - 11.1 [Avoid using insecure cipher modes or padding schemes](#111-avoid-using-insecure-cipher-modes-or-padding-schemes)
-    - 11.2 [Avoid using fast hashing algorithms](#112-avoid-using-fast-hashing-algorithms)
-    - 11.3 [Avoid reusing counter mode initialization vectors](#113-avoid-reusing-counter-mode-initialization-vectors)
+11. [Utilities](#11-utilities)
+    - 11.1. [Constant-Time Comparison](#111-constant-time-comparison)
+12. [Static Code Rules](#12-static-code-rules)
+    - 12.1 [Avoid using insecure cipher modes or padding schemes](#121-avoid-using-insecure-cipher-modes-or-padding-schemes)
+    - 12.2 [Avoid using fast hashing algorithms](#122-avoid-using-fast-hashing-algorithms)
+    - 12.3 [Avoid reusing counter mode initialization vectors](#123-avoid-reusing-counter-mode-initialization-vectors)
 
 ## 1. Overview
 
@@ -550,6 +552,7 @@ The following encryption options can be configured in the PGP encryption.
 | symmetricKeyAlgorithm | Specifies the symmetric key algorithm used for encryption         | AES_256       |
 | armor                 | Indicates whether ASCII armor is enabled for the encrypted output | true          |
 | withIntegrityCheck    | Indicates whether integrity check is included in the encryption   | true          |
+| markForYourEyesOnly   | When `true`, sets the literal data packet filename to `_CONSOLE`, marking the message as "For Your Eyes Only" per RFC 4880 §5.9. Set to `false` to use an empty filename and suppress the FYEO marking | true          |
 
 ```ballerina
 string input = "Hello Ballerina";
@@ -641,7 +644,8 @@ byte[] plainText = check crypto:decryptAesGcm(cipherText, key, initialVector);
 
 #### 5.2.5. PGP
 
-This API can be used to create the PGP-decrypted value for the given PGP-encrypted data.
+This API can be used to create the PGP-decrypted value for the given PGP-encrypted data. If the data is signed, the
+signature is silently skipped without verification; only decryption is performed.
 
 ```ballerina
 string input = "Hello Ballerina";
@@ -655,7 +659,8 @@ byte[] plainText = check crypto:decryptPgp(cipherText, privateKeyPath, passPhras
 ```
 
 In addition to the above, the following API can be used to read an encrypted content from a stream, decrypt it using the
-PGP private key and passphrase and return a decrypted stream.
+PGP private key and passphrase and return a decrypted stream. If the data is signed, the signature is silently skipped
+without verification; only decryption is performed.
 
 ```ballerina
 stream<byte[], error?> inputStream = check io:fileReadBlocksAsStream("pgb_encrypted.txt");
@@ -1282,7 +1287,19 @@ string hashedPassword = "$pbkdf2-sha256$i=10000$salt$hash";
 boolean isValid = check crypto:verifyPbkdf2(password, hashedPassword);
 ```
 
-## 11. Static Code Rules
+## 11. Utilities
+
+### 11.1. Constant-Time Comparison
+
+This API can be used to compare two hash values in constant time, preventing timing-based side-channel attacks. Both byte arrays and strings are accepted as input via the `HashValue` type.
+
+```ballerina
+byte[] hmac1 = check crypto:hmacSha256("Hello Ballerina".toBytes(), "secret".toBytes());
+byte[] hmac2 = check crypto:hmacSha256("Hello Ballerina".toBytes(), "secret".toBytes());
+boolean isEqual = crypto:equalConstantTime(hmac1, hmac2);
+```
+
+## 12. Static Code Rules
 
 The following static code rules are applied to the Crypto module.
 
@@ -1292,11 +1309,11 @@ The following static code rules are applied to the Crypto module.
 | ballerina/crypto:2 | VULNERABILITY | [Avoid using fast hashing algorithms](#112-avoid-using-fast-hashing-algorithms)                                   |
 | ballerina/crypto:3 | VULNERABILITY | [Avoid reusing counter mode initialization vectors](#113-avoid-reusing-counter-mode-initialization-vectors)       |
 
-### 11.1 Avoid using insecure cipher modes or padding schemes
+### 12.1 Avoid using insecure cipher modes or padding schemes
 
 Using weak or outdated encryption modes and padding schemes can compromise the security of encrypted data, even when strong algorithms are used.
 
-## 11.1.1. Why this is an issue?
+## 12.1.1. Why this is an issue?
 
 Encryption algorithms are essential for protecting sensitive information and ensuring secure communications. When implementing encryption, it's critical to select not only strong algorithms but also secure modes of operation and padding schemes. Using weak or outdated encryption modes can compromise the security of otherwise strong algorithms.
 
@@ -1308,7 +1325,7 @@ The security risks of using weak encryption modes include:
 - Replay attacks where valid encrypted data is reused maliciously
 - Known-plaintext attacks that can reveal encryption keys
 
-## 11.1.2. What is the potential impact?
+## 12.1.2. What is the potential impact?
 
 Common vulnerable patterns include:
 
@@ -1318,11 +1335,11 @@ Common vulnerable patterns include:
 - Relying on outdated padding methods like PKCS1v1.5
 - Using stream ciphers with insufficient initialization vectors
 
-## 11.1.3. How can I fix this?
+## 12.1.3. How can I fix this?
 
 Choose secure encryption modes and padding schemes that provide both confidentiality and integrity protection.
 
-### 11.1.3.1 AES Encryption Example
+### 12.1.3.1 AES Encryption Example
 
 **Non-compliant code :**
 
@@ -1346,7 +1363,7 @@ byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
 
 AES-GCM (Galois/Counter Mode) provides authenticated encryption, ensuring both confidentiality and integrity of the encrypted data.
 
-### 11.1.3.2 RSA Encryption Example
+### 12.1.3.2 RSA Encryption Example
 
 **Non-compliant code :**
 
@@ -1379,11 +1396,11 @@ OAEP such as OAEPwithMD5andMGF1, OAEPWithSHA1AndMGF1, OAEPWithSHA256AndMGF1, OAE
 - CWE - [CWE-780 - Use of RSA Algorithm without OAEP](https://cwe.mitre.org/data/definitions/780)
 - [CERT, MSC61-J.](https://wiki.sei.cmu.edu/confluence/x/hDdGBQ) - Do not use insecure or weak cryptographic algorithms
 
-### 11.2 Avoid using fast hashing algorithms
+### 12.2 Avoid using fast hashing algorithms
 
 Storing passwords in plaintext or using fast hashing algorithms creates significant security vulnerabilities. If an attacker gains access to your database, plaintext passwords are immediately compromised. Similarly, passwords hashed with fast algorithms (like MD5, SHA-1, or SHA-256 without sufficient iterations) can be rapidly cracked using modern hardware.
 
-## 11.2.1. Why this is an issue?
+## 12.2.1. Why this is an issue?
 
 When using PBKDF2 (Password-Based Key Derivation Function 2), the iteration count is critical for security. Higher iteration counts increase the computational effort required to hash passwords, making brute-force attacks more difficult and time-consuming.
 
@@ -1410,7 +1427,7 @@ For PBKDF2:
 
 If performance constraints make these recommendations impractical, the iteration count should never be lower than 100,000.
 
-## 11.2.2. What is the potential impact?
+## 12.2.2. What is the potential impact?
 
 The security risks of using fast hashing algorithms include:
 
@@ -1420,11 +1437,11 @@ The security risks of using fast hashing algorithms include:
 - GPU-accelerated cracking tools can process billions of hashes per second
 - Credential stuffing attacks using compromised password lists
 
-## 11.2.3. How can I fix this?
+## 12.2.3. How can I fix this?
 
 Use secure password hashing algorithms with appropriate parameters that provide sufficient computational cost to resist brute-force attacks.
 
-### 11.2.3.1 BCrypt Hashing Example
+### 12.2.3.1 BCrypt Hashing Example
 
 **Non-compliant code:**
 
@@ -1450,7 +1467,7 @@ public function hashPassword() returns error? {
 }
 ```
 
-### 11.2.3.2 Argon2 Hashing Example
+### 12.2.3.2 Argon2 Hashing Example
 
 **Non-compliant code:**
 
@@ -1476,7 +1493,7 @@ public function hashPassword() returns error? {
 }
 ```
 
-### 11.2.3.3 PBKDF2 Hashing Example
+### 12.2.3.3 PBKDF2 Hashing Example
 
 **Non-compliant code:**
 
@@ -1502,7 +1519,7 @@ public function hashPassword() returns error? {
 }
 ```
 
-## 11.2.4 Additional Resources
+## 12.2.4 Additional Resources
 
 - OWASP - [Top 10 2021 Category A2 - Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
 - OWASP - [Top 10 2021 Category A4 - Insecure Design](https://owasp.org/Top10/A04_2021-Insecure_Design/)
@@ -1512,11 +1529,11 @@ public function hashPassword() returns error? {
 - CWE - [CWE-916 - Use of Password Hash With Insufficient Computational Effort](https://cwe.mitre.org/data/definitions/916)
 - STIG Viewer - [Application Security and Development: V-222542](https://stigviewer.com/stigs/application_security_and_development/2024-12-06/finding/V-222542) - The application must only store cryptographic representations of passwords.
 
-### 11.3 Avoid reusing counter mode initialization vectors
+### 12.3 Avoid reusing counter mode initialization vectors
 
 When using encryption algorithms in counter mode (such as AES-GCM, AES-CCM, or AES-CTR), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
 
-## 11.3.1. Why this is an issue?
+## 12.3.1. Why this is an issue?
 
 Counter mode encryption relies on unique initialization vectors to ensure security. When the same IV is used with the same encryption key for different plaintexts, it creates serious vulnerabilities that can lead to:
 
@@ -1534,7 +1551,7 @@ The security risks of reusing IVs in counter mode include:
 - Violation of the security guarantees provided by the encryption algorithm
 - Exposure of sensitive data even when using strong encryption algorithms
 
-## 11.3.2. What is the potential impact?
+## 12.3.2. What is the potential impact?
 
 Reusing initialization vectors in counter mode encryption creates critical security vulnerabilities:
 
@@ -1543,11 +1560,11 @@ Reusing initialization vectors in counter mode encryption creates critical secur
 - **Key recovery**: In some scenarios, repeated IV usage can lead to recovery of the encryption key itself
 - **Complete system compromise**: Once the encryption is broken, all data encrypted with that key becomes vulnerable
 
-## 11.3.3. How can I fix this?
+## 12.3.3. How can I fix this?
 
 Generate cryptographically secure random initialization vectors for each encryption operation and ensure they are never reused with the same key.
 
-### 11.3.3.1 AES-GCM Encryption Example
+### 12.3.3.1 AES-GCM Encryption Example
 
 **Non-compliant code:**
 
@@ -1582,7 +1599,7 @@ public function encryptData(string data) returns [byte[], byte[16]]|error {
 
 This compliant approach generates a cryptographically secure random initialization vector for each encryption operation and returns it along with the encrypted data. The IV must be stored alongside the encrypted data (but doesn't need to be kept secret) to allow for decryption later.
 
-### 11.3.3.2 AES-CBC Encryption Example
+### 12.3.3.2 AES-CBC Encryption Example
 
 **Non-compliant code:**
 
@@ -1615,7 +1632,7 @@ public function encryptMessage(string message) returns [byte[], byte[12]]|error 
 }
 ```
 
-## 11.3.4 Additional Resources
+## 12.3.4 Additional Resources
 
 - OWASP - [Top 10 2021 Category A2 - Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
 - OWASP - [Top 10 2017 Category A3 - Sensitive Data Exposure](https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure)

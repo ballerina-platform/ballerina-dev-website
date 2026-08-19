@@ -2096,6 +2096,18 @@ import {
   codeSnippetData as UuidOperationsCodeSnippetData,
 } from "./uuid-operations/content.jsx";
 import {
+  ZipCompress,
+  codeSnippetData as ZipCompressCodeSnippetData,
+} from "./zip-compress/content.jsx";
+import {
+  ZipDecompress,
+  codeSnippetData as ZipDecompressCodeSnippetData,
+} from "./zip-decompress/content.jsx";
+import {
+  ZipDecompressUntrusted,
+  codeSnippetData as ZipDecompressUntrustedCodeSnippetData,
+} from "./zip-decompress-untrusted/content.jsx";
+import {
   XsltTransformation,
   codeSnippetData as XsltTransformationCodeSnippetData,
 } from "./xslt-transformation/content.jsx";
@@ -3363,6 +3375,12 @@ const BBEs = {
   UuidGenerationCodeSnippetData,
   UuidOperations,
   UuidOperationsCodeSnippetData,
+  ZipCompress,
+  ZipCompressCodeSnippetData,
+  ZipDecompress,
+  ZipDecompressCodeSnippetData,
+  ZipDecompressUntrusted,
+  ZipDecompressUntrustedCodeSnippetData,
   XsltTransformation,
   XsltTransformationCodeSnippetData,
   XmlToJsonConversion,

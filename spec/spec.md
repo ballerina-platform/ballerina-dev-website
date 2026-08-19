@@ -76,3 +76,4 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | `protobuf` | Swan Lake | <a target="_blank" href="/spec/protobuf/">Snapshot</a> | Protobuf package of Ballerina language, which provides APIs to represent a set of pre-defined protobuf types. |
 | `websub` | Swan Lake | <a target="_blank" href="/spec/websub/">Snapshot</a> | Websub package of Ballerina language, which provides WebSub subscriber service functionalities. |
 | `websubhub` | Swan Lake | <a target="_blank" href="/spec/websubhub/">Snapshot</a> | Websubhub package of Ballerina language, which provides WebSub hub and publisher related functionalities. |
+| `xlsx` | Swan Lake | <a target="_blank" href="/spec/xlsx/">Snapshot</a> | XLSX package of Ballerina language, which provides APIs to read and write Microsoft Excel files in the XLSX format with type-safe data binding to Ballerina records. |

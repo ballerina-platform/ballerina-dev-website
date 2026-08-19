@@ -24,6 +24,7 @@ The conforming implementation of the specification is released and included in t
         * 2.1.1. [Automatically starting the service](#211-automatically-starting-the-service)
         * 2.1.2. [Programmatically starting the service](#212-programmatically-starting-the-service)
         * 2.1.3. [Default listener](#213-default-listener)
+        * 2.1.4. [HTTP/2 stream concurrency](#214-http2-stream-concurrency)
     * 2.2. [Service](#22-service)
         * 2.2.1. [Service type](#221-service-type)
         * 2.2.2. [Service-base-path](#222-service-base-path)
@@ -111,6 +112,7 @@ The conforming implementation of the specification is released and included in t
       * 8.2.1. [Error interceptors](#821-error-interceptors)
       * 8.2.2. [Error types](#822-error-types)
       * 8.2.3. [Trace log](#823-trace-log)
+        * 8.2.3.1 [Trace log rotation](#8231-trace-log-rotation)
       * 8.2.4. [Access log](#824-access-log)
         * 8.2.4.1 [Access log rotation](#8241-access-log-rotation)
       * 8.2.5. [Panic inside resource](#825-panic-inside-resource)
@@ -176,6 +178,7 @@ public type ListenerConfiguration record {|
     string? server = ();
     RequestLimitConfigs requestLimits = {};
     int http2InitialWindowSize = 65535;
+    int http2MaxActiveStreams = 100;
     decimal minIdleTimeInStaleState = 300;
     decimal timeBetweenStaleEviction = 30;
 |};
@@ -252,6 +255,21 @@ httpVersion = "1.1"
 path = "resources/certs/ballerinaKeystore.p12"
 password = "ballerina"
 ```
+
+#### 2.1.4. HTTP/2 stream concurrency
+
+Each HTTP/2 connection can carry multiple requests concurrently over independent streams. The listener limits the
+number of concurrent streams a single connection can open, advertised to clients via the `SETTINGS_MAX_CONCURRENT_STREAMS`
+parameter, using the `http2MaxActiveStreams` field of the `ListenerConfiguration`. This defaults to `100`, the value
+recommended by [RFC 7540 Section 6.5.2](https://www.rfc-editor.org/rfc/rfc7540#section-6.5.2).
+
+```ballerina
+listener http:Listener h2Listener = new (9090, {
+    http2MaxActiveStreams: 500
+});
+```
+
+A client that reaches this limit on a connection opens an additional connection rather than stalling.
 
 ### 2.2. Service
 Service is a collection of resources functions, which are the network entry points of a ballerina program. 
@@ -2676,7 +2694,7 @@ The HTTP trace logs are **disabled as default**.
 To enable trace logs, the log level has to be set to TRACE using the runtime argument:
 `-Cballerina.http.traceLogConsole=true.`
 
-The HTTP access logs and trace logs are **disabled as default**. To enable, the configurations can be set by the 
+The HTTP trace logs are **disabled as default**. To enable, the configurations can be set by the 
 following `config.toml` file:
 
 The configurations can be set in the `config.toml` file for advanced use cases such as specifying the file path to 
@@ -2686,12 +2704,104 @@ save the trace logs and specifying the hostname and port of a socket service to 
 [ballerina.http.traceLogAdvancedConfig]
 # Enable printing trace logs in console
 console = true              # Default is false
-# Specify the file path to save the trace logs  
-path = "testTraceLog.txt"   # Optional
 # Specify the hostname and port of a socket service to publish the trace logs
 host = "localhost"          # Optional
 port = 8080                 # Optional
+
+# Enable trace log file destination
+[ballerina.http.traceLogAdvancedConfig.file]
+# The file path to store trace logs
+path = "./logs/trace.log"
+
+# Enable trace logs rotation
+[ballerina.http.traceLogAdvancecdConfig.file.rotation]
+# The rotation policy to use (SIZE_BASED, TIME_BASED, or BOTH). Default is BOTH
+policy = "SIZE_BASED"      # Default: BOTH
+# Maximum file size in bytes before rotation occurs (applies to SIZE_BASED and BOTH policies)
+maxFileSize = 52428800     # Default: 10 MB (in bytes)
+# Maximum number of backup files to retain (older backups are automatically deleted)
+maxBackupFiles = 30        # Default: 10
 ```
+
+##### 8.2.3.1 Trace log rotation
+Trace log rotation helps manage log file sizes by automatically creating backup files when certain conditions are met. This prevents log files from growing indefinitely and consuming excessive disk space.
+
+Trace log rotation is optional and can be configured for file destinations. If no rotation configuration is provided, logs are written without rotation. When rotation is enabled, a rotation policy determines when log files are rotated. The following rotation policies are available.
+
+```ballerina
+public enum RotationPolicy {
+    SIZE_BASED,  # Rotate based on file size only
+    TIME_BASED,  # Rotate based on time interval only
+    BOTH         # Rotate when either size or time threshold is met (whichever comes first)
+};
+```
+
+The rotation configuration is defined as follows:
+
+```ballerina
+public type RotationConfig record {|
+    RotationPolicy policy = BOTH;
+    int maxFileSize = 10485760;   # Default: 10MB (in bytes)
+    int maxAge = 86400;           # Default: 24 hours (in seconds)
+    int maxBackupFiles = 10;      # Default: 10 backup files
+|};
+```
+
+Configuration parameters:
+- `policy`: The rotation policy to use (SIZE_BASED, TIME_BASED, or BOTH). Default is BOTH
+- `maxFileSize`: Maximum file size in bytes before rotation occurs (applies to SIZE_BASED and BOTH policies)
+- `maxAge`: Maximum age in seconds before rotation occurs (applies to TIME_BASED and BOTH policies)
+- `maxBackupFiles`: Maximum number of backup files to retain (older backups are automatically deleted)
+
+Example configuration for size-based rotation:
+
+```toml
+[ballerina.http.traceLogAdvancedConfig.file]
+path = "./logs/http-trace.log"
+
+[ballerina.http.traceLogAdvancedConfig.file.rotation]
+policy = "SIZE_BASED"
+maxFileSize = 52428800    # 50MB
+maxBackupFiles = 30
+```
+
+Time-based rotation example:
+
+```toml
+[ballerina.http.traceLogAdvancedConfig.file]
+path = "./logs/http-trace.log"
+
+[ballerina.http.traceLogAdvancedConfig.file.rotation]
+policy = "TIME_BASED"
+maxAge = 86400        # Rotate daily
+maxBackupFiles = 7    # Keep one week of trace
+```
+
+Rotation using both size and time (default policy):
+
+```toml
+[ballerina.http.traceLogAdvancedConfig.file]
+path = "./logs/http-trace.log"
+
+[ballerina.http.traceLogAdvancedConfig.file.rotation]
+policy = "BOTH"
+maxFileSize = 52428800    # 50MB
+maxAge = 86400            # 24 hours
+maxBackupFiles = 30       # One month of backups
+```
+
+When rotation occurs:
+- The current trace log file is renamed with a timestamp suffix (e.g., `http-trace-20260303-130530432.log`)
+- A new log file is created with the original name
+- If the number of backup files exceeds `maxBackupFiles`, the oldest backups are automatically deleted
+- With `BOTH` policy, rotation happens when either the size limit OR time interval is reached (whichever comes first)
+
+> **Note:**
+>
+> - Log rotation only applies to file destinations, not to stderr or stdout
+> - Backup files are named using the pattern: `{basename}-{timestamp}.{ext}` (e.g., `http-trace-20260303-130530432.log`)
+> - The timestamp format is `yyyyMMdd-HHmmssSSS` (uses system default timezone)
+> - Rotation checks happen during log write operations, so timing may vary slightly based on application logging activity
 
 #### 8.2.4 Access log
 Ballerina supports HTTP access logs for HTTP services, providing insights into web traffic and request handling.

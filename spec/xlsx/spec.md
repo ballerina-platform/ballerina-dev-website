@@ -87,10 +87,8 @@ This release deliberately defers several features. The following are **not** sup
 ### 2.1 Row and CellValue
 
 ```ballerina
-# A single row in a sheet — the atomic data unit.
 public type Row map<CellValue> | string[];
 
-# An XLSX cell value, including the empty cell (`()` for a blank cell).
 public type CellValue string|int|float|decimal|boolean
                     | time:Date|time:Civil|time:TimeOfDay|();
 ```
@@ -257,9 +255,6 @@ type Employee record {|
     @xlsx:Name {value: "Employee ID"}
     int id;
 |};
-
-// On read: header "First Name" binds to field firstName.
-// On write: field firstName produces header "First Name".
 ```
 
 ---
@@ -333,13 +328,10 @@ Examples:
 ```ballerina
 Employee[] employees = [{name: "John", age: 30}, {name: "Jane", age: 25}];
 
-// Create a new file (default sheet name "Sheet1").
 check xlsx:writeSheet(employees, "out.xlsx");
 
-// Replace the "Staff" sheet, keeping every other sheet in the file.
 check xlsx:writeSheet(employees, "report.xlsx", "Staff", sheetWriteMode = REPLACE);
 
-// Append rows under the existing data in "Staff".
 check xlsx:writeSheet(employees, "report.xlsx", "Staff", sheetWriteMode = APPEND);
 ```
 
@@ -410,9 +402,9 @@ disk or memory, use the module-level factory functions `xlsx:fromFile(path)`
 and `xlsx:fromBytes(bytes)`:
 
 ```ballerina
-xlsx:Workbook wb1 = new;                                    # empty in-memory
-xlsx:Workbook wb2 = check xlsx:fromFile("report.xlsx");     # open existing file
-xlsx:Workbook wb3 = check xlsx:fromBytes(sourceBytes);      # open from bytes
+xlsx:Workbook wb1 = new;
+xlsx:Workbook wb2 = check xlsx:fromFile("report.xlsx");
+xlsx:Workbook wb3 = check xlsx:fromBytes(sourceBytes);
 ```
 
 | Form | Semantics |

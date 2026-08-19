@@ -34,6 +34,8 @@ $ bal new country-service
 
 This command creates a new directory named `country-service` with the following content:
 
+>**Info:** Ballerina package names can only contain alphanumerics, underscores, and periods (no hyphens). So while the directory is named `country-service`, Ballerina automatically uses `country_service` as the actual package name internally. That's why you'll see `country_service` instead of `country-service` in later command outputs.
+
 ```
 country-service/
 ├── Ballerina.toml

@@ -1,0 +1,17 @@
+{
+  "title": "Extract a ZIP archive",
+  "description": "This BBE demonstrates listing the entries of a ZIP archive and extracting them into a directory.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "zip",
+    "archive",
+    "listEntries",
+    "decompress",
+    "extract",
+    "file write mode"
+  ],
+  "permalink": "/learn/by-example/zip-decompress/",
+  "active": "zip-decompress"
+}

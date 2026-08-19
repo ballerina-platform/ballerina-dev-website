@@ -273,8 +273,8 @@ export function UuidOperations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="XSLT transformation"
-            href="/learn/by-example/xslt-transformation/"
+            title="Create a ZIP archive"
+            href="/learn/by-example/zip-compress/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -284,7 +284,7 @@ export function UuidOperations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XSLT transformation
+                  Create a ZIP archive
                 </span>
               </div>
               <svg

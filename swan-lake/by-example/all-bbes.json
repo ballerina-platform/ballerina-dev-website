@@ -5406,6 +5406,43 @@
     ]
   },
   {
+    "title": "Zip",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Create a ZIP archive",
+        "url": "zip-compress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Extract a ZIP archive",
+        "url": "zip-decompress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Unpack an untrusted archive",
+        "url": "zip-decompress-untrusted",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "XSLT",
     "column": 3,
     "category": "Common libraries",

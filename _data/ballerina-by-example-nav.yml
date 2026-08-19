@@ -1933,14 +1933,26 @@ sublinks:
           - title: UUID operations
             id: 2
             url: uuid-operations
-      - title: XSLT
+      - title: Zip
         id: 15
+        sublinks:
+          - title: Create a ZIP archive
+            id: 1
+            url: zip-compress
+          - title: Extract a ZIP archive
+            id: 2
+            url: zip-decompress
+          - title: Unpack an untrusted archive
+            id: 3
+            url: zip-decompress-untrusted
+      - title: XSLT
+        id: 16
         sublinks:
           - title: XSLT transformation
             id: 1
             url: xslt-transformation
       - title: XML data
-        id: 16
+        id: 17
         sublinks:
           - title: XML to JSON conversion
             id: 1
@@ -1955,7 +1967,7 @@ sublinks:
             id: 4
             url: xml-from-record-conversion
       - title: YAML data
-        id: 17
+        id: 18
         sublinks:
           - title: YAML to anydata
             id: 1
@@ -1967,7 +1979,7 @@ sublinks:
             id: 3
             url: anydata-to-yaml-string
       - title: CSV data
-        id: 18
+        id: 19
         sublinks:
           - title: Convert CSV string to records
             id: 1
@@ -1988,7 +2000,7 @@ sublinks:
             id: 6
             url: csv-user-configurations
       - title: XLSX data
-        id: 19
+        id: 20
         sublinks:
           - title: Parse Excel file to records
             id: 1
@@ -2003,7 +2015,7 @@ sublinks:
             id: 4
             url: xlsx-to-records-advanced
       - title: Constraint
-        id: 20
+        id: 21
         sublinks:
           - title: Constraint validations
             id: 1

@@ -6,72 +6,21 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-import ballerina/xslt;
+import ballerina/zip;
 
 public function main() returns error? {
-    // Gets an \`XML\` value, which needs to be transformed.
-    xml sourceXml = getXml();
-    // Gets an \`XSL\` style sheet represented in an XML value.
-    xml xsl = getXsl();
-    // Transforms the \`XML\` content to another format.
-    // For details, see https://lib.ballerina.io/ballerina/xslt/latest#transform.
-    xml target = check xslt:transform(sourceXml, xsl);
-    
-    io:println("Transformed XML: ", target);
-}
-
-// Returns an \`XML\` element, which needs to be transformed.
-function getXml() returns xml {
-    return xml \`<samples>
-                    <song>
-                        <title>Summer of 69</title>
-                        <artist>Bryan Adams</artist>
-                        <country>Canada</country>
-                        <year>1984</year>
-                    </song>
-                    <song>
-                        <title>Zombie</title>
-                        <artist>Bad Wolves</artist>
-                        <country>USA</country>
-                        <year>2018</year>
-                    </song>
-                </samples>\`;
-}
-
-// Returns an \`XSL\` style sheet represented by an XML element.
-function getXsl() returns xml {
-    return xml
-        \`<xsl:stylesheet version="1.0" 
-                         xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-            <xsl:template match="/">
-                <html>
-                    <body>
-                        <h2>All time favourites</h2>
-                        <table border="1">
-                            <tr bgcolor="#9acd33">
-                                <th>Title</th>
-                                <th>Artist</th>
-                            </tr>
-                        <xsl:for-each select="samples/song">
-                            <tr>
-                                <td>
-                                    <xsl:value-of select="title"/>
-                                </td>
-                                <td>
-                                    <xsl:value-of select="artist"/>
-                                </td>
-                            </tr>
-                        </xsl:for-each>
-                        </table>
-                    </body>
-                </html>
-            </xsl:template>
-        </xsl:stylesheet>\`;
+    // Archive the directory of reports. \`level\` trades speed against size, and
+    // \`overwrite\` replaces an archive already sitting at the target path. The
+    // source directory becomes the root entry, so every entry is named
+    // \`reports/...\`, unless \`includeSourceDirectory\` is set to false.
+    zip:CompressOptions options = {level: zip:BEST, overwrite: true};
+    check zip:compress("resources/reports", "reports.zip", options);
+    io:println("Created reports.zip");
 }
 `,
 ];
 
-export function XsltTransformation({ codeSnippets }) {
+export function ZipCompress({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -81,17 +30,20 @@ export function XsltTransformation({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>XSLT transformation</h1>
+      <h1>Create a ZIP archive</h1>
 
       <p>
-        The <code>xslt</code> library provides an API to transform XML content
-        to HTML using XSL transformation.
+        The Ballerina <code>zip</code> library archives a file or a directory
+        into a ZIP file with <code>compress</code>. The compression level,
+        whether the source directory becomes the root entry of the archive, and
+        whether a file already at the target path is replaced are all given
+        through <code>zip:CompressOptions</code>.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/xslt/latest/">
-          <code>xslt</code> module
+        <a href="https://lib.ballerina.io/ballerina/zip/latest/">
+          <code>zip</code> module
         </a>
         .
       </p>
@@ -102,31 +54,9 @@ export function XsltTransformation({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/xslt-transformation",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -144,7 +74,7 @@ export function XsltTransformation({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -180,8 +110,22 @@ export function XsltTransformation({ codeSnippets }) {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Place the files to archive in a <code>resources/reports</code>{" "}
+            directory. This example ships one holding{" "}
+            <code>region-totals.csv</code> and <code>notes.txt</code>.
+          </span>
+        </li>
+      </ul>
+
       <p>
-        To run this sample, use the <code>bal run</code> command.:
+        Run the program by executing the following command. The{" "}
+        <code>reports.zip</code> archive appears in the current directory.
       </p>
 
       <Row
@@ -237,23 +181,8 @@ export function XsltTransformation({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xslt_transformation.bal`}</span>
-              <span>{`Transformed XML: <html>`}</span>
-              <span>{`<body>`}</span>
-              <span>{`<h2>All time favourites</h2>`}</span>
-              <span>{`<table border="1">`}</span>
-              <span>{`<tr bgcolor="#9acd33">`}</span>
-              <span>{`<th>Title</th><th>Artist</th>`}</span>
-              <span>{`</tr>`}</span>
-              <span>{`<tr>`}</span>
-              <span>{`<td>Summer of 69</td><td>Bryan Adams</td>`}</span>
-              <span>{`</tr>`}</span>
-              <span>{`<tr>`}</span>
-              <span>{`<td>Zombie</td><td>Bad Wolves</td>`}</span>
-              <span>{`</tr>`}</span>
-              <span>{`</table>`}</span>
-              <span>{`</body>`}</span>
-              <span>{`</html>`}</span>
+              <span>{`\$ bal run zip_compress.bal`}</span>
+              <span>{`Created reports.zip`}</span>
             </code>
           </pre>
         </Col>
@@ -262,8 +191,8 @@ export function XsltTransformation({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Unpack an untrusted archive"
-            href="/learn/by-example/zip-decompress-untrusted/"
+            title="UUID operations"
+            href="/learn/by-example/uuid-operations/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -290,7 +219,7 @@ export function XsltTransformation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Unpack an untrusted archive
+                  UUID operations
                 </span>
               </div>
             </div>
@@ -298,8 +227,8 @@ export function XsltTransformation({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="XML to JSON conversion"
-            href="/learn/by-example/xml-to-json-conversion/"
+            title="Extract a ZIP archive"
+            href="/learn/by-example/zip-decompress/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -309,7 +238,7 @@ export function XsltTransformation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML to JSON conversion
+                  Extract a ZIP archive
                 </span>
               </div>
               <svg

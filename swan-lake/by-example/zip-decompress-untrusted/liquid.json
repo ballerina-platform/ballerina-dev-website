@@ -1,0 +1,17 @@
+{
+  "title": "Unpack an untrusted archive",
+  "description": "This BBE demonstrates extracting an archive from an untrusted source under extraction limits, and telling the refusals apart by error type.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "zip",
+    "archive",
+    "extraction limits",
+    "zip bomb",
+    "LimitExceededError",
+    "UnsafePathError"
+  ],
+  "permalink": "/learn/by-example/zip-decompress-untrusted/",
+  "active": "zip-decompress-untrusted"
+}

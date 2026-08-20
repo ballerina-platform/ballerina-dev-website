@@ -3,7 +3,7 @@
 _Owners_: @niveathika @Nuvindu  
 _Reviewers_: @niveathika  
 _Created_: 2026/08/14  
-_Updated_: 2026/08/17  
+_Updated_: 2026/08/19  
 _Edition_: Swan Lake
 
 ## Introduction
@@ -109,7 +109,7 @@ public type Entry record {|
 | `comment` | Present only if the entry carries a comment |
 | `unixMode` | Present only if the archive records Unix permissions |
 
-`modifiedTime` is accurate to two seconds, which is all the format stores by default; archives that record a more precise time report that instead.
+`modifiedTime` is accurate to two seconds, which is all the format stores by default; archives that record a more precise time report that instead. An entry recording no time at all, and one recording a time before the epoch, both report the epoch.
 
 `unixMode` reports the mode as the archive records it, including the setuid, setgid and sticky bits. It excludes the bits saying what kind of file it is, which is why `isSymlink` is a separate field. A symbolic link entry is visible when listing but cannot be extracted, per [Section 4.4](#44-extracting).
 
@@ -127,9 +127,9 @@ public enum CompressionMethod {
 
 `STORE` means the entry is kept as it is, with no compression. `DEFLATE` means the entry is squeezed smaller. `DEFLATE` is what the library uses by default.
 
-Some zips contain entries compressed in older or unusual ways. Those archives can still be opened and listed, and such an entry is listed with its `method` as `OTHER`. Reading or extracting it returns an `UnsupportedEntryError`, while copying it into another archive works, since the content is never decoded. See [Section 5.3](#53-copying-entries-between-archives).
+Some zips contain entries compressed in older or unusual ways. Those archives can still be opened and listed, and such an entry is listed with its `method` as `OTHER`. Reading or extracting it returns an `UnsupportedEntryError`. Copying it into another archive works; see [Section 5.3](#53-copying-entries-between-archives).
 
-`OTHER` is never written by this library, and it says only that the method is one this library does not decompress, not which method it is. An entry is listable in every case, so that an archive holding one such entry can still be read through and copied from.
+`OTHER` is never written by this library. It says only that the method is one this library does not decompress, not which method it is.
 
 When creating an archive, you choose how hard to squeeze.
 
@@ -167,14 +167,14 @@ public type FileSystemError distinct Error;
 | --- | --- |
 | `InvalidArchiveError` | The file is not a zip, or it is damaged |
 | `EntryNotFoundError` | There is no entry with that name |
-| `UnsupportedEntryError` | The entry has a password on it, or uses a compression method we cannot read |
+| `UnsupportedEntryError` | The entry has a password on it, or uses a compression method this library cannot read |
 | `UnsafePathError` | An entry would be written outside the folder you chose |
 | `LimitExceededError` | Extraction went past one of the limits in [Section 8.2](#82-extraction-limits) |
 | `FileSystemError` | A file could not be read, written, or created |
 
-`UnsupportedEntryError`, `UnsafePathError`, and `LimitExceededError` carry a detail record naming the entry. These are the three that can arise while extracting a whole archive, where the caller has not named an entry. The other three concern a name or path the caller supplied, so they carry no details.
+`UnsupportedEntryError`, `UnsafePathError`, and `LimitExceededError` carry a detail record naming the entry. The other three carry no details.
 
-`FileSystemError` is the exception: extracting a whole archive can fail on one entry, and then the message names it. That is in the message rather than a detail record because the same error also covers failures with no entry, such as being unable to create the target folder.
+`FileSystemError` has no detail record. When extracting a whole archive fails on one entry, its message names that entry; it also covers failures with no entry behind them, such as being unable to create the target folder.
 
 Error messages always come from this library. Messages from the compression library underneath are never passed through, so they stay the same if that library is replaced.
 
@@ -182,7 +182,7 @@ Error messages always come from this library. Messages from the compression libr
 
 ### 4.1. Opening
 
-Create an `ArchiveReader` with the path of a zip file.
+Create an `ArchiveReader` with the path of a ZIP file.
 
 ```ballerina
 zip:ArchiveReader archive = check new ("./reports.zip");
@@ -190,7 +190,7 @@ zip:ArchiveReader archive = check new ("./reports.zip");
 
 The file must exist and must be a real zip. If not, you get a `FileSystemError` or an `InvalidArchiveError`.
 
-Opening reads the archive's index of entries into memory, in full. There is no limit on how many entries an archive may hold, but the implementation must not allocate based on the count declared in the archive's trailer, since that number can be untrue. The memory this costs is therefore bounded by the size of the file, because every entry it counts has a record physically present in it.
+Opening reads the archive's index of entries into memory, in full. There is no limit on how many entries an archive may hold. The implementation must not allocate from the count declared in the archive's trailer, which can be untrue, so the memory this costs is bounded by the size of the file.
 
 The archive stays open, holding the file, until you call `close`.
 
@@ -204,7 +204,7 @@ public isolated function getEntry(string name) returns Entry|Error;
 public isolated function hasEntry(string name) returns boolean|Error;
 ```
 
-`entries` returns every entry, including folders, in the order they are stored in the archive. The order is kept rather than sorted, because it tells you something about how the zip was made.
+`entries` returns every entry, including folders, in the order they are stored in the archive. The order is never sorted.
 
 `getEntry` returns the metadata of one entry by name, or an `EntryNotFoundError`. A zip is allowed to hold two entries with the same name. When that happens, you get the first one. See [Section 7.3](#73-duplicate-names).
 
@@ -275,7 +275,7 @@ public enum FileWriteMode {
 
 `SKIP` suits extracting into a folder that already holds some of the files, but it hides collisions: nothing reports which entries were skipped.
 
-The mode applies to files only. Existing folders are always reused, in every mode.
+The mode applies to files only. Whatever the mode says, an existing folder is reused, and a file entry whose target is an existing folder gives a `FileSystemError`.
 
 Both functions apply the name checks in [Section 8.1](#81-unsafe-entry-names). `extractAll` also applies the limits in [Section 8.2](#82-extraction-limits).
 
@@ -283,7 +283,7 @@ If extraction fails halfway, files already written are left in place; nothing is
 
 The timestamp is set on each extracted file, or skipped if the platform cannot store it.
 
-**Symbolic links are never created.** An entry marked as a link gives an `UnsupportedEntryError`. This is what stops an archive holding a link named `data` pointing at `/etc` followed by an entry named `data/passwd`, whose write would land outside the target folder.
+**Symbolic links are never created.** An entry marked as a link gives an `UnsupportedEntryError`.
 
 Unix permissions recorded in an archive are not applied. An extracted file gets whatever permissions the platform gives a newly created file. `Entry.unixMode` reports what the archive holds. See [Section 11](#11-not-supported-in-this-version).
 
@@ -306,7 +306,7 @@ zip:ArchiveWriter writer = check new ("./reports.zip");
 zip:ArchiveWriter writer = check new ("./reports.zip", {level: BEST});
 ```
 
-**A file already at that path is not replaced.** You get a `FileSystemError`, and the file is left as it was, as extraction does under `FAIL_IF_EXISTS`.
+**A file already at that path is not replaced.** You get a `FileSystemError`, and the file is left as it was.
 
 ```ballerina
 zip:ArchiveWriter writer = check new ("./reports.zip", {overwrite: true});
@@ -341,7 +341,7 @@ Entries are written in the order you add them.
 
 `addFile` reads a file from disk. If you do not give an `entryName`, the file name is used on its own, without the folders above it.
 
-Which files you may read is not restricted; file permissions are the file system's business. A supplied `entryName` must obey [Section 7.1](#71-separator-and-normalization) — absolute, drive-lettered, `..`-containing and `\`-containing names give an `UnsafePathError` rather than being silently corrected.
+Which files you may read is not restricted. A supplied `entryName` must obey [Section 7.1](#71-separator-and-normalization): a name that is empty or absolute, or that starts with a drive letter, or that holds a `.` or `..` part, a `\`, or a `:`, gives an `UnsafePathError` rather than being silently corrected.
 
 ```ballerina
 check writer.addFile("/etc/passwd");                  // stored as "passwd"
@@ -352,15 +352,17 @@ check writer.addFile("/etc/passwd", "/etc/passwd");   // UnsafePathError
 
 - When `includeSourceDirectory` is `true`, the folder itself becomes the top level. Adding `./reports` gives you entries named `reports/...`.
 - When it is `false`, the contents go straight into the top level of the zip.
-- An `entryName` you supply names the top level and settles the matter, whichever way the option is set: `addDirectory("./reports", "docs")` gives entries named `docs/...`. The option shapes only a call that names nothing, as `addFile` likewise stores under the name you give it.
+- An `entryName` you supply names the top level, whichever way the option is set: `addDirectory("./reports", "docs")` gives entries named `docs/...`. The option shapes only a call that names nothing.
 - Shortcuts and symbolic links **found inside the folder** are skipped. Neither the link nor the file it points to is stored.
-- An empty folder is recorded as a folder entry wherever there is a top level to record it under, meaning `includeSourceDirectory` or an `entryName`. A call that names nothing with the option off has no such entry to add, and adds nothing.
+- An empty folder is recorded as a folder entry when there is a top level to record it under, which means `includeSourceDirectory` is on or an `entryName` was given. A call that names nothing with the option off adds nothing.
 
-Links are skipped rather than followed because a link can point anywhere on the disk, and one pointing back up its own tree would make the walk endless.
-
-A `sourcePath` you name yourself is a different matter, and is used as given: if it is a link to a folder, that folder is the one added, and the same holds for `addFile` and for `compress`. You chose that path, so it is followed; the links met on the way down were chosen by whoever laid out the disk, so they are not.
+A `sourcePath` you name yourself is used as given: if it is a link to a folder, that folder is the one added. The same holds for `addFile` and for `compress`.
 
 `addEntry` adds an entry whose content you supply rather than read from disk. `entryName` is required.
+
+When the content is a stream, `addEntry` reads it and closes it, on a refusal as much as on a success.
+
+A name ending in `/` records a folder, which holds nothing. `addFile` and `addEntry` refuse content given under such a name.
 
 The timestamp is the source file's last modified time for `addFile` and `addDirectory`, and the current time for `addEntry`. On Unix-like systems, `addFile` and `addDirectory` also record the source permissions.
 
@@ -372,9 +374,9 @@ public isolated function copyEntry(ArchiveReader sourceArchive, string entryName
 
 `copyEntry` takes an entry from another archive **without unpacking it**. Content, compression method, timestamp, and checksum are kept exactly; the `level` on this writer does not apply.
 
-This is how you make a changed copy of an existing zip, since this version cannot change one in place. To drop a file: open the archive, create a writer, and copy across every entry except that one.
+This is how you make a changed copy of an existing zip. To drop a file: open the archive, create a writer, and copy across every entry except that one.
 
-`sourceArchive` must still be open. An entry may be copied even if this library cannot decompress its content, because the content is never decoded. An encrypted entry is the exception, and gives an `UnsupportedEntryError`.
+`sourceArchive` must still be open. An entry may be copied even if this library cannot decompress its content. An encrypted entry is the exception, and gives an `UnsupportedEntryError`.
 
 ### 5.4. Closing
 
@@ -394,7 +396,7 @@ public isolated function listEntries(string path) returns Entry[]|Error;
 
 `compress` puts a file or a folder into a new zip. If `sourcePath` is a single file, the zip holds that one entry and `includeSourceDirectory` does nothing. If it is a folder, it behaves like `ArchiveWriter.addDirectory`.
 
-`targetPath` must not be inside `sourcePath`, or the archive would be created inside the folder being walked and end up holding a partial copy of itself. Such a call gives a `FileSystemError` before anything is written. An existing file at `targetPath` gives a `FileSystemError` too, unless `overwrite` is set, as in [Section 5.1](#51-opening).
+`targetPath` must not be inside `sourcePath`, and must not be `sourcePath` itself. Such a call gives a `FileSystemError` before anything is written. An existing file at `targetPath` gives a `FileSystemError` too, unless `overwrite` is set, as in [Section 5.1](#51-opening).
 
 `decompress` extracts everything into a folder. It behaves like `ArchiveReader.extractAll`.
 
@@ -408,9 +410,9 @@ Each of these opens what it needs and closes it before returning, including when
 
 Names inside a zip always use `/` to separate folders, on every platform. This is what the ZIP format requires. The library converts separators when entries are added, and converts them back to the platform separator when entries are extracted.
 
-Names inside a zip are always relative. The library never writes a name that starts at the root of the disk, that starts with a drive letter, or that contains a `.` or `..` part.
+Names inside a zip are always relative. The library never writes a name that is empty, that starts at the root of the disk, that starts with a drive letter, or that contains a `.` or `..` part.
 
-A `\` is never allowed in a name, in either direction: writing one is refused, and an archive containing one is refused when extracted. A name like `..\..\x` is an ordinary Linux filename but escapes the target folder on Windows.
+A `\` is never allowed in a name, in either direction: writing one is refused, and an archive containing one is refused when extracted. A `:` is refused the same way, wherever in the name it appears.
 
 Names are compared exactly, including case. A zip may hold two names differing only in case; on Windows and macOS the second lands on the file the first wrote, so `fileWriteMode` decides the outcome.
 
@@ -418,15 +420,15 @@ Names are compared exactly, including case. A zip may hold two names differing o
 
 A folder entry has a name ending in `/` and no content. `Entry.isDirectory` is `true` for those.
 
-A zip does not have to record its folders. Extraction creates whatever folders the entry names imply, so both kinds of archive extract the same way.
+A zip does not have to record its folders. Extraction creates whatever folders the entry names imply.
 
 ### 7.3. Duplicate names
 
-The ZIP format allows two entries with the same name, and archives made by other tools sometimes contain them. `entries` returns all of them, which is why it returns a list rather than a map.
+The ZIP format allows two entries with the same name, and archives made by other tools sometimes contain them. `entries` returns all of them.
 
 `getEntry`, `hasEntry`, `readEntry`, `extractEntry`, and `copyEntry` all work on the **first** entry with that name, without exception. A later duplicate is therefore visible through `entries()` but cannot be reached; see [Section 11](#11-not-supported-in-this-version).
 
-Extraction processes duplicates in stored order, so the second one meets the file the first just wrote and `fileWriteMode` decides the outcome:
+Extraction processes duplicates in stored order, so `fileWriteMode` decides the outcome:
 
 | Mode | Result |
 | --- | --- |
@@ -447,34 +449,31 @@ When reading, the flag on each entry decides how its name is decoded:
 
 CP437 is what the ZIP format specifies for names without the flag. It maps all 256 byte values, so decoding never fails and every name has one definite value.
 
-There is no option to choose a character set. An archive storing names in some third character set, without saying so, decodes to the wrong text — as it does in other tools.
+There is no option to choose a character set. An archive storing names in some third character set, without saying so, decodes to the wrong text.
 
-The checks in [Section 8.1](#81-unsafe-entry-names) run on the decoded name, since that is what gets written. An entry whose raw bytes contain a `\` or a zero byte is refused before decoding, so no name can slip past those checks by way of the character set.
+The checks in [Section 8.1](#81-unsafe-entry-names) run on the decoded name. An entry whose raw bytes contain a `\` or a zero byte is refused before decoding.
 
 ## 8. Security
 
 ### 8.1. Unsafe entry names
 
-Two different paths are involved when extracting, and only one of them is restricted.
+Two paths are involved when extracting, and only one is restricted.
 
-- **The folder you extract into.** You choose this. It can be anywhere, including an absolute path. There is no restriction on it.
-- **The names stored inside the archive.** Whoever built the zip chose these. If the zip came from an upload, that is someone you do not trust. These are the restricted ones.
+- **The folder you extract into.** You choose it, and it may be anywhere, including an absolute path. There is no restriction on it.
+- **The names stored inside the archive.** Whoever built the zip chose these. These are the restricted ones.
 
-Before anything is written, the library works out where each entry would land, and checks that it is inside the folder you chose. If it is not, extraction stops with an `UnsafePathError`.
+Before anything is written, the library works out where each entry would land and checks that it is inside the folder you chose. If it is not, extraction stops with an `UnsafePathError`. The check also covers a folder along the way that is a shortcut or symbolic link pointing outside. It always runs and cannot be switched off.
 
 | Name inside the archive | Result |
 | --- | --- |
 | `docs/report.txt` | Written to `<target>/docs/report.txt` |
-| `../report.txt` | `UnsafePathError` |
 | `../../etc/passwd` | `UnsafePathError` |
 | `/etc/passwd` | `UnsafePathError` |
 | `C:\Windows\x.dll` | `UnsafePathError` |
-| `..\..\x` | `UnsafePathError` |
-| `a\b.txt` | `UnsafePathError`, because of the `\` |
+| `a\b.txt` | `UnsafePathError`, for the `\` |
+| `notes.txt:evil` | `UnsafePathError`, for the `:` |
 
-The check also covers the case where a folder along the way is a shortcut or symbolic link pointing somewhere outside the folder you chose.
-
-This check always runs and cannot be switched off.
+[Section 7.1](#71-separator-and-normalization) gives the whole rule for names.
 
 ### 8.2. Extraction limits
 
@@ -488,48 +487,35 @@ public type ExtractionLimits record {|
 |};
 ```
 
-| Limit | Meaning | Default |
-| --- | --- | --- |
-| `maxEntries` | How many entries may be extracted | no limit |
-| `maxTotalSize` | Total bytes that may be written | no limit |
-| `maxCompressionRatio` | How much larger any single entry may get | no limit |
+| Limit | Meaning |
+| --- | --- |
+| `maxEntries` | How many entries may be extracted, counting directory entries, duplicates, and entries skipped under `SKIP` |
+| `maxTotalSize` | Total bytes that may be written |
+| `maxCompressionRatio` | How much larger any single entry may get |
 
-**All three are off unless you set them.** Extraction is safe by default about *where* files land, which [Section 8.1](#81-unsafe-entry-names) covers and no caller can switch off. It is not safe by default about *how much* is written; that is the caller's choice, because no one value suits every archive.
+**All three are off unless you set them.** A limit you do set must be positive; omission, not a value of zero, is what leaves one off. Extraction is safe by default about *where* files land, which [Section 8.1](#81-unsafe-entry-names) covers and cannot be switched off. It is not safe by default about *how much* is written.
 
 Set all three when extracting something you do not trust. They catch different things: a ratio catches an archive built to expand, while `maxTotalSize` and `maxEntries` catch one that is simply enormous. Ten thousand uncompressed one-gigabyte entries have a ratio of about one and will fill your disk whatever ratio you set.
 
-Limits are measured against bytes actually written, not the sizes the archive claims, which can be untrue. A write that would take the total past `maxTotalSize` is refused before it happens, not after.
+Limits are measured against bytes actually written, never the sizes the archive claims. A write that would take the total past `maxTotalSize` is refused before it happens. An entry's ratio is its uncompressed bytes divided by the compressed bytes actually taken from the archive to produce them, evaluated as the entry is read. An entry no compressed byte has been taken from has no ratio, and neither has a directory entry.
 
-An entry's ratio is its uncompressed bytes divided by the compressed bytes actually taken from the archive to produce them, not the compressed size the archive records for it, and it is evaluated as the entry is read. An entry from which no compressed byte has been taken has no ratio and is exempt, as are directory entries.
-
-`maxEntries` counts every entry in the archive, including directory entries, duplicates, and entries skipped under `SKIP`.
-
-These limits bound the work extraction does, not the cost of opening the archive. The index is already in memory by then; see [Section 4.1](#41-opening).
-
-When a limit is passed, extraction stops with a `LimitExceededError` naming the entry, and files already written are left in place.
-
-`extractEntry` takes the same options, so extracting a single entry cannot sidestep this policy; of the three only `maxCompressionRatio` can apply there.
-
-A limit that is set must be positive. Omission, not a value of zero, is what leaves one off.
+The limits bound what extraction does, not what opening the archive costs; see [Section 4.1](#41-opening). When a limit is passed, extraction stops with a `LimitExceededError` naming the entry, and files already written are left in place. `extractEntry` takes the same options, though only `maxCompressionRatio` can apply to one named entry.
 
 ## 9. Resource and memory characteristics
 
-Archives are read from and written to disk directly. Content is not held in memory in full except where the caller asks for it:
-
-- `readEntry` into a `byte[]` holds one entry; into a stream, one chunk.
-- `addEntry` given a `byte[]` takes one entry; given a stream, one chunk at a time.
-
-The library places no ceiling on that choice.
+Archives are read from and written to disk directly. Content is held in memory in full only where you ask for it: `readEntry` into a `byte[]`, or `addEntry` given one, holds a whole entry, while the stream form of either holds one chunk. There is no ceiling on that choice.
 
 One thing is always in memory: **the index of entries**, which the format keeps at the end of the file. `ArchiveReader` reads it on opening, and `ArchiveWriter` builds it up until `close` writes it out. Its size depends on the number of entries and the length of their names, not on their content.
 
-`ArchiveReader` and `ArchiveWriter` each hold one open file until closed.
+Each reader and each writer holds one open file until closed, and **belongs to one strand**. Neither is an isolated class, so two strands cannot share one, and a service working with archives for many requests opens one per request. Every method on both is `isolated`, which says only that the method reaches no data beyond the object and its arguments; it does not make the object safe to share.
+
+Several entry streams of one reader may be open at once, as [Section 4.3](#43-reading-entry-content) says. That is one strand holding several read positions.
 
 ## 10. Portability constraints
 
-This library is designed so that the ZIP implementation underneath it can be replaced without changing this document. A feature is only included if every implementation we target can do it.
+This library is designed so that the ZIP implementation underneath it can be replaced without changing this document. A feature is only included if every implementation this library targets can do it.
 
-These are left out for that reason. They are not simply unfinished.
+These are left out for that reason.
 
 | Left out | What happens instead |
 | --- | --- |
@@ -540,13 +526,13 @@ These are left out for that reason. They are not simply unfinished.
 | Any setting for the Zip64 extension | Applied automatically when needed |
 | Detailed access to the optional extra data on an entry | Only the fields of `Entry` are available |
 
-**An archive is never a stream.** A zip keeps its index at the end of the file, so reading one means seeking backwards, which a stream cannot do. Streaming applies to **entry content** instead, in both directions, and that is what keeps memory bounded once an archive is open. See [Section 4.3](#43-reading-entry-content) and [Section 5.2](#52-adding-entries).
+**An archive is never a stream.** Streaming applies to **entry content** instead, in both directions. See [Section 4.3](#43-reading-entry-content) and [Section 5.2](#52-adding-entries).
 
 ## 11. Not supported in this version
 
-These are outside the scope of this version. They are listed because we expect to add them, and this specification is written so that adding them does not change anything already defined.
+These are outside the scope of this version.
 
-**Changing an archive that already exists.** There is no way to add to, remove from, or rename an entry in an existing zip. Instead you read the old archive and write a new one, using `copyEntry` so nothing has to be recompressed. A single call that does this for you is expected in a later version.
+**Changing an archive that already exists.** There is no way to add to, remove from, or rename an entry in an existing zip. Instead you read the old archive and write a new one, using `copyEntry` so nothing has to be recompressed.
 
 **Passwords.** The library neither reads nor writes password-protected archives. A protected entry gives an `UnsupportedEntryError`.
 
@@ -560,4 +546,4 @@ These are outside the scope of this version. They are listed because we expect t
 
 **Progress reporting** and cancelling a long-running job.
 
-Settings are passed as records, so a later version can support these by adding optional fields to `CompressOptions` and `DecompressOptions`. Existing code keeps working.
+Settings are passed as records, so a later version can support these by adding optional fields to `CompressOptions` and `DecompressOptions`.

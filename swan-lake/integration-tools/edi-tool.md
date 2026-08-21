@@ -50,8 +50,6 @@ public function main() returns error? {
 }
 ```
 
-The envelope functions require version `1.0.0` or later of these packages. Each package's default module also dispatches the same functions by message name and adds `getEDINames()` and `hasEnvelope()`.
-
 ### Generated code: a partner-specific variant
 
 Generate your own module when:
@@ -91,11 +89,7 @@ public type Line_item_Type record {|
 |};
 ```
 
-Because fields are positional, an element that is missing from the schema does not raise an error — it shifts every later element by one position, and the data lands in the wrong field. Check a segment's field list against the specification whenever parsed values appear under unexpected names.
-
 Keep the edited schema in version control: it, not the generated code, is the artifact to maintain. Regenerate after every edit.
-
-> **Note:** `codegen` names the top-level record after the schema's `name` (`ORDERS`, `ORDERSInterchange`), while `libgen` prefixes it with the EDI name (`EDI_ORDERS_ORDERS`), which is why the prebuilt packages use the longer names.
 
 ## Schema conversion
 
@@ -251,7 +245,7 @@ At this point, the directory structure of the package looks like below:
     └── schema.json
 ```
 
-For a larger project, the generated EDI code can live in its own package within a Ballerina workspace, alongside the integration that consumes it. Keeping the code for each schema in its own module or package avoids conflicts between the records of different schemas.
+For a larger project, generate the code into [its own module](/learn/organize-ballerina-code/) instead, alongside the integration that consumes it. Keeping the code for each schema in its own module avoids conflicts between the records of different schemas.
 
 Generated Ballerina records for the above schema are shown below:
 
@@ -343,7 +337,7 @@ For the envelope semantics — how counts are recomputed, how trailers are locat
 
 ## Package generation
 
-Usually, organizations have to work with many EDI formats, and integration developers need a convenient way to work with EDI data with minimum effort. Ballerina EDI libraries facilitate this by allowing organizations to pack all the EDI processing code for their EDI collections into an importable package. Integration developers can then simply import those libraries and convert EDI messages into Ballerina records in a single line of code.
+Usually, organizations have to work with many EDI formats, and integration developers need a convenient way to work with EDI data with minimum effort. `libgen` packs a whole collection of schemas into one Ballerina [package](/learn/organize-ballerina-code/), generating each schema into its own module within it so the records of different schemas cannot conflict. That package is published to Ballerina Central like any other, and integration developers import it and convert EDI messages into Ballerina records in a single line of code.
 
 The below command generates Ballerina records, parser and util functions, and a REST connector for a given collection of EDI schemas, organized into a Ballerina package:
 

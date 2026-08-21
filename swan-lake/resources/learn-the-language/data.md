@@ -10,11 +10,11 @@ intro: In this part, you will learn about some of the plain data supported by Ba
 
 ## Plain data
 
-Let's now take a look at network data. This is the data that is independent of any specific code operating on the data. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
+Let's now take a look at network data. This is the data that is independent of any specific code operating on it. This data is typically exchanged through network interfaces between programs. In Ballerina, this is known as plain data.
 
-This concept is the opposite of objects, which combine data and code as one entity. However, when you are writing network interfaces, you want to work with plain data. It supports a bunch of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without worrying about coupling between the data and its associated code, like objects.
+This concept is the opposite of objects, which combine data and code as one entity. However, when you are writing network interfaces, you want to work with plain data. It supports a several of operations such as deep copy and deep equality checks. You can also serialize and deserialize it without concerns about coupling between the data and its associated code, like objects.
 
-As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data, and it defines a different type for it.
+As a programming language designed for network programming over the cloud, Ballerina makes it easy to work with plain data and defines a seperate type for it.
 
 ## Ballerina basic types
 
@@ -65,7 +65,7 @@ The second one is the ``xml`` type. It is a sequence type built on a sequence of
 
 ## Immutability
 
-One of the crucial features of plain data is that it can be made immutable. You cannot do that for objects. Plain data consisting of simple and string values are inherently immutable.
+One of the crucial features of plain data is that it can be made immutable, unlike objects. Plain data consisting of simple and string values are inherently immutable.
 
 Structural values can be constructed either as mutable or immutable. The value includes a flag that indicates whether it's immutable or not, and it is fixed at the time of construction of the value. Attempting to mutate an immutable structure causes a panic at runtime.
 
@@ -554,7 +554,7 @@ In the above code example, the query pipeline has a ``limit`` clause which evalu
 
 Ballerina supports yet another structured data type, table.
 
-Ballerina's philosophy is to use tables as containers for building centralized data structures that are operated on by multiple functions. This concept augurs well with the various scripting languages, like Lisp, Python, or JavaScript, which are primarily used for integration purposes to glue two disparate systems together. This is the opposite of the philosophy followed in languages like Java, where programmers create separate classes and objects to separate the concerns within the code and write different containers for data structures. Ballerina encourages the use of its built-in data structures rather than everybody designing their own custom data structures.
+Ballerina's philosophy is to use tables as containers for building centralized data structures that are operated on by multiple functions. This concept augurs well with the various scripting languages, like Lisp, Python, or JavaScript, which are primarily used for integration purposes to connect two disparate systems. This is the opposite of the philosophy followed in languages like Java, where programmers create separate classes and objects to separate the concerns within the code and write different containers for data structures. Ballerina encourages the use of its built-in data structures rather than everybody designing their own custom data structures.
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 

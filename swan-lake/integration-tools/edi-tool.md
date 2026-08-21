@@ -26,7 +26,76 @@ The tool supports three main usages, as follows:
 
 The generated code uses the [`ballerina/edi`](https://central.ballerina.io/ballerina/edi/latest) library at runtime.
 
-> **Note:** For common UN/EDIFACT D03A message types, prebuilt packages are published under the `ballerinax` organization — `edifact.d03a.supplychain`, `edifact.d03a.finance`, `edifact.d03a.logistics`, `edifact.d03a.retail`, `edifact.d03a.shipping`, `edifact.d03a.services`, and `edifact.d03a.manufacturing`. Each message type is a submodule exposing `fromEdiString` and `toEdiString`, so no code has to be generated. Generate your own only when the message type is not covered, or when a trading partner deviates from the standard.
+## Prebuilt packages or generated code
+
+There are two ways to work with a standard EDI message in Ballerina, and the tool is needed for only one of them.
+
+### Prebuilt packages: the standard message, unchanged
+
+For UN/EDIFACT D03A, packages are already published under the `ballerinax` organization, one per business domain: [`edifact.d03a.supplychain`](https://central.ballerina.io/ballerinax/edifact.d03a.supplychain), [`edifact.d03a.finance`](https://central.ballerina.io/ballerinax/edifact.d03a.finance), [`edifact.d03a.logistics`](https://central.ballerina.io/ballerinax/edifact.d03a.logistics), [`edifact.d03a.retail`](https://central.ballerina.io/ballerinax/edifact.d03a.retail), [`edifact.d03a.shipping`](https://central.ballerina.io/ballerinax/edifact.d03a.shipping), [`edifact.d03a.services`](https://central.ballerina.io/ballerinax/edifact.d03a.services), and [`edifact.d03a.manufacturing`](https://central.ballerina.io/ballerinax/edifact.d03a.manufacturing).
+
+Each message type is a submodule — `mORDERS`, `mINVOIC`, `mDESADV`, and so on — exposing the same API the tool generates: `fromEdiString` and `toEdiString` for a message body, and `headersFromEdiString`, `interchangeFromEdiString`, and `interchangeToEdiString` for the envelope. No schema file is written and no code is generated:
+
+```ballerina
+import ballerina/io;
+import ballerinax/edifact.d03a.supplychain.mORDERS;
+
+public function main() returns error? {
+    string ediText = check io:fileReadString("orders.edi");
+    mORDERS:EDI_ORDERS_ORDERSInterchange interchange = check mORDERS:interchangeFromEdiString(ediText);
+    foreach mORDERS:EDI_ORDERS_ORDERSTransaction txn in interchange.transactions {
+        mORDERS:EDI_ORDERS_ORDERS|error body = txn.body;
+        io:println(body is error ? "quarantined: " + body.message() : body.toString());
+    }
+}
+```
+
+The envelope functions require version `1.0.0` or later of these packages. Each package's default module also dispatches the same functions by message name and adds `getEDINames()` and `hasEnvelope()`.
+
+### Generated code: a partner-specific variant
+
+Generate your own module when:
+
+- a trading partner deviates from the published specification;
+- the format is X12 — those specifications are licensed from ASC X12, so nothing is prebuilt;
+- the EDIFACT version is not D03A;
+- the format is proprietary.
+
+The workflow is convert, edit, then generate. [Schema conversion](#schema-conversion) writes the specification out as a JSON schema *before* any code exists, and that file is the customization point: edit it and the generated records and parser follow.
+
+#### Changing the specification for a trading partner
+
+Delimiters, occurrence counts (`minOccurances` / `maxOccurances`), field data types, and the segments listed in `ignoreSegments` are all edited in the schema. Adding a data element the partner sends is the same kind of edit. Each entry in a segment's `fields` list is one data element, **in wire order**, so a new element is inserted at its position:
+
+```json
+"LIN": {
+  "code": "LIN",
+  "tag": "Line_item",
+  "fields": [
+    {"tag": "code", "required": true, "dataType": "string"},
+    {"tag": "LINE_ITEM_IDENTIFIER", "required": false, "dataType": "string"},
+    {"tag": "ACTION_REQUEST_NOTIFICATION_CODE", "required": false, "dataType": "string"},
+    {"tag": "ITEM_NUMBER_IDENTIFICATION", "required": false, "dataType": "composite", "components": []}
+  ]
+}
+```
+
+Regenerating then adds the element to the record, and the parser reads the partner's segment correctly:
+
+```ballerina
+public type Line_item_Type record {|
+    string code = "LIN";
+    string LINE_ITEM_IDENTIFIER?;
+    string ACTION_REQUEST_NOTIFICATION_CODE?;
+    ITEM_NUMBER_IDENTIFICATION_GType? ITEM_NUMBER_IDENTIFICATION?;
+|};
+```
+
+Because fields are positional, an element that is missing from the schema does not raise an error — it shifts every later element by one position, and the data lands in the wrong field. Check a segment's field list against the specification whenever parsed values appear under unexpected names.
+
+Keep the edited schema in version control: it, not the generated code, is the artifact to maintain. Regenerate after every edit.
+
+> **Note:** `codegen` names the top-level record after the schema's `name` (`ORDERS`, `ORDERSInterchange`), while `libgen` prefixes it with the EDI name (`EDI_ORDERS_ORDERS`), which is why the prebuilt packages use the longer names.
 
 ## Schema conversion
 

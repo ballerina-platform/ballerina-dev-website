@@ -61,7 +61,7 @@ Generate your own module when:
 
 The workflow is convert, edit, then generate. [Schema conversion](#schema-conversion) writes the specification out as a JSON schema *before* any code exists, and that file is the customization point: edit it and the generated records and parser follow.
 
-#### Changing the specification for a trading partner
+#### Adapting the schema to a trading partner
 
 Delimiters, occurrence counts (`minOccurances` / `maxOccurances`), field data types, and the segments listed in `ignoreSegments` are all edited in the schema. Adding a data element the partner sends is the same kind of edit. Each entry in a segment's `fields` list is one data element, **in wire order**, so a new element is inserted at its position:
 
@@ -318,11 +318,12 @@ public function main() returns error? {
     // Read the full envelope hierarchy into typed records.
     ORDERSInterchange interchange = check interchangeFromEdiString(ediText);
     foreach var txn in interchange.transactions {
-        if txn.body is error {
-            io:println("Quarantined: ", txn.body.message());
+        ORDERS|error body = txn.body;
+        if body is error {
+            io:println("Quarantined: ", body.message());
             continue;
         }
-        io:println(txn.body);
+        io:println(body);
     }
 
     // Write a filtered or transformed interchange back to EDI text.
@@ -416,9 +417,9 @@ import citymart/porder.m855;
 
 public function main() returns error? {
     string orderText = check io:fileReadString("orders/d15_05_2023/order10.edi");
-    m850:Purchase_Order purchaseOrder = check m850:fromEdiString(orderText);
+    m850:EDI_850_Purchase_Order purchaseOrder = check m850:fromEdiString(orderText);
     ...
-    m855:Purchase_Order_Acknowledgement orderAck = {...};
+    m855:EDI_855_Purchase_Order_Acknowledgement orderAck = {...};
     string orderAckText = check m855:toEdiString(orderAck);
     check io:fileWriteString("acks/d15_05_2023/ack10.edi", orderAckText);
 }
@@ -442,7 +443,7 @@ public function main() returns error? {
     anydata headers = check porder:headersFromEdiString(orderText, porder:EDI_850);
 
     any interchange = check porder:interchangeFromEdiString(orderText, porder:EDI_850);
-    m850:Purchase_OrderInterchange typed = check interchange.ensureType();
+    m850:EDI_850_Purchase_OrderInterchange typed = check interchange.ensureType();
     io:println(typed.groups.length());
 }
 ```

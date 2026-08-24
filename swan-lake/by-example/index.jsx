@@ -2048,6 +2048,14 @@ import {
   codeSnippetData as RecordToEdiCodeSnippetData,
 } from "./record-to-edi/content.jsx";
 import {
+  EdiEnvelopeHeaders,
+  codeSnippetData as EdiEnvelopeHeadersCodeSnippetData,
+} from "./edi-envelope-headers/content.jsx";
+import {
+  EdiInterchangeParsing,
+  codeSnippetData as EdiInterchangeParsingCodeSnippetData,
+} from "./edi-interchange-parsing/content.jsx";
+import {
   EnvironmentVariables,
   codeSnippetData as EnvironmentVariablesCodeSnippetData,
 } from "./environment-variables/content.jsx";
@@ -3351,6 +3359,10 @@ const BBEs = {
   EdiToRecordCodeSnippetData,
   RecordToEdi,
   RecordToEdiCodeSnippetData,
+  EdiEnvelopeHeaders,
+  EdiEnvelopeHeadersCodeSnippetData,
+  EdiInterchangeParsing,
+  EdiInterchangeParsingCodeSnippetData,
   EnvironmentVariables,
   EnvironmentVariablesCodeSnippetData,
   Filepaths,

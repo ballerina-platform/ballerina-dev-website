@@ -5248,20 +5248,37 @@
       {
         "name": "EDI to record conversion",
         "url": "edi-to-record",
-        "verifyBuild": false,
+        "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Includes generated code",
+        "disableVerificationReason": "Includes ballerinax components",
         "isLearnByExample": false,
-        "needCentral": false
+        "needCentral": true
       },
       {
         "name": "Record to EDI conversion",
         "url": "record-to-edi",
-        "verifyBuild": false,
+        "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Includes generated code",
+        "disableVerificationReason": "Includes ballerinax components",
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read EDI envelope headers",
+        "url": "edi-envelope-headers",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": false,
         "needCentral": false
+      },
+      {
+        "name": "Parse an EDI interchange",
+        "url": "edi-interchange-parsing",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "isLearnByExample": false,
+        "needCentral": true
       }
     ]
   },

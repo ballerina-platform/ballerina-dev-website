@@ -205,7 +205,7 @@ export function ZipDecompressUntrusted({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run zip_decompress_untrusted.bal`}</span>
-              <span>{`Refused: the archive holds more than the 2 entries allowed`}</span>
+              <span>{`Refused: cannot extract the archive: it contains more than the 2 entries allowed`}</span>
             </code>
           </pre>
         </Col>

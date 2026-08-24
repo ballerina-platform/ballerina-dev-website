@@ -5,26 +5,44 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/os;
+  `import ballerina/edi;
+import ballerina/io;
 
-public function main() {
-    // Returns the environment variable value associated with the \`HTTP_PORT\`.
-    string port = os:getEnv("HTTP_PORT");
-    io:println("HTTP_PORT: ", port);
+// An X12 interchange. The ISA segment is fixed-width: every element is padded to its
+// standard length, which makes the segment exactly 106 characters.
+final string x12Order = "ISA*00*          *00*          *ZZ*SUPERMART      *ZZ*SUPPLIER456    " +
+    "*260101*1200*U*00401*000000001*0*P*>~" +
+    "GS*PO*SUPERMART*SUPPLIER456*20260101*1200*1*X*004010~ST*850*0001~SE*2*0001~GE*1*1~IEA*1*000000001~";
 
-    // Returns the username of the current user.
-    string username = os:getUsername();
-    io:println("Username: ", username);
+// The same interchange in EDIFACT, where the envelope is UNB/UNZ around UNH/UNT.
+final string edifactOrder = "UNB+UNOA:3+SUPERMART:14+SUPPLIER456:14+260101:1200+REF2'" +
+    "UNH+0001+ORDERS:D:03A:UN'UNT+2+0001'UNZ+1+REF2'";
 
-    // Returns the current user's home directory path.
-    string userHome = os:getUserHome();
-    io:println("Userhome: ", userHome);
+public function main() returns error? {
+    // Read the X12 ISA segment, and the GS segment that follows it. No schema is
+    // involved: the standard envelope layout is built into these functions.
+    edi:X12Headers x12 = check edi:x12HeadersFromEdiString(x12Order);
+    io:println(string \`X12: \${x12.isa.senderId} -> \${x12.isa.receiverId}, control number \${x12.isa.controlNumber}\`);
+    edi:X12GS? gs = x12.gs;
+    if gs is edi:X12GS {
+        io:println(string \`     group \${gs.functionalIdentifier}, version \${gs.version}\`);
+    }
+
+    // The EDIFACT counterpart reads UNB, and UNH when one follows. A UNA service string
+    // advice is honoured when present, including partner-specific delimiters.
+    edi:EdifactHeaders edifact = check edi:edifactHeadersFromEdiString(edifactOrder);
+    io:println(string \`EDIFACT: \${edifact.unb.sender.id} -> \${edifact.unb.recipient.id}, \` +
+        string \`reference \${edifact.unb.controlRef}\`);
+    edi:EdifactUNH? unh = edifact.unh;
+    if unh is edi:EdifactUNH {
+        edi:EdifactMessageIdentifier id = unh.messageIdentifier;
+        io:println(string \`         message \${id.messageType} \${id.version}\${id.release}\`);
+    }
 }
 `,
 ];
 
-export function EnvironmentVariables({ codeSnippets }) {
+export function EdiEnvelopeHeaders({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -34,17 +52,28 @@ export function EnvironmentVariables({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Environment variables</h1>
+      <h1>Read EDI envelope headers</h1>
 
       <p>
-        The <code>os</code> library provides functions to retrieve information
-        about the OS and the current users of the OS.
+        An EDI interchange carries its routing information in the envelope
+        headers: the ISA and GS segments in X12, and UNB and UNH in EDIFACT. The
+        Ballerina <code>edi</code> library reads those segments without a
+        schema, so a trading partner can be identified before deciding how, or
+        whether, to parse the rest of the document.
+      </p>
+
+      <p>
+        <code>x12HeadersFromEdiString</code> and{" "}
+        <code>edifactHeadersFromEdiString</code> read the headers from EDI text.{" "}
+        <code>x12HeadersFromEdiFile</code> and{" "}
+        <code>edifactHeadersFromEdiFile</code> do the same for a file, reading
+        only its first 512 characters.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/os/latest/">
-          <code>os</code> module
+        <a href="https://lib.ballerina.io/ballerina/edi/latest/">
+          <code>edi</code> module
         </a>
         .
       </p>
@@ -55,31 +84,9 @@ export function EnvironmentVariables({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/environment-variables",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -97,7 +104,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 "
+              className="bg-transparent border-0 m-0 p-2  ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -133,9 +140,7 @@ export function EnvironmentVariables({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        To run this sample use the <code>bal run</code> command.
-      </p>
+      <p>Run the program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -190,10 +195,11 @@ export function EnvironmentVariables({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run environment_variables.bal`}</span>
-              <span>{`HTTP_PORT: 5005`}</span>
-              <span>{`Username: Alex`}</span>
-              <span>{`Userhome: /Users/Alex`}</span>
+              <span>{`\$ bal run edi_envelope_headers.bal`}</span>
+              <span>{`X12: SUPERMART -> SUPPLIER456, control number 000000001`}</span>
+              <span>{`     group PO, version 004010`}</span>
+              <span>{`EDIFACT: SUPERMART -> SUPPLIER456, reference REF2`}</span>
+              <span>{`         message ORDERS D03A`}</span>
             </code>
           </pre>
         </Col>
@@ -202,8 +208,8 @@ export function EnvironmentVariables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Parse an EDI interchange"
-            href="/learn/by-example/edi-interchange-parsing/"
+            title="Record to EDI conversion"
+            href="/learn/by-example/record-to-edi/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -230,14 +236,17 @@ export function EnvironmentVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Parse an EDI interchange
+                  Record to EDI conversion
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="File paths" href="/learn/by-example/filepaths/">
+          <Link
+            title="Parse an EDI interchange"
+            href="/learn/by-example/edi-interchange-parsing/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -246,7 +255,7 @@ export function EnvironmentVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File paths
+                  Parse an EDI interchange
                 </span>
               </div>
               <svg

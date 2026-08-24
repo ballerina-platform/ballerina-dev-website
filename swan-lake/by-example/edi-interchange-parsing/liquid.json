@@ -1,0 +1,17 @@
+{
+  "title": "Parse an EDI interchange",
+  "description": "This BBE demonstrates parsing a full EDI interchange into its envelope hierarchy with fail-safe transaction bodies, using a prebuilt EDIFACT package.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "edi",
+    "edifact",
+    "interchange",
+    "envelope",
+    "transaction",
+    "fail-safe"
+  ],
+  "permalink": "/learn/by-example/edi-interchange-parsing/",
+  "active": "edi-interchange-parsing"
+}

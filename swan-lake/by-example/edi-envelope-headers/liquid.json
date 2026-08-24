@@ -1,0 +1,19 @@
+{
+  "title": "Read EDI envelope headers",
+  "description": "This BBE demonstrates reading the envelope headers of an X12 or EDIFACT interchange without a schema, using the Ballerina `edi` library.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "edi",
+    "x12",
+    "edifact",
+    "isa",
+    "unb",
+    "envelope",
+    "headers",
+    "routing"
+  ],
+  "permalink": "/learn/by-example/edi-envelope-headers/",
+  "active": "edi-envelope-headers"
+}

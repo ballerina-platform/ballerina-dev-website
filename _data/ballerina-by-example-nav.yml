@@ -1882,6 +1882,12 @@ sublinks:
           - title: Record to EDI conversion
             id: 2
             url: record-to-edi
+          - title: Read EDI envelope headers
+            id: 3
+            url: edi-envelope-headers
+          - title: Parse an EDI interchange
+            id: 4
+            url: edi-interchange-parsing
       - title: OS
         id: 10
         sublinks:

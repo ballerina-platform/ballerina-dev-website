@@ -61,6 +61,7 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | `cache` | Swan Lake | <a target="_blank" href="/spec/cache/">Snapshot</a> | Cache package of Ballerina language, which provides a mechanism to manage frequently accessed data in-memory by using a semi-persistent mapping from key to value. |
 | `constraint` | Swan Lake | <a target="_blank" href="/spec/constraint/">Snapshot</a> | Constraint package of Ballerina language, which provides APIs to validate the values that have been assigned to Ballerina types. |
 | `crypto` | Swan Lake | <a target="_blank" href="/spec/crypto/">Snapshot</a> | Crypto package of Ballerina language, which provides Crypto functionalities. |
+| `edi` | Swan Lake | <a target="_blank" href="/spec/edi/">Snapshot</a> | EDI package of Ballerina language, which converts EDI text to JSON or typed records and back, against a schema written in JSON, and reads X12 and EDIFACT envelopes. |
 | `email` | Swan Lake | <a target="_blank" href="/spec/email/">Snapshot</a> | Email package of Ballerina language, which provides functionalities related to sending/receiving emails via SMTP, POP3, and IMAP protocols. |
 | `file` | Swan Lake | <a target="_blank" href="/spec/file/">Snapshot</a> | File package of Ballerina language, which provides APIs to perform file, file path, and directory operations. |
 | `ftp` | Swan Lake | <a target="_blank" href="/spec/ftp/">Snapshot</a> | FTP package of Ballerina language, which provides FTP client/listener functionalities to send and receive files by connecting to FTP/SFTP server. |

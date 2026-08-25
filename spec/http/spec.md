@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2024/06/13   
+_Updated_: 2026/08/18   
 _Edition_: Swan Lake
 
 
@@ -89,6 +89,7 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Query](#52-query)
     * 5.3. [Matrix](#53-matrix)
 6. [Request and Response](#6-request-and-response)
+    * 6.1. [Message body streaming and back-pressure](#61-message-body-streaming-and-back-pressure)
 7. [Header and Payload](#7-header-and-payload)
     * 7.1. [Parse header functions](#71-parse-header-functions)
     * 7.2. [Links support](#72-links-support)
@@ -178,7 +179,6 @@ public type ListenerConfiguration record {|
     string? server = ();
     RequestLimitConfigs requestLimits = {};
     int http2InitialWindowSize = 65535;
-    int http2MaxActiveStreams = 100;
     decimal minIdleTimeInStaleState = 300;
     decimal timeBetweenStaleEviction = 30;
 |};
@@ -259,15 +259,9 @@ password = "ballerina"
 #### 2.1.4. HTTP/2 stream concurrency
 
 Each HTTP/2 connection can carry multiple requests concurrently over independent streams. The listener limits the
-number of concurrent streams a single connection can open, advertised to clients via the `SETTINGS_MAX_CONCURRENT_STREAMS`
-parameter, using the `http2MaxActiveStreams` field of the `ListenerConfiguration`. This defaults to `100`, the value
-recommended by [RFC 7540 Section 6.5.2](https://www.rfc-editor.org/rfc/rfc7540#section-6.5.2).
-
-```ballerina
-listener http:Listener h2Listener = new (9090, {
-    http2MaxActiveStreams: 500
-});
-```
+number of concurrent streams a single connection can open to `100`, advertised to clients via the
+`SETTINGS_MAX_CONCURRENT_STREAMS` parameter. This is the value recommended by
+[RFC 7540 Section 6.5.2](https://www.rfc-editor.org/rfc/rfc7540#section-6.5.2).
 
 A client that reaches this limit on a connection opens an additional connection rather than stalling.
 
@@ -2082,6 +2076,21 @@ public class Response {
 ```
 
 The header and the payload manipulation can be done using the functions associated to the response.
+
+### 6.1. Message body streaming and back-pressure
+
+Message bodies are moved on demand rather than buffered in full. An inbound body is read from the connection as the application consumes what has already been delivered, and an outbound body is written as the remote endpoint accepts it. An application that consumes or produces a body slowly therefore holds the transfer still, and no data moves on the connection while that lasts.
+
+The `timeout` of a client or a listener measures the responsiveness of the remote endpoint. Inactivity that is caused by the pace of the application itself is not a sign of an unresponsive remote endpoint, and does not make the connection eligible for the timeout. A large body is transferred in full however slowly it is consumed, while a remote endpoint that genuinely stops responding is still timed out after the configured period. For HTTP/2, this exclusion applies to both directions of a stream: consuming a response slowly and writing a request slowly are both distinguished from an unresponsive peer. For HTTP/1.1, only the inbound direction currently participates in it - an application that reads a request or response body slowly is protected the same way, but a peer that reads a response or request body slowly from an HTTP/1.1 connection is not yet distinguished from one that has genuinely stopped responding.
+
+That allowance is bounded, so that a connection can still be reclaimed from an application that has stopped consuming altogether, or from a remote endpoint that has stopped reading. A transfer that makes no progress at all is treated as stalled once the connection's own `timeout` has already elapsed once for it, and continues to be excused for up to `maxBackPressureStallTime` further seconds before the timeout applies as usual. Any progress, however small, restarts that span. A transfer that never makes progress again is therefore reclaimed after `timeout + maxBackPressureStallTime`, not `maxBackPressureStallTime` alone. The default is 300 seconds:
+
+```toml
+[ballerina.http]
+maxBackPressureStallTime = 600
+```
+
+A negative value allows back-pressure to hold a transfer still indefinitely. Zero removes the allowance entirely, so that any inactivity is treated as an idle connection.
 
 ## 7. Header and Payload
 The header and payload are the main components of the request and response. In the world of MIME, that is called 

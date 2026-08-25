@@ -53,7 +53,7 @@ The `avro:Schema` instance needs to be initialized before performing the functio
 The `init` method can be used to initialize the `avro:Schema` instance. This method has a parameter named `schema` which accepts Avro schemas in the `string` format. The method will return an `avro:Error` in case of failure.
 
 ```ballerina
-avro:Schema schema = check new ("avro-schema-string");
+avro:Schema schema = check new(string `{"type": "int", "namespace": "example.data" }`);
 ```
 
 ## 3. Serialize data into bytes

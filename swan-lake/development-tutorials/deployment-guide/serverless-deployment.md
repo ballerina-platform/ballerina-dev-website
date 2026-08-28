@@ -210,7 +210,7 @@ AWS delivers a record that describes the invocation to the destination rather th
 }
 ```
 
->**Note:** Destinations apply to asynchronous invocations only. A function invoked synchronously, such as through a function URL, through an event source mapping that polls a queue or a stream, or through an `aws lambda invoke` command without `--invocation-type Event`, returns its result to the caller and never routes to a destination.
+>**Note:** The `destinations` field configures function-level destinations, which apply to asynchronous invocations only. A function invoked synchronously, such as through a function URL or through an `aws lambda invoke` command without `--invocation-type Event`, returns its result to the caller instead. An event source mapping that polls a queue or a stream also invokes the function synchronously and does not use this field, although some event source mappings support an `OnFailure` destination of their own, which is configured on the mapping rather than on the function.
 
 >**Note:** The execution role of the function needs permission to write to the destination (e.g., `sqs:SendMessage` for an SQS queue). Without it, the invocation succeeds but the record is never delivered, and Lambda reports this through the `DestinationDeliveryFailures` CloudWatch metric rather than as an invocation error.
 

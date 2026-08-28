@@ -186,18 +186,20 @@ import ballerinax/aws.lambda;
 
 @lambda:Function {
     destinations: {
-        onSuccess: "arn:aws:sqs:$REGION_ID:$ACCOUNT_ID:orders-processed",
-        onFailure: "arn:aws:sns:$REGION_ID:$ACCOUNT_ID:alerts"
+        onSuccess: "arn:aws:sqs:<REGION_ID>:<ACCOUNT_ID>:orders-processed",
+        onFailure: "arn:aws:sns:<REGION_ID>:<ACCOUNT_ID>:alerts"
     }
 }
-public function processOrder(lambda:Context ctx, lambda:SQSEvent event) returns json {
-    return event.Records[0].body;
+public function processOrder(lambda:Context ctx, json input) returns json {
+    return {status: "ok"};
 }
 ```
 
+>**Note:** The destination ARNs are ordinary Ballerina strings. Therefore, replace the `<REGION_ID>` and `<ACCOUNT_ID>` placeholders in the source itself before you build the package.
+
 Either field can be omitted, and a destination can be an SQS queue, an SNS topic, an EventBridge event bus, or another Lambda function. Destinations are configured separately from the function itself. Therefore, the compiler prints an `aws lambda put-function-event-invoke-config` command alongside the deploy commands, which you execute after the function is deployed.
 
-AWS delivers a record that describes the invocation to the destination rather than the value the function returned. A successful invocation delivers the request payload and the response payload with a `condition` of `Success`, as shown below, and a failed one carries a `condition` of `RetriesExhausted` along with the error the function returned.
+AWS delivers a record that describes the invocation to the destination rather than the value the function returned. A successful invocation delivers the request payload and the response payload with a `condition` of `Success`, as shown below. A failed one carries a `condition` of either `RetriesExhausted`, when the function kept failing until the retries ran out, or `EventAgeExceeded`, when the event waited longer than the `MaximumEventAgeInSeconds` configured for the function.
 
 ```json
 {
@@ -208,7 +210,7 @@ AWS delivers a record that describes the invocation to the destination rather th
 }
 ```
 
->**Note:** Destinations apply to asynchronous invocations only. A function invoked synchronously, such as through a function URL or an `aws lambda invoke` command without `--invocation-type Event`, returns its result to the caller and never routes to a destination.
+>**Note:** Destinations apply to asynchronous invocations only. A function invoked synchronously, such as through a function URL, through an event source mapping that polls a queue or a stream, or through an `aws lambda invoke` command without `--invocation-type Event`, returns its result to the caller and never routes to a destination.
 
 >**Note:** The execution role of the function needs permission to write to the destination (e.g., `sqs:SendMessage` for an SQS queue). Without it, the invocation succeeds but the record is never delivered, and Lambda reports this through the `DestinationDeliveryFailures` CloudWatch metric rather than as an invocation error.
 
@@ -257,7 +259,8 @@ jobs:
       # Optional: Test the Lambda Function
       - name: Invoke Lambda Function
         run: |
-          aws lambda invoke --function-name your_lambda_function_name --payload '{}' response.json
+          aws lambda invoke --function-name your_lambda_function_name --payload '{}' \
+            --cli-binary-format raw-in-base64-out response.json
           cat response.json
 ```
 - **Step 01:** The push event can initiate a build and deployment process

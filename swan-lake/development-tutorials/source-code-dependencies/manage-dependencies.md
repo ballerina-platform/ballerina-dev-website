@@ -292,6 +292,51 @@ The Ballerina compiler will copy the specified JAR file from the provided path w
 
 >**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. You can also specify different scopes to control how platform dependencies are used during program execution. For more information on this, see [Package references](/learn/package-references/).
 
+## Publish a Software Bill of Materials (SBOM)
+
+Starting from the Ballerina distribution `2201.13.6`, `bal pack` generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) for the package, alongside the `.bala` file at `target/bala/bom.cdx.json`. The SBOM describes every Ballerina package and every platform dependency (see [Manage platform dependencies](#manage-platform-dependencies)) in the package's resolved dependency graph.
+
+* A platform dependency declared with `groupId`, `artifactId`, and `version` is recorded using its Maven coordinates and a SHA-256 hash of the packaged JAR file.
+* A platform dependency declared only with a local `path` has no Maven coordinates to identify it by, so it is recorded using its file name and a SHA-256 hash of its content instead. Since such a dependency cannot be matched against a Maven-based vulnerability database, `bal pack` prints a warning listing every dependency of this kind.
+
+If SBOM generation fails for any reason, `bal pack` fails the build rather than silently packing a bala without one.
+
+### Publish the SBOM to a custom repository
+
+`bal push` automatically publishes the SBOM alongside the bala when pushing to a custom repository, so no separate step is required. The SBOM is uploaded as a raw file named `bom.cdx.json`, at the same repository location the bala itself is deployed to, rather than as a versioned Maven artifact.
+
+Because of this, the custom repository must be configured in Artifactory as a Generic repository with a Maven 2 repository layout:
+* The Maven 2 layout is required because the bala is deployed using standard Maven coordinates (`groupId` set to the package `org`, `artifactId` set to the package `name`), so the repository needs to lay out paths the same way a Maven repository would.
+* The repository type must be Generic, not Maven. A Maven-type repository in Artifactory is restricted to Maven-specific artifact handling, so JFrog Xray does not scan it for SBOMs. A Generic repository is scanned by Xray, which is what allows the published SBOM to be picked up for vulnerability scanning.
+
+Follow the steps below to set up a Generic repository in Artifactory.
+
+1. Create a local repository
+
+   > **Click Create a Repository → Create a Repository → Choose a Repository Type**
+
+   ![Create a local repository in Artifactory](/learn/images/artifactory-repo-type.png "Create a local repository in Artifactory")
+
+2. Select the Generic package type
+
+   From the package type grid, select Generic.
+
+   ![Select the Generic package type](/learn/images/artifactory-select-repository.png "Select the Generic package type")
+
+3. Configure the repository key and layout
+
+   Set the Repository Key (this becomes part of the repository's base URL), and set Repository Layout to `maven-2-default`. Then, click Create Local Repository.
+
+   ![Set the repository key and Maven 2 layout](/learn/images/artifactory-create-repository.png "Set the repository key and Maven 2 layout")
+
+Use the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`) as the `url` when [defining the custom repository](#define-the-custom-repository) in `Settings.toml`.
+
+Once you push a package to this repository, Xray scans the published SBOM and reports any vulnerabilities found in the package dependencies.
+
+![Xray scan results for a published SBOM](/learn/images/artifactory-xray-scan.png "Xray scan results for a published SBOM")
+
+For more information on configuring a custom repository, see [Use custom repositories for package management](#use-custom-repositories-for-package-management).
+
 ## Manage tool dependencies
 
 Similar to package dependencies, tools specified in `Ballerina.toml` and executed in the package build are also resolved from the distribution repository and the Ballerina Central repository. The tool dependency resolution mechanism is akin to package dependencies. Once resolved, the tool versions are automatically recorded in the `Dependencies.toml` file and used as the minimum required versions for subsequent builds.

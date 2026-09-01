@@ -29,11 +29,11 @@ The Ballerina Central is a remote repository and creates a local file system cac
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/bala`. 
-For more information, see [Use dependencies from the local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+For more information, see [Local repository](/learn/local-repository/).
 
 **Custom repositories**
 
-Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use custom repositories for package management](/learn/manage-dependencies/#use-custom-repositories-for-package-management).
+Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use custom repositories for package management](#use-custom-repositories-for-package-management).
 
 ### Import a module
 
@@ -121,74 +121,19 @@ When a new Swan Lake update distribution is released, it may include incompatibl
 
 ## Use dependencies from the local repository
 
-The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.
-
-1. Generate the Ballerina archive after editing the package source files as required.
-
-   ```
-   $ bal pack
-   ```
-
-2. Publish to the local repository.
-   ```
-   $ bal push --repository local
-   ```
-
-   If you already have the path of Ballerina archive, then you can simply execute the following command.
-
-    ```
-    $ bal push --repository local <path-to-bala-archive>
-    ```
-
-3. Specify the dependency in the `Ballerina.toml` file.
-
-    ```toml
-    [[dependency]]
-    org = "ballerinax"
-    name = "googleapis.gmail"
-    version = "2.1.1"
-    repository = "local"
-    ```
-
-Once you complete the above steps, the dependency will be picked from the local repository when building the package.
-Ballerina considers the version specified in the `Ballerina.toml` file as the minimum required version and uses the local repository to resolve the dependency.
-However, the compiler gives priority to the latest version if a new patch version is found in the distribution or Ballerina Central repositories.
-At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
-
+The local repository is useful to test a package in the development phase or to fix bugs. To use a dependency from the local repository, publish it there with `bal push --repository local`, then reference it in the `Ballerina.toml` file with `repository = "local"`. For more information on this, see [Local repository](/learn/local-repository/).
 
 ## Use custom repositories for package management
 
-Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/), [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-maven-registry), and [GitLab packages](https://docs.gitlab.com/user/packages/package_registry/) to be set up as custom repositories.
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/), [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-maven-registry), and [GitLab packages](https://docs.gitlab.com/user/packages/package_registry/) to be set up as custom repositories — either to host your organization's own private Ballerina packages, or as a caching proxy for Ballerina Central.
 
 ### Create the repository
 
-Before configuring Ballerina, create the repository in your chosen repository manager. For Nexus, GitHub Packages, or GitLab packages, create a standard Maven-type repository following your provider's documentation.
+Before configuring Ballerina, create the repository in your chosen repository manager.
 
-If you're using Artifactory, create it as a Generic repository with a Maven layout instead of a Maven-type repository, so that it can be used to automatically scan for vulnerabilities with [JFrog Xray](https://jfrog.com/xray/).
-
-#### Set up a repository in Artifactory
-
-Follow the steps below to set up a Generic repository in Artifactory.
-
-1. Create a local repository
-
-   > **Click Create a Repository → Choose a Repository Type**
-
-   ![Create a local repository in Artifactory](/learn/images/artifactory-repo-type.png "Create a local repository in Artifactory")
-
-2. Select the Generic package type
-
-   From the package type grid, select Generic.
-
-   ![Select the Generic package type](/learn/images/artifactory-select-repository.png "Select the Generic package type")
-
-3. Configure the repository key and layout
-
-   Set the Repository Key (this becomes part of the repository's base URL), and set Repository Layout to `maven-2-default`.
-
-   ![Set the repository key and Maven 2 layout](/learn/images/artifactory-create-repository.png "Set the repository key and Maven 2 layout")
-
-4. Copy the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`). You will use it when defining the custom repository below.
+* For **Artifactory**, see [JFrog Artifactory](/learn/set-up-artifactory).
+* For **Nexus**, see [Sonatype Nexus](/learn/set-up-nexus).
+* In **GitLab packages** and **GitHub Packages**, each publishes to an existing project or repository. See the official [GitLab's documentation](https://docs.gitlab.com/user/packages/package_registry/) or [GitHub's documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-maven-registry) to find the Maven registry endpoint for your project or repository.
 
 ### Define the custom repository
 
@@ -202,7 +147,7 @@ username = "<username>/<userId>"
 accesstoken = "<password>/<accesstoken>"
 ```
 
-Below is a sample repository configuration.
+Below is a sample GitLab repository configuration.
 
 ```toml
 [[repository.maven]]
@@ -212,13 +157,13 @@ username = "jackson12"
 accesstoken = "glpat-hnMlJsjshhdtdt5367389920020hHfrdrd"
 ```
 
-The sections below show how to configure the above GitLab package repository to resolve a specific dependency.
+The sections below show how to configure the above package repository to resolve a specific dependency.
 
 ### Publish a Ballerina package to the custom repository
 
 Follow the steps below to publish a Ballerina package to the custom repository you configured above.
 
-1. Generate the Ballerina archive for the package. 
+1. Generate the Ballerina archive for the package.
 
    ```
    $ bal pack
@@ -237,6 +182,49 @@ Follow the steps below to publish a Ballerina package to the custom repository y
     ```
 
 For more information on using the published package as a dependency, see [Specify dependencies](#specify-dependencies).
+
+## Proxy Ballerina Central with a Maven repository
+
+Organizations use repository managers such as [JFrog Artifactory](https://jfrog.com/artifactory/) or [Sonatype Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) to serve as a caching proxy for Ballerina Central.
+
+### Set up the proxy repository
+
+The organization should have a repository manager hosted on-premises or in the cloud with the following requirements satisfied.
+
+- Support for Maven repository format
+- Support for caching proxy repositories
+- Support for flexible MIME types
+
+Both [JFrog Artifactory](https://jfrog.com/artifactory/) and [Sonatype Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) have been tested and verified against the above requirements.
+
+* For **Artifactory**, see [JFrog Artifactory](/learn/set-up-artifactory/#configure-a-proxy-repository).
+* For **Nexus**, see [Sonatype Nexus](/learn/set-up-nexus/#configure-a-proxy-repository).
+
+### Configure the Ballerina client to proxy Ballerina Central
+
+You can configure only one proxy repository in the `<USER_HOME>/.ballerina/Settings.toml` file to use in place of Ballerina Central. A typical configuration looks like the following.
+
+```toml
+[[repository.maven]]
+id = "<repository-id>"        # This ID is used when pushing/pulling packages
+url = "<repository-url>"
+username = "<username> or <userId>"
+accesstoken = "<password> or <accesstoken>"
+proxyCentral = true
+```
+
+Replace the placeholders as follows.
+
+| Placeholder | Description |
+| --- | --- |
+| `<repository-id>` | A unique identifier for the repository entry (e.g., `nexus-ballerina-proxy` or `artifactory-ballerina-proxy`) |
+| `<repository-url>` | The full URL of the proxy repository you created in Nexus or Artifactory |
+| `<username> or <userId>` | Your Nexus or Artifactory username or user ID |
+| `<password> or <accesstoken>` | Your Nexus or Artifactory password or access token |
+
+Once the configuration is done, all Ballerina Central calls will be redirected through this Maven-based proxy repository.
+
+> **Note:** Only one `[[repository.maven]]` entry with `proxyCentral = true` is allowed at a time. If multiple entries have `proxyCentral = true`, Ballerina will return an error.
 
 ## Achieve reproducible builds
 

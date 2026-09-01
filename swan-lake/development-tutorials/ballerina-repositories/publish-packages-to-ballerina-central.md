@@ -1,11 +1,11 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
-title: Publish packages to Ballerina Central
-description: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
-keywords: ballerina, programming language, ballerina packages, publishing packages
-permalink: /learn/publish-packages-to-ballerina-central/
+title: Ballerina Central
+description: Ballerina Central is the public library of reusable Ballerina packages. This page walks through creating a package, publishing it to Ballerina Central, using a published package as a dependency, and deprecating a package or version you no longer want resolved.
+keywords: ballerina, programming language, ballerina packages, ballerina central, publishing packages
+permalink: /learn/ballerina-central/
 active: publish-packages-to-ballerina-central
-intro: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
+intro: "[Ballerina Central](https://central.ballerina.io/) is the public repository for sharing Ballerina packages. This page walks through the steps for creating a package, publishing it to Ballerina Central, using a published package as a dependency, and deprecating a package or version you no longer want resolved."
 ---
 
 ## Create a package
@@ -57,7 +57,7 @@ Creating bala
 
 You can publish a Ballerina archive to the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
->**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the package before publishing it to Ballerina Central.
+>**Tip:** As a precaution, use the [local repository](/learn/local-repository/) first to test out the functionality of the package before publishing it to Ballerina Central.
 
 ### Obtain an access token
 

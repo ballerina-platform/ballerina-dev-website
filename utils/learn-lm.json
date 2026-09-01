@@ -823,36 +823,62 @@
                     ]
                 },
                 {
-                    "dirName": "Reuse code with Ballerina Central",
+                    "dirName": "Reuse code with Package Repositories",
                     "level": 2,
                     "position": 10,
                     "isDir": true,
-                    "url": "/learn/ballerina-central",
-                    "id": "ballerina-central",
+                    "url": "/learn/ballerina-repositories",
+                    "id": "ballerina-repositories",
                     "subDirectories": [
                         {
-                            "dirName": "Publish packages to Ballerina Central",
+                            "dirName": "Ballerina Central",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/publish-packages-to-ballerina-central",
+                            "url": "/learn/ballerina-central",
                             "id": "publish-packages-to-ballerina-central"
+                        },
+                        {
+                            "dirName": "Custom Repositories",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": true,
+                            "url": "/learn/custom-repositories",
+                            "id": "custom-repositories",
+                            "subDirectories": [
+                                {
+                                    "dirName": "Local repository",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/local-repository",
+                                    "id": "local-repository"
+                                },
+                                {
+                                    "dirName": "JFrog Artifactory",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/set-up-artifactory",
+                                    "id": "set-up-artifactory"
+                                },
+                                {
+                                    "dirName": "Sonatype Nexus",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/set-up-nexus",
+                                    "id": "set-up-nexus"
+                                }
+                            ]
                         },
                         {
                             "dirName": "Configure a network proxy",
                             "level": 3,
-                            "position": 2,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/configure-a-network-proxy",
                             "id": "configure-a-network-proxy"
-                        },
-                        {
-                            "dirName": "Proxy Ballerina Central with a Maven Repository",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/proxy-ballerina-central-with-maven-repository",
-                            "id": "proxy-ballerina-central-with-maven-repository"
                         }
                     ]
                 },

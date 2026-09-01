@@ -158,11 +158,47 @@ At this point, the compiler resolves the latest version and ignores the dependen
 
 ## Use custom repositories for package management
 
-Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/), and [GitLab packages](https://docs.gitlab.com/user/packages/package_registry/) to be set up as custom repositories. 
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/), [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-maven-registry), and [GitLab packages](https://docs.gitlab.com/user/packages/package_registry/) to be set up as custom repositories.
+
+### Create the repository
+
+Before configuring Ballerina, create the repository in your chosen repository manager. For Nexus, GitHub Packages, or GitLab packages, create a standard Maven-type repository following your provider's documentation.
+
+If you're using Artifactory, create it as a Generic repository with a Maven layout instead of a Maven-type repository, so that it can be used to automatically scan for vulnerabilities with [JFrog Xray](https://jfrog.com/xray/).
+
+#### Set up a repository in Artifactory
+
+Follow the steps below to set up a Generic repository in Artifactory.
+
+1. Create a local repository
+
+   > **Click Create a Repository → Choose a Repository Type**
+
+   ![Create a local repository in Artifactory](/learn/images/artifactory-repo-type.png "Create a local repository in Artifactory")
+
+2. Select the Generic package type
+
+   From the package type grid, select Generic.
+
+   ![Select the Generic package type](/learn/images/artifactory-select-repository.png "Select the Generic package type")
+
+3. Configure the repository key and layout
+
+   Set the Repository Key (this becomes part of the repository's base URL), and set Repository Layout to `maven-2-default`.
+
+   ![Set the repository key and Maven 2 layout](/learn/images/artifactory-create-repository.png "Set the repository key and Maven 2 layout")
+
+4. Verify Xray indexing is enabled
+
+   Scroll down to the `JFrog Xray Integration` section and confirm that `Enable Indexing In Xray` is turned on. This is enabled by default, but it's worth confirming since Xray only scans repositories that are indexed. Then, click `Create Local Repository`.
+
+   ![Enable indexing in Xray for the repository](/learn/images/xray-indexing.png "Enable indexing in Xray for the repository")
+
+5. Copy the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`). You will use it when defining the custom repository below.
 
 ### Define the custom repository
 
-You can configure one or multiple custom repositories in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate them into the package resolution.
+You can configure one or multiple custom repositories in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate them into the package resolution. Use the base URL of the repository you created above as the `url`.
 
 ```toml
 [[repository.maven]]
@@ -205,6 +241,21 @@ Follow the steps below to publish a Ballerina package to the custom repository y
     ```
     $ bal push --repository <repository-id> <path-to-bala-archive>
     ```
+
+For more information on using the published package as a dependency, see [Specify dependencies](#specify-dependencies).
+
+### Scan packages in the repository for vulnerabilities
+
+> **Note:** This feature is only supported with JFrog Artifactory, and only for a private repository — not for a repository used to [proxy Ballerina Central](/learn/proxy-ballerina-central-with-maven-repository).
+
+Starting from the Ballerina distribution `2201.13.6`, `bal pack` generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) for the package, alongside the `.bala` file. `bal push` automatically publishes this SBOM alongside the `.bala` when pushing to a custom repository. 
+
+The SBOM is uploaded as a raw file named `<package-name>-<version>.cdx.json`, at the same repository location the `.bala` is deployed to.
+
+If the repository was set up in Artifactory as a Generic repository with Xray indexing enabled (see [Set up a repository in Artifactory](#set-up-a-repository-in-artifactory) above), Xray scans the published SBOM automatically and shows the security issues found, along with the software components listed in the SBOM.
+
+
+![Xray scan results for a published SBOM](/learn/images/artifactory-xray-scan.png "Xray scan results for a published SBOM")
 
 ## Achieve reproducible builds
 
@@ -291,57 +342,6 @@ path = "<path-to-jar-file-1>"
 The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
 
 >**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. You can also specify different scopes to control how platform dependencies are used during program execution. For more information on this, see [Package references](/learn/package-references/).
-
-## Generate a Software Bill of Materials (SBOM)
-
-Starting from the Ballerina distribution `2201.13.6`, `bal pack` generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) for the package, alongside the `.bala` file at `target/bala/<package-name>-<version>.cdx.json`. The SBOM describes every Ballerina package and every platform dependency (see [Manage platform dependencies](#manage-platform-dependencies)) in the package's resolved dependency graph.
-
-* A platform dependency declared with `groupId`, `artifactId`, and `version` is recorded using its Maven coordinates and a SHA-256 hash of the packaged JAR file.
-* A platform dependency declared only with a local `path` has no Maven coordinates to identify it by, so it is recorded using its file name and a SHA-256 hash of its content instead. Since such a dependency cannot be matched against a Maven-based vulnerability database, `bal pack` prints a warning listing every dependency of this kind.
-
-If SBOM generation fails for any reason, `bal pack` fails the build rather than silently packing a bala without one.
-
-### Publish the SBOM to a custom repository
-
-`bal push` automatically publishes the SBOM alongside the bala when pushing to a custom repository, so no separate step is required. The SBOM is uploaded as a raw file named `<package-name>-<version>.cdx.json`, at the same repository location the bala itself is deployed to, rather than as a versioned Maven artifact.
-
-Because of this, the custom repository must be configured in Artifactory as a Generic repository with a Maven 2 repository layout:
-* The Maven 2 layout is required because the bala is deployed using standard Maven coordinates (`groupId` set to the package `org`, `artifactId` set to the package `name`), so the repository needs to lay out paths the same way a Maven repository would.
-* The repository type must be Generic, not Maven. Since the SBOM is uploaded as a standalone raw CycloneDX file rather than a Maven artifact, it must be placed in a Generic repository, which is what Xray uses for standalone SBOM import and scanning. Xray can scan Maven repositories too, but only for Maven-format artifacts.
-
-Follow the steps below to set up a Generic repository in Artifactory.
-
-1. Create a local repository
-
-   > **Click Create a Repository → Create a Repository → Choose a Repository Type**
-
-   ![Create a local repository in Artifactory](/learn/images/artifactory-repo-type.png "Create a local repository in Artifactory")
-
-2. Select the Generic package type
-
-   From the package type grid, select Generic.
-
-   ![Select the Generic package type](/learn/images/artifactory-select-repository.png "Select the Generic package type")
-
-3. Configure the repository key and layout
-
-   Set the Repository Key (this becomes part of the repository's base URL), and set Repository Layout to `maven-2-default`.
-
-   ![Set the repository key and Maven 2 layout](/learn/images/artifactory-create-repository.png "Set the repository key and Maven 2 layout")
-
-4. Verify Xray indexing is enabled
-
-   Scroll down to the JFrog Xray Integration section and confirm that Enable Indexing In Xray is turned on. This is enabled by default, but it's worth confirming since Xray only scans repositories that are indexed. Then, click Create Local Repository.
-
-   ![Enable indexing in Xray for the repository](/learn/images/xray-indexing.png "Enable indexing in Xray for the repository")
-
-Use the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`) as the `url` when [defining the custom repository](#define-the-custom-repository) in `Settings.toml`.
-
-After you push a package to this repository, Xray scans the published SBOM and shows the security issues found, along with the software components listed in the SBOM.
-
-![Xray scan results for a published SBOM](/learn/images/artifactory-xray-scan.png "Xray scan results for a published SBOM")
-
-For more information on configuring a custom repository, see [Use custom repositories for package management](#use-custom-repositories-for-package-management).
 
 ## Manage tool dependencies
 

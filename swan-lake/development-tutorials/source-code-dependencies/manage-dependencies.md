@@ -190,7 +190,7 @@ Follow the steps below to set up a Generic repository in Artifactory.
 
 4. Verify Xray indexing is enabled
 
-   Scroll down to the `JFrog Xray Integration` section and confirm that `Enable Indexing In Xray` is turned on. This is enabled by default, but it's worth confirming since Xray only scans repositories that are indexed. Then, click `Create Local Repository`.
+   Scroll down to the `JFrog Xray Integration` section and confirm that `Enable Indexing In Xray` is turned on. Then, click `Create Local Repository`.
 
    ![Enable indexing in Xray for the repository](/learn/images/xray-indexing.png "Enable indexing in Xray for the repository")
 

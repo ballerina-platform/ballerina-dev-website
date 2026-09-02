@@ -541,6 +541,10 @@ const nextConfig = {
         destination: `/learn/development-tutorials/static-code-analysis/scan-rules`,
       },
       {
+        source: `/learn/language-security-guarantees`,
+        destination: `/learn/development-tutorials/static-code-analysis/language-security-guarantees`,
+      },
+      {
         source: `/${redirectBase}learn/consolidate-packages-tool`,
         destination: `/${redirectBase}learn/development-tutorials/additional-tools/consolidate-packages-tool`,
       },

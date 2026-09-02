@@ -11,14 +11,46 @@ code smells, bugs, and vulnerabilities.
 These rules are designed to help developers maintain high-quality code and
 adhere to best practices.
 
+## Security standards mapping
+
+The table below maps the rules that have a known security weakness association to their [CWE](https://cwe.mitre.org/) identifiers and the corresponding [OWASP Top 10:2025](https://owasp.org/Top10/) categories.
+
+| Rule ID            | Rule                                                                                         | CWE                                                                                                                    | OWASP Top 10:2025                                                                                                                                |
+|--------------------|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| ballerina:1        | Avoid checkpanic                                                                             | [CWE-248](https://cwe.mitre.org/data/definitions/248.html), [CWE-636](https://cwe.mitre.org/data/definitions/636.html) | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:7        | This operation always evaluates to true                                                      | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:8        | This operation always evaluates to false                                                     | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:9        | This operation always evaluates to the same value                                            | [CWE-1023](https://cwe.mitre.org/data/definitions/1023.html)                                                           | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:10       | This variable is assigned to itself                                                          | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                           | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:12       | Invalid range expression                                                                     | [CWE-606](https://cwe.mitre.org/data/definitions/606.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina/crypto:1 | Avoid using insecure cipher modes or padding schemes                                         | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
+| ballerina/crypto:2 | Avoid using fast hashing algorithms                                                          | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
+| ballerina/crypto:3 | Avoid reusing counter mode initialization vectors                                            | [CWE-329](https://cwe.mitre.org/data/definitions/329.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
+| ballerina/file:1   | Avoid using publicly writable directories for file operations without proper access controls | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/file:2   | File function calls should not be vulnerable to path injection attacks                       | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                                               | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/http:1   | Avoid allowing default resource accessor                                                     | [CWE-352](https://cwe.mitre.org/data/definitions/352.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/http:2   | Avoid permissive Cross-Origin Resource Sharing                                               | [CWE-942](https://cwe.mitre.org/data/definitions/942.html)                                                             | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)                                                |
+| ballerina/http:3   | Server-side requests should not be vulnerable to traversing attacks                          | [CWE-918](https://cwe.mitre.org/data/definitions/918.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/http:4   | HTTP request redirections should not be open to forging attacks                              | [CWE-601](https://cwe.mitre.org/data/definitions/601.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/io:1     | I/O function calls should not be vulnerable to path injection attacks                        | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                                               | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                        |
+| ballerina/log:1    | Potentially-sensitive configurable variables are logged                                      | [CWE-532](https://cwe.mitre.org/data/definitions/532.html)                                                             | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)                      |
+| ballerina/os:1     | Avoid constructing system command arguments from user input without proper sanitization      | [CWE-78](https://cwe.mitre.org/data/definitions/78.html), [CWE-88](https://cwe.mitre.org/data/definitions/88.html)     | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                                                |
+| ballerina/os:2     | Avoid constructing environment variables from user input without proper sanitization         | [CWE-88](https://cwe.mitre.org/data/definitions/88.html), [CWE-454](https://cwe.mitre.org/data/definitions/454.html)   | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/), [A06 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/) |
+| ballerina/jwt:1    | Avoid using weak cipher algorithms when signing and verifying JWTs                           | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
+| ballerina/email:1  | Avoid unverified server hostnames during SSL/TLS connections                                 | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                    |
+
+> **Note:** The 15 security rules (Rule Kind: Vulnerability) reference 18 distinct CWEs: CWE-22, CWE-78, CWE-88, CWE-295, CWE-297, CWE-327, CWE-329, CWE-347, CWE-352, CWE-377, CWE-379, CWE-454, CWE-532, CWE-601, CWE-780, CWE-916, CWE-918, and CWE-942. The six language rules listed above reference a further seven: CWE-248, CWE-570, CWE-571, CWE-606, CWE-636, CWE-1023, and CWE-1164 — 25 distinct CWEs across all 21 mapped rules. The remaining six language rules (`ballerina:2`, `ballerina:3`, `ballerina:4`, `ballerina:5`, `ballerina:6`, and `ballerina:11`) are maintainability rules and have no CWE mapping.
+
 ## Language rules
 
 ### Avoid checkpanic
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:1 |
-| **Rule Kind** | Code Smell  |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:1                                                                                                               |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-248](https://cwe.mitre.org/data/definitions/248.html), [CWE-636](https://cwe.mitre.org/data/definitions/636.html)    |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 When `checkpanic` is used, the program terminates abruptly with a `panic` unless it’s handled explicitly along the call
 stack.
@@ -252,10 +284,12 @@ public type Hashable isolated object {
 
 ### This operation always evaluates to true
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:7 |
-| **Rule Kind** | Code Smell  |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:7                                                                                                               |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                                |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions that are always true don't do any meaningful computation. They increase code complexity, reduce the code
 readability and potentially hide logical errors.
@@ -271,10 +305,12 @@ public function main() {
 
 ### This operation always evaluates to false
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:8 |
-| **Rule Kind** | Code Smell  |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:8                                                                                                               |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                                |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions that are always false indicate unreachable code or logic that will never execute. This can clutter the
 codebase, make it harder to understand, and potentially hide bugs or unintentional logic errors.
@@ -290,10 +326,12 @@ public function main() {
 
 ### This operation always evaluates to the same value
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:9 |
-| **Rule Kind** | Code Smell  |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:9                                                                                                               |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-1023](https://cwe.mitre.org/data/definitions/1023.html)                                                              |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions which always evaluate to the same value don't do any meaningful computation. They increase code complexity,
 reduce the code readability, and potentially hide logical errors.
@@ -308,10 +346,12 @@ public function main() {
 
 ### This variable is assigned to itself
 
-| Property      | Description  |
-|---------------|--------------|
-| **Rule ID**   | ballerina:10 |
-| **Rule Kind** | Code Smell   |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:10                                                                                                              |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                              |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Self-assignments, where a variable is assigned to itself (x = x), are redundant and do not alter the state of the
 variable. They can indicate incomplete or erroneous logic and make the code harder to read and maintain.
@@ -373,10 +413,12 @@ public function main() {
 
 ### Invalid range expression
 
-| Property      | Description  |
-|---------------|--------------|
-| **Rule ID**   | ballerina:12 |
-| **Rule Kind** | Code Smell   |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:12                                                                                                              |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **CWE**               | [CWE-606](https://cwe.mitre.org/data/definitions/606.html)                                                                |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 The update clause of a range expression should ensure the counter moves in the correct direction. Incorrect range
 expression directions can lead to unexpected behavior, making the code harder to understand and debug.
@@ -412,10 +454,12 @@ public function main() {
 
 ### Avoid using insecure cipher modes or padding schemes
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:1 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:1                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 Encryption algorithms are essential for protecting sensitive information and ensuring secure communications. When implementing encryption, it's critical to select not only strong algorithms but also secure modes of operation and padding schemes. Using weak or outdated encryption modes can compromise the security of otherwise strong algorithms.
 
@@ -466,10 +510,12 @@ The `OAEP` paddings such as `OAEPwithMD5andMGF1`, `OAEPWithSHA1AndMGF1`, `OAEPWi
 
 ### Avoid using fast hashing algorithms
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:2 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:2                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **CWE**               | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 Storing passwords in plaintext or using fast hashing algorithms creates significant security vulnerabilities. If an attacker gains access to your database, plaintext passwords are immediately compromised. Similarly, passwords hashed with fast algorithms (like `MD5`, `SHA-1`, or `SHA-256` without sufficient iterations) can be rapidly cracked using modern hardware.
 
@@ -542,10 +588,12 @@ public function hashPassword() returns error? {
 
 ### Avoid reusing counter mode initialization vectors
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:3 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:3                                                                          |
+| **Rule Kind**         | Vulnerability                                                                               |
+| **CWE**               | [CWE-329](https://cwe.mitre.org/data/definitions/329.html)                                  |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
 
 When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, or `AES-CTR`), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
 
@@ -619,10 +667,12 @@ public function encryptMessage(string message) returns [byte[], byte[12]]|error 
 
 ### Avoid using publicly writable directories for file operations without proper access controls
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/file:1 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/file:1                                                                                                       |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **CWE**               | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                              |
 
 Operating systems often have global directories with write access granted to any user. These directories serve as
 temporary storage locations like /tmp in Linux-based systems. However, when an application manipulates files within
@@ -652,10 +702,12 @@ check file:getAbsolutePath("./myDirectory/myfile.txt");
 
 ### File function calls should not be vulnerable to path injection attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/file:2 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/file:2                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                  |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Path injections occur when an application constructs a file path using untrusted data without first validating the path.
 
@@ -730,10 +782,12 @@ service / on endpoint {
 
 ### Avoid allowing default resource accessor
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:1 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:1                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **CWE**               | [CWE-352](https://cwe.mitre.org/data/definitions/352.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 An HTTP resource is safe when used for read-only operations like GET, HEAD, or OPTIONS. An unsafe HTTP resource is used
 to alter the state of an application, such as modifying the user’s profile on a web application.
@@ -772,10 +826,12 @@ service / on endpoint {
 
 ### Avoid permissive Cross-Origin Resource Sharing
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:2 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                                       |
+|-----------------------|---------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:2                                                                                  |
+| **Rule Kind**         | Vulnerability                                                                                     |
+| **CWE**               | [CWE-942](https://cwe.mitre.org/data/definitions/942.html)                                        |
+| **OWASP Top 10:2025** | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/) |
 
 Browsers enforce the same-origin policy by default, as a security measure, preventing JavaScript frontends from making
 cross-origin HTTP requests to resources with different origins (domains, protocols, or ports). However, the target
@@ -822,10 +878,12 @@ service / on endpoint {
 
 ### Server-side requests should not be vulnerable to traversing attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:3 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:3                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **CWE**               | [CWE-918](https://cwe.mitre.org/data/definitions/918.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Server-Side Request Forgery (SSRF) is a vulnerability that allows attackers to induce the server-side application to make requests to an unintended location. When applications accept user input that influences server-side HTTP requests without proper validation or sanitization, attackers can manipulate these requests.
 
@@ -856,10 +914,12 @@ service /api/v1 on new http:Listener(8080) {
 
 ### HTTP request redirections should not be open to forging attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:4 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:4                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **CWE**               | [CWE-601](https://cwe.mitre.org/data/definitions/601.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Open redirects occur when an application accepts user-controlled input that specifies a URL to which the user will be redirected. When these redirects are implemented without proper validation, attackers can craft redirection URLs to malicious sites.
 
@@ -896,10 +956,12 @@ service /api/v1 on new http:Listener(8080) {
 
 ### I/O function calls should not be vulnerable to path injection attacks
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/io:1 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/io:1                                                                            |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                  |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Path injections occur when an application constructs a file path using untrusted data without first validating the path.
 
@@ -960,10 +1022,12 @@ service /fileService on new http:Listener(8080) {
 
 ### Potentially-sensitive configurable variables are logged
 
-| Property      | Description     |
-|---------------|-----------------|
-| **Rule ID**   | ballerina/log:1 |
-| **Rule Kind** | Vulnerability   |
+| Property              | Description                                                                                                                 |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/log:1                                                                                                             |
+| **Rule Kind**         | Vulnerability                                                                                                               |
+| **CWE**               | [CWE-532](https://cwe.mitre.org/data/definitions/532.html)                                                                  |
+| **OWASP Top 10:2025** | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/) |
 
 In Ballerina, configurable variables typically contain sensitive data that should not be exposed externally and are
 usually kept secret. This includes credentials to access external systems, such as databases. To protect users' privacy,
@@ -1004,10 +1068,12 @@ public function main() {
 
 ### Avoid constructing system command arguments from user input without proper sanitization
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/os:1 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                                                        |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:1                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                      |
+| **CWE**               | [CWE-78](https://cwe.mitre.org/data/definitions/78.html), [CWE-88](https://cwe.mitre.org/data/definitions/88.html) |
+| **OWASP Top 10:2025** | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                  |
 
 Arguments of system commands are processed by the executed program. The arguments are usually used to configure and
 influence the behavior of the programs. Control over a single argument might be enough for an attacker to trigger
@@ -1049,10 +1115,12 @@ if allowed.some(keyword => keyword.equalsIgnoreCaseAscii(input)) {
 
 ### Avoid constructing environment variables from user input without proper sanitization
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/os:2 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                                                                                      |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:2                                                                                                                                   |
+| **Rule Kind**         | Vulnerability                                                                                                                                    |
+| **CWE**               | [CWE-88](https://cwe.mitre.org/data/definitions/88.html), [CWE-454](https://cwe.mitre.org/data/definitions/454.html)                             |
+| **OWASP Top 10:2025** | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/), [A06 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/) |
 
 Environment variables are often used to store sensitive configuration data, credentials, and application settings. When
 applications allow untrusted input to define or modify environment variables without proper validation, they can
@@ -1099,10 +1167,12 @@ service / on new http:Listener(8080) {
 
 ### Avoid using weak cipher algorithms when signing and verifying JWTs
 
-| Property      | Description     |
-|---------------|-----------------|
-| **Rule ID**   | ballerina/jwt:1 |
-| **Rule Kind** | Vulnerability   |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:1                                                                                                        |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 JSON Web Tokens (JWTs) are a compact, URL-safe means of representing claims between two parties. They're commonly used
 for authentication and authorization in web applications. The security of JWT-based authentication depends critically on
@@ -1146,10 +1216,12 @@ string token = check jwt:issue(issuerConfig);
 
 ### Avoid unverified server hostnames during SSL/TLS connections
 
-| Property      | Description       |
-|---------------|-------------------|
-| **Rule ID**   | ballerina/email:1 |
-| **Rule Kind** | Vulnerability     |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/email:1                                                                                                      |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **CWE**               | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                          |
 
 Using outdated or weak SSL/TLS protocols puts application communications at serious risk. These obsolete protocols
 contain known vulnerabilities that attackers can exploit to intercept, decrypt, or manipulate data transmitted between
@@ -1188,7 +1260,7 @@ public function main() returns error? {
             cert: "path/to/certfile.crt",
             protocol: {
                 name: email:TLS,
-                versions: ["TLSv1.2", "TLSv1.1"]
+                versions: ["TLSv1.2"]
             },
             ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
             verifyHostName: true

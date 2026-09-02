@@ -180,11 +180,13 @@ You can report the analysis results to platforms such as SonarQube using the `--
 $ bal scan --platforms="sonarqube"
 ```
 
-To specify more than one platform, separate them with commas:
+The `--platforms` option accepts a comma-separated list, so results can be reported to several platforms in a single scan:
 
 ```
-$ bal scan --platforms="sonarqube, semgrep, codeql"
+$ bal scan --platforms="sonarqube, <another-platform>"
 ```
+
+> **Note:** `sonarqube` is currently the only platform plugin available. If you pass a name that has no corresponding platform plugin, the scan tool reports that platform as unavailable.
 
 ## Publish static code analysis reports to SonarQube
 

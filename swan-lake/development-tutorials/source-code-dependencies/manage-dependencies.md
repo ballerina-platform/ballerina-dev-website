@@ -188,13 +188,7 @@ Follow the steps below to set up a Generic repository in Artifactory.
 
    ![Set the repository key and Maven 2 layout](/learn/images/artifactory-create-repository.png "Set the repository key and Maven 2 layout")
 
-4. Verify Xray indexing is enabled
-
-   Scroll down to the `JFrog Xray Integration` section and confirm that `Enable Indexing In Xray` is turned on. Then, click `Create Local Repository`.
-
-   ![Enable indexing in Xray for the repository](/learn/images/xray-indexing.png "Enable indexing in Xray for the repository")
-
-5. Copy the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`). You will use it when defining the custom repository below.
+4. Copy the repository's base URL (for example, `https://<artifactory-host>/artifactory/<repository-key>`). You will use it when defining the custom repository below.
 
 ### Define the custom repository
 
@@ -243,19 +237,6 @@ Follow the steps below to publish a Ballerina package to the custom repository y
     ```
 
 For more information on using the published package as a dependency, see [Specify dependencies](#specify-dependencies).
-
-### Scan packages in the repository for vulnerabilities
-
-> **Note:** This feature is only supported with JFrog Artifactory, and only for a private repository — not for a repository used to [proxy Ballerina Central](/learn/proxy-ballerina-central-with-maven-repository).
-
-Starting from the Ballerina distribution `2201.13.6`, `bal pack` generates a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) for the package, alongside the `.bala` file. `bal push` automatically publishes this SBOM alongside the `.bala` when pushing to a custom repository. 
-
-The SBOM is uploaded as a raw file named `<package-name>-<version>.cdx.json`, at the same repository location the `.bala` is deployed to.
-
-If the repository was set up in Artifactory as a Generic repository with Xray indexing enabled (see [Set up a repository in Artifactory](#set-up-a-repository-in-artifactory) above), Xray scans the published SBOM automatically and shows the security issues found, along with the software components listed in the SBOM.
-
-
-![Xray scan results for a published SBOM](/learn/images/artifactory-xray-scan.png "Xray scan results for a published SBOM")
 
 ## Achieve reproducible builds
 

@@ -15,16 +15,15 @@ adhere to best practices.
 
 Several weakness classes are prevented by the language itself rather than by a rule, so they do not appear in the table below. See [Language security guarantees](/learn/language-security-guarantees/) for what the compiler enforces and where each guarantee stops.
 
-The table below maps the rules that have a known security weakness association to their [CWE](https://cwe.mitre.org/) identifiers and the corresponding [OWASP Top 10:2025](https://owasp.org/Top10/) categories.
+The table below maps the rules that have a known security weakness association to their [CWE](https://cwe.mitre.org/) identifiers, and to the [OWASP Top 10:2025](https://owasp.org/Top10/) category that lists those identifiers.
 
 | Rule ID            | Rule                                                                                         | CWE                                                                                                                    | OWASP Top 10:2025                                                                                                                                |
 |--------------------|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | ballerina:1        | Avoid checkpanic                                                                             | [CWE-248](https://cwe.mitre.org/data/definitions/248.html), [CWE-636](https://cwe.mitre.org/data/definitions/636.html) | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
-| ballerina:7        | This operation always evaluates to true                                                      | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
-| ballerina:8        | This operation always evaluates to false                                                     | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
-| ballerina:9        | This operation always evaluates to the same value                                            | [CWE-1023](https://cwe.mitre.org/data/definitions/1023.html)                                                           | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
-| ballerina:10       | This variable is assigned to itself                                                          | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                           | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
-| ballerina:12       | Invalid range expression                                                                     | [CWE-606](https://cwe.mitre.org/data/definitions/606.html)                                                             | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                        |
+| ballerina:7        | This operation always evaluates to true                                                      | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                             | —                                                                                                                                                |
+| ballerina:8        | This operation always evaluates to false                                                     | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                             | —                                                                                                                                                |
+| ballerina:10       | This variable is assigned to itself                                                          | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                           | —                                                                                                                                                |
+| ballerina:12       | Invalid range expression                                                                     | [CWE-606](https://cwe.mitre.org/data/definitions/606.html)                                                             | —                                                                                                                                                |
 | ballerina/crypto:1 | Avoid using insecure cipher modes or padding schemes                                         | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
 | ballerina/crypto:2 | Avoid using fast hashing algorithms                                                          | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
 | ballerina/crypto:3 | Avoid reusing counter mode initialization vectors                                            | [CWE-329](https://cwe.mitre.org/data/definitions/329.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
@@ -41,7 +40,9 @@ The table below maps the rules that have a known security weakness association t
 | ballerina/jwt:1    | Avoid using weak cipher algorithms when signing and verifying JWTs                           | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                      |
 | ballerina/email:1  | Avoid unverified server hostnames during SSL/TLS connections                                 | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                    |
 
-> **Note:** The 15 security rules (Rule Kind: Vulnerability) reference 18 distinct CWEs: CWE-22, CWE-78, CWE-88, CWE-295, CWE-297, CWE-327, CWE-329, CWE-347, CWE-352, CWE-377, CWE-379, CWE-454, CWE-532, CWE-601, CWE-780, CWE-916, CWE-918, and CWE-942. The six language rules listed above reference a further seven: CWE-248, CWE-570, CWE-571, CWE-606, CWE-636, CWE-1023, and CWE-1164 — 25 distinct CWEs across all 21 mapped rules. The remaining six language rules (`ballerina:2`, `ballerina:3`, `ballerina:4`, `ballerina:5`, `ballerina:6`, and `ballerina:11`) are maintainability rules and have no CWE mapping.
+> **Note:** The 15 security rules (Rule Kind: Vulnerability) reference 18 distinct CWEs: CWE-22, CWE-78, CWE-88, CWE-295, CWE-297, CWE-327, CWE-329, CWE-347, CWE-352, CWE-377, CWE-379, CWE-454, CWE-532, CWE-601, CWE-780, CWE-916, CWE-918, and CWE-942. The five language rules listed above reference a further six: CWE-248, CWE-570, CWE-571, CWE-606, CWE-636, and CWE-1164 — 24 distinct CWEs across all 20 mapped rules. The remaining seven language rules (`ballerina:2`, `ballerina:3`, `ballerina:4`, `ballerina:5`, `ballerina:6`, `ballerina:9`, and `ballerina:11`) have no CWE mapping.
+
+> **Note:** 16 of the 20 mapped rules also carry an OWASP Top 10:2025 category. The other four (`ballerina:7`, `ballerina:8`, `ballerina:10`, and `ballerina:12`) reference CWE-571, CWE-570, CWE-1164, and CWE-606, none of which appear in the CWE list of any OWASP Top 10:2025 category, so no category is claimed for them.
 
 ## Language rules
 
@@ -291,7 +292,6 @@ public type Hashable isolated object {
 | **Rule ID**           | ballerina:7                                                                                                               |
 | **Rule Kind**         | Code Smell                                                                                                                |
 | **CWE**               | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                                |
-| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions that are always true don't do any meaningful computation. They increase code complexity, reduce the code
 readability and potentially hide logical errors.
@@ -312,7 +312,6 @@ public function main() {
 | **Rule ID**           | ballerina:8                                                                                                               |
 | **Rule Kind**         | Code Smell                                                                                                                |
 | **CWE**               | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                                |
-| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions that are always false indicate unreachable code or logic that will never execute. This can clutter the
 codebase, make it harder to understand, and potentially hide bugs or unintentional logic errors.
@@ -332,8 +331,6 @@ public function main() {
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | **Rule ID**           | ballerina:9                                                                                                               |
 | **Rule Kind**         | Code Smell                                                                                                                |
-| **CWE**               | [CWE-1023](https://cwe.mitre.org/data/definitions/1023.html)                                                              |
-| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Conditions which always evaluate to the same value don't do any meaningful computation. They increase code complexity,
 reduce the code readability, and potentially hide logical errors.
@@ -353,7 +350,6 @@ public function main() {
 | **Rule ID**           | ballerina:10                                                                                                              |
 | **Rule Kind**         | Code Smell                                                                                                                |
 | **CWE**               | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                              |
-| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 Self-assignments, where a variable is assigned to itself (x = x), are redundant and do not alter the state of the
 variable. They can indicate incomplete or erroneous logic and make the code harder to read and maintain.
@@ -420,7 +416,6 @@ public function main() {
 | **Rule ID**           | ballerina:12                                                                                                              |
 | **Rule Kind**         | Code Smell                                                                                                                |
 | **CWE**               | [CWE-606](https://cwe.mitre.org/data/definitions/606.html)                                                                |
-| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 The update clause of a range expression should ensure the counter moves in the correct direction. Incorrect range
 expression directions can lead to unexpected behavior, making the code harder to understand and debug.

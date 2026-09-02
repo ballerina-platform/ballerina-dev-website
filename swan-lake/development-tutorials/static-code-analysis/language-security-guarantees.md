@@ -10,8 +10,6 @@ A static analysis rule set measures what a scanner looks for. It is not, on its 
 
 Several weakness classes that dominate static analysis findings in other languages cannot be expressed in Ballerina at all. The compiler rejects them, so a scanner never reports them — there is nothing to report. This page shows what the language guarantees, demonstrates each guarantee with the compiler's own output, and states plainly where each one stops.
 
-Every example below was compiled with **Ballerina 2201.13.5 (Swan Lake Update 13)**. Each diagnostic shown is actual compiler output.
-
 ## Null dereference
 
 Optional values have a distinct type in Ballerina, and the operations of the underlying type are not available on them.
@@ -74,7 +72,7 @@ Handling it locally with `if content is io:Error { ... }` is equally valid. What
 
 ## Data races
 
-The `isolated` qualifier is a compiler-checked assertion that a function accesses no shared mutable state. The compiler proves it rather than leaving it to review.
+The `isolated` qualifier is a compiler-checked assertion about how a function may reach mutable state: only through its own arguments, or through `isolated` module-level variables, and every access to such a variable must sit inside a `lock`. The compiler proves this rather than leaving it to review.
 
 The following does not compile:
 
@@ -196,13 +194,13 @@ Ballerina also separates recoverable errors from panics. The scan rule [`balleri
 
 Each guarantee has a boundary, and knowing where it lies matters as much as the guarantee itself.
 
-| Guarantee           | Where it stops                                                                                                                                                                                                                                                                                         |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Null dereference    | No exceptions. Optional types are enforced throughout the language.                                                                                                                                                                                                                                    |
-| Unchecked errors    | No exceptions. An error-typed value must be handled or propagated.                                                                                                                                                                                                                                     |
-| Data races          | Isolation is opt-in. Code that is not marked `isolated` is not proven concurrency-safe. The scan rules `ballerina:3` to `ballerina:6` exist to push public functions, methods, classes, and objects toward `isolated`, so the rules and the language feature work together.                            |
-| SQL injection       | Covers values, not identifiers. Table and column names cannot be bind parameters, so a dynamic identifier must be built another way, and `sql:queryConcat` composition and hand-built DDL fall outside the guarantee. The parameterised form is the default, and injection requires deliberate effort. |
-| Exhaustive handling | A `match` statement needs a wildcard arm. Full coverage of a singleton union is not treated as exhaustive on its own.                                                                                                                                                                                  |
+| Guarantee           | Where it stops                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Null dereference    | Optional types are enforced throughout the language. The boundary is Java interop: `handle` is not a nilable type, so the compiler requires no nil check on one, yet a `handle` can hold a Java null and the failure then surfaces at run time rather than at compile time. Converting a `handle` to a string with `java:toString` returns `string?`, which does force the nil case to be handled.                                                 |
+| Unchecked errors    | No exceptions. An error-typed value must be handled or propagated.                                                                                                                                                                                                                                                                                                                                                                                 |
+| Data races          | Isolation is opt-in. Code that is not marked `isolated` is not proven concurrency-safe. `isolated` on an `external` function is also accepted as a declaration rather than proved, so interop code can mutate shared state from inside an `isolated` function. The scan rules `ballerina:3` to `ballerina:6` exist to push public functions, methods, classes, and objects toward `isolated`, so the rules and the language feature work together. |
+| SQL injection       | Covers values, not identifiers. Table and column names cannot be bind parameters, so a dynamic identifier must be built another way. `sql:queryConcat` keeps values parameterized, because it accepts only `sql:ParameterizedQuery` arguments. What falls outside the guarantee is a dynamic identifier, or a hand-built DDL or SQL fragment that embeds input into the query text directly.                                                       |
+| Exhaustive handling | A `match` statement needs a wildcard arm. Full coverage of a singleton union is not treated as exhaustive on its own.                                                                                                                                                                                                                                                                                                                              |
 
 ## What this means for the scan rule set
 

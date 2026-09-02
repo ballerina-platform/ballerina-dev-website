@@ -30,18 +30,25 @@ import styles from '../../styles/Nutcracker.module.css';
 const REPO = 'ballerina-nutcracker/ballerina';
 
 // Static fallback used when the GitHub API cannot be reached at build time.
+// Refresh this at each release — it is what visitors see if the API is down or
+// rate-limited during a build. `size` matters: without it the download buttons
+// render with no file size, unlike the live path.
+const FALLBACK_TAG = 'v0.6.0';
 const FALLBACK_RELEASE = {
-  tag: 'v0.5.0',
-  name: 'v0.5.0',
-  publishedAt: '2026-05-19T14:26:43Z',
-  htmlUrl: `https://github.com/${REPO}/releases/tag/v0.5.0`,
+  tag: FALLBACK_TAG,
+  name: FALLBACK_TAG,
+  publishedAt: '2026-08-05T08:34:08Z',
+  htmlUrl: `https://github.com/${REPO}/releases/tag/${FALLBACK_TAG}`,
   assets: [
-    { name: 'ballerina-bal-darwin-arm64-0.5.0.zip', url: `https://github.com/${REPO}/releases/download/v0.5.0/ballerina-bal-darwin-arm64-0.5.0.zip` },
-    { name: 'ballerina-bal-darwin-amd64-0.5.0.zip', url: `https://github.com/${REPO}/releases/download/v0.5.0/ballerina-bal-darwin-amd64-0.5.0.zip` },
-    { name: 'ballerina-bal-linux-amd64-0.5.0.zip', url: `https://github.com/${REPO}/releases/download/v0.5.0/ballerina-bal-linux-amd64-0.5.0.zip` },
-    { name: 'ballerina-bal-linux-arm64-0.5.0.zip', url: `https://github.com/${REPO}/releases/download/v0.5.0/ballerina-bal-linux-arm64-0.5.0.zip` },
-    { name: 'ballerina-bal-windows-amd64-0.5.0.zip', url: `https://github.com/${REPO}/releases/download/v0.5.0/ballerina-bal-windows-amd64-0.5.0.zip` },
-  ],
+    ['darwin-amd64', 28501452],
+    ['darwin-arm64', 27875033],
+    ['linux-amd64', 28364579],
+    ['linux-arm64', 27501499],
+    ['windows-amd64', 28605559],
+  ].map(([platform, size]) => {
+    const name = `ballerina-nutcracker-${platform}-${FALLBACK_TAG.slice(1)}.zip`;
+    return { name, size, url: `https://github.com/${REPO}/releases/download/${FALLBACK_TAG}/${name}` };
+  }),
 };
 
 export default function Nutcracker({ release, ogImage }) {

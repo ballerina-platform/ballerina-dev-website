@@ -6,9 +6,11 @@ permalink: /learn/language-guarantees/
 active: language-guarantees
 ---
 
-Ballerina settles a large amount of program correctness at compile time, before any analysis tool runs.
+Ballerina settles a large amount of program correctness at compile time, before any analysis tool runs. What follows is enforced by the compiler on every build, so it holds for every program that compiles rather than depending on a convention a team has to adopt or a lint rule someone has to enable.
 
-- It is **strongly and statically typed**, so the type of every expression is known at compile time and the compiler rejects a program whose types do not line up.
+- It is **strongly and statically typed**, so the type of every expression is known at compile time and the compiler rejects a program whose types do not line up. There is no implicit conversion and no notion of truthiness: a condition has to be a `boolean`, and even a widening such as `int` to `float` has to be written out.
+- **Variables cannot be read before they are assigned.** Definite assignment is a compile-time check, so there is no uninitialized read to reason about.
+- **Immutability is enforced, not advisory.** A `readonly` value cannot be updated after it is constructed, and a `final` variable cannot be reassigned. Immutable data is safe to share, which is what lets concurrent code pass values around without locking them.
 - It is **structurally typed and knows about network data**, with `json`, `xml`, and `table` as language types rather than library add-ons. Operations on values whose shape is known statically are checked by the compiler, which removes a class of transformation and integration mistakes. Data arriving from outside the program is a different matter: converting a `json` payload to a declared record type is validated when the conversion runs, and it returns an error the caller has to handle.
 - Its **language library covers the built-in operations**, including parsing and conversion, so common data handling does not reach for a third-party dependency.
 - Its **standard library and connectors are maintained with the platform**, which keeps behaviour consistent across modules and keeps the dependency surface small.

@@ -103,6 +103,25 @@ public function readConfig(string path) returns string|io:Error {
 
 The first terminates the program on a missing file; the second hands the error to the caller. Because the compiler accepts both, this is one of the gaps a rule has to cover: the scan rule [`ballerina:1`](/learn/scan-rules/#avoid-checkpanic) flags `checkpanic` for exactly this reason.
 
+## Immutability
+
+`readonly` is a type, not a convention. A value of a `readonly` type is deeply immutable, so the compiler rejects an attempt to update it instead of leaving it to fail at run time.
+
+The following does not compile:
+
+```ballerina
+public function main() {
+    readonly & int[] nums = [1, 2, 3];
+    nums.push(4);
+}
+```
+
+```
+ERROR [readonly.bal:(3:5,3:17)] cannot update 'readonly' value of type '(int[] & readonly)'
+```
+
+`final` is a separate and weaker guarantee. It stops the variable from being reassigned but says nothing about the value it refers to, so a `final` variable can still hold something mutable. The next section shows where that difference has consequences.
+
 ## Concurrency safety
 
 The `isolated` qualifier is a compiler-checked assertion about how a function may reach mutable state: only through its own arguments, or through `isolated` module-level variables, and every access to such a variable must sit inside a `lock`. The compiler proves this rather than leaving it to review.
@@ -131,6 +150,39 @@ public isolated function increment() {
         counter += 1;
     }
 }
+```
+
+A `lock` is only needed for mutable state. Immutable data has nothing to race on, so an `isolated` function can read a `final` variable of a `readonly` type directly, with no lock and no `isolated` qualifier on the variable:
+
+```ballerina
+type Limits readonly & record {|
+    int maxRetries;
+    int timeoutSeconds;
+|};
+
+final Limits limits = {maxRetries: 3, timeoutSeconds: 30};
+
+public isolated function retryBudget() returns int {
+    return limits.maxRetries;
+}
+```
+
+This is where the distinction in [Immutability](#immutability) earns its keep. `final` on its own does not buy lock-free sharing, because a `final` variable holding a mutable array is still shared mutable state, and the compiler treats it as exactly that:
+
+```ballerina
+final int[] counts = [1, 2, 3];
+
+public isolated function total() returns int {
+    int sum = 0;
+    foreach int n in counts {
+        sum += n;
+    }
+    return sum;
+}
+```
+
+```
+ERROR [shared.bal:(5:22,5:28)] invalid access of mutable storage in an 'isolated' function
 ```
 
 Isolation is not merely advisory. A listener will not make concurrent calls to a service method it cannot prove safe, so a method that is not `isolated` is serialized rather than run in parallel. The compiler says so on every build:

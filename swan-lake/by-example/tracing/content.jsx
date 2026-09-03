@@ -102,7 +102,7 @@ export function Tracing({ codeSnippets }) {
         <p>
           <strong>Info:</strong> For more information about configs and
           observing applications, see{" "}
-          <a href="/learn/observe-ballerina-programs/">
+          <a href="/learn/overview-of-ballerina-observability/">
             Observe Ballerina programs
           </a>
           .

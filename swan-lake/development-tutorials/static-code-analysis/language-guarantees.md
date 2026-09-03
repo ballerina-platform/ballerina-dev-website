@@ -9,7 +9,7 @@ active: language-guarantees
 Ballerina settles a large amount of program correctness at compile time, before any analysis tool runs.
 
 - It is **strongly and statically typed**, so the type of every expression is known at compile time and the compiler rejects a program whose types do not line up.
-- It is **structurally typed and knows about network data**, with `json`, `xml`, and `table` as language types rather than library add-ons. Defining, parsing, and transforming payloads is checked against declared shapes, so an integration mismatch surfaces at compile time instead of in production.
+- It is **structurally typed and knows about network data**, with `json`, `xml`, and `table` as language types rather than library add-ons. Operations on values whose shape is known statically are checked by the compiler, which removes a class of transformation and integration mistakes. Data arriving from outside the program is a different matter: converting a `json` payload to a declared record type is validated when the conversion runs, and it returns an error the caller has to handle.
 - Its **language library covers the built-in operations**, including parsing and conversion, so common data handling does not reach for a third-party dependency.
 - Its **standard library and connectors are maintained with the platform**, which keeps behaviour consistent across modules and keeps the dependency surface small.
 
@@ -204,7 +204,9 @@ public function buildQuery(string name) returns sql:ParameterizedQuery {
 
 ## Every path must return
 
-A function that declares a return type must return on every path. Falling off the end is not silently treated as returning nil.
+A function whose declared return type excludes nil must return on every path. Falling off the end is not silently treated as returning nil.
+
+This applies only to those functions. Omitting the return type is the same as declaring `returns ()`, and for any return type that includes nil, reaching the end of the function is equivalent to `return ();` — though for an optional type other than `error?` the compiler notes that the function should return a value explicitly.
 
 The following does not compile:
 

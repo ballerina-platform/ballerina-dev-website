@@ -9,7 +9,7 @@ active: scan-tool
 The Ballerina scan tool is a static code analysis tool that performs analysis on Ballerina projects and identifies
 potential code smells, bugs, and vulnerabilities without executing them.
 
-> **Note:** Ballerina scan is an experimental feature that supports only a limited set of rules. The rule set is deliberately narrow: several weakness classes that other static analysis tools must detect at scan time cannot be expressed in Ballerina at all, because the compiler rejects them. See [Language security guarantees](/learn/language-security-guarantees/) for what the language prevents and where each guarantee stops.
+> **Note:** Ballerina scan is an experimental feature, and its rule set is small for two separate reasons. The tool itself is still growing, and the language already closes off several weakness classes that other static analysis tools must detect at scan time, because the compiler rejects them outright. See [Language guarantees](/learn/language-guarantees/) for what the compiler enforces.
 
 ## Install the tool
 

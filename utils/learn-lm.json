@@ -907,12 +907,12 @@
                             "id": "scan-rules"
                         },
                         {
-                            "dirName": "Language security guarantees",
+                            "dirName": "Language guarantees",
                             "level": 3,
                             "position": 3,
                             "isDir": false,
-                            "url": "/learn/language-security-guarantees",
-                            "id": "language-security-guarantees"
+                            "url": "/learn/language-guarantees",
+                            "id": "language-guarantees"
                         }
                     ]
                 },

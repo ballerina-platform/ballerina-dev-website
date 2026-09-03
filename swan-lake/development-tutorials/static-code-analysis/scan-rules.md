@@ -13,7 +13,7 @@ adhere to best practices.
 
 ## Security standards mapping
 
-Several weakness classes are prevented by the language itself rather than by a rule, so they do not appear in the table below. See [Language security guarantees](/learn/language-security-guarantees/) for what the compiler enforces and where each guarantee stops.
+Several weakness classes are prevented by the language itself rather than by a rule, so they do not appear in the table below. See [Language guarantees](/learn/language-guarantees/) for what the compiler enforces.
 
 The table below maps the rules that have a known security weakness association to their [CWE](https://cwe.mitre.org/) identifiers, and to the [OWASP Top 10:2025](https://owasp.org/Top10/) category that lists those identifiers.
 

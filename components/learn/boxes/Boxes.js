@@ -787,7 +787,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3 id='reuse-code-with-ballerina-central' className='section'>
+                    <h3 id='reuse-code-with-package-repositories' className='section'>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -795,21 +795,45 @@ export default function Boxes(props) {
                         fill="currentColor"
                         className="bi bi-link-45deg mdButton pe-2"
                         viewBox="0 0 16 16"
-                        onClick={(e) => props.getLink(e.target, 'reuse-code-with-ballerina-central')}
+                        onClick={(e) => props.getLink(e.target, 'reuse-code-with-package-repositories')}
                       >
                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                       </svg>
-                      Reuse code with Ballerina Central
+                      Reuse code with Package Repositories
                     </h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/publish-packages-to-ballerina-central`} className={styles.titleLink}>
-                            Publish packages to Ballerina Central
+                          <a href={`${prefix}/learn/ballerina-central`} className={styles.titleLink}>
+                            Ballerina Central
                           </a>
                         </p>
                         <p className={styles.description}>Publish your library package to Ballerina Central.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/local-repository`} className={styles.titleLink}>
+                            Local repository
+                          </a>
+                        </p>
+                        <p className={styles.description}>Use the local repository to test packages during development.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/set-up-artifactory`} className={styles.titleLink}>
+                            JFrog Artifactory
+                          </a>
+                        </p>
+                        <p className={styles.description}>Host a private repository or proxy Ballerina Central using JFrog Artifactory.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/set-up-nexus`} className={styles.titleLink}>
+                            Sonatype Nexus
+                          </a>
+                        </p>
+                        <p className={styles.description}>Host a private repository or proxy Ballerina Central using Sonatype Nexus.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -818,14 +842,6 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Perform operations with the Ballerina Central over an HTTP proxy.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/proxy-ballerina-central-with-maven-repository`} className={styles.titleLink}>
-                            Proxy Ballerina Central with a Maven Repository
-                          </a>
-                        </p>
-                        <p className={styles.description}>Use a Maven repository as a proxy for Ballerina Central.</p>
                       </div>
                     </div>
                   </div>

@@ -290,11 +290,11 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/publish-packages-to-ballerina-central`,
-        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/publish-packages-to-ballerina-central`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/ballerina-central`,
       },
       {
         source: `/${redirectBase}learn/ballerina-central`,
-        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/publish-packages-to-ballerina-central`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/ballerina-central`,
       },
       {
         source: `/${redirectBase}learn/configure-a-network-proxy`,

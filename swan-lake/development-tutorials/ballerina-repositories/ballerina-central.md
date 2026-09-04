@@ -4,7 +4,7 @@ title: Ballerina Central
 description: Ballerina Central is the public library of reusable Ballerina packages. This page walks through creating a package, publishing it to Ballerina Central, using a published package as a dependency, and deprecating a package or version you no longer want resolved.
 keywords: ballerina, programming language, ballerina packages, ballerina central, publishing packages
 permalink: /learn/ballerina-central/
-active: publish-packages-to-ballerina-central
+active: ballerina-central
 intro: "[Ballerina Central](https://central.ballerina.io/) is the public repository for sharing Ballerina packages. This page walks through the steps for creating a package, publishing it to Ballerina Central, using a published package as a dependency, and deprecating a package or version you no longer want resolved."
 ---
 

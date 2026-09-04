@@ -836,7 +836,7 @@
                             "position": 1,
                             "isDir": false,
                             "url": "/learn/ballerina-central",
-                            "id": "publish-packages-to-ballerina-central"
+                            "id": "ballerina-central"
                         },
                         {
                             "dirName": "Custom Repositories",

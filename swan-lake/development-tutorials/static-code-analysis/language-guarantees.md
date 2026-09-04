@@ -9,9 +9,9 @@ active: language-guarantees
 Ballerina settles a large amount of program correctness at compile time, before any analysis tool runs. What follows is enforced by the compiler on every build, so it holds for every program that compiles rather than depending on a convention a team has to adopt or a lint rule someone has to enable.
 
 - It is **strongly and statically typed**, so the type of every expression is known at compile time and the compiler rejects a program whose types do not line up. There is no implicit conversion and no notion of truthiness: a condition has to be a `boolean`, and even a widening such as `int` to `float` has to be written out.
-- **Variables cannot be read before they are assigned.** Definite assignment is a compile-time check, so there is no uninitialized read to reason about.
+- **Nothing can be read before it is initialized.** Definite assignment is checked for local variables, and the same requirement extends to declarations: a module-level variable must be initialized, and every field of a class must be assigned either inline or in `init`. There is no uninitialized read to reason about.
 - **Immutability is enforced, not advisory.** A `readonly` value cannot be updated after it is constructed, and a `final` variable cannot be reassigned. Immutable data is safe to share, which is what lets concurrent code pass values around without locking them.
-- It is **structurally typed and knows about network data**, with `json`, `xml`, and `table` as language types rather than library add-ons. Operations on values whose shape is known statically are checked by the compiler, which removes a class of transformation and integration mistakes. Data arriving from outside the program is a different matter: converting a `json` payload to a declared record type is validated when the conversion runs, and it returns an error the caller has to handle.
+- It is **structurally typed and knows about network data**, with `json` and `xml` as language types rather than library add-ons. Operations on values whose shape is known statically are checked by the compiler, which removes a class of transformation and integration mistakes. Data arriving from outside the program is a different matter: converting a `json` payload to a declared record type is validated when the conversion runs, and it returns an error the caller has to handle.
 - Its **language library covers the built-in operations**, including parsing and conversion, so common data handling does not reach for a third-party dependency.
 - Its **standard library and connectors are maintained with the platform**, which keeps behaviour consistent across modules and keeps the dependency surface small.
 
@@ -120,11 +120,11 @@ public function main() {
 ERROR [readonly.bal:(3:5,3:17)] cannot update 'readonly' value of type '(int[] & readonly)'
 ```
 
-`final` is a separate and weaker guarantee. It stops the variable from being reassigned but says nothing about the value it refers to, so a `final` variable can still hold something mutable. The next section shows where that difference has consequences.
+`final` is an orthogonal guarantee rather than a weaker one: it constrains the binding, while `readonly` constrains the value. A `final` variable cannot be reassigned but can still refer to something mutable, and a `readonly` value can be held by a variable that is reassigned. The next section shows where the difference matters.
 
 ## Concurrency safety
 
-The `isolated` qualifier is a compiler-checked assertion about how a function may reach mutable state: only through its own arguments, or through `isolated` module-level variables, and every access to such a variable must sit inside a `lock`. The compiler proves this rather than leaving it to review.
+An `isolated` function can reach mutable state only through its own arguments, or through `isolated` module-level variables and the mutable fields of `isolated` objects, each of which has to be accessed inside a `lock`. The consequence is the useful part: a data race in an `isolated` function can only arrive through its arguments, so if the arguments are safe to share, the function is safe to call concurrently. The compiler proves this rather than leaving it to review.
 
 The following does not compile:
 
@@ -150,6 +150,36 @@ public isolated function increment() {
         counter += 1;
     }
 }
+```
+
+The same rule covers the mutable fields of an `isolated` object, so a class can hold state and still be safe to share:
+
+```ballerina
+isolated class SafeCounter {
+    private int count = 0;
+
+    isolated function increment() {
+        lock {
+            self.count += 1;
+        }
+    }
+}
+```
+
+Dropping the `lock` fails in the same way a module-level variable would:
+
+```ballerina
+isolated class SafeCounter {
+    private int count = 0;
+
+    isolated function increment() {
+        self.count += 1;
+    }
+}
+```
+
+```
+ERROR [object.bal:(5:9,5:19)] invalid access of a mutable field of an 'isolated' object outside a 'lock' statement
 ```
 
 A `lock` is only needed for mutable state. Immutable data has nothing to race on, so an `isolated` function can read a `final` variable of a `readonly` type directly, with no lock and no `isolated` qualifier on the variable:
@@ -184,6 +214,25 @@ public isolated function total() returns int {
 ```
 ERROR [shared.bal:(5:22,5:28)] invalid access of mutable storage in an 'isolated' function
 ```
+
+Much of this does not have to be written down. The compiler infers isolation where a declaration qualifies, so code that is already safe does not need the qualifier to be treated as safe. Nothing below is annotated `isolated`, yet the variable and the method are both inferred to be isolated and the listener dispatches concurrently:
+
+```ballerina
+import ballerina/http;
+
+int counter = 0;
+
+service /api on new http:Listener(8080) {
+    resource function get count() returns int {
+        lock {
+            counter += 1;
+            return counter;
+        }
+    }
+}
+```
+
+Inference applies only to what is left unannotated. Writing `isolated` on a function is an assertion the compiler then holds you to, so in that case the module-level variable it touches has to be declared `isolated` too.
 
 Isolation is not merely advisory. A listener will not make concurrent calls to a service method it cannot prove safe, so a method that is not `isolated` is serialized rather than run in parallel. The compiler says so on every build:
 
@@ -276,7 +325,39 @@ public function classify(int n) returns string {
 ERROR [return.bal:(5:1,5:2)] this function must return a result
 ```
 
-## Patterns that can never match are reported
+## Unreachable code and redundant conditions
+
+Code the compiler can prove will never run is an error rather than a lint warning:
+
+```ballerina
+public function f() returns int {
+    return 1;
+    int x = 2;
+}
+```
+
+```
+ERROR [unreachable.bal:(3:5,3:15)] unreachable code
+WARNING [unreachable.bal:(3:5,3:15)] unused variable 'x'
+```
+
+A condition that can only ever have one outcome is reported too, together with whatever it makes unreachable:
+
+```ballerina
+public function describe(int n) returns string {
+    if n is int {
+        return "int";
+    }
+    return "other";
+}
+```
+
+```
+HINT [condition.bal:(2:8,2:16)] unnecessary condition: expression will always evaluate to 'true'
+ERROR [condition.bal:(5:5,5:20)] unreachable code
+```
+
+The same analysis reaches `match` patterns that cannot be matched:
 
 ```ballerina
 public type Status "active"|"inactive";

@@ -9,7 +9,7 @@ active: scan-tool
 The Ballerina scan tool is a static code analysis tool that performs analysis on Ballerina projects and identifies
 potential code smells, bugs, and vulnerabilities without executing them.
 
-> **Note:** Ballerina scan is an experimental feature that supports only a limited set of rules.
+> **Note:** Ballerina scan is an experimental feature, and its rule set is small for two separate reasons. The tool itself is still growing, and the language already closes off several weakness classes that other static analysis tools must detect at scan time, because the compiler rejects them outright. See [Language guarantees](/learn/language-guarantees/) for what the compiler enforces.
 
 ## Install the tool
 
@@ -180,11 +180,13 @@ You can report the analysis results to platforms such as SonarQube using the `--
 $ bal scan --platforms="sonarqube"
 ```
 
-To specify more than one platform, separate them with commas:
+The `--platforms` option accepts a comma-separated list, so results can be reported to several platforms in a single scan:
 
 ```
-$ bal scan --platforms="sonarqube, semgrep, codeql"
+$ bal scan --platforms="sonarqube, <another-platform>"
 ```
+
+> **Note:** `sonarqube` is currently the only platform plugin available, and its path must be declared in a `[[platform]]` entry in `Scan.toml`. If you pass a name that has no corresponding platform plugin, the scan tool reports that platform as unavailable.
 
 ## Publish static code analysis reports to SonarQube
 

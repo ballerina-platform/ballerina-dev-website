@@ -905,6 +905,14 @@
                             "isDir": false,
                             "url": "/learn/scan-rules",
                             "id": "scan-rules"
+                        },
+                        {
+                            "dirName": "Language guarantees",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/language-guarantees",
+                            "id": "language-guarantees"
                         }
                     ]
                 },

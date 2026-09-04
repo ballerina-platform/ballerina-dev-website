@@ -38,8 +38,14 @@ The conforming implementation of the specification is released and included in t
     * 2.5 [Client](#25-client)
         * 2.5.1 [Initializing the Client](#251-initializing-the-client)
         * 2.5.2 [Executing Operations](#252-executing-operations)
+            * 2.5.2.1 [The `query()` Method](#2521-the-query-method)
+            * 2.5.2.2 [The `mutate()` Method](#2522-the-mutate-method)
+            * 2.5.2.3 [The `subscribe()` Method](#2523-the-subscribe-method)
+            * 2.5.2.4 [The `close()` Method](#2524-the-close-method)
+            * 2.5.2.5 [The `execute()` Method (Deprecated)](#2525-the-execute-method-deprecated)
         * 2.5.3 [Client Data Binding](#253-client-data-binding)
         * 2.5.4 [Client Configuration](#254-client-configuration)
+            * 2.5.4.1 [Subscription Configuration](#2541-subscription-configuration)
 3. [Schema Generation](#3-schema-generation)
     * 3.1 [Root Types](#31-root-types)
         * 3.1.1 [The `Query` Type](#311-the-query-type)
@@ -91,6 +97,7 @@ The conforming implementation of the specification is released and included in t
             * 6.3.1.1 [HTTP Error](#6311-http-error)
             * 6.3.1.2 [Invalid Document Error](#6312-invalid-document-error)
         * 6.3.2 [Payload Binding Error](#632-payload-binding-error)
+        * 6.3.3 [Subscription Error](#633-subscription-error)
 7. [Annotations](#7-annotations)
     * 7.1 [Service Configuration](#71-service-configuration)
         * 7.1.1 [Max Query Depth](#711-max-query-depth)
@@ -410,7 +417,7 @@ When a request is received by the GraphQL Listener, it dispatches the request to
 
 ### 2.5 Client
 
-The GraphQL client can be used to connect to a GraphQL service and retrieve data. This client currently supports the `Query` and `Mutation` operations. The Ballerina GraphQL client uses HTTP as the underlying protocol to communicate with the GraphQL service.
+The GraphQL client can be used to connect to a GraphQL service and retrieve data. This client supports all three GraphQL operation types: `Query`, `Mutation`, and `Subscription`. The Ballerina GraphQL client uses HTTP as the underlying protocol to execute the `Query` and `Mutation` operations, and WebSocket (using the `graphql-transport-ws` subprotocol) to execute the `Subscription` operations.
 
 #### 2.5.1 Initializing the Client
 
@@ -420,27 +427,106 @@ The `graphql:Client` init method requires a valid URL and optional configuration
 graphql:Client graphqlClient = check new (“http://localhost:9090/graphql”, {timeout: 10});
 ```
 
+Initializing the client does not open any subscription-related connection: the WebSocket connection is established lazily upon the first `subscribe()` call. The WebSocket URL is derived from the provided URL by mapping the `http` scheme to `ws` and the `https` scheme to `wss`, unless a separate subscription endpoint is configured (See [Subscription Configuration](#2541-subscription-configuration)).
+
 #### 2.5.2 Executing Operations
 
-The graphql client provides `execute` API to execute graphql query and mutation operations. The `execute` method of `graphql:Client` takes a GraphQL document as the required argument and sends a request to the specified backend URL seeking a response. Further, the execute method could take the following optional arguments.
+The GraphQL client provides a dedicated method per GraphQL operation type: `query()`, `mutate()`, and `subscribe()`. Each method takes a GraphQL document as the required argument. Since each operation type has a dedicated method, the client validates that the operation defined in the document matches the invoked method, using the GraphQL parser shipped with the package. Executing a mismatched document (e.g., passing a mutation document to the `query()` method) returns a `graphql:InvalidDocumentError` without sending the request.
+
+##### 2.5.2.1 The `query()` Method
+
+The `query()` method executes a GraphQL query operation. It sends a request to the specified backend URL over HTTP and data binds the response. Further, this method could take the following optional arguments.
 
 * `variables` - A map containing the GraphQL variables. All the variables that may be required by the graphql document can be set via this `variables` argument.
-* `operationName` - The GraphQL operation name. If the document has more than one operation, then each operation must have a name. A single GraphQL request can only execute one operation; the operation name must be set if the document has more than one operation. Otherwise, the GraphQL server responds with an error.
-* `headers` - A map containing headers that may be required by the graphql server to execute each operation.
+* `operationName` - The GraphQL operation name. If the document has more than one operation, then each operation must have a name. A single GraphQL request can only execute one operation; the operation name must be set if the document has more than one operation. Otherwise, an error is returned.
+* `headers` - A map containing headers that may be required by the graphql server to execute the operation.
 
-The method definition of the `execute` API is given below.
+The method definition of the `query()` API is given below.
+
+```ballerina
+remote isolated function query(string document, map<anydata>? variables = (), string? operationName = (),
+    map<string|string[]>? headers = (), typedesc<GenericResponseWithErrors|record {}> targetType = <>)
+    returns targetType|ClientError;
+```
+
+##### 2.5.2.2 The `mutate()` Method
+
+The `mutate()` method executes a GraphQL mutation operation. The parameters and the return type are identical to the `query()` method.
+
+```ballerina
+remote isolated function mutate(string document, map<anydata>? variables = (), string? operationName = (),
+    map<string|string[]>? headers = (), typedesc<GenericResponseWithErrors|record {}> targetType = <>)
+    returns targetType|ClientError;
+```
+
+##### 2.5.2.3 The `subscribe()` Method
+
+The `subscribe()` method executes a GraphQL subscription operation and returns a stream of data-bound responses. Internally, the client lazily creates a single WebSocket connection (per `graphql:Client` instance) on the first `subscribe()` call and multiplexes all the subscription operations over it, as permitted by the `graphql-transport-ws` protocol. The protocol-level details (the `connection_init`/`connection_ack` handshake, the operation multiplexing, and the keep-alive `ping`/`pong` messages) are handled by the client transparently.
+
+The method definition of the `subscribe()` API is given below.
+
+```ballerina
+remote isolated function subscribe(string document, map<anydata>? variables = (), string? operationName = (),
+    string? id = (), typedesc<GenericResponseWithErrors|record {}> targetType = <>)
+    returns stream<targetType, ClientError?>|ClientError;
+```
+
+The `id` parameter is the unique ID for the subscription operation. If it is not provided, the client generates a UUID. The ID must be unique among the active subscriptions of the client: a duplicate ID results in a `graphql:SubscriptionError`. There is no `headers` parameter: headers for the WebSocket upgrade request and connection-scoped parameters (such as authentication tokens) can be provided via the subscription configurations (See [Subscription Configuration](#2541-subscription-configuration)).
+
+Each event of the returned stream is data-bound to the `targetType` using the same rules the `query()` method uses for a single response. The stream is terminated with `()` when the server completes the subscription, and with a `graphql:ClientError` when an error occurs (See [Client Error Handling](#63-client-error-handling)). Closing the stream using the `close()` method of the stream unsubscribes from the operation by sending a `complete` message to the server; the connection is retained for the other active and future subscriptions.
+
+When the connection is dropped abnormally, the client attempts to re-establish it if reconnection is configured, re-subscribing every active operation with the original IDs and payloads without terminating the user-facing streams. When reconnection is not configured (the default), or when all the reconnection attempts fail, every active stream is terminated with a `graphql:SubscriptionError`.
+
+###### Example: Executing a Subscription Operation
+
+```ballerina
+import ballerina/graphql;
+import ballerina/io;
+
+type DonationsResponse record {|
+    record {|int totalDonations;|} data;
+|};
+
+public function main() returns error? {
+    graphql:Client donationsClient = check new ("http://localhost:9090/donations");
+
+    stream<DonationsResponse, graphql:ClientError?> donations =
+        check donationsClient->subscribe(string `subscription { totalDonations }`);
+
+    check from DonationsResponse response in donations
+        do {
+            io:println(response.data.totalDonations);
+        };
+
+    check donationsClient->close();
+}
+```
+
+##### 2.5.2.4 The `close()` Method
+
+The `close()` method terminates all the active subscriptions, closes the underlying WebSocket connection (if any), and marks the client as closed.
+
+```ballerina
+remote isolated function close() returns ClientError?;
+```
+
+Closing the client sends a `complete` message per active subscription, closes the WebSocket connection with a normal closure, and terminates every active subscription stream with `()`. Invoking `close()` also abandons any in-flight reconnection attempts. After `close()` returns, any subsequent `query()`, `mutate()`, or `subscribe()` call returns a `graphql:ClientError`. Calling `close()` on an already-closed client is a no-op. The WebSocket close handshake is performed on a best-effort basis: a failure to complete it (for example, the server not echoing the close frame) is logged and does not cause `close()` to return an error, since the connection is torn down regardless.
+
+##### 2.5.2.5 The `execute()` Method (Deprecated)
+
+The generic `execute()` method executes a GraphQL query or mutation operation, without validating the operation kind. It is deprecated in favor of the per-operation `query()` and `mutate()` methods and will be removed in a future version.
 
 ```ballerina
 remote isolated function execute(string document, map<anydata>? variables = (), string? operationName = (),
     map<string|string[]>? headers = (), typedesc<GenericResponseWithErrors|record {}|json> targetType = <>)
-    returns targetType|ClientError ;
+    returns targetType|ClientError;
 ```
 
 #### 2.5.3 Client Data Binding
 
-When sending a GraphQL request to a GraphQL server using the Ballerina GraphQL client, the response can be data-bound. That means the user can define the expected shape of the GraphQL response by defining a type. The data type defined by the user should be a subtype of `graphql:GenericResponseWithErrors|record{}|json`. Otherwise, the data binding fails with an error.
+When sending a GraphQL request to a GraphQL server using the Ballerina GraphQL client, the response can be data-bound. That means the user can define the expected shape of the GraphQL response by defining a type. The data type defined by the user should be a subtype of `graphql:GenericResponseWithErrors|record{}`. Otherwise, the data binding fails with an error. The same rules apply to the single response of the `query()` and `mutate()` methods and to each event of the stream returned from the `subscribe()` method. The deprecated `execute()` method additionally allows binding to `json`.
 
->**Note:** It is recommended to use the `graphql:GenericResponseWithErrors` or any subtype of it when retrieving a response using the `graphql:Client` using the `execute` method.
+>**Note:** It is recommended to use the `graphql:GenericResponseWithErrors` or any subtype of it when retrieving a response using the `graphql:Client`.
 
 When defining the expected type, nullable fields should be defined as a union of the field type and nil (`()`). A [Payload Binding Error](#632-payload-binding-error) can occur otherwise.
 
@@ -462,17 +548,84 @@ type Profile record {|
 public function main() returns error? {
     graphql:Client graphqlClient = check new ("localhost:9090/graphql");
     string document = "{ profile(id: 100) {name age} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    ProfileResponseWithErrors response = check graphqlClient->query(document);
     string name = response.data.profile.name;
     io:println(name);
 }
 ```
 
-The `execute` method can return errors when retrieving a response from a GraphQL API. For information about handling errors, check the section [Client Error Handling](#63-client-error-handling)
+The client methods can return errors when retrieving a response from a GraphQL API. For information about handling errors, check the section [Client Error Handling](#63-client-error-handling)
 
 #### 2.5.4 Client Configuration
 
 The `graphql:Client` uses `http:Client` as its underlying implementation; this `http:Client` can be configured by providing the `graphql:ClientConfiguration` as an optional parameter via the `graphql:Client` init method.
+
+##### 2.5.4.1 Subscription Configuration
+
+The subscription behavior of the client can be configured using the `subscription` field of the `graphql:ClientConfiguration`, which accepts a `graphql:WebSocketConfiguration`. A nil `subscription` field does not disable subscriptions: the `subscribe()` method works with the default behavior.
+
+```ballerina
+public type WebSocketConfiguration record {|
+    string? serviceUrl = ();
+    map<json>? connectionInitPayload = ();
+    decimal connectionInitTimeout = 60;
+    ReconnectConfig? reconnect = ();
+    PingMessageHandler? pingMessageHandler = ();
+    KeepAliveConfig keepAlive = {};
+    WebSocketClientConfiguration websocketConfig = {};
+|};
+```
+
+* `serviceUrl` - The WebSocket URL of the subscription endpoint, for the GraphQL deployments hosting subscriptions on a different endpoint than queries and mutations. If not provided, the URL is derived from the client's service URL by mapping `http` to `ws` and `https` to `wss`.
+* `connectionInitPayload` - The payload to be sent with the `connection_init` message of the `graphql-transport-ws` protocol, commonly used to pass authentication information.
+* `connectionInitTimeout` - The maximum time (in seconds) to wait for the `connection_ack` message after sending the `connection_init` message. This bounds the `graphql-transport-ws` handshake only; the WebSocket upgrade is bounded separately by the `handShakeTimeout` field of the `websocketConfig`. Both are WebSocket-scoped and independent of the client's HTTP `timeout` — the HTTP `timeout` does not affect the subscription connection establishment.
+* `reconnect` - The reconnection configurations. A nil value (the default) disables the automatic reconnection.
+* `pingMessageHandler` - The handler for the `ping` messages received from the server. If not provided, the client automatically responds to each `ping` message with a `pong` message. When a handler is provided, the client does not respond automatically; the handler owns the response entirely via the given `graphql:PingMessageCaller`. An error returned from the handler is logged and does not affect the connection. Note that these are the `ping` *messages* of the `graphql-transport-ws` protocol, which are distinct from the WebSocket protocol-level ping/pong *frames* (the latter are configurable via the `pingPongHandler` field of the `websocket:Client` configurations).
+* `keepAlive` - The client-side keep-alive configuration, described below. Enabled by default.
+* `websocketConfig` - The configurations of the underlying `websocket:Client`. This record mirrors every field of the `websocket:ClientConfiguration` except `subProtocols`: the subprotocol is not user-configurable, and the client always sets it to `graphql-transport-ws` internally. Custom headers for the WebSocket upgrade request (e.g., an `Authorization` header) can be provided via the `customHeaders` field.
+
+In addition to responding to the server's `ping` messages, the client proactively sends its own `ping` messages to detect a silently dropped connection (for example, a half-open connection left by an abrupt network drop). This client-side keep-alive is configured using the `graphql:KeepAliveConfig` record and is enabled by default.
+
+```ballerina
+public type KeepAliveConfig record {|
+    boolean enabled = true;
+    decimal pingInterval = 15;
+    decimal pongTimeout = 15;
+|};
+```
+
+* `enabled` - Whether the client-side keep-alive is active. When disabled, the client no longer sends its own `ping` messages, but still responds to the server's `ping` messages.
+* `pingInterval` - The interval (in seconds) at which the client sends `ping` messages.
+* `pongTimeout` - The maximum time (in seconds) to wait for the `pong` response to each `ping`. Since this is a per-ping deadline, it may be shorter than the `pingInterval` for faster detection.
+
+When a `pong` is not received within the `pongTimeout`, the connection is considered lost: the client closes it and either reconnects (when `reconnect` is configured) or terminates every active subscription stream with a `graphql:SubscriptionError`. The keep-alive configuration is validated at the client initialization: a non-positive `pingInterval` or `pongTimeout` (when enabled) results in a `graphql:ClientError`.
+
+The reconnection behavior is configured using the `graphql:ReconnectConfig` record.
+
+```ballerina
+public type ReconnectConfig record {|
+    int maxAttempts = 5;
+    decimal interval = 1;
+    float backOffFactor = 2.0;
+    decimal maxInterval = 30;
+|};
+```
+
+The reconnection attempt `n` waits `min(interval * backOffFactor^(n-1), maxInterval)` seconds before connecting. The reconnection configuration is validated at the client initialization: invalid values (e.g., a negative `interval`, a non-positive `backOffFactor`, or a `maxInterval` less than the `interval`) result in a `graphql:ClientError`.
+
+###### Example: Subscription Configuration with Authentication and Reconnection
+
+```ballerina
+graphql:Client donationsClient = check new ("https://localhost:9090/donations",
+    subscription = {
+        connectionInitPayload: {authToken: token},
+        reconnect: {maxAttempts: 3, interval: 2},
+        websocketConfig: {
+            customHeaders: {"Authorization": string `Bearer ${token}`}
+        }
+    }
+);
+```
 
 ## 3. Schema Generation
 
@@ -1502,7 +1655,7 @@ service on new graphql:Listener(9090) {
 
 ### 6.3 Client Error Handling
 
-The response returned from the `execute` method of the GraphQL client can include errors. This section describes how to handle those errors on the Ballerina client side. All the errors that occurred during a GraphQL client operation are categorized as `graphql:ClientError` error type. All the other errors are subtypes of this error type.
+The responses returned from the GraphQL client methods can include errors. This section describes how to handle those errors on the Ballerina client side. All the errors that occurred during a GraphQL client operation are categorized as `graphql:ClientError` error type. All the other errors are subtypes of this error type.
 
 ###### Example: Handle Client Error
 
@@ -1578,23 +1731,45 @@ The above example shows how the `graphql:InvalidDocumentError`s are handled sepa
 
 ##### 6.3.2 Payload Binding Error
 
-As described in the section [Client Data Binding](#253-client-data-binding), the response can be data-bound. When the data binding fails, a `graphql:PayloadBindingError` will be returned. This error can occur due to a mismatch between the shape of the expected type and the actual response from the GraphQL API. The `ErrorDetail` records are added to the `errors` field of the error detail so the details of the error can be retrieved.
+As described in the section [Client Data Binding](#253-client-data-binding), the response can be data-bound. When the data binding fails, a `graphql:PayloadBindingError` will be returned. This error can occur due to a mismatch between the shape of the expected type and the actual response from the GraphQL API. The `ErrorDetail` records are added to the `errors` field of the error detail so the details of the error can be retrieved. When the binding fails because the GraphQL response carried `errors` (for example, when binding a partial response to a type that does not include an `errors` field), the partial `data` and the `extensions` from the response are also preserved in the error detail, so the caller can still recover them without re-issuing the request.
 
 ###### Example: Handle Payload Binding Error
 
 ```ballerina
 graphql:Client graphqlClient = check new ("localhost:9090/graphql");
 string document = "{ profile { name } }";
-ProfileResponse|graphql:ClientError response = graphqlClient->execute(document);
+ProfileResponse|graphql:ClientError response = graphqlClient->query(document);
 
 if response is graphql:PayloadBindingError {
-    // Get error details
+    // Get the error details
     graphql:ErrorDetail[]? errors = response.detail().errors;
-    // Handle error
+    // Recover the partial data returned alongside the errors, if any
+    json? data = response.detail().data;
+    // Handle the error
 }
 ```
 
 The above example shows how the `graphql:PayloadBindingError`s are handled separately.
+
+##### 6.3.3 Subscription Error
+
+The errors occurring while establishing or executing a GraphQL subscription (handshake failures, protocol violations, connection drops, and server-sent `error` messages) are captured by the `graphql:SubscriptionError` error type. When the server responds to a subscription with an `error` message (e.g., document validation failures), the GraphQL errors from the payload are made available via the `errors` field of the error detail.
+
+###### Example: Handle Subscription Error
+
+```ballerina
+graphql:Client graphqlClient = check new ("localhost:9090/graphql");
+string document = "subscription { messages }";
+stream<MessagesResponse, graphql:ClientError?>|graphql:ClientError result = graphqlClient->subscribe(document);
+
+if result is graphql:SubscriptionError {
+    // Get error details
+    graphql:ErrorDetail[]? errors = result.detail().errors;
+    // Handle error
+}
+```
+
+The above example shows how the `graphql:SubscriptionError`s are handled separately. The same error type can be returned as the termination value of a subscription stream.
 
 ###### Example: GraphQL Client Error Handling
 

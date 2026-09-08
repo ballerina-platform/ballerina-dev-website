@@ -522,7 +522,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Function Calling using OpenAI</span>
-                                        <a href='https://github.com/xlight05/ai-samples/blob/usecase-samples/function_calling/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/function_calling/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -592,7 +592,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{multimodel.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Describe an image using OpenAI</span>
-                                        <a href='https://github.com/xlight05/ai-samples/blob/usecase-samples/describe_photo/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/describe_photo/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>

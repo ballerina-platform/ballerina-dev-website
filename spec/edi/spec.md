@@ -497,6 +497,8 @@ References are resolved by `getSchema` before parsing.
 | `dataType` | `"string"` | `string`, `int`, `float`, or `composite` |
 | `startIndex` | `-1` | Start index of the field within the segment. Fixed-length formats only |
 | `length` | `-1` | Fixed length, or a `{"min": N, "max": M}` range |
+| `values` | — | Legal codes of the field ([Section 7.4.3](#743-value-constraints-and-qualifier-based-discrimination)) |
+| `discriminator` | — | Codes that identify this definition during segment matching ([Section 7.4.3](#743-value-constraints-and-qualifier-based-discrimination)) |
 | `components` | — | Component definitions, when `dataType` is `composite` |
 
 #### 7.4.1. Data types
@@ -531,9 +533,104 @@ When `length` is a `{"min": …, "max": …}` object, a value below `min` or abo
 ]
 ```
 
+#### 7.4.3. Value constraints and qualifier-based discrimination
+
+EDI formats reuse one segment code for definitions with different meanings and rely on a qualifier
+value to identify each one. An X12 834 member loop defines a subscriber identifier (qualifier `0F`),
+an optional member policy number (qualifier `1L`), and supplemental identifiers (qualifiers `17`,
+`23`, `DX`) — all with segment code `REF`. Fields, components, and sub-components can declare such
+value sets with two attributes:
+
+| Field | Default | Meaning |
+| --- | --- | --- |
+| `values` | — | The legal codes of the element. Validated when writing EDI; never affects segment matching |
+| `discriminator` | — | The codes that identify this definition. Used for segment matching, and validated when writing EDI |
+
+Because `values` never affects matching, tools can attach full standard code lists without changing
+how existing messages parse; routing happens only where a `discriminator` is declared. An element
+may declare both: `values` records the element's full legal code list (for example the standard's
+code list for the data element) while `discriminator` records the narrower set an implementation
+guide permits at this position.
+
+Matching semantics:
+
+- An input segment is an instance of a definition only when the segment code matches **and** every
+  discriminator element's value is contained in its `discriminator` set.
+- A missing or empty discriminator value never matches — a segment that does not carry its identity
+  cannot claim a discriminated definition.
+- When a segment matches no definition at the current schema position, parsing fails with an error
+  naming the segment. An optional discriminated definition is correctly recognized as absent and
+  skipped.
+- A run of **consecutive definitions sharing one segment code, each declaring at least one
+  discriminator**, is matched as an **unordered set**: while input segments carry the run's code,
+  every member that can still accept an occurrence is tried in schema order, so occurrences may
+  arrive in any order and interleave freely. The run is left when a segment with a different code
+  arrives or matches no member; on exit, every mandatory member must have at least one occurrence.
+- When several definitions could match, the first definition in schema order wins. The schema
+  loader logs warnings when sibling definitions sharing a segment code have overlapping
+  discriminator value sets.
+
+Rules enforced when the schema is loaded:
+
+- A `discriminator` must list at least one code and must not be placed on a repeating field, nor on
+  any component or sub-component of one: repetitions are position-insignificant, so nothing inside a
+  repeating field can identify a definition.
+- A sub-component `discriminator` requires `delimiters.subcomponent` to be configured; without it a
+  sub-component cannot be isolated from the component text around it.
+- When an element declares both attributes, every `discriminator` code must also appear in
+  `values` — a definition that requires a code the element does not permit could never match.
+- Both attributes belong on the element that actually holds the value: on a component rather than
+  the composite field around it, and on a sub-component rather than the component around it.
+  `values` and `discriminator` on composite nodes are rejected.
+- Definitions sharing a segment code within one segment list must either all declare discriminators
+  or none. A mix is rejected, because a code-only sibling would capture the segments its
+  discriminated siblings rejected.
+
+**Example** — the X12 834 member-level `REF` definitions:
+
+```json
+{
+    "code": "REF",
+    "tag": "MemberPolicyNumber",
+    "minOccurances": 0,
+    "fields": [
+        {"tag": "code"},
+        {"tag": "qualifier", "required": true, "discriminator": ["1L"]},
+        {"tag": "identifier", "required": true}
+    ]
+}
+```
+
+With this definition, `REF*17*BARGAINED~` no longer matches `MemberPolicyNumber` (17 is not in
+`{1L}`), so the optional definition is skipped and the segment falls through to the definition
+whose value set contains `17`.
+
+**Example** — an EDIFACT `RFF` qualifier lives inside the `C506` composite and is discriminated at
+component level. Combined with segment references, definitions sharing a code can be specialized
+per position:
+
+```json
+"segmentDefinitions": {
+    "RFF_VatNumber": {
+        "code": "RFF",
+        "tag": "VatNumber",
+        "fields": [
+            {"tag": "code"},
+            {"tag": "REFERENCE", "required": true, "components": [
+                {"tag": "qualifier", "required": true, "discriminator": ["VA"]},
+                {"tag": "number", "required": true}
+            ]}
+        ]
+    }
+},
+"segments": [
+    {"ref": "RFF_VatNumber", "minOccurances": 0}
+]
+```
+
 ### 7.5. Components and sub-components
 
-A component takes `tag`, `required` (default `false`), `truncatable` (default `true`), `dataType` (default `"string"`), and `subcomponents`. A sub-component takes `tag`, `required` (default `false`), and `dataType` (default `"string"`).
+A component takes `tag`, `required` (default `false`), `truncatable` (default `true`), `dataType` (default `"string"`), `values` and `discriminator` ([Section 7.4.3](#743-value-constraints-and-qualifier-based-discrimination)), and `subcomponents`. A sub-component takes `tag`, `required` (default `false`), `dataType` (default `"string"`), and likewise `values` and `discriminator`.
 
 ```json
 {

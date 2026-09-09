@@ -14,7 +14,7 @@ intro: Serverless architecture allows developers to focus on writing application
 
 The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 
-> **Info:** Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@awslambda:Function` adhering to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
+> **Info:** Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@lambda:Function` adhering to the following function signature: <br/>`function (lambda:Context, json|EventType) returns json|error`
 
 ### Supported triggers
 
@@ -26,6 +26,25 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - <a href="https://aws.amazon.com/dynamodb/" target="_blank">DynamoDB</a>
 - <a href="https://aws.amazon.com/ses/" target="_blank">Simple Email Service (SES)</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
+- <a href="https://aws.amazon.com/eventbridge/" target="_blank">EventBridge</a>
+- <a href="https://aws.amazon.com/sns/" target="_blank">Simple Notification Service (SNS)</a>
+- <a href="https://aws.amazon.com/kinesis/" target="_blank">Kinesis Data Streams</a>
+- <a href="https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html" target="_blank">Function URLs</a>
+
+Each trigger delivers its event in a different payload format. Therefore, the package provides a record type per trigger, which you can use as the parameter type of the function instead of `json`.
+
+|         Trigger        |        Event record type       |
+|:----------------------:|:------------------------------:|
+|    Direct invocation   |             `json`             |
+|           SQS          |       `lambda:SQSEvent`        |
+|           S3           |        `lambda:S3Event`        |
+|        DynamoDB        |     `lambda:DynamoDBEvent`     |
+|           SES          |       `lambda:SESEvent`        |
+|       API Gateway      | `lambda:APIGatewayProxyRequest`|
+|       EventBridge      |   `lambda:EventBridgeEvent`    |
+|           SNS          |       `lambda:SNSEvent`        |
+|  Kinesis Data Streams  |     `lambda:KinesisEvent`      |
+|      Function URL      |  `lambda:FunctionURLRequest`   |
 
 Follow the instructions in the sections below to deploy a Ballerina function in AWS Lambda.
 
@@ -69,9 +88,40 @@ Follow the steps below to create a new role in your AWS account.
 
 You can write AWS Lambda functions that use different triggers based on your use case.
 
-Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://central.ballerina.io/ballerinax/awslambda/latest#Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time.
+Functions annotated as `@lambda:Function` should always have the first parameter with the <a href="https://central.ballerina.io/ballerinax/aws.lambda/latest#Context" target="_blank">`lambda:Context`</a> object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time.
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
+
+Alternatively, you can declare the second parameter with the [event record type](#supported-triggers) of the trigger, in which case the payload is converted to that record and its fields become directly accessible as shown below.
+
+```ballerina
+import ballerinax/aws.lambda;
+
+@lambda:Function
+public function notifySNS(lambda:Context ctx, lambda:SNSEvent event) returns json {
+    return event.Records[0].Sns.Message;
+}
+```
+
+>**Tip:** Some event fields have names that are not valid Ballerina identifiers. For example, the `detail-type` field of an EventBridge event is accessed as `event.detail\-type`.
+
+A function can also be invoked over a <a href="https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html" target="_blank">function URL</a>, which is a dedicated HTTPS endpoint for the function. Function URLs use the API Gateway payload format 2.0. Therefore, declare the parameter as `lambda:FunctionURLRequest` rather than `lambda:APIGatewayProxyRequest`, and return a `lambda:FunctionURLResponse` to control the status code and the headers of the response as shown below.
+
+```ballerina
+import ballerinax/aws.lambda;
+
+@lambda:Function
+public function greet(lambda:Context ctx, lambda:FunctionURLRequest request) returns json {
+    lambda:FunctionURLResponse response = {
+        statusCode: 201,
+        headers: {"Content-Type": "application/json"},
+        body: string `{"path": "${request.rawPath}"}`
+    };
+    return response.toJson();
+}
+```
+
+>**Note:** The compiler validates the signature of every annotated function and fails the build when it does not match, for example, when the function has no parameters, has defaultable or rest parameters, has a first parameter that is not `lambda:Context`, or returns an unsupported type. Earlier versions excluded such a function from the generated artifacts without reporting anything.
 
 >**Info:** For examples of creating AWS Lambda functions, see [Examples](#examples).
 
@@ -83,7 +133,9 @@ The AWS Lambda functionality is implemented as a compiler extension. Therefore, 
 $ bal build --cloud="aws_lambda"
 ```
 
->***Tip** You can append the `--graalvm` flag to the above build command to build the native executable. This executable will have a much smaller memory footprint and faster startup time. For more information, see [Build the executable in a container](/learn/build-the-executable-in-a-container/).
+>**Tip:** You can append the `--graalvm` flag to the above build command to build the native executable. This executable will have a much smaller memory footprint and faster startup time. For more information, see [Build the executable in a container](/learn/build-the-executable-in-a-container/).
+
+>**Info:** To package the function as a container image instead of a ZIP file, see [Deploy the function as a container image](#deploy-the-function-as-a-container-image).
 
 ### Deploy the function
 
@@ -91,9 +143,78 @@ The AWS Lambda functionality in Ballerina is implemented as a custom AWS Lambda 
 
 To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Examples](#examples).
 
->**Note:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
+>**Note:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the AWS account](#set-up-the-aws-account) and [creating a role](#create-a-role).
+
+>**Info:** The functions are deployed on the `provided.al2023` custom runtime. The `provided` runtime, which earlier versions used, has been retired by AWS and can no longer be used to create or update a function.
 
 >**Info:** For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed.
+
+### Redeploy the function
+
+After the function is created, you can push a new build of it by executing the `aws lambda update-function-code` command, which you also get in the CLI output logs after you [build the function](#build-the-function). The command uploads the regenerated ZIP file, or refers to the new image with the `--image-uri` parameter when the function is [deployed as a container image](#deploy-the-function-as-a-container-image). The runtime, the role, and the layer are configured when the function is created. Therefore, they are not repeated when you redeploy.
+
+A function created before AWS retired the `provided` runtime in February 2024 is still configured with a runtime that can no longer be selected, and it cannot be redeployed as it is. Move it to `provided.al2023` once by executing the command below, and then redeploy as usual.
+
+```
+$ aws lambda update-function-configuration --function-name $FUNCTION_NAME --runtime provided.al2023
+```
+
+### Deploy the function as a container image
+
+Building with `--cloud="aws_lambda"` produces a ZIP deployment package, which AWS Lambda limits to 250 MB unzipped. To package the function as a <a href="https://docs.aws.amazon.com/lambda/latest/dg/images-create.html" target="_blank">container image</a> instead, which supports images of up to 10 GB, execute the command below.
+
+```
+$ bal build --cloud="aws_lambda_image"
+```
+
+The image is named after the package and tagged with the package version. To deploy it, execute the commands, which you get in the CLI output logs, to create an <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html" target="_blank">Amazon ECR</a> repository, push the image to it, and create the function from the pushed image.
+
+The handler is selected per function at deployment time with the `--image-config` parameter of the `create-function` command. Therefore, a single image can serve every `@lambda:Function` in the package.
+
+>**Note:** Install and configure [Docker](https://www.docker.com/) in your machine before building a container image.
+
+>**Note:** A package version that is not a valid Docker tag is converted to one, and the compiler reports the tag it used.
+
+>**Tip:** You can append the `--graalvm` flag to the above build command to produce a native image on the `provided.al2023` base image instead of a JVM image on `public.ecr.aws/lambda/java:21`, which gives a considerably smaller image and faster cold starts.
+
+### Route the invocation results to a destination
+
+A function can route the result of an asynchronous invocation to another AWS service, without any code in the function itself, by declaring <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async-retain-records.html" target="_blank">destinations</a> in the annotation as shown below.
+
+```ballerina
+import ballerinax/aws.lambda;
+
+@lambda:Function {
+    destinations: {
+        onSuccess: "arn:aws:sqs:<REGION_ID>:<ACCOUNT_ID>:orders-processed",
+        onFailure: "arn:aws:sns:<REGION_ID>:<ACCOUNT_ID>:alerts"
+    }
+}
+public function processOrder(lambda:Context ctx, json input) returns json {
+    return {status: "ok"};
+}
+```
+
+>**Note:** The destination ARNs are ordinary Ballerina strings. Therefore, replace the `<REGION_ID>` and `<ACCOUNT_ID>` placeholders in the source itself before you build the package.
+
+Either field can be omitted, and a destination can be an SQS queue, an SNS topic, an EventBridge event bus, or another Lambda function. Destinations are configured separately from the function itself. Therefore, the compiler prints an `aws lambda put-function-event-invoke-config` command alongside the deploy commands, which you execute after the function is deployed.
+
+AWS delivers a record that describes the invocation to the destination rather than the value the function returned. A successful invocation delivers the request payload and the response payload with a `condition` of `Success`, as shown below. A failed one carries a `condition` of either `RetriesExhausted`, when the function kept failing until the retries ran out, or `EventAgeExceeded`, when the event waited longer than the `MaximumEventAgeInSeconds` configured for the function.
+
+```json
+{
+  "version": "1.0",
+  "requestContext": {"condition": "Success", "approximateInvokeCount": 1},
+  "requestPayload": {"hello": "world"},
+  "responsePayload": {"status": "ok"}
+}
+```
+
+>**Note:** The `destinations` field configures function-level destinations, which apply to asynchronous invocations only. A function invoked synchronously, such as through a function URL or through an `aws lambda invoke` command without `--invocation-type Event`, returns its result to the caller instead. An event source mapping that polls a queue or a stream also invokes the function synchronously and does not use this field, although some event source mappings support an `OnFailure` destination of their own, which is configured on the mapping rather than on the function.
+
+>**Note:** The execution role of the function needs permission to write to the destination (e.g., `sqs:SendMessage` for an SQS queue). Without it, the invocation succeeds but the record is never delivered, and Lambda reports this through the `DestinationDeliveryFailures` CloudWatch metric rather than as an invocation error.
+
+>**Info:** Every field of the annotation is optional. Therefore, `@lambda:Function` remains valid with no annotation value, and existing functions require no change.
 
 ### CI/CD deployment with AWS Lambda
 
@@ -112,7 +233,7 @@ jobs:
     steps:
       # Step 1: Checkout the Repository
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Step 2: Build the Ballerina Project
       - name: Ballerina Build
@@ -120,48 +241,35 @@ jobs:
         with:
           args: build --cloud=aws_lambda
 
-      # Step 3: Package the Function for AWS Lambda
-      - name: Package for AWS Lambda
-        run: |
-          mkdir lambda
-          cp target/bin/your_project_name.jar lambda/
-          cd lambda
-          zip function.zip your_project_name.jar
-
-      # Step 4: Configure AWS Credentials
-        # AWS credentials are automatically picked up from GitHub Secrets
-
-      # Step 5: Deploy to AWS Lambda
-      - name: Deploy to AWS Lambda
-        uses: appleboy/lambda-action@master
+      # Step 3: Configure AWS Credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: ${{ secrets.AWS_REGION }}
-          function_name: your_lambda_function_name
-          handler_name: your_project_name.handler
-          runtime: java11
-          zip_file: lambda/function.zip
-          role: ${{ secrets.AWS_LAMBDA_ROLE_ARN }}
-          timeout: 30
-          memory_size: 512
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Step 4: Deploy to AWS Lambda
+      - name: Deploy to AWS Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name your_lambda_function_name \
+            --zip-file fileb://target/aws_lambda/aws-ballerina-lambda-functions.zip
 
       # Optional: Test the Lambda Function
       - name: Invoke Lambda Function
         run: |
-          aws lambda invoke --function-name your_lambda_function_name --payload '{}' response.json
+          aws lambda invoke --function-name your_lambda_function_name --payload '{}' \
+            --cli-binary-format raw-in-base64-out response.json
           cat response.json
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
 ```
 - **Step 01:** The push event can initiate a build and deployment process
-- **Step 02:** This command tells Ballerina to compile the project specifically for AWS Lambda. It optimizes the output for Lambda’s serverless runtime requirements.
-- **Step 03:** Package the compiled Ballerina application into a ZIP file suitable for AWS Lambda deployment.
-- **Step 04:** Ensures that the workflow has the necessary credentials to interact with AWS services.
-- **Step 05:** Deploy the packaged Ballerina function to AWS Lambda by uploading the ZIP file.
-- **Step 06:** Test the deployed Lambda function by invoking it and outputting the response to confirm that the function works as expected.
+- **Step 02:** This command tells Ballerina to compile the project specifically for AWS Lambda. It optimizes the output for Lambda’s serverless runtime requirements, and generates the `aws-ballerina-lambda-functions.zip` deployment package in the `target/aws_lambda` directory.
+- **Step 03:** Ensures that the workflow has the necessary credentials to interact with AWS services.
+- **Step 04:** Deploy the packaged Ballerina function to AWS Lambda by uploading the generated ZIP file.
+- **Step 05:** Test the deployed Lambda function by invoking it and outputting the response to confirm that the function works as expected.
+
+>**Note:** The workflow above updates a function that already exists. Create it once with the `aws lambda create-function` command, which you get in the CLI output logs after you [build the function](#build-the-function).
 
 ### Examples
 

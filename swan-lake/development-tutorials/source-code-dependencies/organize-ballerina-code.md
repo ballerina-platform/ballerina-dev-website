@@ -67,7 +67,7 @@ cd hello_service
 $ bal new -t lib hello_lib
 ```
 
-This creates a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. Additionally, it creates the `README.md` file, which is required to [publish a package to Ballerina Central](/learn/publish-packages-to-ballerina-central).
+This creates a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. Additionally, it creates the `README.md` file, which is required to [publish a package to Ballerina Central](/learn/ballerina-central).
 
 ```
 

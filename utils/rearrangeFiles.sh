@@ -12,7 +12,7 @@ cp -r ./out/policies/* ./out/
 #Rearrange files inside the sub-folders of learn-the-platform folder
 cp -r ./out/learn/build-a-graalvm-executable/* ./out/learn
 cp -r ./out/learn/build-and-run/* ./out/learn
-cp -r ./out/learn/ballerina-central/* ./out/learn
+cp -r ./out/learn/ballerina-repositories/* ./out/learn
 cp -r ./out/learn/configurability/* ./out/learn
 cp -r ./out/learn/java-interoperability/* ./out/learn
 cp -r ./out/learn/observability/* ./out/learn
@@ -28,12 +28,15 @@ cp -r ./out/learn/additional-tools/* ./out/learn
 cp -r ./out/learn/featured-scenarios/* ./out/learn
 cp -r ./out/learn/learn-the-language/* ./out/learn
 
+#Duplicate pages under their old URLs, so renamed/merged pages keep working at their previous address
+cp -r ./out/learn/ballerina-central ./out/learn/publish-packages-to-ballerina-central
+cp -r ./out/learn/manage-dependencies ./out/learn/proxy-ballerina-central-with-maven-repository
 
 cp ./out/404/index.html ./out/404.html
 
 #Remove duplicated files
 rm -rf ./out/learn/development-tutorials/ ./out/learn/integration/ ./out/learn/integration-tools/ ./out/learn/troubleshoot-the-runtime/ ./out/policies/ ./out/learn/references/ .out/learn/resources/
-rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-central/ ./out/learn/configurability/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/ ./out/learn/ballerina-persist/ ./out/learn/build-and-run/ ./out/learn/observability/ ./out/learn/featured-scenarios/ ./out/learn/learn-the-language/* ./out/learn/run-in-the-cloud/ ./out/learn/deployment-guide/ ./out/learn/static-code-analysis/ ./out/learn/additional-tools/
+rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-repositories/ ./out/learn/configurability/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/ ./out/learn/ballerina-persist/ ./out/learn/build-and-run/ ./out/learn/observability/ ./out/learn/featured-scenarios/ ./out/learn/learn-the-language/* ./out/learn/run-in-the-cloud/ ./out/learn/deployment-guide/ ./out/learn/static-code-analysis/ ./out/learn/additional-tools/
 
 
 #Edit the sitemap
@@ -46,7 +49,7 @@ sed -i '' 's/\/resources\//\//g' ./out/sitemap.xml
 sed -i '' 's/policies\///g' ./out/sitemap.xml
 
 sed -i '' 's/build-a-graalvm-executable\///g' ./out/sitemap.xml
-sed -i '' 's/\/ballerina-central\//\//g' ./out/sitemap.xml
+sed -i '' 's/\/ballerina-repositories\//\//g' ./out/sitemap.xml
 sed -i '' 's/ballerina-persist\///g' ./out/sitemap.xml
 sed -i '' 's/java-interoperability\///g' ./out/sitemap.xml
 sed -i '' 's/test-document-the-code\///g' ./out/sitemap.xml

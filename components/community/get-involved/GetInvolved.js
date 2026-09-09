@@ -66,7 +66,7 @@ export default function GetInvolved(props) {
             <h4 id="contribute-to-ballerina-central-title">
               Contribute to Ballerina Central
             </h4>
-            <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="/learn/publish-packages-to-ballerina-central/" >
+            <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="/learn/ballerina-central/" >
               creating and publishing</a> your module to <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
           </Col>
           <Col xs={12} md={4} lg={4} className={styles.card}>

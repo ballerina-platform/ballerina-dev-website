@@ -290,15 +290,23 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/publish-packages-to-ballerina-central`,
-        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/ballerina-central`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-central`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/ballerina-central`,
       },
       {
         source: `/${redirectBase}learn/configure-a-network-proxy`,
-        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/configure-a-network-proxy`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/configure-a-network-proxy`,
       },
       {
         source: `/${redirectBase}learn/proxy-ballerina-central-with-maven-repository`,
-        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/proxy-ballerina-central-with-maven-repository`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/manage-dependencies`,
+      },
+      {
+        source: `/${redirectBase}learn/custom-repositories/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/custom-repositories/:slug`,
       },
       {
         source: `/${redirectBase}learn/code-to-cloud-deployment`,

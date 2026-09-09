@@ -58,7 +58,7 @@ Organization name is mandatory and can only contain alphanumerics, underscore, a
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Define the organization](/learn/publish-packages-to-ballerina-central/#define-the-organization), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
+As described in [Define the organization](/learn/ballerina-central/#define-the-organization), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
 
 
 ### The `name` field
@@ -107,7 +107,7 @@ Ballerina strictly follows the rules of <a href="https://semver.org/" target="_b
 
 By default, packages published to Ballerina Central are public, allowing visibility to all users. To limit access, you can designate a package as private by adding the `visibility` field to the `[package]` table. Private packages are accessible only to members of the associated organization. You can configure the access token in the `<USER_HOME>/.ballerina/Settings.toml` file to utilize the package as a dependency. 
 
-For information on how to obtain an access token, see [prepare for publishing](/learn/publish-packages-to-ballerina-central/#prepare-for-publishing).
+For information on how to obtain an access token, see the section [Publish a package to Ballerina Central](/learn/ballerina-central/#publish-a-package-to-ballerina-central).
 
 Below is an example on setting the visibility of a package to private.
 
@@ -304,7 +304,7 @@ version = "1.5.0"
 repository = "local"
 ```
 
-This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies](/learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Local repository](/learn/custom-repositories/local-repository/).
 
 #### Specify the minimum version for a dependency
 
@@ -526,7 +526,7 @@ This file is auto-generated and managed by the Ballerina CLI. It does not need u
 
 The `README.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
 
-This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
+This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/ballerina-central/#create-a-library-package)
 
 ## The `target/` directory
 

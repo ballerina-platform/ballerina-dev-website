@@ -61,7 +61,7 @@ The following steps outline the CI process in a source repository:
    $ bal push
    ```
 
-   > **Tip**: Visit the [Publish Pacakages to Ballerina Central](/learn/publish-packages-to-ballerina-central/) for more information on how to publish packages to Ballerina Central.
+   > **Tip**: Visit the [Publish Packages to Ballerina Central](/learn/ballerina-central/#publish-a-package-to-ballerina-central) for more information on how to publish packages to Ballerina Central.
 
 > **Tip**: The above steps of the CI process can be automated using the [Ballerina GitHub action](/learn/monolithic-deployment/#ballerina-github-action-for-cicd-integration).
 

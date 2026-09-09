@@ -83,7 +83,7 @@ Below are the sample configurations for popular platforms to get started quickly
 - **Ballerina Central integration**: Pushes modules to Ballerina Central using a secure token.
 - **Docker support**: Builds and pushes Docker images if your project requires containerization.
 
-To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` and `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/publish-packages-to-ballerina-central/#publish-a-package-to-ballerina-central). 
+To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` and `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/ballerina-central/#publish-a-package-to-ballerina-central). 
 Docker username and password can be obtained from [Docker Hub](https://hub.docker.com/). Replace the docker image name, version, and repository with the correct values.
 
 ### GitLab CI/CD for Ballerina
@@ -141,7 +141,7 @@ Docker username and password can be obtained from [Docker Hub](https://hub.docke
 - **Dependency caching**: Caches dependencies to speed up builds.
 - **Ballerina Central integration**: Pushes modules to Ballerina Central.
 
-To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` secret to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/publish-packages-to-ballerina-central/#publish-a-package-to-ballerina-central).
+To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` secret to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/ballerina-central/#publish-a-package-to-ballerina-central).
 
 ### Bitbucket pipelines for Ballerina
 
@@ -193,7 +193,7 @@ To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` secre
 - **Pull request support**: Runs tests and builds for pull requests.
 - **Ballerina Central integration**: Pushes modules to Ballerina Central.
 
-To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` secret to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/publish-packages-to-ballerina-central/#publish-a-package-to-ballerina-central).
+To use this workflow, you need to add the `BALLERINA_CENTRAL_ACCESS_TOKEN` secret to your repository. Ballerina Central access token can be generated from [Ballerina Central](https://ballerina.io/learn/ballerina-central/#publish-a-package-to-ballerina-central).
 
 ### Best practices for Ballerina CI/CD pipelines
 

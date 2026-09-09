@@ -213,7 +213,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
+<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/ballerina-central">Publish packages to Ballerina Central</a>.
 </td>
 </tr>
 <tr>

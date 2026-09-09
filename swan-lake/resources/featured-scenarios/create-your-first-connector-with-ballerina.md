@@ -187,7 +187,7 @@ Once you have completed the development and testing of your connector, you can p
    - `icon`: The relative path to the icon file, which will be shown as the connector logo in the [Ballerina Central](https://central.ballerina.io/) (Optional).
    - `repository`: The URL of your GitHub repository (Optional).
 
-2. Follow the steps in the [Ballerina package publishing guide](https://ballerina.io/learn/publish-packages-to-ballerina-central/) to publish your connector to [Ballerina Central](https://central.ballerina.io/) under your organization.
+2. Follow the steps in the [Ballerina package publishing guide](https://ballerina.io/learn/ballerina-central/) to publish your connector to [Ballerina Central](https://central.ballerina.io/) under your organization.
 
 ## Conclusion
 

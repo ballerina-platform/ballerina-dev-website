@@ -99,3 +99,27 @@ Follow the steps below to configure a Maven remote repository in JFrog Artifacto
 6. Click **Save & Finish** to create the repository.
 
 7. Copy the repository URL from the **Artifacts** view. You will use it when [configuring the Ballerina client](/learn/manage-dependencies/#configure-the-ballerina-client-to-proxy-ballerina-central) to use the proxy.
+
+### Configure a proxy repository with the Generic package type
+
+Alternatively, you can set up the proxy repository as a **Generic repository with a Maven layout** instead of a Maven-type repository. Follow steps 1 and 2 above (log in and navigate to **Create a Repository → Remote**), then continue as follows.
+
+3. Select the Generic package type and set the repository details
+
+   Select **Generic** instead of Maven as the package type, then set the **Repository Key** (e.g., `ballerina-central-remote`) and **URL** (`https://api.central.ballerina.io/2.0/maven`).
+
+   ![Select the Generic package type and set the repository key and URL](/learn/images/artifactory-generic-proxy-basic.png "Select the Generic package type and set the repository key and URL")
+
+4. Set the repository layout
+
+   Scroll down to the **General** section and set **Repository Layout** to `maven-2-default`.
+
+   ![Set the Repository Layout to maven-2-default](/learn/images/artifactory-generic-proxy-layout.png "Set the Repository Layout to maven-2-default")
+
+5. Configure the Advanced tab settings
+
+   Apply the same settings described above: disable **Block Mismatching MIME Types**, enable **Bypass HEAD Requests**, and set **Metadata Retrieval Cache Period** to a low value such as `60` seconds.
+
+   ![Advanced tab settings for the Generic proxy repository](/learn/images/artifactory-generic-proxy-advanced.png "Advanced tab settings for the Generic proxy repository")
+
+The remaining steps (saving and copying the repository URL) are the same as described above.

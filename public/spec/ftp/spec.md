@@ -1,715 +1,372 @@
 # Specification: Ballerina FTP Library
 
-_Owners_: @shafreenAnfar @dilanSachi @Bhashinee    
-_Reviewers_: @shafreenAnfar @Bhashinee  
-_Created_: 2020/10/28   
-_Updated_: 2026/02/05  
-_Edition_: Swan Lake    
+_Owners_: @shafreenAnfar @dilanSachi @Bhashinee \
+_Reviewers_: @shafreenAnfar @Bhashinee \
+_Created_: 2020/10/28 \
+_Updated_: 2026/09/01 \
+_Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the FTP standard library of [Ballerina language](https://ballerina.io/), which provides FTP client/listener functionalities to send and receive files by connecting to FTP/SFTP server.
 
-The FTP library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag.
+This is the specification for the FTP standard library of the [Ballerina language](https://ballerina.io/), which provides FTP client and listener functionalities to send and receive files by connecting to FTP/SFTP servers.
 
-If you have any feedback or suggestions about the library, start a discussion via a [GitHub](https://github.com/ballerina-platform/ballerina-standard-library/issues) issue or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
+The FTP library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
+
+If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` on GitHub.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
 ## Contents
-- [Specification: Ballerina FTP Library](#specification-ballerina-ftp-library)
-  - [Introduction](#introduction)
-  - [Contents](#contents)
-  - [1. Overview](#1-overview)
-  - [2. Configurations](#2-configurations)
-    - [2.1. Security Configurations](#21-security-configurations)
-    - [2.2. FileInfo](#22-fileinfo)
-    - [2.3. Error Types](#23-error-types)
-    - [2.4. Retry Configuration](#24-retry-configuration)
-  - [3. Client](#3-client)
-    - [3.1. Configurations](#31-configurations)
-    - [3.2. Initialization](#32-initialization)
-      - [3.2.1. Insecure Client](#321-insecure-client)
-      - [3.2.2. Secure Client](#322-secure-client)
-      - [3.2.3. Client with Retry Configuration](#323-client-with-retry-configuration)
-    - [3.3. Functions](#33-functions)
-    - [3.4. Circuit Breaker](#34-circuit-breaker)
-      - [State Machine](#state-machine)
-      - [Configuration](#configuration)
-      - [Usage Example](#usage-example)
-  - [4. Listener](#4-listener)
-    - [4.1. Configurations](#41-configurations)
-    - [4.2. Service Configuration Annotation](#42-service-configuration-annotation)
-    - [4.3. Initialization](#43-initialization)
-      - [4.3.1. Insecure Listener](#431-insecure-listener)
-      - [4.3.2. Secure Listener](#432-secure-listener)
-    - [4.4. Usage](#44-usage)
-      - [4.4.1. Service-Level Monitoring Configuration](#441-service-level-monitoring-configuration)
-      - [4.4.2. Format-Specific Listener Callbacks](#442-format-specific-listener-callbacks)
-      - [4.4.3. Post-Processing Actions](#443-post-processing-actions)
-    - [4.5. Distributed Coordination](#45-distributed-coordination)
-      - [4.5.1. Coordination Configuration](#451-coordination-configuration)
-      - [4.5.2. Coordination Mechanism](#452-coordination-mechanism)
-  - [5. Caller](#5-caller)
-    - [5.1. Initialization](#51-initialization)
-    - [5.2. Functions](#52-functions)
-  - [6. Samples](#6-samples)
-    - [6.1. Sending Files](#61-sending-files)
-    - [6.2. Listening to file changes](#62-listening-to-file-changes)
+
+1. [Overview](#1-overview)
+2. [Security](#2-security)
+   * 2.1 [Authentication](#21-authentication)
+   * 2.2 [Authentication Methods](#22-authentication-methods)
+3. [Client](#3-client)
+   * 3.1 [Initializing the Client](#31-initializing-the-client)
+      * 3.1.1 [Insecure Client](#311-insecure-client)
+      * 3.1.2 [Secure Client](#312-secure-client)
+      * 3.1.3 [Secure FTPS Client](#313-secure-ftps-client)
+   * 3.2 [Writing Files](#32-writing-files)
+      * 3.2.1 [Write Operations](#321-write-operations)
+      * 3.2.2 [Streaming Writes](#322-streaming-writes)
+   * 3.3 [Reading Files](#33-reading-files)
+      * 3.3.1 [Read Operations](#331-read-operations)
+      * 3.3.2 [Streaming Reads](#332-streaming-reads)
+      * 3.3.3 [Data Binding](#333-data-binding)
+   * 3.4 [File Management](#34-file-management)
+   * 3.5 [Retry Configuration](#35-retry-configuration)
+   * 3.6 [Circuit Breaker](#36-circuit-breaker)
+      * 3.6.1 [State Machine](#361-state-machine)
+      * 3.6.2 [Configuration](#362-configuration)
+      * 3.6.3 [Failure Categories](#363-failure-categories)
+4. [Listener](#4-listener)
+   * 4.1 [Initializing the Listener](#41-initializing-the-listener)
+      * 4.1.1 [Insecure Listener](#411-insecure-listener)
+      * 4.1.2 [Secure Listener](#412-secure-listener)
+   * 4.2 [Service](#42-service)
+      * 4.2.1 [Service Declaration](#421-service-declaration)
+      * 4.2.2 [Service Configuration Annotation](#422-service-configuration-annotation)
+   * 4.3 [File Change Callbacks](#43-file-change-callbacks)
+      * 4.3.1 [Format-Specific Callbacks](#431-format-specific-callbacks)
+      * 4.3.2 [File Delete Callback](#432-file-delete-callback)
+      * 4.3.3 [Error Callback](#433-error-callback)
+      * 4.3.4 [Generic File Change Callback (Deprecated)](#434-generic-file-change-callback-deprecated)
+   * 4.4 [Post-Processing Actions](#44-post-processing-actions)
+   * 4.5 [File Filtering](#45-file-filtering)
+      * 4.5.1 [File Name Pattern](#451-file-name-pattern)
+      * 4.5.2 [File Age Filter](#452-file-age-filter)
+      * 4.5.3 [File Dependency Conditions](#453-file-dependency-conditions)
+   * 4.6 [Distributed Coordination](#46-distributed-coordination)
+5. [Caller](#5-caller)
+6. [Errors](#6-errors)
+   * 6.1 [Error Hierarchy](#61-error-hierarchy)
+   * 6.2 [Error Handling](#62-error-handling)
+7. [Observability](#7-observability)
+   * 7.1 [Metrics](#71-metrics)
+      * 7.1.1 [Gauges](#711-gauges)
+      * 7.1.2 [Explicit Counters](#712-explicit-counters)
+      * 7.1.3 [Duration Gauges](#713-duration-gauges)
+      * 7.1.4 [Querying Metrics](#714-querying-metrics)
+   * 7.2 [Tags](#72-tags)
+      * 7.2.1 [Identity Tags](#721-identity-tags)
+      * 7.2.2 [Action Tags](#722-action-tags)
+      * 7.2.3 [Outcome Tags](#723-outcome-tags)
+      * 7.2.4 [Tag Consistency Rule](#724-tag-consistency-rule)
+      * 7.2.5 [File-Scoped Tags (Trace-Only)](#725-file-scoped-tags-trace-only)
+      * 7.2.6 [Client Operation Tag Mapping](#726-client-operation-tag-mapping)
+      * 7.2.7 [Listener Event Tag Mapping](#727-listener-event-tag-mapping)
+      * 7.2.8 [File Lifecycle Stages](#728-file-lifecycle-stages)
+   * 7.3 [Observability Outputs per File](#73-observability-outputs-per-file)
+   * 7.4 [Sample PromQL Queries](#74-sample-promql-queries)
+   * 7.5 [Enabling Observability](#75-enabling-observability)
+   * 7.6 [Observability Safety Rules](#76-observability-safety-rules)
 
 ## 1. Overview
-FTP is a file transfer protocol. It’s a basic way of using the Internet to share files.
-SFTP (or Secure File Transfer Protocol) is an alternative to FTP that also allows transferring files,
-but adds a layer of security to the process. SFTP uses SSH (or secure shell) encryption to protect data as
-it’s being transferred. This means data is not exposed to outside entities on the Internet when it is sent
-to another party. This library provides support for both protocols.
 
-Ballerina FTP library contains two core apis:
-* Client - The `ftp:Client` is used to connect to FTP server and perform various operations on the files.
-* Listener - The `ftp:Listener` is used to listen to a remote FTP location and notify if files are added or removed 
-  from the FTP location.
+FTP (File Transfer Protocol) is a standard network protocol for transferring files between a client and a server. SFTP (SSH File Transfer Protocol) adds a layer of security by encrypting the connection using SSH, protecting data in transit. The Ballerina FTP library supports both protocols.
 
-## 2. Configurations
-### 2.1. Security Configurations
-* PrivateKey record represents the configuration related to a private key.
-```ballerina
-public type PrivateKey record {|
-    # Path to the private key file
-    string path;
-    # Private key password
-    string password?;
-|};
-```
-* Credentials record represents the username and password configurations.
-```ballerina
-public type Credentials record {|
-    # Username of the user
-    string username;
-    # Password of the user
-    string password?;
-|};
-```
-* AuthConfiguration record represents the configurations needed for facilitating secure communication with a remote FTP server.
-```ballerina
-public type AuthConfiguration record {|
-    # Username and password to be used
-    Credentials credentials?;
-    # Private key to be used
-    PrivateKey privateKey?;
-    # Preferred authentication methods and their order of preference
-    PreferredMethod[] preferredMethods?;
-|};
-```
-* PreferredMethod enum specifies the supported authentication methods.
-```ballerina
-public enum PreferredMethod {
-    # Security key file authentication
-    PUBLICKEY,
-    # Username and password authentication
-    PASSWORD,
-    # Interactive authentication (question and answer)
-    KEYBOARD_INTERACTIVE,
-    # Enterprise authentication system
-    GSSAPI_WITH_MIC
-}
-```
-### 2.2. FileInfo
-* `FileInfo` record contains the metadata of the files.
-```ballerina
-public type FileInfo record {|
-    # Relative file path for a newly-added file
-    string path;
-    # Size of the file
-    int size;
-    # Last-modified timestamp of the file in UNIX Epoch time
-    int lastModifiedTimestamp;
-    # File name
-    string name;
-    # `true` if the file is a folder
-    boolean isFolder;
-    # `true` if the file is a file
-    boolean isFile;
-    # Normalized absolute path of this file within its file system
-    string pathDecoded;
-    # Extension of the file name
-    string extension;
-    # Receiver as a URI String for public display
-    string publicURIString;
-    # Type of the file
-    string fileType;
-    # `true` if the `fileObject` is attached
-    boolean isAttached;
-    # `true` if someone reads/writes from/to this file
-    boolean isContentOpen;
-    # `true` if this file is executable
-    boolean isExecutable;
-    # `true` if this file is hidden
-    boolean isHidden;
-    # `true` if this file can be read
-    boolean isReadable;
-    # `true` if this file can be written
-    boolean isWritable;
-    # Depth of the file name within its file system
-    int depth;
-    # URI scheme of the file
-    string scheme;
-    # Absolute URI of the file
-    string uri;
-    # Root URI of the file system in which the file exists
-    string rootURI;
-    # A "friendly path" is a path, which can be accessed without a password
-    string friendlyURI;
-|};
-```
-### 2.3. Error Types
-The FTP module provides a hierarchy of error types for better error handling and more precise error identification.
+The library exposes two core components:
 
-* `Error` - The base error type for all FTP-related errors.
-```ballerina
-public type Error distinct error;
-```
+- **Client** — The `ftp:Client` connects to an FTP/SFTP server and performs file operations such as reading, writing, moving, copying, and listing files.
+- **Listener** — The `ftp:Listener` monitors a remote FTP/SFTP directory and invokes service callbacks when files are added or removed.
 
-* `ConnectionError` - Represents errors that occur when connecting to the FTP/SFTP server. This includes network failures, host unreachable, connection refused, etc.
-```ballerina
-# Represents an error that occurs when connecting to the FTP/SFTP server.
-public type ConnectionError distinct Error;
-```
+## 2. Security
 
-* `FileNotFoundError` - Represents errors that occur when a requested file or directory is not found on the remote server.
-```ballerina
-public type FileNotFoundError distinct Error;
-```
+### 2.1 Authentication
 
-* `FileAlreadyExistsError` - Represents errors that occur when attempting to create a file or directory that already exists.
-```ballerina
-public type FileAlreadyExistsError distinct Error;
-```
+Both the `ftp:Client` and `ftp:Listener` support authenticated connections via the `auth` configuration field. Authentication is configured using credentials (username and password), a private key, or both. When both are provided, the preferred authentication method can be specified explicitly using an ordered list. If no preference is given, the server and client negotiate the method.
 
-* `InvalidConfigError` - Represents errors that occur when FTP/SFTP configuration is invalid (e.g., invalid port numbers, invalid regex patterns, invalid timeout values).
-```ballerina
-public type InvalidConfigError distinct Error;
-```
+The `userDirIsRoot` configuration controls how the server root is interpreted. When set to `true`, the login home directory is treated as `/`, which is the correct setting for chrooted server environments. When `false`, the actual server root is used, which may cause failures on servers that restrict root access.
 
-* `ServiceUnavailableError` - Represents errors that occur when the FTP/SFTP service is temporarily unavailable. This is a transient error indicating the operation may succeed on retry. Common causes include server overload (FTP code 421), connection issues (425, 426), temporary file locks (450), or server-side processing errors (451). This error type is designed for use with retry and circuit breaker patterns.
-```ballerina
-public type ServiceUnavailableError distinct Error;
-```
+### 2.2 Authentication Methods
 
-All specific error types are subtypes of the base `Error` type, allowing for both specific and general error handling:
-```ballerina
-// Handle specific error types
-ftp:Client|ftp:Error result = new(config);
-if result is ftp:ConnectionError {
-    // Handle connection failures specifically
-} else if result is ftp:ServiceUnavailableError {
-    // Transient error - retry the operation
-} else if result is ftp:Error {
-    // Handle any other FTP error
-}
-```
+The following authentication methods are supported for SFTP connections:
+
+- **PUBLICKEY** — Authenticates using a private key file, optionally protected by a passphrase.
+- **PASSWORD** — Authenticates using a username and password.
+- **KEYBOARD_INTERACTIVE** — An interactive challenge-response authentication mechanism.
+- **GSSAPI_WITH_MIC** — Enterprise authentication using a GSS-API mechanism (e.g., Kerberos).
+
+When a private key is configured, it is used for public key authentication. When credentials are configured, they are used for password or keyboard-interactive authentication. The `preferredMethods` field controls the order in which authentication methods are tried.
+
 ## 3. Client
-The `ftp:Client` connects to FTP server and performs various operations on the files. It supports reading files in multiple formats (bytes, text, JSON, XML, CSV) with streaming support for large files, writing files in multiple formats, and file management operations including create, delete, rename, move, copy, and list.
-### 3.1. Configurations
-* When initializing the `ftp:Client`, `ftp:ClientConfiguration` configuration can be provided.
+
+The `ftp:Client` connects to an FTP or SFTP server and provides operations for reading, writing, and managing files. All client operations are isolated and can be called concurrently.
+
+### 3.1 Initializing the Client
+
+The `ftp:Client` is initialized with a `ClientConfiguration` record that specifies the target server. If initialization fails (for example, due to a connection error), an `ftp:Error` is returned.
+
+#### 3.1.1 Insecure Client
+
+An insecure FTP client is initialized by specifying the `FTP` protocol, along with the host and port of the target server.
+
+###### Example: Insecure FTP Client
+
 ```ballerina
-public type ClientConfiguration record {|
-    # Supported FTP protocols
-    Protocol protocol = FTP;
-    # Target service URL
-    string host = "127.0.0.1";
-    # Port number of the remote service
-    int port = 21;
-    # Authentication options
-    AuthConfiguration auth?;
-    # If set to `true`, treats the login home directory as the root (`/`) and
-    # prevents the underlying VFS from attempting to change to the actual server root.
-    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command
-    # that can fail on servers restricting root access (e.g., chrooted environments).
-    boolean userDirIsRoot = false;
-    # If set to `true`, allows missing or null values when reading files in structured formats
-    boolean laxDataBinding = false;
-    # Retry configuration for read operations
-    RetryConfig retryConfig?;
-    # Circuit breaker configuration to prevent cascade failures
-    CircuitBreakerConfig circuitBreaker?;
-|};
+ftp:Client ftpClient = check new ({
+    protocol: ftp:FTP,
+    host: "ftp.example.com",
+    port: 21
+});
 ```
-* InputContent record represents the configurations for the input given for `put` and `append` operations.
+
+#### 3.1.2 Secure Client
+
+A secure SFTP client is initialized by specifying the `SFTP` protocol and providing authentication details. Both credentials and a private key may be provided simultaneously.
+
+###### Example: SFTP Client with Credentials
+
 ```ballerina
-public type InputContent record{|
-    # Path of the file to be created or appended
-    string filePath;
-    # `true` if the input type is a file
-    boolean isFile = false;
-    # The content read from the input file, if the input is a file
-    stream<byte[] & readonly, io:Error?> fileContent?;
-    # The input content, for other input types
-    string textContent?;
-    # If true, input will be compressed before uploading
-    boolean compressInput = false;
-|};
-```
-* Following Compression options can be used when adding a file to the FTP server.
-```ballerina
-public enum Compression {
-    # Zip compression
-    ZIP,
-    # No compression used
-    NONE
-}
-```
-* FileWriteOption enum specifies how a file should be written to the server.
-```ballerina
-public enum FileWriteOption {
-    # Replace the entire file with new content
-    OVERWRITE,
-    # Add new content to the end of the file
-    APPEND
-}
-```
-### 3.2. Initialization
-#### 3.2.1. Insecure Client
-A simple insecure client can be initialized by providing `ftp:FTP` as the protocol and the host and optionally, the port 
-to the `ftp:ClientConfiguration`.
-```ballerina
-# Gets invoked during object initialization.
-#
-# + clientConfig - Configurations for FTP client
-# + return - `ftp:Error` in case of errors or `()` otherwise
-public isolated function init(ClientConfiguration clientConfig) returns Error?;
-```
-#### 3.2.2. Secure Client
-A secure client can be initialized by providing `ftp:SFTP` as the protocol and by providing `ftp:Credentials`
-and `ftp:PrivateKey` to `ftp:AuthConfiguration`.
-```ballerina
-ftp:ClientConfiguration ftpConfig = {
+ftp:Client sftpClient = check new ({
     protocol: ftp:SFTP,
-    host: "<The FTP host>",
-    port: <The FTP port>,
+    host: "sftp.example.com",
+    port: 22,
     auth: {
         credentials: {
-            username: "<The FTP username>",
-            password: "<The FTP passowrd>"
+            username: "user",
+            password: "pass"
         }
     },
     userDirIsRoot: true
-};
-```
-#### 3.2.3. Client with Retry Configuration
-A client can be initialized with retry configuration to automatically retry failed read operations:
-```ballerina
-ftp:ClientConfiguration ftpConfig = {
-    protocol: ftp:FTP,
-    host: "<The FTP host>",
-    port: <The FTP port>,
-    retryConfig: {
-        count: 5,              // Retry up to 5 times
-        interval: 2.0,         // Start with 2 second wait
-        backOffFactor: 1.5,    // Increase wait by 1.5x each time
-        maxWaitInterval: 20.0  // Cap wait time at 20 seconds
-    }
-};
-
-ftp:Client ftpClient = check new(ftpConfig);
-
-// Non-streaming read operations (getBytes, getText, getJson, getXml, getCsv) will automatically retry on failure
-byte[] bytes = check ftpClient->getBytes("/path/to/file.txt");
-```
-### 3.3. Functions
-* FTP Client API can be used to put files on the FTP server. For this, the `put()` method can be used.
-```ballerina
-# Adds a file to FTP server.
-# ```ballerina
-# ftp:Error? response = client->put(path, channel);
-# ```
-#
-# + path - The resource path
-# + content - Content to be written to the file in server
-# + compressionType - Type of the compression to be used, if
-#                     the file should be compressed before
-#                     uploading
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function put(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content, Compression compressionType=NONE) returns Error?;
-```
-* `append()` can be used to append the content to an existing file in FTP server.
-```ballerina
-# Appends the content to an existing file in FTP server.
-# ```ballerina
-# ftp:Error? response = client->append(path, content);
-# ```
-#
-# + path - The resource path
-# + content - Content to be written to the file in server
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function append(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content) returns Error?;
-```
-* `putBytes()` can be used to write bytes to a file.
-```ballerina
-# Write bytes to a file.
-# ```ballerina
-# ftp:Error? response = client->putBytes(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Binary data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putBytes(string path, byte[] content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putText()` can be used to write text to a file.
-```ballerina
-# Write text to a file.
-# ```ballerina
-# ftp:Error? response = client->putText(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Text to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putText(string path, string content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putJson()` can be used to write JSON data to a file.
-```ballerina
-# Write JSON data to a file.
-# ```ballerina
-# ftp:Error? response = client->putJson(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - JSON data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putJson(string path, json|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putXml()` can be used to write XML data to a file.
-```ballerina
-# Write XML data to a file.
-# ```ballerina
-# ftp:Error? response = client->putXml(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - XML data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putXml(string path, xml|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putCsv()` can be used to write CSV data to a file.
-```ballerina
-# Write CSV data to a file.
-# ```ballerina
-# ftp:Error? response = client->putCsv(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - CSV data (table or records) to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putCsv(string path, string[][]|record {}[] content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putBytesAsStream()` can be used to write bytes from a stream to a file.
-```ballerina
-# Write bytes from a stream to a file.
-# Useful for processing and uploading large files without loading everything into memory.
-# ```ballerina
-# ftp:Error? response = client->putBytesAsStream(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Stream of byte chunks to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putBytesAsStream(string path, stream<byte[], error?> content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putCsvAsStream()` can be used to write CSV data from a stream to a file.
-```ballerina
-# Write CSV data from a stream to a file.
-# Useful for processing and uploading large CSV files without loading everything into memory.
-# ```ballerina
-# ftp:Error? response = client->putCsvAsStream(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Stream of CSV rows to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putCsvAsStream(string path, stream<string[]|record {}, error?> content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* To retrieve file content from FTP server, `get()` can be used.
-```ballerina
-# Retrieves the file content from a remote resource.
-# ```ballerina
-# stream<byte[] & readonly, io:Error?>|ftp:Error channel = client->get(path);
-# ```
-#
-# + path - The resource path
-# + return - A byte stream from which the file can be read or `ftp:Error` in case of errors
-remote isolated function get(string path) returns stream<byte[] & readonly, io:Error?>|Error;
-```
-* `getBytes()` can be used to read file content as bytes.
-```ballerina
-# Read file content as bytes (raw binary data).
-# ```ballerina
-# byte[] content = check client->getBytes(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - File content as bytes, or an error if the operation fails
-remote isolated function getBytes(string path) returns byte[]|Error;
-```
-* `getText()` can be used to read file content as text.
-```ballerina
-# Read file content as text.
-# ```ballerina
-# string content = check client->getText(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - File content as text, or an error if the operation fails
-remote isolated function getText(string path) returns string|Error;
-```
-* `getJson()` can be used to read a file as JSON data. Returns `ContentBindingError` if the file content cannot be parsed as JSON or bound to the target type.
-```ballerina
-# Read a file as JSON data.
-# ```ballerina
-# json content = check client->getJson(path);
-# ```
-#
-# + path - Location of the file on the server
-# + targetType - What format should the data have? (JSON, structured data, or a custom format)
-# + return - The file content as JSON, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
-remote isolated function getJson(string path, typedesc<json|record {}> targetType = <>) returns targetType|Error;
-```
-* `getXml()` can be used to read a file as XML data. Returns `ContentBindingError` if the file content cannot be parsed as XML or bound to the target type.
-```ballerina
-# Read a file as XML data.
-# ```ballerina
-# xml content = check client->getXml(path);
-# ```
-#
-# + path - Location of the file on the server
-# + targetType - What format should the data have? (XML, structured data, or a custom format)
-# + return - The file content as XML, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
-remote isolated function getXml(string path, typedesc<xml|record {}> targetType = <>) returns targetType|Error;
-```
-* `getCsv()` can be used to read a CSV file from the server. Returns `ContentBindingError` if the file content cannot be parsed or bound to the target type.
-```ballerina
-# Read a CSV (comma-separated) file from the server.
-# The first row of the CSV file should contain column names (headers).
-# ```ballerina
-# string[][] content = check client->getCsv(path);
-# ```
-#
-# + path - Location of the CSV file on the server
-# + targetType - What format should the data have? (Table or structured records)
-# + return - The CSV file content as a table or records, or `ContentBindingError` if parsing/binding fails, or other `Error` for connection issues
-remote isolated function getCsv(string path, typedesc<string[][]|record {}[]> targetType = <>) returns targetType|Error;
-```
-* `getBytesAsStream()` can be used to read file content as a stream of byte chunks.
-```ballerina
-# Read file content as a stream of byte chunks.
-# Useful for processing large files without loading the entire file into memory.
-# ```ballerina
-# stream<byte[], error?> response = check client->getBytesAsStream(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - A continuous stream of byte chunks, or an error if the operation fails
-remote isolated function getBytesAsStream(string path) returns stream<byte[], error?>|Error;
-```
-* `getCsvAsStream()` can be used to read a CSV file as a continuous stream of rows.
-```ballerina
-# Read a CSV file as a continuous stream of rows.
-# Useful for processing very large files one row at a time.
-# The first row of the CSV file should contain column names (headers).
-# ```ballerina
-# stream<string[], error?> response = check client->getCsvAsStream(path);
-# ```
-#
-# + path - Location of the CSV file on the server
-# + targetType - What format should each row have? (Row values or structured record)
-# + return - A stream of rows from the CSV file, or an error if the operation fails
-remote isolated function getCsvAsStream(string path, typedesc<string[]|record {}> targetType = <>) returns stream<targetType, error?>|Error;
-```
-* `mkdir()` can be used to create a new directory in FTP server.
-```ballerina
-# Creates a new directory in FTP server.
-# ```ballerina
-# ftp:Error? response = client->mkdir(path);
-# ```
-#
-# + path - The directory path
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function mkdir(string path) returns Error?;
-```
-* `rmdir()` can be used to remove an empty directory in the server.
-```ballerina
-# Deletes an empty directory in FTP server.
-# ```ballerina
-# ftp:Error? response = client->rmdir(path);
-# ```
-#
-# + path - The directory path
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function rmdir(string path) returns Error?;
-```
-* To delete a file, `delete()` can be used.
-```ballerina
-# Deletes a file from FTP server.
-# ```ballerina
-# ftp:Error? response = client->delete(path);
-# ```
-#
-# + path - The resource path
-# + return -  `()` or else an `ftp:Error` if failed to establish
-#             the communication with the FTP server
-remote isolated function delete(string path) returns Error?;
-```
-* To rename a file or move it to another directory, `rename()` can be used.
-```ballerina
-# Renames a file or moves it to a new location within the same FTP server.
-# ```ballerina
-# ftp:Error? response = client->rename(origin, destination);
-# ```
-#
-# + origin - The source file location
-# + destination - The destination file location
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function rename(string origin, string destination) returns Error?;
-```
-* `move()` can be used to move a file to a different location on the file server.
-```ballerina
-# Move a file to a different location on the file server.
-# ```ballerina
-# ftp:Error? response = client->move(sourcePath, destinationPath);
-# ```
-#
-# + sourcePath - The current file location
-# + destinationPath - The new file location
-# + return - An error if the operation fails
-remote isolated function move(string sourcePath, string destinationPath) returns Error?;
-```
-* `copy()` can be used to copy a file to a different location on the file server.
-```ballerina
-# Copy a file to a different location on the file server.
-# ```ballerina
-# ftp:Error? response = client->copy(sourcePath, destinationPath);
-# ```
-#
-# + sourcePath - The file to copy
-# + destinationPath - Where to create the copy
-# + return - An error if the operation fails
-remote isolated function copy(string sourcePath, string destinationPath) returns Error?;
-```
-* `exists()` can be used to check if a file or folder exists on the file server.
-```ballerina
-# Check if a file or folder exists on the file server.
-# ```ballerina
-# boolean|ftp:Error response = client->exists(path);
-# ```
-#
-# + path - File or folder location to check
-# + return - True if it exists, false if it doesn't, or an error if the check fails
-remote isolated function exists(string path) returns boolean|Error;
-```
-* `size()` function can be used to get the size of a file.
-```ballerina
-# Gets the size of a file resource.
-# ```ballerina
-# int|ftp:Error response = client->size(path);
-# ```
-#
-# + path - The resource path
-# + return - The file size in bytes or an `ftp:Error` if
-#            failed to establish the communication with the FTP server
-remote isolated function size(string path) returns int|Error;
-```
-* To get the file list in a directory, `list()` can be used.
-```ballerina
-# Gets the file name list in a given folder.
-# ```ballerina
-# ftp:FileInfo[]|ftp:Error response = client->list(path);
-# ```
-#
-# + path - The direcotry path
-# + return - An array of file names or an `ftp:Error` if failed to
-#            establish the communication with the FTP server
-remote isolated function list(string path) returns FileInfo[]|Error;
-```
-* To check if a resource is a directory, `isDirectory()` can be used.
-```ballerina
-# Checks if a given resource is a directory.
-# ```ballerina
-# boolean|ftp:Error response = client->isDirectory(path);
-# ```
-#
-# + path - The resource path
-# + return - `true` if given resource is a directory or an `ftp:Error` if
-#            an error occurred while checking the path
-remote isolated function isDirectory(string path) returns boolean|Error;
+});
 ```
 
-### 3.4. Circuit Breaker
-The circuit breaker pattern prevents cascade failures by temporarily blocking requests to an FTP server experiencing issues. When failures reach a threshold, the circuit "opens" and subsequent requests fail fast with `CircuitBreakerOpenError` without attempting the actual operation.
+###### Example: SFTP Client with Private Key
 
-#### State Machine
-The circuit breaker operates in three states:
-- **CLOSED**: Normal operation. Requests are allowed and failures are tracked.
-- **OPEN**: Circuit is tripped. All requests are rejected immediately with `CircuitBreakerOpenError`.
-- **HALF_OPEN**: After the reset time elapses, one trial request is allowed. Success returns to CLOSED; failure returns to OPEN.
+```ballerina
+ftp:Client sftpClient = check new ({
+    protocol: ftp:SFTP,
+    host: "sftp.example.com",
+    port: 22,
+    auth: {
+        credentials: {username: "user"},
+        privateKey: {
+            path: "/path/to/private.key",
+            password: "keypassphrase"
+        },
+        preferredMethods: [ftp:PUBLICKEY]
+    },
+    userDirIsRoot: true
+});
+```
 
-#### Configuration
-* CircuitBreakerConfig record contains the circuit breaker settings.
+#### 3.1.3 Secure FTPS Client
+
+A secure FTPS client is initialized by specifying the `FTPS` protocol. Authentication details are optional — when `secureSocket` is omitted the client uses the JDK's default system truststore (`cacerts`) for chain validation and verifies the server hostname against the certificate. The optional `secureSocket` record controls SSL/TLS behaviour:
+
+- `key` — Keystore for client-side (mTLS) authentication.
+- `cert` — Truststore for validating the server certificate chain. When omitted, the JDK's default system truststore is used.
+- `mode` — `EXPLICIT` (default; start plain, upgrade via `AUTH TLS`) or `IMPLICIT` (TLS from connect).
+- `dataChannelProtection` — `PRIVATE` (default), `SAFE`, `CONFIDENTIAL`, or `CLEAR`.
+- `verifyHostName` — Whether to verify that the server certificate's CN/SAN matches the host being connected to. Defaults to `true`. Set to `false` only for development or testing when a trusted certificate's identity does not match the host. Self-signed or private-CA certificates must still be trusted via `secureSocket.cert` or the default truststore.
+
+Connection attempts fail at the TLS handshake with an `ftp:Error` when the server certificate is not trusted by the configured truststore (or the JDK default), or when `verifyHostName` is `true` and the certificate identity does not match the connect host.
+
+###### Example: FTPS Client
+
 ```ballerina
-public type CircuitBreakerConfig record {|
-    # Rolling window configuration for failure tracking
-    RollingWindow rollingWindow = {};
-    # Failure ratio threshold (0.0 to 1.0) that trips the circuit
-    float failureThreshold = 0.5;
-    # Time in seconds to wait before transitioning from OPEN to HALF_OPEN
-    decimal resetTime = 30;
-    # Categories of failures that count towards tripping the circuit
-    FailureCategory[] failureCategories = [CONNECTION_ERROR, TRANSIENT_ERROR];
-|};
-```
-* RollingWindow record configures the sliding window for tracking failures.
-```ballerina
-public type RollingWindow record {|
-    # Minimum number of requests in the window before the circuit can trip
-    int requestVolumeThreshold = 10;
-    # Time window in seconds for tracking failures
-    decimal timeWindow = 60;
-    # Size of each time bucket in seconds (timeWindow / bucketSize = number of buckets)
-    decimal bucketSize = 10;
-|};
-```
-* FailureCategory enum specifies which types of failures count towards tripping the circuit.
-```ballerina
-public enum FailureCategory {
-    # Connection failures (network issues, timeouts)
-    CONNECTION_ERROR,
-    # Authentication failures (invalid credentials)
-    AUTHENTICATION_ERROR,
-    # Server disconnection during operation
-    TRANSIENT_ERROR,
-    # All errors count as failures
-    ALL_ERRORS
-}
-```
-#### Usage Example
-```ballerina
-ftp:ClientConfiguration ftpConfig = {
-    protocol: ftp:FTP,
-    host: "ftp.example.com",
+ftp:Client ftpsClient = check new ({
+    protocol: ftp:FTPS,
+    host: "ftps.example.com",
     port: 21,
     auth: {
-        credentials: {username: "user", password: "pass"}
-    },
+        credentials: {username: "user", password: "pass"},
+        secureSocket: {
+            cert: {path: "/path/to/truststore.p12", password: "changeit"},
+            mode: ftp:EXPLICIT
+        }
+    }
+});
+```
+
+### 3.2 Writing Files
+
+#### 3.2.1 Write Operations
+
+The client provides typed write methods for writing content in different formats to the server. All write methods accept a `FileWriteOption` parameter that controls whether the operation overwrites an existing file (`OVERWRITE`) or appends to it (`APPEND`). The default is `OVERWRITE`.
+
+- `putBytes(path, content)` — Writes raw binary content to the specified path.
+- `putText(path, content)` — Writes a UTF-8 encoded string to the specified path.
+- `putJson(path, content)` — Serializes and writes a JSON value or a Ballerina record to the specified path.
+- `putXml(path, content)` — Serializes and writes an XML value or a Ballerina record to the specified path.
+- `putCsv(path, content)` — Serializes and writes tabular data (as a 2D string array or a record array) in CSV format to the specified path.
+
+###### Example: Writing a Text File
+
+```ballerina
+check ftpClient->putText("/uploads/hello.txt", "Hello, World!");
+```
+
+###### Example: Appending to an Existing File
+
+```ballerina
+check ftpClient->putText("/logs/app.log", "New log entry\n", ftp:APPEND);
+```
+
+#### 3.2.2 Streaming Writes
+
+For large files, the client supports streaming write methods that process data in chunks without loading the entire content into memory.
+
+- `putBytesAsStream(path, content)` — Writes a stream of byte chunks to the specified path.
+- `putCsvAsStream(path, content)` — Writes a stream of CSV rows (each row as a string array or record) to the specified path.
+
+###### Example: Streaming a Large File
+
+```ballerina
+stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("/local/data.bin", 4096);
+check ftpClient->putBytesAsStream("/uploads/data.bin", fileStream);
+```
+
+### 3.3 Reading Files
+
+#### 3.3.1 Read Operations
+
+The client provides typed read methods for reading files in different formats. These methods retrieve the entire file content into memory and support automatic retry when a retry configuration is provided (see [Section 3.5](#35-retry-configuration)).
+
+- `getBytes(path)` — Reads the file at the specified path as a raw byte array.
+- `getText(path)` — Reads the file at the specified path as a UTF-8 encoded string.
+- `getJson(path)` — Reads and parses the file as JSON, with optional data binding to a target type.
+- `getXml(path)` — Reads and parses the file as XML, with optional data binding to a target type.
+- `getCsv(path)` — Reads and parses a CSV file, with optional data binding to a target type. The first row of the file is treated as the header row.
+
+If the file content cannot be parsed or bound to the expected type, a `ContentBindingError` is returned.
+
+###### Example: Reading a JSON File
+
+```ballerina
+type Order record {|
+    int id;
+    string item;
+|};
+
+Order order = check ftpClient->getJson("/data/order.json");
+```
+
+#### 3.3.2 Streaming Reads
+
+For large files, the client supports streaming read methods that return data as a stream, allowing processing of individual chunks without loading the full file into memory.
+
+- `get(path)` — Returns a raw byte stream from the remote file. The caller is responsible for closing the stream after use.
+- `getBytesAsStream(path)` — Returns a stream of byte chunks from the remote file.
+- `getCsvAsStream(path)` — Returns a stream of CSV rows, with optional data binding to a target row type.
+
+###### Example: Streaming a Large CSV File
+
+```ballerina
+stream<Employee, error?> rows = check ftpClient->getCsvAsStream("/reports/employees.csv");
+check rows.forEach(function(Employee emp) {
+    io:println(emp.name);
+});
+```
+
+#### 3.3.3 Data Binding
+
+The typed read methods (`getJson`, `getXml`, `getCsv`, `getCsvAsStream`) support data binding via the `targetType` parameter. When a target type is provided, the parsed content is automatically bound to the specified Ballerina type. If parsing or binding fails, a `ContentBindingError` is returned.
+
+The `laxDataBinding` configuration on the client controls whether missing or null fields are permitted when binding structured data. When `true`, missing fields are ignored and null values are accepted. When `false` (the default), strict binding is enforced.
+
+### 3.4 File Management
+
+The client provides the following file and directory management operations. All operations return an `ftp:Error` on failure.
+
+- `mkdir(path)` — Creates a new directory at the specified path on the server.
+- `rmdir(path)` — Deletes an empty directory at the specified path on the server. The operation fails if the directory is not empty.
+- `delete(path)` — Deletes the file at the specified path on the server.
+- `rename(origin, destination)` — Renames a file or moves it to a new location within the same server. The destination path must not already exist.
+- `move(sourcePath, destinationPath)` — Moves a file from one location to another on the server.
+- `copy(sourcePath, destinationPath)` — Creates a copy of a file at a new location on the server.
+- `exists(path)` — Returns `true` if the file or directory at the specified path exists, or `false` otherwise.
+- `size(path)` — Returns the size of the file at the specified path in bytes.
+- `list(path)` — Returns an array of `ftp:FileInfo` records representing the contents of the specified directory.
+- `isDirectory(path)` — Returns `true` if the resource at the specified path is a directory.
+
+###### Example: Listing Files in a Directory
+
+```ballerina
+ftp:FileInfo[] files = check ftpClient->list("/incoming");
+foreach ftp:FileInfo file in files {
+    io:println(file.name + " (" + file.size.toString() + " bytes)");
+}
+```
+
+### 3.5 Retry Configuration
+
+The client can be configured to automatically retry failed read operations using exponential backoff. When a retry configuration is provided, the non-streaming read operations (`getBytes`, `getText`, `getJson`, `getXml`, `getCsv`) are automatically retried on transient failures.
+
+The retry behavior is controlled by the following parameters:
+- **count** — The maximum number of retry attempts. Defaults to `3`.
+- **interval** — The initial wait interval in seconds before the first retry. Defaults to `1.0`.
+- **backOffFactor** — The multiplier applied to the wait interval after each failed attempt. Defaults to `2.0`.
+- **maxWaitInterval** — The maximum wait interval in seconds between retries, regardless of the backoff calculation. Defaults to `30.0`.
+
+When all retry attempts are exhausted without success, an `AllRetryAttemptsFailedError` is returned.
+
+###### Example: Client with Retry Configuration
+
+```ballerina
+ftp:Client ftpClient = check new ({
+    protocol: ftp:FTP,
+    host: "ftp.example.com",
+    retryConfig: {
+        count: 5,
+        interval: 2.0,
+        backOffFactor: 1.5,
+        maxWaitInterval: 20.0
+    }
+});
+```
+
+### 3.6 Circuit Breaker
+
+The circuit breaker pattern prevents cascading failures when the FTP server becomes unavailable. When the ratio of failed operations within a rolling time window exceeds a configured threshold, the circuit trips to the OPEN state and subsequent requests fail immediately with a `CircuitBreakerOpenError`, without attempting to connect to the server.
+
+#### 3.6.1 State Machine
+
+The circuit breaker operates in three states:
+
+- **CLOSED** — Normal operating state. All requests proceed normally, and failures are tracked within the rolling window.
+- **OPEN** — The failure threshold has been exceeded. All requests are rejected immediately with a `CircuitBreakerOpenError`. No connections to the server are attempted.
+- **HALF_OPEN** — After the configured reset time elapses, the circuit transitions to HALF_OPEN. A single trial request is allowed. If it succeeds, the circuit returns to CLOSED. If it fails, the circuit returns to OPEN.
+
+#### 3.6.2 Configuration
+
+The circuit breaker is configured using a rolling window that tracks failures over a sliding time period. The following parameters control the behavior:
+
+- **failureThreshold** — The ratio of failures to total requests (between `0.0` and `1.0`) that trips the circuit. Defaults to `0.5`.
+- **resetTime** — The number of seconds to wait in the OPEN state before transitioning to HALF_OPEN. Defaults to `30`.
+- **rollingWindow.requestVolumeThreshold** — The minimum number of requests that must occur within the time window before the circuit can trip. Defaults to `10`.
+- **rollingWindow.timeWindow** — The duration of the rolling window in seconds for tracking failures. Defaults to `60`.
+- **rollingWindow.bucketSize** — The size of each time bucket within the rolling window in seconds. Defaults to `10`.
+- **failureCategories** — The categories of errors that count as failures towards tripping the circuit. Defaults to `[CONNECTION_ERROR, TRANSIENT_ERROR]`.
+
+###### Example: Client with Circuit Breaker
+
+```ballerina
+ftp:Client ftpClient = check new ({
+    protocol: ftp:FTP,
+    host: "ftp.example.com",
     circuitBreaker: {
         failureThreshold: 0.5,
         resetTime: 30,
@@ -720,252 +377,318 @@ ftp:ClientConfiguration ftpConfig = {
         },
         failureCategories: [ftp:CONNECTION_ERROR, ftp:TRANSIENT_ERROR]
     }
-};
+});
+```
 
-ftp:Client ftpClient = check new(ftpConfig);
+#### 3.6.3 Failure Categories
 
-// Operations will fail fast with CircuitBreakerOpenError when circuit is open
-byte[]|ftp:Error content = ftpClient->getBytes("/file.txt");
-if content is ftp:CircuitBreakerOpenError {
-    // Handle circuit breaker open state - server is unavailable
+The `failureCategories` field specifies which error types count as failures when evaluating the circuit breaker threshold:
+
+- **CONNECTION_ERROR** — Network failures, connection timeouts, and unreachable hosts.
+- **AUTHENTICATION_ERROR** — Invalid credentials or authorization failures.
+- **TRANSIENT_ERROR** — Server disconnection or temporary unavailability during an operation.
+- **ALL_ERRORS** — Every error type counts as a failure.
+
+## 4. Listener
+
+The `ftp:Listener` polls a remote FTP or SFTP directory at a configured interval and detects file changes. When files are added or removed, the listener dispatches events to the attached services by invoking their callback methods.
+
+### 4.1 Initializing the Listener
+
+The `ftp:Listener` is initialized with a `ListenerConfiguration` record that specifies the target server and polling behavior. The `pollingInterval` field controls how frequently (in seconds) the server is checked for changes. The default polling interval is 60 seconds.
+
+#### 4.1.1 Insecure Listener
+
+An insecure FTP listener is initialized by specifying the host and port. The monitored directory path is configured via the `@ftp:ServiceConfig` annotation on the attached service.
+
+###### Example: Insecure FTP Listener
+
+```ballerina
+listener ftp:Listener ftpListener = check new ({
+    protocol: ftp:FTP,
+    host: "ftp.example.com",
+    port: 21,
+    pollingInterval: 30
+});
+```
+
+#### 4.1.2 Secure Listener
+
+A secure SFTP listener is initialized in the same way as a secure client, by specifying the `SFTP` protocol and providing authentication details.
+
+###### Example: SFTP Listener
+
+```ballerina
+listener ftp:Listener ftpListener = check new ({
+    protocol: ftp:SFTP,
+    host: "sftp.example.com",
+    port: 22,
+    auth: {
+        credentials: {
+            username: "user",
+            password: "pass"
+        },
+        privateKey: {
+            path: "/path/to/private.key",
+            password: "keypassphrase"
+        }
+    },
+    pollingInterval: 60,
+    userDirIsRoot: true
+});
+```
+
+### 4.2 Service
+
+#### 4.2.1 Service Declaration
+
+A service is attached to an `ftp:Listener` to receive file change notifications. Services may be declared statically at module level or attached dynamically using the listener's `attach()` method.
+
+###### Example: Static Service Declaration
+
+```ballerina
+service ftp:Service on ftpListener {
+    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
+        foreach ftp:FileInfo addedFile in event.addedFiles {
+            io:println("File added: " + addedFile.path);
+        }
+    }
 }
 ```
 
-## 4. Listener
-The `ftp:Listener` is used to listen to a remote FTP location and trigger a `WatchEvent` type of event when new
-files are added to or deleted from the directory. The `onFileChange` function is invoked when a new file is added
-and/or deleted.
-### 4.1. Configurations
-* When initializing the `ftp:Listener`, following configurations can be provided.
+#### 4.2.2 Service Configuration Annotation
 
-> **Note:** The monitoring-related fields (`path`, `fileNamePattern`, `fileAgeFilter`, `fileDependencyConditions`) are deprecated at the listener level. Use the `@ftp:ServiceConfig` annotation on services instead. See [Section 4.2](#42-service-configuration-annotation) for details.
+The `@ftp:ServiceConfig` annotation configures the monitoring path and file filtering options at the service level. This allows multiple services attached to a single listener to monitor different directories independently.
 
-```ballerina
-public type ListenerConfiguration record {|
-    # Supported FTP protocols
-    Protocol protocol = FTP;
-    # Target service url
-    string host = "127.0.0.1";
-    # Port number of the remote service
-    int port = 21;
-    # Authentication options
-    AuthConfiguration auth?;
-    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
-    # Remote FTP directory location
-    string path = "/";
-    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
-    # File name pattern that event need to trigger
-    string fileNamePattern?;
-    # Periodic time interval to check new update
-    decimal pollingInterval = 60;
-    # If set to `true`, treats the login home directory as the root (`/`) and
-    # prevents the underlying VFS from attempting to change to the actual server root.
-    # If `false`, treats the actual server root as `/`, which may cause a `CWD /` command
-    # that can fail on servers restricting root access (e.g., chrooted environments).
-    boolean userDirIsRoot = false;
-    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
-    # Configuration for filtering files based on age
-    FileAgeFilter fileAgeFilter?;
-    # @deprecated Use @ftp:ServiceConfig annotation on service instead.
-    # Array of dependency conditions for conditional file processing
-    FileDependencyCondition[] fileDependencyConditions = [];
-    # If set to `true`, allows missing or null values when reading files in structured formats
-    boolean laxDataBinding = false;
-    # Configuration for distributed task coordination using warm backup approach.
-    # When configured, only one member in the group will actively poll while others act as standby.
-    CoordinationConfig coordination?;
-|};
-```
+The `path` field is mandatory and must be an absolute path starting with `/`. The `fileNamePattern` field accepts a regular expression to filter which files trigger events.
 
-**Deprecated Fields Migration:**
+If any service attached to a listener uses `@ftp:ServiceConfig`, then all services attached to that listener must use it. Mixing annotated and unannotated services on the same listener results in an `InvalidConfigError`.
 
-| Deprecated Field | Migration |
-|-----------------|-----------|
-| `path` | Move to `@ftp:ServiceConfig { path: "..." }` on service |
-| `fileNamePattern` | Move to `@ftp:ServiceConfig { fileNamePattern: "..." }` on service |
-| `fileAgeFilter` | Move to `@ftp:ServiceConfig { fileAgeFilter: {...} }` on service |
-| `fileDependencyConditions` | Move to `@ftp:ServiceConfig { fileDependencyConditions: [...] }` on service |
+When `@ftp:ServiceConfig` is used, any monitoring-related fields set at the listener level (`path`, `fileNamePattern`, `fileAgeFilter`, `fileDependencyConditions`) are ignored and a deprecation warning is logged.
 
-* `WatchEvent` record represents the latest status change of the server from the last status change.
-```ballerina
-public type WatchEvent record {|
-    # Array of `ftp:FileInfo` that represents newly added files
-    FileInfo[] addedFiles;
-    # Array of strings that contains deleted file names
-    string[] deletedFiles;
-|};
-```
-### 4.2. Service Configuration Annotation
-
-The `@ftp:ServiceConfig` annotation allows configuring monitoring paths and file patterns at the service level rather than the listener level. This enables multiple services attached to a single listener to monitor different directories independently.
+###### Example: Multiple Services on One Listener
 
 ```ballerina
-# Configuration for FTP service monitoring.
-# Use this to specify the directory path and file patterns this service should monitor.
-#
-# + path - Directory path on the FTP server to monitor for file changes
-# + fileNamePattern - File name pattern (regex) to filter which files trigger events
-# + fileAgeFilter - Configuration for filtering files based on age (optional)
-# + fileDependencyConditions - Array of dependency conditions for conditional file processing
-public type ServiceConfiguration record {|
-    string path;
-    string fileNamePattern?;
-    FileAgeFilter fileAgeFilter?;
-    FileDependencyCondition[] fileDependencyConditions = [];
-|};
-
-# Annotation to configure FTP service monitoring path and file patterns.
-public annotation ServiceConfiguration ServiceConfig on service;
-```
-
-**Usage Rules:**
-
-1. **Consistency Requirement**: If any service attached to a listener uses `@ftp:ServiceConfig`, then ALL services attached to that listener must use it.
-
-2. **Mutual Exclusion**: When `@ftp:ServiceConfig` is used:
-   - The deprecated listener-level fields (`path`, `fileNamePattern`, `fileAgeFilter`, `fileDependencyConditions`) are completely ignored
-   - A deprecation warning is logged if these fields were set in listener configuration
-
-3. **Required Field**: The `path` field is mandatory in `@ftp:ServiceConfig`
-
-**Validation Error Messages:**
-
-| Scenario | Error Type | Message |
-|----------|-----------|---------|
-| Mixed usage (some services with annotation, some without) | InvalidConfigError | "All services attached to a listener must use @ftp:ServiceConfig annotation when any service uses it. Service '{serviceName}' is missing the annotation." |
-| Invalid path pattern | InvalidConfigError | "Invalid path '{path}' in @ftp:ServiceConfig. Path must be an absolute path starting with '/'." |
-| Invalid fileNamePattern regex | InvalidConfigError | "Invalid regex pattern '{pattern}' in @ftp:ServiceConfig.fileNamePattern: {error}" |
-
-**Example: Multiple Services Monitoring Different Directories**
-
-```ballerina
-listener ftp:Listener ftpListener = check new({
+listener ftp:Listener ftpListener = check new ({
     protocol: ftp:SFTP,
-    host: "ftp.example.com",
+    host: "sftp.example.com",
     port: 22,
-    auth: {
-        credentials: {username: "user", password: "pass"}
-    },
+    auth: {credentials: {username: "user", password: "pass"}},
     pollingInterval: 30
 });
 
 @ftp:ServiceConfig {
-    path: "/incoming/csv",
+    path: "/incoming/orders",
     fileNamePattern: ".*\\.csv"
 }
 service on ftpListener {
     remote function onFileCsv(record {}[] content, ftp:FileInfo fileInfo) returns error? {
-        // Processes CSV files from /incoming/csv
+        // Processes CSV files from /incoming/orders
     }
 }
 
 @ftp:ServiceConfig {
-    path: "/incoming/json",
+    path: "/incoming/configs",
     fileNamePattern: ".*\\.json"
 }
 service on ftpListener {
     remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
-        // Processes JSON files from /incoming/json
+        // Processes JSON files from /incoming/configs
     }
 }
 ```
 
-### 4.3. Initialization
-#### 4.3.1. Insecure Listener
-An insecure FTP listener can be initialized by providing the mandatory `protocol`, `host`, and  `path` parameters to the 
-`ftp:ListenerConfiguration`.
+### 4.3 File Change Callbacks
+
+When the listener detects a file change, it invokes the appropriate callback method on the attached service. The `ftp:Caller` parameter is optional in all callbacks; it may be omitted if FTP operations are not required during processing.
+
+The `ftp:FileInfo` record provides metadata about the file, including its path, name, size, last modified timestamp, and whether it is a file or directory.
+
+#### 4.3.1 Format-Specific Callbacks
+
+In addition to the generic `onFileChange` callback, the listener supports format-specific callbacks that automatically parse file content and pass it to the handler as a typed value. Files are routed to handlers based on their extension: `.txt` → `onFileText`, `.json` → `onFileJson`, `.xml` → `onFileXml`, `.csv` → `onFileCsv`. Files with any other extension are routed to `onFile`. Extension-based routing can be customized per callback using the `@ftp:FunctionConfig` annotation.
+
+**`onFileText`** — Invoked when a `.txt` file is added. The file content is passed as a UTF-8 string.
+
+###### Example: Text File Handler
+
 ```ballerina
-# Gets invoked during object initialization.
-#
-# + listenerConfig - Configurations for FTP listener
-# + return - `()` or else an `ftp:Error` upon failure to initialize the listener
-public isolated function init(*ListenerConfiguration listenerConfig) returns Error?;
-```
-#### 4.3.2. Secure Listener
-A secure listener can be initialized by providing `ftp:SFTP` as the protocol and by providing `ftp:Credentials`
-and `ftp:PrivateKey` to `ftp:AuthConfiguration`.
-
-**Using deprecated listener-level configuration (for backward compatibility):**
-```ballerina
-ftp:ListenerConfiguration ftpConfig = {
-    protocol: ftp:SFTP,
-    host: "<The SFTP host>",
-    port: <The SFTP port>,
-    path: "<The remote SFTP directory location>",        // Deprecated - use @ftp:ServiceConfig instead
-    pollingInterval: <Polling interval>,
-    fileNamePattern: "<File name pattern>",              // Deprecated - use @ftp:ServiceConfig instead
-    auth: {
-        credentials: {username: "<The SFTP username>", password: "<The SFTP password>"},
-        privateKey: {
-            path: "<The private key file path>",
-            password: "<The private key file password>"
-        }
-    },
-    userDirIsRoot: true
-};
-```
-
-**Recommended approach using @ftp:ServiceConfig:**
-```ballerina
-ftp:ListenerConfiguration ftpConfig = {
-    protocol: ftp:SFTP,
-    host: "<The SFTP host>",
-    port: <The SFTP port>,
-    pollingInterval: <Polling interval>,
-    auth: {
-        credentials: {username: "<The SFTP username>", password: "<The SFTP password>"},
-        privateKey: {
-            path: "<The private key file path>",
-            password: "<The private key file password>"
-        }
-    },
-    userDirIsRoot: true
-};
-
-listener ftp:Listener ftpListener = check new(ftpConfig);
-
-@ftp:ServiceConfig {
-    path: "<The remote SFTP directory location>",
-    fileNamePattern: "<File name pattern>"
+remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    io:println("Processing: " + fileInfo.name);
+    io:println(content);
 }
+```
+
+**`onFileJson`** — Invoked when a `.json` file is added. The content is parsed as JSON and passed as either a `json` value or a data-bound record, depending on the declared parameter type.
+
+###### Example: JSON File Handler with Data Binding
+
+```ballerina
+type Config record {|
+    string env;
+    int maxRetries;
+|};
+
+remote function onFileJson(Config content, ftp:FileInfo fileInfo) returns error? {
+    io:println("Environment: " + content.env);
+}
+```
+
+**`onFileXml`** — Invoked when a `.xml` file is added. The content is parsed as XML and passed as either an `xml` value or a data-bound record.
+
+**`onFileCsv`** — Invoked when a `.csv` file is added. The first row of the CSV file is treated as the header row. The following parameter types are supported:
+- `string[][]` — All rows loaded into memory as arrays of strings.
+- `record {}[]` — All rows loaded into memory and data-bound to the record type.
+- `stream<string[], error>` — Rows processed one at a time as string arrays (memory-efficient for large files).
+- `stream<record {}, error>` — Rows processed one at a time and data-bound to the record type.
+
+###### Example: CSV File Handler with Streaming
+
+```ballerina
+type Employee record {|
+    string name;
+    string department;
+|};
+
+remote function onFileCsv(stream<Employee, error> content, ftp:FileInfo fileInfo) returns error? {
+    check content.forEach(function(Employee emp) {
+        io:println(emp.name);
+    });
+}
+```
+
+**`onFile`** — Invoked when a file with an unrecognized extension is added. The content is passed as either a `byte[]` (entire file in memory) or a `stream<byte[], error>` (for large files).
+
+#### 4.3.2 File Delete Callback
+
+The `onFileDelete` callback is invoked when a file is removed from the monitored directory. The deleted file's path is passed as a string.
+
+###### Example: File Delete Handler
+
+```ballerina
+remote function onFileDelete(string deletedFile, ftp:Caller caller) returns error? {
+    io:println("Deleted: " + deletedFile);
+}
+```
+
+#### 4.3.3 Error Callback
+
+The `onError` callback is invoked when a content binding error occurs while parsing a file. This provides a centralized location for handling files that cannot be parsed into the expected format.
+
+The callback receives an `ftp:Error` value. When the error is a `ContentBindingError`, its detail record contains the `filePath` of the file that failed and the raw `content` as a byte array.
+
+If `onError` is not defined, binding errors are logged and the affected file is skipped.
+
+###### Example: Error Handler
+
+```ballerina
+remote function onError(ftp:Error err, ftp:Caller caller) returns error? {
+    if err is ftp:ContentBindingError {
+        string? filePath = err.detail().filePath;
+        log:printError("Binding failed for file: " + (filePath ?: "unknown"), err);
+        if filePath is string {
+            check caller->move(filePath, "/error/" + filePath);
+        }
+    }
+}
+```
+
+#### 4.3.4 Generic File Change Callback (Deprecated)
+
+The `onFileChange` callback is the general-purpose handler for file system events. It receives a `ftp:WatchEvent` record containing two fields:
+- `addedFiles` — An array of `ftp:FileInfo` records for newly detected files.
+- `deletedFiles` — An array of strings containing the paths of deleted files.
+
+###### Example: Generic File Change Handler
+
+```ballerina
+remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
+    foreach ftp:FileInfo file in event.addedFiles {
+        io:println("New file: " + file.path);
+    }
+    foreach string path in event.deletedFiles {
+        io:println("Deleted: " + path);
+    }
+}
+```
+
+### 4.4 Post-Processing Actions
+
+The `@ftp:FunctionConfig` annotation supports automatic file actions after a callback completes. This eliminates the need for boilerplate file management at the end of each handler.
+
+The annotation supports the following actions via the `afterProcess` and `afterError` fields:
+
+- **`DELETE`** — The file is deleted after the handler returns.
+- **`MOVE`** — The file is moved to a specified destination directory after the handler returns. The `moveTo` field specifies the destination path. The `preserveSubDirs` flag (default `true`) controls whether the subdirectory structure relative to the monitored path is preserved in the destination.
+
+`afterProcess` is executed when the handler returns successfully. `afterError` is executed when the handler returns an error or panics. If neither is specified, no post-processing action is taken.
+
+When using `MOVE` with `preserveSubDirs: true`, the destination directory structure must already exist on the server. For example, if monitoring `/input/` and a file at `/input/orders/2024/file.csv` is processed with `moveTo: "/archive/"`, the file is moved to `/archive/orders/2024/file.csv`.
+
+###### Example: Delete After Processing
+
+```ballerina
 service on ftpListener {
-    // Service implementation
-}
-```
-
-### 4.4. Usage
-After initializing the listener, a service must be attached to the listener. There are two ways for this.
-1. Attach the service to the listener directly.
-```ballerina
-service ftp:Service on ftpListener {
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
-        // process event
+    @ftp:FunctionConfig {
+        afterProcess: ftp:DELETE
+    }
+    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
+        processJson(content);
     }
 }
 ```
-2. Attach the service dynamically.
+
+###### Example: Move to Archive on Success, Move to Error Directory on Failure
+
 ```ballerina
-// Create a service object
-ftp:Service ftpListener = service object {
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
-        // process event
+service on ftpListener {
+    @ftp:FunctionConfig {
+        afterProcess: {moveTo: "/archive/success/"},
+        afterError: {moveTo: "/archive/failed/"}
     }
-};
+    remote function onFileXml(xml content, ftp:FileInfo fileInfo) returns error? {
+        check processXml(content);
+    }
+}
 ```
-The remote method `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
-having both `ftp:WatchEvent` and `ftp:Caller` parameters or having only `ftp:WatchEvent` parameter.
 
-#### 4.4.1. Service-Level Monitoring Configuration
+###### Example: Routing by File Pattern
 
-When using the `@ftp:ServiceConfig` annotation, each service can specify its own monitoring path and file patterns:
+The `fileNamePattern` field on `@ftp:FunctionConfig` overrides the extension-based routing for that specific callback, allowing fine-grained control over which files trigger which handler.
 
 ```ballerina
-listener ftp:Listener ftpListener = check new({
-    host: "ftp.example.com",
-    pollingInterval: 30
-});
+service on ftpListener {
+    @ftp:FunctionConfig {
+        fileNamePattern: "order_.*\\.csv",
+        afterProcess: {moveTo: "/processed/"}
+    }
+    remote function onFileCsv(Employee[] content, ftp:FileInfo fileInfo) returns error? {
+        saveEmployees(content);
+    }
+}
+```
 
-// Service monitoring /incoming/orders for CSV files
+### 4.5 File Filtering
+
+#### 4.5.1 File Name Pattern
+
+The `fileNamePattern` field in `@ftp:ServiceConfig` accepts a Java regular expression. Only files whose names match the pattern trigger events. If no pattern is specified, all files in the monitored directory trigger events.
+
+#### 4.5.2 File Age Filter
+
+The `fileAgeFilter` in `@ftp:ServiceConfig` filters files based on their age. `minAge` (in seconds) skips files younger than the threshold — useful for ignoring files still being written by an upstream process. `maxAge` (in seconds) skips files older than the threshold. Either bound may be set independently; both are optional.
+
+Both values are validated when the listener starts. The listener fails with an `InvalidConfigError` if `minAge` or `maxAge` is negative, or if `minAge` exceeds `maxAge`.
+
+#### 4.5.3 File Dependency Conditions
+
+The `fileDependencyConditions` field in `@ftp:ServiceConfig` allows conditional file processing based on the presence of related files. A dependency condition specifies a target file pattern and a list of required companion files that must also be present before the target file triggers an event.
+
+The `matchingMode` field controls whether `ALL` required files or `ANY` of them must be present. Capture groups in the target pattern can be referenced in the required file patterns using `$1`, `$2`, etc.
+
+###### Example: Process a CSV Only When a Marker File Exists
+
+```ballerina
 @ftp:ServiceConfig {
     path: "/incoming/orders",
     fileNamePattern: "order_.*\\.csv",
@@ -973,863 +696,382 @@ listener ftp:Listener ftpListener = check new({
         {
             targetPattern: "order_(\\d+)\\.csv",
             requiredFiles: ["order_$1.marker"],
-            matchingMode: ALL
+            matchingMode: ftp:ALL
         }
     ]
 }
 service on ftpListener {
     remote function onFileCsv(record {}[] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-        // Process order CSV files only when marker file exists
-        check caller->move(fileInfo.path, "/processed/orders/" + fileInfo.name);
-    }
-}
-
-// Service monitoring /incoming/configs for JSON files
-@ftp:ServiceConfig {
-    path: "/incoming/configs",
-    fileNamePattern: ".*\\.json"
-}
-service on ftpListener {
-    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
-        // Process configuration JSON files
+        check caller->move(fileInfo.path, "/processed/" + fileInfo.name);
     }
 }
 ```
 
-Each service operates independently, receiving events only for files in its configured path that match its pattern.
+### 4.6 Distributed Coordination
 
-#### 4.4.2. Format-Specific Listener Callbacks
+The FTP listener supports distributed coordination for high-availability deployments. When multiple listener instances are deployed across nodes, coordination ensures that only one instance actively polls the FTP server at any time, while the others act as warm standby nodes. This prevents duplicate file processing and provides automatic failover.
 
-In addition to the generic `onFileChange()` callback, the listener supports specialized format-specific callbacks that automatically parse files into structured data formats. These callbacks simplify handling files of specific types.
+Coordination is enabled by providing a `CoordinationConfig` in the `ListenerConfiguration`. All instances in a coordination group must be configured with the same `coordinationGroup` name and a unique `memberId` per node. Coordination state is managed through a shared database (MySQL or PostgreSQL).
 
-**File extension routing:** Files are automatically routed to handlers based on their extensions. `.txt` → `onFileText()`, `.json` → `onFileJson()`, `.xml` → `onFileXml()`, `.csv` → `onFileCsv()`. Other extensions use `onFile()`. Routing can be customized using the `@ftp:FunctionConfig` annotation.
+The coordination mechanism works as follows:
 
-* `onFileJson()` - Triggered when a JSON file (`.json`) is added. Supports two overloads for different content types:
+1. Members in the same `coordinationGroup` elect an active member through the shared database.
+2. The active member updates a heartbeat record at the configured `heartbeatFrequency` interval (default: 1 second).
+3. Standby members monitor the active member's heartbeat every `livenessCheckInterval` seconds (default: 30 seconds).
+4. If the heartbeat becomes stale, a standby member elects itself as the new active member and begins polling.
+5. Only the active member's polling cycle executes; standby members skip polling silently.
+
+###### Example: Listener with Distributed Coordination
+
 ```ballerina
-# JSON content overload
-remote function onFileJson(json content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process parsed JSON content directly
-    // fileInfo contains metadata about the file
-    // caller allows you to perform FTP operations
-}
-
-# Data-bound record overload
-remote function onFileJson(record {} content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process JSON automatically data-bound to your record type
-}
-```
-
-* `onFileXml()` - Triggered when an XML file (`.xml`) is added. Supports two overloads:
-```ballerina
-# XML content overload
-remote function onFileXml(xml content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process parsed XML content directly
-}
-
-# Data-bound record overload
-remote function onFileXml(record {} content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process XML automatically data-bound to your record type
-}
-```
-
-* `onFileCsv()` - Triggered when a CSV file (`.csv`) is added with RFC4180 defaults. Supports four overloads for different processing modes:
-```ballerina
-# String array overload (in-memory, all rows)
-remote function onFileCsv(string[][] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // content contains all rows as arrays of strings
-    // First row contains column headers
-}
-
-# Record array overload (in-memory, type-safe)
-remote function onFileCsv(record {} [] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // content automatically data-bound to record array
-    // Headers automatically mapped to record fields
-}
-
-# Stream of string arrays (streaming, large files)
-remote function onFileCsv(stream<string[], error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process rows one at a time from stream
-    // Memory-efficient for large files
-}
-
-# Stream of records (streaming, type-safe)
-remote function onFileCsv(stream<record {}, error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process rows as records from stream
-    // Data-bound and memory-efficient
-}
-```
-
-* `onFileText()` - Triggered when a text file (`.txt`) is added:
-```ballerina
-remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process entire file content as UTF-8 text
-}
-```
-
-* `onFile()` - Triggered when any other file type is added (generic binary handling). Supports two overloads:
-```ballerina
-# In-memory byte array overload
-remote function onFile(byte[] content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // content contains entire file as bytes
-}
-
-# Streaming overload for large files
-remote function onFile(stream<byte[], error> content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-    // Process file chunks from stream
-    // Memory-efficient for large files
-}
-```
-
-* `onFileDelete()` - Triggered when files are deleted from the monitored directory:
-```ballerina
-remote function onFileDelete(string deletedFile, ftp:Caller caller) returns error? {
-    // Handle file deletion
-    // deletedFile contains the deleted file path
-}
-```
-
-* `onError()` - Triggered when a content binding error occurs during file processing. This allows centralized error handling for data binding failures:
-```ballerina
-remote function onError(ftp:Error err, ftp:Caller caller) returns error? {
-    // Check if it's a content binding error to access details
-    if err is ftp:ContentBindingError {
-        string? filePath = err.detail().filePath;
-        byte[]? content = err.detail().content;
-
-        log:printError("Failed to process file: " + (filePath ?: "unknown"), err);
-        if filePath is string {
-            check caller->move(filePath, "/error/failed_file");
+listener ftp:Listener ftpListener = check new ({
+    protocol: ftp:SFTP,
+    host: "sftp.example.com",
+    port: 22,
+    auth: {credentials: {username: "user", password: "pass"}},
+    coordination: {
+        memberId: "node-1",
+        coordinationGroup: "ftp-processors",
+        livenessCheckInterval: 30,
+        heartbeatFrequency: 1,
+        databaseConfig: <task:MysqlConfig>{
+            host: "db.example.com",
+            user: "dbuser",
+            password: "dbpass",
+            database: "coordination_db"
         }
     }
-}
+});
 ```
-
-The `onError` handler receives:
-- `err`: The base `ftp:Error` type. For content binding failures, this will be a `ContentBindingError`. Users should type-check with `if err is ftp:ContentBindingError` to access the detail record containing `filePath` and `content`.
-- `caller` (optional): FTP caller for performing recovery operations
-
-**Supported parameter signatures:**
-- `onError(error err)` - Using Ballerina's error type descriptor
-- `onError(ftp:Error err)` - Using the FTP module's Error type
-- `onError(ftp:Error err, ftp:Caller caller)` - With caller for recovery operations
-
-If `onError` is not defined, binding errors are logged and the file is skipped.
-
-**Optional parameters:** The `caller` parameter can be omitted if not needed in your implementation.
-
-All format-specific callbacks receive `fileInfo` (metadata about the file) and optionally `caller`
-(to perform additional FTP operations). The data is automatically parsed based on the callback type.
-
-#### 4.4.3. Post-Processing Actions
-
-The `@ftp:FunctionConfig` annotation supports automatic file actions after processing completes. This enables common patterns like moving processed files to an archive directory or deleting files after successful processing.
-
-**Configuration Types:**
-
-* `DELETE` - Delete the file after processing
-```ballerina
-public const DELETE = "DELETE";
-```
-
-* `Move` - Move the file to a specified directory
-```ballerina
-# Type alias for Move record, used in union types for post-processing actions.
-public type MOVE Move;
-
-# Configuration for moving a file after processing.
-#
-# + moveTo - Destination directory path where the file will be moved
-# + preserveSubDirs - If true, preserves the subdirectory structure relative to the
-#                     listener's root path. Defaults to true.
-public type Move record {|
-    string moveTo;
-    boolean preserveSubDirs = true;
-|};
-```
-
-**Updated FtpFunctionConfig:**
-```ballerina
-public type FtpFunctionConfig record {|
-    string fileNamePattern?;
-    MOVE|DELETE afterProcess?;
-    MOVE|DELETE afterError?;
-|};
-```
-
-**Action Fields:**
-- `afterProcess` - Action to perform after successful processing. If not specified, no action is taken.
-- `afterError` - Action to perform after the handler returns an error or panics. If not specified, no action is taken.
-
-**Prerequisites:**
-- When using `MOVE` action with `preserveSubDirs: true`, the destination directory structure must be pre-created on the FTP server. The move operation will fail if the destination parent directories do not exist.
-
-**Behavior:**
-1. **After Successful Processing:** If the handler returns successfully (no error), the `afterProcess` action is executed.
-2. **After Error:** If the handler returns an error, the `afterError` action is executed.
-3. **Subdirectory Preservation:** When using `MOVE` with `preserveSubDirs: true` (default), the subdirectory structure relative to the listener's monitored path is preserved. For example, if listening to `/input/` and processing `/input/orders/2024/file.csv` with `moveTo: "/archive/"`, the file is moved to `/archive/orders/2024/file.csv`.
-
-**Examples:**
-
-Delete after successful processing:
-```ballerina
-service on ftpListener {
-    @ftp:FunctionConfig {
-        fileNamePattern: ".*\\.json",
-        afterProcess: ftp:DELETE
-    }
-    remote function onFileJson(json content, ftp:FileInfo fileInfo) returns error? {
-        // Process JSON - file is automatically deleted after successful return
-        processJson(content);
-    }
-}
-```
-
-Move to archive after processing:
-```ballerina
-service on ftpListener {
-    @ftp:FunctionConfig {
-        fileNamePattern: ".*\\.csv",
-        afterProcess: {
-            moveTo: "/archive/processed/"
-        }
-    }
-    remote function onFileCsv(Employee[] content, ftp:FileInfo fileInfo) returns error? {
-        // Process CSV - file is moved to archive after success
-        saveEmployees(content);
-    }
-}
-```
-
-Different actions for success and error:
-```ballerina
-service on ftpListener {
-    @ftp:FunctionConfig {
-        fileNamePattern: ".*\\.xml",
-        afterProcess: {
-            moveTo: "/archive/success/"
-        },
-        afterError: {
-            moveTo: "/archive/failed/"
-        }
-    }
-    remote function onFileXml(xml content, ftp:FileInfo fileInfo) returns error? {
-        // On success: moved to /archive/success/
-        // On error: moved to /archive/failed/
-        check processXml(content);
-    }
-}
-```
-
-Move without preserving subdirectories:
-```ballerina
-service on ftpListener {
-    @ftp:FunctionConfig {
-        afterProcess: {
-            moveTo: "/archive/flat/",
-            preserveSubDirs: false
-        }
-    }
-    remote function onFile(byte[] content, ftp:FileInfo fileInfo) returns error? {
-        // All files moved directly to /archive/flat/ regardless of source subdirectory
-    }
-}
-```
-
-The Listener has following functions to manage a service.
-* `attach()` - can be used to bind a service to the `ftp:Listener`.
-```ballerina
-# Binds a service to the `ftp:Listener`.
-# ```ballerina
-# error? response = listener.attach(service1);
-# ```
-#
-# + ftpService - Service to be detached from the listener
-# + name - Name of the service to be detached from the listener
-# + return - `()` or else an `error` upon failure to register the listener
-public isolated function attach(Service ftpService, string[]|string? name = ()) returns error?;
-```
-* `detach()` - can be used to detach a service from the `ftp:Listener`.
-```ballerina
-# Stops consuming messages and detaches the service from the `ftp:Listener`.
-# ```ballerina
-# error? response = listener.detach(service1);
-# ```
-#
-# + ftpService - Service to be detached from the listener
-# + return - `()` or else an `error` upon failure to detach the service
-public isolated function detach(Service ftpService) returns error?;
-```
-* `start()` - needs to be called to start the listener.
-```ballerina
-# Starts the `ftp:Listener`.
-# ```ballerina
-# error? response = listener.'start();
-# ```
-#
-# + return - `()` or else an `error` upon failure to start the listener
-public isolated function 'start() returns error?;
-```
-* `gracefulStop()` - can be used to gracefully stop the listener.
-```ballerina
-# Stops the `ftp:Listener` gracefully.
-# ```ballerina
-# error? response = listener.gracefulStop();
-# ```
-#
-# + return - `()` or else an `error` upon failure to stop the listener
-public isolated function gracefulStop() returns error?;
-```
-* `immediateStop()` - can be used to forcefully stop the listener.
-```ballerina
-# Stops the `ftp:Listener` forcefully.
-# ```ballerina
-# error? response = listener.immediateStop();
-# ```
-#
-# + return - `()` or else an `error` upon failure to stop the listener
-public isolated function immediateStop() returns error?;
-```
-* `poll()` - can be used to poll new files from the FTP server.
-```ballerina
-# Poll new files from a FTP server.
-# ```ballerina
-# error? response = listener.poll();
-# ```
-#
-# + return - An `error` if failed to establish communication with the FTP
-#            server
-public isolated function poll() returns error?
-```
-* `register()` can be used to register an FTP service in an `ftp:listener`.
-```ballerina
-# Register a FTP service in an FTP listener server.
-# ```ballerina
-# error? response = listener.register(ftpService, name);
-# ```
-#
-# + ftpService - The FTP service
-# + name - Name of the FTP service
-# + return - An `error` if failed to establish communication with the FTP
-#            server
-public isolated function register(Service ftpService, string? name) returns error?
-```
-
-### 4.5. Distributed Coordination
-
-The FTP listener supports distributed coordination for high availability deployments. When multiple listener instances are deployed across different nodes, coordination ensures that only one instance actively polls the FTP server while others act as warm standby nodes. This prevents duplicate file processing and provides automatic failover.
-
-#### 4.5.1. Coordination Configuration
-* `CoordinationConfig` record represents the configuration for distributed task coordination.
-```ballerina
-public type CoordinationConfig record {|
-    # The database configuration for task coordination
-    task:DatabaseConfig databaseConfig;
-    # The interval (in seconds) to check the liveness of the active node. Default is 30 seconds.
-    int livenessCheckInterval = 30;
-    # Unique identifier for the current member. Must be distinct for each node in the distributed system.
-    string memberId;
-    # The name of the coordination group of FTP listeners that coordinate together.
-    # It is recommended to use a unique name for each group.
-    string coordinationGroup;
-    # The interval (in seconds) for the node to update its heartbeat status. Default is 1 second.
-    int heartbeatFrequency = 1;
-|};
-```
-
-* The `databaseConfig` field accepts either `task:MysqlConfig` or `task:PostgresqlConfig`:
-```ballerina
-# MySQL configuration
-public type MysqlConfig record {
-    string host = "localhost";
-    string? user = ();
-    string? password = ();
-    int port = 3306;
-    string? database = ();
-};
-
-# PostgreSQL configuration
-public type PostgresqlConfig record {
-    string host = "localhost";
-    string? user = ();
-    string? password = ();
-    int port = 5432;
-    string? database = ();
-};
-```
-
-#### 4.5.2. Coordination Mechanism
-1. **Leader election**: Members in the same `coordinationGroup` coordinate via the database to elect an active member
-2. **Heartbeat**: The active member updates its heartbeat at `heartbeatFrequency` intervals
-3. **Liveness monitoring**: Standby members check the active member's heartbeat every `livenessCheckInterval` seconds
-4. **Failover**: If the active member's heartbeat becomes stale, a standby member takes over as the new active member
-5. **Polling**: Only the active member's `poll()` function executes; standby members skip polling
 
 ## 5. Caller
-`ftp:Caller` is like a wrapper on the `ftp:Client`. It has an `ftp:Client` defined inside and contains all the APIs of `ftp:Client` like `get()`, `put()`, `append()` etc. However, `ftp:Caller` can only be created internally to be passed to the `onFileChange` method.
-`ftp:Caller` is created in the runtime when the `ftp:Listener` gets attached to a `ftp:Service` by checking whether the user has added `ftp:Caller` as a parameter in the `onFileChange` method.
-### 5.1. Initialization
-`ftp:Caller` can be both secure and insecure and this depends on the type of `ftp:Listener`. If the `ftp:Listener` is a secure type, `ftp:Caller` will also be secure since the wrapping `ftp:Client` is created using a subset of the `ftp:ListenerConfiguration`.
-```ballerina
-# Gets invoked during object initialization.
-#
-# + 'client - The `ftp:Client` which is used to interact with the Ftp server
-# + return - `ftp:Error` in case of errors or `()` otherwise
-isolated function init(Client 'client) {
-    self.'client = 'client;
-}
-```
-### 5.2. Functions
-* `put()` method can be used to put files on the server.
-```ballerina
-# Adds a file to FTP server.
-# ```ballerina
-# ftp:Error? response = caller->put(path, channel);
-# ```
-#
-# + path - The resource path
-# + content - Content to be written to the file in server
-# + compressionType - Type of the compression to be used, if
-#                     the file should be compressed before
-#                     uploading
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function put(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content, Compression compressionType=NONE) returns Error?;
-```
-* `append()` can be used to append the content to an existing file in FTP server.
-```ballerina
-# Appends the content to an existing file in FTP server.
-# ```ballerina
-# ftp:Error? response = caller->append(path, content);
-# ```
-#
-# + path - The resource path
-# + content - Content to be written to the file in server
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function append(string path, stream<byte[] & readonly, io:Error?>|string|xml|json content) returns Error?;
-```
-* `putBytes()` can be used to write bytes to a file.
-```ballerina
-# Write bytes to a file.
-# ```ballerina
-# ftp:Error? response = caller->putBytes(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Binary data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putBytes(string path, byte[] content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putText()` can be used to write text to a file.
-```ballerina
-# Write text to a file.
-# ```ballerina
-# ftp:Error? response = caller->putText(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Text to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putText(string path, string content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putJson()` can be used to write JSON data to a file.
-```ballerina
-# Write JSON data to a file.
-# ```ballerina
-# ftp:Error? response = caller->putJson(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - JSON data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putJson(string path, json|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putXml()` can be used to write XML data to a file.
-```ballerina
-# Write XML data to a file.
-# ```ballerina
-# ftp:Error? response = caller->putXml(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - XML data to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putXml(string path, xml|record {} content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putCsv()` can be used to write CSV data to a file.
-```ballerina
-# Write CSV data to a file.
-# ```ballerina
-# ftp:Error? response = caller->putCsv(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - CSV data (table or records) to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putCsv(string path, string[][]|record {}[] content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putBytesAsStream()` can be used to write bytes from a stream to a file.
-```ballerina
-# Write bytes from a stream to a file.
-# Useful for processing and uploading large files without loading everything into memory.
-# ```ballerina
-# ftp:Error? response = caller->putBytesAsStream(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Stream of byte chunks to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putBytesAsStream(string path, stream<byte[], error?> content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* `putCsvAsStream()` can be used to write CSV data from a stream to a file.
-```ballerina
-# Write CSV data from a stream to a file.
-# Useful for processing and uploading large CSV files without loading everything into memory.
-# ```ballerina
-# ftp:Error? response = caller->putCsvAsStream(path, content, option);
-# ```
-#
-# + path - File location on the server
-# + content - Stream of CSV rows to write
-# + option - Replace or add to the file?
-# + return - An error if the operation fails
-remote isolated function putCsvAsStream(string path, stream<string[]|record {}, error?> content, FileWriteOption option = OVERWRITE) returns Error?;
-```
-* To retrieve file content from FTP server, `get()` can be used.
-```ballerina
-# Retrieves the file content from a remote resource.
-# ```ballerina
-# stream<byte[] & readonly, io:Error?>|ftp:Error channel = caller->get(path);
-# ```
-#
-# + path - The resource path
-# + return - A byte stream from which the file can be read or `ftp:Error` in case of errors
-remote isolated function get(string path) returns stream<byte[] & readonly, io:Error?>|Error;
-```
-* `getBytes()` can be used to read file content as bytes.
-```ballerina
-# Read file content as bytes (raw binary data).
-# ```ballerina
-# byte[] content = check caller->getBytes(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - File content as bytes, or an error if the operation fails
-remote isolated function getBytes(string path) returns byte[]|Error;
-```
-* `getText()` can be used to read file content as text.
-```ballerina
-# Read file content as text.
-# ```ballerina
-# string content = check caller->getText(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - File content as text, or an error if the operation fails
-remote isolated function getText(string path) returns string|Error;
-```
-* `getJson()` can be used to read a file as JSON data.
-```ballerina
-# Read a file as JSON data.
-# ```ballerina
-# json content = check caller->getJson(path);
-# ```
-#
-# + path - Location of the file on the server
-# + targetType - What format should the data have? (JSON, structured data, or a custom format)
-# + return - The file content as JSON or an error if the operation fails
-remote isolated function getJson(string path, typedesc<json|record {}> targetType = <>) returns targetType|Error;
-```
-* `getXml()` can be used to read a file as XML data.
-```ballerina
-# Read a file as XML data.
-# ```ballerina
-# xml content = check caller->getXml(path);
-# ```
-#
-# + path - Location of the file on the server
-# + targetType - What format should the data have? (XML, structured data, or a custom format)
-# + return - The file content as XML or an error if the operation fails
-remote isolated function getXml(string path, typedesc<xml|record {}> targetType = <>) returns targetType|Error;
-```
-* `getCsv()` can be used to read a CSV file from the server.
-```ballerina
-# Read a CSV (comma-separated) file from the server.
-# The first row of the CSV file should contain column names (headers).
-# ```ballerina
-# string[][] content = check caller->getCsv(path);
-# ```
-#
-# + path - Location of the CSV file on the server
-# + targetType - What format should the data have? (Table or structured records)
-# + return - The CSV file content as a table or records, or an error if the operation fails
-remote isolated function getCsv(string path, typedesc<string[][]|record {}[]> targetType = <>) returns targetType|Error;
-```
-* `getBytesAsStream()` can be used to read file content as a stream of byte chunks.
-```ballerina
-# Read file content as a stream of byte chunks.
-# Useful for processing large files without loading the entire file into memory.
-# ```ballerina
-# stream<byte[], error?> response = check caller->getBytesAsStream(path);
-# ```
-#
-# + path - File or folder location on the server
-# + return - A continuous stream of byte chunks, or an error if the operation fails
-remote isolated function getBytesAsStream(string path) returns stream<byte[], error?>|Error;
-```
-* `getCsvAsStream()` can be used to read a CSV file as a continuous stream of rows.
-```ballerina
-# Read a CSV file as a continuous stream of rows.
-# Useful for processing very large files one row at a time.
-# The first row of the CSV file should contain column names (headers).
-# ```ballerina
-# stream<string[], error?> response = check caller->getCsvAsStream(path);
-# ```
-#
-# + path - Location of the CSV file on the server
-# + targetType - What format should each row have? (Row values or structured record)
-# + return - A stream of rows from the CSV file, or an error if the operation fails
-remote isolated function getCsvAsStream(string path, typedesc<string[]|record {}> targetType = <>) returns stream<targetType, error?>|Error;
-```
-* `mkdir()` can be used to create a new directory in FTP server.
-```ballerina
-# Creates a new directory in FTP server.
-# ```ballerina
-# ftp:Error? response = caller->mkdir(path);
-# ```
-#
-# + path - The directory path
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function mkdir(string path) returns Error?;
-```
-* `rmdir()` can be used to remove an empty directory in the server.
-```ballerina
-# Deletes an empty directory in FTP server.
-# ```ballerina
-# ftp:Error? response = caller->rmdir(path);
-# ```
-#
-# + path - The directory path
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function rmdir(string path) returns Error?;
-```
-* To delete a file, `delete()` can be used.
-```ballerina
-# Deletes a file from FTP server.
-# ```ballerina
-# ftp:Error? response = caller->delete(path);
-# ```
-#
-# + path - The resource path
-# + return -  `()` or else an `ftp:Error` if failed to establish
-#             the communication with the FTP server
-remote isolated function delete(string path) returns Error?;
-```
-* To rename a file or move it to another directory, `rename()` can be used.
-```ballerina
-# Renames a file or moves it to a new location within the same FTP server.
-# ```ballerina
-# ftp:Error? response = caller->rename(origin, destination);
-# ```
-#
-# + origin - The source file location
-# + destination - The destination file location
-# + return - `()` or else an `ftp:Error` if failed to establish
-#            the communication with the FTP server
-remote isolated function rename(string origin, string destination) returns Error?;
-```
-* `move()` can be used to move a file to a different location on the file server.
-```ballerina
-# Move a file to a different location on the file server.
-# ```ballerina
-# ftp:Error? response = caller->move(sourcePath, destinationPath);
-# ```
-#
-# + sourcePath - The current file location
-# + destinationPath - The new file location
-# + return - An error if the operation fails
-remote isolated function move(string sourcePath, string destinationPath) returns Error?;
-```
-* `copy()` can be used to copy a file to a different location on the file server.
-```ballerina
-# Copy a file to a different location on the file server.
-# ```ballerina
-# ftp:Error? response = caller->copy(sourcePath, destinationPath);
-# ```
-#
-# + sourcePath - The file to copy
-# + destinationPath - Where to create the copy
-# + return - An error if the operation fails
-remote isolated function copy(string sourcePath, string destinationPath) returns Error?;
-```
-* `exists()` can be used to check if a file or folder exists on the file server.
-```ballerina
-# Check if a file or folder exists on the file server.
-# ```ballerina
-# boolean|ftp:Error response = caller->exists(path);
-# ```
-#
-# + path - File or folder location to check
-# + return - True if it exists, false if it doesn't, or an error if the check fails
-remote isolated function exists(string path) returns boolean|Error;
-```
-* `size()` function can be used to get the size of a file.
-```ballerina
-# Gets the size of a file resource.
-# ```ballerina
-# int|ftp:Error response = caller->size(path);
-# ```
-#
-# + path - The resource path
-# + return - The file size in bytes or an `ftp:Error` if
-#            failed to establish the communication with the FTP server
-remote isolated function size(string path) returns int|Error;
-```
-* To get the file list in a directory, `list()` can be used.
-```ballerina
-# Gets the file name list in a given folder.
-# ```ballerina
-# ftp:FileInfo[]|ftp:Error response = caller->list(path);
-# ```
-#
-# + path - The direcotry path
-# + return - An array of file names or an `ftp:Error` if failed to
-#            establish the communication with the FTP server
-remote isolated function list(string path) returns FileInfo[]|Error;
-```
-* To check if a resource is a directory, `isDirectory()` can be used.
-```ballerina
-# Checks if a given resource is a directory.
-# ```ballerina
-# boolean|ftp:Error response = caller->isDirectory(path);
-# ```
-#
-# + path - The resource path
-# + return - `true` if given resource is a directory or an `ftp:Error` if
-#            an error occurred while checking the path
-remote isolated function isDirectory(string path) returns boolean|Error;
-```
-## 6. Samples
-### 6.1. Sending Files
-```ballerina
-import ballerina/ftp;
-import ballerina/io;
-import ballerina/lang.'string as strings;
 
-ftp:AuthConfiguration authConfig = {
-    credentials: {username: "wso2", password: "wso2123"},
-    privateKey: {
-        path: "resources/keys/sftp.private.key",
-        password: "password"
-    }
-};
+The `ftp:Caller` is a facade over an `ftp:Client` that is created internally by the runtime when a service callback declares it as a parameter. It exposes the same operations as `ftp:Client`, allowing service callbacks to perform FTP operations (reading, writing, moving, deleting files) on the same server that the listener is monitoring.
 
-ftp:ClientConfiguration sftpClientConfig = {
-    protocol: ftp:SFTP,
-    host: "ftp.example.com",
-    port: 21,
-    auth: authConfig,
-    userDirIsRoot: true
-};
+The `ftp:Caller` inherits its connection type (secure or insecure) from the listener configuration. It cannot be created directly by user code.
 
-public function main() returns error? {
-    ftp:Client clientEp = check new(sftpClientConfig);
-    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
-    check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
-        io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
-    });
-    stream<io:Block, io:Error?> bStream = check io:fileReadBlocksAsStream("/local/logFile.txt", 1024);
-    check clientEp->put("/server", bStream);
-    check fileStream.close();
-}
-```
-### 6.2. Listening to file changes
+The `caller` parameter is optional in all service callbacks. If FTP operations are not required within a callback, the parameter may be omitted.
 
-**Recommended approach using @ftp:ServiceConfig:**
+###### Example: Using the Caller to Move a Processed File
+
 ```ballerina
-import ballerina/ftp;
-import ballerina/io;
-
-listener ftp:Listener remoteServer = check new({
-    protocol: ftp:SFTP,
-    host: "ftp.example.com",
-    auth: {
-        credentials: {
-            username: "wso2",
-            password: "wso2123"
-        },
-        privateKey: {
-            path: "resources/keys/sftp.private.key",
-            password: "password"
-        }
-    },
-    port: 21,
-    pollingInterval: 2,
-    userDirIsRoot: true
-});
-
-@ftp:ServiceConfig {
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
-}
-service on remoteServer {
-
+service on ftpListener {
     remote function onFileText(string content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
-        io:println("Processing file: " + fileInfo.path);
-        io:println("Content: " + content);
-        check caller->delete(fileInfo.path);
-    }
-
-    remote function onFileDelete(string deletedFile) {
-        io:println("Deleted file path: " + deletedFile);
+        processContent(content);
+        check caller->move(fileInfo.path, "/processed/" + fileInfo.name);
     }
 }
 ```
 
-**Legacy approach (deprecated):**
+## 6. Errors
+
+### 6.1 Error Hierarchy
+
+The FTP library defines a hierarchy of error types rooted at `ftp:Error`. All FTP-specific errors are distinct subtypes of this base type, enabling both specific and general error handling.
+
+- **`Error`** — The base error type for all FTP-related errors. All other error types are subtypes of this.
+- **`ConnectionError`** — Represents failures when connecting to the server, including network failures, unreachable hosts, and connection refusals.
+- **`FileNotFoundError`** — Represents failures when a requested file or directory does not exist on the server.
+- **`FileAlreadyExistsError`** — Represents failures when attempting to create a file or directory that already exists.
+- **`InvalidConfigError`** — Represents failures due to invalid configuration values, such as an invalid port number, regex pattern, or timeout value.
+- **`ServiceUnavailableError`** — Represents transient server-side failures. Common causes include server overload, connection issues, or temporary file locks. Operations that return this error may succeed on retry.
+- **`ContentBindingError`** — Represents failures when file content cannot be parsed or bound to the expected Ballerina type. This includes JSON/XML parse errors, CSV format errors, and record type binding failures. The error's detail record includes the `filePath` and the raw `content` as bytes.
+- **`AllRetryAttemptsFailedError`** — Represents the failure returned when all retry attempts are exhausted. It wraps the last encountered error.
+- **`CircuitBreakerOpenError`** — A subtype of `ServiceUnavailableError` returned when the circuit breaker is in the OPEN state. It indicates that requests are being blocked to prevent cascading failures.
+
+### 6.2 Error Handling
+
+Because all error types are subtypes of `ftp:Error`, callers can handle errors at any level of specificity. More specific error types should be checked before more general ones.
+
+###### Example: Handling Specific Error Types
+
 ```ballerina
-import ballerina/ftp;
-import ballerina/io;
-
-listener ftp:Listener remoteServer = check new({
-    protocol: ftp:SFTP,
-    host: "ftp.example.com",
-    auth: {
-        credentials: {
-            username: "wso2",
-            password: "wso2123"
-        },
-        privateKey: {
-            path: "resources/keys/sftp.private.key",
-            password: "password"
-        }
-    },
-    port: 21,
-    path: "/home/in",                    // Deprecated
-    pollingInterval: 2,
-    fileNamePattern: "(.*).txt",         // Deprecated
-    userDirIsRoot: true
-});
-
-service on remoteServer {
-
-    remote function onFileChange(ftp:Caller caller, ftp:WatchEvent & readonly event) {
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            io:println("Added file path: " + addedFile.path);
-            check caller->delete(addedFile.path);
-        }
-
-        foreach string deletedFile in event.deletedFiles {
-            io:println("Deleted file path: " + deletedFile);
-        }
-    }
+byte[]|ftp:Error result = ftpClient->getBytes("/data/file.txt");
+if result is ftp:CircuitBreakerOpenError {
+    // Circuit is open — server is currently unavailable
+    applyFallback();
+} else if result is ftp:FileNotFoundError {
+    // File does not exist
+    log:printWarn("File not found");
+} else if result is ftp:ConnectionError {
+    // Network-level failure
+    log:printError("Connection failed", result);
+} else if result is ftp:Error {
+    // Any other FTP error
+    log:printError("FTP operation failed", result);
+} else {
+    processBytes(result);
 }
 ```
+
+## 7. Observability
+
+The FTP library provides built-in observability support through metrics and distributed tracing, following the unified observability specification for Ballerina file integration libraries. When observability is enabled in the Ballerina runtime, the FTP client and listener automatically report telemetry data without any additional configuration.
+
+The observability model is module-agnostic: the FTP module publishes the same metric names and tag keys as other file integration modules (SMB, S3, etc.). Module-specific values appear only in tag values (e.g. `module=ftp`), never in metric names.
+
+### 7.1 Metrics
+
+#### 7.1.1 Gauges
+
+| Metric Name | Type | Description |
+|---|---|---|
+| `ftp_active_connections` | Gauge | Number of active FTP/FTPS/SFTP client and listener objects. Incremented on init, decremented on close. Retained for backward compatibility. |
+
+#### 7.1.2 Explicit Counters
+
+| Metric Name | Type | Description |
+|---|---|---|
+| `file_bytes_transferred_total` | Counter | Total bytes read or written across operations. A sum of bytes, not a count of spans. |
+| `file_events_total` | Counter | Total file lifecycle and poll events. Distinguishable by `action.type` tag: `poll_cycle` for poll cycles, `file_event` for file lifecycle stages. |
+
+`file_bytes_transferred_total` is incremented for all non-streaming client read operations (`getBytes`, `getText`, `getJson`, `getXml`, `getCsv`), all client write operations (`putBytes`, `putText`, `putJson`, `putXml`, `putCsv`), and listener content reads during file processing. Every increment carries an `operation.type` tag (`get` or `put`) so that total bytes read across both client and listener can be queried uniformly via `file_bytes_transferred_total{operation_type="get"}`.
+
+`file_events_total` is a single counter that tracks both poll cycles (`action.type=poll_cycle`) and all four file lifecycle stages (`action.type=file_event`, `file.stage=found|dispatched|handled|cleaned_up`). Each event produces an independent `+1` to the counter with its respective tags. Poll cycles are derived via `file_events_total{action_type="poll_cycle"}`; file stages via `file_events_total{file_stage="..."}`. This ensures everything is queryable from a single metric name.
+
+For stages that go through `callMethod` (handled, cleaned_up), the framework additionally creates auto-instrumented spans that appear in distributed traces (Jaeger). However, `requests_total_value` is the **runtime's** metric — it counts one increment per span, not per file. A single poll that finds 50 files still produces only one span. Therefore, per-file counts must always come from `file_events_total`, not from `requests_total_value`. The only valid use of `requests_total_value` is for **client operations**, where one method call (e.g. `getBytes()`) equals one span equals one increment.
+
+#### 7.1.3 Duration Gauges
+
+| Metric Name | Type | Description |
+|---|---|---|
+| `file_databinding_duration_seconds` | Gauge (distribution) | Time in seconds to fetch and convert file content into the target type (JSON, XML, CSV, text, bytes, stream). Each invocation records a separate observation into a sliding-window distribution. |
+| `file_resource_execution_duration_seconds` | Gauge (distribution) | Time in seconds to execute the user's resource/handler method. Each invocation records a separate observation into the same sliding-window distribution. |
+
+Both duration gauges are configured with a `StatisticConfig` that tracks p50, p75, p90, p95, and p99 percentiles over a 5-minute sliding window. They carry `handler.name`, `outcome`, `protocol`, and `remote.url` tags.
+
+- **`file_databinding_duration_seconds`** covers the full data binding pipeline: resolving the remote file, reading bytes over the network, and converting to the handler's parameter type (e.g. `json`, `xml`, `csv` record). For streaming handlers, this measures stream creation time only — actual data transfer is lazy.
+- **`file_resource_execution_duration_seconds`** covers the actual elapsed time of the handler method invocation. This includes everything inside the user's handler — FTP operations, HTTP calls, database queries, custom logic, etc.
+
+#### 7.1.4 Querying Metrics
+
+The following table shows the recommended PromQL source for each logical metric:
+
+| Logical Metric | Description | PromQL Source |
+|---|---|---|
+| Poll cycles | Poll cycles completed by a listener | `file_events_total{action_type="poll_cycle"}` |
+| Files found | Files discovered during a poll | `file_events_total{file_stage="found"}` |
+| Files dispatched | Files matched to a handler and handed over | `file_events_total{file_stage="dispatched"}` |
+| Files skipped | Files found but matched no handler | `file_events_total{file_stage="found", outcome="skipped"}` |
+| Files handled | Handler invocations completed | `file_events_total{file_stage="handled"}` |
+| Files cleaned up | Post-processing actions completed (move/delete) | `file_events_total{file_stage="cleaned_up"}` |
+| Handler errors | Errors from any code inside handler (FTP, HTTP, DB, etc.) | `file_events_total{file_stage="handled", outcome="failure"}` |
+| Data binding duration | Time to fetch and convert file content | `file_databinding_duration_seconds` |
+| Resource execution duration | Time to execute the handler method | `file_resource_execution_duration_seconds` |
+| Bytes read (client + listener) | Total bytes read across all get operations | `file_bytes_transferred_total{operation_type="get"}` |
+| Bytes written (client) | Total bytes written across all put operations | `file_bytes_transferred_total{operation_type="put"}` |
+| Client operations | Client-initiated file operations (get, put, manage) | `requests_total_value{action_type="client_operation"}` |
+
+### 7.2 Tags
+
+All metrics and trace spans carry tags that identify the connection, operation, and lifecycle stage.
+
+> **Note:** Prometheus normalizes `.` to `_` in label names (e.g. `action.type` → `action_type`, `file.stage` → `file_stage`). Jaeger and other trace backends preserve the original dotted names. The PromQL examples in this section use the Prometheus-normalized form.
+
+#### 7.2.1 Identity Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+|---|---|---|---|---|
+| `module` | `ftp` | Yes | Yes | Identifies the Ballerina module. Always `ftp` regardless of wire protocol (FTP, FTPS, SFTP). |
+| `protocol` | `ftp`, `ftps`, `sftp` | Yes | Yes | The wire protocol. |
+| `type` | `client`, `listener` | Yes | Yes | Whether this is a client or listener operation. |
+| `remote.url` | `host:port` | Yes | Yes | The server endpoint. Added on every observer context at construction time, from the connection configuration. Does not include the protocol prefix since `protocol` is a separate tag. |
+| `watched.path` | Monitored directory path (e.g. `/uploads`) | Yes | Yes | Present on listener events and poll cycles. Distinguishes services monitoring different paths on the same server. |
+| `host` | Local hostname | Yes | Yes | Hostname of the current instance. |
+
+#### 7.2.2 Action Tags
+
+These tags capture the sequence of events during a file's journey. They help map out the lifecycle stages, showing exactly how a file moves through the system.
+
+| Tag | Values | Metrics | Traces | Notes |
+|---|---|---|---|---|
+| `action.type` | `poll_cycle`, `file_event`, `client_operation` | Yes | Yes | `poll_cycle` — Added on each poll cycle completion (`file_events_total` counter). One entry per poll, regardless of how many files are found. Only applicable to poll-based modules. `file_event` — Added on listener file lifecycle events (found, dispatched, handled, cleaned_up, skipped). `client_operation` — Added on client API calls. |
+| `file.stage` | `found`, `dispatched`, `handled`, `cleaned_up` | Yes | Yes | Maps to the four-stage file lifecycle. Present on listener event spans and metrics. `found` — Added when a file is first discovered during a poll cycle. Every discovered file gets this, including files that will be skipped as no relevant handler found for that. `dispatched` — Added when the file is matched to a content handler and handed over for processing. `handled` — Added when the handler invocation completes. `cleaned_up` — Added when a post-processing action completes. Only present when `afterProcess` or `afterError` is configured. |
+| `event.type` | `create`, `delete`, `error` | Yes | Yes | Type of listener event. `create` — File was added or modified. Added on handler invocation spans for content-based callbacks. `delete` — File was deleted. Added on `onFileDelete` handler spans. `error` — Content-binding failure. Added on `onError` handler spans. |
+| `operation.type` | `get`, `put`, `manage` | Yes | Yes | Present on client operation spans (`action.type=client_operation`) and on `file_bytes_transferred_total` for both client and listener. `get` — Added on `getBytes()`, `getText()`, `getJson()`, `getXml()`, `getCsv()`, `getBytesAsStream()`, `getCsvAsStream()`. `put` — Added on `putBytes()`, `putText()`, `putJson()`, `putXml()`, `putCsv()`, `putBytesAsStream()`, `putCsvAsStream()`. `manage` — Added on `delete()`, `rename()`, `move()`, `copy()`, `mkdir()`, `rmdir()`, `isDirectory()`, `list()`, `exists()`, `size()`. |
+| `handler.name` | Handler method name (e.g. `onFileJson`, `onFileCsv`) | Yes | Yes | Identifies which handler processed the file. Added on: `file.stage=dispatched` — when the handler is selected. `file.stage=handled` — when the handler completes. `file.stage=cleaned_up` — to link cleanup back to the handler that triggered it. Not present on `file.stage=found` (handler not yet determined) or skipped files. |
+| `cleanup.action` | `move`, `delete` | Yes | Yes | `move` — When the file was moved to a destination directory. `delete` — When the file was deleted. Added on `file.stage=cleaned_up` events only. |
+
+#### 7.2.3 Outcome Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+|---|---|---|---|---|
+| `outcome` | `success`, `failure`, `skipped` | Yes | Yes | Result of an operation. `skipped` indicates a file found but not matched to any handler. |
+| `error.type` | `ConnectionError`, `AuthenticationError`, `FileNotFoundError`, `ContentBindingError`, `CloseError`, `no_handler_matched`, `binding_failed`, `move_failed`, `delete_failed`, etc. | Yes | Yes | Present when `outcome=failure` or `outcome=skipped`. Set to the Ballerina error type name for handler and client errors (which can be **any** error type — not just FTP errors, e.g. `ClientError` from HTTP, `ApplicationError` from DB). For lifecycle failures, predefined values are used: `no_handler_matched`, `binding_failed`, `move_failed`, `delete_failed`. Set to `none` when not applicable. |
+
+#### 7.2.4 Tag Consistency Rule
+
+Every increment of a given metric must carry the **same set of label keys**. Prometheus treats a series with labels `{a, b}` and a series with labels `{a, b, c}` as two different time series, even under the same metric name. If tags are conditionally absent, queries like `sum by (file_stage)` silently drop or double-count rows.
+
+When a tag is not applicable for a given stage, the sentinel value `"none"` is used instead of omitting the tag. For example, `file_events_total` always carries `outcome`, `error.type`, `handler.name`, and `watched.path` on every increment — set to `"none"` when not applicable:
+
+```
+file_events_total{file_stage="found",   outcome="none",    error_type="none",            handler_name="none"}
+file_events_total{file_stage="handled", outcome="success", error_type="none",            handler_name="onFileJson"}
+file_events_total{file_stage="handled", outcome="failure", error_type="ConnectionError", handler_name="onFileJson"}
+```
+
+This rule applies to all explicit counters and gauges published by the library. All modules sharing the observability vocabulary must use the same sentinel value.
+
+#### 7.2.5 File-Scoped Tags (Trace-Only)
+
+| Tag | Values | Metrics | Traces | Notes |
+|---|---|---|---|---|
+| `file.path` | Full path of the file | No | Yes | Excluded from metrics to avoid cardinality explosion. |
+| `destination.path` | Target path for move/rename/copy | No | Yes | Excluded from metrics. |
+| `file.size` | Size in bytes | No | Yes | Exact file size on the trace span. |
+| `file.modified_time` | Last-modified timestamp | No | Yes | Needed for stable file identity. |
+
+#### 7.2.6 Client Operation Tag Mapping
+
+Client operation spans use `type=client` and `action.type=client_operation`. The `operation.type` tag maps to the client method invoked:
+
+| `operation.type` | Triggered by |
+|---|---|
+| `get` | `getBytes()`, `getText()`, `getJson()`, `getXml()`, `getCsv()`, `getBytesAsStream()`, `getCsvAsStream()` |
+| `put` | `putBytes()`, `putText()`, `putJson()`, `putXml()`, `putCsv()`, `putBytesAsStream()`, `putCsvAsStream()` |
+| `manage` | `delete()`, `rename()`, `move()`, `copy()`, `mkdir()`, `rmdir()`, `isDirectory()`, `list()`, `exists()`, `size()` |
+
+Listener content reads also carry `operation.type=get` on the `file_bytes_transferred_total` counter, since the listener fetches file content from the remote server in the same way as client get operations.
+
+#### 7.2.7 Listener Event Tag Mapping
+
+Listener event spans use `type=listener` and `action.type=file_event`. The `event.type` tag identifies the event:
+
+| `event.type` | Triggered by |
+|---|---|
+| `create` | File added or modified; dispatched to format-specific callbacks or `onFileChange` |
+| `delete` | File deleted; dispatched to `onFileDelete` |
+| `error` | Content-binding or deserialization failure; dispatched to `onError` |
+
+#### 7.2.8 File Lifecycle Stages
+
+The listener tracks files through a four-stage lifecycle. Each stage publishes an independent `file_events_total` counter increment with its respective tags.
+
+1. **Found** (`file.stage=found`) — A file is discovered during a poll cycle. Each discovered file produces exactly one `found` increment. If the file matches a handler, `outcome=none`. If no handler matches, `outcome=skipped` and `error.type=no_handler_matched` — the file goes no further in the lifecycle.
+2. **Dispatched** (`file.stage=dispatched`) — The file is matched to a content handler and handed over for processing. The `handler.name` tag identifies the target handler.
+3. **Handled** (`file.stage=handled`) — The handler invocation has completed. Tagged with `outcome=success` or `outcome=failure`. On failure, `error.type` is set to the Ballerina error type name returned by the handler. This captures errors from **any** code inside the handler — not just FTP operations, but also HTTP calls, database queries, custom logic, etc. Any error that causes the handler to return an error (via `check` or explicit `return error(...)`) is captured.
+4. **Cleaned up** (`file.stage=cleaned_up`) — Post-processing (move or delete) has completed. Tagged with `cleanup.action` (move/delete) and `outcome` (success/failure). If the cleanup fails, `error.type` is set to `move_failed` or `delete_failed`.
+
+### 7.3 Observability Outputs per File
+
+For each file processed by the listener, the library produces three types of observability output:
+
+1. **Explicit counters** (`file_events_total`) — All four lifecycle stages publish here. These are direct `MetricRegistry.counter().increment()` calls. No span is involved. Every stage is queryable from this single metric name.
+
+2. **Per-file parent span** — A library-created span (`BSpan.start("ftp", "file-lifecycle", false)`) that covers the entire file lifecycle from discovery to cleanup. The `file.path` tag on this span enables searching for a specific file in Jaeger. The `handled` and `cleaned_up` child spans are automatically parented to it via the `ObserverContext.setParent()` mechanism.
+
+3. **Framework child spans** (Jaeger traces) — The `handled` and `cleaned_up` stages invoke Ballerina methods via `callMethod`, which creates auto-instrumented spans. Because the strand properties contain an `ObserverContext` whose parent has the per-file span set on it, these auto-instrumented spans become **children** of the parent span. This connects the entire file lifecycle into a single trace. Note: these spans also increment the runtime's `requests_total_value`, but that metric counts spans, not files — it must not be used for per-file counting.
+
+The per-file flow:
+
+```
+processContentCallbacks() — for each file:
+  │
+  │  [ftp / file-lifecycle] ─────────────────────────────── parent span (file.path tag)
+  │    │
+  │    ├─ file_events_total{file_stage="found"}            ← counter +1
+  │    │
+  │    ├─ file_events_total{file_stage="dispatched"}        ← counter +1
+  │    │
+  │    ├─ convertFileContent(onFileText) ───────────────────← timed
+  │    │   │
+  │    │   └─ file_databinding_duration_seconds                     ← gauge (seconds, with handler_name + outcome)
+  │    │
+  │    ├─ [onFileText] ────────────────────────────────────── child span (handled)
+  │    │   │
+  │    │   ├─ file_events_total{file_stage="handled"}       ← counter +1 (with outcome + error_type)
+  │    │   └─ file_resource_execution_duration_seconds              ← gauge (seconds, with handler_name + outcome)
+  │    │
+  │    ├─ [delete|move] ───────────────────────────────────── child span (cleaned_up)
+  │    │   │
+  │    │   └─ file_events_total{file_stage="cleaned_up"}    ← counter +1 (with outcome + error_type)
+  │    │
+  │    └─ finishSpan() ──────────────────────────────────── parent span closed
+```
+
+For a skipped file (no handler matched), no parent span is created:
+
+```
+  └─ file_events_total{file_stage="found", outcome="skipped"}     ← counter +1 (no further stages)
+```
+
+- **Poll cycles** are reported via `file_events_total{action_type="poll_cycle"}` because `poll()` is not auto-instrumented.
+- **Client operations** produce auto-instrumented spans with `action.type=client_operation`, visible in both `requests_total_value` and Jaeger. This is the only case where `requests_total_value` gives correct per-operation counts (one call = one span = one increment).
+
+### 7.4 Sample PromQL Queries
+
+All lifecycle stages can be queried uniformly from `file_events_total`:
+
+```promql
+# ── Poll health ──
+rate(file_events_total{action_type="poll_cycle", outcome="success"}[5m])
+rate(file_events_total{action_type="poll_cycle", outcome="failure"}[5m])
+
+# ── File lifecycle stages (all from file_events_total) ──
+rate(file_events_total{file_stage="found"}[5m])
+rate(file_events_total{file_stage="dispatched"}[5m])
+rate(file_events_total{file_stage="found", outcome="skipped"}[5m])
+rate(file_events_total{file_stage="handled"}[5m])
+rate(file_events_total{file_stage="cleaned_up"}[5m])
+
+# ── Handler outcomes (four-box grid) ──
+rate(file_events_total{file_stage="handled", outcome="success"}[5m])
+rate(file_events_total{file_stage="handled", outcome="failure"}[5m])
+rate(file_events_total{file_stage="cleaned_up", outcome="success"}[5m])
+rate(file_events_total{file_stage="cleaned_up", outcome="failure"}[5m])
+
+# ── Per-handler breakdown ──
+sum by (handler_name) (rate(file_events_total{file_stage="handled"}[5m]))
+
+# ── Handler errors by error type (captures errors from any code — FTP, HTTP, DB, etc.) ──
+sum by (error_type) (rate(file_events_total{file_stage="handled", outcome="failure"}[5m]))
+
+# ── Cleanup errors by type ──
+sum by (error_type) (rate(file_events_total{file_stage="cleaned_up", outcome="failure"}[5m]))
+
+# ── Data binding duration (p99 by handler) ──
+file_databinding_duration_seconds{quantile="0.99"}
+avg by (handler_name) (file_databinding_duration_seconds_mean)
+file_databinding_duration_seconds{handler_name="onFileJson", outcome="success", quantile="0.5"}
+
+# ── Resource execution duration (p99 by handler) ──
+file_resource_execution_duration_seconds{quantile="0.99"}
+avg by (handler_name) (file_resource_execution_duration_seconds_mean)
+file_resource_execution_duration_seconds{handler_name="onFileJson", outcome="success", quantile="0.5"}
+
+# ── Client operations (framework auto-instrumented spans) ──
+rate(requests_total_value{action_type="client_operation", operation_type="get"}[5m])
+rate(requests_total_value{action_type="client_operation", operation_type="put"}[5m])
+rate(requests_total_value{action_type="client_operation", operation_type="manage"}[5m])
+
+# ── Bytes transferred ──
+rate(file_bytes_transferred_total{operation_type="get"}[5m])   # total bytes read (client + listener)
+rate(file_bytes_transferred_total{operation_type="put"}[5m])   # total bytes written (client only)
+rate(file_bytes_transferred_total{type="client"}[5m])          # all client bytes (get + put)
+rate(file_bytes_transferred_total{type="listener"}[5m])        # all listener bytes (get)
+```
+
+### 7.5 Enabling Observability
+
+Observability must be enabled in the Ballerina runtime configuration. Add the following to `Config.toml`:
+
+```toml
+[ballerina.observe]
+metricsEnabled=true
+metricsReporter="prometheus"
+tracingEnabled=true
+tracingProvider="jaeger"
+```
+
+Refer to the [Ballerina Observability documentation](https://ballerina.io/learn/observe-ballerina-programs/) for details on configuring reporters and exporters.
+
+### 7.6 Observability Safety Rules
+
+Observability must never break file operations. All metric and tracing calls are guarded by the following rules:
+
+1. **Exception isolation.** Every public method in the metrics and tracing utilities wraps its body in `try/catch(Throwable)` and swallows the exception with a debug-level log. A registry error, NPE, or any other observability failure must never propagate to callers. This follows the same pattern as `module-ballerina-sql`.
+
+2. **Early guard.** All metric methods check `ObserveUtils.isMetricsEnabled()` and return immediately when metrics are disabled. Tracing factory methods check `ObserveUtils.isObservabilityEnabled()` and return `null`. This ensures zero overhead when observability is off.
+
+3. **Null-safe returns.** Tracing methods that return strand property maps return `null` on failure — the same value returned when observability is disabled. Callers already handle `null` (the `StrandMetadata` constructor accepts it), so no caller changes are required.

@@ -16,7 +16,7 @@ In this guide, you will write a simple claim processing workflow with two steps:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.13.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina 2201.14.0 (Swan Lake Update 14)](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal

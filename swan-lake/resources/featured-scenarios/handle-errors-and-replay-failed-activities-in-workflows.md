@@ -19,7 +19,7 @@ In this guide, you will write a claim payout workflow whose activities recover f
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.13.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina 2201.14.0 (Swan Lake Update 14)](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. The <a href="https://docs.temporal.io/cli" target="_blank">Temporal CLI</a> to run a local workflow engine
@@ -47,7 +47,16 @@ if result is error {
 }
 ```
 
-If the error propagates out of the workflow function, the workflow instance is marked as failed. Everything beyond that default — retrying, backing off, waiting for a human — is declared per activity with the `retryPolicy` argument of `callActivity`.
+If the error propagates out of the workflow function, the workflow instance is marked as failed. Everything beyond that default — retrying, backing off, waiting for a human — is declared per activity with the `retryPolicy` argument of `callActivity`, which takes one of four shapes:
+
+| `retryPolicy` | Behaviour |
+|---|---|
+| omitted, or `workflow:NoRetry` | Attempt once; the error comes back to the workflow. |
+| `{maxRetries: 3, ...}` | Automatic retries with backoff. |
+| `{userRoles: "OPS", ...}` | Raise a review on failure and suspend until a person decides. |
+| `{maxRetries: 3, userRoles: "OPS", ...}` | Retry automatically first; raise the review only when the attempts are spent. |
+
+The last shape is the common one in production: transient faults are absorbed silently, and a person is interrupted only by a failure that retrying cannot fix.
 
 ## Retry transient failures automatically
 
@@ -80,12 +89,12 @@ function convertCurrency(string claimId, decimal amount, string currency) return
 
 ## Suspend for manual review and replay
 
-Some failures cannot be fixed by retrying — a payment to a malformed account number fails every time. For those, give `retryPolicy` a **role name** instead of a retry configuration:
+Some failures cannot be fixed by retrying — a payment to a malformed account number fails every time. For those, give `retryPolicy` a **review definition** — who should look at the failure — instead of a retry configuration:
 
 ```ballerina
 string depositRef = check ctx->callActivity(depositPayout,
         {"accountNo": request.accountNo, "amount": localAmount},
-        retryPolicy = "OPS");
+        retryPolicy = {userRoles: "OPS", administratorRoles: "OPS_LEAD"});
 ```
 
 Now, when `depositPayout` fails, the workflow does not fail. Instead, the engine creates a **review task** for users with the `OPS` role, and the workflow durably suspends — for as long as it takes. The operator sees the error message and the exact input the activity was called with, and makes one of three decisions:
@@ -94,7 +103,7 @@ Now, when `depositPayout` fails, the workflow does not fail. Instead, the engine
 - **Proceed with input** — re-run the activity with corrected input (the data was wrong).
 - **Reject** — give up; the failure is delivered to the workflow as an error.
 
-The decisions are made through the workflow **management API**. Enable it in `Config.toml` (and import `ballerina/workflow.management` in the code):
+The decisions are made through the workflow **management API**. Its HTTP service lives in the `workflow.management.rest` submodule — import it (`import ballerina/workflow.management.rest as _;`) and enable it in `Config.toml`:
 
 ```toml
 # Workflow engine — runs against a local Temporal development server.
@@ -105,7 +114,7 @@ mode = "LOCAL"
 taskQueue = "CLAIM_PAYOUT_QUEUE"
 
 # Management API — exposed at http://localhost:8234/workflow/
-[ballerina.workflow.management]
+[ballerina.workflow.management.rest]
 enableManagementApi = true
 port = 8234
 enableBasicAuth = false
@@ -121,7 +130,7 @@ The relevant endpoints under `http://localhost:8234/workflow/` are:
 - `POST /review-activities/{taskId}/proceed-with-input` — retry with a corrected input, e.g. `{"input": {"accountNo": "ACC-12345", "amount": 225000.0}}`.
 - `POST /review-activities/{taskId}/reject` — fail the activity; the workflow sees the error.
 
-Like human tasks, review requests carry the caller's identity in the `x-user-id` and `x-user-roles` headers. The role given to `retryPolicy` — `OPS` here — is used to *filter* the review tasks: an operations dashboard queries with `x-user-roles: OPS` and sees only the failures routed to that role, and the decision is recorded against the `x-user-id`. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module, for example by a gateway or backend that sets them from the logged-in user.
+Like human tasks, review requests carry the caller's identity in the `x-user-id` and `x-user-roles` headers. A review is described by exactly the same audience fields as a human task — `userRoles`, `users`, `excludedRoles`, `excludedUsers`, plus `administratorRoles` and `administratorUsers` — so an operations dashboard queries with `x-user-roles: OPS` and sees only the failures routed to that role, and the decision is recorded against the `x-user-id`. See [Write a workflow with a human task](/learn/write-a-workflow-with-a-human-task/) for what each field means. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module, for example by a gateway or backend that sets them from the logged-in user.
 
 ## Every activity is a store-and-forward stage
 

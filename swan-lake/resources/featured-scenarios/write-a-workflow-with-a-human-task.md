@@ -123,7 +123,7 @@ The arguments after the task input describe the task's **audience** — the peop
 | `excludedRoles` / `excludedUsers` | Subtracted from the audience — for example, to keep a claim's submitter from approving it. |
 | `administratorRoles` / `administratorUsers` | Who administers the task: they see it, and may reassign it, move or clear its deadline, fail it, or complete it themselves. |
 
-Each of these takes a single string or an array. Always name somebody through `userRoles`, `users`, or both: a task with an empty audience has nobody who can answer it, and the workflow waits on it until its deadline expires. Write `userRoles = ()` only when `users` names the deciders instead.
+Each of these takes a single string or an array. At least one of `userRoles` and `users` must name somebody: the engine refuses to create a task that nobody could answer, failing the call with `Human task '<name>' must name 'userRoles' or 'users'` rather than leaving the workflow waiting forever. Write `userRoles = ()` only when `users` names the deciders instead.
 
 An administrator is the escape hatch for a task that is stuck: the only manager on the audience left the company, or the deadline needs pushing out. A completion made by an administrator is recorded as one — the task's `completedAs` reads `"administrator"` instead of `"audience"` — so the audit trail always says in what capacity a person acted.
 

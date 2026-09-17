@@ -127,7 +127,7 @@ Each of these takes a single string or an array. Always name somebody through `u
 
 An administrator is the escape hatch for a task that is stuck: the only manager on the audience left the company, or the deadline needs pushing out. A completion made by an administrator is recorded as one — the task's `completedAs` reads `"administrator"` instead of `"audience"` — so the audit trail always says in what capacity a person acted.
 
->**Note:** The same audience and administrator fields describe every kind of decision in the module — a human task, the review raised by a failing activity, and the approval gate on an activity call. Learn one shape and it applies everywhere.
+>**Note:** The same audience and administrator fields describe both kinds of decision in the module — a human task, and the review raised by a failing activity. Learn one shape and it applies to both.
 
 ## Expose the workflow as a service
 

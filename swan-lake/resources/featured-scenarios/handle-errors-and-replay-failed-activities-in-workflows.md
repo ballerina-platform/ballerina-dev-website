@@ -132,19 +132,6 @@ The relevant endpoints under `http://localhost:8234/workflow/` are:
 
 Like human tasks, review requests carry the caller's identity in the `x-user-id` and `x-user-roles` headers. A review is described by exactly the same audience fields as a human task — `userRoles`, `users`, `excludedRoles`, `excludedUsers`, plus `administratorRoles` and `administratorUsers` — so an operations dashboard queries with `x-user-roles: OPS` and sees only the failures routed to that role, and the decision is recorded against the `x-user-id`. See [Write a workflow with a human task](/learn/write-a-workflow-with-a-human-task/) for what each field means. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module, for example by a gateway or backend that sets them from the logged-in user.
 
-## Approve a call before it runs
-
-A review does not have to wait for a failure. The same definition given to `approvalPolicy` gates a call *before* it is made — useful when the step is expensive or irreversible, such as a large payout:
-
-```ballerina
-string depositRef = check ctx->callActivity(depositPayout,
-        {"accountNo": request.accountNo, "amount": localAmount},
-        approvalPolicy = {userRoles: "OPS_LEAD", title: "Approve large payout"},
-        retryPolicy = {userRoles: "OPS", administratorRoles: "OPS_LEAD"});
-```
-
-The approval arrives in the same work queue and is decided through the same endpoints; the task's `trigger` says which kind it is — `PRE_RUN` for an approval gate, `ON_FAILURE` for the rerun decision above. **Reject** on a `PRE_RUN` review means the call is never made, and the workflow is told so.
-
 ## Every activity is a store-and-forward stage
 
 A classic way to build reliable message flows is **store and forward**: persist the incoming message first, then forward it to the target system, retrying until it succeeds. The message store guarantees nothing is lost while the target is down.

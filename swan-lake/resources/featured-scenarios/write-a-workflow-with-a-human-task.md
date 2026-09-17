@@ -18,7 +18,7 @@ In this guide, you will extend a claim processing workflow with a manager approv
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.13.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina 2201.14.0 (Swan Lake Update 14)](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. The <a href="https://docs.temporal.io/cli" target="_blank">Temporal CLI</a> to run a local workflow engine
@@ -29,7 +29,7 @@ To complete this tutorial, you need:
 The claim approval workflow has three steps:
 
 1. `verifyClaim` — an activity that checks the claim.
-2. `approveClaim` — a **human task**; the workflow waits until a user with the `MANAGER` role approves or rejects the claim.
+2. `approveClaim` — a **human task**; the workflow waits until a user with the `MANAGER` role approves or rejects the claim. The task also names a `CLAIMS_ADMIN` administrator role, which can reassign it or change its deadline if it gets stuck.
 3. `makePayment` — an activity that pays the approved amount.
 
 A human task needs two more pieces around it:
@@ -54,6 +54,8 @@ import ballerina/http;
 import ballerina/io;
 import ballerina/workflow;
 import ballerina/workflow.management;
+// Serves the management REST API; the service starts on import.
+import ballerina/workflow.management.rest as _;
 
 type Claim record {|
     string claimId;
@@ -69,7 +71,7 @@ type ApprovalDecision record {|
 
 ## Write the workflow with a human task
 
-The human task sits between the two activities. Use `ctx->awaitHumanTask(...)` with a task name, the role the task is routed to, and a payload that tells the approver what they are deciding on:
+The human task sits between the two activities. Use `ctx->awaitHumanTask(...)` with a task name, the input that tells the approver what they are deciding on, and a definition of who may decide it:
 
 ```ballerina
 @workflow:Workflow
@@ -78,8 +80,10 @@ function claimApprovalWorkflow(workflow:Context ctx, Claim claim) returns string
     if !verified {
         return string `Claim ${claim.claimId} was rejected during verification.`;
     }
-    ApprovalDecision decision = check ctx->awaitHumanTask("approveClaim", "MANAGER",
-            payload = {claimId: claim.claimId, policyNo: claim.policyNo, amount: claim.amount},
+    ApprovalDecision decision = check ctx->awaitHumanTask("approveClaim",
+            {claimId: claim.claimId, policyNo: claim.policyNo, amount: claim.amount},
+            userRoles = "MANAGER",
+            administratorRoles = "CLAIMS_ADMIN",
             title = string `Approve claim ${claim.claimId}`,
             description = "Review the claim and approve or reject the payment.");
     if !decision.approved {
@@ -107,6 +111,23 @@ When the workflow reaches `awaitHumanTask`, it suspends durably — no thread is
 Note that `verifyClaim` applies the same automated rule as the [previous guide](/learn/write-a-workflow-with-ballerina/) — claims over 1,000 are rejected outright. What is new is that a verified claim no longer goes straight to payment: the manager decides.
 
 >**Tip:** You can pass `timeout = {days: 3}` to `awaitHumanTask` to bound the wait. If nobody completes the task in time, the call returns a `workflow:HumanTaskTimeoutError` that the workflow can handle — for example, by escalating.
+
+### Who may decide, and who may administer
+
+The arguments after the task input describe the task's **audience** — the people allowed to answer it — and its **administrators**:
+
+| Field | Meaning |
+|---|---|
+| `userRoles` | Role(s) allowed to decide the task. Write `userRoles = ()` when only `users` may. |
+| `users` | User ID(s) allowed to decide it, whatever their roles. |
+| `excludedRoles` / `excludedUsers` | Subtracted from the audience — for example, to keep a claim's submitter from approving it. |
+| `administratorRoles` / `administratorUsers` | Who administers the task: they see it, and may reassign it, move or clear its deadline, fail it, or complete it themselves. |
+
+Each of these takes a single string or an array. Always name somebody through `userRoles`, `users`, or both: a task with an empty audience has nobody who can answer it, and the workflow waits on it until its deadline expires. Write `userRoles = ()` only when `users` names the deciders instead.
+
+An administrator is the escape hatch for a task that is stuck: the only manager on the audience left the company, or the deadline needs pushing out. A completion made by an administrator is recorded as one — the task's `completedAs` reads `"administrator"` instead of `"audience"` — so the audit trail always says in what capacity a person acted.
+
+>**Note:** The same audience and administrator fields describe every kind of decision in the module — a human task, the review raised by a failing activity, and the approval gate on an activity call. Learn one shape and it applies everywhere.
 
 ## Expose the workflow as a service
 
@@ -137,7 +158,7 @@ The status resource deliberately does **not** call `workflow:getWorkflowResult` 
 
 ## Enable the management API
 
-Ballerina does not ship a task inbox application — instead, the workflow module exposes a **management API** over HTTP, and you point any UI or tool at it. Importing `ballerina/workflow.management` (already done above) brings the API in; enable it in `Config.toml`:
+Ballerina does not ship a task inbox application — instead, the workflow module exposes a **management API** over HTTP, and you point any UI or tool at it. The HTTP service lives in its own submodule: importing `ballerina/workflow.management.rest` (already done above) starts it, and `ballerina/workflow.management` is the in-process API the service resource used earlier. Enable the service in `Config.toml`:
 
 ```toml
 # Workflow engine — runs against a local Temporal development server.
@@ -148,7 +169,7 @@ mode = "LOCAL"
 taskQueue = "CLAIM_APPROVAL_QUEUE"
 
 # Management API — exposed at http://localhost:8234/workflow/
-[ballerina.workflow.management]
+[ballerina.workflow.management.rest]
 enableManagementApi = true
 port = 8234
 enableBasicAuth = false
@@ -159,15 +180,19 @@ The `taskQueue` names the queue this integration's worker serves. Every integrat
 This serves the API at `http://localhost:8234/workflow/`. The endpoints used for human tasks are:
 
 - `GET /workflow/human-tasks?status=PENDING` — list pending tasks.
-- `GET /workflow/human-tasks/{taskId}` — task details, including the payload and the form schema.
+- `GET /workflow/human-tasks/{taskId}` — task details, including the task input (`taskInput`) and the form schema.
 - `POST /workflow/human-tasks/{taskId}/complete` — complete a task with a body such as `{"result": {"approved": true, "comment": "..."}}`.
+- `POST /workflow/human-tasks/{taskId}/reassign` — administrators only: hand the task to a different audience, e.g. `{"userRoles": ["SENIOR_MANAGER"]}`.
+- `POST /workflow/human-tasks/{taskId}/deadline` — administrators only: set the deadline to `{"timeoutMillis": 7200000}`, or `null` to clear it.
 
-Requests carry the caller's identity in two headers: `x-user-id` and `x-user-roles`. The role given to `awaitHumanTask` — `MANAGER` in this guide — is used to *filter* tasks: a manager's inbox queries with `x-user-roles: MANAGER` and sees only the tasks routed to that role, and the completion is recorded against the `x-user-id`. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module. In a real deployment, your identity provider authenticates the user, and your backend or gateway sets the identity headers from the logged-in user.
+Every task record answers two questions for the calling identity, so a UI can render the right controls without duplicating the rules: `canComplete` (may this caller decide it?) and `canAdminister` (may they administer it?). A completed task also reports `completedBy`, `completedAt`, and `completedAs` — `"audience"` or `"administrator"`.
+
+Requests carry the caller's identity in two headers: `x-user-id` and `x-user-roles`. The task's audience decides what that identity may see and do: a manager's inbox queries with `x-user-roles: MANAGER` and sees only the tasks whose audience includes that role, and the completion is recorded against the `x-user-id`. A caller who is neither in the audience nor an administrator is refused — the task is not listed, and fetching it by ID returns an authorization error even if the caller can see the parent workflow. The workflow module itself does not authenticate or authorize these callers — it trusts the headers and expects authentication to be handled outside the module. In a real deployment, your identity provider authenticates the user, and your backend or gateway sets the identity headers from the logged-in user.
 
 >**Caution:** `enableBasicAuth = false` leaves the management API unauthenticated and is for **local development only** — never expose an unauthenticated management API. In production, enable TLS and one of basic, JWT, OAuth2, or API-key authentication. For example, with basic authentication, callers must present credentials from the configured user store:
 
 ```toml
-[ballerina.workflow.management]
+[ballerina.workflow.management.rest]
 enableManagementApi = true
 enableBasicAuth = true
 
@@ -213,15 +238,46 @@ List the pending tasks as a manager:
 $ curl 'http://localhost:8234/workflow/human-tasks?status=PENDING' -H 'x-user-roles: MANAGER'
 ```
 
-Complete the task using the `taskId` from the listing:
+### Administer the task
+
+The task named `CLAIMS_ADMIN` as its administrator. A caller in that role sees the task with `canAdminister: true`, and can move its deadline or hand it to somebody else:
+
+```
+$ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/deadline' \
+       -H 'Content-Type: application/json' \
+       -H 'x-user-id: root' -H 'x-user-roles: CLAIMS_ADMIN' \
+       -d '{"timeoutMillis": 7200000}'
+{"success":true, "action":"extendDeadline", "administeredBy":"root", "administeredAt":"..."}
+
+$ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/reassign' \
+       -H 'Content-Type: application/json' \
+       -H 'x-user-id: root' -H 'x-user-roles: CLAIMS_ADMIN' \
+       -d '{"userRoles": ["SENIOR_MANAGER"]}'
+{"success":true, "action":"reassign", "administeredBy":"root", "administeredAt":"..."}
+```
+
+The reassignment takes effect at once: the task's audience is now `SENIOR_MANAGER`, and the original manager is refused.
+
+```
+$ curl 'http://localhost:8234/workflow/human-tasks/<taskId>' -H 'x-user-roles: MANAGER'
+{"error":{"message":"Unauthorized: caller is not allowed to access this task"}}
+```
+
+Every administrative act travels with the task's own history, so the audit trail records who reassigned it and when.
+
+### Complete the task
+
+The task now belongs to `SENIOR_MANAGER`, so complete it as somebody in that role. The submitted result is validated against `ApprovalDecision` before the workflow sees it:
 
 ```
 $ curl -X POST 'http://localhost:8234/workflow/human-tasks/<taskId>/complete' \
        -H 'Content-Type: application/json' \
-       -H 'x-user-id: alice' -H 'x-user-roles: MANAGER' \
+       -H 'x-user-id: bob' -H 'x-user-roles: SENIOR_MANAGER' \
        -d '{"result": {"approved": true, "comment": "Verified with policy holder"}}'
-{"success":true, "completedBy":"alice", "completedAt":"..."}
+{"success":true, "completedBy":"bob", "completedAt":"..."}
 ```
+
+Fetching the task now reports `"completedAs": "audience"` — bob decided it as a member of the audience, not as an administrator. (Had you skipped the reassignment, `alice` with `x-user-roles: MANAGER` would have completed it just the same.)
 
 The workflow resumes immediately and pays the claim:
 
@@ -235,7 +291,7 @@ $ curl http://localhost:8080/claims/<workflowId>
 Anything that can call the management API can be a task inbox or a monitoring dashboard. The integration samples repository includes a minimal single-page React dashboard — <a href="https://github.com/ballerina-guides/integration-samples/tree/main/workflow-dashboard" target="_blank">`workflow-dashboard`</a> — shared by all the workflow samples, with three tabs backed by the endpoints you used above:
 
 - **Workflows** — lists the workflow instances (`GET /workflow/workflows`); opening one shows the workflow input and every activity with its input, output, started time, and status (`GET .../history` and `GET .../activity-tree`).
-- **Human Tasks** — the pending approvals, with Approve/Reject posting to the `complete` endpoint.
+- **Human Tasks** — the pending approvals, with Approve/Reject posting to the `complete` endpoint. Each card shows the task's audience and administrators; the Approve/Reject buttons follow `canComplete`, and an **Administer** panel — reassign, set deadline — appears only when the caller's `canAdminister` is true.
 - **Failed Activities** — failed activities waiting for review (covered in the [error-handling guide](/learn/handle-errors-and-replay-failed-activities-in-workflows/)).
 
 Listings are namespace-wide, so workflows and tasks from *other* integrations sharing the same Temporal server show up too. The dashboard hides those by default — an item counts as active only if it belongs to this integration's task queue and its workflow type has an active worker (checked through `GET /workflow/definitions`). Ticking **Show inactive integrations** lists them grayed out, labeled with the reason, and with their actions disabled.
@@ -249,7 +305,7 @@ $ npm install
 $ VITE_TASK_QUEUE=CLAIM_APPROVAL_QUEUE npm run dev
 ```
 
-Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**.
+Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a>, submit a claim, watch it progress in the **Workflows** tab, and approve it under **Human Tasks**. The dashboard sends a fixed identity (`x-user-id: admin` with the `MANAGER`, `OPS`, `CLAIMS_ADMIN` and `OPS_LEAD` roles) so that both the audience and the administrator controls are visible; edit `HEADERS` in `src/App.jsx` to see the task as somebody else.
 
 ## Learn more
 

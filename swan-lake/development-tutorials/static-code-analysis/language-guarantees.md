@@ -124,7 +124,7 @@ ERROR [readonly.bal:(3:5,3:17)] cannot update 'readonly' value of type '(int[] &
 
 ## Concurrency safety
 
-An `isolated` function can reach mutable state only through its own arguments, or through `isolated` module-level variables and the mutable fields of `isolated` objects, each of which has to be accessed inside a `lock`. The consequence is the useful part: a data race in an `isolated` function can only arrive through its arguments, so if the arguments are safe to share, the function is safe to call concurrently. The compiler proves this rather than leaving it to review.
+An `isolated` function can reach mutable state only through its own arguments, through `isolated` module-level variables, or through the mutable fields of `isolated` objects. The last two have to be accessed inside a `lock`; the arguments do not, and that is where a race can still arrive. The consequence is the useful part: a data race in an `isolated` function can only arrive through its arguments, so if the arguments are safe to share, the function is safe to call concurrently. The compiler proves this rather than leaving it to review.
 
 The following does not compile:
 
@@ -164,6 +164,18 @@ isolated class SafeCounter {
         }
     }
 }
+```
+
+The `private` qualifier on `count` is required rather than stylistic. A non-private mutable field could be updated from outside the object, where no `lock` applies, so an `isolated` object cannot have one. A non-private field has to be `final` and of a `readonly` type; anything else is rejected:
+
+```ballerina
+isolated class SafeCounter {
+    int count = 0;
+}
+```
+
+```
+ERROR [object.bal:(2:5,2:19)] invalid non-private mutable field in an 'isolated' object
 ```
 
 Dropping the `lock` fails in the same way a module-level variable would:

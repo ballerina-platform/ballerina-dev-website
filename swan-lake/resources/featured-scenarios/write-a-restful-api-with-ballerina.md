@@ -149,7 +149,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
             }
         };
     } else {
-        covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+        covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
         return covidEntries;
     }
 }
@@ -248,7 +248,7 @@ service /covid/status on new http:Listener(9000) {
                 }
             };
         } else {
-            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+            covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
             return covidEntries;
         }
     }

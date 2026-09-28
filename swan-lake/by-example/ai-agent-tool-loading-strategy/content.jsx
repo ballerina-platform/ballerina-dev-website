@@ -356,8 +356,8 @@ export function AiAgentToolLoadingStrategy({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent execution trace"
-            href="/learn/by-example/ai-agent-execution-trace/"
+            title="Agent as a tool"
+            href="/learn/by-example/ai-agent-as-tool/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -367,7 +367,7 @@ export function AiAgentToolLoadingStrategy({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent execution trace
+                  Agent as a tool
                 </span>
               </div>
               <svg

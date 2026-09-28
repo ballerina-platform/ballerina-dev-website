@@ -350,10 +350,7 @@ export function AiAgentMemory({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Passing context to MCP tools"
-            href="/learn/by-example/ai-agent-mcp-context/"
-          >
+          <Link title="Chat client" href="/learn/by-example/ai-chat-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -379,7 +376,7 @@ export function AiAgentMemory({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Passing context to MCP tools
+                  Chat client
                 </span>
               </div>
             </div>

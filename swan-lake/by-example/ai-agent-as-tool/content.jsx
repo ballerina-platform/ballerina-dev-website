@@ -5,89 +5,116 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/mcp;
+  `import ballerina/ai;
+import ballerina/io;
+import ballerina/time;
 
-type Ticket record {|
-    string id;
-    string tenantId;
-    string subject;
-    string priority;
+type ReturnEligibility record {|
+    boolean eligible;
+    string reason;
 |};
 
-type SupportHours record {|
-    string region;
-    string hours;
-|};
+# Gets the status of an order.
+# + orderId - The ID of the order
+# + return - The status of the order
+@ai:AgentTool
+isolated function getOrderStatus(string orderId) returns string =>
+    orderId == "ORD-1001" ? "Delivered on 2026-09-20" : "Not found";
 
-isolated Ticket[] tickets = [
-    {id: "TCK-1", tenantId: "acme", subject: "Payment gateway timeout", priority: "high"},
-    {id: "TCK-2", tenantId: "globex", subject: "Login fails on mobile", priority: "medium"},
-    {id: "TCK-3", tenantId: "acme", subject: "Report export is empty", priority: "low"}
-];
+# Gets the category of the product in an order.
+# + orderId - The ID of the order
+# + return - The product category
+@ai:AgentTool
+isolated function getProductCategory(string orderId) returns string =>
+    orderId == "ORD-1001" ? "electronics" : "unknown";
 
-listener mcp:StreamableHttpListener mcpListener = new (9090);
-
-service mcp:StreamableHttpService /mcp on mcpListener {
-
-    # Gets the open support tickets of the calling tenant.
-    #
-    # + meta - The request metadata attached by the client
-    # + return - The open tickets of the tenant, or an error if the tenant is not specified
-    remote function getOpenTickets(mcp:Meta? meta) returns Ticket[]|error {
-        // The runtime injects the \`_meta\` field of the request into the \`mcp:Meta?\` parameter
-        // and leaves the parameter out of the tool input schema, so the tenant is never a tool
-        // argument that a client, or an LLM, chooses. The parameter is nil when the request
-        // carries no metadata.
-        string tenantId = check getTenantId(meta);
-        lock {
-            Ticket[] tenantTickets = from Ticket ticket in tickets
-                where ticket.tenantId == tenantId
-                select ticket;
-            return tenantTickets.clone();
-        }
-    }
-
-    # Creates a support ticket for the calling tenant.
-    #
-    # + meta - The request metadata attached by the client
-    # + subject - The subject of the ticket
-    # + priority - The priority of the ticket (\`low\`, \`medium\`, or \`high\`)
-    # + return - The created ticket, or an error if the tenant is not specified
-    remote function createTicket(mcp:Meta? meta, string subject, string priority = "medium")
-            returns Ticket|error {
-        // The \`mcp:Meta?\` parameter is declared along with the other parameters of the tool.
-        // Only the \`subject\` and \`priority\` parameters are the tool arguments.
-        string tenantId = check getTenantId(meta);
-        lock {
-            Ticket ticket = {id: string \`TCK-\${tickets.length() + 1}\`, tenantId, subject, priority};
-            tickets.push(ticket);
-            return ticket.clone();
-        }
-    }
-
-    # Gets the support hours of a region. The support hours are the same for every tenant,
-    # so this tool does not read the request metadata.
-    #
-    # + region - The region (e.g., \`EU\`, \`US\`)
-    # + return - The support hours of the region
-    remote function getSupportHours(string region) returns SupportHours => {
-        region,
-        hours: region == "EU" ? "08:00-18:00 CET" : "08:00-18:00 EST"
-    };
+# Counts the days between two dates.
+# + fromDate - The start date in the \`YYYY-MM-DD\` format
+# + toDate - The end date in the \`YYYY-MM-DD\` format
+# + return - The number of days from the start date to the end date
+@ai:AgentTool
+isolated function daysBetween(string fromDate, string toDate) returns int|error {
+    time:Utc 'from = check time:utcFromString(fromDate + "T00:00:00Z");
+    time:Utc to = check time:utcFromString(toDate + "T00:00:00Z");
+    return <int>(time:utcDiffSeconds(to, 'from) / 86400);
 }
 
-// \`mcp:Meta\` is an open record, so the fields that the client sent are read by member access.
-isolated function getTenantId(mcp:Meta? meta) returns string|error {
-    anydata tenantId = meta is mcp:Meta ? meta["tenantId"] : ();
-    if tenantId !is string {
-        return error("The 'tenantId' metadata is missing from the request");
-    }
-    return tenantId;
+final ai:ModelProvider model = check ai:getDefaultModelProvider();
+
+// A specialist agent that looks up orders. It is configured with \`memory: ()\`, so it is
+// stateless and keeps no conversation history between delegations.
+final ai:Agent orderAgent = check new ({
+    systemPrompt: {
+        role: "Order Specialist",
+        instructions: "You look up the status and the product category of orders using the tools."
+    },
+    model,
+    tools: [getOrderStatus, getProductCategory],
+    memory: ()
+});
+
+// A specialist agent that applies the returns policy, with its own tool and instructions.
+final ai:Agent returnsPolicyAgent = check new ({
+    systemPrompt: {
+        role: "Returns Policy Specialist",
+        instructions: string \`You decide whether an item can be returned. Electronics can be
+            returned within 14 days of delivery, and other items within 30 days. Use the tool
+            to count the days since the delivery.\`
+    },
+    model,
+    tools: [daysBetween],
+    memory: ()
+});
+
+// An agent becomes a tool of another agent through a function that runs it. The calling agent
+// decides when to call the tool and composes the query, so the description says when to use
+// it and what the query must include, since the sub-agent cannot see the conversation.
+
+# Delegates questions about the status or the product category of an order to the order
+# specialist. Include the order ID in the query.
+# + query - A self-contained request for the order specialist
+# + return - The response from the order specialist
+@ai:AgentTool
+isolated function orderAgentTool(string query) returns string|error {
+    io:println("[Delegating to the order specialist] ", query);
+    return orderAgent.run(query);
+}
+
+# Delegates the decision of whether an item can be returned to the returns policy specialist.
+# Call it only after the order specialist has provided the product category and the delivery
+# date, and include them and today's date in the query.
+# + query - A self-contained request for the returns policy specialist
+# + return - Whether the item can be returned, and the reason
+@ai:AgentTool
+isolated function returnsPolicyAgentTool(string query) returns ReturnEligibility|error {
+    io:println("[Delegating to the returns policy specialist] ", query);
+    // The return type of the tool binds the response of the sub-agent to a structured type,
+    // so the calling agent receives a result that needs no further interpretation.
+    return returnsPolicyAgent.run(query);
+}
+
+// The orchestrator owns the conversation, delegates the subtasks to the specialists, and
+// composes the final answer.
+final ai:Agent supportAgent = check new ({
+    systemPrompt: {
+        role: "Customer Support Agent",
+        instructions: string \`You help customers with their orders. Never assume order details:
+            get them from the order specialist first. Delegate return decisions to the returns
+            policy specialist with the details you got, then answer the customer briefly.
+            Today is 2026-09-28.\`
+    },
+    model,
+    tools: [orderAgentTool, returnsPolicyAgentTool]
+});
+
+public function main() returns error? {
+    string response = check supportAgent.run("Can I still return my order ORD-1001?");
+    io:println("Agent: ", response);
 }
 `,
 ];
 
-export function McpServiceWithRequestMetadata({ codeSnippets }) {
+export function AiAgentAsTool({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -97,54 +124,65 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Model Context Protocol (MCP) service with request metadata</h1>
+      <h1>Agent as a tool</h1>
 
       <p>
-        An MCP request can carry a <code>_meta</code> field alongside the tool
-        arguments. Metadata describes the call rather than forming part of the
-        input of the tool, which makes it the place for values that the caller
-        determines and the LLM must not choose, such as the tenant or the
-        correlation ID of the request.
+        A multi-agent system splits a task across several cooperating agents,
+        each with its own instructions, tools, model, and optionally its own
+        memory. In the orchestrator pattern, one agent owns the request,
+        delegates subtasks to specialist agents, and composes their results into
+        the final answer. A specialist is attached to the orchestrator as a
+        tool: a function annotated with <code>@ai:AgentTool</code> that runs the
+        specialist with the query composed by the orchestrator and returns its
+        response.
       </p>
 
       <p>
-        A tool of an <code>mcp:StreamableHttpService</code> reads the metadata
-        by declaring an <code>mcp:Meta?</code> parameter. The runtime injects
-        the <code>_meta</code> field of the request into the parameter and
-        excludes the parameter from the generated tool input schema, so the
-        metadata is never a tool argument and the LLM never sees it. The
-        parameter must be nilable, since it is nil when the request carries no
-        metadata, and a tool can declare at most one such parameter, in any
-        position, alongside its other parameters. The <code>mcp:Meta</code> type
-        is an open record, so the fields the client sent are read through member
-        access. A tool that does not need the metadata simply does not declare
-        the parameter.
+        The orchestrator decides when to call the tool from its description, so
+        write the description around the situations that should trigger a
+        hand-off. The specialist does not see the conversation of the
+        orchestrator, so the description also states what the query must
+        include. The return type of the tool binds the response of the
+        specialist: a structured type gives the orchestrator a result that needs
+        no further interpretation. A specialist configured with{" "}
+        <code>memory: ()</code> is stateless, so it keeps no history between
+        delegations.
       </p>
 
       <p>
-        This example exposes three tools of a support service. The{" "}
-        <code>getOpenTickets</code> tool takes no arguments and scopes the
-        result to the tenant sent in the request metadata. The{" "}
-        <code>createTicket</code> tool takes the <code>subject</code> and{" "}
-        <code>priority</code> arguments and reads the tenant from the request
-        metadata. The <code>getSupportHours</code> tool takes the{" "}
-        <code>region</code> argument and does not read the request metadata.
+        This example demonstrates a customer support agent that delegates order
+        lookups to an order specialist and return decisions to a returns policy
+        specialist.
       </p>
 
       <blockquote>
         <p>
-          Note: The <code>onCallTool</code> method of an{" "}
-          <code>mcp:StreamableHttpAdvancedService</code> does not accept an{" "}
-          <code>mcp:Meta?</code> parameter. It reads the metadata from the{" "}
-          <code>_meta</code> field of the <code>mcp:CallToolParams</code> value
-          that it receives instead.
+          Note: Each delegation is a full agent run, so it adds latency and
+          token usage, and each agent enforces its own maximum number of
+          iterations. Delegate only the subtasks that need their own reasoning,
+          and use a tool for a single action.
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
         </p>
       </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/mcp/latest/">
-          <code>ballerina/mcp</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -159,7 +197,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mcp-service-with-request-metadata",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ai-agent-as-tool",
                 "_blank",
               );
             }}
@@ -233,8 +271,6 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -288,21 +324,14 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run mcp_service_with_request_metadata.bal`}</span>
+              <span>{`\$ bal run ai_agent_as_tool.bal`}</span>
+              <span>{`[Delegating to the order specialist] Can you provide the product category and delivery date for order ID ORD-1001?`}</span>
+              <span>{`[Delegating to the returns policy specialist] Can the customer return an electronics item delivered on September 20, 2026, as of today, September 28, 2026?`}</span>
+              <span>{`Agent: Yes, you can still return your order ORD-1001, as it was delivered within the return window. If you need further assistance with the return process, feel free to ask!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/mcp-client-with-request-metadata/">
-            MCP client with request metadata
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -310,16 +339,8 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/mcp-service/">The MCP service example</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/mcp-client-with-request-metadata/">
-              The MCP client with request metadata example
+            <a href="/learn/by-example/ai-agent-definitions/">
+              The Agent definitions example
             </a>
           </span>
         </li>
@@ -328,8 +349,28 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/ai-agent-mcp-context/">
-              The Passing context to MCP tools example
+            <a href="/learn/by-example/ai-agent-local-tools/">
+              The Agent with local tools example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ai-agent-typed-input-output/">
+              The Agent with typed input and output example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ai-agent-tool-context/">
+              The Passing context to agent tools example
             </a>
           </span>
         </li>
@@ -339,8 +380,8 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP advanced service"
-            href="/learn/by-example/mcp-service-advanced/"
+            title="Agent tool loading strategy"
+            href="/learn/by-example/ai-agent-tool-loading-strategy/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -367,7 +408,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP advanced service
+                  Agent tool loading strategy
                 </span>
               </div>
             </div>
@@ -375,8 +416,8 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="MCP tools with HTTP request binding"
-            href="/learn/by-example/mcp-service-http-request-binding/"
+            title="Agent definitions"
+            href="/learn/by-example/ai-agent-definitions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -386,7 +427,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP tools with HTTP request binding
+                  Agent definitions
                 </span>
               </div>
               <svg

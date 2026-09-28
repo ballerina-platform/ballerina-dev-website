@@ -141,6 +141,31 @@ service mcp:StreamableHttpService /mcp on new mcp:StreamableHttpListener(9092) {
 
 See the [MCP tools with HTTP request binding](/learn/by-example/mcp-service-http-request-binding/) example.
 
+## Read request metadata in tools
+
+An MCP request can carry a `_meta` field alongside the tool arguments, for values that the caller determines and the LLM must not choose, such as the tenant of the request. A tool of an `mcp:StreamableHttpService` reads it by declaring an `mcp:Meta?` parameter, which the runtime injects and excludes from the tool input schema. The parameter must be nilable, since it is nil when the request carries no metadata. `mcp:Meta` is an open record, so the fields that the client sent are read through member access. In the snippet below, `mcpListener` is an `mcp:StreamableHttpListener`, and `tickets` is a list of `Ticket` records.
+
+```ballerina
+service mcp:StreamableHttpService /mcp on mcpListener {
+
+    # Gets the open support tickets of the calling tenant.
+    #
+    # + meta - The request metadata attached by the client
+    # + return - The open tickets of the tenant, or an error if the tenant is not specified
+    remote function getOpenTickets(mcp:Meta? meta) returns Ticket[]|error {
+        anydata tenantId = meta is mcp:Meta ? meta["tenantId"] : ();
+        if tenantId !is string {
+            return error("The 'tenantId' metadata is missing from the request");
+        }
+        return from Ticket ticket in tickets
+            where ticket.tenantId == tenantId
+            select ticket;
+    }
+}
+```
+
+A client sends the metadata in the `_meta` field of `mcp:CallToolParams`. The `onCallTool` method of an `mcp:StreamableHttpAdvancedService` does not accept an `mcp:Meta?` parameter, and reads the metadata from the `_meta` field of the `mcp:CallToolParams` value instead. See the [MCP service with request metadata](/learn/by-example/mcp-service-with-request-metadata/) and [MCP client with request metadata](/learn/by-example/mcp-client-with-request-metadata/) examples.
+
 ## Secure the MCP server
 
 Since the Streamable HTTP transport is built on HTTP, an MCP service is secured like an `http:Service`. Configure TLS on the listener with `secureSocket`, and configure authentication and authorization via the `auth` field of `httpConfig` in the `@mcp:StreamableHttpServiceConfig` annotation. JWT, OAuth2 introspection, and basic authentication with a file or LDAP user store are supported.
@@ -236,6 +261,43 @@ final ai:Agent currentWeatherAgent = check new ({
 ```
 
 See the [Agent with MCP integration](/learn/by-example/ai-agent-mcp-integration/) example.
+
+## Define a custom MCP tool kit
+
+The `ai:McpToolKit` tool kit forwards each call to the server as it is. For more control over how the agent uses the server, define a custom MCP tool kit: a class that includes the `ai:McpBaseToolKit` type and holds an `mcp:StreamableHttpClient` client. In the `init` method, `ai:getPermittedMcpToolConfigs` initializes the MCP session, lists the tools of the server, and creates the tool configurations of the permitted tools, each mapped to a method of the class that dispatches the call. A dispatch method receives the tool name and the arguments chosen by the LLM as an `mcp:CallToolParams` value, and can also declare an `ai:Context` parameter as its first parameter.
+
+```ballerina
+isolated class WeatherToolKit {
+    *ai:McpBaseToolKit;
+    private final mcp:StreamableHttpClient mcpClient;
+    private final readonly & ai:ToolConfig[] tools;
+
+    public isolated function init(string serverUrl,
+            mcp:Implementation info = {name: "Weather Assistant", version: "1.0.0"},
+            *mcp:StreamableHttpClientTransportConfig config) returns ai:Error? {
+        final map<ai:FunctionTool> permittedTools = {
+            "getCurrentWeather": self.getCurrentWeather
+        };
+        do {
+            self.mcpClient = check new (serverUrl, config);
+            self.tools = check ai:getPermittedMcpToolConfigs(self.mcpClient, info, permittedTools)
+                .cloneReadOnly();
+        } on fail error e {
+            return error("Failed to initialize the MCP toolkit", e);
+        }
+    }
+
+    public isolated function getTools() returns ai:ToolConfig[] => self.tools;
+
+    @ai:AgentTool
+    public isolated function getCurrentWeather(mcp:CallToolParams params)
+            returns mcp:CallToolResult|error {
+        return self.mcpClient->callTool(params);
+    }
+}
+```
+
+See the [Agent with advanced MCP integration](/learn/by-example/ai-agent-mcp-integration-advanced/) example, which changes the arguments of a call before forwarding it, and the [Passing context to MCP tools](/learn/by-example/ai-agent-mcp-context/) example, which forwards a value from the `ai:Context` to the server as request metadata.
 
 ## Learn more
 

@@ -2212,6 +2212,78 @@ import {
   codeSnippetData as DirectLlmCallsWithOllamaCodeSnippetData,
 } from "./direct-llm-calls-with-ollama/content.jsx";
 import {
+  AiAgentLocalTools,
+  codeSnippetData as AiAgentLocalToolsCodeSnippetData,
+} from "./ai-agent-local-tools/content.jsx";
+import {
+  AiAgentToolContext,
+  codeSnippetData as AiAgentToolContextCodeSnippetData,
+} from "./ai-agent-tool-context/content.jsx";
+import {
+  AiAgentExternalEndpointIntegration,
+  codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
+} from "./ai-agent-external-endpoint-integration/content.jsx";
+import {
+  AiAgentHumanInTheLoop,
+  codeSnippetData as AiAgentHumanInTheLoopCodeSnippetData,
+} from "./ai-agent-human-in-the-loop/content.jsx";
+import {
+  ChatAgents,
+  codeSnippetData as ChatAgentsCodeSnippetData,
+} from "./chat-agents/content.jsx";
+import {
+  AiChatClient,
+  codeSnippetData as AiChatClientCodeSnippetData,
+} from "./ai-chat-client/content.jsx";
+import {
+  AiAgentMemory,
+  codeSnippetData as AiAgentMemoryCodeSnippetData,
+} from "./ai-agent-memory/content.jsx";
+import {
+  AiAgentPersistentMemory,
+  codeSnippetData as AiAgentPersistentMemoryCodeSnippetData,
+} from "./ai-agent-persistent-memory/content.jsx";
+import {
+  AiAgentMemoryOverflowHandling,
+  codeSnippetData as AiAgentMemoryOverflowHandlingCodeSnippetData,
+} from "./ai-agent-memory-overflow-handling/content.jsx";
+import {
+  AiAgentId,
+  codeSnippetData as AiAgentIdCodeSnippetData,
+} from "./ai-agent-id/content.jsx";
+import {
+  AiAgentExecutionTrace,
+  codeSnippetData as AiAgentExecutionTraceCodeSnippetData,
+} from "./ai-agent-execution-trace/content.jsx";
+import {
+  AiAgentTracingJaeger,
+  codeSnippetData as AiAgentTracingJaegerCodeSnippetData,
+} from "./ai-agent-tracing-jaeger/content.jsx";
+import {
+  AiAgentEvaluation,
+  codeSnippetData as AiAgentEvaluationCodeSnippetData,
+} from "./ai-agent-evaluation/content.jsx";
+import {
+  AiAgentToolKit,
+  codeSnippetData as AiAgentToolKitCodeSnippetData,
+} from "./ai-agent-tool-kit/content.jsx";
+import {
+  AiAgentTypedInputOutput,
+  codeSnippetData as AiAgentTypedInputOutputCodeSnippetData,
+} from "./ai-agent-typed-input-output/content.jsx";
+import {
+  AiAgentToolLoadingStrategy,
+  codeSnippetData as AiAgentToolLoadingStrategyCodeSnippetData,
+} from "./ai-agent-tool-loading-strategy/content.jsx";
+import {
+  AiAgentAsTool,
+  codeSnippetData as AiAgentAsToolCodeSnippetData,
+} from "./ai-agent-as-tool/content.jsx";
+import {
+  AiAgentDefinitions,
+  codeSnippetData as AiAgentDefinitionsCodeSnippetData,
+} from "./ai-agent-definitions/content.jsx";
+import {
   McpService,
   codeSnippetData as McpServiceCodeSnippetData,
 } from "./mcp-service/content.jsx";
@@ -2240,73 +2312,13 @@ import {
   codeSnippetData as McpClientWithRequestMetadataCodeSnippetData,
 } from "./mcp-client-with-request-metadata/content.jsx";
 import {
-  AiAgentLocalTools,
-  codeSnippetData as AiAgentLocalToolsCodeSnippetData,
-} from "./ai-agent-local-tools/content.jsx";
-import {
-  AiAgentToolContext,
-  codeSnippetData as AiAgentToolContextCodeSnippetData,
-} from "./ai-agent-tool-context/content.jsx";
-import {
-  AiAgentExternalEndpointIntegration,
-  codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
-} from "./ai-agent-external-endpoint-integration/content.jsx";
-import {
-  ChatAgents,
-  codeSnippetData as ChatAgentsCodeSnippetData,
-} from "./chat-agents/content.jsx";
-import {
-  AiAgentToolKit,
-  codeSnippetData as AiAgentToolKitCodeSnippetData,
-} from "./ai-agent-tool-kit/content.jsx";
-import {
-  AiAgentMemory,
-  codeSnippetData as AiAgentMemoryCodeSnippetData,
-} from "./ai-agent-memory/content.jsx";
-import {
-  AiAgentPersistentMemory,
-  codeSnippetData as AiAgentPersistentMemoryCodeSnippetData,
-} from "./ai-agent-persistent-memory/content.jsx";
-import {
-  AiAgentMemoryOverflowHandling,
-  codeSnippetData as AiAgentMemoryOverflowHandlingCodeSnippetData,
-} from "./ai-agent-memory-overflow-handling/content.jsx";
-import {
-  AiAgentHumanInTheLoop,
-  codeSnippetData as AiAgentHumanInTheLoopCodeSnippetData,
-} from "./ai-agent-human-in-the-loop/content.jsx";
-import {
-  AiAgentId,
-  codeSnippetData as AiAgentIdCodeSnippetData,
-} from "./ai-agent-id/content.jsx";
-import {
-  AiAgentTypedInputOutput,
-  codeSnippetData as AiAgentTypedInputOutputCodeSnippetData,
-} from "./ai-agent-typed-input-output/content.jsx";
-import {
-  AiAgentToolLoadingStrategy,
-  codeSnippetData as AiAgentToolLoadingStrategyCodeSnippetData,
-} from "./ai-agent-tool-loading-strategy/content.jsx";
-import {
-  AiChatClient,
-  codeSnippetData as AiChatClientCodeSnippetData,
-} from "./ai-chat-client/content.jsx";
-import {
-  AiAgentExecutionTrace,
-  codeSnippetData as AiAgentExecutionTraceCodeSnippetData,
-} from "./ai-agent-execution-trace/content.jsx";
-import {
-  AiAgentEvaluation,
-  codeSnippetData as AiAgentEvaluationCodeSnippetData,
-} from "./ai-agent-evaluation/content.jsx";
-import {
-  AiAgentFromAfm,
-  codeSnippetData as AiAgentFromAfmCodeSnippetData,
-} from "./ai-agent-from-afm/content.jsx";
-import {
   AiAgentMcpIntegration,
   codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
 } from "./ai-agent-mcp-integration/content.jsx";
+import {
+  AiAgentMcpIntegrationAdvanced,
+  codeSnippetData as AiAgentMcpIntegrationAdvancedCodeSnippetData,
+} from "./ai-agent-mcp-integration-advanced/content.jsx";
 import {
   AiAgentMcpContext,
   codeSnippetData as AiAgentMcpContextCodeSnippetData,
@@ -3633,6 +3645,42 @@ const BBEs = {
   DirectLlmCallsWithModelProviderCodeSnippetData,
   DirectLlmCallsWithOllama,
   DirectLlmCallsWithOllamaCodeSnippetData,
+  AiAgentLocalTools,
+  AiAgentLocalToolsCodeSnippetData,
+  AiAgentToolContext,
+  AiAgentToolContextCodeSnippetData,
+  AiAgentExternalEndpointIntegration,
+  AiAgentExternalEndpointIntegrationCodeSnippetData,
+  AiAgentHumanInTheLoop,
+  AiAgentHumanInTheLoopCodeSnippetData,
+  ChatAgents,
+  ChatAgentsCodeSnippetData,
+  AiChatClient,
+  AiChatClientCodeSnippetData,
+  AiAgentMemory,
+  AiAgentMemoryCodeSnippetData,
+  AiAgentPersistentMemory,
+  AiAgentPersistentMemoryCodeSnippetData,
+  AiAgentMemoryOverflowHandling,
+  AiAgentMemoryOverflowHandlingCodeSnippetData,
+  AiAgentId,
+  AiAgentIdCodeSnippetData,
+  AiAgentExecutionTrace,
+  AiAgentExecutionTraceCodeSnippetData,
+  AiAgentTracingJaeger,
+  AiAgentTracingJaegerCodeSnippetData,
+  AiAgentEvaluation,
+  AiAgentEvaluationCodeSnippetData,
+  AiAgentToolKit,
+  AiAgentToolKitCodeSnippetData,
+  AiAgentTypedInputOutput,
+  AiAgentTypedInputOutputCodeSnippetData,
+  AiAgentToolLoadingStrategy,
+  AiAgentToolLoadingStrategyCodeSnippetData,
+  AiAgentAsTool,
+  AiAgentAsToolCodeSnippetData,
+  AiAgentDefinitions,
+  AiAgentDefinitionsCodeSnippetData,
   McpService,
   McpServiceCodeSnippetData,
   McpServiceAdvanced,
@@ -3647,40 +3695,10 @@ const BBEs = {
   McpClientCodeSnippetData,
   McpClientWithRequestMetadata,
   McpClientWithRequestMetadataCodeSnippetData,
-  AiAgentLocalTools,
-  AiAgentLocalToolsCodeSnippetData,
-  AiAgentToolContext,
-  AiAgentToolContextCodeSnippetData,
-  AiAgentExternalEndpointIntegration,
-  AiAgentExternalEndpointIntegrationCodeSnippetData,
-  ChatAgents,
-  ChatAgentsCodeSnippetData,
-  AiAgentToolKit,
-  AiAgentToolKitCodeSnippetData,
-  AiAgentMemory,
-  AiAgentMemoryCodeSnippetData,
-  AiAgentPersistentMemory,
-  AiAgentPersistentMemoryCodeSnippetData,
-  AiAgentMemoryOverflowHandling,
-  AiAgentMemoryOverflowHandlingCodeSnippetData,
-  AiAgentHumanInTheLoop,
-  AiAgentHumanInTheLoopCodeSnippetData,
-  AiAgentId,
-  AiAgentIdCodeSnippetData,
-  AiAgentTypedInputOutput,
-  AiAgentTypedInputOutputCodeSnippetData,
-  AiAgentToolLoadingStrategy,
-  AiAgentToolLoadingStrategyCodeSnippetData,
-  AiChatClient,
-  AiChatClientCodeSnippetData,
-  AiAgentExecutionTrace,
-  AiAgentExecutionTraceCodeSnippetData,
-  AiAgentEvaluation,
-  AiAgentEvaluationCodeSnippetData,
-  AiAgentFromAfm,
-  AiAgentFromAfmCodeSnippetData,
   AiAgentMcpIntegration,
   AiAgentMcpIntegrationCodeSnippetData,
+  AiAgentMcpIntegrationAdvanced,
+  AiAgentMcpIntegrationAdvancedCodeSnippetData,
   AiAgentMcpContext,
   AiAgentMcpContextCodeSnippetData,
   RagDocumentLoading,

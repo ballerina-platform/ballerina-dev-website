@@ -1,0 +1,18 @@
+{
+  "title": "Agent as a tool",
+  "description": "This BBE demonstrates how to attach an AI agent as a tool of another agent to build a multi-agent system with the orchestrator pattern.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "multi-agent",
+    "orchestrator",
+    "sub-agent",
+    "agent as a tool"
+  ],
+  "permalink": "/learn/by-example/ai-agent-as-tool/",
+  "active": "ai-agent-as-tool"
+}

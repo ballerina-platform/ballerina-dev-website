@@ -12,14 +12,26 @@ import ballerinax/ai.wso2.integration as wso2;
 // Configuration for the WSO2 Cloud knowledge base. Add the values to the \`Config.toml\` file.
 configurable string knowledgeBaseUrl = ?;
 configurable string knowledgeBaseToken = ?;
+// Optional configuration for reranking the retrieved chunks with Cohere.
+configurable string? cohereRerankerApiKey = ();
+configurable string? cohereRerankerModel = ();
 
-// The knowledge base is hosted on the WSO2 Integration platform, where the documents are
+// The knowledge base is hosted on the WSO2 Integration Platform, where the documents are
 // ingested, chunked, and embedded. The application only retrieves from it, so no embedding
-// provider is configured here; the \`ingest\` and \`deleteByFilter\` methods return an error.
+// provider is configured here. The \`ingest\` and \`deleteByFilter\` methods are not supported yet.
 final ai:KnowledgeBase knowledgeBase = check new wso2:CloudKnowledgeBase(knowledgeBaseUrl,
+        // Authenticate with a bearer token, or with OAuth2 client credentials.
         {auth: {token: knowledgeBaseToken}},
         // Chunks scoring below this similarity threshold are dropped. The default is 0.7.
-        minSimilarityThreshold = 0.75);
+        minSimilarityThreshold = 0.75,
+        // Rerank the retrieved chunks with Cohere. Reranking is disabled when no API key is set.
+        cohereRerankerApiKey = cohereRerankerApiKey,
+        cohereRerankerModel = cohereRerankerModel,
+        // The number of top chunks to keep after reranking. The default is 5.
+        rerankerTopN = 3,
+        // Additional HTTP connection configurations, such as the timeout and retries.
+        timeout = 30,
+        retryConfig = {count: 3, interval: 2});
 
 // Use the default model provider (with configuration added via a Ballerina VS Code command)
 // to generate the final response.
@@ -62,19 +74,28 @@ export function RagWso2CloudKnowledgeBaseRetrieval({ codeSnippets }) {
         </a>{" "}
         module provides <code>wso2:CloudKnowledgeBase</code>, an{" "}
         <code>ai:KnowledgeBase</code> implementation backed by a knowledge base
-        hosted on the WSO2 Integration platform. The documents are ingested,
-        chunked, and embedded on the platform, so the application only retrieves
-        from it: the query is embedded by the platform and the matching chunks
-        are returned with their similarity scores. Calls to <code>ingest</code>{" "}
-        and <code>deleteByFilter</code> return an error.
+        hosted on the{" "}
+        <a href="https://wso2.com/integration-platform/docs/">
+          WSO2 Integration Platform
+        </a>
+        . The documents are ingested, chunked, and embedded on the platform, so
+        the application only retrieves from it: the query is embedded by the
+        platform and the matching chunks are returned with their similarity
+        scores. The <code>ingest</code> and <code>deleteByFilter</code> methods
+        are not supported yet.
       </p>
 
       <p>
-        The knowledge base accepts a bearer token or OAuth2 client credentials,
-        drops weak matches below <code>minSimilarityThreshold</code>, and can
-        rerank the retrieved chunks with Cohere through the{" "}
-        <code>cohereRerankerApiKey</code>, <code>cohereRerankerModel</code>, and{" "}
-        <code>rerankerTopN</code> parameters. Since it implements{" "}
+        When initializing the knowledge base, provide the service URL and the
+        authentication configuration, which accepts a bearer token or OAuth2
+        client credentials. The optional parameters configure the retrieval:{" "}
+        <code>minSimilarityThreshold</code> drops the chunks that score below it
+        (the default is <code>0.7</code>), and <code>cohereRerankerApiKey</code>
+        , <code>cohereRerankerModel</code>, and <code>rerankerTopN</code> rerank
+        the retrieved chunks with Cohere and keep the top N of them (the default
+        is <code>5</code>). Reranking is disabled when no API key is provided.
+        The remaining parameters are HTTP connection configurations, such as{" "}
+        <code>timeout</code> and <code>retryConfig</code>. Since it implements{" "}
         <code>ai:KnowledgeBase</code>, the retrieved chunks are used exactly
         like those from any other knowledge base: augment the prompt with them
         and generate the answer with a model provider.
@@ -91,32 +112,47 @@ export function RagWso2CloudKnowledgeBaseRetrieval({ codeSnippets }) {
       </p>
 
       <blockquote>
-        <p>
-          Note: This example only retrieves. Before you run it, create the
-          knowledge base and ingest your documents on the WSO2 Integration
-          platform. For the platform’s generative AI components, including the
-          default WSO2 model provider, see the{" "}
-          <a href="https://wso2.com/integration-platform/docs/genai/develop/components/model-providers">
-            WSO2 Integration platform documentation
-          </a>
-          .
-        </p>
+        <p>Note:</p>
       </blockquote>
 
       <blockquote>
-        <p>
-          Note: Add the knowledge base URL and token to the{" "}
-          <code>Config.toml</code> file (e.g.,{" "}
-          <code>knowledgeBaseUrl = &quot;&lt;knowledge-base-url&gt;&quot;</code>
-          , <code>knowledgeBaseToken = &quot;&lt;token&gt;&quot;</code>). This
-          example also uses the default model provider implementation. To
-          generate its configuration, open up the VS Code command palette (
-          <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-          <code>command</code> + <code>shift</code> + <code>P</code>), and run
-          the <code>Configure default WSO2 Model Provider</code> command to add
-          your configuration to the <code>Config.toml</code> file. If not
-          already logged in, log in to the Ballerina Copilot when prompted.
-        </p>
+        <ul>
+          <li>
+            This example only retrieves. Before you run it, create the knowledge
+            base and ingest your documents on the{" "}
+            <a href="https://wso2.com/integration-platform/docs/">
+              WSO2 Integration Platform
+            </a>
+            . For the generative AI components of the platform, including the
+            default WSO2 model provider, see the{" "}
+            <a href="https://wso2.com/integration-platform/docs/genai/develop/components/model-providers">
+              WSO2 Integration Platform documentation
+            </a>
+            .
+          </li>
+        </ul>
+      </blockquote>
+
+      <blockquote>
+        <ul>
+          <li>
+            Add the knowledge base URL and token to the <code>Config.toml</code>{" "}
+            file (e.g.,{" "}
+            <code>
+              knowledgeBaseUrl = &quot;&lt;knowledge-base-url&gt;&quot;
+            </code>
+            , <code>knowledgeBaseToken = &quot;&lt;token&gt;&quot;</code>), and
+            optionally the Cohere reranker API key and model (
+            <code>cohereRerankerApiKey</code>, <code>cohereRerankerModel</code>
+            ). This example also uses the default model provider implementation.
+            To generate its configuration, open up the VS Code command palette (
+            <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+            <code>command</code> + <code>shift</code> + <code>P</code>), and run
+            the <code>Configure default WSO2 Model Provider</code> command to
+            add your configuration to the <code>Config.toml</code> file. If not
+            already logged in, log in to the Ballerina Copilot when prompted.
+          </li>
+        </ul>
       </blockquote>
 
       <p>
@@ -322,8 +358,18 @@ export function RagWso2CloudKnowledgeBaseRetrieval({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="https://wso2.com/integration-platform/docs/">
+              WSO2 Integration Platform documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="https://wso2.com/integration-platform/docs/genai/develop/components/model-providers">
-              WSO2 Integration platform: Model providers
+              WSO2 Integration Platform: Model providers
             </a>
           </span>
         </li>

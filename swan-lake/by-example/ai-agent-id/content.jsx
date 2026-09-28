@@ -274,8 +274,8 @@ export function AiAgentId({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with tool kits"
-            href="/learn/by-example/ai-agent-tool-kit/"
+            title="Agent execution trace"
+            href="/learn/by-example/ai-agent-execution-trace/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +285,7 @@ export function AiAgentId({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with tool kits
+                  Agent execution trace
                 </span>
               </div>
               <svg

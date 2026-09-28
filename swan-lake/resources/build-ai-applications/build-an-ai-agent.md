@@ -80,7 +80,7 @@ isolated function getCurrentDate() returns time:Date {
 }
 ```
 
-Related tools can be grouped in a tool kit, which is an `isolated` class that includes the `ai:BaseToolKit` type and returns its tools from the `getTools` method using `ai:getToolConfigs`. See the [Agent with tool kits](/learn/by-example/ai-agent-tool-kit/) example.
+Related tools can be grouped in a tool kit, which is an `isolated` class that includes the `ai:BaseToolKit` type and returns its tools from the `getTools` method using `ai:getToolConfigs`. Since the class defines its own `init` method, it can take parameters that control its tools, such as the client configuration of the API that the tools call, so that the credentials never reach the LLM, and the subset of the tools to give the agent. See the [Agent with tool kits](/learn/by-example/ai-agent-tool-kit/) example.
 
 ## Create the agent
 
@@ -158,7 +158,11 @@ final ai:Agent weatherAgent = check new ({
 });
 ```
 
-See [Expose and consume MCP servers](/learn/expose-and-consume-mcp-servers/) for details.
+See [Expose and consume MCP servers](/learn/expose-and-consume-mcp-servers/) for details. For more control, such as changing the arguments of a call or forwarding values from the `ai:Context` to the server, define a [custom MCP tool kit](/learn/expose-and-consume-mcp-servers/#define-a-custom-mcp-tool-kit).
+
+## Delegate to other agents
+
+An agent can be attached to another agent as a tool, so that one agent delegates part of its work to a specialist agent with its own instructions, tools, and memory. Define a function annotated with `@ai:AgentTool` that runs the specialist with the query that the calling agent composes, and describe in its documentation when to delegate and what the query must include, since the specialist does not see the conversation. To reuse an agent in several places, define it once as a class that includes the `ai:FixedTypedAgent` type, with the parts that vary as `init` parameters. See the [Agent as a tool](/learn/by-example/ai-agent-as-tool/) and [Agent definitions](/learn/by-example/ai-agent-definitions/) examples.
 
 ## Control how tools are loaded
 
@@ -212,6 +216,7 @@ $ bal run
 ## Learn more
 
 - [Agent with local tools](/learn/by-example/ai-agent-local-tools/), [Agent with tool kits](/learn/by-example/ai-agent-tool-kit/), and [Agent with external endpoint integration](/learn/by-example/ai-agent-external-endpoint-integration/) examples
+- [Agent as a tool](/learn/by-example/ai-agent-as-tool/) and [Agent definitions](/learn/by-example/ai-agent-definitions/) examples
 - [Persist agent memory](/learn/persist-agent-memory/)
 - [Human-in-the-loop agents](/learn/human-in-the-loop-agents/)
 - [Observe and evaluate agents](/learn/observe-and-evaluate-agents/)

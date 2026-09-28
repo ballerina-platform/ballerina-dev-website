@@ -146,16 +146,15 @@ The interpreter itself reads only one environment variable, `WSO2_MODEL_PROVIDER
 
 The Ballerina interpreter supports OpenAI, Anthropic, and the WSO2 model provider. With the WSO2 provider the `model` field can be omitted entirely. Set `WSO2_MODEL_PROVIDER_TOKEN` to the `accessToken` value that the `Configure default WSO2 Model Provider` command in VS Code writes to the `Config.toml` file.
 
-There is no AFM module to import in a Ballerina program, and no `bal` command that builds an agent from an AFM file. The interpreter is itself an ordinary Ballerina program, so the pattern is to run an interpreter rather than to import a library. An application that works with AFM definitions directly reads and parses the file itself, as shown in the [Agent from an AFM definition](/learn/by-example/ai-agent-from-afm/) example.
+There is no AFM module to import in a Ballerina program, and no `bal` command that builds an agent from an AFM file. The interpreter is itself an ordinary Ballerina program, so the pattern is to run an interpreter rather than to import a library.
 
 ## What AFM does not cover yet
 
-Several capabilities are named as future work rather than defined today. There is no multi-agent or sub-agent concept, and no agent-to-agent protocol. There is no memory abstraction; the specification notes the lack of standardization and lists memory among the things it intends to cover later. Tools are limited to MCP, so OpenAPI-described services and plain functions are not yet tool sources, and agent identity is not addressed. Skills load only from the local filesystem, with remote skills from URLs and registries still to come, as are further interface types such as scheduled execution and a plain REST API. For these capabilities in Ballerina today, see [Build an AI agent](/learn/build-an-ai-agent/) and [Persist agent memory](/learn/persist-agent-memory/).
+Several capabilities are named as future work rather than defined today. There is no multi-agent or sub-agent concept, and no agent-to-agent protocol. There is no memory abstraction; the specification notes the lack of standardization and lists memory among the things it intends to cover later. Tools are limited to MCP, so OpenAPI-described services and plain functions are not yet tool sources, and agent identity is not addressed. Skills load only from the local filesystem, with remote skills from URLs and registries still to come, as are further interface types such as scheduled execution and a plain REST API. For these capabilities in Ballerina today, see [Build an AI agent](/learn/build-an-ai-agent/), [Persist agent memory](/learn/persist-agent-memory/), and the [Agent as a tool](/learn/by-example/ai-agent-as-tool/) example.
 
 ## Learn more
 
 To try out the samples, see:
 
-- [Agent from an AFM definition](/learn/by-example/ai-agent-from-afm/)
 - [Agent with local tools](/learn/by-example/ai-agent-local-tools/)
 - [Agent with MCP integration](/learn/by-example/ai-agent-mcp-integration/)

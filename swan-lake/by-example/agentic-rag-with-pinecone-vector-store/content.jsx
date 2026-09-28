@@ -40,6 +40,7 @@ final ai:Agent hrAgent = check new ({
         role: "HR Assistant",
         instructions: string \`Answer questions about the company leave policy. Search the
             policy before answering, and base the answer only on what the search returns.
+            For a question with several parts, search for each part separately.
             Keep answers brief.\`
     },
     model: check ai:getDefaultModelProvider(),

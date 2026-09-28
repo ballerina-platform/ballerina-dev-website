@@ -304,8 +304,8 @@ export function RagDocumentLoading({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent evaluation"
-            href="/learn/by-example/ai-agent-evaluation/"
+            title="Passing context to MCP tools"
+            href="/learn/by-example/ai-agent-mcp-context/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -332,7 +332,7 @@ export function RagDocumentLoading({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent evaluation
+                  Passing context to MCP tools
                 </span>
               </div>
             </div>

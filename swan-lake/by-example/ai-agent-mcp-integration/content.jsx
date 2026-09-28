@@ -63,7 +63,15 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <p>
         This example demonstrates how to create an AI agent that can access
         weather information by integrating with a Model Context Protocol (MCP)
-        service, by simply defining an MCP toolkit.
+        service, by simply defining an MCP toolkit. The{" "}
+        <code>ai:McpToolKit</code> toolkit forwards each call to the server as
+        it is. For more control, such as changing the arguments of a call or
+        forwarding values to the server, define a custom MCP toolkit as
+        demonstrated in the{" "}
+        <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
+          Agent with advanced MCP integration
+        </a>{" "}
+        example.
       </p>
 
       <blockquote>
@@ -253,6 +261,16 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
+              The Agent with advanced MCP integration example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/ai-agent-local-tools">
               The Agent with local tools example
             </a>
@@ -380,8 +398,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Passing context to MCP tools"
-            href="/learn/by-example/ai-agent-mcp-context/"
+            title="Agent with advanced MCP integration"
+            href="/learn/by-example/ai-agent-mcp-integration-advanced/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -391,7 +409,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Passing context to MCP tools
+                  Agent with advanced MCP integration
                 </span>
               </div>
               <svg

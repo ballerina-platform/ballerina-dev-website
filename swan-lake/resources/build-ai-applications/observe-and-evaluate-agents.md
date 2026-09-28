@@ -79,7 +79,21 @@ For production observability, the [`ballerinax/amp`](https://central.ballerina.i
     environmentUid=""
     ```
 
-Every run of the agent then produces a trace in the platform. For general Ballerina observability, including other tracing providers, see [Overview of Ballerina observability](/learn/overview-of-ballerina-observability/).
+Every run of the agent then produces a trace in the platform.
+
+The same spans can be published to any other supported tracing provider. For example, to publish them to [Jaeger](https://www.jaegertracing.io/), import the `ballerinax/jaeger` module (`import ballerinax/jaeger as _;`), include observability when building, and enable tracing with the `jaeger` provider in the `Config.toml` file. The `[ballerinax.jaeger]` section sets the host and the port of the OpenTelemetry (OTLP) gRPC endpoint of Jaeger.
+
+```toml
+[ballerina.observe]
+tracingEnabled=true
+tracingProvider="jaeger"
+
+[ballerinax.jaeger]
+agentHostname="localhost"
+agentPort=4317
+```
+
+Each run of the agent then appears in the Jaeger UI as an `invoke_agent` span, with a `chat` span for each LLM call and an `execute_tool` span for each tool call. See the [Publish agent traces to Jaeger](/learn/by-example/ai-agent-tracing-jaeger/) example. For general Ballerina observability, including other tracing providers, see [Overview of Ballerina observability](/learn/overview-of-ballerina-observability/).
 
 ## Evaluate agents with tests
 
@@ -150,3 +164,5 @@ See the [Agent evaluation](/learn/by-example/ai-agent-evaluation/) example.
 - [Test Ballerina code](/learn/test-ballerina-code/write-tests/)
 - [`ballerina/ai.eval` module](https://central.ballerina.io/ballerina/ai.eval/latest)
 - [`ballerinax/amp` module](https://central.ballerina.io/ballerinax/amp/latest)
+- [`ballerinax/jaeger` module](https://central.ballerina.io/ballerinax/jaeger/latest)
+- [Publish agent traces to Jaeger](/learn/by-example/ai-agent-tracing-jaeger/) example

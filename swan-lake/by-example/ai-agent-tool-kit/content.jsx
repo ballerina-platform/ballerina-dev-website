@@ -6,46 +6,84 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/ai;
+import ballerina/http;
 import ballerina/io;
 import ballerina/time;
 import ballerina/uuid;
 
 type Task record {|
+    string id;
     string description;
     time:Date dueBy?;
-    time:Date createdAt = time:utcToCivil(time:utcNow());
-    time:Date completedAt?;
     boolean completed = false;
 |};
 
-// A tool kit to manage a set of tasks.
+type NewTask record {|
+    string description;
+    time:Date dueBy?;
+|};
+
+// The tools that the toolkit provides.
+public enum TaskTool {
+    LIST_TASKS = "listTasks",
+    ADD_TASK = "addTask",
+    COMPLETE_TASK = "completeTask"
+}
+
+// A toolkit for a task management REST API. The toolkit owns the HTTP client, so the API
+// credentials never reach the LLM, and its \`init\` parameters decide which tools the agent gets.
 public isolated class TaskManagerToolkit {
     *ai:BaseToolKit;
-    
-    private final map<Task> tasks = {};
 
-    // The \`getTools\` method describes the tools provided by this tool kit.
-    public isolated function getTools() returns ai:ToolConfig[] => 
-        // The \`ai:getToolConfigs\` function generates the tool configurations for the specified tools.
-        ai:getToolConfigs([self.addTask, self.listTasks]);
-    
-    // Tool to add a new task.
-    @ai:AgentTool
-    isolated function addTask(string description, time:Date? dueBy = ()) {
-        lock {
-            self.tasks[uuid:createRandomUuid()] = {
-                description: description, 
-                dueBy: dueBy.clone()
-            };
-        }
+    private final http:Client taskApi;
+    private final readonly & ai:ToolConfig[] tools;
+
+    # Initializes the toolkit.
+    # + serviceUrl - The URL of the task management API
+    # + auth - The bearer token configuration used to authenticate with the API
+    # + permittedTools - The tools to give the agent, or \`()\` to give all the tools
+    # + readOnly - Whether to give the agent only the tools that do not change the tasks
+    # + return - An error if the initialization fails
+    public isolated function init(string serviceUrl, http:BearerTokenConfig auth,
+            TaskTool[]? permittedTools = (), boolean readOnly = false) returns error? {
+        self.taskApi = check new (serviceUrl, {auth});
+        // The \`ai:getToolConfigs\` function generates the tool configurations for the specified
+        // tools, which the toolkit then filters based on its configuration. The names of the
+        // tools are the names of the methods, which are the values of \`TaskTool\`.
+        ai:ToolConfig[] allTools = ai:getToolConfigs([self.listTasks, self.addTask, self.completeTask]);
+        self.tools = from ai:ToolConfig tool in allTools
+            let TaskTool toolName = check tool.name.ensureType()
+            where (permittedTools is () || permittedTools.indexOf(toolName) != ())
+                && (!readOnly || toolName == LIST_TASKS)
+            select tool.cloneReadOnly();
     }
 
-    // Tool to list all current tasks.
+    // The \`getTools\` method returns the tools provided by this toolkit.
+    public isolated function getTools() returns ai:ToolConfig[] => self.tools;
+
+    # Lists all the tasks.
+    # + return - The tasks, or an error if the request fails
     @ai:AgentTool
-    isolated function listTasks() returns map<Task> {
-        lock {
-            return self.tasks.clone();
-        }
+    isolated function listTasks() returns Task[]|error {
+        return self.taskApi->/tasks;
+    }
+
+    # Adds a new task.
+    # + description - The description of the task
+    # + dueBy - The date by which the task should be completed
+    # + return - The added task, or an error if the request fails
+    @ai:AgentTool
+    isolated function addTask(string description, time:Date? dueBy = ()) returns Task|error {
+        NewTask newTask = dueBy is () ? {description} : {description, dueBy};
+        return self.taskApi->/tasks.post(newTask);
+    }
+
+    # Marks a task as completed.
+    # + id - The ID of the task
+    # + return - The completed task, or an error if the request fails
+    @ai:AgentTool
+    isolated function completeTask(string id) returns Task|error {
+        return self.taskApi->/tasks/[id]/complete.post({});
     }
 }
 
@@ -55,25 +93,34 @@ isolated function getCurrentDate() returns time:Date {
     return {year, month, day};
 }
 
-// Define an AI agent with a system prompt and a set of tools.
-// The agent will use these tools to help manage a task list,
-// following the system prompt instructions.
-final ai:Agent taskAssistantAgent = check new ({
-    systemPrompt: {
-        role: "Task Assistant",
-        instructions: string \`You are a helpful assistant for 
-            managing a to-do list. You can manage tasks and
-            help a user plan their schedule.\`
-    },
-    // Include the tool kit in tools the agent can use.
-    tools: [new TaskManagerToolkit(), getCurrentDate],
-    // Use the default model provider (with configuration added
-    // via a Ballerina VS Code command).
-    model: check ai:getDefaultModelProvider(),
-    maxIter: 10
-});
+configurable string taskApiToken = "task-api-token";
 
 public function main() returns error? {
+    // Start a mock task management API on port 9095 so that the example is self-contained.
+    http:Listener taskApiListener = check new (9095);
+    check taskApiListener.attach(createTaskApi(taskApiToken), "api");
+    check taskApiListener.'start();
+
+    // Include the toolkit in the tools of the agent. This agent can list and add tasks,
+    // but it does not get the tool that completes tasks.
+    TaskManagerToolkit taskManager = check new ("http://localhost:9095/api", {token: taskApiToken},
+        permittedTools = [LIST_TASKS, ADD_TASK]);
+    io:println("Task tools: ", from ai:ToolConfig tool in taskManager.getTools() select tool.name);
+
+    ai:Agent taskAssistantAgent = check new ({
+        systemPrompt: {
+            role: "Task Assistant",
+            instructions: string \`You are a helpful assistant for
+                managing a to-do list. You can manage tasks and
+                help a user plan their schedule. Use the current
+                date to resolve dates such as today or the 30th.\`
+        },
+        tools: [taskManager, getCurrentDate],
+        // Use the default model provider (with configuration added
+        // via a Ballerina VS Code command).
+        model: check ai:getDefaultModelProvider()
+    });
+
     while true {
         string userInput = io:readln("User (or 'exit' to quit): ");
         if userInput == "exit" {
@@ -83,6 +130,50 @@ public function main() returns error? {
         string response = check taskAssistantAgent.run(userInput);
         io:println("Agent: ", response);
     }
+    check taskApiListener.gracefulStop();
+}
+
+// Creates the mock task management API, which requires a bearer token.
+function createTaskApi(string token) returns http:Service {
+    return isolated service object {
+        private final map<Task> tasks = {};
+
+        resource function get tasks(@http:Header string authorization) returns Task[]|http:Unauthorized {
+            if authorization != "Bearer " + token {
+                return http:UNAUTHORIZED;
+            }
+            lock {
+                return self.tasks.toArray().clone();
+            }
+        }
+
+        resource function post tasks(@http:Header string authorization, @http:Payload NewTask newTask)
+                returns Task|http:Unauthorized {
+            if authorization != "Bearer " + token {
+                return http:UNAUTHORIZED;
+            }
+            Task task = {id: uuid:createRandomUuid(), ...newTask};
+            lock {
+                self.tasks[task.id] = task.clone();
+            }
+            return task;
+        }
+
+        resource function post tasks/[string id]/complete(@http:Header string authorization)
+                returns Task|http:Unauthorized|http:NotFound {
+            if authorization != "Bearer " + token {
+                return http:UNAUTHORIZED;
+            }
+            lock {
+                Task? task = self.tasks[id];
+                if task is () {
+                    return http:NOT_FOUND;
+                }
+                task.completed = true;
+                return task.clone();
+            }
+        }
+    };
 }
 `,
 ];
@@ -109,11 +200,31 @@ export function AiAgentToolKit({ codeSnippets }) {
 
       <p>
         This example demonstrates how to create an AI agent that can manage a
-        to-do list by using a toolkit that encapsulates related tools and state.
-        Toolkits allow for better encapsulation and reusability compared to
-        using standalone functions, especially when building complex agents with
-        multiple related capabilities.
+        to-do list by using a toolkit that encapsulates a set of related tools
+        for a task management REST API. Toolkits allow for better encapsulation
+        and reusability compared to using standalone functions, especially when
+        building complex agents with multiple related capabilities.
       </p>
+
+      <p>
+        A toolkit is a class that includes the <code>ai:BaseToolKit</code> type
+        and returns its tools from the <code>getTools</code> method. Since the
+        class defines its own <code>init</code> method, it controls how the
+        tools are created. In this example, the toolkit takes the URL and the
+        bearer token configuration of the API and keeps the HTTP client to
+        itself, so the credentials never reach the LLM. The{" "}
+        <code>permittedTools</code> parameter selects the tools that the agent
+        gets, and the <code>readOnly</code> parameter leaves out the tools that
+        change the tasks. The agent in this example can list and add tasks, but
+        it does not get the tool that completes tasks.
+      </p>
+
+      <blockquote>
+        <p>
+          Note: The example starts a mock task management API on port 9095, so
+          that it is self-contained.
+        </p>
+      </blockquote>
 
       <blockquote>
         <p>
@@ -276,25 +387,25 @@ export function AiAgentToolKit({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run ai_agent_tool_kit.bal`}</span>
-              <span>{`User (or 'exit' to quit): Hello`}</span>
-              <span>{`Agent: Hello! How can I assist you today? Do you need help with your to-do list or planning your schedule?`}</span>
-              <span>{`User (or 'exit' to quit): I have to pay my WiFi bill today and meet Jane for tea at 4pm on the 28th.`}</span>
-              <span>{`Agent: I've added your tasks to the to-do list:`}</span>
+              <span>{`warning: [ballerina/http] HTTPS is recommended but using HTTP`}</span>
+              <span>{`Task tools: ["listTasks","addTask"]`}</span>
+              <span>{`User (or 'exit' to quit): I have to pay my WiFi bill today and meet Jane for tea at 4pm on the 30th.`}</span>
+              <span>{`Agent: I have added the tasks to your to-do list:`}</span>
               <span>{`
 `}</span>
-              <span>{`1. Pay WiFi bill (due today)`}</span>
-              <span>{`2. Meet Jane for tea at 4 PM on the 28th of October 2025`}</span>
+              <span>{`1. **Pay WiFi bill** - Due today.`}</span>
+              <span>{`2. **Meet Jane for tea** - Scheduled for 4 PM on the 30th.`}</span>
               <span>{`
 `}</span>
-              <span>{`Would you like to do anything else, such as check your current tasks or add more?`}</span>
+              <span>{`Let me know if you need any further assistance!`}</span>
               <span>{`User (or 'exit' to quit): What do I have on my plate today?`}</span>
-              <span>{`Agent: Today, you have the following task:`}</span>
+              <span>{`Agent: You have the following task on your plate today:`}</span>
               <span>{`
 `}</span>
-              <span>{`1. **Pay WiFi bill** (due today)`}</span>
+              <span>{`1. **Pay WiFi bill** - Due today.`}</span>
               <span>{`
 `}</span>
-              <span>{`Would you like to mark it as completed or do anything else?`}</span>
+              <span>{`The meeting with Jane for tea is scheduled for the 30th, so it's not due today. Let me know if you need anything else!`}</span>
               <span>{`User (or 'exit' to quit): exit`}</span>
             </code>
           </pre>
@@ -319,6 +430,16 @@ export function AiAgentToolKit({ codeSnippets }) {
           <span>
             <a href="/learn/by-example/ai-agent-mcp-integration">
               The Agent with MCP integration example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/ai-agent-mcp-integration-advanced">
+              The Agent with advanced MCP integration example
             </a>
           </span>
         </li>
@@ -397,7 +518,10 @@ export function AiAgentToolKit({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Agent ID" href="/learn/by-example/ai-agent-id/">
+          <Link
+            title="Agent evaluation"
+            href="/learn/by-example/ai-agent-evaluation/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -423,7 +547,7 @@ export function AiAgentToolKit({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent ID
+                  Agent evaluation
                 </span>
               </div>
             </div>

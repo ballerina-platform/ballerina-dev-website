@@ -91,12 +91,17 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
       <p>
         Traces are also the input to agent evaluations (see the{" "}
         <a href="/learn/by-example/ai-agent-evaluation/">Agent evaluation</a>{" "}
-        example). For production observability, the{" "}
+        example). For production observability, the agent execution is recorded
+        as OpenTelemetry spans and, when tracing is enabled, published to the
+        configured tracing provider, such as Jaeger (see the{" "}
+        <a href="/learn/by-example/ai-agent-tracing-jaeger/">
+          Publish agent traces to Jaeger
+        </a>{" "}
+        example) or the WSO2 AI Agent Management Platform with the{" "}
         <a href="https://central.ballerina.io/ballerinax/amp/latest">
           ballerinax/amp
         </a>{" "}
-        module publishes agent traces to the WSO2 AI Agent Management Platform
-        via OpenTelemetry when tracing is enabled.
+        module.
       </p>
 
       <p>
@@ -297,6 +302,16 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/ai-agent-tracing-jaeger/">
+              The Publish agent traces to Jaeger example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/ai-agent-typed-input-output/">
               The Agent with typed input and output example
             </a>
@@ -327,10 +342,7 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Agent tool loading strategy"
-            href="/learn/by-example/ai-agent-tool-loading-strategy/"
-          >
+          <Link title="Agent ID" href="/learn/by-example/ai-agent-id/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +368,7 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent tool loading strategy
+                  Agent ID
                 </span>
               </div>
             </div>
@@ -364,8 +376,8 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent evaluation"
-            href="/learn/by-example/ai-agent-evaluation/"
+            title="Publish agent traces to Jaeger"
+            href="/learn/by-example/ai-agent-tracing-jaeger/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -375,7 +387,7 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent evaluation
+                  Publish agent traces to Jaeger
                 </span>
               </div>
               <svg

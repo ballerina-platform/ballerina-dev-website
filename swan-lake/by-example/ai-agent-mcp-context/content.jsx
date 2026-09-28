@@ -9,44 +9,70 @@ export const codeSnippetData = [
 import ballerina/io;
 import ballerina/mcp;
 
-// Connects to the MCP server from the MCP advanced service with request metadata example.
-final mcp:StreamableHttpClient ticketServer = check new ("http://localhost:9090/mcp");
+// A custom MCP toolkit for the ticket server. Each MCP tool is dispatched through a method of
+// this class, so the method can read values from the \`ai:Context\` of the agent run and forward
+// them to the server.
+isolated class TicketToolKit {
+    *ai:McpBaseToolKit;
+    private final mcp:StreamableHttpClient mcpClient;
+    private final readonly & ai:ToolConfig[] tools;
 
-# Gets the open support tickets of the signed-in user.
-# + context - The context carrying the tenant of the signed-in user
-# + return - The open tickets of the tenant, or an error if the call fails
-@ai:AgentTool
-isolated function getOpenTickets(ai:Context context) returns string|error {
-    string tenantId = check context.getWithType("tenantId");
-    // The tenant is sent as request metadata rather than as a tool argument, so it stays out
-    // of the tool schema and the LLM can neither see it nor choose a different value.
-    mcp:CallToolResult result = check ticketServer->callTool({
-        name: "getOpenTickets",
-        _meta: {"tenantId": tenantId}
-    });
-    return result.content.toJsonString();
+    public isolated function init(string serverUrl,
+            mcp:Implementation info = {name: "Support Assistant", version: "1.0.0"},
+            *mcp:StreamableHttpClientTransportConfig config) returns ai:Error? {
+        // Map each MCP tool that the agent can use to the method that dispatches it.
+        final map<ai:FunctionTool> permittedTools = {
+            "getOpenTickets": self.getOpenTickets
+        };
+        do {
+            self.mcpClient = check new (serverUrl, config);
+            // Initialize the MCP session, list the tools of the server, and create the tool
+            // configurations of the permitted tools with the schemas from the server.
+            self.tools = check ai:getPermittedMcpToolConfigs(self.mcpClient, info, permittedTools)
+                .cloneReadOnly();
+        } on fail error e {
+            return error("Failed to initialize the MCP toolkit", e);
+        }
+    }
+
+    public isolated function getTools() returns ai:ToolConfig[] => self.tools;
+
+    // The \`ai:Context\` parameter is supplied by the agent and is not part of the tool schema.
+    // The \`params\` parameter carries the tool name and the arguments chosen by the LLM.
+    @ai:AgentTool
+    public isolated function getOpenTickets(ai:Context context, mcp:CallToolParams params)
+            returns mcp:CallToolResult|error {
+        string tenantId = check context.getWithType("tenantId");
+        // The tenant is sent as request metadata rather than as a tool argument, so it stays
+        // out of the tool schema and the LLM can neither see it nor choose a different value.
+        return self.mcpClient->callTool({
+            name: params.name,
+            arguments: params.arguments,
+            _meta: {"tenantId": tenantId}
+        });
+    }
 }
+
+// Connect to the MCP server from the MCP service with request metadata example.
+final TicketToolKit ticketToolKit = check new ("http://localhost:9090/mcp");
 
 final ai:Agent supportAgent = check new ({
     systemPrompt: {
         role: "Support Assistant",
         instructions: "You answer questions about the support tickets of the signed-in user. Keep answers brief."
     },
+    // Use the default model provider (with configuration added via a Ballerina VS Code command).
     model: check ai:getDefaultModelProvider(),
-    tools: [getOpenTickets]
+    tools: [ticketToolKit]
 });
 
 public function main() returns error? {
-    check ticketServer->initialize({name: "Support Assistant", version: "1.0.0"});
-
     // The tenant of the signed-in user comes from the application, so it is passed to the
     // tool through the context instead of the query.
     ai:Context context = new;
     context.set("tenantId", "acme");
     string response = check supportAgent.run("What tickets are still open?", "user-1", context);
     io:println(response);
-
-    check ticketServer->close();
 }
 `,
 ];
@@ -64,37 +90,40 @@ export function AiAgentMcpContext({ codeSnippets }) {
       <h1>Passing context to MCP tools</h1>
 
       <p>
-        An agent tool that calls an MCP server often needs a value that the
-        application knows and the LLM must not choose, such as the tenant of the
-        signed-in user. The <code>ai:Context</code> carries that value from the
-        caller to the tool, and the <code>_meta</code> field of the MCP request
-        carries it on to the server. Neither appears in the schema sent to the
-        LLM.
+        An agent that uses the tools of an MCP server often needs to send the
+        server a value that the application knows and the LLM must not choose,
+        such as the tenant of the signed-in user. The <code>ai:Context</code>{" "}
+        carries that value from the caller of the agent to the tool, and the{" "}
+        <code>_meta</code> field of the MCP request carries it on to the server.
+        Neither appears in the schema sent to the LLM.
       </p>
 
       <p>
-        The tool declares an <code>ai:Context</code> as its first parameter,
-        reads the value from it, and sets the value on the <code>_meta</code>{" "}
-        field of <code>mcp:CallToolParams</code>. On the server side, an{" "}
-        <code>mcp:StreamableHttpAdvancedService</code> reads it from{" "}
-        <code>params._meta</code> in its <code>onCallTool</code> method, as
-        demonstrated in the{" "}
+        To forward such a value, define a custom MCP toolkit. It is a class that
+        includes the <code>ai:McpBaseToolKit</code> type and holds an{" "}
+        <code>mcp:StreamableHttpClient</code> client. The{" "}
+        <code>ai:getPermittedMcpToolConfigs</code> function initializes the MCP
+        session, lists the tools of the server, and creates the tool
+        configurations of the permitted tools, each mapped to a method of the
+        class that dispatches the call. A dispatch method can declare an{" "}
+        <code>ai:Context</code> parameter as its first parameter, which the
+        agent supplies, followed by the <code>mcp:CallToolParams</code>{" "}
+        parameter that carries the tool name and the arguments chosen by the
+        LLM. This example reads the tenant from the context and sets it on the{" "}
+        <code>_meta</code> field of the request. On the server side, the tool
+        reads it through an <code>mcp:Meta?</code> parameter, as demonstrated in
+        the{" "}
         <a href="/learn/by-example/mcp-service-with-request-metadata/">
-          MCP advanced service with request metadata
-        </a>{" "}
-        example. To send request metadata from a plain MCP client without an
-        agent, see the{" "}
-        <a href="/learn/by-example/mcp-client-with-request-metadata/">
-          MCP client with request metadata
+          MCP service with request metadata
         </a>{" "}
         example.
       </p>
 
       <blockquote>
         <p>
-          Prerequisite: Start the MCP server from the{" "}
+          Note: Start the MCP server from the{" "}
           <a href="/learn/by-example/mcp-service-with-request-metadata/">
-            MCP advanced service with request metadata
+            MCP service with request metadata
           </a>{" "}
           example before running this example.
         </p>
@@ -264,8 +293,12 @@ export function AiAgentMcpContext({ codeSnippets }) {
               <span>{`You have two open tickets:`}</span>
               <span>{`
 `}</span>
-              <span>{`1. **TCK-1**: Payment gateway timeout`}</span>
-              <span>{`2. **TCK-3**: Report export is empty`}</span>
+              <span>{`1. **Ticket ID:** TCK-1  `}</span>
+              <span>{`   **Subject:** Payment gateway timeout`}</span>
+              <span>{`
+`}</span>
+              <span>{`2. **Ticket ID:** TCK-3  `}</span>
+              <span>{`   **Subject:** Report export is empty`}</span>
             </code>
           </pre>
         </Col>
@@ -278,7 +311,7 @@ export function AiAgentMcpContext({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/mcp-service-with-request-metadata/">
-              The MCP advanced service with request metadata example
+              The MCP service with request metadata example
             </a>
           </span>
         </li>
@@ -297,8 +330,8 @@ export function AiAgentMcpContext({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/ai-agent-tool-context/">
-              The Passing context to agent tools example
+            <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
+              The Agent with advanced MCP integration example
             </a>
           </span>
         </li>
@@ -307,8 +340,8 @@ export function AiAgentMcpContext({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/ai-agent-mcp-integration/">
-              The Agent with MCP integration example
+            <a href="/learn/by-example/ai-agent-tool-context/">
+              The Passing context to agent tools example
             </a>
           </span>
         </li>
@@ -318,8 +351,8 @@ export function AiAgentMcpContext({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with MCP integration"
-            href="/learn/by-example/ai-agent-mcp-integration/"
+            title="Agent with advanced MCP integration"
+            href="/learn/by-example/ai-agent-mcp-integration-advanced/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -346,7 +379,7 @@ export function AiAgentMcpContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with MCP integration
+                  Agent with advanced MCP integration
                 </span>
               </div>
             </div>
@@ -354,8 +387,8 @@ export function AiAgentMcpContext({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with in-memory short-term memory"
-            href="/learn/by-example/ai-agent-memory/"
+            title="Load documents"
+            href="/learn/by-example/rag-document-loading/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -365,7 +398,7 @@ export function AiAgentMcpContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with in-memory short-term memory
+                  Load documents
                 </span>
               </div>
               <svg

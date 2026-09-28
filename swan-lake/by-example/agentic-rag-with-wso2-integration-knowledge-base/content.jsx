@@ -13,9 +13,9 @@ import ballerinax/ai.wso2.integration as wso2;
 configurable string knowledgeBaseUrl = ?;
 configurable string knowledgeBaseToken = ?;
 
-// The knowledge base is hosted and populated on the WSO2 Integration platform, so the
-// application only retrieves from it. Ingestion and deletion are not supported by this
-// knowledge base, and return an error.
+// The knowledge base is hosted and populated on the WSO2 Integration Platform, so the
+// application only retrieves from it. The \`ingest\` and \`deleteByFilter\` methods are not
+// supported yet.
 final ai:KnowledgeBase knowledgeBase = check new wso2:CloudKnowledgeBase(knowledgeBaseUrl,
         {auth: {token: knowledgeBaseToken}},
         // Chunks scoring below this similarity threshold are dropped.
@@ -63,10 +63,13 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
       <p>
         The <code>ballerinax/ai.wso2.integration</code> module provides{" "}
         <code>wso2:CloudKnowledgeBase</code>, an <code>ai:KnowledgeBase</code>{" "}
-        implementation backed by a knowledge base hosted on the WSO2 Integration
-        platform. The documents are ingested and indexed on the platform, so the
-        application only retrieves from it. Calls to <code>ingest</code> and{" "}
-        <code>deleteByFilter</code> return an error.
+        implementation backed by a knowledge base hosted on the{" "}
+        <a href="https://wso2.com/integration-platform/docs/">
+          WSO2 Integration Platform
+        </a>
+        . The documents are ingested and indexed on the platform, so the
+        application only retrieves from it. The <code>ingest</code> and{" "}
+        <code>deleteByFilter</code> methods are not supported yet.
       </p>
 
       <p>
@@ -219,6 +222,16 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
           <span>
             <a href="https://central.ballerina.io/ballerinax/ai.wso2.integration/latest">
               The <code>ballerinax/ai.wso2.integration</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://wso2.com/integration-platform/docs/">
+              WSO2 Integration Platform documentation
             </a>
           </span>
         </li>

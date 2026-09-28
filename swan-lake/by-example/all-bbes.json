@@ -5854,13 +5854,147 @@
         "disableVerificationReason": "Requires the chat agent service to be running",
         "disablePlayground": true,
         "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent memory",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with in-memory short-term memory",
+        "url": "ai-agent-memory",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
       },
       {
-        "name": "Deploy an agent from an AFM file",
-        "url": "ai-agent-from-afm",
+        "name": "Agent with persistent memory",
+        "url": "ai-agent-persistent-memory",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Memory overflow handling",
+        "url": "ai-agent-memory-overflow-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent ID",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent ID",
+        "url": "ai-agent-id",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an agent identity registered with an authorization server",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent tracing and evaluation",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent execution trace",
+        "url": "ai-agent-execution-trace",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Publish agent traces to Jaeger",
+        "url": "ai-agent-tracing-jaeger",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and a running Jaeger instance",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Agent evaluation",
+        "url": "ai-agent-evaluation",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Contains no Ballerina code; the agent is defined in an AFM file and run by an interpreter",
+        "disableVerificationReason": "Test file; has different naming convention and requires keys",
+        "disablePlayground": true,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "Advanced agent features",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with tool kits",
+        "url": "ai-agent-tool-kit",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent with typed input and output",
+        "url": "ai-agent-typed-input-output",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent tool loading strategy",
+        "url": "ai-agent-tool-loading-strategy",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Multi-agent systems",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent as a tool",
+        "url": "ai-agent-as-tool",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent definitions",
+        "url": "ai-agent-definitions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
       }
@@ -5886,7 +6020,7 @@
         "disablePlayground": true
       },
       {
-        "name": "MCP advanced service with request metadata",
+        "name": "MCP service with request metadata",
         "url": "mcp-service-with-request-metadata",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -5954,6 +6088,15 @@
         "needCentral": false
       },
       {
+        "name": "Agent with advanced MCP integration",
+        "url": "ai-agent-mcp-integration-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
         "name": "Passing context to MCP tools",
         "url": "ai-agent-mcp-context",
         "verifyBuild": true,
@@ -5961,115 +6104,6 @@
         "disableVerificationReason": "Requires keys and the MCP service to be running",
         "disablePlayground": true,
         "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Agent memory",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent with in-memory short-term memory",
-        "url": "ai-agent-memory",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent with persistent memory",
-        "url": "ai-agent-persistent-memory",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": true
-      },
-      {
-        "name": "Memory overflow handling",
-        "url": "ai-agent-memory-overflow-handling",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Agent ID",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent ID",
-        "url": "ai-agent-id",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires an agent identity registered with an authorization server",
-        "disablePlayground": true,
-        "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Advanced agent features",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent with tool kits",
-        "url": "ai-agent-tool-kit",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent with typed input and output",
-        "url": "ai-agent-typed-input-output",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent tool loading strategy",
-        "url": "ai-agent-tool-loading-strategy",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Agent tracing and evaluation",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent execution trace",
-        "url": "ai-agent-execution-trace",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent evaluation",
-        "url": "ai-agent-evaluation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Test file; has different naming convention and requires keys",
-        "disablePlayground": true,
-        "needCentral": true
       }
     ]
   },

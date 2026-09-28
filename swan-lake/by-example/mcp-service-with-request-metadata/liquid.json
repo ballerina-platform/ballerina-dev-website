@@ -1,6 +1,6 @@
 {
-  "title": "MCP advanced service with request metadata",
-  "description": "This BBE demonstrates how an MCP advanced service reads the request metadata (_meta) sent by the client along with a tool call.",
+  "title": "MCP service with request metadata",
+  "description": "This BBE demonstrates how MCP service tools read the request metadata (_meta) sent by the client through an mcp:Meta? parameter, alongside or without other tool parameters.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -8,7 +8,8 @@
     "mcp",
     "metadata",
     "meta",
-    "advanced service"
+    "mcp service",
+    "tools"
   ],
   "permalink": "/learn/by-example/mcp-service-with-request-metadata/",
   "active": "mcp-service-with-request-metadata"

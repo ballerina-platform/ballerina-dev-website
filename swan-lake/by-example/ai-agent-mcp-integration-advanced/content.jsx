@@ -5,89 +5,91 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/mcp;
+  `import ballerina/ai;
+import ballerina/io;
+import ballerina/mcp;
 
-type Ticket record {|
-    string id;
-    string tenantId;
-    string subject;
-    string priority;
-|};
+// A custom MCP toolkit for the weather MCP server. Unlike \`ai:McpToolKit\`, which forwards every
+// call as it is, each permitted MCP tool is dispatched through a method of this class, so the
+// class decides how each call is made.
+isolated class WeatherToolKit {
+    *ai:McpBaseToolKit;
+    private final mcp:StreamableHttpClient mcpClient;
+    private final readonly & ai:ToolConfig[] tools;
+    private final int maxForecastDays;
 
-type SupportHours record {|
-    string region;
-    string hours;
-|};
-
-isolated Ticket[] tickets = [
-    {id: "TCK-1", tenantId: "acme", subject: "Payment gateway timeout", priority: "high"},
-    {id: "TCK-2", tenantId: "globex", subject: "Login fails on mobile", priority: "medium"},
-    {id: "TCK-3", tenantId: "acme", subject: "Report export is empty", priority: "low"}
-];
-
-listener mcp:StreamableHttpListener mcpListener = new (9090);
-
-service mcp:StreamableHttpService /mcp on mcpListener {
-
-    # Gets the open support tickets of the calling tenant.
-    #
-    # + meta - The request metadata attached by the client
-    # + return - The open tickets of the tenant, or an error if the tenant is not specified
-    remote function getOpenTickets(mcp:Meta? meta) returns Ticket[]|error {
-        // The runtime injects the \`_meta\` field of the request into the \`mcp:Meta?\` parameter
-        // and leaves the parameter out of the tool input schema, so the tenant is never a tool
-        // argument that a client, or an LLM, chooses. The parameter is nil when the request
-        // carries no metadata.
-        string tenantId = check getTenantId(meta);
-        lock {
-            Ticket[] tenantTickets = from Ticket ticket in tickets
-                where ticket.tenantId == tenantId
-                select ticket;
-            return tenantTickets.clone();
+    public isolated function init(string serverUrl, int maxForecastDays = 3,
+            mcp:Implementation info = {name: "Weather Assistant", version: "1.0.0"},
+            *mcp:StreamableHttpClientTransportConfig config) returns ai:Error? {
+        self.maxForecastDays = maxForecastDays;
+        // Map each MCP tool that the agent can use to the method that dispatches it.
+        // Tools of the server that are not in this map are not given to the agent.
+        final map<ai:FunctionTool> permittedTools = {
+            "getCurrentWeather": self.getCurrentWeather,
+            "getWeatherForecast": self.getWeatherForecast
+        };
+        do {
+            // The client configuration, such as authentication, timeouts, and retries,
+            // is passed on to the MCP client.
+            self.mcpClient = check new (serverUrl, config);
+            // Initialize the MCP session, list the tools of the server, and create the tool
+            // configurations of the permitted tools with the schemas from the server.
+            self.tools = check ai:getPermittedMcpToolConfigs(self.mcpClient, info, permittedTools)
+                .cloneReadOnly();
+        } on fail error e {
+            return error("Failed to initialize the MCP toolkit", e);
         }
     }
 
-    # Creates a support ticket for the calling tenant.
-    #
-    # + meta - The request metadata attached by the client
-    # + subject - The subject of the ticket
-    # + priority - The priority of the ticket (\`low\`, \`medium\`, or \`high\`)
-    # + return - The created ticket, or an error if the tenant is not specified
-    remote function createTicket(mcp:Meta? meta, string subject, string priority = "medium")
-            returns Ticket|error {
-        // The \`mcp:Meta?\` parameter is declared along with the other parameters of the tool.
-        // Only the \`subject\` and \`priority\` parameters are the tool arguments.
-        string tenantId = check getTenantId(meta);
-        lock {
-            Ticket ticket = {id: string \`TCK-\${tickets.length() + 1}\`, tenantId, subject, priority};
-            tickets.push(ticket);
-            return ticket.clone();
-        }
+    public isolated function getTools() returns ai:ToolConfig[] => self.tools;
+
+    // The \`params\` parameter carries the tool name and the arguments chosen by the LLM.
+    @ai:AgentTool
+    public isolated function getCurrentWeather(mcp:CallToolParams params)
+            returns mcp:CallToolResult|error {
+        return self.mcpClient->callTool(params);
     }
 
-    # Gets the support hours of a region. The support hours are the same for every tenant,
-    # so this tool does not read the request metadata.
-    #
-    # + region - The region (e.g., \`EU\`, \`US\`)
-    # + return - The support hours of the region
-    remote function getSupportHours(string region) returns SupportHours => {
-        region,
-        hours: region == "EU" ? "08:00-18:00 CET" : "08:00-18:00 EST"
-    };
+    @ai:AgentTool
+    public isolated function getWeatherForecast(mcp:CallToolParams params)
+            returns mcp:CallToolResult|error {
+        // Adjust the arguments chosen by the LLM before the call is forwarded to the server.
+        record {} arguments = {...params.arguments ?: {}};
+        anydata days = arguments["days"];
+        if days is int && days > self.maxForecastDays {
+            io:println(string \`[WeatherToolKit] Limiting the forecast from \${days} to \${
+                self.maxForecastDays} days\`);
+            arguments["days"] = self.maxForecastDays;
+        }
+        return self.mcpClient->callTool({name: params.name, arguments});
+    }
 }
 
-// \`mcp:Meta\` is an open record, so the fields that the client sent are read by member access.
-isolated function getTenantId(mcp:Meta? meta) returns string|error {
-    anydata tenantId = meta is mcp:Meta ? meta["tenantId"] : ();
-    if tenantId !is string {
-        return error("The 'tenantId' metadata is missing from the request");
-    }
-    return tenantId;
+// Connect to the MCP server from the MCP service example.
+final WeatherToolKit weatherToolKit = check new ("http://localhost:9090/mcp", maxForecastDays = 3);
+
+final ai:Agent weatherAgent = check new (
+    systemPrompt = {
+        role: "Weather-aware AI Assistant",
+        instructions: string \`You are a smart AI assistant that can assist
+            a user based on accurate and timely weather information.
+            If a tool returns less data than the user asked for, say so.\`
+    },
+    tools = [weatherToolKit],
+    // Use the default model provider (with configuration added
+    // via a Ballerina VS Code command).
+    model = check ai:getDefaultModelProvider()
+);
+
+public function main() returns error? {
+    string response = check weatherAgent.run(
+        "What is the weather in Colombo now, and what is the forecast for the next 5 days?");
+    io:println("Agent: ", response);
 }
 `,
 ];
 
-export function McpServiceWithRequestMetadata({ codeSnippets }) {
+export function AiAgentMcpIntegrationAdvanced({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -97,54 +99,65 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Model Context Protocol (MCP) service with request metadata</h1>
+      <h1>AI agents with advanced MCP integration</h1>
 
       <p>
-        An MCP request can carry a <code>_meta</code> field alongside the tool
-        arguments. Metadata describes the call rather than forming part of the
-        input of the tool, which makes it the place for values that the caller
-        determines and the LLM must not choose, such as the tenant or the
-        correlation ID of the request.
+        The <code>ai:McpToolKit</code> toolkit gives an agent the tools of an
+        MCP server, or a subset of them, and forwards each call to the server as
+        it is. For more control over how each call is made, such as changing its
+        arguments or adding request metadata, define a custom MCP toolkit
+        instead.
       </p>
 
       <p>
-        A tool of an <code>mcp:StreamableHttpService</code> reads the metadata
-        by declaring an <code>mcp:Meta?</code> parameter. The runtime injects
-        the <code>_meta</code> field of the request into the parameter and
-        excludes the parameter from the generated tool input schema, so the
-        metadata is never a tool argument and the LLM never sees it. The
-        parameter must be nilable, since it is nil when the request carries no
-        metadata, and a tool can declare at most one such parameter, in any
-        position, alongside its other parameters. The <code>mcp:Meta</code> type
-        is an open record, so the fields the client sent are read through member
-        access. A tool that does not need the metadata simply does not declare
-        the parameter.
+        A custom MCP toolkit is a class that includes the{" "}
+        <code>ai:McpBaseToolKit</code> type and holds an{" "}
+        <code>mcp:StreamableHttpClient</code> client. In its <code>init</code>{" "}
+        method, the <code>ai:getPermittedMcpToolConfigs</code> function
+        initializes the MCP session, lists the tools of the server, and creates
+        the tool configurations with the schemas from the server. The tools are
+        mapped to methods of the class, each annotated with{" "}
+        <code>@ai:AgentTool</code>, that dispatch the calls. Only the mapped
+        tools are given to the agent, and each dispatch method receives the tool
+        name and the arguments chosen by the LLM as an{" "}
+        <code>mcp:CallToolParams</code> value, so it can inspect or change the
+        call before forwarding it to the server. The class also defines its own{" "}
+        <code>init</code> parameters, such as the limits it enforces, and passes
+        the client configuration, such as authentication, on to the MCP client.
       </p>
 
       <p>
-        This example exposes three tools of a support service. The{" "}
-        <code>getOpenTickets</code> tool takes no arguments and scopes the
-        result to the tenant sent in the request metadata. The{" "}
-        <code>createTicket</code> tool takes the <code>subject</code> and{" "}
-        <code>priority</code> arguments and reads the tenant from the request
-        metadata. The <code>getSupportHours</code> tool takes the{" "}
-        <code>region</code> argument and does not read the request metadata.
+        This example demonstrates a custom MCP toolkit for a weather MCP server
+        that limits the number of forecast days that the agent can request.
       </p>
 
       <blockquote>
         <p>
-          Note: The <code>onCallTool</code> method of an{" "}
-          <code>mcp:StreamableHttpAdvancedService</code> does not accept an{" "}
-          <code>mcp:Meta?</code> parameter. It reads the metadata from the{" "}
-          <code>_meta</code> field of the <code>mcp:CallToolParams</code> value
-          that it receives instead.
+          Note: Start the MCP server from the{" "}
+          <a href="/learn/by-example/mcp-service/">MCP service</a> example
+          before running this example.
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
         </p>
       </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/mcp/latest/">
-          <code>ballerina/mcp</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -159,7 +172,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mcp-service-with-request-metadata",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ai-agent-mcp-integration-advanced",
                 "_blank",
               );
             }}
@@ -233,8 +246,6 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -288,21 +299,47 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run mcp_service_with_request_metadata.bal`}</span>
+              <span>{`\$ bal run ai_agent_mcp_integration_advanced.bal`}</span>
+              <span>{`[WeatherToolKit] Limiting the forecast from 5 to 3 days`}</span>
+              <span>{`Agent: The current weather in Colombo is as follows:`}</span>
+              <span>{`- **Temperature**: 17.0°C`}</span>
+              <span>{`- **Humidity**: 40%`}</span>
+              <span>{`- **Pressure**: 1017 hPa`}</span>
+              <span>{`- **Condition**: Sunny`}</span>
+              <span>{`
+`}</span>
+              <span>{`For the next 5 days, the weather forecast is as follows:`}</span>
+              <span>{`
+`}</span>
+              <span>{`1. **September 29, 2026**`}</span>
+              <span>{`   - High: 21°C`}</span>
+              <span>{`   - Low: 11°C`}</span>
+              <span>{`   - Condition: Rainy`}</span>
+              <span>{`   - Precipitation Chance: 44%`}</span>
+              <span>{`   - Wind Speed: 7 km/h`}</span>
+              <span>{`
+`}</span>
+              <span>{`2. **September 30, 2026**`}</span>
+              <span>{`   - High: 21°C`}</span>
+              <span>{`   - Low: 13°C`}</span>
+              <span>{`   - Condition: Cloudy`}</span>
+              <span>{`   - Precipitation Chance: 31%`}</span>
+              <span>{`   - Wind Speed: 9 km/h`}</span>
+              <span>{`
+`}</span>
+              <span>{`3. **October 1, 2026**`}</span>
+              <span>{`   - High: 24°C`}</span>
+              <span>{`   - Low: 11°C`}</span>
+              <span>{`   - Condition: Cloudy`}</span>
+              <span>{`   - Precipitation Chance: 21%`}</span>
+              <span>{`   - Wind Speed: 18 km/h`}</span>
+              <span>{`
+`}</span>
+              <span>{`Please note that the forecast only includes data for 3 days instead of the requested 5 days.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/mcp-client-with-request-metadata/">
-            MCP client with request metadata
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -310,16 +347,8 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/mcp-service/">The MCP service example</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/mcp-client-with-request-metadata/">
-              The MCP client with request metadata example
+            <a href="/learn/by-example/ai-agent-mcp-integration/">
+              The Agent with MCP integration example
             </a>
           </span>
         </li>
@@ -334,13 +363,29 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/mcp-service/">The MCP service example</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/mcp-client/">The MCP client example</a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP advanced service"
-            href="/learn/by-example/mcp-service-advanced/"
+            title="Agent with MCP integration"
+            href="/learn/by-example/ai-agent-mcp-integration/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -367,7 +412,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP advanced service
+                  Agent with MCP integration
                 </span>
               </div>
             </div>
@@ -375,8 +420,8 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="MCP tools with HTTP request binding"
-            href="/learn/by-example/mcp-service-http-request-binding/"
+            title="Passing context to MCP tools"
+            href="/learn/by-example/ai-agent-mcp-context/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -386,7 +431,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP tools with HTTP request binding
+                  Passing context to MCP tools
                 </span>
               </div>
               <svg

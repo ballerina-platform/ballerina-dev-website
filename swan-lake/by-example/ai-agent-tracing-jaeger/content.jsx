@@ -5,66 +5,57 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/http;
-import ballerina/mcp;
+  `import ballerina/ai;
+import ballerina/http;
+// Include the Jaeger extension, which publishes the traces to Jaeger in the
+// OpenTelemetry format.
+import ballerinax/jaeger as _;
 
-type Order record {|
-    string id;
-    string tenantId;
-    string status;
-    decimal total;
-|};
+# Gets the current stock level of a product.
+# + productId - The product ID
+# + return - The number of units in stock
+@ai:AgentTool
+isolated function getStockLevel(string productId) returns int => productId == "P-100" ? 3 : 25;
 
-final readonly & Order[] orders = [
-    {id: "ORD-1001", tenantId: "acme", status: "shipped", total: 120.50},
-    {id: "ORD-1002", tenantId: "acme", status: "processing", total: 89.99},
-    {id: "ORD-2001", tenantId: "globex", status: "shipped", total: 540.00}
-];
+# Gets the number of units of a product on order from suppliers.
+# + productId - The product ID
+# + return - The number of units on order
+@ai:AgentTool
+isolated function getUnitsOnOrder(string productId) returns int => productId == "P-100" ? 50 : 0;
 
-// Declare the service with the \`mcp:StreamableHttpService\` type to allow tools
-// to bind information from the underlying HTTP request.
-@mcp:StreamableHttpServiceConfig {
-    info: {name: "Order MCP Server", version: "1.0.0"}
-}
-service mcp:StreamableHttpService /mcp on new mcp:StreamableHttpListener(9092) {
+final ai:Agent inventoryAgent = check new ({
+    systemPrompt: {
+        role: "Inventory Assistant",
+        instructions: "You answer questions about product inventory using the tools. Be concise."
+    },
+    // Use the default model provider (with configuration added via a Ballerina VS Code command).
+    model: check ai:getDefaultModelProvider(),
+    tools: [getStockLevel, getUnitsOnOrder]
+});
 
-    // In addition to the tool parameters, a tool can accept an \`http:Headers\` parameter
-    // (or an \`http:Request\` parameter) to access the HTTP request. These parameters are
-    // not part of the tool's input schema, so the AI client never provides them.
-    # Get the orders of the tenant making the request.
-    #
-    # + headers - The HTTP headers of the incoming request
-    # + status - The order status to filter by (e.g., "shipped")
-    # + return - The matching orders
-    remote function getOrders(http:Headers headers, string? status = ()) returns Order[]|error {
-        string tenantId = check headers.getHeader("x-tenant-id");
-        return from Order o in orders
-            where o.tenantId == tenantId && (status is () || o.status == status)
-            select o;
-    }
-
-    // Alternatively, bind a specific header directly using the \`@http:Header\` annotation.
-    # Get an order by ID for the tenant making the request.
-    #
-    # + orderId - The order ID
-    # + tenantId - The tenant ID, bound from the \`x-tenant-id\` HTTP header
-    # + return - The order details
-    remote function getOrder(string orderId, @http:Header {name: "x-tenant-id"} string tenantId)
-            returns Order|error {
-        Order[] matching = from Order o in orders
-            where o.id == orderId && o.tenantId == tenantId
-            select o;
-        if matching.length() == 0 {
-            return error(string \`Order \${orderId} not found for tenant \${tenantId}\`);
-        }
-        return matching[0];
+service /inventory on new ai:Listener(8080) {
+    // No tracing code is needed. When tracing is enabled, each request, agent run, LLM call,
+    // and tool call is recorded as a span and published to Jaeger.
+    resource function post chat(@http:Payload ai:ChatReqMessage request)
+            returns ai:ChatRespMessage|error {
+        string response = check inventoryAgent.run(request.message, request.sessionId);
+        return {message: response};
     }
 }
 `,
+  `[ballerina.observe]
+tracingEnabled = true
+tracingProvider = "jaeger"
+
+[ballerinax.jaeger]
+agentHostname = "localhost"
+agentPort = 4317
+`,
 ];
 
-export function McpServiceHttpRequestBinding({ codeSnippets }) {
+export function AiAgentTracingJaeger({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -75,35 +66,75 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Model Context Protocol (MCP) tools with HTTP request binding</h1>
+      <h1>Publish agent traces to Jaeger</h1>
 
       <p>
-        MCP tools defined as remote methods of an{" "}
-        <code>mcp:StreamableHttpService</code> receive the arguments provided by
-        the AI client. Tools often need information from the underlying HTTP
-        request too, such as tenant identifiers, correlation IDs, or
-        authorization headers set by a gateway.
+        The <code>ballerina/ai</code> module records the execution of an agent
+        as OpenTelemetry spans that follow the OpenTelemetry semantic
+        conventions for generative AI. The creation of an agent is recorded as a{" "}
+        <code>create_agent</code> span, and each run as an{" "}
+        <code>invoke_agent</code> span with a <code>chat</code> span for each
+        LLM call and an <code>execute_tool</code> span for each tool call as its
+        children. The spans carry <code>gen_ai.*</code> attributes, such as the
+        agent name, the model, the token usage, and the tool arguments and
+        results. When tracing is enabled, the spans are published to the
+        configured trace provider, such as{" "}
+        <a href="https://www.jaegertracing.io/">Jaeger</a>, together with the
+        spans of the HTTP requests that the agent serves and makes.
       </p>
 
       <p>
-        Tool remote methods can additionally bind HTTP request information: an{" "}
-        <code>http:Headers</code> parameter, an <code>http:Request</code>{" "}
-        parameter, or <code>@http:Header</code> annotated parameters. These
-        parameters are excluded from the tool’s input schema, so they are never
-        provided by the AI client and are instead populated from the incoming
-        request.
+        To publish the traces to Jaeger, import the{" "}
+        <code>ballerinax/jaeger</code> module, build the program with
+        observability included, and enable tracing with the <code>jaeger</code>{" "}
+        provider in the <code>Config.toml</code> file. No tracing code is needed
+        in the program.
       </p>
 
       <p>
-        This example demonstrates an MCP server whose tools use the{" "}
-        <code>x-tenant-id</code> HTTP header to scope the data returned to the
-        tenant making the request.
+        This example demonstrates how to publish the traces of an agent exposed
+        as a chat service to Jaeger.
       </p>
+
+      <blockquote>
+        <p>
+          Note: Start Jaeger before running this example. For example, run it
+          with Docker as follows, which exposes the OpenTelemetry (OTLP) gRPC
+          endpoint on port <code>4317</code> and the Jaeger UI on port{" "}
+          <code>16686</code>.
+        </p>
+      </blockquote>
+
+      <blockquote></blockquote>
+
+      <blockquote>
+        <p>
+          <code>
+            docker run -d -p 16686:16686 -p 4317:4317
+            jaegertracing/jaeger:latest
+          </code>
+        </p>
+      </blockquote>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default model provider implementation. To
+          generate the necessary configuration, open up the VS Code command
+          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+          Alternatively, to use your own keys, use the relevant{" "}
+          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
+          implementation.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/mcp/latest/">
-          <code>ballerina/mcp</code> module
+        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+          <code>ballerina/ai</code> module
         </a>
         .
       </p>
@@ -118,7 +149,7 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mcp-service-http-request-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ai-agent-tracing-jaeger",
                 "_blank",
               );
             }}
@@ -192,7 +223,103 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>Run the service by executing the command below.</p>
+      <p>
+        Add the following configuration to the <code>Config.toml</code> file.
+        The <code>[ballerinax.jaeger]</code> section sets the host and the port
+        of the OTLP gRPC endpoint of Jaeger.
+      </p>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/ai-agent-tracing-jaeger",
+                "_blank",
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 "
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 "
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <p>
+        Run the service with the <code>--observability-included</code> build
+        option. In a Ballerina package, set{" "}
+        <code>observabilityIncluded = true</code> under{" "}
+        <code>[build-options]</code> in the <code>Ballerina.toml</code> file
+        instead.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -247,17 +374,14 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run mcp_service_http_request_binding.bal`}</span>
+              <span>{`\$ bal run --observability-included ai_agent_tracing_jaeger.bal`}</span>
+              <span>{`ballerina: started publishing traces to Jaeger on localhost:4317`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>
-        Invoke the service using the cURL commands below. The tenant is
-        identified by the <code>x-tenant-id</code> header, which is not part of
-        the tool arguments.
-      </p>
+      <p>Invoke the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -312,20 +436,22 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -H "x-tenant-id: acme" -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"getOrders","arguments":{"status":"shipped"}}}'`}</span>
-              <span>{`{"jsonrpc":"2.0", "id":1, "result":{"content":[{"type":"text", "text":"[{\\"id\\":\\"ORD-1001\\",\\"tenantId\\":\\"acme\\",\\"status\\":\\"shipped\\",\\"total\\":120.50}]"}]}}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -H "x-tenant-id: globex" -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"getOrder","arguments":{"orderId":"ORD-2001"}}}'`}</span>
-              <span>{`{"jsonrpc":"2.0", "id":2, "result":{"content":[{"type":"text", "text":"{\\"id\\":\\"ORD-2001\\",\\"tenantId\\":\\"globex\\",\\"status\\":\\"shipped\\",\\"total\\":540.00}"}]}}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -X POST http://localhost:9092/mcp -H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"getOrder","arguments":{"orderId":"ORD-2001"}}}'`}</span>
-              <span>{`{"jsonrpc":"2.0", "id":3, "error":{"code":-32602, "message":"Failed to call tool 'getOrder': no header value found for 'x-tenant-id'"}}`}</span>
+              <span>{`\$ curl -X POST http://localhost:8080/inventory/chat -H "Content-Type: application/json" -d '{"sessionId": "session-1", "message": "Is product P-100 running low, and is more stock on the way?"}'`}</span>
+              <span>{`{"message":"Product P-100 has a stock level of 3, which is low. However, there are 50 units on order from suppliers, so more stock is on the way."}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Open the Jaeger UI at{" "}
+        <a href="http://localhost:16686">http://localhost:16686</a> and select
+        the <code>/inventory</code> service to view the trace. The{" "}
+        <code>invoke_agent Inventory Assistant</code> span contains a{" "}
+        <code>chat gpt-4o-mini</code> span for each LLM call, and the{" "}
+        <code>execute_tool getStockLevel</code> and{" "}
+        <code>execute_tool getUnitsOnOrder</code> spans for the tool calls.
+      </p>
 
       <h2>Related links</h2>
 
@@ -333,16 +459,8 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/mcp-service/">The MCP service example</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/mcp-service-security/">
-              The MCP service security example
+            <a href="/learn/by-example/ai-agent-execution-trace/">
+              The Agent execution trace example
             </a>
           </span>
         </li>
@@ -351,7 +469,39 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/mcp-client/">The MCP client example</a>
+            <a href="/learn/by-example/ai-agent-evaluation/">
+              The Agent evaluation example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/tracing/">
+              The Distributed tracing example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/supported-observability-tools-and-platforms/jaeger/">
+              Observe tracing using Jaeger
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://wso2.com/integration-platform/docs/genai/develop/agents/observability">
+              WSO2 Integration Platform: Observability
+            </a>
           </span>
         </li>
       </ul>
@@ -360,8 +510,8 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP service with request metadata"
-            href="/learn/by-example/mcp-service-with-request-metadata/"
+            title="Agent execution trace"
+            href="/learn/by-example/ai-agent-execution-trace/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -388,7 +538,7 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service with request metadata
+                  Agent execution trace
                 </span>
               </div>
             </div>
@@ -396,8 +546,8 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="MCP service security"
-            href="/learn/by-example/mcp-service-security/"
+            title="Agent evaluation"
+            href="/learn/by-example/ai-agent-evaluation/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -407,7 +557,7 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service security
+                  Agent evaluation
                 </span>
               </div>
               <svg

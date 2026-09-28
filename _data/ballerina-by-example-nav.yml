@@ -2068,47 +2068,8 @@ sublinks:
           - title: Chat client
             id: 6
             url: ai-chat-client
-          - title: Deploy an agent from an AFM file
-            id: 7
-            url: ai-agent-from-afm
-      - title: MCP service
-        id: 3
-        sublinks:
-          - title: MCP service
-            id: 1
-            url: mcp-service
-          - title: MCP advanced service
-            id: 2
-            url: mcp-service-advanced
-          - title: MCP advanced service with request metadata
-            id: 3
-            url: mcp-service-with-request-metadata
-          - title: MCP tools with HTTP request binding
-            id: 4
-            url: mcp-service-http-request-binding
-          - title: MCP service security
-            id: 5
-            url: mcp-service-security
-      - title: MCP client
-        id: 4
-        sublinks:
-          - title: MCP client
-            id: 1
-            url: mcp-client
-          - title: MCP client with request metadata
-            id: 2
-            url: mcp-client-with-request-metadata
-      - title: Agents with MCP tools
-        id: 5
-        sublinks:
-          - title: Agent with MCP integration
-            id: 1
-            url: ai-agent-mcp-integration
-          - title: Passing context to MCP tools
-            id: 2
-            url: ai-agent-mcp-context
       - title: Agent memory
-        id: 6
+        id: 3
         sublinks:
           - title: Agent with in-memory short-term memory
             id: 1
@@ -2120,13 +2081,25 @@ sublinks:
             id: 3
             url: ai-agent-memory-overflow-handling
       - title: Agent ID
-        id: 7
+        id: 4
         sublinks:
           - title: Agent ID
             id: 1
             url: ai-agent-id
+      - title: Agent tracing and evaluation
+        id: 5
+        sublinks:
+          - title: Agent execution trace
+            id: 1
+            url: ai-agent-execution-trace
+          - title: Publish agent traces to Jaeger
+            id: 2
+            url: ai-agent-tracing-jaeger
+          - title: Agent evaluation
+            id: 3
+            url: ai-agent-evaluation
       - title: Advanced agent features
-        id: 8
+        id: 6
         sublinks:
           - title: Agent with tool kits
             id: 1
@@ -2137,17 +2110,56 @@ sublinks:
           - title: Agent tool loading strategy
             id: 3
             url: ai-agent-tool-loading-strategy
-      - title: Agent tracing and evaluation
+      - title: Multi-agent systems
+        id: 7
+        sublinks:
+          - title: Agent as a tool
+            id: 1
+            url: ai-agent-as-tool
+          - title: Agent definitions
+            id: 2
+            url: ai-agent-definitions
+      - title: MCP service
+        id: 8
+        sublinks:
+          - title: MCP service
+            id: 1
+            url: mcp-service
+          - title: MCP advanced service
+            id: 2
+            url: mcp-service-advanced
+          - title: MCP service with request metadata
+            id: 3
+            url: mcp-service-with-request-metadata
+          - title: MCP tools with HTTP request binding
+            id: 4
+            url: mcp-service-http-request-binding
+          - title: MCP service security
+            id: 5
+            url: mcp-service-security
+      - title: MCP client
         id: 9
         sublinks:
-          - title: Agent execution trace
+          - title: MCP client
             id: 1
-            url: ai-agent-execution-trace
-          - title: Agent evaluation
+            url: mcp-client
+          - title: MCP client with request metadata
             id: 2
-            url: ai-agent-evaluation
-      - title: RAG fundamentals
+            url: mcp-client-with-request-metadata
+      - title: Agents with MCP tools
         id: 10
+        sublinks:
+          - title: Agent with MCP integration
+            id: 1
+            url: ai-agent-mcp-integration
+          - title: Agent with advanced MCP integration
+            id: 2
+            url: ai-agent-mcp-integration-advanced
+          - title: Passing context to MCP tools
+            id: 3
+            url: ai-agent-mcp-context
+      - title: RAG fundamentals
+        id: 11
         sublinks:
           - title: Load documents
             id: 1
@@ -2183,7 +2195,7 @@ sublinks:
             id: 11
             url: rag-augment-prompt
       - title: RAG ingestion
-        id: 11
+        id: 12
         sublinks:
           - title: Ingest into an in-memory vector store
             id: 1
@@ -2210,7 +2222,7 @@ sublinks:
             id: 8
             url: rag-openrouter-ingestion
       - title: RAG query
-        id: 12
+        id: 13
         sublinks:
           - title: Retrieve from an in-memory vector store
             id: 1
@@ -2237,7 +2249,7 @@ sublinks:
             id: 8
             url: rag-query-with-metadata-filters
       - title: Agentic RAG
-        id: 13
+        id: 14
         sublinks:
           - title: Agentic RAG with WSO2 Cloud
             id: 1
@@ -2246,7 +2258,7 @@ sublinks:
             id: 2
             url: agentic-rag-with-pinecone-vector-store
       - title: Natural expressions
-        id: 14
+        id: 15
         sublinks:
           - title: Natural expressions
             id: 1

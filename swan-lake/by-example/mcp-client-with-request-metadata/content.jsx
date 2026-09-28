@@ -9,30 +9,56 @@ export const codeSnippetData = [
 import ballerina/mcp;
 
 public function main() returns error? {
-    // Connect to the MCP server from the MCP advanced service with request metadata example.
+    // Connect to the MCP server from the MCP service with request metadata example.
     mcp:StreamableHttpClient mcpClient = check new ("http://localhost:9090/mcp");
     check mcpClient->initialize({name: "Support MCP Client", version: "1.0.0"});
 
-    // The \`getOpenTickets\` tool takes no arguments. The tenant is not part of the tool's input
-    // schema; it is sent in the \`_meta\` field of the request instead. \`mcp:Meta\` is an open
-    // record, so the client can attach its own fields to it.
+    // The \`mcp:Meta?\` parameters of the tools are not part of their input schemas, so only the
+    // tool arguments are listed.
+    mcp:ListToolsResult toolsResult = check mcpClient->listTools();
+    foreach mcp:ToolDefinition tool in toolsResult.tools {
+        string[] arguments = (tool.inputSchema.properties ?: {}).keys();
+        io:println(string \`Tool: \${tool.name}, arguments: \${arguments.toString()}\`);
+    }
+
+    // The tenant is sent in the \`_meta\` field of the request instead of as a tool argument.
+    // \`mcp:Meta\` is an open record, so the client can attach its own fields to it.
     mcp:CallToolResult result = check mcpClient->callTool({
         name: "getOpenTickets",
         _meta: {"tenantId": "acme"}
     });
-    foreach mcp:ContentBlock content in result.content {
-        if content is mcp:TextContent {
-            io:println("Open tickets of tenant 'acme': ", content.text);
-        }
-    }
+    printResult("Open tickets of tenant 'acme'", result);
 
-    // A call without the metadata is rejected by the service.
-    mcp:CallToolResult|mcp:ClientError missingMetadata = mcpClient->callTool({name: "getOpenTickets"});
-    if missingMetadata is mcp:ClientError {
-        io:println("Call without metadata failed: ", missingMetadata.message());
-    }
+    // A call can carry both the tool arguments and the request metadata.
+    result = check mcpClient->callTool({
+        name: "createTicket",
+        arguments: {"subject": "Invoices are not emailed", "priority": "high"},
+        _meta: {"tenantId": "acme"}
+    });
+    printResult("Created ticket", result);
+
+    // A tool that does not read the request metadata is called with the arguments only.
+    result = check mcpClient->callTool({
+        name: "getSupportHours",
+        arguments: {"region": "EU"}
+    });
+    printResult("Support hours", result);
+
+    // Without the metadata, the tool returns an error. An error returned by a tool is reported
+    // as a result with the \`isError\` field set to \`true\`, rather than as a client error.
+    result = check mcpClient->callTool({name: "getOpenTickets"});
+    printResult("Call without metadata", result);
 
     check mcpClient->close();
+}
+
+function printResult(string label, mcp:CallToolResult result) {
+    string status = result.isError == true ? "failed" : "succeeded";
+    foreach mcp:ContentBlock content in result.content {
+        if content is mcp:TextContent {
+            io:println(string \`\${label} (\${status}): \${content.text}\`);
+        }
+    }
 }
 `,
 ];
@@ -62,23 +88,28 @@ export function McpClientWithRequestMetadata({ codeSnippets }) {
         via the <code>_meta</code> field of <code>mcp:CallToolParams</code>. The{" "}
         <code>mcp:Meta</code> type is an open record, so the client can attach
         its own fields in addition to the standard <code>progressToken</code>{" "}
-        field. On the server side, a service declared with the{" "}
-        <code>mcp:StreamableHttpAdvancedService</code> type reads the metadata
-        from the <code>mcp:CallToolParams</code> it receives in the{" "}
-        <code>onCallTool</code> method.
+        field. On the server side, a tool of an{" "}
+        <code>mcp:StreamableHttpService</code> reads the metadata through an{" "}
+        <code>mcp:Meta?</code> parameter, which is not part of the tool input
+        schema.
       </p>
 
       <p>
-        This example demonstrates how to call a tool with request metadata that
-        identifies the calling tenant, and shows that the same call is rejected
-        when the metadata is missing.
+        This example lists the tools of the server, which shows that the{" "}
+        <code>mcp:Meta?</code> parameters of the tools are not part of their
+        input schemas. It then calls a tool with request metadata only, a tool
+        with both arguments and request metadata, and a tool with arguments
+        only, and shows that a call fails when the metadata that the tool
+        requires is missing. An error returned by a tool is reported as an{" "}
+        <code>mcp:CallToolResult</code> with the <code>isError</code> field set
+        to <code>true</code>, rather than as an <code>mcp:ClientError</code>.
       </p>
 
       <blockquote>
         <p>
           Note: Start the MCP server from the{" "}
           <a href="/learn/by-example/mcp-service-with-request-metadata/">
-            MCP advanced service with request metadata
+            MCP service with request metadata
           </a>{" "}
           example before running this example.
         </p>
@@ -230,8 +261,13 @@ export function McpClientWithRequestMetadata({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run mcp_client_with_request_metadata.bal`}</span>
-              <span>{`Open tickets of tenant 'acme': [{"id":"TCK-1", "tenantId":"acme", "subject":"Payment gateway timeout"}, {"id":"TCK-3", "tenantId":"acme", "subject":"Report export is empty"}]`}</span>
-              <span>{`Call without metadata failed: Received JSON-RPC error from server: {"jsonrpc":"2.0", "id":3, "error":{"code":-32603, "message":"Failed to call tool 'getOpenTickets': The 'tenantId' metadata is missing from the request"}}`}</span>
+              <span>{`Tool: getOpenTickets, arguments: []`}</span>
+              <span>{`Tool: createTicket, arguments: ["subject","priority"]`}</span>
+              <span>{`Tool: getSupportHours, arguments: ["region"]`}</span>
+              <span>{`Open tickets of tenant 'acme' (succeeded): [{"id":"TCK-1","tenantId":"acme","subject":"Payment gateway timeout","priority":"high"},{"id":"TCK-3","tenantId":"acme","subject":"Report export is empty","priority":"low"}]`}</span>
+              <span>{`Created ticket (succeeded): {"id":"TCK-4","tenantId":"acme","subject":"Invoices are not emailed","priority":"high"}`}</span>
+              <span>{`Support hours (succeeded): {"region":"EU","hours":"08:00-18:00 CET"}`}</span>
+              <span>{`Call without metadata (failed): The 'tenantId' metadata is missing from the request`}</span>
             </code>
           </pre>
         </Col>
@@ -244,7 +280,7 @@ export function McpClientWithRequestMetadata({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/mcp-service-with-request-metadata/">
-              The MCP advanced service with request metadata example
+              The MCP service with request metadata example
             </a>
           </span>
         </li>

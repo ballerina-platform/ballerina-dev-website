@@ -396,8 +396,8 @@ export function AiAgentLocalTools({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP client with request metadata"
-            href="/learn/by-example/mcp-client-with-request-metadata/"
+            title="Direct LLM calls with a local model using Ollama"
+            href="/learn/by-example/direct-llm-calls-with-ollama/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -424,7 +424,7 @@ export function AiAgentLocalTools({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP client with request metadata
+                  Direct LLM calls with a local model using Ollama
                 </span>
               </div>
             </div>

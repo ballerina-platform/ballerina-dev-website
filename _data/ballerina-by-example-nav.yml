@@ -1861,20 +1861,17 @@ sublinks:
           - title: Log file rotation
             id: 5
             url: log-file-rotation
-          - title: Log file rotation
-            id: 6
-            url: log-file-rotation
           - title: Child loggers with context
-            id: 7
+            id: 6
             url: child-loggers-with-context
           - title: Logger from configuration
-            id: 8
+            id: 7
             url: logger-from-config
           - title: Custom logger
-            id: 9
+            id: 8
             url: custom-logger
           - title: Sensitive data logging
-            id: 10
+            id: 9
             url: sensitive-data-logging
       - title: EDI
         id: 9
@@ -2050,8 +2047,32 @@ sublinks:
           - title: Direct LLM calls with a local model using Ollama
             id: 5
             url: direct-llm-calls-with-ollama
-      - title: MCP service
+      - title: AI agents
         id: 2
+        sublinks:
+          - title: Agent with local tools
+            id: 1
+            url: ai-agent-local-tools
+          - title: Passing context to agent tools
+            id: 2
+            url: ai-agent-tool-context
+          - title: Agent with external endpoint integration
+            id: 3
+            url: ai-agent-external-endpoint-integration
+          - title: Human-in-the-loop tool approval
+            id: 4
+            url: ai-agent-human-in-the-loop
+          - title: Chat agents
+            id: 5
+            url: chat-agents
+          - title: Chat client
+            id: 6
+            url: ai-chat-client
+          - title: Deploy an agent from an AFM file
+            id: 7
+            url: ai-agent-from-afm
+      - title: MCP service
+        id: 3
         sublinks:
           - title: MCP service
             id: 1
@@ -2069,7 +2090,7 @@ sublinks:
             id: 5
             url: mcp-service-security
       - title: MCP client
-        id: 3
+        id: 4
         sublinks:
           - title: MCP client
             id: 1
@@ -2077,57 +2098,6 @@ sublinks:
           - title: MCP client with request metadata
             id: 2
             url: mcp-client-with-request-metadata
-      - title: AI agents
-        id: 4
-        sublinks:
-          - title: Agent with local tools
-            id: 1
-            url: ai-agent-local-tools
-          - title: Passing context to agent tools
-            id: 2
-            url: ai-agent-tool-context
-          - title: Agent with external endpoint integration
-            id: 3
-            url: ai-agent-external-endpoint-integration
-          - title: Chat agents
-            id: 4
-            url: chat-agents
-          - title: Agent with tool kits
-            id: 5
-            url: ai-agent-tool-kit
-          - title: Agent with in-memory short-term memory
-            id: 6
-            url: ai-agent-memory
-          - title: Agent with persistent memory
-            id: 7
-            url: ai-agent-persistent-memory
-          - title: Memory overflow handling
-            id: 8
-            url: ai-agent-memory-overflow-handling
-          - title: Human-in-the-loop tool approval
-            id: 9
-            url: ai-agent-human-in-the-loop
-          - title: Agent ID
-            id: 10
-            url: ai-agent-id
-          - title: Agent with typed input and output
-            id: 11
-            url: ai-agent-typed-input-output
-          - title: Agent tool loading strategy
-            id: 12
-            url: ai-agent-tool-loading-strategy
-          - title: Chat client
-            id: 13
-            url: ai-chat-client
-          - title: Agent execution trace
-            id: 14
-            url: ai-agent-execution-trace
-          - title: Agent evaluation
-            id: 15
-            url: ai-agent-evaluation
-          - title: Deploy an agent from an AFM file
-            id: 16
-            url: ai-agent-from-afm
       - title: Agents with MCP tools
         id: 5
         sublinks:
@@ -2137,8 +2107,47 @@ sublinks:
           - title: Passing context to MCP tools
             id: 2
             url: ai-agent-mcp-context
-      - title: RAG fundamentals
+      - title: Agent memory
         id: 6
+        sublinks:
+          - title: Agent with in-memory short-term memory
+            id: 1
+            url: ai-agent-memory
+          - title: Agent with persistent memory
+            id: 2
+            url: ai-agent-persistent-memory
+          - title: Memory overflow handling
+            id: 3
+            url: ai-agent-memory-overflow-handling
+      - title: Agent ID
+        id: 7
+        sublinks:
+          - title: Agent ID
+            id: 1
+            url: ai-agent-id
+      - title: Advanced agent features
+        id: 8
+        sublinks:
+          - title: Agent with tool kits
+            id: 1
+            url: ai-agent-tool-kit
+          - title: Agent with typed input and output
+            id: 2
+            url: ai-agent-typed-input-output
+          - title: Agent tool loading strategy
+            id: 3
+            url: ai-agent-tool-loading-strategy
+      - title: Agent tracing and evaluation
+        id: 9
+        sublinks:
+          - title: Agent execution trace
+            id: 1
+            url: ai-agent-execution-trace
+          - title: Agent evaluation
+            id: 2
+            url: ai-agent-evaluation
+      - title: RAG fundamentals
+        id: 10
         sublinks:
           - title: Load documents
             id: 1
@@ -2174,7 +2183,7 @@ sublinks:
             id: 11
             url: rag-augment-prompt
       - title: RAG ingestion
-        id: 7
+        id: 11
         sublinks:
           - title: Ingest into an in-memory vector store
             id: 1
@@ -2201,7 +2210,7 @@ sublinks:
             id: 8
             url: rag-openrouter-ingestion
       - title: RAG query
-        id: 8
+        id: 12
         sublinks:
           - title: Retrieve from an in-memory vector store
             id: 1
@@ -2228,7 +2237,7 @@ sublinks:
             id: 8
             url: rag-query-with-metadata-filters
       - title: Agentic RAG
-        id: 9
+        id: 13
         sublinks:
           - title: Agentic RAG with WSO2 Cloud
             id: 1
@@ -2237,7 +2246,7 @@ sublinks:
             id: 2
             url: agentic-rag-with-pinecone-vector-store
       - title: Natural expressions
-        id: 10
+        id: 14
         sublinks:
           - title: Natural expressions
             id: 1

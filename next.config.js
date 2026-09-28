@@ -619,6 +619,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/by-example/sftp-service-send-file`,
         destination: `/${redirectBase}learn/by-example/sftp-caller`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/rag-with-in-memory-vector-store`,
+        destination: `/${redirectBase}learn/by-example/rag-in-memory-vector-store-retrieval`,
       }
     ];
   },

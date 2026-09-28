@@ -16,7 +16,7 @@ The [`ballerina/mcp`](https://central.ballerina.io/ballerina/mcp/latest) module 
 
 ## Expose tools as an MCP server
 
-Attach a service to an `mcp:StreamableHttpListener`. With the `mcp:Service` type, every `remote` method becomes an MCP tool: the tool description and input schema are generated from the method signature and its documentation comment, and the listener handles the `tools/list` and `tools/call` requests.
+Attach a service to an `mcp:StreamableHttpListener`. With the `mcp:StreamableHttpService` type, every `remote` method becomes an MCP tool: the tool description and input schema are generated from the method signature and its documentation comment, and the listener handles the `tools/list` and `tools/call` requests.
 
 ```ballerina
 import ballerina/mcp;
@@ -36,7 +36,7 @@ type ForecastItem record {|
 
 listener mcp:StreamableHttpListener mcpListener = new (9090);
 
-service mcp:Service /mcp on mcpListener {
+service mcp:StreamableHttpService /mcp on mcpListener {
 
     # Get current weather for a city.
     #
@@ -70,10 +70,10 @@ Each remote method becomes one MCP tool: `getCurrentWeather`, `getWeatherForecas
 
 > **Note:** `mcp:Listener` is deprecated in favor of `mcp:StreamableHttpListener`, which makes the transport explicit.
 
-For full control over tool listing and invocation, declare the service with the `mcp:AdvancedService` type and implement the `onListTools` and `onCallTool` remote methods. `onListTools` returns the tool definitions with their input schemas, and `onCallTool` receives the tool name and arguments and dispatches the call yourself. This is useful when the tools are defined dynamically or when the input schema must be hand-written.
+For full control over tool listing and invocation, declare the service with the `mcp:StreamableHttpAdvancedService` type and implement the `onListTools` and `onCallTool` remote methods. `onListTools` returns the tool definitions with their input schemas, and `onCallTool` receives the tool name and arguments and dispatches the call yourself. This is useful when the tools are defined dynamically or when the input schema must be hand-written.
 
 ```ballerina
-service mcp:AdvancedService /mcp on mcpListener {
+service mcp:StreamableHttpAdvancedService /mcp on mcpListener {
 
     isolated remote function onListTools() returns mcp:ListToolsResult|mcp:ServerError => {
         tools: [

@@ -5249,15 +5249,6 @@
         "needCentral": false
       },
       {
-        "name": "Log file rotation",
-        "url": "log-file-rotation",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes varying output and file creation",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
         "name": "Child loggers with context",
         "url": "child-loggers-with-context",
         "verifyBuild": true,
@@ -5806,8 +5797,78 @@
     ]
   },
   {
+    "title": "AI agents",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with local tools",
+        "url": "ai-agent-local-tools",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Passing context to agent tools",
+        "url": "ai-agent-tool-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent with external endpoint integration",
+        "url": "ai-agent-external-endpoint-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Human-in-the-loop tool approval",
+        "url": "ai-agent-human-in-the-loop",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and user input",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Chat agents",
+        "url": "chat-agents",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Chat client",
+        "url": "ai-chat-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the chat agent service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Deploy an agent from an AFM file",
+        "url": "ai-agent-from-afm",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Contains no Ballerina code; the agent is defined in an AFM file and run by an interpreter",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
     "title": "MCP service",
-    "column": 0,
+    "column": 1,
     "category": "Generative AI",
     "samples": [
       {
@@ -5855,7 +5916,7 @@
   },
   {
     "title": "MCP client",
-    "column": 0,
+    "column": 1,
     "category": "Generative AI",
     "samples": [
       {
@@ -5873,76 +5934,6 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires the MCP service to be running",
-        "disablePlayground": true,
-        "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "AI agents",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "Agent with local tools",
-        "url": "ai-agent-local-tools",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Passing context to agent tools",
-        "url": "ai-agent-tool-context",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent with external endpoint integration",
-        "url": "ai-agent-external-endpoint-integration",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": true
-      },
-      {
-        "name": "Chat agents",
-        "url": "chat-agents",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Human-in-the-loop tool approval",
-        "url": "ai-agent-human-in-the-loop",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and user input",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Chat client",
-        "url": "ai-chat-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires the chat agent service to be running",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Deploy an agent from an AFM file",
-        "url": "ai-agent-from-afm",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Contains no Ballerina code; the agent is defined in an AFM file and run by an interpreter",
         "disablePlayground": true,
         "needCentral": false
       }

@@ -344,8 +344,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Deploy an agent from an AFM file"
-            href="/learn/by-example/ai-agent-from-afm/"
+            title="MCP client with request metadata"
+            href="/learn/by-example/mcp-client-with-request-metadata/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -372,7 +372,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Deploy an agent from an AFM file
+                  MCP client with request metadata
                 </span>
               </div>
             </div>

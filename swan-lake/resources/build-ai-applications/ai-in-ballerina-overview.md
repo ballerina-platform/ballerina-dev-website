@@ -41,7 +41,7 @@ An `ai:Agent` runs a reasoning-action loop over a model provider: each iteration
 
 ### MCP
 
-The `ballerina/mcp` module implements both sides of the Model Context Protocol over the Streamable HTTP transport. Remote methods of an `mcp:Service` attached to an `mcp:StreamableHttpListener` are published as tools with schemas generated from the signatures and documentation, `mcp:AdvancedService` gives manual control over tool listing and invocation, and the service is secured with the standard HTTP listener and authentication configuration. `mcp:StreamableHttpClient` consumes tools from any MCP server, and `ai:McpToolKit` makes them available to an agent.
+The `ballerina/mcp` module implements both sides of the Model Context Protocol over the Streamable HTTP transport. Remote methods of an `mcp:StreamableHttpService` attached to an `mcp:StreamableHttpListener` are published as tools with schemas generated from the signatures and documentation, `mcp:StreamableHttpAdvancedService` gives manual control over tool listing and invocation, and the service is secured with the standard HTTP listener and authentication configuration. `mcp:StreamableHttpClient` consumes tools from any MCP server, and `ai:McpToolKit` makes them available to an agent.
 
 ### Observability and evaluation
 

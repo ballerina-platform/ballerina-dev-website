@@ -397,7 +397,7 @@ export function AiAgentToolKit({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chat agents" href="/learn/by-example/chat-agents/">
+          <Link title="Agent ID" href="/learn/by-example/ai-agent-id/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -423,7 +423,7 @@ export function AiAgentToolKit({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chat agents
+                  Agent ID
                 </span>
               </div>
             </div>
@@ -431,8 +431,8 @@ export function AiAgentToolKit({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with in-memory short-term memory"
-            href="/learn/by-example/ai-agent-memory/"
+            title="Agent with typed input and output"
+            href="/learn/by-example/ai-agent-typed-input-output/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -442,7 +442,7 @@ export function AiAgentToolKit({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with in-memory short-term memory
+                  Agent with typed input and output
                 </span>
               </div>
               <svg

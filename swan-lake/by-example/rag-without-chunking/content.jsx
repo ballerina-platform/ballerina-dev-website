@@ -29,14 +29,6 @@ public function main() returns error? {
     // The documents are stored as they are, one chunk per document.
     check knowledgeBase.ingest(faqs);
     io:println("Ingestion successful");
-
-    // Inspect what was stored: the number of entries equals the number of documents,
-    // and each entry is a complete FAQ entry.
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length(), " (documents ingested: ", faqs.length(), ")");
-    foreach ai:VectorMatch entry in entries {
-        io:println("- ", entry.chunk.content);
-    }
 }
 `,
 ];
@@ -65,8 +57,8 @@ export function RagWithoutChunking({ codeSnippets }) {
 
       <p>
         This example demonstrates a knowledge base with chunking disabled, where
-        each FAQ entry is embedded and stored as a whole. To retrieve from a
-        knowledge base and generate an answer, see the{" "}
+        each FAQ entry is embedded and stored as a whole. It covers ingestion
+        only. To retrieve from a knowledge base, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}
@@ -213,10 +205,6 @@ export function RagWithoutChunking({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_without_chunking.bal`}</span>
               <span>{`Ingestion successful`}</span>
-              <span>{`Chunks stored: 3 (documents ingested: 3)`}</span>
-              <span>{`- Q: How many days of annual leave do I get? A: Full-time employees get 20 days per year.`}</span>
-              <span>{`- Q: Do I need a medical certificate for sick leave? A: Only for absences longer than two days.`}</span>
-              <span>{`- Q: How do I submit an expense report? A: Submit it through the finance portal within 30 days.`}</span>
             </code>
           </pre>
         </Col>

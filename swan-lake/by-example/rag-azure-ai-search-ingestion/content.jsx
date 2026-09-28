@@ -101,7 +101,7 @@ export function RagAzureAiSearchIngestion({ codeSnippets }) {
       <p>
         This example demonstrates creating a knowledge base with a new index
         definition and ingesting documents into it, using Azure OpenAI for the
-        embeddings. To query the index, see the{" "}
+        embeddings. It covers ingestion only. For the query part, see the{" "}
         <a href="/learn/by-example/rag-azure-ai-search-retrieval/">
           Retrieve from Azure AI Search
         </a>{" "}

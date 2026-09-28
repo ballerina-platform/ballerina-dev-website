@@ -60,7 +60,7 @@ export function RagEmbeddings({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Generate embeddings</h1>
+      <h1>Generate embeddings with the default WSO2 embedding provider</h1>
 
       <p>
         An embedding provider (<code>ai:EmbeddingProvider</code>) converts text
@@ -71,16 +71,21 @@ export function RagEmbeddings({ codeSnippets }) {
       </p>
 
       <p>
-        This example demonstrates how to use the default embedding provider to
-        embed a document and a batch of candidate texts, and compare the
-        similarity of each candidate with the document. To use embeddings in a
-        knowledge base for RAG, see the{" "}
+        This example demonstrates how to use the default WSO2 embedding provider
+        (<code>ai:getDefaultEmbeddingProvider()</code>) to embed a document and
+        a batch of candidate texts, and compare the similarity of each candidate
+        with the document. To use embeddings in a knowledge base for RAG, see
+        the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}
         example. To use a specific provider with your own keys, see the{" "}
         <a href="/learn/by-example/rag-embedding-provider/">
           Generate embeddings with a specific provider
+        </a>{" "}
+        example. To implement your own provider, see the{" "}
+        <a href="/learn/by-example/rag-custom-embedding-provider/">
+          Implement a custom embedding provider
         </a>{" "}
         example.
       </p>

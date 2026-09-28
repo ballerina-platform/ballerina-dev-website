@@ -6,45 +6,97 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/ai;
+import ballerina/http;
 import ballerina/io;
 
-// Use the default embedding provider (with configuration added via a Ballerina VS Code command).
-final ai:EmbeddingProvider embeddingProvider = check ai:getDefaultEmbeddingProvider();
+// The embeddings service to use. The example uses a local Ollama server, which exposes an
+// OpenAI-compatible embeddings API, with the \`nomic-embed-text\` model.
+configurable string embeddingServiceUrl = "http://localhost:11434/v1";
+configurable string embeddingModel = "nomic-embed-text";
 
-// Define the chunker to use when documents are ingested. Instead of the default \`ai:AUTO\`
-// configuration, which selects a chunker based on the document type, this example uses a
-// generic recursive chunker that splits by sentences into chunks of at most 120 characters.
-// Consecutive chunks can share up to 20 characters of overlap, made of whole sentences, to
-// preserve context.
-final ai:Chunker chunker = new ai:GenericRecursiveChunker(maxChunkSize = 120, maxOverlapSize = 20,
-        strategy = ai:SENTENCE);
+# The response of an OpenAI-compatible embeddings API.
+type EmbeddingResponse record {
+    # The embeddings, one for each input
+    record {
+        # The position of the input that the embedding belongs to
+        int index;
+        # The embedding vector
+        float[] embedding;
+    }[] data;
+};
 
-// Define the vector store. The example uses the in-memory vector store; any \`ai:VectorStore\`
-// implementation can be used instead.
-final ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
+// A custom embedding provider that implements the \`ai:EmbeddingProvider\` type. It calls
+// the \`/embeddings\` endpoint of any service that follows the OpenAI embeddings API, such as
+// Ollama, vLLM, or an internal embeddings gateway.
+isolated client class OpenAiCompatibleEmbeddingProvider {
+    *ai:EmbeddingProvider;
 
-// Create the knowledge base with the vector store, the embedding provider,
-// and the configured chunker. Any \`ai:Chunker\` implementation, including your own, can be used.
-final ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(vectorStore, embeddingProvider, chunker);
+    private final http:Client embeddingClient;
+    private final string model;
+
+    isolated function init(string serviceUrl, string model) returns ai:Error? {
+        http:Client|error embeddingClient = new (serviceUrl);
+        if embeddingClient is error {
+            return error ai:Error("Failed to initialize the embeddings client", embeddingClient);
+        }
+        self.embeddingClient = embeddingClient;
+        self.model = model;
+    }
+
+    // Converts a single chunk into an embedding.
+    isolated remote function embed(ai:Chunk chunk) returns ai:Embedding|ai:Error {
+        ai:Embedding[] embeddings = check self->batchEmbed([chunk]);
+        return embeddings[0];
+    }
+
+    // Converts a batch of chunks into embeddings with a single request.
+    isolated remote function batchEmbed(ai:Chunk[] chunks) returns ai:Embedding[]|ai:Error {
+        string[] input = [];
+        foreach ai:Chunk chunk in chunks {
+            anydata content = chunk.content;
+            if content !is string {
+                return error ai:Error("Only text chunks are supported");
+            }
+            input.push(content);
+        }
+        EmbeddingResponse|error response = self.embeddingClient->/embeddings.post({model: self.model, input});
+        if response is error {
+            return error ai:Error("Failed to generate embeddings: " + response.message(), response);
+        }
+        // Return the embeddings in the order of the inputs.
+        return from var item in response.data
+            order by item.index
+            select item.embedding;
+    }
+}
 
 public function main() returns error? {
-    ai:TextDocument policy = {
-        metadata: {fileName: "leave_policy.txt"},
-        content: string \`Full-time employees are entitled to 20 days of paid annual leave per year.
-Leave requests must be submitted at least one week in advance.
-Employees are entitled to 10 days of paid sick leave per year.
-A medical certificate is required for absences longer than two consecutive days.
-Parental leave is 12 weeks and must be requested one month in advance.\`
-    };
+    ai:EmbeddingProvider embeddingProvider =
+        check new OpenAiCompatibleEmbeddingProvider(embeddingServiceUrl, embeddingModel);
 
-    // The document is split by the configured chunker before the chunks are embedded and stored.
-    check knowledgeBase.ingest(policy);
-    io:println("Ingestion successful");
+    // Use the custom provider directly.
+    ai:Embedding embedding = check embeddingProvider->embed(<ai:TextChunk>{content: "Hello, Ballerina!"});
+    if embedding is ai:Vector {
+        io:println("Embedding dimensions: ", embedding.length());
+    }
+
+    // Or pass it to a knowledge base, like any other embedding provider. The knowledge base
+    // uses it to embed the chunks when ingesting, and the query when retrieving.
+    ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
+    ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(vectorStore, embeddingProvider);
+    check knowledgeBase.ingest([
+        <ai:TextDocument>{content: "Full-time employees get 20 days of paid annual leave per year."},
+        <ai:TextDocument>{content: "Expense claims must be submitted within 30 days."},
+        <ai:TextDocument>{content: "The office is closed on public holidays."}
+    ]);
+
+    ai:QueryMatch[] matches = check knowledgeBase.retrieve("How much vacation do I get?", 1);
+    io:println("Best match: ", matches[0].chunk.content);
 }
 `,
 ];
 
-export function RagWithConfiguredChunker({ codeSnippets }) {
+export function RagCustomEmbeddingProvider({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -54,42 +106,48 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Ingest with a configured chunker</h1>
+      <h1>Implement a custom embedding provider</h1>
 
       <p>
-        By default, an <code>ai:VectorKnowledgeBase</code> chunks ingested
-        documents with the <code>ai:AUTO</code> configuration, which selects a
-        chunker based on the type of each document. When you need control over
-        the chunk size, overlap, or splitting strategy, pass a configured{" "}
-        <code>ai:Chunker</code> when creating the knowledge base instead.
-        Ballerina provides <code>ai:GenericRecursiveChunker</code>,{" "}
-        <code>ai:MarkdownChunker</code>, and <code>ai:HtmlChunker</code>, and
-        you can also implement the <code>ai:Chunker</code> type yourself.
+        An embedding provider (<code>ai:EmbeddingProvider</code>) converts
+        chunks into vector embeddings. Modules such as{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          ballerinax/ai.openai
+        </a>{" "}
+        and{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+          ballerinax/ai.azure
+        </a>{" "}
+        provide implementations for their services. To use an embedding model
+        that has no provider module, such as a self-hosted model or an internal
+        embeddings gateway, implement the <code>ai:EmbeddingProvider</code> type
+        yourself.
       </p>
 
       <p>
-        This example demonstrates a knowledge base that uses a generic recursive
-        chunker with a sentence-based strategy and a small chunk size, so that
-        each sentence is stored as a separate chunk. It covers ingestion only.
-        To retrieve from a knowledge base, see the{" "}
-        <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
-          Retrieve from an in-memory vector store
-        </a>{" "}
-        example.
+        An <code>ai:EmbeddingProvider</code> is a client object with two remote
+        methods: <code>embed</code>, which converts a single chunk into an{" "}
+        <code>ai:Embedding</code>, and <code>batchEmbed</code>, which converts a
+        batch of chunks in one call. A custom provider can be used anywhere an
+        embedding provider is expected, including in an{" "}
+        <code>ai:VectorKnowledgeBase</code>, which uses it both to embed the
+        chunks when ingesting and to embed the query when retrieving.
+      </p>
+
+      <p>
+        This example demonstrates a custom embedding provider for services that
+        follow the OpenAI embeddings API, used with a local{" "}
+        <a href="https://ollama.com">Ollama</a> server, and plugs it into a
+        knowledge base.
       </p>
 
       <blockquote>
         <p>
-          Note: This example uses the default embedding provider implementation.
-          To generate the necessary configuration, open up the VS Code command
-          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-          <code>command</code> + <code>shift</code> + <code>P</code>), and run
-          the <code>Configure default WSO2 Model Provider</code> command to add
-          your configuration to the <code>Config.toml</code> file. If not
-          already logged in, log in to the Ballerina Copilot when prompted.
-          Alternatively, to use your own keys, use the relevant{" "}
-          <code>ballerinax/ai.&lt;provider&gt;</code> embedding provider
-          implementation.
+          Note: This example requires a running Ollama server with the{" "}
+          <code>nomic-embed-text</code> model (
+          <code>ollama pull nomic-embed-text</code>). To use another
+          OpenAI-compatible service, set <code>embeddingServiceUrl</code> and{" "}
+          <code>embeddingModel</code> in the <code>Config.toml</code> file.
         </p>
       </blockquote>
 
@@ -216,8 +274,9 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run rag_with_configured_chunker.bal`}</span>
-              <span>{`Ingestion successful`}</span>
+              <span>{`\$ bal run rag_custom_embedding_provider.bal`}</span>
+              <span>{`Embedding dimensions: 768`}</span>
+              <span>{`Best match: Full-time employees get 20 days of paid annual leave per year.`}</span>
             </code>
           </pre>
         </Col>
@@ -229,8 +288,9 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-document-chunking/">
-              The Chunk documents example
+            <a href="/learn/by-example/rag-embeddings/">
+              The Generate embeddings with the default WSO2 embedding provider
+              example
             </a>
           </span>
         </li>
@@ -239,8 +299,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-with-custom-chunker/">
-              The Implement a custom chunker example
+            <a href="/learn/by-example/rag-embedding-provider/">
+              The Generate embeddings with a specific provider example
             </a>
           </span>
         </li>
@@ -249,8 +309,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-without-chunking/">
-              The Ingest without chunking example
+            <a href="/learn/by-example/rag-custom-vector-store/">
+              The Implement a custom vector store example
             </a>
           </span>
         </li>
@@ -259,8 +319,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
-              The Retrieve from an in-memory vector store example
+            <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+              The <code>ballerina/ai</code> module
             </a>
           </span>
         </li>
@@ -270,8 +330,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Ingest without chunking"
-            href="/learn/by-example/rag-without-chunking/"
+            title="Generate embeddings with a specific provider"
+            href="/learn/by-example/rag-embedding-provider/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -298,7 +358,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ingest without chunking
+                  Generate embeddings with a specific provider
                 </span>
               </div>
             </div>
@@ -306,8 +366,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Ingest into Pinecone"
-            href="/learn/by-example/rag-ingestion-with-external-vector-store/"
+            title="Vector store operations"
+            href="/learn/by-example/rag-vector-store-operations/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -317,7 +377,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ingest into Pinecone
+                  Vector store operations
                 </span>
               </div>
               <svg

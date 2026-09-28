@@ -79,8 +79,8 @@ export function RagOpenrouterRetrieval({ codeSnippets }) {
         and generating the answer with an OpenRouter-hosted model (e.g.,{" "}
         <code>openai/gpt-4o-mini</code>,{" "}
         <code>anthropic/claude-3.5-sonnet</code>). Since it uses the in-memory
-        vector store, the documents are ingested in the same program, as shown
-        in the{" "}
+        vector store, the documents are ingested in the same program. The
+        ingestion for this example is explained in the{" "}
         <a href="/learn/by-example/rag-openrouter-ingestion/">
           Ingest with OpenRouter embeddings
         </a>{" "}

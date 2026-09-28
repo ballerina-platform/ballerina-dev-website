@@ -315,7 +315,7 @@ export function RagWithCustomChunker({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Generate embeddings"
+            title="Generate embeddings with the default WSO2 embedding provider"
             href="/learn/by-example/rag-embeddings/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -326,7 +326,7 @@ export function RagWithCustomChunker({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Generate embeddings
+                  Generate embeddings with the default WSO2 embedding provider
                 </span>
               </div>
               <svg

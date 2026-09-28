@@ -29,14 +29,6 @@ public function main() returns error? {
     // documents, embeds the chunks, and stores the vectors in the vector store.
     check knowledgeBase.ingest(documents);
     io:println("Ingestion successful");
-
-    // Inspect what was stored. A query without an embedding or filters returns all
-    // the entries of the vector store (\`topK\` of \`-1\` removes the limit).
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length());
-    foreach ai:VectorMatch entry in entries {
-        io:println("- ", entry.chunk.metadata?.header ?: "(no header)", " (", entry.chunk.content.toString().length(), " characters)");
-    }
 }
 `,
 ];
@@ -69,13 +61,14 @@ export function RagInMemoryVectorStoreIngestion({ codeSnippets }) {
         the memory of the running program. It needs no external service, which
         makes it the quickest way to try out RAG, but the stored vectors are
         lost when the program stops, so ingestion and retrieval must happen in
-        the same program.
+        the same program. For this reason, the retrieval example ingests the
+        same document again before querying.
       </p>
 
       <p>
-        This example demonstrates how to load a Markdown document, ingest it
-        into an in-memory vector store, and inspect the chunks that were stored.
-        To retrieve from the store and answer questions, see the{" "}
+        This example demonstrates how to load a Markdown document and ingest it
+        into an in-memory vector store. It covers ingestion only. For the query
+        part, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}
@@ -222,24 +215,6 @@ export function RagInMemoryVectorStoreIngestion({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_in_memory_vector_store_ingestion.bal`}</span>
               <span>{`Ingestion successful`}</span>
-              <span>{`Chunks stored: 17`}</span>
-              <span>{`- (no header) (196 characters)`}</span>
-              <span>{`- 1. 🎯 Purpose (192 characters)`}</span>
-              <span>{`- 1. 🎯 Purpose (175 characters)`}</span>
-              <span>{`- 2.1. Annual Leave (Paid Time Off - PTO) (149 characters)`}</span>
-              <span>{`- 2.1. Annual Leave (Paid Time Off - PTO) (179 characters)`}</span>
-              <span>{`- 2.1. Annual Leave (Paid Time Off - PTO) (175 characters)`}</span>
-              <span>{`- 2.3. Casual Leave (163 characters)`}</span>
-              <span>{`- 2.4. Maternity / Paternity Leave (190 characters)`}</span>
-              <span>{`- 2.5. Bereavement Leave (168 characters)`}</span>
-              <span>{`- 2.6. Leave Without Pay (LWP) (170 characters)`}</span>
-              <span>{`- 2.6. Leave Without Pay (LWP) (128 characters)`}</span>
-              <span>{`- 3. 📅 Leave Request Procedure (199 characters)`}</span>
-              <span>{`- 4. 🔁 Leave Encashment (32 characters)`}</span>
-              <span>{`- 4. 🔁 Leave Encashment (188 characters)`}</span>
-              <span>{`- 5. ❗ Important Notes (158 characters)`}</span>
-              <span>{`- 5. ❗ Important Notes (124 characters)`}</span>
-              <span>{`- 6. 📌 Contact (194 characters)`}</span>
             </code>
           </pre>
         </Col>

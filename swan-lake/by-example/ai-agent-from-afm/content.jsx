@@ -462,8 +462,8 @@ export function AiAgentFromAfm({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Load documents"
-            href="/learn/by-example/rag-document-loading/"
+            title="Agent with MCP integration"
+            href="/learn/by-example/ai-agent-mcp-integration/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -473,7 +473,7 @@ export function AiAgentFromAfm({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Load documents
+                  Agent with MCP integration
                 </span>
               </div>
               <svg

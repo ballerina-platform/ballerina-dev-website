@@ -377,7 +377,7 @@ export function McpServiceAdvanced({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="MCP service with request metadata"
+            title="MCP advanced service with request metadata"
             href="/learn/by-example/mcp-service-with-request-metadata/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -388,7 +388,7 @@ export function McpServiceAdvanced({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service with request metadata
+                  MCP advanced service with request metadata
                 </span>
               </div>
               <svg

@@ -119,12 +119,12 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Prerequisite: Run the{" "}
+          Prerequisite: The ingestion for this example is in the{" "}
           <a href="/learn/by-example/rag-ingestion-with-external-vector-store/">
             Ingest into Pinecone
           </a>{" "}
-          example first. It populates the Pinecone index that this example
-          queries.
+          example. Run it first. It populates the Pinecone index that this
+          example queries.
         </p>
       </blockquote>
 

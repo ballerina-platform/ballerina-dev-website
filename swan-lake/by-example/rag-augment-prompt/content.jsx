@@ -27,10 +27,12 @@ public function main() returns error? {
     ];
 
     // Option 1: use \`ai:augmentUserQuery\` to build a user message that combines the retrieved
-    // context and the query using a generic prompt template, and send it with \`chat\`.
+    // context and the query using a generic prompt template. Its content is an \`ai:Prompt\`,
+    // which is passed to the \`generate\` method.
     ai:ChatUserMessage augmentedQuery = ai:augmentUserQuery(retrievedContext, query);
-    ai:ChatAssistantMessage response = check model->chat(augmentedQuery);
-    io:println("Answer (augmentUserQuery): ", response?.content);
+    ai:Prompt augmentedPrompt = check augmentedQuery.content.ensureType();
+    string response = check model->generate(augmentedPrompt);
+    io:println("Answer (augmentUserQuery): ", response);
 
     // Option 2: write your own prompt with the \`generate\` method. The retrieved chunks are
     // inserted into the prompt template, and the answer is bound to the expected type, so the
@@ -83,12 +85,14 @@ export function RagAugmentPrompt({ codeSnippets }) {
         The <code>ai:augmentUserQuery</code> function takes the retrieved chunks
         (<code>ai:QueryMatch[]</code> or <code>ai:Document[]</code>) and the
         query, and returns an <code>ai:ChatUserMessage</code> that combines them
-        using a generic prompt template, ready to be sent with the{" "}
-        <code>chat</code> method of a model provider. For full control over the
-        prompt, insert the chunks into your own prompt template and use the{" "}
-        <code>generate</code> method, which also binds the answer to an expected
-        type, so you can ask the model for structured output such as an answer
-        together with a grounding flag.
+        using a generic prompt template. The content of the message is an{" "}
+        <code>ai:Prompt</code>, so it can be passed to the <code>generate</code>{" "}
+        method of a model provider (or the message itself can be sent with the{" "}
+        <code>chat</code> method). For full control over the prompt, insert the
+        chunks into your own prompt template and pass it to the{" "}
+        <code>generate</code> method. The <code>generate</code> method binds the
+        answer to the expected type, so you can ask the model for structured
+        output such as an answer together with a grounding flag.
       </p>
 
       <p>
@@ -294,8 +298,8 @@ export function RagAugmentPrompt({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Vector store operations"
-            href="/learn/by-example/rag-vector-store-operations/"
+            title="Implement a custom vector store"
+            href="/learn/by-example/rag-custom-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -322,7 +326,7 @@ export function RagAugmentPrompt({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Vector store operations
+                  Implement a custom vector store
                 </span>
               </div>
             </div>

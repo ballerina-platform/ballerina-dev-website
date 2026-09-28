@@ -117,7 +117,7 @@ public function main() returns error? {
 }
 ```
 
-See the [Retrieve from an in-memory vector store](/learn/by-example/rag-in-memory-vector-store-retrieval/) and [Retrieve from Pinecone](/learn/by-example/rag-query-with-external-vector-store/) examples. To compare embeddings directly, see the [Generate embeddings](/learn/by-example/rag-embeddings/) example.
+See the [Retrieve from an in-memory vector store](/learn/by-example/rag-in-memory-vector-store-retrieval/) and [Retrieve from Pinecone](/learn/by-example/rag-query-with-external-vector-store/) examples. To compare embeddings directly, see the [Generate embeddings with the default WSO2 embedding provider](/learn/by-example/rag-embeddings/) example.
 
 ## Filter by metadata
 
@@ -145,7 +145,7 @@ See the [Filter results by metadata](/learn/by-example/rag-query-with-metadata-f
 
 ## Use other knowledge bases
 
-Any retrieval backend can be integrated by implementing the `ai:KnowledgeBase` type (`ingest`, `retrieve`, and `deleteByFilter`). The [`ballerinax/ai.azure`](https://central.ballerina.io/ballerinax/ai.azure/latest) module provides a knowledge base backed by Azure AI Search (see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example). The [`ballerinax/ai.wso2.integration`](https://central.ballerina.io/ballerinax/ai.wso2.integration/latest) module provides a retrieve-only knowledge base hosted on the WSO2 Integration platform, where the documents are ingested (see the [Retrieve from a WSO2 Cloud knowledge base](/learn/by-example/rag-wso2-cloud-knowledge-base-retrieval/) example). The [Retrieve from a custom knowledge base](/learn/by-example/rag-custom-knowledge-base/) example shows a keyword-based implementation.
+Any retrieval backend can be integrated by implementing the `ai:KnowledgeBase` type (`ingest`, `retrieve`, and `deleteByFilter`). The [`ballerinax/ai.azure`](https://central.ballerina.io/ballerinax/ai.azure/latest) module provides a knowledge base backed by Azure AI Search (see the [Retrieve from Azure AI Search](/learn/by-example/rag-azure-ai-search-retrieval/) example). The [`ballerinax/ai.wso2.integration`](https://central.ballerina.io/ballerinax/ai.wso2.integration/latest) module provides a retrieve-only knowledge base hosted on the WSO2 Integration platform, where the documents are ingested (see the [Retrieve from a WSO2 Cloud knowledge base](/learn/by-example/rag-wso2-cloud-knowledge-base-retrieval/) example).
 
 ## Use RAG from an agent
 
@@ -185,7 +185,7 @@ The `knowledgeBase` is the `ai:KnowledgeBase` set up and populated in the earlie
 
 ## Learn more
 
-- [Load documents from multiple sources](/learn/by-example/rag-document-sources/), [Implement a custom chunker](/learn/by-example/rag-with-custom-chunker/), [Vector store operations](/learn/by-example/rag-vector-store-operations/), and [Augment the prompt with retrieved context](/learn/by-example/rag-augment-prompt/) examples
+- [Load documents from multiple sources](/learn/by-example/rag-document-sources/), [Load using a custom data loader](/learn/by-example/rag-custom-data-loader/), [Implement a custom chunker](/learn/by-example/rag-with-custom-chunker/), [Implement a custom embedding provider](/learn/by-example/rag-custom-embedding-provider/), [Vector store operations](/learn/by-example/rag-vector-store-operations/), [Implement a custom vector store](/learn/by-example/rag-custom-vector-store/), and [Augment the prompt with retrieved context](/learn/by-example/rag-augment-prompt/) examples
 - [Build an AI agent](/learn/build-an-ai-agent/)
 - [Configure model and embedding providers](/learn/configure-model-and-embedding-providers/)
 - The RAG examples in [Ballerina by Example](/learn/by-example/)

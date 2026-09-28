@@ -259,8 +259,8 @@ export function McpClient({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP service with request metadata"
-            href="/learn/by-example/mcp-service-with-request-metadata/"
+            title="MCP service security"
+            href="/learn/by-example/mcp-service-security/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -287,7 +287,7 @@ export function McpClient({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service with request metadata
+                  MCP service security
                 </span>
               </div>
             </div>
@@ -295,8 +295,8 @@ export function McpClient({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="MCP tools with HTTP request binding"
-            href="/learn/by-example/mcp-service-http-request-binding/"
+            title="MCP client with request metadata"
+            href="/learn/by-example/mcp-client-with-request-metadata/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -306,7 +306,7 @@ export function McpClient({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP tools with HTTP request binding
+                  MCP client with request metadata
                 </span>
               </div>
               <svg

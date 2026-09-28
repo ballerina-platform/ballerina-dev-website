@@ -8,62 +8,68 @@ export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
 
-final string markdownContent = string \`# Leave policy
-
-## Annual leave
-
-Full-time employees are entitled to 20 days of paid annual leave per year.
-
-## Sick leave
-
-Employees are entitled to 10 days of paid sick leave per year.\`;
-
-final string htmlContent = string \`<h1>Travel policy</h1>
-<h2>Booking</h2>
-<p>Business travel must be booked two weeks in advance.</p>
-<h2>Expenses</h2>
-<p>Meals are reimbursed up to 60 USD per day.</p>\`;
-
-final string textContent = string \`Treat colleagues, customers, and partners with respect.
-Harassment is not tolerated. Report any concerns to the HR team.\`;
-
-// Documents of different types. The \`mimeType\` metadata identifies the type of each document.
-final ai:TextDocument[] documents = [
-    {metadata: {fileName: "leave_policy.md", mimeType: "text/markdown"}, content: markdownContent},
-    {metadata: {fileName: "travel_policy.html", mimeType: "text/html"}, content: htmlContent},
-    {metadata: {fileName: "code_of_conduct.txt", mimeType: "text/plain"}, content: textContent}
+// The documents of each type are kept in a separate array, so that each type can be chunked
+// with the chunking function for that type.
+final ai:TextDocument[] markdownDocuments = [
+    {
+        content: "# Leave policy\\n\\n## Annual leave\\n\\n20 days of paid leave per year.\\n\\n" +
+            "## Sick leave\\n\\n10 days of paid sick leave per year.",
+        metadata: {fileName: "leave_policy.md"}
+    }
 ];
 
-// Select a chunker based on the MIME type of the document. Each chunker uses the
-// structure of the document type (e.g., headers) to produce meaningful chunks and
-// recursively falls back to smaller units (e.g., sentences) when a chunk is too large.
-function getChunker(string? mimeType) returns ai:Chunker {
-    match mimeType {
-        "text/markdown" => {
-            return new ai:MarkdownChunker(maxChunkSize = 100, maxOverlapSize = 20);
-        }
-        "text/html" => {
-            return new ai:HtmlChunker(maxChunkSize = 100, maxOverlapSize = 20);
-        }
-        _ => {
-            return new ai:GenericRecursiveChunker(maxChunkSize = 100, maxOverlapSize = 20,
-                    strategy = ai:SENTENCE);
-        }
+final ai:TextDocument[] htmlDocuments = [
+    {
+        content: "<h1>Travel policy</h1><h2>Booking</h2><p>Book travel two weeks in advance.</p>" +
+            "<h2>Meals</h2><p>Meals are reimbursed up to 60 USD per day.</p>",
+        metadata: {fileName: "travel_policy.html"}
     }
-}
+];
+
+final ai:TextDocument[] textDocuments = [
+    {
+        content: "Treat colleagues with respect. Harassment is not tolerated. Report concerns to HR.",
+        metadata: {fileName: "code_of_conduct.txt"}
+    }
+];
 
 public function main() returns error? {
-    foreach ai:TextDocument document in documents {
-        ai:Chunker chunker = getChunker(document.metadata?.mimeType);
-        ai:Chunk[] chunks = check chunker.chunk(document);
-        io:println(string \`\${document.metadata?.fileName ?: ""} (\${document.metadata?.mimeType ?: ""}): \${
-                chunks.length()} chunks\`);
-        foreach ai:Chunk chunk in chunks {
-            // Chunks carry metadata such as the chunk index and the section header.
-            string content = re \`\\s+\`.replaceAll(chunk.content.toString(), " ").trim();
-            io:println(string \`  [\${chunk.metadata?.index ?: 0}] header: \${chunk.metadata?.header ?: "-"} | \${
-                    content}\`);
-        }
+    // Chunk each document type with the chunking function for that type. Each function
+    // splits by the structure of the document (e.g., headers) and recursively falls back
+    // to smaller units (e.g., sentences) when a chunk exceeds \`maxChunkSize\` characters.
+    ai:Chunk[] markdownChunks = check ai:chunkMarkdownDocument(markdownDocuments[0],
+            maxChunkSize = 70, maxOverlapSize = 0);
+    printChunks("Markdown chunks", markdownChunks);
+
+    ai:Chunk[] htmlChunks = check ai:chunkHtmlDocument(htmlDocuments[0],
+            maxChunkSize = 80, maxOverlapSize = 0);
+    printChunks("HTML chunks", htmlChunks);
+
+    ai:Chunk[] textChunks = check ai:chunkDocumentRecursively(textDocuments[0],
+            maxChunkSize = 40, maxOverlapSize = 0, strategy = ai:SENTENCE);
+    printChunks("Text chunks", textChunks);
+
+    // A knowledge base created with \`ai:AUTO\` (the default) detects the chunker for each
+    // document from its \`mimeType\` metadata or file extension: \`.md\` documents use the
+    // Markdown chunker, \`.html\` documents use the HTML chunker, and other documents use
+    // the generic recursive chunker. So, all the arrays can be ingested together.
+    ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
+    ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(vectorStore,
+            check ai:getDefaultEmbeddingProvider(), ai:AUTO);
+    check knowledgeBase.ingest([...markdownDocuments, ...htmlDocuments, ...textDocuments]);
+
+    // Inspect the chunks that were stored. A query without an embedding or filters returns
+    // all the entries (\`topK\` of \`-1\` removes the limit).
+    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
+    printChunks("Chunks stored with ai:AUTO", from ai:VectorMatch entry in entries
+        select entry.chunk);
+}
+
+function printChunks(string title, ai:Chunk[] chunks) {
+    io:println(title, ": ", chunks.length());
+    foreach ai:Chunk chunk in chunks {
+        io:println("- [", chunk.metadata?.fileName ?: "-", "] ",
+                re \`\\s+\`.replaceAll(chunk.content.toString(), " ").trim());
     }
 }
 `,
@@ -84,20 +90,50 @@ export function RagDocumentChunking({ codeSnippets }) {
       <p>
         Documents are split into smaller chunks before they are embedded and
         indexed for retrieval-augmented generation (RAG). The{" "}
-        <code>ai:Chunker</code> abstraction has implementations for Markdown (
-        <code>ai:MarkdownChunker</code>), HTML (<code>ai:HtmlChunker</code>),
-        and generic text (<code>ai:GenericRecursiveChunker</code>) documents.
-        Each chunker uses the structure of the document type to produce
-        meaningful chunks and recursively falls back to smaller units when a
-        chunk exceeds the maximum size.
+        <code>ballerina/ai</code> module provides a chunking function for each
+        document type: <code>ai:chunkMarkdownDocument</code> for Markdown,{" "}
+        <code>ai:chunkHtmlDocument</code> for HTML, and{" "}
+        <code>ai:chunkDocumentRecursively</code> for generic text. Each function
+        uses the structure of the document type, such as headers, to produce
+        meaningful chunks and recursively falls back to smaller units, such as
+        sentences, when a chunk exceeds <code>maxChunkSize</code> characters.
+        The same chunkers are available as the <code>ai:MarkdownChunker</code>,{" "}
+        <code>ai:HtmlChunker</code>, and <code>ai:GenericRecursiveChunker</code>{" "}
+        classes.
       </p>
 
       <p>
-        This example demonstrates how to select a chunker based on the MIME type
-        of a document and chunk documents of different types. When documents are
-        ingested into an <code>ai:VectorKnowledgeBase</code>, chunking is
-        handled automatically based on the document type.
+        You rarely need to choose the chunker yourself. An{" "}
+        <code>ai:VectorKnowledgeBase</code> created with <code>ai:AUTO</code>{" "}
+        (the default) detects the chunker for each document when it is ingested.
+        It uses the <code>mimeType</code> metadata of the document (
+        <code>text/markdown</code> or <code>text/html</code>), falls back to the
+        file extension (<code>.md</code> or <code>.html</code>) in the{" "}
+        <code>fileName</code> metadata, and uses the generic recursive chunker
+        for any other document. The automatically selected chunkers use the
+        default maximum chunk size of 200 characters, so each of the short
+        documents in this example is stored as a single chunk.
       </p>
+
+      <p>
+        This example demonstrates chunking Markdown, HTML, and text documents
+        with the chunking function for each type, and then ingesting all of them
+        into a knowledge base that selects the chunkers with{" "}
+        <code>ai:AUTO</code>.
+      </p>
+
+      <blockquote>
+        <p>
+          Note: This example uses the default embedding provider implementation
+          for the knowledge base. To generate its configuration, open up the VS
+          Code command palette (<code>Ctrl</code> + <code>Shift</code> +{" "}
+          <code>P</code> or <code>command</code> + <code>shift</code> +{" "}
+          <code>P</code>), and run the{" "}
+          <code>Configure default WSO2 Model Provider</code> command to add your
+          configuration to the <code>Config.toml</code> file. If not already
+          logged in, log in to the Ballerina Copilot when prompted.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
@@ -223,16 +259,20 @@ export function RagDocumentChunking({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_document_chunking.bal`}</span>
-              <span>{`leave_policy.md (text/markdown): 3 chunks`}</span>
-              <span>{`  [0] header: - | # Leave policy ## Annual leave`}</span>
-              <span>{`  [1] header: Annual leave | ## Annual leave Full-time employees are entitled to 20 days of paid annual leave per year.`}</span>
-              <span>{`  [2] header: Sick leave | ## Sick leave Employees are entitled to 10 days of paid sick leave per year.`}</span>
-              <span>{`travel_policy.html (text/html): 2 chunks`}</span>
-              <span>{`  [0] header: - | <h1>Travel policy</h1> <h2>Booking</h2> <p>Business travel must be booked two weeks in advance.</p>`}</span>
-              <span>{`  [1] header: Expenses | <h2>Expenses</h2> <p>Meals are reimbursed up to 60 USD per day.</p>`}</span>
-              <span>{`code_of_conduct.txt (text/plain): 2 chunks`}</span>
-              <span>{`  [0] header: - | Treat colleagues, customers, and partners with respect. Harassment is not tolerated.`}</span>
-              <span>{`  [1] header: - | Report any concerns to the HR team.`}</span>
+              <span>{`Markdown chunks: 2`}</span>
+              <span>{`- [leave_policy.md] # Leave policy ## Annual leave 20 days of paid leave per year.`}</span>
+              <span>{`- [leave_policy.md] ## Sick leave 10 days of paid sick leave per year.`}</span>
+              <span>{`HTML chunks: 2`}</span>
+              <span>{`- [travel_policy.html] <h1>Travel policy</h1><h2>Booking</h2><p>Book travel two weeks in advance.</p>`}</span>
+              <span>{`- [travel_policy.html] <h2>Meals</h2><p>Meals are reimbursed up to 60 USD per day.</p>`}</span>
+              <span>{`Text chunks: 3`}</span>
+              <span>{`- [code_of_conduct.txt] Treat colleagues with respect.`}</span>
+              <span>{`- [code_of_conduct.txt] Harassment is not tolerated.`}</span>
+              <span>{`- [code_of_conduct.txt] Report concerns to HR.`}</span>
+              <span>{`Chunks stored with ai:AUTO: 3`}</span>
+              <span>{`- [leave_policy.md] # Leave policy ## Annual leave 20 days of paid leave per year. ## Sick leave 10 days of paid sick leave per year.`}</span>
+              <span>{`- [travel_policy.html] <h1>Travel policy</h1><h2>Booking</h2><p>Book travel two weeks in advance.</p><h2>Meals</h2><p>Meals are reimbursed up to 60 USD per day.</p>`}</span>
+              <span>{`- [code_of_conduct.txt] Treat colleagues with respect. Harassment is not tolerated. Report concerns to HR.`}</span>
             </code>
           </pre>
         </Col>
@@ -240,6 +280,26 @@ export function RagDocumentChunking({ codeSnippets }) {
 
       <h2>Related links</h2>
 
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rag-with-configured-chunker/">
+              The Ingest with a configured chunker example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rag-with-custom-chunker/">
+              The Implement a custom chunker example
+            </a>
+          </span>
+        </li>
+      </ul>
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
@@ -275,8 +335,8 @@ export function RagDocumentChunking({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Load documents from multiple sources"
-            href="/learn/by-example/rag-document-sources/"
+            title="Load using a custom data loader"
+            href="/learn/by-example/rag-custom-data-loader/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -303,7 +363,7 @@ export function RagDocumentChunking({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Load documents from multiple sources
+                  Load using a custom data loader
                 </span>
               </div>
             </div>

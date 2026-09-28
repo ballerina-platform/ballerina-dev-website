@@ -2224,10 +2224,6 @@ import {
   codeSnippetData as McpServiceWithRequestMetadataCodeSnippetData,
 } from "./mcp-service-with-request-metadata/content.jsx";
 import {
-  McpClient,
-  codeSnippetData as McpClientCodeSnippetData,
-} from "./mcp-client/content.jsx";
-import {
   McpServiceHttpRequestBinding,
   codeSnippetData as McpServiceHttpRequestBindingCodeSnippetData,
 } from "./mcp-service-http-request-binding/content.jsx";
@@ -2236,6 +2232,14 @@ import {
   codeSnippetData as McpServiceSecurityCodeSnippetData,
 } from "./mcp-service-security/content.jsx";
 import {
+  McpClient,
+  codeSnippetData as McpClientCodeSnippetData,
+} from "./mcp-client/content.jsx";
+import {
+  McpClientWithRequestMetadata,
+  codeSnippetData as McpClientWithRequestMetadataCodeSnippetData,
+} from "./mcp-client-with-request-metadata/content.jsx";
+import {
   AiAgentLocalTools,
   codeSnippetData as AiAgentLocalToolsCodeSnippetData,
 } from "./ai-agent-local-tools/content.jsx";
@@ -2243,14 +2247,6 @@ import {
   AiAgentToolContext,
   codeSnippetData as AiAgentToolContextCodeSnippetData,
 } from "./ai-agent-tool-context/content.jsx";
-import {
-  AiAgentMcpIntegration,
-  codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
-} from "./ai-agent-mcp-integration/content.jsx";
-import {
-  AiAgentMcpContext,
-  codeSnippetData as AiAgentMcpContextCodeSnippetData,
-} from "./ai-agent-mcp-context/content.jsx";
 import {
   AiAgentExternalEndpointIntegration,
   codeSnippetData as AiAgentExternalEndpointIntegrationCodeSnippetData,
@@ -2308,6 +2304,14 @@ import {
   codeSnippetData as AiAgentFromAfmCodeSnippetData,
 } from "./ai-agent-from-afm/content.jsx";
 import {
+  AiAgentMcpIntegration,
+  codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
+} from "./ai-agent-mcp-integration/content.jsx";
+import {
+  AiAgentMcpContext,
+  codeSnippetData as AiAgentMcpContextCodeSnippetData,
+} from "./ai-agent-mcp-context/content.jsx";
+import {
   RagDocumentLoading,
   codeSnippetData as RagDocumentLoadingCodeSnippetData,
 } from "./rag-document-loading/content.jsx";
@@ -2315,6 +2319,10 @@ import {
   RagDocumentSources,
   codeSnippetData as RagDocumentSourcesCodeSnippetData,
 } from "./rag-document-sources/content.jsx";
+import {
+  RagCustomDataLoader,
+  codeSnippetData as RagCustomDataLoaderCodeSnippetData,
+} from "./rag-custom-data-loader/content.jsx";
 import {
   RagDocumentChunking,
   codeSnippetData as RagDocumentChunkingCodeSnippetData,
@@ -2332,9 +2340,17 @@ import {
   codeSnippetData as RagEmbeddingProviderCodeSnippetData,
 } from "./rag-embedding-provider/content.jsx";
 import {
+  RagCustomEmbeddingProvider,
+  codeSnippetData as RagCustomEmbeddingProviderCodeSnippetData,
+} from "./rag-custom-embedding-provider/content.jsx";
+import {
   RagVectorStoreOperations,
   codeSnippetData as RagVectorStoreOperationsCodeSnippetData,
 } from "./rag-vector-store-operations/content.jsx";
+import {
+  RagCustomVectorStore,
+  codeSnippetData as RagCustomVectorStoreCodeSnippetData,
+} from "./rag-custom-vector-store/content.jsx";
 import {
   RagAugmentPrompt,
   codeSnippetData as RagAugmentPromptCodeSnippetData,
@@ -2403,10 +2419,6 @@ import {
   RagQueryWithMetadataFilters,
   codeSnippetData as RagQueryWithMetadataFiltersCodeSnippetData,
 } from "./rag-query-with-metadata-filters/content.jsx";
-import {
-  RagCustomKnowledgeBase,
-  codeSnippetData as RagCustomKnowledgeBaseCodeSnippetData,
-} from "./rag-custom-knowledge-base/content.jsx";
 import {
   AgenticRagWithWso2IntegrationKnowledgeBase,
   codeSnippetData as AgenticRagWithWso2IntegrationKnowledgeBaseCodeSnippetData,
@@ -3627,20 +3639,18 @@ const BBEs = {
   McpServiceAdvancedCodeSnippetData,
   McpServiceWithRequestMetadata,
   McpServiceWithRequestMetadataCodeSnippetData,
-  McpClient,
-  McpClientCodeSnippetData,
   McpServiceHttpRequestBinding,
   McpServiceHttpRequestBindingCodeSnippetData,
   McpServiceSecurity,
   McpServiceSecurityCodeSnippetData,
+  McpClient,
+  McpClientCodeSnippetData,
+  McpClientWithRequestMetadata,
+  McpClientWithRequestMetadataCodeSnippetData,
   AiAgentLocalTools,
   AiAgentLocalToolsCodeSnippetData,
   AiAgentToolContext,
   AiAgentToolContextCodeSnippetData,
-  AiAgentMcpIntegration,
-  AiAgentMcpIntegrationCodeSnippetData,
-  AiAgentMcpContext,
-  AiAgentMcpContextCodeSnippetData,
   AiAgentExternalEndpointIntegration,
   AiAgentExternalEndpointIntegrationCodeSnippetData,
   ChatAgents,
@@ -3669,10 +3679,16 @@ const BBEs = {
   AiAgentEvaluationCodeSnippetData,
   AiAgentFromAfm,
   AiAgentFromAfmCodeSnippetData,
+  AiAgentMcpIntegration,
+  AiAgentMcpIntegrationCodeSnippetData,
+  AiAgentMcpContext,
+  AiAgentMcpContextCodeSnippetData,
   RagDocumentLoading,
   RagDocumentLoadingCodeSnippetData,
   RagDocumentSources,
   RagDocumentSourcesCodeSnippetData,
+  RagCustomDataLoader,
+  RagCustomDataLoaderCodeSnippetData,
   RagDocumentChunking,
   RagDocumentChunkingCodeSnippetData,
   RagWithCustomChunker,
@@ -3681,8 +3697,12 @@ const BBEs = {
   RagEmbeddingsCodeSnippetData,
   RagEmbeddingProvider,
   RagEmbeddingProviderCodeSnippetData,
+  RagCustomEmbeddingProvider,
+  RagCustomEmbeddingProviderCodeSnippetData,
   RagVectorStoreOperations,
   RagVectorStoreOperationsCodeSnippetData,
+  RagCustomVectorStore,
+  RagCustomVectorStoreCodeSnippetData,
   RagAugmentPrompt,
   RagAugmentPromptCodeSnippetData,
   RagInMemoryVectorStoreIngestion,
@@ -3717,8 +3737,6 @@ const BBEs = {
   RagOpenrouterRetrievalCodeSnippetData,
   RagQueryWithMetadataFilters,
   RagQueryWithMetadataFiltersCodeSnippetData,
-  RagCustomKnowledgeBase,
-  RagCustomKnowledgeBaseCodeSnippetData,
   AgenticRagWithWso2IntegrationKnowledgeBase,
   AgenticRagWithWso2IntegrationKnowledgeBaseCodeSnippetData,
   AgenticRagWithPineconeVectorStore,

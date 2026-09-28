@@ -5806,7 +5806,7 @@
     ]
   },
   {
-    "title": "Model context protocol (MCP)",
+    "title": "MCP service",
     "column": 0,
     "category": "Generative AI",
     "samples": [
@@ -5825,20 +5825,11 @@
         "disablePlayground": true
       },
       {
-        "name": "MCP service with request metadata",
+        "name": "MCP advanced service with request metadata",
         "url": "mcp-service-with-request-metadata",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Long-running service",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "MCP client",
-        "url": "mcp-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires the MCP service to be running",
         "disablePlayground": true,
         "needCentral": false
       },
@@ -5857,6 +5848,31 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Long-running service with TLS resources",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "MCP client",
+    "column": 0,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP client",
+        "url": "mcp-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "MCP client with request metadata",
+        "url": "mcp-client-with-request-metadata",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the MCP service to be running",
         "disablePlayground": true,
         "needCentral": false
       }
@@ -5886,24 +5902,6 @@
         "needCentral": false
       },
       {
-        "name": "Agent with MCP integration",
-        "url": "ai-agent-mcp-integration",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Passing context to MCP tools",
-        "url": "ai-agent-mcp-context",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the MCP service to be running",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
         "name": "Agent with external endpoint integration",
         "url": "ai-agent-external-endpoint-integration",
         "verifyBuild": true,
@@ -5922,14 +5920,64 @@
         "needCentral": false
       },
       {
-        "name": "Agent with tool kits",
-        "url": "ai-agent-tool-kit",
+        "name": "Human-in-the-loop tool approval",
+        "url": "ai-agent-human-in-the-loop",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and user input",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Chat client",
+        "url": "ai-chat-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the chat agent service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Deploy an agent from an AFM file",
+        "url": "ai-agent-from-afm",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Contains no Ballerina code; the agent is defined in an AFM file and run by an interpreter",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agents with MCP tools",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with MCP integration",
+        "url": "ai-agent-mcp-integration",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
       },
+      {
+        "name": "Passing context to MCP tools",
+        "url": "ai-agent-mcp-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent memory",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
       {
         "name": "Agent with in-memory short-term memory",
         "url": "ai-agent-memory",
@@ -5956,22 +6004,36 @@
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
-      },
-      {
-        "name": "Human-in-the-loop tool approval",
-        "url": "ai-agent-human-in-the-loop",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and user input",
-        "disablePlayground": true,
-        "needCentral": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Agent ID",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
       {
         "name": "Agent ID",
         "url": "ai-agent-id",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires an agent identity registered with an authorization server",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Advanced agent features",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with tool kits",
+        "url": "ai-agent-tool-kit",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
       },
@@ -5992,16 +6054,14 @@
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
-      },
-      {
-        "name": "Chat client",
-        "url": "ai-chat-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires the chat agent service to be running",
-        "disablePlayground": true,
-        "needCentral": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Agent tracing and evaluation",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
       {
         "name": "Agent execution trace",
         "url": "ai-agent-execution-trace",
@@ -6019,15 +6079,6 @@
         "disableVerificationReason": "Test file; has different naming convention and requires keys",
         "disablePlayground": true,
         "needCentral": true
-      },
-      {
-        "name": "Deploy an agent from an AFM file",
-        "url": "ai-agent-from-afm",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Contains no Ballerina code; the agent is defined in an AFM file and run by an interpreter",
-        "disablePlayground": true,
-        "needCentral": false
       }
     ]
   },
@@ -6050,7 +6101,15 @@
         "url": "rag-document-sources",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Depends on the sample documents",
+        "disableVerificationReason": "Requires Microsoft SharePoint credentials",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Load using a custom data loader",
+        "url": "rag-custom-data-loader",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "needCentral": false
       },
@@ -6072,7 +6131,7 @@
         "needCentral": false
       },
       {
-        "name": "Generate embeddings",
+        "name": "Generate embeddings with the default WSO2 embedding provider",
         "url": "rag-embeddings",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -6090,11 +6149,28 @@
         "needCentral": true
       },
       {
+        "name": "Implement a custom embedding provider",
+        "url": "rag-custom-embedding-provider",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a running Ollama server",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
         "name": "Vector store operations",
         "url": "rag-vector-store-operations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Implement a custom vector store",
+        "url": "rag-custom-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "needCentral": false
       },
@@ -6110,7 +6186,7 @@
     ]
   },
   {
-    "title": "RAG with knowledge bases: ingestion",
+    "title": "RAG ingestion",
     "category": "Generative AI",
     "column": 2,
     "samples": [
@@ -6189,7 +6265,7 @@
     ]
   },
   {
-    "title": "RAG with knowledge bases: retrieval and generation",
+    "title": "RAG query",
     "category": "Generative AI",
     "column": 3,
     "samples": [
@@ -6259,15 +6335,6 @@
       {
         "name": "Filter results by metadata",
         "url": "rag-query-with-metadata-filters",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Retrieve from a custom knowledge base",
-        "url": "rag-custom-knowledge-base",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",

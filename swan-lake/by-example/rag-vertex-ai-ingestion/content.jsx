@@ -37,14 +37,6 @@ public function main() returns error? {
     ];
     check knowledgeBase.ingest(documents);
     io:println("Ingestion successful");
-
-    // Inspect what was stored. A query without an embedding or filters returns all the entries.
-    ai:VectorMatch[] entries = check vectorStore.query({topK: -1});
-    io:println("Chunks stored: ", entries.length());
-    foreach ai:VectorMatch entry in entries {
-        ai:Embedding embedding = entry.embedding;
-        io:println("- ", entry.chunk.content, " (dimension: ", embedding is ai:Vector ? embedding.length() : 0, ")");
-    }
 }
 `,
 ];
@@ -79,8 +71,9 @@ export function RagVertexAiIngestion({ codeSnippets }) {
         generation (RAG) workflow in which the chunks are embedded with a Vertex
         AI embedding model. The example stores the vectors in the in-memory
         vector store; any <code>ai:VectorStore</code> implementation can be used
-        instead to persist them. To retrieve the chunks and generate an answer
-        with a Gemini model, see the{" "}
+        instead to persist them. It covers ingestion only. For the query part,
+        where the chunks are retrieved and a Gemini model generates the answer,
+        see the{" "}
         <a href="/learn/by-example/rag-vertex-ai-retrieval/">
           Retrieve and generate with Google Vertex AI
         </a>{" "}
@@ -224,10 +217,6 @@ export function RagVertexAiIngestion({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_vertex_ai_ingestion.bal`}</span>
               <span>{`Ingestion successful`}</span>
-              <span>{`Chunks stored: 3`}</span>
-              <span>{`- Full-time employees are entitled to 20 days of paid annual leave per year. (dimension: 768)`}</span>
-              <span>{`- Employees are entitled to 10 days of paid sick leave per year. (dimension: 768)`}</span>
-              <span>{`- Parental leave is 12 weeks and must be requested one month in advance. (dimension: 768)`}</span>
             </code>
           </pre>
         </Col>

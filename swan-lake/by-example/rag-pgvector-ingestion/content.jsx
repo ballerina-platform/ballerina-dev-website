@@ -76,7 +76,7 @@ export function RagPgvectorIngestion({ codeSnippets }) {
         <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
           ballerinax/ai.pgvector
         </a>{" "}
-        module. To query the ingested data, see the{" "}
+        module. It covers ingestion only. For the query part, see the{" "}
         <a href="/learn/by-example/rag-pgvector-retrieval/">
           Retrieve from pgvector
         </a>{" "}

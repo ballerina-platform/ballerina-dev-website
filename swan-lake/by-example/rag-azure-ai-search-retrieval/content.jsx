@@ -78,12 +78,12 @@ export function RagAzureAiSearchRetrieval({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Prerequisite: Run the{" "}
+          Prerequisite: The ingestion for this example is in the{" "}
           <a href="/learn/by-example/rag-azure-ai-search-ingestion/">
             Ingest into Azure AI Search
           </a>{" "}
-          example first. It creates and populates the <code>hr-policies</code>{" "}
-          index that this example queries.
+          example. Run it first. It creates and populates the{" "}
+          <code>hr-policies</code> index that this example queries.
         </p>
       </blockquote>
 
@@ -249,16 +249,6 @@ export function RagAzureAiSearchRetrieval({ codeSnippets }) {
           <span>
             <a href="/learn/by-example/rag-azure-ai-search-ingestion/">
               The Ingest into Azure AI Search example
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/rag-custom-knowledge-base/">
-              The Retrieve from a custom knowledge base example
             </a>
           </span>
         </li>

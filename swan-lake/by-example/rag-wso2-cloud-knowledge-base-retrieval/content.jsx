@@ -18,8 +18,8 @@ configurable string knowledgeBaseToken = ?;
 // provider is configured here; the \`ingest\` and \`deleteByFilter\` methods return an error.
 final ai:KnowledgeBase knowledgeBase = check new wso2:CloudKnowledgeBase(knowledgeBaseUrl,
         {auth: {token: knowledgeBaseToken}},
-        // Chunks scoring below this similarity threshold are dropped.
-        minSimilarityThreshold = 0.7);
+        // Chunks scoring below this similarity threshold are dropped. The default is 0.7.
+        minSimilarityThreshold = 0.75);
 
 // Use the default model provider (with configuration added via a Ballerina VS Code command)
 // to generate the final response.
@@ -38,7 +38,7 @@ public function main() returns error? {
     // Augment the user query with the retrieved context and generate the response.
     ai:ChatUserMessage augmentedQuery = ai:augmentUserQuery(matches, query);
     ai:ChatAssistantMessage response = check model->chat(augmentedQuery);
-    io:println("\\nAnswer: ", response?.content);
+    io:println("\\nAnswer: ", response.content);
 }
 `,
 ];

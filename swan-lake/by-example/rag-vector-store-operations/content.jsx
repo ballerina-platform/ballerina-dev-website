@@ -263,7 +263,8 @@ export function RagVectorStoreOperations({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/rag-embeddings/">
-              The Generate embeddings example
+              The Generate embeddings with the default WSO2 embedding provider
+              example
             </a>
           </span>
         </li>
@@ -333,8 +334,8 @@ export function RagVectorStoreOperations({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Generate embeddings with a specific provider"
-            href="/learn/by-example/rag-embedding-provider/"
+            title="Implement a custom embedding provider"
+            href="/learn/by-example/rag-custom-embedding-provider/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -361,7 +362,7 @@ export function RagVectorStoreOperations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Generate embeddings with a specific provider
+                  Implement a custom embedding provider
                 </span>
               </div>
             </div>
@@ -369,8 +370,8 @@ export function RagVectorStoreOperations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Augment the prompt with retrieved context"
-            href="/learn/by-example/rag-augment-prompt/"
+            title="Implement a custom vector store"
+            href="/learn/by-example/rag-custom-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -380,7 +381,7 @@ export function RagVectorStoreOperations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Augment the prompt with retrieved context
+                  Implement a custom vector store
                 </span>
               </div>
               <svg

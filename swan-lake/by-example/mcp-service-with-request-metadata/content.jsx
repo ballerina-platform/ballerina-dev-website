@@ -70,7 +70,9 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>MCP service with request metadata</h1>
+      <h1>
+        Model Context Protocol (MCP) advanced service with request metadata
+      </h1>
 
       <p>
         An MCP request can carry a <code>_meta</code> field alongside the tool
@@ -293,7 +295,10 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="MCP client" href="/learn/by-example/mcp-client/">
+          <Link
+            title="MCP tools with HTTP request binding"
+            href="/learn/by-example/mcp-service-http-request-binding/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +307,7 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP client
+                  MCP tools with HTTP request binding
                 </span>
               </div>
               <svg

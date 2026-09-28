@@ -78,7 +78,8 @@ export function RagInMemoryVectorStoreRetrieval({ codeSnippets }) {
         This example demonstrates the retrieval and generation steps of a RAG
         workflow with the built-in <code>ai:InMemoryVectorStore</code>. Since an
         in-memory vector store is emptied when the program stops, the documents
-        are ingested in the same program before the query, as shown in the{" "}
+        are ingested in the same program before the query. The ingestion for
+        this example is explained in the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-ingestion/">
           Ingest into an in-memory vector store
         </a>{" "}

@@ -7,69 +7,66 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
+import ballerinax/ai.microsoft.sharepoint;
 
-# Represents a resolved support ticket stored in a ticketing system.
-type Ticket record {|
-    string id;
-    string subject;
-    string resolution;
-|};
+// Credentials of a Microsoft Entra ID app registration that has the \`Sites.Read.All\`
+// application permission for Microsoft Graph.
+configurable string tenantId = ?;
+configurable string clientId = ?;
+configurable string clientSecret = ?;
 
-// A custom data loader that implements the \`ai:DataLoader\` type. Any source can be exposed
-// as a data loader: a database, an API, a ticketing system, etc. Here, the loader turns
-// ticket records into text documents, keeping the ticket details as metadata.
-isolated class TicketDataLoader {
-    *ai:DataLoader;
-
-    private final readonly & Ticket[] tickets;
-
-    isolated function init(Ticket[] tickets) {
-        self.tickets = tickets.cloneReadOnly();
-    }
-
-    public isolated function load() returns ai:Document[]|ai:Document|ai:Error {
-        ai:Document[] documents = [];
-        foreach Ticket ticket in self.tickets {
-            ai:TextDocument document = {
-                content: string \`\${ticket.subject}: \${ticket.resolution}\`,
-                metadata: {"origin": "ticketing-system", "ticketId": ticket.id}
-            };
-            documents.push(document);
-        }
-        return documents;
-    }
-}
+// The SharePoint site to load from, in the \`{hostname}:/sites/{site-name}\` form
+// (e.g., \`contoso.sharepoint.com:/sites/HR\`).
+configurable string siteId = ?;
 
 public function main() returns error? {
-    // Source 1: files. The built-in \`ai:TextDataLoader\` loads \`pdf\`, \`docx\`, \`markdown\`,
+    // Source 1: local files. The built-in \`ai:TextDataLoader\` loads \`pdf\`, \`docx\`, \`markdown\`,
     // \`html\`, and \`pptx\` files as text documents.
     ai:DataLoader fileLoader = check new ai:TextDataLoader("./leave_policy.pdf", "./employee_handbook.md");
-    ai:Document[] documents = toArray(check fileLoader.load());
+    ai:Document[] fileDocuments = toArray(check fileLoader.load());
+    printDocuments("local files", fileDocuments);
 
-    // Source 2: structured records from another system, via a custom data loader.
-    ai:DataLoader ticketLoader = new TicketDataLoader([
-        {id: "T-1042", subject: "VPN disconnects", resolution: "Update the VPN client to version 5.2 or later."},
-        {id: "T-1043", subject: "Expense portal login", resolution: "Reset the SSO password and clear the browser cache."}
-    ]);
-    documents.push(...toArray(check ticketLoader.load()));
+    // Source 2: Microsoft SharePoint. The \`sharepoint:TextDataLoader\` reads files from
+    // SharePoint document libraries through the Microsoft Graph API. Here, it loads the
+    // PDF and Markdown files in the \`Policies\` folder of the site's default \`Documents\`
+    // library.
+    ai:DataLoader sharePointLoader = check new sharepoint:TextDataLoader(
+        {
+            auth: {
+                tokenUrl: string \`https://login.microsoftonline.com/\${tenantId}/oauth2/v2.0/token\`,
+                clientId,
+                clientSecret,
+                scopes: ["https://graph.microsoft.com/.default"]
+            }
+        },
+        [
+            {
+                siteId,
+                libraries: [{paths: ["/Policies"], includeExtensions: ["pdf", "md"]}]
+            }
+        ]
+    );
+    ai:Document[] sharePointDocuments = toArray(check sharePointLoader.load());
+    printDocuments("SharePoint", sharePointDocuments);
 
     // Source 3: content already in memory, such as the body of an HTTP response or a message,
     // can be wrapped as a document directly.
-    documents.push(<ai:TextDocument>{
-        content: "The office is closed on public holidays. Remote work is allowed on those days for critical support staff.",
-        metadata: {"origin": "announcements", "fileName": "holiday-notice"}
-    });
+    ai:TextDocument notice = {
+        content: "The office is closed on public holidays. Critical support staff may work remotely.",
+        metadata: {fileName: "holiday-notice"}
+    };
+    printDocuments("memory", [notice]);
 
     // All the documents share the \`ai:Document\` type, so they can be ingested into a
     // knowledge base together, regardless of where they came from.
-    io:println("Documents loaded: ", documents.length());
+    ai:Document[] documents = [...fileDocuments, ...sharePointDocuments, notice];
+    io:println("\\nTotal documents: ", documents.length());
+}
+
+function printDocuments(string origin, ai:Document[] documents) {
+    io:println("Loaded from ", origin, ": ", documents.length());
     foreach ai:Document document in documents {
-        json metadataJson = document.metadata.toJson();
-        map<json> metadata = metadataJson is map<json> ? metadataJson : {};
-        json origin = metadata["origin"];
-        string label = origin is string ? origin : "file";
-        io:println("- [", label, "] ", metadata["fileName"] ?: metadata["ticketId"],
-                " (", document.content.toString().length(), " characters)");
+        io:println("- ", document.metadata?.fileName, " (", document.content.toString().length(), " characters)");
     }
 }
 
@@ -100,28 +97,52 @@ export function RagDocumentSources({ codeSnippets }) {
         abstraction represents any source of documents: the built-in{" "}
         <code>ai:TextDataLoader</code> loads local files (<code>pdf</code>,{" "}
         <code>docx</code>, <code>markdown</code>, <code>html</code>, and{" "}
-        <code>pptx</code>), modules such as{" "}
+        <code>pptx</code>), and modules such as{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest">
           ballerinax/ai.microsoft.sharepoint
         </a>{" "}
-        load from external services, and you can implement{" "}
-        <code>ai:DataLoader</code> yourself to load from a database, an API, or
-        a ticketing system. Content that is already in memory, such as an HTTP
-        response body, can be wrapped as an <code>ai:TextDocument</code>{" "}
-        directly.
+        load documents from external services. Content that is already in
+        memory, such as an HTTP response body, can be wrapped as an{" "}
+        <code>ai:TextDocument</code> directly. To load from any other source,
+        implement the <code>ai:DataLoader</code> type, as shown in the{" "}
+        <a href="/learn/by-example/rag-custom-data-loader/">
+          Load using a custom data loader
+        </a>{" "}
+        example.
+      </p>
+
+      <p>
+        The <code>sharepoint:TextDataLoader</code> reads files from SharePoint
+        document libraries, and optionally site pages, through the Microsoft
+        Graph API. It loads text files, such as Markdown, as they are and
+        extracts the text of PDF files. It authenticates with OAuth2 client
+        credentials, a refresh token, or a bearer token. Each source names a
+        site and the libraries, paths, and file extensions to load.
       </p>
 
       <p>
         Because every loader produces <code>ai:Document</code> values, documents
         from different sources can be combined and ingested into a knowledge
-        base together, with metadata recording where each one came from.
+        base together.
       </p>
 
       <p>
-        This example demonstrates loading documents from files, from structured
-        records through a custom data loader, and from in-memory content, and
-        inspecting the combined result.
+        This example demonstrates loading documents from local files, from a
+        SharePoint document library, and from in-memory content.
       </p>
+
+      <blockquote>
+        <p>
+          Note: This example requires a Microsoft Entra ID app registration with
+          the <code>Sites.Read.All</code> application permission for Microsoft
+          Graph. Add the tenant ID, client ID, client secret, and SharePoint
+          site ID to the <code>Config.toml</code> file (e.g.,{" "}
+          <code>siteId = &quot;contoso.sharepoint.com:/sites/HR&quot;</code>).
+          The example loads the PDF and Markdown files in the{" "}
+          <code>Policies</code> folder of the site’s <code>Documents</code>{" "}
+          library.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
@@ -247,12 +268,17 @@ export function RagDocumentSources({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_document_sources.bal`}</span>
-              <span>{`Documents loaded: 5`}</span>
-              <span>{`- [file] leave_policy.pdf (2833 characters)`}</span>
-              <span>{`- [file] employee_handbook.md (525 characters)`}</span>
-              <span>{`- [ticketing-system] T-1042 (63 characters)`}</span>
-              <span>{`- [ticketing-system] T-1043 (73 characters)`}</span>
-              <span>{`- [announcements] holiday-notice (105 characters)`}</span>
+              <span>{`Loaded from local files: 2`}</span>
+              <span>{`- leave_policy.pdf (2833 characters)`}</span>
+              <span>{`- employee_handbook.md (525 characters)`}</span>
+              <span>{`Loaded from SharePoint: 2`}</span>
+              <span>{`- expense_guidelines.md (164 characters)`}</span>
+              <span>{`- travel_policy.pdf (211 characters)`}</span>
+              <span>{`Loaded from memory: 1`}</span>
+              <span>{`- holiday-notice (82 characters)`}</span>
+              <span>{`
+`}</span>
+              <span>{`Total documents: 5`}</span>
             </code>
           </pre>
         </Col>
@@ -286,6 +312,16 @@ export function RagDocumentSources({ codeSnippets }) {
           <span>
             <a href="/learn/by-example/rag-document-loading/">
               The Load documents example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rag-custom-data-loader/">
+              The Load using a custom data loader example
             </a>
           </span>
         </li>
@@ -351,8 +387,8 @@ export function RagDocumentSources({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Chunk documents"
-            href="/learn/by-example/rag-document-chunking/"
+            title="Load using a custom data loader"
+            href="/learn/by-example/rag-custom-data-loader/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -362,7 +398,7 @@ export function RagDocumentSources({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chunk documents
+                  Load using a custom data loader
                 </span>
               </div>
               <svg

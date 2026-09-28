@@ -5,46 +5,39 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/ai;
-import ballerina/io;
-
-// Use the default embedding provider (with configuration added via a Ballerina VS Code command).
-final ai:EmbeddingProvider embeddingProvider = check ai:getDefaultEmbeddingProvider();
-
-// Define the chunker to use when documents are ingested. Instead of the default \`ai:AUTO\`
-// configuration, which selects a chunker based on the document type, this example uses a
-// generic recursive chunker that splits by sentences into chunks of at most 120 characters.
-// Consecutive chunks can share up to 20 characters of overlap, made of whole sentences, to
-// preserve context.
-final ai:Chunker chunker = new ai:GenericRecursiveChunker(maxChunkSize = 120, maxOverlapSize = 20,
-        strategy = ai:SENTENCE);
-
-// Define the vector store. The example uses the in-memory vector store; any \`ai:VectorStore\`
-// implementation can be used instead.
-final ai:VectorStore vectorStore = check new ai:InMemoryVectorStore();
-
-// Create the knowledge base with the vector store, the embedding provider,
-// and the configured chunker. Any \`ai:Chunker\` implementation, including your own, can be used.
-final ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(vectorStore, embeddingProvider, chunker);
+  `import ballerina/io;
+import ballerina/mcp;
 
 public function main() returns error? {
-    ai:TextDocument policy = {
-        metadata: {fileName: "leave_policy.txt"},
-        content: string \`Full-time employees are entitled to 20 days of paid annual leave per year.
-Leave requests must be submitted at least one week in advance.
-Employees are entitled to 10 days of paid sick leave per year.
-A medical certificate is required for absences longer than two consecutive days.
-Parental leave is 12 weeks and must be requested one month in advance.\`
-    };
+    // Connect to the MCP server from the MCP advanced service with request metadata example.
+    mcp:StreamableHttpClient mcpClient = check new ("http://localhost:9090/mcp");
+    check mcpClient->initialize({name: "Support MCP Client", version: "1.0.0"});
 
-    // The document is split by the configured chunker before the chunks are embedded and stored.
-    check knowledgeBase.ingest(policy);
-    io:println("Ingestion successful");
+    // The \`getOpenTickets\` tool takes no arguments. The tenant is not part of the tool's input
+    // schema; it is sent in the \`_meta\` field of the request instead. \`mcp:Meta\` is an open
+    // record, so the client can attach its own fields to it.
+    mcp:CallToolResult result = check mcpClient->callTool({
+        name: "getOpenTickets",
+        _meta: {"tenantId": "acme"}
+    });
+    foreach mcp:ContentBlock content in result.content {
+        if content is mcp:TextContent {
+            io:println("Open tickets of tenant 'acme': ", content.text);
+        }
+    }
+
+    // A call without the metadata is rejected by the service.
+    mcp:CallToolResult|mcp:ClientError missingMetadata = mcpClient->callTool({name: "getOpenTickets"});
+    if missingMetadata is mcp:ClientError {
+        io:println("Call without metadata failed: ", missingMetadata.message());
+    }
+
+    check mcpClient->close();
 }
 `,
 ];
 
-export function RagWithConfiguredChunker({ codeSnippets }) {
+export function McpClientWithRequestMetadata({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -54,49 +47,47 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Ingest with a configured chunker</h1>
+      <h1>Model Context Protocol (MCP) client with request metadata</h1>
 
       <p>
-        By default, an <code>ai:VectorKnowledgeBase</code> chunks ingested
-        documents with the <code>ai:AUTO</code> configuration, which selects a
-        chunker based on the type of each document. When you need control over
-        the chunk size, overlap, or splitting strategy, pass a configured{" "}
-        <code>ai:Chunker</code> when creating the knowledge base instead.
-        Ballerina provides <code>ai:GenericRecursiveChunker</code>,{" "}
-        <code>ai:MarkdownChunker</code>, and <code>ai:HtmlChunker</code>, and
-        you can also implement the <code>ai:Chunker</code> type yourself.
+        An MCP request can carry a <code>_meta</code> field alongside the tool
+        arguments. Metadata describes the call rather than forming part of the
+        input of the tool, so it is the place for values that the caller
+        determines and that must not be chosen by an LLM, such as the tenant or
+        the correlation ID of the request.
       </p>
 
       <p>
-        This example demonstrates a knowledge base that uses a generic recursive
-        chunker with a sentence-based strategy and a small chunk size, so that
-        each sentence is stored as a separate chunk. It covers ingestion only.
-        To retrieve from a knowledge base, see the{" "}
-        <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
-          Retrieve from an in-memory vector store
-        </a>{" "}
-        example.
+        The <code>mcp:StreamableHttpClient</code> client sends request metadata
+        via the <code>_meta</code> field of <code>mcp:CallToolParams</code>. The{" "}
+        <code>mcp:Meta</code> type is an open record, so the client can attach
+        its own fields in addition to the standard <code>progressToken</code>{" "}
+        field. On the server side, a service declared with the{" "}
+        <code>mcp:StreamableHttpAdvancedService</code> type reads the metadata
+        from the <code>mcp:CallToolParams</code> it receives in the{" "}
+        <code>onCallTool</code> method.
+      </p>
+
+      <p>
+        This example demonstrates how to call a tool with request metadata that
+        identifies the calling tenant, and shows that the same call is rejected
+        when the metadata is missing.
       </p>
 
       <blockquote>
         <p>
-          Note: This example uses the default embedding provider implementation.
-          To generate the necessary configuration, open up the VS Code command
-          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-          <code>command</code> + <code>shift</code> + <code>P</code>), and run
-          the <code>Configure default WSO2 Model Provider</code> command to add
-          your configuration to the <code>Config.toml</code> file. If not
-          already logged in, log in to the Ballerina Copilot when prompted.
-          Alternatively, to use your own keys, use the relevant{" "}
-          <code>ballerinax/ai.&lt;provider&gt;</code> embedding provider
-          implementation.
+          Note: Start the MCP server from the{" "}
+          <a href="/learn/by-example/mcp-service-with-request-metadata/">
+            MCP advanced service with request metadata
+          </a>{" "}
+          example before running this example.
         </p>
       </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://lib.ballerina.io/ballerina/mcp/latest/">
+          <code>ballerina/mcp</code> module
         </a>
         .
       </p>
@@ -216,8 +207,9 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run rag_with_configured_chunker.bal`}</span>
-              <span>{`Ingestion successful`}</span>
+              <span>{`\$ bal run mcp_client_with_request_metadata.bal`}</span>
+              <span>{`Open tickets of tenant 'acme': [{"id":"TCK-1", "tenantId":"acme", "subject":"Payment gateway timeout"}, {"id":"TCK-3", "tenantId":"acme", "subject":"Report export is empty"}]`}</span>
+              <span>{`Call without metadata failed: Received JSON-RPC error from server: {"jsonrpc":"2.0", "id":3, "error":{"code":-32603, "message":"Failed to call tool 'getOpenTickets': The 'tenantId' metadata is missing from the request"}}`}</span>
             </code>
           </pre>
         </Col>
@@ -229,8 +221,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-document-chunking/">
-              The Chunk documents example
+            <a href="/learn/by-example/mcp-service-with-request-metadata/">
+              The MCP advanced service with request metadata example
             </a>
           </span>
         </li>
@@ -239,9 +231,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-with-custom-chunker/">
-              The Implement a custom chunker example
-            </a>
+            <a href="/learn/by-example/mcp-client/">The MCP client example</a>
           </span>
         </li>
       </ul>
@@ -249,18 +239,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-without-chunking/">
-              The Ingest without chunking example
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
-              The Retrieve from an in-memory vector store example
+            <a href="/learn/by-example/ai-agent-mcp-context/">
+              The Passing context to MCP tools example
             </a>
           </span>
         </li>
@@ -269,10 +249,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Ingest without chunking"
-            href="/learn/by-example/rag-without-chunking/"
-          >
+          <Link title="MCP client" href="/learn/by-example/mcp-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -298,7 +275,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ingest without chunking
+                  MCP client
                 </span>
               </div>
             </div>
@@ -306,8 +283,8 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Ingest into Pinecone"
-            href="/learn/by-example/rag-ingestion-with-external-vector-store/"
+            title="Agent with local tools"
+            href="/learn/by-example/ai-agent-local-tools/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -317,7 +294,7 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ingest into Pinecone
+                  Agent with local tools
                 </span>
               </div>
               <svg

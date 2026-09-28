@@ -257,7 +257,8 @@ export function RagEmbeddingProvider({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/rag-embeddings/">
-              The Generate embeddings example
+              The Generate embeddings with the default WSO2 embedding provider
+              example
             </a>
           </span>
         </li>
@@ -327,7 +328,7 @@ export function RagEmbeddingProvider({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Generate embeddings"
+            title="Generate embeddings with the default WSO2 embedding provider"
             href="/learn/by-example/rag-embeddings/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -355,7 +356,7 @@ export function RagEmbeddingProvider({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Generate embeddings
+                  Generate embeddings with the default WSO2 embedding provider
                 </span>
               </div>
             </div>
@@ -363,8 +364,8 @@ export function RagEmbeddingProvider({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Vector store operations"
-            href="/learn/by-example/rag-vector-store-operations/"
+            title="Implement a custom embedding provider"
+            href="/learn/by-example/rag-custom-embedding-provider/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -374,7 +375,7 @@ export function RagEmbeddingProvider({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Vector store operations
+                  Implement a custom embedding provider
                 </span>
               </div>
               <svg

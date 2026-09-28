@@ -337,7 +337,10 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="MCP client" href="/learn/by-example/mcp-client/">
+          <Link
+            title="MCP advanced service with request metadata"
+            href="/learn/by-example/mcp-service-with-request-metadata/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -363,7 +366,7 @@ export function McpServiceHttpRequestBinding({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP client
+                  MCP advanced service with request metadata
                 </span>
               </div>
             </div>

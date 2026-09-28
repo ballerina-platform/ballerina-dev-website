@@ -195,16 +195,6 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-custom-knowledge-base/">
-              The Retrieve from a custom knowledge base example
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
             <a href="https://central.ballerina.io/ballerinax/ai.wso2.integration/latest">
               The <code>ballerinax/ai.wso2.integration</code> module
             </a>
@@ -216,8 +206,8 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Retrieve from a custom knowledge base"
-            href="/learn/by-example/rag-custom-knowledge-base/"
+            title="Filter results by metadata"
+            href="/learn/by-example/rag-query-with-metadata-filters/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -244,7 +234,7 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retrieve from a custom knowledge base
+                  Filter results by metadata
                 </span>
               </div>
             </div>

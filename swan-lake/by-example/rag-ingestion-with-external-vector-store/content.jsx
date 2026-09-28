@@ -85,7 +85,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
         <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
           ballerinax/ai.pinecone
         </a>{" "}
-        module. To query the ingested data, see the{" "}
+        module. It covers ingestion only. For the query part, see the{" "}
         <a href="/learn/by-example/rag-query-with-external-vector-store/">
           Retrieve from Pinecone
         </a>{" "}

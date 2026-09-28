@@ -9,7 +9,7 @@ export const codeSnippetData = [
 import ballerina/io;
 import ballerina/mcp;
 
-// Connects to the MCP server from the MCP service with request metadata example.
+// Connects to the MCP server from the MCP advanced service with request metadata example.
 final mcp:StreamableHttpClient ticketServer = check new ("http://localhost:9090/mcp");
 
 # Gets the open support tickets of the signed-in user.
@@ -75,15 +75,26 @@ export function AiAgentMcpContext({ codeSnippets }) {
       <p>
         The tool declares an <code>ai:Context</code> as its first parameter,
         reads the value from it, and sets the value on the <code>_meta</code>{" "}
-        field of <code>mcp:CallToolParams</code>. The MCP server reads it from{" "}
-        <code>params._meta</code> in its <code>onCallTool</code> method.
+        field of <code>mcp:CallToolParams</code>. On the server side, an{" "}
+        <code>mcp:StreamableHttpAdvancedService</code> reads it from{" "}
+        <code>params._meta</code> in its <code>onCallTool</code> method, as
+        demonstrated in the{" "}
+        <a href="/learn/by-example/mcp-service-with-request-metadata/">
+          MCP advanced service with request metadata
+        </a>{" "}
+        example. To send request metadata from a plain MCP client without an
+        agent, see the{" "}
+        <a href="/learn/by-example/mcp-client-with-request-metadata/">
+          MCP client with request metadata
+        </a>{" "}
+        example.
       </p>
 
       <blockquote>
         <p>
           Prerequisite: Start the MCP server from the{" "}
           <a href="/learn/by-example/mcp-service-with-request-metadata/">
-            MCP service with request metadata
+            MCP advanced service with request metadata
           </a>{" "}
           example before running this example.
         </p>
@@ -245,7 +256,17 @@ export function AiAgentMcpContext({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/mcp-service-with-request-metadata/">
-              The MCP service with request metadata example
+              The MCP advanced service with request metadata example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/mcp-client-with-request-metadata/">
+              The MCP client with request metadata example
             </a>
           </span>
         </li>
@@ -311,8 +332,8 @@ export function AiAgentMcpContext({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with external endpoint integration"
-            href="/learn/by-example/ai-agent-external-endpoint-integration/"
+            title="Load documents"
+            href="/learn/by-example/rag-document-loading/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -322,7 +343,7 @@ export function AiAgentMcpContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with external endpoint integration
+                  Load documents
                 </span>
               </div>
               <svg

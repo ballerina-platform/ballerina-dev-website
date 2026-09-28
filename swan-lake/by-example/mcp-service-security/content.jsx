@@ -374,10 +374,7 @@ export function McpServiceSecurity({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Agent with local tools"
-            href="/learn/by-example/ai-agent-local-tools/"
-          >
+          <Link title="MCP client" href="/learn/by-example/mcp-client/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -386,7 +383,7 @@ export function McpServiceSecurity({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with local tools
+                  MCP client
                 </span>
               </div>
               <svg

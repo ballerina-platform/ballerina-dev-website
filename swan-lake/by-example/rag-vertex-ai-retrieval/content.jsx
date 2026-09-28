@@ -80,7 +80,8 @@ export function RagVertexAiRetrieval({ codeSnippets }) {
       <p>
         This example demonstrates retrieving chunks embedded with Vertex AI and
         generating the answer with Gemini. Since it uses the in-memory vector
-        store, the documents are ingested in the same program, as shown in the{" "}
+        store, the documents are ingested in the same program. The ingestion for
+        this example is explained in the{" "}
         <a href="/learn/by-example/rag-vertex-ai-ingestion/">
           Ingest with Google Vertex AI embeddings
         </a>{" "}

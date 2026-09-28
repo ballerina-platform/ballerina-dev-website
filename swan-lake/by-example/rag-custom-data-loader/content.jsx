@@ -8,141 +8,69 @@ export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
 
-// A custom knowledge base that implements the \`ai:KnowledgeBase\` type.
-// Instead of vector similarity, this implementation ranks chunks by keyword overlap.
-// The same approach can be used to integrate any search backend (e.g., a full-text
-// search engine or an existing enterprise search API) into a RAG workflow.
-isolated class KeywordKnowledgeBase {
-    *ai:KnowledgeBase;
+# Represents a resolved support ticket stored in a ticketing system.
+type Ticket record {|
+    # The ticket identifier
+    string id;
+    # A short summary of the issue
+    string subject;
+    # How the issue was resolved
+    string resolution;
+|};
 
-    private final ai:TextChunk[] chunks = [];
+// A custom data loader that implements the \`ai:DataLoader\` type. Any source can be exposed
+// as a data loader: a database, an API, a ticketing system, etc. Here, the loader turns
+// ticket records into text documents, keeping the ticket details as metadata.
+isolated class TicketDataLoader {
+    *ai:DataLoader;
 
-    // Ingests documents or chunks. Documents are split into paragraphs here;
-    // an \`ai:Chunker\` can be used instead for finer control.
-    public isolated function ingest(ai:Chunk[]|ai:Document[]|ai:Document documents) returns ai:Error? {
-        ai:Document[] items;
-        if documents is ai:Document {
-            items = [documents];
-        } else {
-            items = documents;
-        }
-        foreach ai:Document item in items {
-            if item is ai:TextChunk {
-                lock {
-                    self.chunks.push(item.clone());
-                }
-            } else if item is ai:TextDocument {
-                foreach string paragraph in re \`\\n\\s*\\n\`.split(item.content) {
-                    ai:TextChunk chunk = {content: paragraph.trim(), metadata: item.metadata};
-                    lock {
-                        self.chunks.push(chunk.clone());
-                    }
-                }
-            } else {
-                return error ai:Error("Only text documents and text chunks are supported");
-            }
-        }
+    private final readonly & Ticket[] tickets;
+
+    isolated function init(Ticket[] tickets) {
+        self.tickets = tickets.cloneReadOnly();
     }
 
-    // Retrieves the chunks that share the most keywords with the query.
-    public isolated function retrieve(string query, int maxLimit, ai:MetadataFilters? filters = ())
-            returns ai:QueryMatch[]|ai:Error {
-        readonly & string[] queryWords = tokenize(query).cloneReadOnly();
-        ai:QueryMatch[] matches;
-        lock {
-            ai:QueryMatch[] found = [];
-            foreach ai:TextChunk chunk in self.chunks {
-                int overlap = countOverlap(queryWords, tokenize(chunk.content));
-                if overlap > 0 {
-                    float similarityScore = <float>overlap / <float>queryWords.length();
-                    found.push({chunk: chunk.clone(), similarityScore});
-                }
-            }
-            matches = found.clone();
+    // The \`load\` method is the only method of the \`ai:DataLoader\` type. It returns a single
+    // document or an array of documents.
+    public isolated function load() returns ai:Document[]|ai:Document|ai:Error {
+        ai:Document[] documents = [];
+        foreach Ticket ticket in self.tickets {
+            ai:TextDocument document = {
+                content: string \`\${ticket.subject}: \${ticket.resolution}\`,
+                metadata: {"origin": "ticketing-system", "ticketId": ticket.id}
+            };
+            documents.push(document);
         }
-        return from ai:QueryMatch queryMatch in matches
-            order by queryMatch.similarityScore descending
-            limit maxLimit
-            select queryMatch;
-    }
-
-    // Deletes chunks whose metadata matches the given filters.
-    public isolated function deleteByFilter(ai:MetadataFilters filters) returns ai:Error? {
-        readonly & ai:MetadataFilters readonlyFilters = filters.cloneReadOnly();
-        lock {
-            ai:TextChunk[] remaining = [];
-            foreach ai:TextChunk chunk in self.chunks {
-                if !matchesFilters(chunk, readonlyFilters) {
-                    remaining.push(chunk);
-                }
-            }
-            self.chunks.removeAll();
-            self.chunks.push(...remaining);
-        }
+        return documents;
     }
 }
-
-isolated function countOverlap(string[] queryWords, string[] chunkWords) returns int {
-    int overlap = 0;
-    foreach string word in queryWords {
-        if chunkWords.indexOf(word) != () {
-            overlap += 1;
-        }
-    }
-    return overlap;
-}
-
-isolated function tokenize(string text) returns string[] =>
-    re \`[^a-zA-Z0-9]+\`.split(text.toLowerAscii()).filter(word => word.length() > 2);
-
-// Supports equality filters combined with the \`ai:AND\` condition.
-isolated function matchesFilters(ai:TextChunk chunk, ai:MetadataFilters filters) returns boolean {
-    ai:Metadata metadata = chunk.metadata ?: {};
-    foreach ai:MetadataFilters|ai:MetadataFilter filter in filters.filters {
-        if filter is ai:MetadataFilter {
-            if metadata[filter.key] != filter.value {
-                return false;
-            }
-        } else if !matchesFilters(chunk, filter) {
-            return false;
-        }
-    }
-    return true;
-}
-
-// Use the default model provider (with configuration added via a Ballerina VS Code command).
-final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 public function main() returns error? {
-    // The custom implementation is used through the \`ai:KnowledgeBase\` type,
-    // so the rest of the RAG workflow does not depend on the implementation.
-    ai:KnowledgeBase knowledgeBase = new KeywordKnowledgeBase();
-    ai:TextDocument policy = {
-        metadata: {fileName: "leave_policy.md"},
-        content: string \`Full-time employees are entitled to 20 days of paid annual leave per year.
+    // In a real application, the records would be read from the ticketing system's API
+    // or database.
+    ai:DataLoader ticketLoader = new TicketDataLoader([
+        {id: "T-1042", subject: "VPN disconnects", resolution: "Update the VPN client to version 5.2 or later."},
+        {
+            id: "T-1043",
+            subject: "Expense portal login",
+            resolution: "Reset the SSO password and clear the browser cache."
+        }
+    ]);
 
-            Employees are entitled to 10 days of paid sick leave per year. A medical
-            certificate is required for absences longer than two consecutive days.
+    // The custom loader is used like the built-in loaders. Its documents can be chunked
+    // and ingested into a knowledge base in the same way.
+    ai:Document|ai:Document[] loaded = check ticketLoader.load();
+    ai:Document[] documents = loaded is ai:Document[] ? loaded : [loaded];
 
-            Parental leave is 12 weeks and must be requested one month in advance.\`
-    };
-    check knowledgeBase.ingest(policy);
-
-    string query = "How many sick leave days do employees get?";
-    ai:QueryMatch[] matches = check knowledgeBase.retrieve(query, 2);
-    foreach ai:QueryMatch queryMatch in matches {
-        io:println("Match: ", queryMatch.chunk.content, " (score: ", queryMatch.similarityScore, ")");
+    io:println("Documents loaded: ", documents.length());
+    foreach ai:Document document in documents {
+        io:println("- ", document.metadata.toJson(), ": ", document.content);
     }
-
-    // Augment the query with the retrieved context and generate the response.
-    ai:ChatUserMessage augmentedQuery = ai:augmentUserQuery(matches, query);
-    ai:ChatAssistantMessage response = check model->chat(augmentedQuery);
-    io:println("\\nAnswer: ", response?.content);
 }
 `,
 ];
 
-export function RagCustomKnowledgeBase({ codeSnippets }) {
+export function RagCustomDataLoader({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -152,51 +80,36 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Retrieve from a custom knowledge base</h1>
+      <h1>Load using a custom data loader</h1>
 
       <p>
-        The <code>ai:KnowledgeBase</code> type is the abstraction used for
-        ingestion and retrieval in retrieval-augmented generation (RAG)
-        workflows. Ballerina provides the <code>ai:VectorKnowledgeBase</code>{" "}
-        implementation backed by a vector store and an embedding provider, and
+        The built-in <code>ai:TextDataLoader</code> loads local files, and
         modules such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-          ballerinax/ai.azure
+        <a href="https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest">
+          ballerinax/ai.microsoft.sharepoint
         </a>{" "}
-        provide implementations backed by managed search services (e.g., Azure
-        AI Search).
+        load from external services. To load documents from any other source for
+        a retrieval-augmented generation (RAG) knowledge base, such as a
+        database, an API, or a ticketing system, implement the{" "}
+        <code>ai:DataLoader</code> type yourself.
       </p>
 
       <p>
-        You can also implement <code>ai:KnowledgeBase</code> yourself to
-        integrate any retrieval backend, such as a full-text search engine, an
-        existing enterprise search API, or a hybrid of keyword and vector
-        search. A custom knowledge base must implement the <code>ingest</code>,{" "}
-        <code>retrieve</code>, and <code>deleteByFilter</code> methods. Since
-        the rest of the workflow (e.g., <code>ai:augmentUserQuery</code>) only
-        depends on the <code>ai:KnowledgeBase</code> type, the implementation
-        can be swapped without changing the application logic.
+        An <code>ai:DataLoader</code> has a single <code>load</code> method that
+        returns an <code>ai:Document</code> or an array of{" "}
+        <code>ai:Document</code> values. Return <code>ai:TextDocument</code>{" "}
+        values with the text to be chunked and embedded, and add metadata, such
+        as a record identifier, that is useful when the document is retrieved
+        later. Because the custom loader produces the same{" "}
+        <code>ai:Document</code> values as the built-in loaders, its documents
+        can be combined with documents from other sources and ingested into a
+        knowledge base.
       </p>
 
       <p>
-        This example demonstrates a simple keyword-based knowledge base
-        implementation and its use in a RAG workflow.
+        This example demonstrates a custom data loader that turns support ticket
+        records into text documents.
       </p>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
-          palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-          <code>command</code> + <code>shift</code> + <code>P</code>), and run
-          the <code>Configure default WSO2 Model Provider</code> command to add
-          your configuration to the <code>Config.toml</code> file. If not
-          already logged in, log in to the Ballerina Copilot when prompted.
-          Alternatively, to use your own keys, use the relevant{" "}
-          <code>ballerinax/ai.&lt;provider&gt;</code> model provider
-          implementation.
-        </p>
-      </blockquote>
 
       <p>
         For more information on the underlying module, see the{" "}
@@ -321,13 +234,10 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run rag_custom_knowledge_base.bal`}</span>
-              <span>{`Match: Employees are entitled to 10 days of paid sick leave per year. A medical`}</span>
-              <span>{`            certificate is required for absences longer than two consecutive days. (score: 0.5714285714285714)`}</span>
-              <span>{`Match: Full-time employees are entitled to 20 days of paid annual leave per year. (score: 0.42857142857142855)`}</span>
-              <span>{`
-`}</span>
-              <span>{`Answer: Employees are entitled to 10 days of paid sick leave per year.`}</span>
+              <span>{`\$ bal run rag_custom_data_loader.bal`}</span>
+              <span>{`Documents loaded: 2`}</span>
+              <span>{`- {"origin":"ticketing-system","ticketId":"T-1042"}: VPN disconnects: Update the VPN client to version 5.2 or later.`}</span>
+              <span>{`- {"origin":"ticketing-system","ticketId":"T-1043"}: Expense portal login: Reset the SSO password and clear the browser cache.`}</span>
             </code>
           </pre>
         </Col>
@@ -339,8 +249,8 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
-              The Retrieve from an in-memory vector store example
+            <a href="/learn/by-example/rag-document-loading/">
+              The Load documents example
             </a>
           </span>
         </li>
@@ -349,8 +259,8 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-query-with-metadata-filters/">
-              The Filter results by metadata example
+            <a href="/learn/by-example/rag-document-sources/">
+              The Load documents from multiple sources example
             </a>
           </span>
         </li>
@@ -359,9 +269,18 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-              The <code>ballerinax/ai.azure</code> module (Azure AI Search
-              knowledge base)
+            <a href="/learn/by-example/rag-in-memory-vector-store-ingestion/">
+              The Ingest into an in-memory vector store example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/ai/latest/">
+              The <code>ballerina/ai</code> module
             </a>
           </span>
         </li>
@@ -371,8 +290,8 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Filter results by metadata"
-            href="/learn/by-example/rag-query-with-metadata-filters/"
+            title="Load documents from multiple sources"
+            href="/learn/by-example/rag-document-sources/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -399,7 +318,7 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Filter results by metadata
+                  Load documents from multiple sources
                 </span>
               </div>
             </div>
@@ -407,8 +326,8 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agentic RAG with WSO2 Cloud"
-            href="/learn/by-example/agentic-rag-with-wso2-integration-knowledge-base/"
+            title="Chunk documents"
+            href="/learn/by-example/rag-document-chunking/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -418,7 +337,7 @@ export function RagCustomKnowledgeBase({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agentic RAG with WSO2 Cloud
+                  Chunk documents
                 </span>
               </div>
               <svg

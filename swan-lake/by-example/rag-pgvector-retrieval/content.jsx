@@ -78,11 +78,12 @@ export function RagPgvectorRetrieval({ codeSnippets }) {
 
       <blockquote>
         <p>
-          Prerequisite: Run the{" "}
+          Prerequisite: The ingestion for this example is in the{" "}
           <a href="/learn/by-example/rag-pgvector-ingestion/">
             Ingest into pgvector
           </a>{" "}
-          example first. It populates the table that this example queries.
+          example. Run it first. It populates the table that this example
+          queries.
         </p>
       </blockquote>
 

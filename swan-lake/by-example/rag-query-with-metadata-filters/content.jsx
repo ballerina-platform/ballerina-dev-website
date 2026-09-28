@@ -352,8 +352,8 @@ export function RagQueryWithMetadataFilters({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Retrieve from a custom knowledge base"
-            href="/learn/by-example/rag-custom-knowledge-base/"
+            title="Agentic RAG with WSO2 Cloud"
+            href="/learn/by-example/agentic-rag-with-wso2-integration-knowledge-base/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -363,7 +363,7 @@ export function RagQueryWithMetadataFilters({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retrieve from a custom knowledge base
+                  Agentic RAG with WSO2 Cloud
                 </span>
               </div>
               <svg

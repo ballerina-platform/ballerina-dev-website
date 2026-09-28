@@ -1,6 +1,6 @@
 {
-  "title": "Generate embeddings",
-  "description": "This BBE demonstrates how to generate embeddings and compare text similarity using the default embedding provider.",
+  "title": "Generate embeddings with the default WSO2 embedding provider",
+  "description": "This BBE demonstrates how to generate embeddings and compare text similarity using the default WSO2 embedding provider.",
   "keywords": [
     "ballerina",
     "ballerina by example",

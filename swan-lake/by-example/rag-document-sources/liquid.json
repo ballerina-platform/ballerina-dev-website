@@ -1,6 +1,6 @@
 {
   "title": "Load documents from multiple sources",
-  "description": "This BBE demonstrates how to load documents from files, custom data loaders, and in-memory content for retrieval-augmented generation (RAG).",
+  "description": "This BBE demonstrates how to load documents from local files, Microsoft SharePoint, and in-memory content for retrieval-augmented generation (RAG).",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -9,7 +9,8 @@
     "llm",
     "rag",
     "data loader",
-    "documents"
+    "documents",
+    "sharepoint"
   ],
   "permalink": "/learn/by-example/rag-document-sources/",
   "active": "rag-document-sources"

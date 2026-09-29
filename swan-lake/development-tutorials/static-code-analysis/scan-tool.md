@@ -32,11 +32,12 @@ For more information about managing Ballerina tools, refer to the [Ballerina CLI
 The Ballerina scan tool follows this general syntax:
 
 ```
-$ bal scan [OPTIONS] [<package>|<source-file>]
+$ bal scan [OPTIONS] [<workspace>|<package>|<source-file>]
 ```
 
 ### Arguments
 
+- `<workspace>`: Analyzes each package in the specified workspace in dependency order
 - `<package>`: Analyzes all Ballerina files in the specified package (optional, defaults to current directory)
 - `<source-file>`: Analyzes a specific standalone Ballerina file (`.bal` extension required)
 
@@ -45,15 +46,17 @@ $ bal scan [OPTIONS] [<package>|<source-file>]
 
 ### Available options
 
-| Option                         | Description                                            |
-|--------------------------------|--------------------------------------------------------|
-| `--target-dir=<path>`          | Specify target directory for analysis reports          |
-| `--scan-report`                | Generate HTML report with detailed analysis results    |
-| `--format=<ballerina\|sarif>`  | Specify the format of the report. Default is ballerina |
-| `--list-rules`                 | Display all available analysis rules                   |
-| `--include-rules=<rule1, ...>` | Run analysis for specific rules only                   |
-| `--exclude-rules=<rule1, ...>` | Exclude specific rules from analysis                   |
-| `--platforms=<platform1, ...>` | Define platforms for result reporting                  |
+All options are optional. Rule filters and platforms can also be configured in a `Scan.toml` file. See [Configure the scan with Scan.toml](#configure-the-scan-with-scantoml).
+
+| Option                         | Description                                                                                         | Default                                  |
+|--------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------|
+| `--target-dir=<path>`          | Specify target directory for analysis reports (only for Ballerina projects)                         | The project's `target` directory         |
+| `--scan-report`                | Generate HTML report with detailed analysis results (only for Ballerina projects)                   | Disabled                                 |
+| `--format=<json\|sarif>`       | Specify the format of the report                                                                    | `json`                                   |
+| `--list-rules`                 | List the rules available to the project, along with their kind and severity (only inside a project) | Disabled                                 |
+| `--include-rules=<rule1, ...>` | Run analysis for specific rules only                                                                | All available rules are included         |
+| `--exclude-rules=<rule1, ...>` | Exclude specific rules from analysis                                                                | No rules are excluded                    |
+| `--platforms=<platform1, ...>` | Define platforms for result reporting                                                               | Results are not reported to any platform |
 
 ## Running analysis
 
@@ -82,6 +85,9 @@ If you want to analyze a specific standalone Ballerina file, you can provide the
 $ bal scan myfile.bal
 ```
 
+When run on a workspace, the scan tool resolves the workspace dependencies and analyzes each package in dependency
+order.
+
 ## Report generation
 
 To generate a detailed HTML report of the analysis results, use the `--scan-report` option:
@@ -92,14 +98,23 @@ $ bal scan --scan-report
 
 This will produce an HTML report and scan results in JSON format inside the `target/report` directory.
 
-The HTML report includes a summary of the number of code smells, bugs, and vulnerabilities found in each file.
+The HTML report includes a summary of the total number of files scanned and the number of code smells, bugs, and
+vulnerabilities found in each file. You can filter, search, and export the list of files.
 
 ![scan-report-summary-view](/learn/images/scan-tool-html-report-summary-view.png)
 
-To investigate further, you can click on a file name to view a detailed breakdown of the issues.
-This view highlights the exact lines where problems were detected, along with a description, and the severity level.
+To investigate further, you can click on a file name to open the file view. This view shows the source of the file and
+highlights the exact lines where problems were detected. Hover over a highlight to see a summary of the issue, or click
+it to see the full details.
 
 ![scan-report-file-view](/learn/images/scan-tool-html-report-file-view.png)
+
+The issues found in the file are listed in a table with the line, rule ID, name, kind, severity, CWE, and OWASP Top 10
+category of each issue. Expand an issue to see its description and the full rule details, such as its location, source,
+and tags. From there, you can jump to the issue in the source using **Show in code**, or open the rule's documentation
+using **Rule documentation**.
+
+![scan-report-issue-view](/learn/images/scan-tool-html-report-issue-view.png)
 
 ## Custom target directory
 
@@ -115,8 +130,36 @@ $ bal scan --target-dir="path/to/your/target/directory"
 By default, the scan tool generates reports in `JSON` format.
 However, you can specify the report format using the `--format` option.
 
-The available formats are `ballerina` and `sarif`. The `ballerina` format is the default, while `sarif` is a
+The available formats are `json` and `sarif`. The `json` format is the default, while `sarif` is a
 standardized format for static analysis results.
+
+In the `json` format, each finding is reported with its location and the metadata of the rule that raised it,
+including the rule's `severity` and a `helpUri` that links to the rule's documentation:
+
+```json
+[
+  {
+    "location": {
+      "filePath": "main.bal",
+      "startLine": 20,
+      "endLine": 20,
+      "startColumn": 17,
+      "endColumn": 39,
+      "snippet": "checkpanic getResult()"
+    },
+    "rule": {
+      "id": "ballerina:1",
+      "name": "Avoid checkpanic",
+      "description": "Using `checkpanic` lets an unhandled error panic and crash the program instead of being handled.",
+      "helpUri": "https://ballerina.io/learn/scan-rules/#avoid-checkpanic",
+      "severity": "LOW",
+      "ruleKind": "CODE_SMELL"
+    },
+    "source": "BUILT_IN",
+    "fileName": "main.bal"
+  }
+]
+```
 
 To generate a report in the `sarif` format, use the following command:
 
@@ -132,14 +175,43 @@ To view all available rules for your project, you can use the `--list-rules` opt
 $ bal scan --list-rules
 ```
 
-This will display a comprehensive list of available rules for your project, which you can include or exclude in future
-scans.
+This will display the rules available to your project, along with their kind and severity, which you can include or
+exclude in future scans. The list contains the core rules and the rules contributed by the project's dependencies
+(library tools and static code analyzer plugins).
 
 The output will look something like this:
 
-![list-rules](/learn/images/scan-tool-list-rules.png)
+```
+RuleID       | Rule Kind     | Severity | Rule Description
+-------------|---------------|----------|-------------------------------------------------
+ballerina:1  | CODE_SMELL    | LOW      | Avoid checkpanic
+ballerina:2  | CODE_SMELL    | LOW      | Unused function parameter
+...
+ballerina:13 | VULNERABILITY | HIGH     | Hard-coded secrets are security-sensitive
+ballerina:14 | VULNERABILITY | MEDIUM   | Non configurable secrets are security-sensitive
+...
+```
 
-> **Note:** The displayed rules are project-specific and determined by your project's dependencies.
+> **Note:** The `--list-rules` option only works inside a Ballerina project. The displayed rules are project-specific
+> and determined by your project's dependencies.
+
+For detailed explanations of each rule, with noncompliant and compliant code examples, see [Scan rules](/learn/scan-rules/).
+
+## Rule severity
+
+Every rule has a `severity` that indicates how urgently a reported issue should be addressed, and how it can affect
+development and deployment if left unresolved:
+
+| Severity  | Meaning                                                                                       | Impact                                                                            |
+|-----------|-----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| `BLOCKER` | A critical issue that is very likely to cause application failure or a security breach.       | Should block merging or deployment until fixed.                                   |
+| `HIGH`    | A serious issue likely to cause incorrect behavior or expose the application to exploitation. | Should be fixed before deployment.                                                |
+| `MEDIUM`  | An issue that affects reliability, maintainability, or security to a moderate degree.         | Should be scheduled and fixed soon, does not need to block deployment on its own. |
+| `LOW`     | A minor issue such as a code smell that affects readability or maintainability.               | Safe to defer, but worth cleaning up over time.                                   |
+| `INFO`    | An informational finding with no material severity.                                           | Does not require action; useful for awareness.                                    |
+
+Where applicable, a rule is also mapped to its relevant CWE and OWASP Top 10 coverage. See
+[Security standards mapping](/learn/scan-rules/#security-standards-mapping).
 
 ## Include specific rules
 
@@ -172,6 +244,39 @@ To exclude multiple rules, provide them as a comma-separated list:
 $ bal scan --exclude-rules="ballerina:1, ballerina/io:2"
 ```
 
+## Configure the scan with Scan.toml
+
+Rule filters, platform plugins, and static code analyzer plugins can also be configured in a `Scan.toml` file (only for
+Ballerina projects). The scan tool picks up a `Scan.toml` in the package root, or the file (local path or URL) specified
+in `Ballerina.toml`:
+
+```toml
+[scan]
+configPath = "path/to/Scan.toml"
+```
+
+A sample `Scan.toml`:
+
+```toml
+# Rules to include or exclude in the analysis (same as --include-rules and --exclude-rules)
+[rule]
+include = ["ballerina:1", "ballerina/io:2"]
+# exclude = ["ballerina:1"]
+
+# Platform plugins to report results to (enables reporting; required for --platforms)
+[[platform]]
+name = "sonarqube"
+path = "path/to/sonar_platform_plugin.jar"
+```
+
+Rules specified in `Scan.toml` are combined with those passed via `--include-rules` and `--exclude-rules`. Including and
+excluding rules at the same time is not allowed.
+
+Each `[[platform]]` entry requires both a `name` and a `path`. The `path` must point to the platform plugin JAR, either
+as a local file path (resolved relative to the current working directory) or as a URL to download it from.
+
+See [Scan file configurations](https://github.com/ballerina-platform/static-code-analysis-tool/blob/main/docs/static-code-analysis-tool/ScanFileConfigurations.md) for all available options.
+
 ## Platform integration
 
 You can report the analysis results to platforms such as SonarQube using the `--platforms` option.
@@ -187,6 +292,9 @@ $ bal scan --platforms="sonarqube, <another-platform>"
 ```
 
 > **Note:** `sonarqube` is currently the only platform plugin available, and its path must be declared in a `[[platform]]` entry in `Scan.toml`. If you pass a name that has no corresponding platform plugin, the scan tool reports that platform as unavailable.
+
+A platform declared in `Scan.toml` is reported to automatically, and `--platforms` can only reference platforms declared
+there. When results are reported to a platform, they are not printed to the console or saved to the target directory.
 
 ## Publish static code analysis reports to SonarQube
 

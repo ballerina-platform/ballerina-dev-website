@@ -109,8 +109,8 @@ export function RagAzureAiSearchRetrieval({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+          <code>ballerinax/ai.azure</code> module
         </a>
         .
       </p>

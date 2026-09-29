@@ -1,6 +1,6 @@
 {
   "title": "Agent definitions",
-  "description": "This BBE demonstrates how to define a reusable AI agent definition with a fixed response type and create agents from it.",
+  "description": "This BBE demonstrates how to define a reusable, shareable AI agent definition with a fixed response type and create agents from it.",
   "keywords": [
     "ballerina",
     "ballerina by example",
@@ -10,8 +10,8 @@
     "agent",
     "agent definition",
     "FixedTypedAgent",
-    "multi-agent",
-    "reuse"
+    "reuse",
+    "share"
   ],
   "permalink": "/learn/by-example/ai-agent-definitions/",
   "active": "ai-agent-definitions"

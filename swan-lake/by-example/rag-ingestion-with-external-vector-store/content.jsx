@@ -73,7 +73,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
         These abstractions enable you to load documents, convert them into
         semantically meaningful vector representations using embedding models,
         and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
-        The knowledge base (<code>ai: KnowledgeBase</code>) orchestrates this
+        The knowledge base (<code>ai:KnowledgeBase</code>) orchestrates this
         process.
       </p>
 
@@ -115,8 +115,8 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+          <code>ballerinax/ai.pinecone</code> module
         </a>
         .
       </p>

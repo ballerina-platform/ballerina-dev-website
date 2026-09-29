@@ -2236,6 +2236,10 @@ import {
   codeSnippetData as AiChatClientCodeSnippetData,
 } from "./ai-chat-client/content.jsx";
 import {
+  AiAgentDefinitions,
+  codeSnippetData as AiAgentDefinitionsCodeSnippetData,
+} from "./ai-agent-definitions/content.jsx";
+import {
   AiAgentMemory,
   codeSnippetData as AiAgentMemoryCodeSnippetData,
 } from "./ai-agent-memory/content.jsx";
@@ -2279,10 +2283,6 @@ import {
   AiAgentAsTool,
   codeSnippetData as AiAgentAsToolCodeSnippetData,
 } from "./ai-agent-as-tool/content.jsx";
-import {
-  AiAgentDefinitions,
-  codeSnippetData as AiAgentDefinitionsCodeSnippetData,
-} from "./ai-agent-definitions/content.jsx";
 import {
   McpService,
   codeSnippetData as McpServiceCodeSnippetData,
@@ -3657,6 +3657,8 @@ const BBEs = {
   ChatAgentsCodeSnippetData,
   AiChatClient,
   AiChatClientCodeSnippetData,
+  AiAgentDefinitions,
+  AiAgentDefinitionsCodeSnippetData,
   AiAgentMemory,
   AiAgentMemoryCodeSnippetData,
   AiAgentPersistentMemory,
@@ -3679,8 +3681,6 @@ const BBEs = {
   AiAgentToolLoadingStrategyCodeSnippetData,
   AiAgentAsTool,
   AiAgentAsToolCodeSnippetData,
-  AiAgentDefinitions,
-  AiAgentDefinitionsCodeSnippetData,
   McpService,
   McpServiceCodeSnippetData,
   McpServiceAdvanced,

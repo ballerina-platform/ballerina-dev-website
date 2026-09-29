@@ -151,8 +151,8 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+          <code>ballerinax/ai.pinecone</code> module
         </a>
         .
       </p>

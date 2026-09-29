@@ -290,8 +290,8 @@ export function McpService({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent definitions"
-            href="/learn/by-example/ai-agent-definitions/"
+            title="Agent as a tool"
+            href="/learn/by-example/ai-agent-as-tool/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -318,7 +318,7 @@ export function McpService({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent definitions
+                  Agent as a tool
                 </span>
               </div>
             </div>

@@ -120,8 +120,8 @@ export function RagEmbeddingProvider({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          <code>ballerinax/ai.openai</code> module
         </a>
         .
       </p>

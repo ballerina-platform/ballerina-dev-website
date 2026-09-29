@@ -5854,6 +5854,15 @@
         "disableVerificationReason": "Requires the chat agent service to be running",
         "disablePlayground": true,
         "needCentral": false
+      },
+      {
+        "name": "Agent definitions",
+        "url": "ai-agent-definitions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
       }
     ]
   },
@@ -5983,15 +5992,6 @@
       {
         "name": "Agent as a tool",
         "url": "ai-agent-as-tool",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys and the output is not fixed",
-        "disablePlayground": true,
-        "needCentral": false
-      },
-      {
-        "name": "Agent definitions",
-        "url": "ai-agent-definitions",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",

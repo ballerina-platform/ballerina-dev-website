@@ -350,7 +350,10 @@ export function AiAgentMemory({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chat client" href="/learn/by-example/ai-chat-client/">
+          <Link
+            title="Agent definitions"
+            href="/learn/by-example/ai-agent-definitions/"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -376,7 +379,7 @@ export function AiAgentMemory({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chat client
+                  Agent definitions
                 </span>
               </div>
             </div>

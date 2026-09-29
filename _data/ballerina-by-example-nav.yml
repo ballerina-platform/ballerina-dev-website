@@ -2068,6 +2068,9 @@ sublinks:
           - title: Chat client
             id: 6
             url: ai-chat-client
+          - title: Agent definitions
+            id: 7
+            url: ai-agent-definitions
       - title: Agent memory
         id: 3
         sublinks:
@@ -2116,9 +2119,6 @@ sublinks:
           - title: Agent as a tool
             id: 1
             url: ai-agent-as-tool
-          - title: Agent definitions
-            id: 2
-            url: ai-agent-definitions
       - title: MCP service
         id: 8
         sublinks:

@@ -105,8 +105,8 @@ export function RagPgvectorIngestion({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
+          <code>ballerinax/ai.pgvector</code> module
         </a>
         .
       </p>
@@ -263,16 +263,6 @@ export function RagPgvectorIngestion({ codeSnippets }) {
           <span>
             <a href="/learn/by-example/rag-pgvector-retrieval/">
               The Retrieve from pgvector example
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/rag-ingestion-with-external-vector-store/">
-              The Ingest into Pinecone example
             </a>
           </span>
         </li>

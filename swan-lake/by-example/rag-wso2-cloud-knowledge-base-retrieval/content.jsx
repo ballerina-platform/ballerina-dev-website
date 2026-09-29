@@ -112,47 +112,32 @@ export function RagWso2CloudKnowledgeBaseRetrieval({ codeSnippets }) {
       </p>
 
       <blockquote>
-        <p>Note:</p>
-      </blockquote>
-
-      <blockquote>
-        <ul>
-          <li>
-            This example only retrieves. Before you run it, create the knowledge
-            base and ingest your documents on the{" "}
-            <a href="https://wso2.com/integration-platform/docs/">
-              WSO2 Integration Platform
-            </a>
-            . For the generative AI components of the platform, including the
-            default WSO2 model provider, see the{" "}
-            <a href="https://wso2.com/integration-platform/docs/genai/develop/components/model-providers">
-              WSO2 Integration Platform documentation
-            </a>
-            .
-          </li>
-        </ul>
-      </blockquote>
-
-      <blockquote>
-        <ul>
-          <li>
-            Add the knowledge base URL and token to the <code>Config.toml</code>{" "}
-            file (e.g.,{" "}
-            <code>
-              knowledgeBaseUrl = &quot;&lt;knowledge-base-url&gt;&quot;
-            </code>
-            , <code>knowledgeBaseToken = &quot;&lt;token&gt;&quot;</code>), and
-            optionally the Cohere reranker API key and model (
-            <code>cohereRerankerApiKey</code>, <code>cohereRerankerModel</code>
-            ). This example also uses the default model provider implementation.
-            To generate its configuration, open up the VS Code command palette (
-            <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
-            <code>command</code> + <code>shift</code> + <code>P</code>), and run
-            the <code>Configure default WSO2 Model Provider</code> command to
-            add your configuration to the <code>Config.toml</code> file. If not
-            already logged in, log in to the Ballerina Copilot when prompted.
-          </li>
-        </ul>
+        <p>
+          Note:
+          <br />• This example only retrieves. Before you run it, create the
+          knowledge base and ingest your documents on the{" "}
+          <a href="https://wso2.com/integration-platform/docs/">
+            WSO2 Integration Platform
+          </a>
+          . For the generative AI components of the platform, including the
+          default WSO2 model provider, see the{" "}
+          <a href="https://wso2.com/integration-platform/docs/genai/develop/components/model-providers">
+            WSO2 Integration Platform documentation
+          </a>
+          .<br />• Add the knowledge base URL and token to the{" "}
+          <code>Config.toml</code> file (e.g.,{" "}
+          <code>knowledgeBaseUrl = &quot;&lt;knowledge-base-url&gt;&quot;</code>
+          , <code>knowledgeBaseToken = &quot;&lt;token&gt;&quot;</code>), and
+          optionally the Cohere reranker API key and model (
+          <code>cohereRerankerApiKey</code>, <code>cohereRerankerModel</code>).
+          This example also uses the default model provider implementation. To
+          generate its configuration, open up the VS Code command palette (
+          <code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
+          <code>command</code> + <code>shift</code> + <code>P</code>), and run
+          the <code>Configure default WSO2 Model Provider</code> command to add
+          your configuration to the <code>Config.toml</code> file. If not
+          already logged in, log in to the Ballerina Copilot when prompted.
+        </p>
       </blockquote>
 
       <p>

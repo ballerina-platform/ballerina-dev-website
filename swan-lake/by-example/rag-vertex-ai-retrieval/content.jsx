@@ -102,8 +102,8 @@ export function RagVertexAiRetrieval({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+          <code>ballerinax/ai.googleapis.vertex</code> module
         </a>
         .
       </p>

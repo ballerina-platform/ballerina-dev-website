@@ -299,8 +299,8 @@ export function AiChatClient({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with in-memory short-term memory"
-            href="/learn/by-example/ai-agent-memory/"
+            title="Agent definitions"
+            href="/learn/by-example/ai-agent-definitions/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -310,7 +310,7 @@ export function AiChatClient({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with in-memory short-term memory
+                  Agent definitions
                 </span>
               </div>
               <svg

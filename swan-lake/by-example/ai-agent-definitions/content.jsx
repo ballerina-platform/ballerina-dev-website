@@ -114,9 +114,15 @@ export function AiAgentDefinitions({ codeSnippets }) {
       <p>
         An agent definition is a reusable template for an agent. It captures the
         role, the instructions, the tools, and the response type once, so that
-        the same agent can be created in more than one place, used as a tool of
-        another agent, or shared with other projects by publishing it in a
-        library package.
+        the same agent can be created in more than one place. Since a definition
+        is a Ballerina class, agents can be shared like any other code: define
+        the class in a library package and publish it, and other integrations
+        and projects import the package and create agents from the definition,
+        supplying their own model provider, memory, and <code>init</code>{" "}
+        arguments. An agent created from a definition can also be attached as a
+        tool of another agent, as demonstrated in the{" "}
+        <a href="/learn/by-example/ai-agent-as-tool/">Agent as a tool</a>{" "}
+        example.
       </p>
 
       <p>
@@ -353,10 +359,7 @@ export function AiAgentDefinitions({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Agent as a tool"
-            href="/learn/by-example/ai-agent-as-tool/"
-          >
+          <Link title="Chat client" href="/learn/by-example/ai-chat-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -382,14 +385,17 @@ export function AiAgentDefinitions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent as a tool
+                  Chat client
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="MCP service" href="/learn/by-example/mcp-service/">
+          <Link
+            title="Agent with in-memory short-term memory"
+            href="/learn/by-example/ai-agent-memory/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -398,7 +404,7 @@ export function AiAgentDefinitions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service
+                  Agent with in-memory short-term memory
                 </span>
               </div>
               <svg

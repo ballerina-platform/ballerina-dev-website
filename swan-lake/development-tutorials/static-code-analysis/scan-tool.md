@@ -96,7 +96,8 @@ To generate a detailed HTML report of the analysis results, use the `--scan-repo
 $ bal scan --scan-report
 ```
 
-This will produce an HTML report and scan results in JSON format inside the `target/report` directory.
+This will produce an HTML report and scan results in JSON format inside the `target/report` directory. The report is
+not generated when results are reported to a platform. See [Platform integration](#platform-integration).
 
 The HTML report includes a summary of the total number of files scanned and the number of code smells, bugs, and
 vulnerabilities found in each file. You can filter, search, and export the list of files.
@@ -317,6 +318,8 @@ $ bal scan --platforms="sonarqube, <another-platform>"
 
 A platform declared in `Scan.toml` is reported to automatically, and `--platforms` can only reference platforms declared
 there. When results are reported to a platform, they are not printed to the console or saved to the target directory.
+This also applies to `--scan-report`: if it is used together with `--platforms` (or with a platform declared in
+`Scan.toml`), the option is ignored and neither the HTML report nor the JSON results are saved in `target/report`.
 
 ## Publish static code analysis reports to SonarQube
 

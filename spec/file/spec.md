@@ -41,6 +41,9 @@ The conforming implementation of the specification is released and included in t
    * 4.8. [Join](#48-join-path)
    * 4.9. [Get Relative Path](#49-get-relative-path)
 5. [Directory Listener](#5-directory-listener)
+6. [Static Code Rules](#6-static-code-rules)
+   * 6.1. [Avoid using publicly writable directories for file operations without proper access controls](#61-avoid-using-publicly-writable-directories-for-file-operations-without-proper-access-controls)
+   * 6.2. [File function calls should not be vulnerable to path injection attacks](#62-file-function-calls-should-not-be-vulnerable-to-path-injection-attacks)
 
 ## 1. Overview
 Ballerina file standard library provides functionalities related to manipulating and working with files and directories.
@@ -229,3 +232,117 @@ remote function onCreate(file:FileEvent m) returns error? {
 
 When a remote function returns an error, the error stack trace is printed. The listener continues processing
 subsequent events without terminating.
+
+## 6. Static Code Rules
+
+The following static code rules are applied to the File module.
+
+| Id               | Kind          | Description                                                                                                                                                                                     |
+|------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ballerina/file:1 | VULNERABILITY | [Avoid using publicly writable directories for file operations without proper access controls](#61-avoid-using-publicly-writable-directories-for-file-operations-without-proper-access-controls) |
+| ballerina/file:2 | VULNERABILITY | [File function calls should not be vulnerable to path injection attacks](#62-file-function-calls-should-not-be-vulnerable-to-path-injection-attacks)                                             |
+
+### 6.1. Avoid using publicly writable directories for file operations without proper access controls
+
+A file operation that targets a publicly writable directory, such as the system temporary directory, exposes the file to every local account.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/file:1 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
+
+#### 6.1.1. Why this is an issue?
+
+Directories such as `/tmp`, or the path returned by `os:getEnv("TMP")`/`os:getEnv("TEMP")`, grant read, write and delete permission to every local account by design. A path built under one of these directories carries none of the isolation the calling code assumes: another process on the same host can read the file, replace it before it is opened, or remove it, regardless of what the calling service intended. The rule reports a file operation whose path is built from a known publicly writable directory.
+
+#### 6.1.2. What is the potential impact?
+
+Any local account can read the file's contents, which discloses whatever it holds; can pre-create or replace it ahead of the service, which is a symlink or race-condition attack; or can delete it, which denies the service the file it expected to find.
+
+#### 6.1.3. How can I fix this?
+
+When a file only needs to exist for the duration of the operation, create it with `file:createTemp` or `file:createTempDir`, which allocate a uniquely named entry rather than a fixed, guessable path. When the file must persist, place it under a directory the service owns with permissions that exclude other accounts, instead of a shared temporary path.
+
+**Non-compliant code:**
+
+```ballerina
+import ballerina/file;
+import ballerina/os;
+
+public function writeReport() returns file:Error? {
+    string tempFolderPath = os:getEnv("TMP");
+    return file:create(tempFolderPath + "/report.txt");
+}
+```
+
+**Compliant code:**
+
+```ballerina
+import ballerina/file;
+
+public function writeReport() returns string|file:Error {
+    return file:createTemp(suffix = ".txt", prefix = "report-");
+}
+```
+
+#### 6.1.4. Additional Resources
+
+- [CWE-377: Insecure Temporary File](https://cwe.mitre.org/data/definitions/377.html)
+- [CWE-379: Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)
+- [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
+
+### 6.2. File function calls should not be vulnerable to path injection attacks
+
+A file path built by concatenating untrusted input lets the caller reach files outside the intended directory.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/file:2 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
+
+#### 6.2.1. Why this is an issue?
+
+Functions such as `file:remove`, `file:create`, `file:copy`, `file:rename` and `file:getMetaData` take a plain string path and act on whatever the filesystem resolves it to. When a segment of that path comes from outside the program and is concatenated in without validation, a value such as `../../etc/passwd` is resolved by the filesystem the same as any other path, letting the caller step outside the directory the code intends to confine itself to.
+
+#### 6.2.2. What is the potential impact?
+
+An attacker who controls part of the path can read, overwrite, or delete files outside the intended directory, including files the service never meant to expose.
+
+#### 6.2.3. How can I fix this?
+
+Validate the untrusted segment against an allow-list of known names, or resolve the resulting path and confirm it still falls within the intended base directory before performing the operation.
+
+**Non-compliant code:**
+
+```ballerina
+import ballerina/file;
+
+public function removeUploadedFile(string fileName) returns file:Error? {
+    string unsafeFilePath = "./target/" + fileName;
+    return file:remove(unsafeFilePath);
+}
+```
+
+**Compliant code:**
+
+```ballerina
+import ballerina/file;
+
+public function removeUploadedFile(string fileName) returns file:Error? {
+    string baseDir = check file:getAbsolutePath("./target");
+    string candidatePath = check file:getAbsolutePath(baseDir + "/" + fileName);
+    if !candidatePath.startsWith(baseDir + "/") {
+        return error("invalid file name");
+    }
+    return file:remove(candidatePath);
+}
+```
+
+#### 6.2.4. Additional Resources
+
+- [CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)
+- [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)

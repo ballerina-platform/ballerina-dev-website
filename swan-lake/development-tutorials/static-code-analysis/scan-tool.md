@@ -133,30 +133,52 @@ However, you can specify the report format using the `--format` option.
 The available formats are `json` and `sarif`. The `json` format is the default, while `sarif` is a
 standardized format for static analysis results.
 
-In the `json` format, each finding is reported with its location and the metadata of the rule that raised it,
-including the rule's `severity` and a `helpUri` that links to the rule's documentation:
+In the `json` format, each finding is reported with its location, the details of the rule that raised it, and other
+useful information:
 
 ```json
 [
   {
     "location": {
       "filePath": "main.bal",
-      "startLine": 20,
-      "endLine": 20,
-      "startColumn": 17,
-      "endColumn": 39,
-      "snippet": "checkpanic getResult()"
+      "startLine": 22,
+      "endLine": 22,
+      "startColumn": 16,
+      "endColumn": 43,
+      "startOffset": 875,
+      "length": 27,
+      "snippet": "checkpanic parseCount(\"12\")"
     },
     "rule": {
       "id": "ballerina:1",
+      "numericId": 1,
       "name": "Avoid checkpanic",
       "description": "Using `checkpanic` lets an unhandled error panic and crash the program instead of being handled.",
+      "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing.",
       "helpUri": "https://ballerina.io/learn/scan-rules/#avoid-checkpanic",
       "severity": "LOW",
+      "tags": [
+        "error-handling"
+      ],
+      "standards": {
+        "cwe": [
+          248,
+          636
+        ],
+        "owasp": [
+          {
+            "year": 2025,
+            "categories": [
+              10
+            ]
+          }
+        ]
+      },
       "ruleKind": "CODE_SMELL"
     },
     "source": "BUILT_IN",
-    "fileName": "main.bal"
+    "fileName": "main.bal",
+    "filePath": "/home/user/bal-scan-demo/main.bal"
   }
 ]
 ```

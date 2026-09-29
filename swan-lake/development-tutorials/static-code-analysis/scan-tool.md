@@ -366,7 +366,11 @@ This guide walks you through the process of configuring SonarQube and publishing
 5. Create a new project in SonarQube.
     - Log in to the SonarQube dashboard.
     - Click on `Create Project`.
-    - Follow the prompts to set up your project.
+    - Follow the prompts to set up your project. Note the project key you provide, as it is required when [configuring the Ballerina project](#configure-the-ballerina-project).
+    - When prompted to provide a token, generate a token as follows and use it in the prompt.
+        - Navigate to `My Account` -> `Security` in the SonarQube UI.
+        - Enter a name for the token and click `Generate`.
+        - Copy the generated token and store it securely, as it is not shown again. This token is also required when [publishing reports to SonarQube](#publish-reports-to-sonarqube).
 
 6. Install and configure SonarScanner CLI.
     - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-server/9.9/analyzing-source-code/scanners/sonarscanner/).
@@ -396,8 +400,7 @@ This guide walks you through the process of configuring SonarQube and publishing
 1. Link a ballerina source repo to the SonarQube server from a DevOps platform or manually.
 
 2. Authenticate using a token.
-    - Generate a token from the `My Account`->`Security` section in the SonarQube UI.
-    - Set the token as an environment variable.
+    - Set the token generated when [creating the SonarQube project](#configure-the-sonarqube-server) as an environment variable.
 
       **For Unix/macOS:**
        ```

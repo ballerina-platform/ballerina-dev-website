@@ -62,10 +62,6 @@ The table below maps each rule to its [CWE](https://cwe.mitre.org/) identifiers,
 | ballerina/email:3  | Avoid falling back to cleartext when TLS is unavailable                                      | [CWE-757](https://cwe.mitre.org/data/definitions/757.html), [CWE-319](https://cwe.mitre.org/data/definitions/319.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
 | ballerina/email:4  | Avoid using weak TLS protocol versions                                                       | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-326](https://cwe.mitre.org/data/definitions/326.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
 
-> **Note:** The table lists 42 rules. 38 of them map to at least one CWE, and together they reference 36 distinct CWEs: CWE-15, CWE-22, CWE-78, CWE-88, CWE-200, CWE-248, CWE-259, CWE-287, CWE-295, CWE-296, CWE-297, CWE-319, CWE-323, CWE-326, CWE-327, CWE-345, CWE-347, CWE-352, CWE-377, CWE-379, CWE-426, CWE-454, CWE-532, CWE-561, CWE-570, CWE-571, CWE-601, CWE-613, CWE-636, CWE-757, CWE-780, CWE-798, CWE-916, CWE-918, CWE-942, and CWE-1164. The other four (`ballerina:3`, `ballerina:4`, `ballerina:5`, and `ballerina:6`) have no CWE mapping.
-
-> **Note:** 31 of the 42 rules carry an OWASP Top 10:2025 category. The other eleven have none: the four rules without a CWE mapping (`ballerina:3`, `ballerina:4`, `ballerina:5`, and `ballerina:6`), and seven rules that map to a CWE but to no OWASP Top 10:2025 category (`ballerina:2`, `ballerina:7`, `ballerina:8`, `ballerina:9`, `ballerina:10`, `ballerina:11`, and `ballerina:12`).
-
 ## Language rules
 
 ### Avoid checkpanic

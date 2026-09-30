@@ -41,7 +41,7 @@ $ bal scan [OPTIONS] [<workspace>|<package>|<source-file>]
 - `<package>`: Analyzes all Ballerina files in the specified package (optional, defaults to current directory)
 - `<source-file>`: Analyzes a specific standalone Ballerina file (`.bal` extension required)
 
-> **Important:** Analyzing individual Ballerina files that are part of a package is not allowed.
+> **Note:** Analyzing individual Ballerina files that are part of a package is not supported.
 > You must analyze the entire package or work with standalone files.
 
 ### Available options

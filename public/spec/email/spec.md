@@ -3,7 +3,7 @@
 _Owners_: @Maninda @wggihan @shafreenAnfar   
 _Reviewers_: @shafreenAnfar @Maninda   
 _Created_: 2020/04/24   
-_Updated_: 2022/02/17  
+_Updated_: 2026/09/03  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -53,6 +53,11 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Services](#52-services)
         * 5.2.1. [POP3 Service](#521-pop3-service)
         * 5.2.2. [IMAP Service](#522-imap-service)
+6. [Static Code Rules](#6-static-code-rules)
+    * 6.1. [Avoid unverified server hostnames during SSL/TLS connections](#61-avoid-unverified-server-hostnames-during-ssltls-connections)
+    * 6.2. [Avoid connecting to mail servers without TLS](#62-avoid-connecting-to-mail-servers-without-tls)
+    * 6.3. [Avoid falling back to cleartext when TLS is unavailable](#63-avoid-falling-back-to-cleartext-when-tls-is-unavailable)
+    * 6.4. [Avoid using weak TLS protocol versions](#64-avoid-using-weak-tls-protocol-versions)
 
 ## 1. Overview
 This specification elaborates on Basic SMTP, POP3, IMAP4 clients and services/listeners.
@@ -475,3 +480,214 @@ service "emailObserver" on emailListener {
 
 }
 ```
+
+## 6. Static Code Rules
+
+The following static code rules are applied to the Email module.
+
+| Id                | Kind          | Description                                                                                                     |
+|-------------------|---------------|-------------------------------------------------------------------------------------------------------------------|
+| ballerina/email:1 | VULNERABILITY | [Avoid unverified server hostnames during SSL/TLS connections](#61-avoid-unverified-server-hostnames-during-ssltls-connections) |
+| ballerina/email:2 | VULNERABILITY | [Avoid connecting to mail servers without TLS](#62-avoid-connecting-to-mail-servers-without-tls)                 |
+| ballerina/email:3 | VULNERABILITY | [Avoid falling back to cleartext when TLS is unavailable](#63-avoid-falling-back-to-cleartext-when-tls-is-unavailable) |
+| ballerina/email:4 | VULNERABILITY | [Avoid using weak TLS protocol versions](#64-avoid-using-weak-tls-protocol-versions)                             |
+
+### 6.1. Avoid unverified server hostnames during SSL/TLS connections
+
+Disabling host name verification keeps the encryption but removes the check that the certificate belongs to the server being contacted.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/email:1 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.1.1. Why this is an issue?
+
+A TLS certificate proves two things: that it was issued by a trusted authority, and that it was issued for the host the client is talking to. Setting `verifyHostName` to `false` keeps the first check and drops the second, so any party holding a certificate the client trusts, for any host at all, can terminate the connection.
+
+#### 6.1.2. What is the potential impact?
+
+An attacker positioned on the network path can present a valid certificate for a host they control and the client will accept it, giving them the mailbox credentials and the message contents while the connection still appears encrypted.
+
+#### 6.1.3. How can I fix this?
+
+Leave `verifyHostName` at its default of `true`. Where a certificate genuinely does not match the host, correct the certificate rather than the check.
+
+**Non-compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt",
+        verifyHostName: false
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt"
+    }
+});
+```
+
+#### 6.1.4. Additional Resources
+
+- [CWE-295: Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)
+- [CWE-297: Improper Validation of Certificate with Host Mismatch](https://cwe.mitre.org/data/definitions/297.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.2. Avoid connecting to mail servers without TLS
+
+`START_TLS_NEVER` keeps the connection in plaintext for its whole life.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/email:2 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-319](https://cwe.mitre.org/data/definitions/319.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
+
+#### 6.2.1. Why this is an issue?
+
+The `security` field decides whether the connection is protected at all. `START_TLS_NEVER` disables the upgrade entirely, so the session, including the mailbox credentials sent during authentication, crosses the network in the clear. The field defaults to `SSL`, so plaintext is only ever reached by asking for it.
+
+#### 6.2.2. What is the potential impact?
+
+Anyone on the network path reads the mailbox credentials and every message the client sends or retrieves, and can modify them in transit.
+
+#### 6.2.3. How can I fix this?
+
+Use `SSL` for an implicitly encrypted connection, or `START_TLS_ALWAYS` where the protocol requires the upgrade form.
+
+**Non-compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    port: 25,
+    security: email:START_TLS_NEVER
+});
+```
+
+**Compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    port: 587,
+    security: email:START_TLS_ALWAYS
+});
+```
+
+#### 6.2.4. Additional Resources
+
+- [CWE-319: Cleartext Transmission of Sensitive Information](https://cwe.mitre.org/data/definitions/319.html)
+- [OWASP Top 10:2025 A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)
+
+### 6.3. Avoid falling back to cleartext when TLS is unavailable
+
+`START_TLS_AUTO` lets the server decide whether the connection is encrypted.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/email:3 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-319](https://cwe.mitre.org/data/definitions/319.html), [CWE-757](https://cwe.mitre.org/data/definitions/757.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
+
+#### 6.3.1. Why this is an issue?
+
+`START_TLS_AUTO` upgrades the connection when the server advertises STARTTLS and continues in plaintext when it does not. Whether the credentials are encrypted is therefore decided by the server's greeting, which an attacker positioned on the network path can rewrite. Stripping the advertisement is enough to have the client send everything in the clear, and nothing in the client indicates that anything went wrong.
+
+#### 6.3.2. What is the potential impact?
+
+An attacker who can modify traffic downgrades the connection silently and reads the mailbox credentials and message contents, with the same result as never attempting TLS.
+
+#### 6.3.3. How can I fix this?
+
+Use `START_TLS_ALWAYS`, which fails the connection instead of downgrading it, or `SSL` for an implicitly encrypted connection.
+
+**Non-compliant code:**
+
+```ballerina
+email:ImapClient imapClient = check new ("imap.example.com", "reader@example.com", "password", clientConfig = {
+    port: 143,
+    security: email:START_TLS_AUTO
+});
+```
+
+**Compliant code:**
+
+```ballerina
+email:ImapClient imapClient = check new ("imap.example.com", "reader@example.com", "password", clientConfig = {
+    port: 143,
+    security: email:START_TLS_ALWAYS
+});
+```
+
+#### 6.3.4. Additional Resources
+
+- [CWE-319: Cleartext Transmission of Sensitive Information](https://cwe.mitre.org/data/definitions/319.html)
+- [CWE-757: Selection of Less-Secure Algorithm During Negotiation](https://cwe.mitre.org/data/definitions/757.html)
+- [OWASP Top 10:2025 A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)
+
+### 6.4. Avoid using weak TLS protocol versions
+
+TLS 1.0, TLS 1.1 and the SSL family are withdrawn and should not be named.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/email:4 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-326](https://cwe.mitre.org/data/definitions/326.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
+
+#### 6.4.1. Why this is an issue?
+
+TLS 1.0 and TLS 1.1 depend on MD5 and SHA-1 in the handshake and support no AEAD cipher suites, and RFC 8996 deprecates both for those reasons. Whether a particular connection is also open to a padding-oracle attack depends on the CBC construction negotiated and on the implementation, so that is a risk these versions leave available rather than one they guarantee. The SSL family is broken outright. Naming any of them in `protocol.versions` pins the connection to a version a current server should refuse.
+
+#### 6.4.2. What is the potential impact?
+
+An attacker able to influence the negotiation can hold the connection at a weak version and attack the encryption itself, rather than having to defeat a current one.
+
+#### 6.4.3. How can I fix this?
+
+Name only TLS 1.2 and TLS 1.3, or leave `protocol` unset and take the runtime's defaults.
+
+**Non-compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt",
+        protocol: {
+            name: email:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        }
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt",
+        protocol: {
+            name: email:TLS,
+            versions: ["TLSv1.2", "TLSv1.3"]
+        }
+    }
+});
+```
+
+#### 6.4.4. Additional Resources
+
+- [CWE-326: Inadequate Encryption Strength](https://cwe.mitre.org/data/definitions/326.html)
+- [CWE-327: Use of a Broken or Risky Cryptographic Algorithm](https://cwe.mitre.org/data/definitions/327.html)
+- [OWASP Top 10:2025 A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)

@@ -25,6 +25,8 @@ export default function Toc(props) {
   const source = props.source;
   let uniqueHeadingList = [];
   let hash = false;
+  const headingAliasesRef = React.useRef({});
+  headingAliasesRef.current = props.headingAliases || {};
 
   // Updated clickMe function to handle both TOC click and URL-based section navigation
   const clickMe = (triggerElement, sectionId, unique, fromUrl = false) => {
@@ -69,7 +71,7 @@ export default function Toc(props) {
     }
 
     function scrollToHash() {
-      const hashId = window.location.hash.substring(1); // Remove the "#" from hash
+      const hashId = resolveHeadingAlias(window.location.hash.substring(1)); // Remove the "#" from hash
       const { id, sectionNumber } = extractIdAndSection(hashId);
     
       const element = getElementToScroll(id, sectionNumber);
@@ -116,6 +118,12 @@ export default function Toc(props) {
     });
 
   }, []);
+
+  // Map an alias anchor (e.g. a rule ID) back to the heading id it stands for
+  const resolveHeadingAlias = (hashId) => {
+    const aliases = headingAliasesRef.current;
+    return Object.keys(aliases).find((id) => aliases[id] === hashId.toLowerCase()) || hashId;
+  };
 
   // Extract base ID and section number from sectionId
   const extractIdAndSection = (sectionId, unique) => {

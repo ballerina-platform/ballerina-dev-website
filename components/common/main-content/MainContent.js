@@ -78,11 +78,9 @@ export default function MainContent(props) {
     const elementArray = Array.prototype.slice.call(elementNodeList);
     const count = elementArray.indexOf(element.parentElement);
 
-    if (count === 0) {
-      location.hash = `#${id}`;
-    } else {
-      location.hash = `#${id}-${count}`;
-    }
+    const hashId = count === 0 ? id : `${id}-${count}`;
+    const headingAliases = props.headingAliases || {};
+    location.hash = `#${headingAliases[hashId] || hashId}`;
 
     navigator.clipboard.writeText(window.location.href);
     element.parentElement.scrollIntoView();

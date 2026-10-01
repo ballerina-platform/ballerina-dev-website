@@ -4,6 +4,7 @@ description: Learn about the scan rules used in Ballerina static code analysis.
 keywords: ballerina runtime, static code analysis, scan rules, code smells, bugs, vulnerabilities
 permalink: /learn/scan-rules/
 active: scan-rules
+rule_anchors: true
 ---
 
 The Ballerina scan tool uses a set of predefined rules to analyze Ballerina code and identify potential issues such as

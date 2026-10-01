@@ -28,6 +28,7 @@ import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
 import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
+import { getRuleAnchors } from "../../../utils/ruleAnchors";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
 import { highlight } from "../../../utils/highlighter";
@@ -98,6 +99,7 @@ export async function getStaticProps({ params: { slug } }) {
   const { data: frontmatter, content } = matter(fileName);
 
   let codes = await highlight(content);
+  const headingAliases = frontmatter.rule_anchors ? getRuleAnchors(content) : {};
 
   return {
     props: {
@@ -107,7 +109,8 @@ export async function getStaticProps({ params: { slug } }) {
       sub,
       third,
       slug,
-      codes
+      codes,
+      headingAliases
     },
   };
 }
@@ -119,7 +122,8 @@ export default function PostPage({
   sub,
   third,
   slug,
-  codes
+  codes,
+  headingAliases
 }) {
 
   // Show mobile left nav
@@ -233,7 +237,8 @@ export default function PostPage({
             <MainContent
               content={content}
               handleToc={handleToc}
-              codes={codes} />
+              codes={codes}
+              headingAliases={headingAliases} />
               <PrevNext
                 launcher="learn"
                 id={id}
@@ -248,7 +253,7 @@ export default function PostPage({
           {showToc ? (
             <>
               <h6>On this page</h6>
-              <Toc source={content} />
+              <Toc source={content} headingAliases={headingAliases} />
             </>
           ) : null}
         </Col>

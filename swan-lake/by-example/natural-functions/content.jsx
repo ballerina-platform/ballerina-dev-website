@@ -64,25 +64,18 @@ export function NaturalFunctions({ codeSnippets }) {
       <h1>Natural functions</h1>
 
       <p>
-        A natural function is a function whose body is written in natural
-        language instead of code. The function signature (the parameters and the
-        return type) is declared in Ballerina, and the body is a natural
-        expression that describes the logic in English. At runtime, the
-        parameters are available in the prompt via interpolations, the return
-        type is converted to a JSON schema and sent to the LLM along with the
-        prompt, and the response is bound to the return type.
+        A natural function has a signature declared in Ballerina and a body that
+        is a natural expression written in English. At runtime, the parameters
+        are interpolated into the prompt, the return type is sent to the LLM as
+        a JSON schema, and the response is bound to the return type. Callers use
+        it like any other function. It works with any{" "}
+        <code>ai:ModelProvider</code> implementation, including the default
+        model provider.
       </p>
 
       <p>
-        Natural functions let you keep the typed contract of a regular function
-        while delegating the logic to an LLM, so callers use them exactly like
-        any other function. Any <code>ai:ModelProvider</code> implementation can
-        be used, including the default model provider.
-      </p>
-
-      <p>
-        This example demonstrates a natural function that analyzes a customer
-        review and returns a typed result.
+        This example uses a natural function to analyze a customer review and
+        return a typed result.
       </p>
 
       <blockquote>

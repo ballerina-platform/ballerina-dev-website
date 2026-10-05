@@ -7,21 +7,14 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/io;
-import ballerinax/ai.azure;
+import ballerinax/ai.openai;
 
-// The connection details for the model provider. Add them to the \`Config.toml\` file.
-configurable string azureServiceUrl = ?;
-configurable string azureApiKey = ?;
-configurable string azureDeploymentId = ?;
+// The API key for the model provider. Add it to the \`Config.toml\` file.
+configurable string openAiApiKey = ?;
 
-// Initialize a model provider for a specific LLM provider using your own keys.
-// This example uses Azure OpenAI; other \`ballerinax/ai.<provider>\` modules follow the same pattern.
-// With the legacy Azure OpenAI URL (\`https://<resource>.openai.azure.com/openai\`),
-// pass the \`apiVersion\` argument too.
-final ai:ModelProvider model = check new azure:OpenAiModelProvider(azureServiceUrl, azureApiKey,
-        azureDeploymentId,
-        // Set \`temperature\` to \`()\` for models that do not support it (e.g., GPT-5 series).
-        temperature = 0.2);
+final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, openai:GPT_5_MINI,
+        // Use the Responses API.
+        apiType = openai:RESPONSES);
 
 type Summary record {|
     # A short title for the text
@@ -64,12 +57,12 @@ export function DirectLlmCallsWithModelProvider({ codeSnippets }) {
         The <code>ai:ModelProvider</code> type is a unified abstraction to
         integrate with large language models (LLMs). Provider-specific modules
         such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-          ballerinax/ai.azure
-        </a>
-        ,{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
           ballerinax/ai.openai
+        </a>
+        ,{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+          ballerinax/ai.azure
         </a>
         ,{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.anthropic/latest">
@@ -80,26 +73,17 @@ export function DirectLlmCallsWithModelProvider({ codeSnippets }) {
       </p>
 
       <p>
-        This example demonstrates how to initialize a specific model provider
-        with your own keys and use it to make direct LLM calls. The example uses
-        Azure OpenAI, but switching to another provider only requires changing
-        the import and the provider initialization.
+        This example demonstrates how to initialize an OpenAI model provider
+        with your own keys and use it to make direct LLM calls to the{" "}
+        <code>gpt-5-mini</code> model through the Responses API.
       </p>
 
       <blockquote>
         <p>
-          Note: Add the connection details to the <code>Config.toml</code> file
-          (e.g.,{" "}
-          <code>
-            azureServiceUrl =
-            &quot;https://&lt;resource&gt;.services.ai.azure.com/openai/v1&quot;
-          </code>
-          , <code>azureApiKey = &quot;&lt;your-api-key&gt;&quot;</code>,{" "}
-          <code>
-            azureDeploymentId = &quot;&lt;your-deployment-name&gt;&quot;
-          </code>
-          ). Never commit API keys to source control. Alternatively, to avoid
-          managing keys yourself, use the default model provider via{" "}
+          Note: Add the API key to the <code>Config.toml</code> file (e.g.,{" "}
+          <code>openAiApiKey = &quot;&lt;your-api-key&gt;&quot;</code>). Never
+          commit API keys to source control. Alternatively, to avoid managing
+          keys yourself, use the default model provider via{" "}
           <code>ai:getDefaultModelProvider()</code>, as demonstrated in the{" "}
           <a href="/learn/by-example/direct-llm-calls/">Direct LLM calls</a>{" "}
           example.
@@ -108,8 +92,8 @@ export function DirectLlmCallsWithModelProvider({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-          <code>ballerinax/ai.azure</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
+          <code>ballerinax/ai.openai</code> module
         </a>
         .
       </p>
@@ -252,11 +236,10 @@ export function DirectLlmCallsWithModelProvider({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run direct_llm_calls_with_model_provider.bal`}</span>
-              <span>{`Title: Ballerina Programming Language`}</span>
-              <span>{`- Ballerina is an open-source, cloud-native programming language.`}</span>
-              <span>{`- It is optimized for integration and supports network protocols and data formats like JSON and XML.`}</span>
-              <span>{`- The language has built-in support for concurrency.`}</span>
-              <span>{`- It includes abstractions for working with large language models, agents, and retrieval-augmented generation.`}</span>
+              <span>{`Title: Ballerina language summary`}</span>
+              <span>{`- Ballerina is an open-source, cloud-native programming language designed for integration.`}</span>
+              <span>{`- It provides first-class support for network protocols, data formats like JSON and XML, and concurrency.`}</span>
+              <span>{`- It includes built-in abstractions for working with large language models, agents, and retrieval-augmented generation.`}</span>
             </code>
           </pre>
         </Col>
@@ -278,28 +261,18 @@ export function DirectLlmCallsWithModelProvider({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-              The <code>ballerinax/ai.azure</code> module
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/api-version-lifecycle">
-              Azure OpenAI API version lifecycle
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
             <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
               The <code>ballerinax/ai.openai</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
+              The <code>ballerinax/ai.azure</code> module
             </a>
           </span>
         </li>

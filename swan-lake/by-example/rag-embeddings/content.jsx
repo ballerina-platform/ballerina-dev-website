@@ -64,30 +64,32 @@ export function RagEmbeddings({ codeSnippets }) {
 
       <p>
         An embedding provider (<code>ai:EmbeddingProvider</code>) converts text
-        chunks into vector embeddings, so that semantically similar text can be
-        found using vector similarity. Embeddings are the basis of
-        retrieval-augmented generation (RAG), where they are used both when
-        ingesting documents and when retrieving relevant chunks for a query.
+        chunks into vector embeddings. Similar text gives vectors that are close
+        to each other, so you can find it by vector similarity.
+        Retrieval-augmented generation (RAG) uses embeddings to ingest documents
+        and to retrieve chunks for a query.
       </p>
 
       <p>
-        This example demonstrates how to use the default WSO2 embedding provider
-        (<code>ai:getDefaultEmbeddingProvider()</code>) to embed a document and
-        a batch of candidate texts, and compare the similarity of each candidate
-        with the document. To use embeddings in a knowledge base for RAG, see
-        the{" "}
+        This example uses the default WSO2 embedding provider (
+        <code>ai:getDefaultEmbeddingProvider()</code>) to embed a document and a
+        batch of texts, and compares each text with the document.
+      </p>
+
+      <p>
+        See also the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
-        </a>{" "}
-        example. To use a specific provider with your own keys, see the{" "}
+        </a>
+        ,{" "}
         <a href="/learn/by-example/rag-embedding-provider/">
           Generate embeddings with a specific provider
-        </a>{" "}
-        example. To implement your own provider, see the{" "}
+        </a>
+        , and{" "}
         <a href="/learn/by-example/rag-custom-embedding-provider/">
           Implement a custom embedding provider
         </a>{" "}
-        example.
+        examples.
       </p>
 
       <blockquote>

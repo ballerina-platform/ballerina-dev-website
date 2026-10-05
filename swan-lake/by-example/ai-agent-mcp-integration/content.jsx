@@ -53,38 +53,28 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <h1>AI agents with MCP tools</h1>
 
       <p>
-        Ballerina enables developers to easily create intelligent AI agents
-        powered by large language models (LLMs) and integrated with tools,
-        including local tools, MCP tools, and external APIs. These AI agents can
-        automate complex workflows, interact with users through natural
-        language, and seamlessly connect with internal and external systems.
-      </p>
-
-      <p>
-        This example demonstrates how to create an AI agent that can access
-        weather information by integrating with a Model Context Protocol (MCP)
-        service, by simply defining an MCP toolkit. The{" "}
-        <code>ai:McpToolKit</code> toolkit forwards each call to the server as
-        it is. For more control, such as changing the arguments of a call or
-        forwarding values to the server, define a custom MCP toolkit as
-        demonstrated in the{" "}
+        An AI agent can use the tools of a Model Context Protocol (MCP) server
+        through the <code>ai:McpToolKit</code> toolkit, which forwards each call
+        to the server as it is. For more control, such as changing the arguments
+        of a call, define a custom MCP toolkit, as shown in the{" "}
         <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
           Agent with advanced MCP integration
         </a>{" "}
         example.
       </p>
 
-      <blockquote>
-        <p>
-          Note: You can use this agent with the{" "}
-          <a href="/learn/by-example/mcp-service/">MCP service example</a>.
-        </p>
-      </blockquote>
+      <p>
+        This example creates an agent that answers questions with the tools of a
+        weather MCP service.
+      </p>
 
       <blockquote>
         <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          Note:
+          <br />• You can use this agent with the{" "}
+          <a href="/learn/by-example/mcp-service/">MCP service example</a>.
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add

@@ -69,41 +69,21 @@ export function RagEmbeddingProvider({ codeSnippets }) {
       <h1>Generate embeddings with a specific provider</h1>
 
       <p>
-        An embedding provider (<code>ai:EmbeddingProvider</code>) converts text
-        chunks into vector embeddings, so that semantically similar text can be
-        found using vector similarity search. Embedding providers are used in
-        retrieval-augmented generation (RAG) both when ingesting documents and
-        when retrieving relevant chunks for a query.
+        An embedding is a vector that represents the meaning of a text, so that
+        texts with a similar meaning have similar embeddings. An embedding
+        provider creates these embeddings. Instead of the default embedding
+        provider, you can use a specific embedding provider, such as OpenAI,
+        with your own API key.
       </p>
 
       <p>
-        The <code>ai:EmbeddingProvider</code> type is a unified abstraction
-        implemented by provider-specific modules such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
-          ballerinax/ai.openai
-        </a>
-        ,{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-          ballerinax/ai.azure
-        </a>
-        ,{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
-          ballerinax/ai.googleapis.vertex
-        </a>
-        , and{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
-          ballerinax/ai.openrouter
-        </a>
-        , so the same code works across providers. The default embedding
-        provider (<code>ai:getDefaultEmbeddingProvider()</code>) can be used
-        without managing keys.
+        This example creates an OpenAI embedding provider with your own API key,
+        embeds a document and a batch of texts, and compares each text with the
+        document.
       </p>
 
       <p>
-        This example demonstrates how to initialize a specific embedding
-        provider with your own API key, embed a document and a batch of
-        candidate texts, and compare the similarity of each candidate with the
-        document. To use embeddings in a knowledge base for RAG, see the{" "}
+        To use embeddings in a knowledge base, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}

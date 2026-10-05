@@ -74,32 +74,24 @@ export function RagAugmentPrompt({ codeSnippets }) {
       <h1>Augment the prompt with retrieved context</h1>
 
       <p>
-        The final step of a retrieval-augmented generation (RAG) workflow is
-        generation: the chunks retrieved for the user’s question are added to
-        the prompt, so that the large language model (LLM) answers from your
-        data instead of from its training data alone. Ballerina offers two ways
-        to do this.
+        In a retrieval-augmented generation (RAG) application, the documents are
+        first loaded, split into chunks, embedded, and stored in a vector store.
+        When a user asks a question, the question is embedded too, and the most
+        relevant chunks are retrieved from the vector store. The last step is to
+        add these chunks to the user’s query as context, so that the large
+        language model (LLM) answers from your data.
       </p>
 
       <p>
-        The <code>ai:augmentUserQuery</code> function takes the retrieved chunks
-        (<code>ai:QueryMatch[]</code> or <code>ai:Document[]</code>) and the
-        query, and returns an <code>ai:ChatUserMessage</code> that combines them
-        using a generic prompt template. The content of the message is an{" "}
-        <code>ai:Prompt</code>, so it can be passed to the <code>generate</code>{" "}
-        method of a model provider (or the message itself can be sent with the{" "}
-        <code>chat</code> method). For full control over the prompt, insert the
-        chunks into your own prompt template and pass it to the{" "}
-        <code>generate</code> method. The <code>generate</code> method binds the
-        answer to the expected type, so you can ask the model for structured
-        output such as an answer together with a grounding flag.
+        The <code>ai:augmentUserQuery</code> function adds the chunks to the
+        query with a generic prompt template. For full control, insert the
+        chunks into your own prompt and pass it to the <code>generate</code>{" "}
+        method.
       </p>
 
       <p>
-        This example demonstrates both approaches with the default model
-        provider. The retrieved chunks are defined inline to focus on the
-        augmentation step; see the retrieval examples for how they are retrieved
-        from a knowledge base.
+        This example shows both approaches with the default model provider,
+        using retrieved chunks defined inline.
       </p>
 
       <blockquote>

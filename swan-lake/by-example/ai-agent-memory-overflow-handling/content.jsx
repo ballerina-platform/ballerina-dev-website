@@ -77,22 +77,20 @@ export function AiAgentMemoryOverflowHandling({ codeSnippets }) {
       <h1>Memory overflow handling</h1>
 
       <p>
-        Short-term memory retains a fixed number of recent messages per session.
-        When a session reaches the capacity of the memory store, the overflow
-        handler configured for the <code>ai:ShortTermMemory</code> decides what
-        happens to the oldest messages. The trim strategy (
-        <code>ai:TrimOverflowHandlerConfiguration</code>, the default) removes
-        the oldest messages, and the model-assisted strategy (
+        Short-term memory keeps a fixed number of recent messages per session.
+        When a session reaches the capacity of the store, the overflow handler
+        of the <code>ai:ShortTermMemory</code> decides what happens to the
+        oldest messages. The default trim strategy (
+        <code>ai:TrimOverflowHandlerConfiguration</code>) removes them. The
+        model-assisted strategy (
         <code>ai:ModelAssistedOverflowHandlerConfiguration</code>) uses an LLM
-        to summarize the older messages into a single message, so that important
-        context is retained in a condensed form.
+        to summarize them into a single message, so the important context is
+        kept.
       </p>
 
       <p>
-        This example demonstrates the model-assisted strategy with a small
-        memory capacity, so that overflow occurs within a short conversation.
-        The messages held in memory are printed before and after the overflow,
-        to show the older messages being replaced by a summary.
+        This example uses the model-assisted strategy with a small capacity, and
+        prints the memory before and after the overflow to show the summary.
       </p>
 
       <blockquote>

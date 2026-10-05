@@ -57,6 +57,15 @@ public function main() returns error? {
     ];
     check knowledgeBase.ingest(documents);
     io:println("Ingested ", documents.length(), " documents into the 'hr-policies' index");
+
+    // Create a knowledge base backed by an existing index by passing the index name.
+    ai:KnowledgeBase existingIndex = check new azure:AiSearchKnowledgeBase(searchServiceUrl, searchApiKey,
+            "hr-policies", embeddingProvider);
+    ai:TextDocument[] moreDocuments = [
+        {content: "Employees can work remotely for up to two days per week."}
+    ];
+    check existingIndex.ingest(moreDocuments);
+    io:println("Ingested ", moreDocuments.length(), " more document into the existing 'hr-policies' index");
 }
 `,
 ];
@@ -74,34 +83,28 @@ export function RagAzureAiSearchIngestion({ codeSnippets }) {
       <h1>Ingest into Azure AI Search</h1>
 
       <p>
-        In addition to the vector store-based{" "}
-        <code>ai:VectorKnowledgeBase</code>, Ballerina provides knowledge bases
-        backed by managed search services. The{" "}
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG). The{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
           ballerinax/ai.azure
         </a>{" "}
-        module provides <code>azure:AiSearchKnowledgeBase</code>, an{" "}
-        <code>ai:KnowledgeBase</code> implementation backed by{" "}
+        module implements it with <code>azure:AiSearchKnowledgeBase</code>,
+        which stores the chunks and their embeddings in an{" "}
         <a href="https://azure.microsoft.com/en-us/products/ai-services/ai-search">
           Azure AI Search
-        </a>
-        , which stores the chunks and their embeddings in a search index and
-        retrieves them with vector search.
+        </a>{" "}
+        index. Pass a <code>search:SearchIndex</code> definition to create the
+        index, or the name of an existing index.
       </p>
 
       <p>
-        The knowledge base can be created for a new index by passing a{" "}
-        <code>search:SearchIndex</code> definition, which creates the index, or
-        for an existing index by passing the index name. The index must have a
-        key field of type string, a content field (named <code>content</code> by
-        default), and a vector field whose dimension matches the embedding
-        model.
+        This example creates an index and ingests documents into it, and then
+        ingests another document into the same index by connecting to it as an
+        existing index. It uses Azure OpenAI for the embeddings.
       </p>
 
       <p>
-        This example demonstrates creating a knowledge base with a new index
-        definition and ingesting documents into it, using Azure OpenAI for the
-        embeddings. It covers ingestion only. For the query part, see the{" "}
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-azure-ai-search-retrieval/">
           Retrieve from Azure AI Search
         </a>{" "}
@@ -278,6 +281,7 @@ export function RagAzureAiSearchIngestion({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run rag_azure_ai_search_ingestion.bal`}</span>
               <span>{`Ingested 3 documents into the 'hr-policies' index`}</span>
+              <span>{`Ingested 1 more document into the existing 'hr-policies' index`}</span>
             </code>
           </pre>
         </Col>

@@ -69,27 +69,19 @@ export function AiAgentMemory({ codeSnippets }) {
       <h1>Agent with in-memory short-term memory</h1>
 
       <p>
-        AI agents use memory to keep the conversation history of each session,
-        so that the LLM can use the earlier context when answering follow-up
-        questions. Memory is keyed by a session ID, which allows a single agent
-        to serve many users or conversations concurrently while keeping their
-        histories separate.
-      </p>
-
-      <p>
-        By default, an agent is configured with in-memory short-term memory (
-        <code>ai:ShortTermMemory</code> with an{" "}
-        <code>ai:InMemoryShortTermMemoryStore</code>) that retains a fixed
-        number of recent messages per session. You can configure the memory
-        explicitly to change the capacity, use a persistent store (e.g.,
-        PostgreSQL, Redis, SQLite, Microsoft SQL Server, or Amazon DynamoDB), or
-        customize how overflow is handled. To create a stateless agent, set the{" "}
+        An AI agent remembers the conversation of each session separately. By
+        default, the agent keeps the most recent messages of each session in
+        memory. To keep the history after the program stops, see the{" "}
+        <a href="/learn/by-example/ai-agent-persistent-memory/">
+          Agent with persistent memory
+        </a>{" "}
+        example. To create an agent that does not remember anything, set the{" "}
         <code>memory</code> field to <code>()</code>.
       </p>
 
       <p>
-        This example demonstrates how conversation history is retained per
-        session and how to inspect and clear the stored messages.
+        This example keeps a history per session, and then inspects and clears
+        the stored messages.
       </p>
 
       <blockquote>

@@ -54,26 +54,26 @@ export function RagVertexAiIngestion({ codeSnippets }) {
       <h1>Ingest with Google Vertex AI embeddings</h1>
 
       <p>
-        <a href="https://cloud.google.com/vertex-ai">Google Vertex AI</a>{" "}
-        provides access to Gemini and partner models as well as embedding models
-        on Google Cloud. The{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
-          ballerinax/ai.googleapis.vertex
-        </a>{" "}
-        module provides <code>ai:ModelProvider</code> and{" "}
-        <code>ai:EmbeddingProvider</code> implementations for Vertex AI,
-        authenticating with a service account key file, service account
-        credentials, or OAuth2 refresh tokens.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        This example demonstrates the ingestion side of a retrieval-augmented
-        generation (RAG) workflow in which the chunks are embedded with a Vertex
-        AI embedding model. The example stores the vectors in the in-memory
-        vector store; any <code>ai:VectorStore</code> implementation can be used
-        instead to persist them. It covers ingestion only. For the query part,
-        where the chunks are retrieved and a Gemini model generates the answer,
-        see the{" "}
+        This example embeds the chunks with a{" "}
+        <a href="https://cloud.google.com/vertex-ai">Google Vertex AI</a>{" "}
+        embedding model through the{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+          ballerinax/ai.googleapis.vertex
+        </a>{" "}
+        module, and stores them in the in-memory vector store, which you can
+        replace with any <code>ai:VectorStore</code> implementation.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-vertex-ai-retrieval/">
           Retrieve and generate with Google Vertex AI
         </a>{" "}

@@ -59,44 +59,21 @@ export function AiAgentPersistentMemory({ codeSnippets }) {
       <h1>Agent with persistent memory</h1>
 
       <p>
-        By default, an agent keeps the conversation history in memory, which is
-        lost when the program stops and cannot be shared across multiple
-        instances of the agent. To persist the conversation history, use a
-        persistent short-term memory store (<code>ai:ShortTermMemoryStore</code>{" "}
-        implementation) with the <code>ai:ShortTermMemory</code>.
+        By default, an agent keeps the conversation history in memory, so the
+        history is lost when the program stops and cannot be shared across agent
+        instances. To keep it, store the history in a persist store. Persist
+        stores are available for SQLite (<code>ballerinax/ai.sqlite</code>),
+        PostgreSQL (<code>ballerinax/ai.memory.postgresql</code>), Redis (
+        <code>ballerinax/ai.memory.redis</code>), Microsoft SQL Server (
+        <code>ballerinax/ai.memory.mssql</code>), and Amazon DynamoDB (
+        <code>ballerinax/ai.aws.dynamodb</code>). These stores also keep runs
+        that are paused for human approval, once you create the checkpoint
+        table.
       </p>
 
       <p>
-        Ballerina provides persistent stores backed by SQLite (
-        <a href="https://central.ballerina.io/ballerinax/ai.sqlite/latest">
-          ballerinax/ai.sqlite
-        </a>
-        ), PostgreSQL (
-        <a href="https://central.ballerina.io/ballerinax/ai.memory.postgresql/latest">
-          ballerinax/ai.memory.postgresql
-        </a>
-        ), Redis (
-        <a href="https://central.ballerina.io/ballerinax/ai.memory.redis/latest">
-          ballerinax/ai.memory.redis
-        </a>
-        ), Microsoft SQL Server (
-        <a href="https://central.ballerina.io/ballerinax/ai.memory.mssql/latest">
-          ballerinax/ai.memory.mssql
-        </a>
-        ), and Amazon DynamoDB (
-        <a href="https://central.ballerina.io/ballerinax/ai.aws.dynamodb/latest">
-          ballerinax/ai.aws.dynamodb
-        </a>
-        ). The same stores also persist the checkpoints of runs paused for human
-        approval, provided the checkpoint table is created beforehand (see the
-        module documentation for the schema).
-      </p>
-
-      <p>
-        This example demonstrates an agent whose conversation history is
-        persisted in a SQLite database. Since the history is stored in the
-        database file, running the program again continues the same
-        conversation.
+        This example stores the history in a SQLite database, so running the
+        program again continues the same conversation.
       </p>
 
       <blockquote>

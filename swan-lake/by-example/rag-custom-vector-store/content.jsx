@@ -225,40 +225,19 @@ export function RagCustomVectorStore({ codeSnippets }) {
       <h1>Implement a custom vector store</h1>
 
       <p>
-        A vector store (<code>ai:VectorStore</code>) saves vector entries and
-        searches them by similarity. The <code>ballerina/ai</code> module
-        provides <code>ai:InMemoryVectorStore</code>, and modules such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
-          ballerinax/ai.pgvector
-        </a>{" "}
-        and{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
-          ballerinax/ai.pinecone
-        </a>{" "}
-        provide implementations for external databases. To keep the vectors in a
-        database or search service that has no vector store module, implement
-        the <code>ai:VectorStore</code> type yourself.
+        If you need more control over how vectors are stored and searched, for
+        example to use your own database or your own search logic, implement the{" "}
+        <code>ai:VectorStore</code> type yourself. Implement its three methods:{" "}
+        <code>add</code> to save entries, <code>query</code> to return the
+        entries that match a query, and <code>delete</code> to remove entries by
+        ID. You can then use your vector store in a knowledge base like any
+        other.
       </p>
 
       <p>
-        An <code>ai:VectorStore</code> has three methods: <code>add</code>,
-        which saves vector entries, <code>query</code>, which returns the
-        entries that match an <code>ai:VectorStoreQuery</code>, and{" "}
-        <code>delete</code>, which removes entries by their IDs. A query has an
-        embedding, metadata filters, or both, plus a <code>topK</code> limit,
-        where <code>-1</code> returns all the entries. An{" "}
-        <code>ai:VectorKnowledgeBase</code> adds entries without IDs, so a store
-        should generate an ID when an entry does not have one. A custom store
-        can be passed to an <code>ai:VectorKnowledgeBase</code>, which uses it
-        to store and search the embedded chunks.
-      </p>
-
-      <p>
-        This example demonstrates a vector store that saves the entries to a
-        JSON file, so they are available across runs. It ranks the entries by
-        cosine similarity and supports metadata filters that use the{" "}
-        <code>==</code> and <code>!=</code> operators. To keep the example
-        self-contained, the embeddings are short, hand-written vectors.
+        This example implements a vector store that saves entries to a JSON
+        file, ranks them by cosine similarity, and supports <code>==</code> and{" "}
+        <code>!=</code> metadata filters.
       </p>
 
       <p>

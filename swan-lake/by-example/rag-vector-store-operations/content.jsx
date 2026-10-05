@@ -74,29 +74,17 @@ export function RagVectorStoreOperations({ codeSnippets }) {
       <h1>Vector store operations</h1>
 
       <p>
-        A vector store (<code>ai:VectorStore</code>) persists vector entries and
+        A vector store (<code>ai:VectorStore</code>) saves vector entries and
         searches them by similarity. Each entry (<code>ai:VectorEntry</code>)
-        pairs a chunk with its embedding and can carry an ID and metadata. The
-        store exposes three operations: <code>add</code> to store entries,{" "}
-        <code>query</code> to search by an embedding, optionally combined with
-        metadata filters, and <code>delete</code> to remove entries by ID.
+        pairs a chunk with its embedding and can have an ID and metadata. The
+        store has three operations: <code>add</code> stores entries,{" "}
+        <code>query</code> searches by an embedding and optional metadata
+        filters, and <code>delete</code> removes entries by ID.
       </p>
 
       <p>
-        In a retrieval-augmented generation (RAG) workflow, the knowledge base (
-        <code>ai:VectorKnowledgeBase</code>) drives these operations for you.
-        Using the store directly is useful to understand what happens
-        underneath, to index vectors produced elsewhere, or to manage entries
-        individually. Ballerina provides the built-in{" "}
-        <code>ai:InMemoryVectorStore</code> and implementations for external
-        databases such as pgvector, Pinecone, Milvus, and Weaviate, which all
-        share the same <code>ai:VectorStore</code> type.
-      </p>
-
-      <p>
-        This example demonstrates adding entries with IDs and metadata to an
-        in-memory vector store, querying by similarity with and without metadata
-        filters, and deleting an entry.
+        This example adds entries to an <code>ai:InMemoryVectorStore</code>,
+        queries it with and without metadata filters, and deletes an entry.
       </p>
 
       <blockquote>

@@ -9,11 +9,12 @@ export const codeSnippetData = [
 import ballerina/io;
 import ballerinax/ai.microsoft.sharepoint;
 
-// Credentials of a Microsoft Entra ID app registration that has the \`Sites.Read.All\`
-// application permission for Microsoft Graph.
-configurable string tenantId = ?;
+// OAuth2 client credentials of a Microsoft Entra ID app registration that has the
+// \`Sites.Read.All\` application permission for Microsoft Graph.
+configurable string tokenUrl = ?;
 configurable string clientId = ?;
 configurable string clientSecret = ?;
+configurable string[] scopes = ["https://graph.microsoft.com/.default"];
 
 // The SharePoint site to load from, in the \`{hostname}:/sites/{site-name}\` form
 // (e.g., \`contoso.sharepoint.com:/sites/HR\`).
@@ -33,10 +34,10 @@ public function main() returns error? {
     ai:DataLoader sharePointLoader = check new sharepoint:TextDataLoader(
         {
             auth: {
-                tokenUrl: string \`https://login.microsoftonline.com/\${tenantId}/oauth2/v2.0/token\`,
+                tokenUrl,
                 clientId,
                 clientSecret,
-                scopes: ["https://graph.microsoft.com/.default"]
+                scopes
             }
         },
         [
@@ -92,52 +93,35 @@ export function RagDocumentSources({ codeSnippets }) {
       <h1>Load documents from multiple sources</h1>
 
       <p>
-        The documents for a retrieval-augmented generation (RAG) knowledge base
-        rarely come from a single place. The <code>ai:DataLoader</code>{" "}
-        abstraction represents any source of documents: the built-in{" "}
-        <code>ai:TextDataLoader</code> loads local files (<code>pdf</code>,{" "}
-        <code>docx</code>, <code>markdown</code>, <code>html</code>, and{" "}
-        <code>pptx</code>), and modules such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest">
-          ballerinax/ai.microsoft.sharepoint
-        </a>{" "}
-        load documents from external services. Content that is already in
-        memory, such as an HTTP response body, can be wrapped as an{" "}
-        <code>ai:TextDocument</code> directly. To load from any other source,
-        implement the <code>ai:DataLoader</code> type, as shown in the{" "}
+        A retrieval-augmented generation (RAG) knowledge base often gets
+        documents from more than one place. The <code>ai:DataLoader</code> type
+        represents any source of documents.
+      </p>
+
+      <p>
+        This example loads documents from local files, a SharePoint document
+        library, and memory.
+      </p>
+
+      <p>
+        To load from another source, see the{" "}
         <a href="/learn/by-example/rag-custom-data-loader/">
           Load using a custom data loader
         </a>{" "}
         example.
       </p>
 
-      <p>
-        The <code>sharepoint:TextDataLoader</code> reads files from SharePoint
-        document libraries, and optionally site pages, through the Microsoft
-        Graph API. It loads text files, such as Markdown, as they are and
-        extracts the text of PDF files. It authenticates with OAuth2 client
-        credentials, a refresh token, or a bearer token. Each source names a
-        site and the libraries, paths, and file extensions to load.
-      </p>
-
-      <p>
-        Because every loader produces <code>ai:Document</code> values, documents
-        from different sources can be combined and ingested into a knowledge
-        base together.
-      </p>
-
-      <p>
-        This example demonstrates loading documents from local files, from a
-        SharePoint document library, and from in-memory content.
-      </p>
-
       <blockquote>
         <p>
           Note: This example requires a Microsoft Entra ID app registration with
           the <code>Sites.Read.All</code> application permission for Microsoft
-          Graph. Add the tenant ID, client ID, client secret, and SharePoint
+          Graph. Add the token URL, client ID, client secret, and SharePoint
           site ID to the <code>Config.toml</code> file (e.g.,{" "}
-          <code>siteId = &quot;contoso.sharepoint.com:/sites/HR&quot;</code>).
+          <code>
+            tokenUrl =
+            &quot;https://login.microsoftonline.com/&lt;tenant-id&gt;/oauth2/v2.0/token&quot;
+          </code>
+          , <code>siteId = &quot;contoso.sharepoint.com:/sites/HR&quot;</code>).
           The example loads the PDF and Markdown files in the{" "}
           <code>Policies</code> folder of the site’s <code>Documents</code>{" "}
           library.

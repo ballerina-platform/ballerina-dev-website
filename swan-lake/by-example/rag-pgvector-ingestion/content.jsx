@@ -58,25 +58,26 @@ export function RagPgvectorIngestion({ codeSnippets }) {
       <h1>Ingest into pgvector</h1>
 
       <p>
-        Ballerina provides the <code>ai:VectorStore</code> abstraction for
-        persisting and searching vector embeddings, with implementations for
-        external vector databases such as pgvector, Pinecone, Milvus, and
-        Weaviate, in addition to the built-in{" "}
-        <code>ai:InMemoryVectorStore</code>. Since all implementations share the
-        same type, the vector store can be swapped without changing the rest of
-        the retrieval-augmented generation (RAG) workflow. With an external
-        vector store, the ingested data persists, so ingestion and retrieval can
-        run as separate programs.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        This example demonstrates ingesting documents into{" "}
-        <a href="https://github.com/pgvector/pgvector">pgvector</a>, a
-        PostgreSQL extension for vector similarity search, via the{" "}
+        This example ingests documents into a PostgreSQL table with the{" "}
+        <a href="https://github.com/pgvector/pgvector">pgvector</a> extension
+        through the{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.pgvector/latest">
           ballerinax/ai.pgvector
         </a>{" "}
-        module. It covers ingestion only. For the query part, see the{" "}
+        module, with the default embedding provider. The vectors are kept in the
+        database, so a separate program can retrieve them.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-pgvector-retrieval/">
           Retrieve from pgvector
         </a>{" "}

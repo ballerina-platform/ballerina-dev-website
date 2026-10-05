@@ -32,8 +32,7 @@ isolated function getOrder(string orderId) returns Order|error {
     }
 }
 
-// Mark the tool as requiring human approval. The agent pauses before calling this tool
-// and resumes only after a human approves or rejects the proposed call.
+// The agent pauses before calling this tool and waits for a human decision.
 # Issues a refund for an order. This action is irreversible.
 # + orderId - The order ID
 # + amount - The amount to refund
@@ -50,38 +49,52 @@ isolated function issueRefund(string orderId, decimal amount) returns string|err
     return string \`A refund of \${amount} has been issued for order \${orderId}\`;
 }
 
+// Decides per call from the proposed arguments: discounts above 10% need approval.
+isolated function needsApproval(string orderId, int percent) returns boolean => percent > 10;
+
+# Applies a discount to an order.
+# + orderId - The order ID
+# + percent - The discount percentage
+# + return - A confirmation message
+@ai:AgentTool {requiresApproval: needsApproval}
+isolated function applyDiscount(string orderId, int percent) returns string =>
+    string \`A \${percent}% discount has been applied to order \${orderId}\`;
+
 final ai:Agent supportAgent = check new ({
     systemPrompt: {
         role: "Customer Support Agent",
-        instructions: string \`You help customers with their orders. Look up orders and
-            issue refunds when asked. Keep answers brief.\`
+        instructions: string \`You help customers with their orders. Look up orders, and
+            apply discounts and issue refunds when asked. Keep answers brief.\`
     },
-    // Use the default model provider (with configuration added via a Ballerina VS Code command).
     model: check ai:getDefaultModelProvider(),
-    tools: [getOrder, issueRefund]
+    tools: [getOrder, issueRefund, applyDiscount]
 });
 
 public function main() returns error? {
-    string sessionId = "customer-7";
-    string|ai:Error result = supportAgent.run("Please refund my order ORD-1001 in full.", sessionId);
+    // A 5% discount does not need approval, so the agent applies it directly.
+    check chat("Please apply a 5% discount to my order ORD-1001.");
+    // A refund always needs approval.
+    check chat("Please refund my order ORD-1001 in full.");
+}
 
-    // When the agent proposes a call to a tool that requires approval, the run pauses and
-    // returns an \`ai:ApprovalRequiredError\` that describes the pending tool call(s).
+function chat(string query) returns error? {
+    string sessionId = "customer-7";
+    string|ai:Error result = supportAgent.run(query, sessionId);
+
+    // The run pauses with an \`ai:ApprovalRequiredError\` that lists the pending tool calls.
     if result is ai:ApprovalRequiredError {
         map<ai:HumanDecision> decisions = {};
         foreach ai:ApprovalRequest request in result.detail().requests {
             io:println(string \`Approval required to call '\${request.toolName}' with arguments \${
                     request.arguments.toJsonString()}\`);
-            // A human reviews the proposed call. Here, the decision is read from the console.
+            // Read the decision from the console.
             string answer = io:readln("Approve? (y/n): ");
             decisions[request.id] = answer.toLowerAscii() == "y" ?
                     {outcome: ai:APPROVE} :
                     {outcome: ai:REJECT, reason: "Rejected by the support supervisor"};
         }
 
-        // Resume the paused run with the decisions, using the same session ID. The agent
-        // executes the approved tool calls, learns about the rejected ones, and continues
-        // to produce the final response.
+        // Resume the run with the decisions, using the same session ID.
         ai:Resume resume = {decisions: decisions.cloneReadOnly()};
         string response = check supportAgent.run(resume, sessionId);
         io:println("Agent: ", response);
@@ -105,33 +118,29 @@ export function AiAgentHumanInTheLoop({ codeSnippets }) {
       <h1>Human-in-the-loop tool approval</h1>
 
       <p>
-        Some tool calls have consequences that should not be left to the LLM
-        alone, such as issuing refunds, sending messages, or deleting data.
-        Ballerina agents support human-in-the-loop approval for such tools. A
-        tool is marked as requiring approval via the{" "}
-        <code>requiresApproval</code> field of the <code>@ai:AgentTool</code>{" "}
-        annotation (or <code>ai:ToolConfig</code>). The value can be{" "}
-        <code>true</code> to always require approval, or an{" "}
-        <code>isolated</code> function with the same parameters as the tool that
-        decides per call based on the proposed arguments.
+        Some tools, such as issuing a refund, should not run without a person’s
+        approval. Mark such a tool with{" "}
+        <code>@ai:AgentTool &#123;requiresApproval: true&#125;</code> to require
+        approval for every call. To decide for each call, set{" "}
+        <code>requiresApproval</code> to an <code>isolated</code> function that
+        takes the same parameters as the tool and returns <code>true</code> when
+        the call needs approval.
       </p>
 
       <p>
-        When the agent proposes a call to such a tool, the run pauses and
-        returns an <code>ai:ApprovalRequiredError</code> that carries one{" "}
-        <code>ai:ApprovalRequest</code> per pending call, including the tool
-        name and the proposed arguments. A human (or an approval workflow)
-        reviews the requests, and the run is resumed by calling <code>run</code>{" "}
-        with an <code>ai:Resume</code> value that maps each request ID to an{" "}
-        <code>ai:HumanDecision</code> (approve or reject, with an optional
-        reason), using the same session ID. The paused state is checkpointed in
-        the agent’s memory store, so with a persistent store the run can be
-        resumed after a restart or from a different process.
+        When the agent wants to call the tool, <code>run</code> stops and
+        returns an <code>ai:ApprovalRequiredError</code> with the proposed
+        calls. After a person approves or rejects each call, call{" "}
+        <code>run</code> again with an <code>ai:Resume</code> value holding the
+        decisions and the same session ID, and the agent continues. With a
+        persistent memory store, the paused run can be resumed even after a
+        restart.
       </p>
 
       <p>
-        This example demonstrates a customer support agent whose refund tool
-        requires approval, with the decision read from the console.
+        In this example, a refund always needs approval, and a discount needs
+        approval only when it is above 10%. So the 5% discount is applied
+        directly, and the refund waits for the approval entered on the console.
       </p>
 
       <blockquote>
@@ -295,6 +304,7 @@ export function AiAgentHumanInTheLoop({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run ai_agent_human_in_the_loop.bal`}</span>
+              <span>{`Agent: A 5% discount has been successfully applied to your order ORD-1001.`}</span>
               <span>{`Approval required to call 'issueRefund' with arguments {"amount":120.5, "orderId":"ORD-1001"}`}</span>
               <span>{`Approve? (y/n): y`}</span>
               <span>{`Agent: A full refund of \$120.50 has been issued for your order ORD-1001.`}</span>

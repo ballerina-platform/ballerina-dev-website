@@ -76,33 +76,19 @@ export function McpClientWithRequestMetadata({ codeSnippets }) {
       <h1>Model Context Protocol (MCP) client with request metadata</h1>
 
       <p>
-        An MCP request can carry a <code>_meta</code> field alongside the tool
-        arguments. Metadata describes the call rather than forming part of the
-        input of the tool, so it is the place for values that the caller
-        determines and that must not be chosen by an LLM, such as the tenant or
-        the correlation ID of the request.
+        An MCP request can carry a <code>_meta</code> field for values that the
+        caller sets and the LLM must not choose, such as the tenant. The{" "}
+        <code>mcp:StreamableHttpClient</code> client sends it through the{" "}
+        <code>_meta</code> field of <code>mcp:CallToolParams</code>.{" "}
+        <code>mcp:Meta</code> is an open record, so you can add your own fields.
+        An error returned by a tool comes back as an{" "}
+        <code>mcp:CallToolResult</code> with <code>isError</code> set to{" "}
+        <code>true</code>, not as an <code>mcp:ClientError</code>.
       </p>
 
       <p>
-        The <code>mcp:StreamableHttpClient</code> client sends request metadata
-        via the <code>_meta</code> field of <code>mcp:CallToolParams</code>. The{" "}
-        <code>mcp:Meta</code> type is an open record, so the client can attach
-        its own fields in addition to the standard <code>progressToken</code>{" "}
-        field. On the server side, a tool of an{" "}
-        <code>mcp:StreamableHttpService</code> reads the metadata through an{" "}
-        <code>mcp:Meta?</code> parameter, which is not part of the tool input
-        schema.
-      </p>
-
-      <p>
-        This example lists the tools of the server, which shows that the{" "}
-        <code>mcp:Meta?</code> parameters of the tools are not part of their
-        input schemas. It then calls a tool with request metadata only, a tool
-        with both arguments and request metadata, and a tool with arguments
-        only, and shows that a call fails when the metadata that the tool
-        requires is missing. An error returned by a tool is reported as an{" "}
-        <code>mcp:CallToolResult</code> with the <code>isError</code> field set
-        to <code>true</code>, rather than as an <code>mcp:ClientError</code>.
+        This example calls tools with metadata, arguments, or both, and shows a
+        call that fails without the required metadata.
       </p>
 
       <blockquote>

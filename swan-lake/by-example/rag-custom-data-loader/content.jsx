@@ -88,27 +88,17 @@ export function RagCustomDataLoader({ codeSnippets }) {
         <a href="https://central.ballerina.io/ballerinax/ai.microsoft.sharepoint/latest">
           ballerinax/ai.microsoft.sharepoint
         </a>{" "}
-        load from external services. To load documents from any other source for
-        a retrieval-augmented generation (RAG) knowledge base, such as a
-        database, an API, or a ticketing system, implement the{" "}
-        <code>ai:DataLoader</code> type yourself.
+        load from external services. To load documents from another source, such
+        as a database or an API, implement the <code>ai:DataLoader</code> type.
+        Its single <code>load</code> method returns an <code>ai:Document</code>{" "}
+        or an array of <code>ai:Document</code> values. You can then ingest
+        these documents into a knowledge base like any others.
       </p>
 
       <p>
-        An <code>ai:DataLoader</code> has a single <code>load</code> method that
-        returns an <code>ai:Document</code> or an array of{" "}
-        <code>ai:Document</code> values. Return <code>ai:TextDocument</code>{" "}
-        values with the text to be chunked and embedded, and add metadata, such
-        as a record identifier, that is useful when the document is retrieved
-        later. Because the custom loader produces the same{" "}
-        <code>ai:Document</code> values as the built-in loaders, its documents
-        can be combined with documents from other sources and ingested into a
-        knowledge base.
-      </p>
-
-      <p>
-        This example demonstrates a custom data loader that turns support ticket
-        records into text documents.
+        This example implements a data loader that turns support ticket records
+        into <code>ai:TextDocument</code> values, with the ticket ID as
+        metadata.
       </p>
 
       <p>

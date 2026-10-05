@@ -57,21 +57,26 @@ export function RagWithConfiguredChunker({ codeSnippets }) {
       <h1>Ingest with a configured chunker</h1>
 
       <p>
-        By default, an <code>ai:VectorKnowledgeBase</code> chunks ingested
-        documents with the <code>ai:AUTO</code> configuration, which selects a
-        chunker based on the type of each document. When you need control over
-        the chunk size, overlap, or splitting strategy, pass a configured{" "}
-        <code>ai:Chunker</code> when creating the knowledge base instead.
-        Ballerina provides <code>ai:GenericRecursiveChunker</code>,{" "}
-        <code>ai:MarkdownChunker</code>, and <code>ai:HtmlChunker</code>, and
-        you can also implement the <code>ai:Chunker</code> type yourself.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store. By
+        default (<code>ai:AUTO</code>), the knowledge base selects a chunker
+        based on the type of each document. To control the chunk size, the
+        overlap, or the splitting strategy, pass a configured{" "}
+        <code>ai:Chunker</code>, such as <code>ai:GenericRecursiveChunker</code>
+        , <code>ai:MarkdownChunker</code>, or <code>ai:HtmlChunker</code>.
       </p>
 
       <p>
-        This example demonstrates a knowledge base that uses a generic recursive
-        chunker with a sentence-based strategy and a small chunk size, so that
-        each sentence is stored as a separate chunk. It covers ingestion only.
-        To retrieve from a knowledge base, see the{" "}
+        This example ingests a document into an in-memory vector store with an{" "}
+        <code>ai:GenericRecursiveChunker</code> that splits by sentence into
+        chunks of up to 120 characters.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}

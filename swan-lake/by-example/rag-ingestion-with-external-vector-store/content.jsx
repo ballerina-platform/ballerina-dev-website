@@ -62,30 +62,24 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
       <h1>Ingest into Pinecone</h1>
 
       <p>
-        Ballerina has high-level, provider-agnostic APIs to ingest data for
-        retrieval-augmented generation (RAG) workflows. These include
-        abstractions such as <code>ai:DataLoader</code>,{" "}
-        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
-        <code>ai:KnowledgeBase</code>.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        These abstractions enable you to load documents, convert them into
-        semantically meaningful vector representations using embedding models,
-        and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
-        The knowledge base (<code>ai:KnowledgeBase</code>) orchestrates this
-        process.
-      </p>
-
-      <p>
-        This example demonstrates how to use <code>ai:TextDataLoader</code> to
-        load a PDF document, generate embeddings with the default embedding
-        provider, and ingest the chunks into a{" "}
-        <a href="https://www.pinecone.io/">Pinecone</a> index via the{" "}
+        This example loads a PDF document and ingests it into a{" "}
+        <a href="https://www.pinecone.io/">Pinecone</a> index through the{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
           ballerinax/ai.pinecone
         </a>{" "}
-        module. It covers ingestion only. For the query part, see the{" "}
+        module, with the default embedding provider.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-query-with-external-vector-store/">
           Retrieve from Pinecone
         </a>{" "}

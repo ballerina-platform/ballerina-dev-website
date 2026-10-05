@@ -66,25 +66,28 @@ export function RagInMemoryVectorStoreRetrieval({ codeSnippets }) {
       <h1>Retrieve from an in-memory vector store</h1>
 
       <p>
-        Retrieval-augmented generation (RAG) enhances the capabilities of large
-        language models (LLMs) by combining them with external knowledge sources
-        to provide more accurate and contextually-relevant responses. At query
-        time, the chunks that are most similar to the user’s question are
-        retrieved from the knowledge base and added to the prompt sent to the
-        LLM.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>retrieve</code> method embeds the question with the same embedding
+        provider that was used for ingestion, and returns the most similar
+        chunks from the vector store. You then add the chunks to the prompt, for
+        example with <code>ai:augmentUserQuery</code>, and generate the answer
+        with a model provider.
       </p>
 
       <p>
-        This example demonstrates the retrieval and generation steps of a RAG
-        workflow with the built-in <code>ai:InMemoryVectorStore</code>. Since an
-        in-memory vector store is emptied when the program stops, the documents
-        are ingested in the same program before the query. The ingestion for
-        this example is explained in the{" "}
+        The in-memory vector store is emptied when the program stops, so this
+        example ingests a document first, and then retrieves the relevant chunks
+        and generates the answer with the default model provider.
+      </p>
+
+      <p>
+        For the ingestion part, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-ingestion/">
           Ingest into an in-memory vector store
         </a>{" "}
-        example. With an external vector store, ingestion and retrieval can run
-        as separate programs.
+        example.
       </p>
 
       <blockquote>

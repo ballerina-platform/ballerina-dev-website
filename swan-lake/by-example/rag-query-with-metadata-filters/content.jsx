@@ -90,30 +90,23 @@ export function RagQueryWithMetadataFilters({ codeSnippets }) {
       <h1>Filter results by metadata</h1>
 
       <p>
-        Chunks stored in a knowledge base carry metadata (
-        <code>ai:Metadata</code>) with predefined fields, such as the file name
-        and chunk index, and arbitrary custom fields. Metadata filters (
-        <code>ai:MetadataFilters</code>) combine vector similarity search with
-        exact conditions on this metadata, for example, to restrict retrieval to
-        a department, a document, or a time range, which improves precision and
-        enables multi-tenant scenarios.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Chunks carry
+        metadata (<code>ai:Metadata</code>), with predefined fields such as the
+        file name and custom fields. The <code>retrieve</code> method accepts
+        metadata filters (<code>ai:MetadataFilters</code>) that add exact
+        conditions on this metadata to the vector search. Each{" "}
+        <code>ai:MetadataFilter</code> has a key, an operator (such as{" "}
+        <code>ai:EQUAL</code>, <code>ai:IN</code>, or{" "}
+        <code>ai:GREATER_THAN_OR_EQUAL</code>), and a value. Filters can be
+        combined with <code>ai:AND</code> or <code>ai:OR</code>, and the same
+        filters work with <code>deleteByFilter</code>.
       </p>
 
       <p>
-        Each <code>ai:MetadataFilter</code> has a key, an operator (
-        <code>ai:EQUAL</code>, <code>ai:NOT_EQUAL</code>,{" "}
-        <code>ai:GREATER_THAN</code>, <code>ai:LESS_THAN</code>,{" "}
-        <code>ai:GREATER_THAN_OR_EQUAL</code>,{" "}
-        <code>ai:LESS_THAN_OR_EQUAL</code>, <code>ai:IN</code>,{" "}
-        <code>ai:NOT_IN</code>), and a value. Filters can be combined with{" "}
-        <code>ai:AND</code> or <code>ai:OR</code> and nested, and the same
-        filters work with <code>deleteByFilter</code> to remove chunks.
-      </p>
-
-      <p>
-        This example demonstrates ingesting chunks with custom metadata,
-        retrieving with and without filters, combining filters, and deleting
-        chunks by filter.
+        This example ingests chunks with custom metadata, retrieves with and
+        without filters, combines filters, and deletes chunks by filter.
       </p>
 
       <blockquote>

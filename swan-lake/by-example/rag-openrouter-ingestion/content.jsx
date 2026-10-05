@@ -50,26 +50,26 @@ export function RagOpenrouterIngestion({ codeSnippets }) {
       <h1>Ingest with OpenRouter embeddings</h1>
 
       <p>
-        <a href="https://openrouter.ai/">OpenRouter</a> provides unified access
-        to large language models (LLMs) and embedding models from many providers
-        through a single API and key. The{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
-          ballerinax/ai.openrouter
-        </a>{" "}
-        module provides <code>ai:ModelProvider</code> and{" "}
-        <code>ai:EmbeddingProvider</code> implementations for OpenRouter, so any
-        model available on OpenRouter can be used in a retrieval-augmented
-        generation (RAG) workflow by specifying its identifier (e.g.,{" "}
-        <code>openai/text-embedding-3-small</code>).
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        This example demonstrates the ingestion side of a RAG workflow in which
-        the chunks are embedded through OpenRouter. The example stores the
-        vectors in the in-memory vector store; any <code>ai:VectorStore</code>{" "}
-        implementation can be used instead to persist them. It covers ingestion
-        only. For the query part, where the chunks are retrieved and an
-        OpenRouter-hosted model generates the answer, see the{" "}
+        This example embeds the chunks with an embedding model on{" "}
+        <a href="https://openrouter.ai/">OpenRouter</a> (
+        <code>openai/text-embedding-3-small</code>) through the{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
+          ballerinax/ai.openrouter
+        </a>{" "}
+        module, and stores them in the in-memory vector store, which you can
+        replace with any <code>ai:VectorStore</code> implementation.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-openrouter-retrieval/">
           Retrieve and generate with OpenRouter
         </a>{" "}

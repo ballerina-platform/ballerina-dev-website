@@ -42,10 +42,9 @@ public isolated class TaskManagerToolkit {
     # + serviceUrl - The URL of the task management API
     # + auth - The bearer token configuration used to authenticate with the API
     # + permittedTools - The tools to give the agent, or \`()\` to give all the tools
-    # + readOnly - Whether to give the agent only the tools that do not change the tasks
     # + return - An error if the initialization fails
     public isolated function init(string serviceUrl, http:BearerTokenConfig auth,
-            TaskTool[]? permittedTools = (), boolean readOnly = false) returns error? {
+            TaskTool[]? permittedTools = ()) returns error? {
         self.taskApi = check new (serviceUrl, {auth});
         // The \`ai:getToolConfigs\` function generates the tool configurations for the specified
         // tools, which the toolkit then filters based on its configuration. The names of the
@@ -53,8 +52,7 @@ public isolated class TaskManagerToolkit {
         ai:ToolConfig[] allTools = ai:getToolConfigs([self.listTasks, self.addTask, self.completeTask]);
         self.tools = from ai:ToolConfig tool in allTools
             let TaskTool toolName = check tool.name.ensureType()
-            where (permittedTools is () || permittedTools.indexOf(toolName) != ())
-                && (!readOnly || toolName == LIST_TASKS)
+            where permittedTools is () || permittedTools.indexOf(toolName) != ()
             select tool.cloneReadOnly();
     }
 
@@ -191,45 +189,26 @@ export function AiAgentToolKit({ codeSnippets }) {
       <h1>AI agents with tool kits</h1>
 
       <p>
-        Ballerina enables developers to easily create intelligent AI agents
-        powered by large language models (LLMs) and integrated with tools,
-        including local tools, MCP tools, and external APIs. These AI agents can
-        automate complex workflows, interact with users through natural
-        language, and seamlessly connect with internal and external systems.
+        A toolkit groups related tools into one reusable class. It includes the{" "}
+        <code>ai:BaseToolKit</code> type and returns its tools from the{" "}
+        <code>getTools</code> method. Its own <code>init</code> method controls
+        how the tools are created. Here, the toolkit keeps the HTTP client and
+        the API credentials to itself, so they never reach the LLM. The{" "}
+        <code>permittedTools</code> parameter selects the tools the agent gets.
       </p>
 
       <p>
-        This example demonstrates how to create an AI agent that can manage a
-        to-do list by using a toolkit that encapsulates a set of related tools
-        for a task management REST API. Toolkits allow for better encapsulation
-        and reusability compared to using standalone functions, especially when
-        building complex agents with multiple related capabilities.
-      </p>
-
-      <p>
-        A toolkit is a class that includes the <code>ai:BaseToolKit</code> type
-        and returns its tools from the <code>getTools</code> method. Since the
-        class defines its own <code>init</code> method, it controls how the
-        tools are created. In this example, the toolkit takes the URL and the
-        bearer token configuration of the API and keeps the HTTP client to
-        itself, so the credentials never reach the LLM. The{" "}
-        <code>permittedTools</code> parameter selects the tools that the agent
-        gets, and the <code>readOnly</code> parameter leaves out the tools that
-        change the tasks. The agent in this example can list and add tasks, but
-        it does not get the tool that completes tasks.
+        This example gives a to-do list agent a task management toolkit that can
+        list and add tasks, but not complete them.
       </p>
 
       <blockquote>
         <p>
-          Note: The example starts a mock task management API on port 9095, so
+          Note:
+          <br />• The example starts a mock task management API on port 9095, so
           that it is self-contained.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add

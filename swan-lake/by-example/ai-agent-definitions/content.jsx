@@ -30,7 +30,7 @@ isolated function getSupportTier(string customerId) returns string =>
 
 # An agent definition that triages support requests for a product.
 public isolated class SupportTriageAgent {
-    // Including \`ai:FixedTypedAgent\` makes the class an agent definition with a fixed return type.
+    // Including \`ai:FixedTypedAgent\` makes this class an agent definition.
     *ai:FixedTypedAgent;
 
     private final ai:Agent agent;
@@ -42,8 +42,7 @@ public isolated class SupportTriageAgent {
     # + categories - The categories that the agent assigns requests to
     public function init(ai:ModelProvider model, ai:Memory? memory = (), string product = "",
             string[] categories = ["Bug", "Outage", "Question"]) returns error? {
-        // The role, instructions, and tools are part of the definition. The model, the
-        // memory, the product, and the categories vary between the agents created from it.
+        // The role, instructions, and tools are fixed; the \`init\` arguments vary per agent.
         self.agent = check new (
             systemPrompt = {
                 role: string \`Support Triage Agent for \${product}\`,
@@ -74,7 +73,6 @@ public isolated class SupportTriageAgent {
 }
 
 public function main() returns error? {
-    // Use the default model provider (with configuration added via a Ballerina VS Code command).
     ai:ModelProvider model = check ai:getDefaultModelProvider();
 
     // Create two agents from the same definition, one for each product.
@@ -90,7 +88,7 @@ public function main() returns error? {
         "Customer C-881: how do I change the color of a chart?");
     io:println("Acme Analytics: ", analyticsTriage);
 
-    // The trace shows the tool calls that the agent made to reach the result.
+    // The trace shows the tool calls made to reach the result.
     ai:Trace trace = check analyticsTriageAgent.trace(
         "Customer C-881: how do I change the color of a chart?");
     ai:FunctionCall[] toolCalls = trace.toolCalls ?: [];
@@ -112,47 +110,26 @@ export function AiAgentDefinitions({ codeSnippets }) {
       <h1>Agent definitions</h1>
 
       <p>
-        An agent definition is a reusable template for an agent. It captures the
-        role, the instructions, the tools, and the response type once, so that
-        the same agent can be created in more than one place. Since a definition
-        is a Ballerina class, agents can be shared like any other code: define
-        the class in a library package and publish it, and other integrations
-        and projects import the package and create agents from the definition,
-        supplying their own model provider, memory, and <code>init</code>{" "}
-        arguments. An agent created from a definition can also be attached as a
-        tool of another agent, as demonstrated in the{" "}
+        An agent definition is a reusable agent. Define the role, instructions,
+        tools, and response type once in a class that includes{" "}
+        <code>ai:FixedTypedAgent</code>, and create as many agents from it as
+        you need. The <code>init</code> parameters hold what changes between
+        agents, such as the model provider or the product.
+      </p>
+
+      <p>
+        Since a definition is a class, you can share it by publishing it in a
+        library package, so other projects can import it and create their own
+        agents. An agent created from a definition can also be used as a tool of
+        another agent, as shown in the{" "}
         <a href="/learn/by-example/ai-agent-as-tool/">Agent as a tool</a>{" "}
         example.
       </p>
 
       <p>
-        A definition is a class that includes the{" "}
-        <code>ai:FixedTypedAgent</code> type. The class composes an{" "}
-        <code>ai:Agent</code> in its <code>init</code> method and implements the{" "}
-        <code>run</code> method, which returns the fixed response type of the
-        definition, and the <code>trace</code> method, which returns the
-        execution trace. The parameters of the <code>init</code> method are the
-        parts that vary between the agents created from the definition, such as
-        the model provider, the memory, and values such as an endpoint or a
-        tenant. Everything else stays in the definition. A structured response
-        type is easier for the callers to use than a <code>string</code>, since
-        the result needs no further interpretation.
+        This example defines a support triage agent and creates two agents from
+        it, one for each product.
       </p>
-
-      <p>
-        This example demonstrates an agent definition that triages support
-        requests, and creates two agents from it for two products with different
-        categories.
-      </p>
-
-      <blockquote>
-        <p>
-          Note: The response type and the <code>init</code> parameters of a
-          published definition are its public API. Changing the response type,
-          adding a required <code>init</code> parameter, or renaming or removing
-          any <code>init</code> parameter breaks its consumers.
-        </p>
-      </blockquote>
 
       <blockquote>
         <p>

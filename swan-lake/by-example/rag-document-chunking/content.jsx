@@ -88,38 +88,21 @@ export function RagDocumentChunking({ codeSnippets }) {
       <h1>Chunk documents</h1>
 
       <p>
-        Documents are split into smaller chunks before they are embedded and
-        indexed for retrieval-augmented generation (RAG). The{" "}
-        <code>ballerina/ai</code> module provides a chunking function for each
-        document type: <code>ai:chunkMarkdownDocument</code> for Markdown,{" "}
-        <code>ai:chunkHtmlDocument</code> for HTML, and{" "}
-        <code>ai:chunkDocumentRecursively</code> for generic text. Each function
-        uses the structure of the document type, such as headers, to produce
-        meaningful chunks and recursively falls back to smaller units, such as
-        sentences, when a chunk exceeds <code>maxChunkSize</code> characters.
-        The same chunkers are available as the <code>ai:MarkdownChunker</code>,{" "}
-        <code>ai:HtmlChunker</code>, and <code>ai:GenericRecursiveChunker</code>{" "}
-        classes.
-      </p>
-
-      <p>
-        You rarely need to choose the chunker yourself. An{" "}
+        Before you embed documents for retrieval-augmented generation (RAG), you
+        split them into chunks. The <code>ballerina/ai</code> module has a
+        chunking function for each document type:{" "}
+        <code>ai:chunkMarkdownDocument</code>, <code>ai:chunkHtmlDocument</code>
+        , and <code>ai:chunkDocumentRecursively</code> for generic text. Each
+        one splits by the document structure and falls back to smaller units
+        when a chunk exceeds <code>maxChunkSize</code> characters. An{" "}
         <code>ai:VectorKnowledgeBase</code> created with <code>ai:AUTO</code>{" "}
-        (the default) detects the chunker for each document when it is ingested.
-        It uses the <code>mimeType</code> metadata of the document (
-        <code>text/markdown</code> or <code>text/html</code>), falls back to the
-        file extension (<code>.md</code> or <code>.html</code>) in the{" "}
-        <code>fileName</code> metadata, and uses the generic recursive chunker
-        for any other document. The automatically selected chunkers use the
-        default maximum chunk size of 200 characters, so each of the short
-        documents in this example is stored as a single chunk.
+        (the default) picks the chunker for each document from its{" "}
+        <code>mimeType</code> metadata or file extension.
       </p>
 
       <p>
-        This example demonstrates chunking Markdown, HTML, and text documents
-        with the chunking function for each type, and then ingesting all of them
-        into a knowledge base that selects the chunkers with{" "}
-        <code>ai:AUTO</code>.
+        This example chunks Markdown, HTML, and text documents, and then ingests
+        them all into a knowledge base that uses <code>ai:AUTO</code>.
       </p>
 
       <blockquote>

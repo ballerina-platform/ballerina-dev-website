@@ -68,43 +68,34 @@ export function RagWso2CloudKnowledgeBaseRetrieval({ codeSnippets }) {
       <h1>Retrieve from a WSO2 Cloud knowledge base</h1>
 
       <p>
-        The{" "}
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG). The{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.wso2.integration/latest">
           ballerinax/ai.wso2.integration
         </a>{" "}
-        module provides <code>wso2:CloudKnowledgeBase</code>, an{" "}
-        <code>ai:KnowledgeBase</code> implementation backed by a knowledge base
-        hosted on the{" "}
+        module implements it with <code>wso2:CloudKnowledgeBase</code>, which
+        retrieves from a knowledge base hosted on the{" "}
         <a href="https://wso2.com/integration-platform/docs/">
           WSO2 Integration Platform
         </a>
-        . The documents are ingested, chunked, and embedded on the platform, so
-        the application only retrieves from it: the query is embedded by the
-        platform and the matching chunks are returned with their similarity
-        scores. The <code>ingest</code> and <code>deleteByFilter</code> methods
-        are not supported yet.
+        . The platform ingests and embeds the documents, so the application only
+        retrieves. The <code>ingest</code> and <code>deleteByFilter</code>{" "}
+        methods are not supported yet. Initialize it with the service URL and a
+        bearer token or OAuth2 client credentials. Optional parameters are{" "}
+        <code>minSimilarityThreshold</code> (default <code>0.7</code>), Cohere
+        reranking with <code>cohereRerankerApiKey</code>,{" "}
+        <code>cohereRerankerModel</code>, and <code>rerankerTopN</code> (default{" "}
+        <code>5</code>), and HTTP settings such as <code>timeout</code> and{" "}
+        <code>retryConfig</code>.
       </p>
 
       <p>
-        When initializing the knowledge base, provide the service URL and the
-        authentication configuration, which accepts a bearer token or OAuth2
-        client credentials. The optional parameters configure the retrieval:{" "}
-        <code>minSimilarityThreshold</code> drops the chunks that score below it
-        (the default is <code>0.7</code>), and <code>cohereRerankerApiKey</code>
-        , <code>cohereRerankerModel</code>, and <code>rerankerTopN</code> rerank
-        the retrieved chunks with Cohere and keep the top N of them (the default
-        is <code>5</code>). Reranking is disabled when no API key is provided.
-        The remaining parameters are HTTP connection configurations, such as{" "}
-        <code>timeout</code> and <code>retryConfig</code>. Since it implements{" "}
-        <code>ai:KnowledgeBase</code>, the retrieved chunks are used exactly
-        like those from any other knowledge base: augment the prompt with them
-        and generate the answer with a model provider.
+        This example retrieves from a WSO2 Cloud knowledge base and generates
+        the answer with the default WSO2 model provider.
       </p>
 
       <p>
-        This example demonstrates retrieving from a WSO2 Cloud knowledge base
-        and generating the answer with the default WSO2 model provider. To let
-        an agent decide when to retrieve, see the{" "}
+        To let an agent decide when to retrieve, see the{" "}
         <a href="/learn/by-example/agentic-rag-with-wso2-integration-knowledge-base/">
           Agentic RAG with WSO2 Cloud
         </a>{" "}

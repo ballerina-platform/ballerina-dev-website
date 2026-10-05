@@ -63,29 +63,20 @@ export function AgenticRagWithWso2IntegrationKnowledgeBase({ codeSnippets }) {
       <p>
         The <code>ballerinax/ai.wso2.integration</code> module provides{" "}
         <code>wso2:CloudKnowledgeBase</code>, an <code>ai:KnowledgeBase</code>{" "}
-        implementation backed by a knowledge base hosted on the{" "}
+        backed by a knowledge base on the{" "}
         <a href="https://wso2.com/integration-platform/docs/">
           WSO2 Integration Platform
         </a>
-        . The documents are ingested and indexed on the platform, so the
-        application only retrieves from it. The <code>ingest</code> and{" "}
-        <code>deleteByFilter</code> methods are not supported yet.
+        . Documents are ingested on the platform, so the application only
+        retrieves from it. The <code>ingest</code> and{" "}
+        <code>deleteByFilter</code> methods are not supported yet. In agentic
+        RAG, retrieval is a tool, so the agent decides whether and what to
+        search, and can search several times.
       </p>
 
       <p>
-        Because it implements <code>ai:KnowledgeBase</code>, retrieval is
-        exposed to an agent as a tool in the same way as any other knowledge
-        base. The agent then decides whether to search, what to search for, and
-        can search several times before answering, which is what distinguishes
-        agentic RAG from a fixed retrieve-then-generate flow.
-      </p>
-
-      <p>
-        The knowledge base accepts a bearer token or OAuth2 client credentials,
-        and can drop weak matches with <code>minSimilarityThreshold</code>. It
-        also supports reranking the retrieved chunks with Cohere through the{" "}
-        <code>cohereRerankerApiKey</code>, <code>cohereRerankerModel</code>, and{" "}
-        <code>rerankerTopN</code> parameters.
+        This example gives an agent a tool that searches the knowledge base and
+        drops weak matches with <code>minSimilarityThreshold</code>.
       </p>
 
       <blockquote>

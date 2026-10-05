@@ -76,25 +76,20 @@ export function McpServiceSecurity({ codeSnippets }) {
       <h1>Model Context Protocol (MCP) service security</h1>
 
       <p>
-        MCP servers that expose tools to AI agents often need to be secured, so
-        that only authenticated and authorized clients can discover and call the
-        tools. Since the MCP Streamable HTTP transport is built on HTTP, an MCP
-        service is secured like an <code>http:Service</code>: TLS on the
-        listener via the <code>secureSocket</code> configuration, and
-        authentication and authorization via the <code>auth</code> field of the{" "}
-        <code>httpConfig</code> configuration in the{" "}
+        An MCP service that uses the Streamable HTTP transport is secured like
+        an <code>http:Service</code>. Configure TLS with{" "}
+        <code>secureSocket</code> on the listener. Configure authentication and
+        authorization with the <code>auth</code> field of{" "}
+        <code>httpConfig</code> in the{" "}
         <code>@mcp:StreamableHttpServiceConfig</code> annotation. JWT, OAuth2
         introspection, and basic authentication with a file or LDAP user store
         are supported.
       </p>
 
       <p>
-        This example demonstrates an MCP server secured with TLS and JWT
-        authentication. The JWT sent in the <code>Authorization</code> header is
-        validated against the configured issuer, audience, and signature, and
-        the scopes in the <code>scp</code> claim are used for authorization.
-        Requests without a valid JWT, or with a JWT that lacks the required
-        scope, are rejected before the tool is invoked.
+        This example secures an MCP service with TLS and JWT authentication, and
+        rejects requests that lack a valid JWT or the required scope in the{" "}
+        <code>scp</code> claim before the tool runs.
       </p>
 
       <Row

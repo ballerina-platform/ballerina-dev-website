@@ -109,34 +109,19 @@ export function RagCustomEmbeddingProvider({ codeSnippets }) {
       <h1>Implement a custom embedding provider</h1>
 
       <p>
-        An embedding provider (<code>ai:EmbeddingProvider</code>) converts
-        chunks into vector embeddings. Modules such as{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.openai/latest">
-          ballerinax/ai.openai
-        </a>{" "}
-        and{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
-          ballerinax/ai.azure
-        </a>{" "}
-        provide implementations for their services. To use an embedding model
-        that has no provider module, such as a self-hosted model or an internal
-        embeddings gateway, implement the <code>ai:EmbeddingProvider</code> type
-        yourself.
+        If you need an embedding provider with your own logic, for example to
+        call a self-hosted model or an internal embeddings service, or to change
+        how the embeddings are created, implement the{" "}
+        <code>ai:EmbeddingProvider</code> type yourself. Implement its two
+        remote methods: <code>embed</code> to create the embedding of one chunk,
+        and <code>batchEmbed</code> to create the embeddings of many chunks in
+        one call. You can then use your provider anywhere an embedding provider
+        is expected, such as in a knowledge base.
       </p>
 
       <p>
-        An <code>ai:EmbeddingProvider</code> is a client object with two remote
-        methods: <code>embed</code>, which converts a single chunk into an{" "}
-        <code>ai:Embedding</code>, and <code>batchEmbed</code>, which converts a
-        batch of chunks in one call. A custom provider can be used anywhere an
-        embedding provider is expected, including in an{" "}
-        <code>ai:VectorKnowledgeBase</code>, which uses it both to embed the
-        chunks when ingesting and to embed the query when retrieving.
-      </p>
-
-      <p>
-        This example demonstrates a custom embedding provider for services that
-        follow the OpenAI embeddings API, used with a local{" "}
+        This example implements a provider for services that follow the OpenAI
+        embeddings API, uses it with a local{" "}
         <a href="https://ollama.com">Ollama</a> server, and plugs it into a
         knowledge base.
       </p>

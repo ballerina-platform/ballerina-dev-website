@@ -102,47 +102,30 @@ export function AiAgentMcpIntegrationAdvanced({ codeSnippets }) {
       <h1>AI agents with advanced MCP integration</h1>
 
       <p>
-        The <code>ai:McpToolKit</code> toolkit gives an agent the tools of an
-        MCP server, or a subset of them, and forwards each call to the server as
-        it is. For more control over how each call is made, such as changing its
-        arguments or adding request metadata, define a custom MCP toolkit
-        instead.
+        The <code>ai:McpToolKit</code> toolkit forwards each tool call to the
+        MCP server unchanged. When you need more control over these calls,
+        define a custom MCP toolkit: a class that includes the{" "}
+        <code>ai:McpBaseToolKit</code> type and uses an{" "}
+        <code>mcp:StreamableHttpClient</code> client. The{" "}
+        <code>ai:getPermittedMcpToolConfigs</code> function maps each MCP tool
+        to a method of the class annotated with <code>@ai:AgentTool</code>. Each
+        method receives the call as an <code>mcp:CallToolParams</code> value, so
+        it can change the call before forwarding it to the server.
       </p>
 
       <p>
-        A custom MCP toolkit is a class that includes the{" "}
-        <code>ai:McpBaseToolKit</code> type and holds an{" "}
-        <code>mcp:StreamableHttpClient</code> client. In its <code>init</code>{" "}
-        method, the <code>ai:getPermittedMcpToolConfigs</code> function
-        initializes the MCP session, lists the tools of the server, and creates
-        the tool configurations with the schemas from the server. The tools are
-        mapped to methods of the class, each annotated with{" "}
-        <code>@ai:AgentTool</code>, that dispatch the calls. Only the mapped
-        tools are given to the agent, and each dispatch method receives the tool
-        name and the arguments chosen by the LLM as an{" "}
-        <code>mcp:CallToolParams</code> value, so it can inspect or change the
-        call before forwarding it to the server. The class also defines its own{" "}
-        <code>init</code> parameters, such as the limits it enforces, and passes
-        the client configuration, such as authentication, on to the MCP client.
-      </p>
-
-      <p>
-        This example demonstrates a custom MCP toolkit for a weather MCP server
-        that limits the number of forecast days that the agent can request.
+        This example limits the number of forecast days that the agent can
+        request from a weather MCP server.
       </p>
 
       <blockquote>
         <p>
-          Note: Start the MCP server from the{" "}
+          Note:
+          <br />• Start the MCP server from the{" "}
           <a href="/learn/by-example/mcp-service/">MCP service</a> example
           before running this example.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add

@@ -105,9 +105,7 @@ export function ChatAgents({ codeSnippets }) {
       </p>
 
       <p>
-        Copy the source to a Ballerina project and use the <code>Try it</code>{" "}
-        CodeLens above the service declaration to use a chat interface within VS
-        Code. To call the service from another Ballerina program, use the{" "}
+        To call the service from another Ballerina program, use the{" "}
         <code>ai:ChatClient</code> client as demonstrated in the{" "}
         <a href="/learn/by-example/ai-chat-client/">Chat client</a> example.
       </p>

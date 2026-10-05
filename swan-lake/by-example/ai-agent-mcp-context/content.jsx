@@ -90,49 +90,35 @@ export function AiAgentMcpContext({ codeSnippets }) {
       <h1>Passing context to MCP tools</h1>
 
       <p>
-        An agent that uses the tools of an MCP server often needs to send the
-        server a value that the application knows and the LLM must not choose,
-        such as the tenant of the signed-in user. The <code>ai:Context</code>{" "}
-        carries that value from the caller of the agent to the tool, and the{" "}
-        <code>_meta</code> field of the MCP request carries it on to the server.
-        Neither appears in the schema sent to the LLM.
-      </p>
-
-      <p>
-        To forward such a value, define a custom MCP toolkit. It is a class that
-        includes the <code>ai:McpBaseToolKit</code> type and holds an{" "}
-        <code>mcp:StreamableHttpClient</code> client. The{" "}
-        <code>ai:getPermittedMcpToolConfigs</code> function initializes the MCP
-        session, lists the tools of the server, and creates the tool
-        configurations of the permitted tools, each mapped to a method of the
-        class that dispatches the call. A dispatch method can declare an{" "}
-        <code>ai:Context</code> parameter as its first parameter, which the
-        agent supplies, followed by the <code>mcp:CallToolParams</code>{" "}
-        parameter that carries the tool name and the arguments chosen by the
-        LLM. This example reads the tenant from the context and sets it on the{" "}
-        <code>_meta</code> field of the request. On the server side, the tool
-        reads it through an <code>mcp:Meta?</code> parameter, as demonstrated in
-        the{" "}
+        Some values, such as the tenant of the user, must come from your
+        application rather than from the LLM. To send such a value to an MCP
+        server, pass it to the agent in an <code>ai:Context</code> and forward
+        it in the <code>_meta</code> field of the request. In a custom MCP
+        toolkit that includes the <code>ai:McpBaseToolKit</code> type, the tool
+        method declares an <code>ai:Context</code> as its first parameter,
+        followed by <code>mcp:CallToolParams</code>. The server reads the value
+        through an <code>mcp:Meta?</code> parameter, as shown in the{" "}
         <a href="/learn/by-example/mcp-service-with-request-metadata/">
           MCP service with request metadata
         </a>{" "}
         example.
       </p>
 
+      <p>
+        This example reads the tenant from the context and sends it as request
+        metadata.
+      </p>
+
       <blockquote>
         <p>
-          Note: Start the MCP server from the{" "}
+          Note:
+          <br />• Start the MCP server from the{" "}
           <a href="/learn/by-example/mcp-service-with-request-metadata/">
             MCP service with request metadata
           </a>{" "}
           example before running this example.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add

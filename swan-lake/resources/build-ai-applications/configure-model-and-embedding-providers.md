@@ -60,6 +60,18 @@ final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, open
 
 The model names are available as enum values (e.g., `openai:GPT_4O`, `openai:GPT_4_1`, `openai:GPT_5`), and the `apiType` parameter selects between the Chat Completions API (the default) and the Responses API.
 
+Reasoning models such as GPT-5 do not support a custom temperature. Set `temperature` to `()` so that it is not sent with the request, and use the `reasoningEffort` parameter to control how much reasoning the model does before it responds.
+
+```ballerina
+import ballerina/ai;
+import ballerinax/ai.openai;
+
+configurable string openAiApiKey = ?;
+
+final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, openai:GPT_5,
+        temperature = (), reasoningEffort = openai:LOW);
+```
+
 ### Use the Azure OpenAI model provider
 
 The Azure OpenAI provider supports two URL styles. With the v1 URL (`https://<resource>.services.ai.azure.com/openai/v1` or `https://<resource>.openai.azure.com/openai/v1`), no `api-version` is required. With the legacy URL (`https://<resource>.openai.azure.com/openai`), the `apiVersion` argument (e.g., `"2024-06-01"`) is required. See the [Azure OpenAI API version lifecycle](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/api-version-lifecycle) for details.

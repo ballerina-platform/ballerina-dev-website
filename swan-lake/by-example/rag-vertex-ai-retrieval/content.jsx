@@ -64,24 +64,30 @@ export function RagVertexAiRetrieval({ codeSnippets }) {
       <h1>Retrieve and generate with Google Vertex AI</h1>
 
       <p>
-        The retrieval side of a retrieval-augmented generation (RAG) workflow
-        embeds the user’s question with the same embedding model that was used
-        for ingestion, retrieves the most similar chunks, and augments the
-        prompt sent to the LLM with them. With{" "}
-        <a href="https://cloud.google.com/vertex-ai">Google Vertex AI</a>, both
-        steps can use Google models: a Vertex AI embedding model for the
-        retrieval and a Gemini model for the answer, via the{" "}
-        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
-          ballerinax/ai.googleapis.vertex
-        </a>{" "}
-        module.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>retrieve</code> method embeds the question with the same embedding
+        provider that was used for ingestion, and returns the most similar
+        chunks from the vector store. You then add the chunks to the prompt, for
+        example with <code>ai:augmentUserQuery</code>, and generate the answer
+        with a model provider.
       </p>
 
       <p>
-        This example demonstrates retrieving chunks embedded with Vertex AI and
-        generating the answer with Gemini. Since it uses the in-memory vector
-        store, the documents are ingested in the same program. The ingestion for
-        this example is explained in the{" "}
+        This example uses a{" "}
+        <a href="https://cloud.google.com/vertex-ai">Google Vertex AI</a>{" "}
+        embedding model and the Gemini model (
+        <code>google/gemini-2.5-flash</code>) through the{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+          ballerinax/ai.googleapis.vertex
+        </a>{" "}
+        module. It ingests documents into the in-memory vector store first, and
+        then retrieves the relevant chunks and generates the answer.
+      </p>
+
+      <p>
+        For the ingestion part, see the{" "}
         <a href="/learn/by-example/rag-vertex-ai-ingestion/">
           Ingest with Google Vertex AI embeddings
         </a>{" "}

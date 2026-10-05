@@ -77,36 +77,24 @@ export function AiAgentExecutionTrace({ codeSnippets }) {
       <h1>Agent execution trace</h1>
 
       <p>
-        Understanding how an agent arrived at an answer is essential for
-        debugging, evaluation, and observability. When <code>ai:Trace</code> is
-        used as the expected type of the <code>run</code> method, the agent
-        returns the full execution trace instead of only the final answer. The
-        trace (<code>ai:Trace</code>) captures the user message, each
-        reasoning-action cycle (<code>ai:Iteration</code>) with the message
-        history and the outputs produced (tool results, assistant messages, or
-        errors), the tool calls requested by the LLM, the final output, the tool
-        schemas, and the start and end times.
-      </p>
-
-      <p>
-        Traces are also the input to agent evaluations (see the{" "}
-        <a href="/learn/by-example/ai-agent-evaluation/">Agent evaluation</a>{" "}
-        example). For production observability, the agent execution is recorded
-        as OpenTelemetry spans and, when tracing is enabled, published to the
-        configured tracing provider, such as Jaeger (see the{" "}
-        <a href="/learn/by-example/ai-agent-tracing-jaeger/">
-          Publish agent traces to Jaeger
-        </a>{" "}
-        example) or the WSO2 AI Agent Management Platform with the{" "}
+        To see how an agent reached its answer, use <code>ai:Trace</code> as the
+        expected type of <code>run</code> to get the full execution trace. The
+        trace holds the user message, each reasoning-action cycle (
+        <code>ai:Iteration</code>), the tool calls, the final output, and the
+        start and end times. Traces are the input to{" "}
+        <a href="/learn/by-example/ai-agent-evaluation/">agent evaluations</a>.
+        With tracing enabled, runs are also published as OpenTelemetry spans to
+        a provider such as{" "}
+        <a href="/learn/by-example/ai-agent-tracing-jaeger/">Jaeger</a> or the
+        WSO2 AI Agent Management Platform (
         <a href="https://central.ballerina.io/ballerinax/amp/latest">
           ballerinax/amp
-        </a>{" "}
-        module.
+        </a>
+        ).
       </p>
 
       <p>
-        This example demonstrates how to obtain and inspect the execution trace
-        of an agent run.
+        This example gets the trace of an agent run and prints its contents.
       </p>
 
       <blockquote>

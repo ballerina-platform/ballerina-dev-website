@@ -89,32 +89,22 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
       <h1>Retrieve from Pinecone</h1>
 
       <p>
-        Retrieval-augmented generation (RAG) is a technique that enhances
-        capabilities of large language models by combining them with external
-        knowledge sources to provide more accurate and contextually-relevant
-        responses.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>retrieve</code> method embeds the question with the same embedding
+        provider that was used for ingestion, and returns the most similar
+        chunks from the vector store. You then add the chunks to the prompt, for
+        example with <code>ai:augmentUserQuery</code>, and generate the answer
+        with a model provider.
       </p>
 
       <p>
-        Ballerina has high-level, provider-agnostic APIs for retrieval-augmented
-        generation (RAG) workflows. These include abstractions such as{" "}
-        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
-        <code>ai:KnowledgeBase</code>.
-      </p>
-
-      <p>
-        These abstractions enable you to query semantically similar content from
-        vector databases (e.g., Pinecone, Weaviate, etc.) and use retrieved
-        context in the request to the LLM to generate more accurate responses.
-      </p>
-
-      <p>
-        This example demonstrates how to retrieve relevant chunks from a
-        knowledge base backed by a{" "}
-        <a href="https://www.pinecone.io/">Pinecone</a> index and use them with
-        a language model to answer questions based on the retrieved context,
-        using both a custom prompt with the <code>generate</code> method and{" "}
-        <code>ai:augmentUserQuery</code> with the <code>chat</code> method.
+        This example retrieves chunks from the{" "}
+        <a href="https://www.pinecone.io/">Pinecone</a> index that the ingestion
+        example populated, and answers questions in two ways: with a custom
+        prompt and the <code>generate</code> method, and with{" "}
+        <code>ai:augmentUserQuery</code> and the <code>chat</code> method.
       </p>
 
       <blockquote>

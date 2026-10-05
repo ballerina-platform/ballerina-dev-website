@@ -148,57 +148,29 @@ export function AiAgentAsTool({ codeSnippets }) {
       <h1>Agent as a tool</h1>
 
       <p>
-        A multi-agent system splits a task across several cooperating agents,
-        each with its own instructions, tools, model, and optionally its own
-        memory. In the orchestrator pattern, one agent owns the request,
-        delegates subtasks to specialist agents, and composes their results into
-        the final answer. A specialist is attached to the orchestrator as a
-        tool: a function annotated with <code>@ai:AgentTool</code> that runs the
-        specialist with the query composed by the orchestrator and returns its
-        response.
+        In the orchestrator pattern, one agent delegates subtasks to specialist
+        agents and combines their results. You attach a specialist as a tool: a
+        function annotated with <code>@ai:AgentTool</code> that runs the
+        specialist and returns its response. A specialist can be an inline{" "}
+        <code>ai:Agent</code> or an agent created from a definition that
+        includes the <code>ai:FixedTypedAgent</code> type.
       </p>
 
       <p>
-        The orchestrator decides when to call the tool from its description, so
-        write the description around the situations that should trigger a
-        hand-off. The specialist does not see the conversation of the
-        orchestrator, so the description also states what the query must
-        include. The return type of the tool binds the response of the
-        specialist, and a structured type gives the orchestrator a result that
-        needs no further interpretation. A specialist configured with{" "}
-        <code>memory: ()</code> is stateless, so it keeps no history between
-        delegations.
-      </p>
-
-      <p>
-        A specialist can be an <code>ai:Agent</code> created inline, or an agent
-        created from an agent definition, a class that includes the{" "}
-        <code>ai:FixedTypedAgent</code> type. A definition can be shared, for
-        example by publishing it in a library package, so a specialist built
-        once can be attached as a tool of agents in other integrations and
-        projects. It is attached in the same way, and the fixed return type of
-        the definition gives the calling agent a structured result.
-      </p>
-
-      <p>
-        This example demonstrates a customer support agent that delegates order
-        lookups to an inline order specialist, and return decisions to a returns
-        policy specialist created from an agent definition.
+        This example runs a support agent that delegates order lookups to an
+        inline specialist and return decisions to a specialist created from an
+        agent definition.
       </p>
 
       <blockquote>
         <p>
-          Note: Each delegation is a full agent run, so it adds latency and
+          Note:
+          <br />• Each delegation is a full agent run, so it adds latency and
           token usage, and each agent enforces its own maximum number of
           iterations. Delegate only the subtasks that need their own reasoning,
           and use a tool for a single action.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add

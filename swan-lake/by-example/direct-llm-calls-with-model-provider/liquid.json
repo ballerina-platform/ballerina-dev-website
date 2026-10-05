@@ -8,7 +8,7 @@
     "ai",
     "llm",
     "model-provider",
-    "azure openai"
+    "openai"
   ],
   "permalink": "/learn/by-example/direct-llm-calls-with-model-provider/",
   "active": "direct-llm-calls-with-model-provider"

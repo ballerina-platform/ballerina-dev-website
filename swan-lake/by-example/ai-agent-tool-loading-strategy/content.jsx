@@ -104,25 +104,17 @@ export function AiAgentToolLoadingStrategy({ codeSnippets }) {
       <h1>Agent tool loading strategy</h1>
 
       <p>
-        An agent sends the definitions of the tools it can use to the LLM so
-        that the LLM can decide which tools to call. By default (
-        <code>ai:NO_FILTER</code>), the full schemas of all tools are included
-        in every request. As the number of tools grows, this increases the
-        prompt size and cost.
-      </p>
-
-      <p>
-        The <code>ai:LLM_FILTER</code> tool loading strategy uses a selective,
-        two-step approach: only the tool names and descriptions are sent first,
-        the LLM selects the tools relevant to the user’s query, and only the
-        full schemas of the selected tools are then loaded to obtain the
-        parameters for execution. The strategy is configured via the{" "}
+        By default (<code>ai:NO_FILTER</code>), an agent gives the LLM the
+        details of all its tools in every request. When an agent has many tools,
+        this uses more tokens and costs more. With the{" "}
+        <code>ai:LLM_FILTER</code> strategy, the agent loads only the tools that
+        are relevant to the request. Set the strategy in the{" "}
         <code>toolLoadingStrategy</code> field of the agent configuration.
       </p>
 
       <p>
-        This example demonstrates an HR assistant agent with several tools that
-        uses the <code>ai:LLM_FILTER</code> strategy.
+        This example uses <code>ai:LLM_FILTER</code> in an HR assistant agent
+        with several tools.
       </p>
 
       <blockquote>

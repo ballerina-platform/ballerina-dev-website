@@ -73,26 +73,19 @@ export function AiAgentId({ codeSnippets }) {
       <h1>Agent ID</h1>
 
       <p>
-        An agent that calls external services on a user’s behalf needs an
-        identity of its own, so that its access can be granted, restricted, and
-        audited separately from the application that hosts it. The{" "}
-        <code>credential</code> field of the agent configuration takes an{" "}
-        <code>ai:Credential</code>, which holds the ID and secret assigned to
-        the agent by the authorization server.
+        An agent that calls external services needs its own identity, so its
+        access can be controlled and audited separately. Set the{" "}
+        <code>credential</code> field of the agent to an{" "}
+        <code>ai:Credential</code> with its ID and secret from the authorization
+        server. A tool declares its required authorization in the{" "}
+        <code>auth</code> field of <code>@ai:AgentTool</code>. Before calling
+        the tool, the agent gets an access token for the required scopes and
+        passes it to the tool.
       </p>
 
       <p>
-        A tool declares the authorization it needs with the <code>auth</code>{" "}
-        field of the <code>@ai:AgentTool</code> annotation. Before invoking such
-        a tool, the agent obtains an access token from the authorization server
-        using its own credentials and the scopes declared for that tool, and
-        places the token in the <code>ai:Context</code> of the run. The tool
-        reads it with <code>getAccessToken</code>, passing its own tool name.
-      </p>
-
-      <p>
-        This example gives a scheduling agent an identity, and a calendar tool
-        that is called with a token obtained for that identity.
+        This example gives a scheduling agent an identity and a calendar tool
+        that uses its token.
       </p>
 
       <blockquote>

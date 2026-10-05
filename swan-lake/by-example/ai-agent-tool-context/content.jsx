@@ -20,8 +20,7 @@ final readonly & Order[] orders = [
     {id: "ORD-1003", customerId: "CUST-7", status: "processing"}
 ];
 
-// A tool that does not accept the context. It only has the parameters the LLM provides,
-// so its whole signature appears in the tool schema sent to the LLM.
+// A tool without the context. The LLM provides all its arguments.
 # Gets the shipping options available for a country.
 # + country - The destination country
 # + return - The available shipping options
@@ -30,23 +29,20 @@ isolated function getShippingOptions(string country) returns string[] {
     return country == "Sri Lanka" ? ["Standard (3-5 days)", "Express (1 day)"] : ["International (7-14 days)"];
 }
 
-// A tool that accepts only the context. The \`ai:Context\` parameter is left out of the tool
-// schema, so the LLM sees a tool with no parameters and cannot choose the customer.
+// A tool with only the context. The LLM sees it as a tool without parameters.
 # Lists the orders of the signed-in customer.
 # + context - The context carrying the ID of the signed-in customer
 # + return - The orders of the customer
 @ai:AgentTool
 isolated function listMyOrders(ai:Context context) returns Order[]|error {
-    // Read the value that the caller placed in the context.
     string customerId = check context.getWithType("customerId");
     return from Order 'order in orders
         where 'order.customerId == customerId
         select 'order;
 }
 
-// A tool that accepts the context along with other parameters. The \`ai:Context\` parameter
-// must be the first parameter and is left out of the tool schema; only \`orderId\` and \`reason\`
-// are sent to the LLM, which supplies their values from the conversation.
+// A tool with the context and other parameters. The context must be the first parameter,
+// and the LLM provides only \`orderId\` and \`reason\`.
 # Cancels an order of the signed-in customer.
 # + context - The context carrying the ID of the signed-in customer
 # + orderId - The ID of the order to cancel
@@ -74,23 +70,20 @@ final ai:Agent supportAgent = check new ({
 });
 
 public function main() returns error? {
-    // The ID of the signed-in customer comes from the application, not from the conversation,
-    // so it is passed through the context rather than the query.
+    // The customer ID comes from the application, so it is passed in the context.
     ai:Context context = new;
     context.set("customerId", "CUST-7");
     string sessionId = "customer-7";
     string response = check supportAgent.run("What is the status of my orders?", sessionId, context);
     io:println(response);
 
-    // The LLM provides the order ID and the reason; the customer ID still comes from the context.
     response = check supportAgent.run("Cancel order ORD-1003, I ordered it by mistake.", sessionId, context);
     io:println("\\n", response);
 
-    // This question is answered with the tool that does not use the context.
     response = check supportAgent.run("Which shipping options do you offer for Sri Lanka?", sessionId, context);
     io:println("\\n", response);
 
-    // The same agent serves another customer by running it with a different context.
+    // Run the same agent for another customer with a different context.
     ai:Context otherContext = new;
     otherContext.set("customerId", "CUST-9");
     response = check supportAgent.run("What is the status of my orders?", "customer-9", otherContext);
@@ -112,28 +105,19 @@ export function AiAgentToolContext({ codeSnippets }) {
       <h1>Passing context to agent tools</h1>
 
       <p>
-        A tool often needs values that the LLM must not choose, such as the
-        identity of the signed-in user or the tenant of the current request.
-        Passing them as tool parameters would put them in the schema sent to the
-        LLM, which would then be free to supply any value for them.
+        Some values a tool needs, such as the ID of the signed-in customer, must
+        come from your application, not from the LLM. Pass them in an{" "}
+        <code>ai:Context</code>: set the values with <code>set</code>, pass the
+        context to <code>run</code>, and read them in the tool with{" "}
+        <code>getWithType</code>. A tool receives the context by declaring an{" "}
+        <code>ai:Context</code> as its first parameter. This parameter is not
+        part of the tool schema, so the LLM can neither see nor change these
+        values.
       </p>
 
       <p>
-        The <code>ai:Context</code> carries such values from the caller to the
-        tools. A tool receives it by declaring an <code>ai:Context</code> as its
-        first parameter, which the compiler leaves out of the generated tool
-        schema, so the LLM neither sees nor supplies it. The caller populates a
-        context with <code>set</code> and passes it to <code>run</code>, and the
-        tool reads the values with <code>getWithType</code> or <code>get</code>.
-      </p>
-
-      <p>
-        This example gives the agent three kinds of tools: a tool without a
-        context parameter, whose whole signature is sent to the LLM; a tool with
-        only a context parameter, which the LLM sees as a tool without
-        parameters; and a tool with a context parameter followed by regular
-        parameters, where only the regular parameters are sent to the LLM. The
-        customer ID is supplied through the context in all cases.
+        This example uses the customer ID from the context in its tools, and
+        runs the same agent for two customers with two different contexts.
       </p>
 
       <blockquote>
@@ -343,7 +327,7 @@ export function AiAgentToolContext({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/ai-agent-human-in-the-loop/">
-              The Agent with human-in-the-loop example
+              The Human-in-the-loop tool approval example
             </a>
           </span>
         </li>

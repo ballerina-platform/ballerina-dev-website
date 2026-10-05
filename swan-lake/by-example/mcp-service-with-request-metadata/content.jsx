@@ -100,35 +100,16 @@ export function McpServiceWithRequestMetadata({ codeSnippets }) {
       <h1>Model Context Protocol (MCP) service with request metadata</h1>
 
       <p>
-        An MCP request can carry a <code>_meta</code> field alongside the tool
-        arguments. Metadata describes the call rather than forming part of the
-        input of the tool, which makes it the place for values that the caller
-        determines and the LLM must not choose, such as the tenant or the
-        correlation ID of the request.
+        An MCP request can carry a <code>_meta</code> field for values that the
+        caller sets and the LLM must not choose, such as the tenant. A tool of
+        an <code>mcp:StreamableHttpService</code> reads it through an{" "}
+        <code>mcp:Meta?</code> parameter, which is not part of the tool input
+        schema.
       </p>
 
       <p>
-        A tool of an <code>mcp:StreamableHttpService</code> reads the metadata
-        by declaring an <code>mcp:Meta?</code> parameter. The runtime injects
-        the <code>_meta</code> field of the request into the parameter and
-        excludes the parameter from the generated tool input schema, so the
-        metadata is never a tool argument and the LLM never sees it. The
-        parameter must be nilable, since it is nil when the request carries no
-        metadata, and a tool can declare at most one such parameter, in any
-        position, alongside its other parameters. The <code>mcp:Meta</code> type
-        is an open record, so the fields the client sent are read through member
-        access. A tool that does not need the metadata simply does not declare
-        the parameter.
-      </p>
-
-      <p>
-        This example exposes three tools of a support service. The{" "}
-        <code>getOpenTickets</code> tool takes no arguments and scopes the
-        result to the tenant sent in the request metadata. The{" "}
-        <code>createTicket</code> tool takes the <code>subject</code> and{" "}
-        <code>priority</code> arguments and reads the tenant from the request
-        metadata. The <code>getSupportHours</code> tool takes the{" "}
-        <code>region</code> argument and does not read the request metadata.
+        This example exposes three support tools: two read the tenant from the
+        metadata, and one does not.
       </p>
 
       <blockquote>

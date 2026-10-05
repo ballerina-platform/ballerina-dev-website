@@ -59,21 +59,25 @@ export function RagAzureAiSearchRetrieval({ codeSnippets }) {
       <h1>Retrieve from Azure AI Search</h1>
 
       <p>
-        Once documents are ingested into an Azure AI Search index, any program
-        can retrieve from it by creating an{" "}
-        <code>azure:AiSearchKnowledgeBase</code> for the existing index. The
-        retrieval side of a retrieval-augmented generation (RAG) workflow embeds
-        the user’s question with the same embedding provider that was used for
-        ingestion, retrieves the most similar chunks with vector search, and
-        augments the prompt sent to the LLM with them.
-      </p>
-
-      <p>
-        This example demonstrates retrieving from an existing index via the{" "}
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG). The{" "}
         <a href="https://central.ballerina.io/ballerinax/ai.azure/latest">
           ballerinax/ai.azure
         </a>{" "}
-        module and generating an answer with Azure OpenAI.
+        module implements it with <code>azure:AiSearchKnowledgeBase</code>,
+        which works with an{" "}
+        <a href="https://azure.microsoft.com/en-us/products/ai-services/ai-search">
+          Azure AI Search
+        </a>{" "}
+        index. Its <code>retrieve</code> method embeds the question with the
+        same embedding provider that was used for ingestion, and finds the most
+        similar chunks in the index with vector search.
+      </p>
+
+      <p>
+        This example retrieves chunks from an existing index, adds them to the
+        prompt with <code>ai:augmentUserQuery</code>, and generates the answer
+        with Azure OpenAI.
       </p>
 
       <blockquote>

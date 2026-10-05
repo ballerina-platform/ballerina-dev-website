@@ -89,28 +89,17 @@ export function AiAgentTypedInputOutput({ codeSnippets }) {
       <h1>Agent with typed input and output</h1>
 
       <p>
-        Agents are not limited to exchanging plain text. The <code>run</code>{" "}
-        method of an <code>ai:Agent</code> accepts any <code>anydata</code>{" "}
-        value (e.g., a record) or a prompt template as the query, so structured
-        input can be passed directly. The method is also dependently typed: the
-        expected type at the call site determines how the agent’s final response
-        is bound. When a structured type such as a record is expected, the JSON
-        schema of the type is sent to the LLM and the response is validated and
-        converted to that type. When <code>string</code> is expected, the raw
-        answer is returned, and when <code>ai:Trace</code> is expected, the full
-        execution trace is returned.
+        The <code>run</code> method of an <code>ai:Agent</code> accepts any{" "}
+        <code>anydata</code> value, such as a record, or a prompt template. Its
+        result type is the expected type at the call site. For a record, the
+        JSON schema of the type is sent to the LLM, and the response is
+        validated and converted to that type. For <code>string</code>, you get
+        the raw answer, and for <code>ai:Trace</code>, the full execution trace.
       </p>
 
       <p>
-        This makes it possible to integrate agents into typed Ballerina code
-        without parsing free-form text, and to get compile-time checked access
-        to the fields of the result.
-      </p>
-
-      <p>
-        This example demonstrates a trip planner agent that accepts a request
-        record and returns a typed itinerary, and also returns a plain string
-        when that is the expected type.
+        This example passes a request record to a trip planner agent and gets a
+        typed itinerary, and then a string summary.
       </p>
 
       <blockquote>

@@ -46,29 +46,22 @@ export function RagInMemoryVectorStoreIngestion({ codeSnippets }) {
       <h1>Ingest into an in-memory vector store</h1>
 
       <p>
-        Ballerina has high-level, provider-agnostic APIs to ingest data for
-        retrieval-augmented generation (RAG) workflows. These include
-        abstractions such as <code>ai:DataLoader</code>,{" "}
-        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
-        <code>ai:KnowledgeBase</code>. The knowledge base (
-        <code>ai:KnowledgeBase</code>) orchestrates the ingestion: it chunks the
-        documents, embeds the chunks, and stores the vectors in the vector
-        store.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        The built-in <code>ai:InMemoryVectorStore</code> keeps the vectors in
-        the memory of the running program. It needs no external service, which
-        makes it the quickest way to try out RAG, but the stored vectors are
-        lost when the program stops, so ingestion and retrieval must happen in
-        the same program. For this reason, the retrieval example ingests the
-        same document again before querying.
+        This example loads a Markdown document and ingests it into the built-in{" "}
+        <code>ai:InMemoryVectorStore</code> with the default embedding provider.
+        The in-memory vector store needs no external service, but it loses the
+        vectors when the program stops.
       </p>
 
       <p>
-        This example demonstrates how to load a Markdown document and ingest it
-        into an in-memory vector store. It covers ingestion only. For the query
-        part, see the{" "}
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}

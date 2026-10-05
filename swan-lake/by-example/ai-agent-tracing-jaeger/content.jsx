@@ -7,8 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/ai;
 import ballerina/http;
-// Include the Jaeger extension, which publishes the traces to Jaeger in the
-// OpenTelemetry format.
+// Import the Jaeger extension to send the traces to Jaeger.
 import ballerinax/jaeger as _;
 
 # Gets the current stock level of a product.
@@ -34,8 +33,7 @@ final ai:Agent inventoryAgent = check new ({
 });
 
 service /inventory on new ai:Listener(8080) {
-    // No tracing code is needed. When tracing is enabled, each request, agent run, LLM call,
-    // and tool call is recorded as a span and published to Jaeger.
+    // No tracing code is needed. With tracing turned on, each agent run is sent to Jaeger.
     resource function post chat(@http:Payload ai:ChatReqMessage request)
             returns ai:ChatRespMessage|error {
         string response = check inventoryAgent.run(request.message, request.sessionId);
@@ -69,57 +67,27 @@ export function AiAgentTracingJaeger({ codeSnippets }) {
       <h1>Publish agent traces to Jaeger</h1>
 
       <p>
-        The <code>ballerina/ai</code> module records the execution of an agent
-        as OpenTelemetry spans that follow the OpenTelemetry semantic
-        conventions for generative AI. The creation of an agent is recorded as a{" "}
-        <code>create_agent</code> span, and each run as an{" "}
-        <code>invoke_agent</code> span with a <code>chat</code> span for each
-        LLM call and an <code>execute_tool</code> span for each tool call as its
-        children. The spans carry <code>gen_ai.*</code> attributes, such as the
-        agent name, the model, the token usage, and the tool arguments and
-        results. When tracing is enabled, the spans are published to the
-        configured trace provider, such as{" "}
-        <a href="https://www.jaegertracing.io/">Jaeger</a>, together with the
-        spans of the HTTP requests that the agent serves and makes.
+        An AI agent records each run as a trace, with a step for the run itself,
+        each LLM call, and each tool call. You can send these traces to a
+        tracing tool such as <a href="https://www.jaegertracing.io/">Jaeger</a>{" "}
+        and see step by step what the agent did. You do not need to write any
+        tracing code. Import <code>ballerinax/jaeger</code> and turn tracing on
+        in the <code>Config.toml</code> file.
       </p>
 
-      <p>
-        To publish the traces to Jaeger, import the{" "}
-        <code>ballerinax/jaeger</code> module, build the program with
-        observability included, and enable tracing with the <code>jaeger</code>{" "}
-        provider in the <code>Config.toml</code> file. No tracing code is needed
-        in the program.
-      </p>
-
-      <p>
-        This example demonstrates how to publish the traces of an agent exposed
-        as a chat service to Jaeger.
-      </p>
+      <p>This example sends the traces of an agent chat service to Jaeger.</p>
 
       <blockquote>
         <p>
-          Note: Start Jaeger before running this example. For example, run it
-          with Docker as follows, which exposes the OpenTelemetry (OTLP) gRPC
-          endpoint on port <code>4317</code> and the Jaeger UI on port{" "}
-          <code>16686</code>.
-        </p>
-      </blockquote>
-
-      <blockquote></blockquote>
-
-      <blockquote>
-        <p>
+          Note:
+          <br />• Start Jaeger before running this example, for example with
+          Docker:{" "}
           <code>
             docker run -d -p 16686:16686 -p 4317:4317
             jaegertracing/jaeger:latest
           </code>
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add
@@ -224,9 +192,8 @@ export function AiAgentTracingJaeger({ codeSnippets }) {
       </Row>
 
       <p>
-        Add the following configuration to the <code>Config.toml</code> file.
-        The <code>[ballerinax.jaeger]</code> section sets the host and the port
-        of the OTLP gRPC endpoint of Jaeger.
+        Add the following configuration to the <code>Config.toml</code> file. It
+        turns tracing on and points it to Jaeger.
       </p>
 
       <Row
@@ -314,11 +281,10 @@ export function AiAgentTracingJaeger({ codeSnippets }) {
       </Row>
 
       <p>
-        Run the service with the <code>--observability-included</code> build
-        option. In a Ballerina package, set{" "}
-        <code>observabilityIncluded = true</code> under{" "}
-        <code>[build-options]</code> in the <code>Ballerina.toml</code> file
-        instead.
+        Run the service with the <code>--observability-included</code> option.
+        In a Ballerina package, set <code>observabilityIncluded = true</code>{" "}
+        under <code>[build-options]</code> in the <code>Ballerina.toml</code>{" "}
+        file instead.
       </p>
 
       <Row
@@ -446,11 +412,9 @@ export function AiAgentTracingJaeger({ codeSnippets }) {
       <p>
         Open the Jaeger UI at{" "}
         <a href="http://localhost:16686">http://localhost:16686</a> and select
-        the <code>/inventory</code> service to view the trace. The{" "}
-        <code>invoke_agent Inventory Assistant</code> span contains a{" "}
-        <code>chat gpt-4o-mini</code> span for each LLM call, and the{" "}
-        <code>execute_tool getStockLevel</code> and{" "}
-        <code>execute_tool getUnitsOnOrder</code> spans for the tool calls.
+        the <code>/inventory</code> service. The trace shows the agent run, each
+        LLM call, and the calls to the <code>getStockLevel</code> and{" "}
+        <code>getUnitsOnOrder</code> tools.
       </p>
 
       <h2>Related links</h2>

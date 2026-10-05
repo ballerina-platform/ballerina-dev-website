@@ -46,19 +46,23 @@ export function RagWithoutChunking({ codeSnippets }) {
       <h1>Ingest without chunking</h1>
 
       <p>
-        Chunking is not always desirable. When the documents to be indexed are
-        already small and self-contained, such as FAQ entries, product
-        descriptions, or support tickets, or when they have been chunked
-        beforehand, splitting them further can break their meaning. Passing{" "}
-        <code>ai:DISABLE</code> as the chunker when creating an{" "}
-        <code>ai:VectorKnowledgeBase</code> stores each ingested document as a
-        single chunk.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
+        When the documents are already small and self-contained, such as FAQ
+        entries, pass <code>ai:DISABLE</code> as the chunker, so that each
+        document is stored as a single chunk.
       </p>
 
       <p>
-        This example demonstrates a knowledge base with chunking disabled, where
-        each FAQ entry is embedded and stored as a whole. It covers ingestion
-        only. To retrieve from a knowledge base, see the{" "}
+        This example ingests FAQ entries into an in-memory vector store with
+        chunking disabled.
+      </p>
+
+      <p>
+        For the query part, see the{" "}
         <a href="/learn/by-example/rag-in-memory-vector-store-retrieval/">
           Retrieve from an in-memory vector store
         </a>{" "}

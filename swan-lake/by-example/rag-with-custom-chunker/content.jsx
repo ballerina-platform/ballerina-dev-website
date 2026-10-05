@@ -76,21 +76,13 @@ export function RagWithCustomChunker({ codeSnippets }) {
       <h1>Implement a custom chunker</h1>
 
       <p>
-        The built-in chunkers (<code>ai:GenericRecursiveChunker</code>,{" "}
-        <code>ai:MarkdownChunker</code>, and <code>ai:HtmlChunker</code>) split
-        documents by structure and size. When your documents have a
-        domain-specific structure, such as FAQ entries, log records, or
-        transcripts, a chunker that understands that structure produces better
-        chunks for retrieval. Implement the <code>ai:Chunker</code> type, whose
-        single <code>chunk</code> method takes an <code>ai:Document</code> and
-        returns the <code>ai:Chunk</code> values, to create such a chunker.
-      </p>
-
-      <p>
-        A custom chunker is used exactly like a built-in one: call its{" "}
-        <code>chunk</code> method directly, or pass it to an{" "}
-        <code>ai:VectorKnowledgeBase</code> so that documents are chunked with
-        it during ingestion, as shown in the{" "}
+        The built-in chunkers split documents by structure and size. When your
+        documents have a domain-specific structure, such as FAQ entries or log
+        records, implement the <code>ai:Chunker</code> type. Its single{" "}
+        <code>chunk</code> method takes an <code>ai:Document</code> and returns{" "}
+        <code>ai:Chunk</code> values. You can call <code>chunk</code> directly,
+        or pass the chunker to an <code>ai:VectorKnowledgeBase</code>, as shown
+        in the{" "}
         <a href="/learn/by-example/rag-with-configured-chunker/">
           Ingest with a configured chunker
         </a>{" "}
@@ -98,9 +90,8 @@ export function RagWithCustomChunker({ codeSnippets }) {
       </p>
 
       <p>
-        This example demonstrates a chunker that splits an FAQ document into one
-        chunk per question-and-answer pair and records the question as chunk
-        metadata.
+        This example implements a chunker that splits an FAQ document into one
+        chunk per question-and-answer pair and stores the question as metadata.
       </p>
 
       <p>

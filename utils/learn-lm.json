@@ -1205,14 +1205,6 @@
                             "isDir": false,
                             "url": "/learn/natural-programming",
                             "id": "natural-programming"
-                        },
-                        {
-                            "dirName": "Agent-Flavored Markdown (AFM)",
-                            "level": 3,
-                            "position": 10,
-                            "isDir": false,
-                            "url": "/learn/agent-flavored-markdown",
-                            "id": "agent-flavored-markdown"
                         }
                     ]
                 }

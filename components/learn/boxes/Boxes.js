@@ -1227,14 +1227,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Describe logic in natural language with natural expressions and natural functions.</p>
                       </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/agent-flavored-markdown/`} className={styles.titleLink}>
-                            Agent-Flavored Markdown (AFM)
-                          </a>
-                        </p>
-                        <p className={styles.description}>Define agents in a portable Markdown format and run them with Ballerina.</p>
-                      </div>
                     </div>
                   </div>
                 </div>

@@ -97,10 +97,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/resources/build-ai-applications/natural-programming`,
       },
       {
-        source: `/${redirectBase}learn/agent-flavored-markdown`,
-        destination: `/${redirectBase}learn/resources/build-ai-applications/agent-flavored-markdown`,
-      },
-      {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },

@@ -3,7 +3,7 @@
 _Owners_: @Nuvindu @niveathika \
 _Reviewers_: @Nuvindu \
 _Created_: 2026/08/10 \
-_Updated_: 2026/08/19 \
+_Updated_: 2026/09/07 \
 _Edition_: Swan Lake
 
 ## Introduction
@@ -42,6 +42,22 @@ The implementation that matches this specification is released with the distribu
    * 4.7 [Error Handling](#47-error-handling)
 5. [Caller](#5-caller)
 6. [Errors](#6-errors)
+7. [Observability](#7-observability)
+   * 7.1 [Metrics](#71-metrics)
+     * 7.1.1 [Gauges](#711-gauges)
+     * 7.1.2 [Counters](#712-counters)
+     * 7.1.3 [Querying Metrics](#713-querying-metrics)
+   * 7.2 [Tags](#72-tags)
+     * 7.2.1 [Identity Tags](#721-identity-tags)
+     * 7.2.2 [Action Tags](#722-action-tags)
+     * 7.2.3 [Outcome Tags](#723-outcome-tags)
+     * 7.2.4 [File-Scoped Tags](#724-file-scoped-tags)
+   * 7.3 [File Lifecycle](#73-file-lifecycle)
+     * 7.3.1 [Stage 1: Found](#731-stage-1-found)
+     * 7.3.2 [Stage 2: Dispatched](#732-stage-2-dispatched)
+     * 7.3.3 [Stage 3: Handled](#733-stage-3-handled)
+     * 7.3.4 [Stage 4: Cleaned Up](#734-stage-4-cleaned-up)
+   * 7.4 [Tracing](#74-tracing)
 
 ## 1. Overview
 
@@ -455,3 +471,128 @@ if content is smb:Error {
     log:printError("Read failed", content);
 }
 ```
+
+## 7. Observability
+
+The SMB module publishes metrics and traces following the unified observability specification for Ballerina file integration libraries. All metric names and tags are module-agnostic; the `module` tag value `smb` distinguishes this module from FTP, S3, and future file integrations. This enables a single dashboard to monitor every file integration through shared panels filtered by `module`.
+
+Observability is opt-in. When the Ballerina runtime's observability subsystem is disabled, no metrics are recorded and no spans are created. Observability failures never break file operations; every recording method swallows exceptions internally.
+
+### 7.1 Metrics
+
+#### 7.1.1 Gauges
+
+| Metric | Description |
+| --- | --- |
+| `file_databinding_duration_seconds` | Time in seconds to fetch and convert file content into the target type. Configured with p50, p75, p90, p95, p99 over a 5-minute sliding window. |
+
+`file_databinding_duration_seconds` covers the full data binding pipeline: reading bytes from the share and converting to the handler's parameter type (e.g. `json`, `xml`, `record {}`). For streaming handlers, this measures stream creation time only; actual data transfer is lazy.
+
+#### 7.1.2 Counters
+
+| Metric | Type | Description |
+| --- | --- | --- |
+| `file_bytes_transferred_total` | Counter | Bytes read or written across operations. A sum of bytes, not a count of spans. |
+| `file_events_total` | Counter | Total file lifecycle stage events. Tags: `file.stage`, `outcome`, `error.type`, `handler.name`. |
+
+#### 7.1.3 Querying Metrics
+
+These logical metrics are derived from `file_events_total` by filtering on tags.
+
+| Logical metric | PromQL derivation |
+| --- | --- |
+| Poll cycles | `file_events_total{action_type="poll_cycle"}` |
+| Files found | `file_events_total{file_stage="found"}` |
+| Files dispatched | `file_events_total{file_stage="dispatched"}` |
+| Files skipped | `file_events_total{file_stage="found", outcome="skipped"}` |
+| Files handled | `file_events_total{file_stage="handled"}` |
+| Files cleaned up | `file_events_total{file_stage="cleaned_up"}` |
+| Client operations | `requests_total_value{action_type="client_operation"}` |
+
+### 7.2 Tags
+
+These tags appear on metrics and/or trace spans as indicated. When a tag is not applicable for a given stage, the sentinel value `none` is used rather than omitting the tag, so that every increment of a given metric carries the same set of label keys.
+
+#### 7.2.1 Identity Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+| --- | --- | --- | --- | --- |
+| `module` | `smb` | Yes | Yes | Identifies the Ballerina module. Added on every observer context at construction time. |
+| `protocol` | `smb` | Yes | Yes | The wire protocol. Added on every observer context at construction time. |
+| `type` | `client`, `listener` | Yes | Yes | Whether this is a client or listener operation. |
+| `remote.url` | `host:port` | Yes | Yes | The server endpoint. |
+| `watched.path` | Monitored directory path | Yes | Yes | Present on listener file events. Set to `none` on poll cycles since a single cycle covers all registered paths. Distinguishes services monitoring different paths on the same server. |
+| `host` | Local hostname | Yes | Yes | Hostname of the current instance. Set to `none` on metrics if hostname resolution fails; omitted from traces. |
+
+#### 7.2.2 Action Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+| --- | --- | --- | --- | --- |
+| `action.type` | `poll_cycle`, `file_event`, `client_operation` | Yes | Yes | `poll_cycle` covers poll cycles, `file_event` covers listener file events, `client_operation` covers client operations. |
+| `file.stage` | `found`, `dispatched`, `handled`, `cleaned_up` | Yes | Yes | Maps to the four-stage file lifecycle. Present on listener event spans and metrics. |
+| `event.type` | `create`, `delete`, `error` | Yes | Yes | Type of listener event. `create` for content-based callbacks, `delete` for `onFileDelete`, `error` for content-binding failures routed to `onError`. |
+| `operation.type` | `get`, `put`, `manage` | Yes | Yes | `get` for `getBytes`, `getText`, `getJson`, `getXml`, `getCsv`, `getBytesAsStream`, `getCsvAsStream`, and listener content reads. `put` for all `put*` methods. `manage` for `delete`, `rename`, `move`, `copy`, `mkdir`, `rmdir`, `isDirectory`, `list`, `exists`, `size`. |
+| `handler.name` | Handler method name (e.g. `onFileJson`) | Yes | Yes | Identifies which handler processed the file. Present on `dispatched`, `handled`, and `cleaned_up` stages. Not present on `found` (handler not yet determined) or skipped files. |
+| `cleanup.action` | `move`, `delete` | Yes | Yes | Present on `cleaned_up` events only. |
+
+#### 7.2.3 Outcome Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+| --- | --- | --- | --- | --- |
+| `outcome` | `success`, `failure`, `skipped` | Yes | Yes | Result of an operation. `skipped` indicates a file found but not matched to any handler. |
+| `error.type` | Error type name or predefined reason | Yes | Yes | Present when `outcome=failure` or `outcome=skipped`. Predefined reasons: `no_handler_matched` (with `outcome=skipped`), `binding_failed`, `move_failed`, `delete_failed`. For client and handler errors, set to the Ballerina error type name. |
+
+#### 7.2.4 File-Scoped Tags
+
+| Tag | Values | Metrics | Traces | Notes |
+| --- | --- | --- | --- | --- |
+| `file.path` | Full path of the file | No | Yes | Excluded from metrics to avoid cardinality explosion. Added as a span-only tag. |
+| `destination.path` | Target path for move/rename/copy | No | Yes | Present on two-path client operations only. |
+| `file.size` | Size in bytes | No | Yes | Added as a property on listener handler strand contexts. |
+| `file.modified_time` | Last-modified timestamp | No | Yes | Added as a property on listener handler strand contexts. |
+
+### 7.3 File Lifecycle
+
+Every file processed by a listener passes through up to four stages. A parent span covers the entire lifecycle of a single file, and each stage that invokes a Ballerina method produces a child span parented to it. Each stage also publishes an independent `file_events_total` counter increment.
+
+#### 7.3.1 Stage 1: Found
+
+The listener's poll cycle discovers files in the monitored directory. It is published as an explicit counter increment. No framework span exists at this point; the file has been discovered but no Ballerina method has been invoked yet.
+
+The counter entry carries `action.type=file_event`, `file.stage=found`, along with the standard identity tags (`module`, `type=listener`, `remote.url`, `watched.path`, `protocol`, `host`).
+
+The routing logic then attempts to match the file to a content handler based on its extension. If no handler matches, the counter entry carries `outcome=skipped` and `error.type=no_handler_matched`. The file goes no further in the lifecycle and no parent span is created.
+
+#### 7.3.2 Stage 2: Dispatched
+
+The routing logic matches the file to a specific content handler method based on file extension or fallback to `onFile`. At this point the file is "handed over" to the handler but the handler has not yet been invoked.
+
+The counter entry carries `action.type=file_event`, `file.stage=dispatched`, and `handler.name` set to the matched handler method name (e.g. `onFileText`), along with the standard identity tags.
+
+#### 7.3.3 Stage 3: Handled
+
+The file content is read from the server, converted to the expected Ballerina type, and the matched handler method is invoked. When the handler returns, the `handled` stage is recorded.
+
+If the handler returns nil, the outcome is `success`. If it returns an error, the outcome is `failure`.
+
+The handler invocation creates an auto-instrumented child span parented to the per-file lifecycle span. The child span carries `event.type=create`, along with trace-only tags: `file.path`, `file.size`, and `file.modified_time` (excluded from metrics to avoid cardinality explosion).
+
+A duration metric is recorded at this stage:
+
+* `file_databinding_duration_seconds` — time to fetch and convert the file content before handler invocation
+
+#### 7.3.4 Stage 4: Cleaned Up
+
+After the handler completes, a post-processing action is executed if configured via `@smb:FunctionConfig`. The action is either `delete` (remove the file from the server) or `move` (move the file to a destination directory). Which action runs depends on the handler outcome: `afterProcess` runs on success, `afterError` runs on failure. This stage only fires if post-processing is configured.
+
+The counter entry carries `action.type=file_event`, `file.stage=cleaned_up`, `cleanup.action` (`delete` or `move`), `handler.name`, and `outcome`, along with the standard identity tags. On failure, `error.type` is set to `delete_failed` or `move_failed`.
+
+### 7.4 Tracing
+
+A per-file parent span covers the entire file lifecycle from discovery through cleanup. The span is named `smb/file-lifecycle` and carries the `file.path` as a span-only tag.
+
+A child span is created automatically by the Ballerina runtime for the handler `callMethod` invocation. This child span is parented to the lifecycle span through strand properties. Cleanup operations (move/delete) are executed directly on the disk share and do not create child spans.
+
+For client operations, the Ballerina runtime creates auto-instrumented spans for each native external method call. The SMB module enriches these spans with the standard tags (`module`, `action.type`, `type`, `remote.url`, `protocol`, `operation.type`, `host`) on the metric context, and adds `file.path` and `destination.path` as span-only tags on the span itself.
+
+Poll cycle spans are tagged with `action.type=poll_cycle` and `outcome` (success or failure).

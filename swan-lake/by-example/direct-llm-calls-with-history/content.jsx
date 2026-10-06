@@ -117,7 +117,7 @@ export function DirectLlmCallsWithHistory({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/direct-llm-calls-with-history",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/direct-llm-calls-with-history",
                 "_blank",
               );
             }}
@@ -322,6 +322,26 @@ export function DirectLlmCallsWithHistory({ codeSnippets }) {
           <span>
             <a href="https://central.ballerina.io/ballerinax/ai.mistral/latest">
               The <code>ballerinax/ai.mistral</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
+              The <code>ballerinax/ai.openrouter</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+              The <code>ballerinax/ai.googleapis.vertex</code> module
             </a>
           </span>
         </li>

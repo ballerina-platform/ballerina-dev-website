@@ -1,0 +1,17 @@
+{
+  "title": "Agent ID",
+  "description": "This BBE demonstrates giving an agent its own identity with ai:Credential, so that tool calls are authorized as the agent.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "agent",
+    "agent id",
+    "identity",
+    "oauth2",
+    "authorization"
+  ],
+  "permalink": "/learn/by-example/ai-agent-id/",
+  "active": "ai-agent-id"
+}

@@ -53,30 +53,28 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <h1>AI agents with MCP tools</h1>
 
       <p>
-        Ballerina enables developers to easily create intelligent AI agents
-        powered by large language models (LLMs) and integrated with tools,
-        including local tools, MCP tools, and external APIs. These AI agents can
-        automate complex workflows, interact with users through natural
-        language, and seamlessly connect with internal and external systems.
+        An AI agent can use the tools of a Model Context Protocol (MCP) server
+        through the <code>ai:McpToolKit</code> toolkit, which forwards each call
+        to the server as it is. For more control, such as changing the arguments
+        of a call, define a custom MCP toolkit, as shown in the{" "}
+        <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
+          Agent with advanced MCP integration
+        </a>{" "}
+        example.
       </p>
 
       <p>
-        This example demonstrates how to create an AI agent that can access
-        weather information by integrating with a Model Context Protocol (MCP)
-        service, by simply defining an MCP toolkit.
+        This example creates an agent that answers questions with the tools of a
+        weather MCP service.
       </p>
 
       <blockquote>
         <p>
-          Note: You can use this agent with the{" "}
+          Note:
+          <br />• You can use this agent with the{" "}
           <a href="/learn/by-example/mcp-service/">MCP service example</a>.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          Note: This example uses the default model provider implementation. To
-          generate the necessary configuration, open up the VS Code command
+          <br />• This example uses the default model provider implementation.
+          To generate the necessary configuration, open up the VS Code command
           palette (<code>Ctrl</code> + <code>Shift</code> + <code>P</code> or{" "}
           <code>command</code> + <code>shift</code> + <code>P</code>), and run
           the <code>Configure default WSO2 Model Provider</code> command to add
@@ -106,7 +104,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/ai-agent-mcp-integration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/ai-agent-mcp-integration",
                 "_blank",
               );
             }}
@@ -253,6 +251,16 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="/learn/by-example/ai-agent-mcp-integration-advanced/">
+              The Agent with advanced MCP integration example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="/learn/by-example/ai-agent-local-tools">
               The Agent with local tools example
             </a>
@@ -344,8 +352,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with local tools"
-            href="/learn/by-example/ai-agent-local-tools/"
+            title="MCP client with request metadata"
+            href="/learn/by-example/mcp-client-with-request-metadata/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -372,7 +380,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with local tools
+                  MCP client with request metadata
                 </span>
               </div>
             </div>
@@ -380,8 +388,8 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with external endpoint integration"
-            href="/learn/by-example/ai-agent-external-endpoint-integration/"
+            title="Agent with advanced MCP integration"
+            href="/learn/by-example/ai-agent-mcp-integration-advanced/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -391,7 +399,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with external endpoint integration
+                  Agent with advanced MCP integration
                 </span>
               </div>
               <svg

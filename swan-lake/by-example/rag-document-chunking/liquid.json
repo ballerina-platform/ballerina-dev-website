@@ -1,0 +1,16 @@
+{
+  "title": "Chunk documents",
+  "description": "This BBE demonstrates how to chunk documents for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "chunker",
+    "chunking"
+  ],
+  "permalink": "/learn/by-example/rag-document-chunking/",
+  "active": "rag-document-chunking"
+}

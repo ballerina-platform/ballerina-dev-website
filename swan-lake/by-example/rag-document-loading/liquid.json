@@ -1,0 +1,15 @@
+{
+  "title": "Load documents",
+  "description": "This BBE demonstrates how to load documents for retrieval-augmented generation (RAG) using data loaders.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "data loader"
+  ],
+  "permalink": "/learn/by-example/rag-document-loading/",
+  "active": "rag-document-loading"
+}

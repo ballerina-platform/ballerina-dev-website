@@ -230,4 +230,8 @@ $ curl "http://localhost:8080/attractions?country=Sri%20Lanka&interest=Surfing&c
 
 ## Learn more
 
-See [Introducing natural programming](https://blog.ballerina.io/posts/2025-04-26-introducing-natural-programming).
+- [Introducing natural programming](https://blog.ballerina.io/posts/2025-04-26-introducing-natural-programming)
+- [Natural programming](/learn/natural-programming/) for natural expressions and natural functions in depth
+- [Configure model and embedding providers](/learn/configure-model-and-embedding-providers/) to use your own keys with OpenAI, Azure OpenAI, Anthropic, Ollama, and other providers
+- [AI in Ballerina overview](/learn/ai-in-ballerina-overview/) for the other AI building blocks: agents, RAG, and MCP
+- [Natural expressions](/learn/by-example/natural-expressions/), [Natural expressions with a specific model provider](/learn/by-example/natural-expressions-with-model-provider/), and [Natural functions](/learn/by-example/natural-functions/) examples

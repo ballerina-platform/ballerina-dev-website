@@ -2041,20 +2041,86 @@ sublinks:
           - title: Direct LLM calls with multimodal input
             id: 3
             url: direct-llm-calls-with-multimodal-input
-      - title: Retrieval-augmented generation (RAG)
+          - title: Direct LLM calls with a specific model provider
+            id: 4
+            url: direct-llm-calls-with-model-provider
+          - title: Direct LLM calls with a local model using Ollama
+            id: 5
+            url: direct-llm-calls-with-ollama
+      - title: AI agents
         id: 2
         sublinks:
-          - title: RAG with in-memory vector store
+          - title: Agent with local tools
             id: 1
-            url: rag-with-in-memory-vector-store
-          - title: RAG ingestion with external vector store
+            url: ai-agent-local-tools
+          - title: Passing context to agent tools
             id: 2
-            url: rag-ingestion-with-external-vector-store
-          - title: RAG query with external vector store
+            url: ai-agent-tool-context
+          - title: Agent with external endpoint integration
             id: 3
-            url: rag-query-with-external-vector-store
-      - title: Model context protocol (MCP)
+            url: ai-agent-external-endpoint-integration
+          - title: Human-in-the-loop tool approval
+            id: 4
+            url: ai-agent-human-in-the-loop
+          - title: Chat agents
+            id: 5
+            url: chat-agents
+          - title: Chat client
+            id: 6
+            url: ai-chat-client
+          - title: Agent definitions
+            id: 7
+            url: ai-agent-definitions
+      - title: Agent memory
         id: 3
+        sublinks:
+          - title: Agent with in-memory short-term memory
+            id: 1
+            url: ai-agent-memory
+          - title: Agent with persistent memory
+            id: 2
+            url: ai-agent-persistent-memory
+          - title: Memory overflow handling
+            id: 3
+            url: ai-agent-memory-overflow-handling
+      - title: Agent ID
+        id: 4
+        sublinks:
+          - title: Agent ID
+            id: 1
+            url: ai-agent-id
+      - title: Agent tracing and evaluation
+        id: 5
+        sublinks:
+          - title: Agent execution trace
+            id: 1
+            url: ai-agent-execution-trace
+          - title: Publish agent traces to Jaeger
+            id: 2
+            url: ai-agent-tracing-jaeger
+          - title: Agent evaluation
+            id: 3
+            url: ai-agent-evaluation
+      - title: Advanced agent features
+        id: 6
+        sublinks:
+          - title: Agent with tool kits
+            id: 1
+            url: ai-agent-tool-kit
+          - title: Agent with typed input and output
+            id: 2
+            url: ai-agent-typed-input-output
+          - title: Agent tool loading strategy
+            id: 3
+            url: ai-agent-tool-loading-strategy
+      - title: Multi-agent systems
+        id: 7
+        sublinks:
+          - title: Agent as a tool
+            id: 1
+            url: ai-agent-as-tool
+      - title: MCP service
+        id: 8
         sublinks:
           - title: MCP service
             id: 1
@@ -2062,30 +2128,147 @@ sublinks:
           - title: MCP advanced service
             id: 2
             url: mcp-service-advanced
-      - title: AI agents
-        id: 4
-        sublinks:
-          - title: Agent with local tools
-            id: 1
-            url: ai-agent-local-tools
-          - title: Agent with MCP integration
-            id: 2
-            url: ai-agent-mcp-integration
-          - title: Agent with external endpoint integration
+          - title: MCP service with request metadata
             id: 3
-            url: ai-agent-external-endpoint-integration
-          - title: Chat agents
+            url: mcp-service-with-request-metadata
+          - title: MCP tools with HTTP request binding
             id: 4
-            url: chat-agents
-          - title: Agent with tool kits
+            url: mcp-service-http-request-binding
+          - title: MCP service security
             id: 5
-            url: ai-agent-tool-kit
+            url: mcp-service-security
+      - title: MCP client
+        id: 9
+        sublinks:
+          - title: MCP client
+            id: 1
+            url: mcp-client
+          - title: MCP client with request metadata
+            id: 2
+            url: mcp-client-with-request-metadata
+      - title: Agents with MCP tools
+        id: 10
+        sublinks:
+          - title: Agent with MCP integration
+            id: 1
+            url: ai-agent-mcp-integration
+          - title: Agent with advanced MCP integration
+            id: 2
+            url: ai-agent-mcp-integration-advanced
+          - title: Passing context to MCP tools
+            id: 3
+            url: ai-agent-mcp-context
+      - title: RAG fundamentals
+        id: 11
+        sublinks:
+          - title: Load documents
+            id: 1
+            url: rag-document-loading
+          - title: Load documents from multiple sources
+            id: 2
+            url: rag-document-sources
+          - title: Load using a custom data loader
+            id: 3
+            url: rag-custom-data-loader
+          - title: Chunk documents
+            id: 4
+            url: rag-document-chunking
+          - title: Implement a custom chunker
+            id: 5
+            url: rag-with-custom-chunker
+          - title: Generate embeddings with the default WSO2 embedding provider
+            id: 6
+            url: rag-embeddings
+          - title: Generate embeddings with a specific provider
+            id: 7
+            url: rag-embedding-provider
+          - title: Implement a custom embedding provider
+            id: 8
+            url: rag-custom-embedding-provider
+          - title: Vector store operations
+            id: 9
+            url: rag-vector-store-operations
+          - title: Implement a custom vector store
+            id: 10
+            url: rag-custom-vector-store
+          - title: Augment the prompt with retrieved context
+            id: 11
+            url: rag-augment-prompt
+      - title: RAG ingestion
+        id: 12
+        sublinks:
+          - title: Ingest into an in-memory vector store
+            id: 1
+            url: rag-in-memory-vector-store-ingestion
+          - title: Ingest without chunking
+            id: 2
+            url: rag-without-chunking
+          - title: Ingest with a configured chunker
+            id: 3
+            url: rag-with-configured-chunker
+          - title: Ingest into Pinecone
+            id: 4
+            url: rag-ingestion-with-external-vector-store
+          - title: Ingest into pgvector
+            id: 5
+            url: rag-pgvector-ingestion
+          - title: Ingest into Azure AI Search
+            id: 6
+            url: rag-azure-ai-search-ingestion
+          - title: Ingest with Google Vertex AI embeddings
+            id: 7
+            url: rag-vertex-ai-ingestion
+          - title: Ingest with OpenRouter embeddings
+            id: 8
+            url: rag-openrouter-ingestion
+      - title: RAG query
+        id: 13
+        sublinks:
+          - title: Retrieve from an in-memory vector store
+            id: 1
+            url: rag-in-memory-vector-store-retrieval
+          - title: Retrieve from Pinecone
+            id: 2
+            url: rag-query-with-external-vector-store
+          - title: Retrieve from pgvector
+            id: 3
+            url: rag-pgvector-retrieval
+          - title: Retrieve from Azure AI Search
+            id: 4
+            url: rag-azure-ai-search-retrieval
+          - title: Retrieve from a WSO2 Cloud knowledge base
+            id: 5
+            url: rag-wso2-cloud-knowledge-base-retrieval
+          - title: Retrieve and generate with Google Vertex AI
+            id: 6
+            url: rag-vertex-ai-retrieval
+          - title: Retrieve and generate with OpenRouter
+            id: 7
+            url: rag-openrouter-retrieval
+          - title: Filter results by metadata
+            id: 8
+            url: rag-query-with-metadata-filters
+      - title: Agentic RAG
+        id: 14
+        sublinks:
+          - title: Agentic RAG with WSO2 Cloud
+            id: 1
+            url: agentic-rag-with-wso2-integration-knowledge-base
+          - title: Agentic RAG with Pinecone
+            id: 2
+            url: agentic-rag-with-pinecone-vector-store
       - title: Natural expressions
-        id: 5
+        id: 15
         sublinks:
           - title: Natural expressions
             id: 1
             url: natural-expressions
+          - title: Natural expressions with a specific model provider
+            id: 2
+            url: natural-expressions-with-model-provider
+          - title: Natural functions
+            id: 3
+            url: natural-functions
   - title: Deployment
     id: 5
     sublinks:

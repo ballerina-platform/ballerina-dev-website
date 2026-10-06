@@ -1,0 +1,15 @@
+{
+  "title": "Agent with in-memory short-term memory",
+  "description": "This BBE demonstrates how AI agents use in-memory short-term memory to keep conversation history per session.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "memory"
+  ],
+  "permalink": "/learn/by-example/ai-agent-memory/",
+  "active": "ai-agent-memory"
+}

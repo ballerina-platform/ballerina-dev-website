@@ -20,6 +20,23 @@ service /tasks on new ai:Listener(8080) {
     }
 }
 
+// Define an AI agent with a system prompt and a set of tools.
+// The agent will use these tools to help manage a task list,
+// following the system prompt instructions.
+final ai:Agent taskAssistantAgent = check new ({
+    systemPrompt: {
+        role: "Task Assistant",
+        instructions: string \`You are a helpful assistant for 
+            managing a to-do list. You can manage tasks and
+            help a user plan their schedule.\`
+    },
+    // Specify the functions the agent can use as tools.
+    tools: [addTask, listTasks, getCurrentDate],
+    // Use the default model provider (with configuration added
+    // via a Ballerina VS Code command).
+    model: check ai:getDefaultModelProvider()
+});
+
 type Task record {|
     string description;
     time:Date dueBy?;
@@ -58,23 +75,6 @@ isolated function getCurrentDate() returns time:Date {
     time:Civil {year, month, day} = time:utcToCivil(time:utcNow());
     return {year, month, day};
 }
-
-// Define an AI agent with a system prompt and a set of tools.
-// The agent will use these tools to help manage a task list,
-// following the system prompt instructions.
-final ai:Agent taskAssistantAgent = check new ({
-    systemPrompt: {
-        role: "Task Assistant",
-        instructions: string \`You are a helpful assistant for 
-            managing a to-do list. You can manage tasks and
-            help a user plan their schedule.\`
-    },
-    // Specify the functions the agent can use as tools.
-    tools: [addTask, listTasks, getCurrentDate],
-    // Use the default model provider (with configuration added
-    // via a Ballerina VS Code command).
-    model: check ai:getDefaultModelProvider()
-});
 `,
 ];
 
@@ -105,9 +105,9 @@ export function ChatAgents({ codeSnippets }) {
       </p>
 
       <p>
-        Copy the source to a Ballerina project and use the <code>Try it</code>{" "}
-        CodeLens above the service declaration to use a chat interface within VS
-        Code.
+        To call the service from another Ballerina program, use the{" "}
+        <code>ai:ChatClient</code> client as demonstrated in the{" "}
+        <a href="/learn/by-example/ai-chat-client/">Chat client</a> example.
       </p>
 
       <blockquote>
@@ -143,7 +143,7 @@ export function ChatAgents({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/chat-agents",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/chat-agents",
                 "_blank",
               );
             }}
@@ -373,8 +373,8 @@ export function ChatAgents({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with external endpoint integration"
-            href="/learn/by-example/ai-agent-external-endpoint-integration/"
+            title="Human-in-the-loop tool approval"
+            href="/learn/by-example/ai-agent-human-in-the-loop/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -401,17 +401,14 @@ export function ChatAgents({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with external endpoint integration
+                  Human-in-the-loop tool approval
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Agent with tool kits"
-            href="/learn/by-example/ai-agent-tool-kit/"
-          >
+          <Link title="Chat client" href="/learn/by-example/ai-chat-client/">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -420,7 +417,7 @@ export function ChatAgents({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with tool kits
+                  Chat client
                 </span>
               </div>
               <svg

@@ -5,7 +5,7 @@ url: 'https://github.com/ballerina-guides/ai-samples/blob/main/hr_agent_rag_app/
 ---
 ```
 service /agent on hrAgent {
-    resource function post chat(@http:Payload agent:ChatReqMessage request) returns agent:ChatRespMessage|error {
+    resource function post chat(@http:Payload ai:ChatReqMessage request) returns ai:ChatRespMessage|error {
         string query = request.message;
         float[] embeddings = check getEmbeddings(query);
         string retrievedChunks = check retrieveChunksFromPinecone(embeddings);

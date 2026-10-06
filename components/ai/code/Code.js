@@ -221,7 +221,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{agent.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Personal Assistant with Calendar and Email Management</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/personal_ai_assistant_agent' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/chat-agents' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>

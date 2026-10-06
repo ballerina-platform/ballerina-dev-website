@@ -1,0 +1,17 @@
+{
+  "title": "Agent with persistent memory",
+  "description": "This BBE demonstrates how to persist the conversation history of an AI agent in a database.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "memory",
+    "sqlite",
+    "persistence"
+  ],
+  "permalink": "/learn/by-example/ai-agent-persistent-memory/",
+  "active": "ai-agent-persistent-memory"
+}

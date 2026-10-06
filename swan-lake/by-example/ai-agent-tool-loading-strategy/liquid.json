@@ -1,0 +1,16 @@
+{
+  "title": "Agent tool loading strategy",
+  "description": "This BBE demonstrates how to control the way tool schemas are loaded into an AI agent.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "tools",
+    "tool loading strategy"
+  ],
+  "permalink": "/learn/by-example/ai-agent-tool-loading-strategy/",
+  "active": "ai-agent-tool-loading-strategy"
+}

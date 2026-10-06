@@ -1,0 +1,17 @@
+{
+  "title": "Ingest with OpenRouter embeddings",
+  "description": "This BBE demonstrates how to embed and ingest documents through OpenRouter for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "ingestion",
+    "embeddings",
+    "openrouter"
+  ],
+  "permalink": "/learn/by-example/rag-openrouter-ingestion/",
+  "active": "rag-openrouter-ingestion"
+}

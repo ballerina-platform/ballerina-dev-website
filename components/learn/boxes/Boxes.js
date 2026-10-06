@@ -954,7 +954,7 @@ export default function Boxes(props) {
               </Col>
             </Row>
             <Row>
-              <Col xs={12} md={6} lg={6} className={styles.boxCol}>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
                     <h3 id='featured-scenarios' className='section'>
@@ -1081,7 +1081,7 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-              <Col xs={12} md={6} lg={6} className={styles.boxCol}>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
                     <h3 id='learn-the-language' className='section'>
@@ -1131,6 +1131,101 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Advanced features, which are additional options for the language.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
+                <div className={styles.cardWrapper}>
+                  <div>
+                    <h3 id='build-ai-applications' className='section'>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        fill="currentColor"
+                        className="bi bi-link-45deg mdButton pe-2"
+                        viewBox="0 0 16 16"
+                        onClick={(e) => props.getLink(e.target, 'build-ai-applications')}
+                      >
+                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                      </svg>
+                      Build AI applications
+                    </h3>
+                    <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ai-in-ballerina-overview/`} className={styles.titleLink}>
+                            AI in Ballerina overview
+                          </a>
+                        </p>
+                        <p className={styles.description}>Understand the AI building blocks and the modules that provide them.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/configure-model-and-embedding-providers/`} className={styles.titleLink}>
+                            Configure model and embedding providers
+                          </a>
+                        </p>
+                        <p className={styles.description}>Use the default WSO2 providers or your own keys with OpenAI, Azure OpenAI, Anthropic, Ollama, and more.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/build-an-ai-agent/`} className={styles.titleLink}>
+                            Build an AI agent
+                          </a>
+                        </p>
+                        <p className={styles.description}>Create an agent with tools, typed input and output, and a chat interface.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/persist-agent-memory/`} className={styles.titleLink}>
+                            Persist agent memory
+                          </a>
+                        </p>
+                        <p className={styles.description}>Keep conversation history across restarts and handle memory overflow.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/build-a-rag-application/`} className={styles.titleLink}>
+                            Build a RAG application
+                          </a>
+                        </p>
+                        <p className={styles.description}>Load, chunk, embed, and retrieve documents to ground LLM responses.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/expose-and-consume-mcp-servers/`} className={styles.titleLink}>
+                            Expose and consume MCP servers
+                          </a>
+                        </p>
+                        <p className={styles.description}>Build Model Context Protocol servers and use MCP tools from clients and agents.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/human-in-the-loop-agents/`} className={styles.titleLink}>
+                            Human-in-the-loop agents
+                          </a>
+                        </p>
+                        <p className={styles.description}>Require human approval before an agent calls sensitive tools.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/observe-and-evaluate-agents/`} className={styles.titleLink}>
+                            Observe and evaluate agents
+                          </a>
+                        </p>
+                        <p className={styles.description}>Inspect execution traces, publish them, and test agent quality.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/natural-programming/`} className={styles.titleLink}>
+                            Natural programming
+                          </a>
+                        </p>
+                        <p className={styles.description}>Describe logic in natural language with natural expressions and natural functions.</p>
                       </div>
                     </div>
                   </div>

@@ -129,7 +129,7 @@ export function NaturalExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/natural-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/natural-expressions",
                 "_blank",
               );
             }}
@@ -353,8 +353,8 @@ export function NaturalExpressions({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with tool kits"
-            href="/learn/by-example/ai-agent-tool-kit/"
+            title="Agentic RAG with Pinecone"
+            href="/learn/by-example/agentic-rag-with-pinecone-vector-store/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -381,7 +381,7 @@ export function NaturalExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with tool kits
+                  Agentic RAG with Pinecone
                 </span>
               </div>
             </div>
@@ -389,8 +389,8 @@ export function NaturalExpressions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Hello world"
-            href="/learn/by-example/docker-hello-world/"
+            title="Natural expressions with a specific model provider"
+            href="/learn/by-example/natural-expressions-with-model-provider/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -400,7 +400,7 @@ export function NaturalExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Natural expressions with a specific model provider
                 </span>
               </div>
               <svg

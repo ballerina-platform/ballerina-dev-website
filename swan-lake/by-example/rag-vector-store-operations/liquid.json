@@ -1,0 +1,17 @@
+{
+  "title": "Vector store operations",
+  "description": "This BBE demonstrates the add, query, and delete operations of a vector store used in retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "vector store",
+    "embeddings",
+    "metadata filters"
+  ],
+  "permalink": "/learn/by-example/rag-vector-store-operations/",
+  "active": "rag-vector-store-operations"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Implement a custom vector store",
+  "description": "This BBE demonstrates how to implement a custom vector store for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "vector store",
+    "custom vector store"
+  ],
+  "permalink": "/learn/by-example/rag-custom-vector-store/",
+  "active": "rag-custom-vector-store"
+}

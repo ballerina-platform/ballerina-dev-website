@@ -1,0 +1,15 @@
+{
+  "title": "MCP client with request metadata",
+  "description": "This BBE demonstrates how an MCP client sends request metadata (_meta) along with a tool call.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "mcp",
+    "mcp client",
+    "metadata",
+    "meta"
+  ],
+  "permalink": "/learn/by-example/mcp-client-with-request-metadata/",
+  "active": "mcp-client-with-request-metadata"
+}

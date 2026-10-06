@@ -1,0 +1,17 @@
+{
+  "title": "Augment the prompt with retrieved context",
+  "description": "This BBE demonstrates how to augment the prompt with retrieved context and generate an answer with an LLM in retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "prompt",
+    "augmentation",
+    "generation"
+  ],
+  "permalink": "/learn/by-example/rag-augment-prompt/",
+  "active": "rag-augment-prompt"
+}

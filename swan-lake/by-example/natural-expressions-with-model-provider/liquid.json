@@ -1,0 +1,16 @@
+{
+  "title": "Natural expressions with a specific model provider",
+  "description": "This BBE demonstrates how to use natural expressions with a specific model provider.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "model-provider",
+    "natural expressions",
+    "anthropic"
+  ],
+  "permalink": "/learn/by-example/natural-expressions-with-model-provider/",
+  "active": "natural-expressions-with-model-provider"
+}

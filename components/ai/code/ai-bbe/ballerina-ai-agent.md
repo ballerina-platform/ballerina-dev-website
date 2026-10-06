@@ -1,37 +1,44 @@
 ---
 title: "Seamless integrations with Ballerina AI agents"
-description: "Ballerina's AI Agent feature enables your applications to understand and execute natural language commands by leveraging the reasoning capabilities of LLMs. It empowers your apps to act autonomously—automating workflows, making decisions, and driving intelligent outcomes."
-url: 'https://github.com/ballerina-guides/ai-samples/blob/main/personal_ai_assistant_agent/agents.bal'
+description: "Ballerina's AI agents enable your applications to understand and execute natural language commands by leveraging the reasoning capabilities of LLMs. Define the tools as Ballerina functions, and the agent decides when to call them, automating workflows and driving intelligent outcomes."
+url: 'https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/chat-agents'
 ---
 ```
-agent:SystemPrompt systemPrompt = {
-    role: "Personal AI Assistant",
-    instructions: string `You are Nova, a smart AI assistant helping '${userName}' stay organized and efficient.
+import ballerina/ai;
+import ballerina/http;
+import ballerina/time;
 
-Your primary responsibilities include:
-- Calendar Management: Scheduling, updating, and retrieving events from the calendar as per the user's needs.
-- Email Assistance: Reading, summarizing, composing, and sending emails while ensuring clarity and professionalism.
-- Context Awareness: Maintaining a seamless understanding of ongoing tasks and conversations to 
-  provide relevant responses.
-- Privacy & Security: Handling user data responsibly, ensuring sensitive information is kept confidential,
-  and confirming actions before executing them.
+// Define the functions that the agent can use as tools.
+@ai:AgentTool
+isolated function addTask(string description, time:Date? dueBy) returns error? {
+    // ...
+}
 
-Guidelines:
-- Respond in a natural, friendly, and professional tone.
-- Always confirm before making changes to the user's calendar or sending emails.
-- Provide concise summaries when retrieving information unless the user requests details.
-- Prioritize clarity, efficiency, and user convenience in all tasks.`
-};
+@ai:AgentTool
+isolated function listTasks() returns Task[] {
+    // ...
+}
 
-final agent:AzureOpenAiModel azureOpenAiModel = check new (serviceUrl, apiKey, deploymentId, apiVersion);
-final agent:Agent personalAiAssistant = check new (systemPrompt = systemPrompt, model = azureOpenAiModel,
-    tools = [readEmails, sendEmail, getCalanderEvents, createCalanderEvent, getCurrentDate]
-);
+// Define an AI agent with a system prompt and a set of tools.
+final ai:Agent taskAssistantAgent = check new ({
+    systemPrompt: {
+        role: "Task Assistant",
+        instructions: string `You are a helpful assistant for 
+            managing a to-do list. You can manage tasks and
+            help a user plan their schedule.`
+    },
+    tools: [addTask, listTasks],
+    // Use the default model provider, or a `ballerinax/ai.<provider>` 
+    // model provider with your own keys.
+    model: check ai:getDefaultModelProvider()
+});
 
-service /personalAiAssistant on new http:Listener(9090) {
-    resource function post chat(@http:Payload agent:ChatReqMessage request) returns agent:ChatRespMessage|error {
-        string agentResponse = check personalAiAssistant->run(request.message);
-        return {message: agentResponse};
+// Expose the agent as a chat service.
+service /tasks on new ai:Listener(8080) {
+    resource function post chat(@http:Payload ai:ChatReqMessage request) 
+            returns ai:ChatRespMessage|error {
+        string response = check taskAssistantAgent.run(request.message, request.sessionId);
+        return {message: response};
     }
 }
 ```

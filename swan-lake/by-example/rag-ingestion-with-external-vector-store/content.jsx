@@ -59,28 +59,31 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Retrieval-augmented generation (RAG) ingestion</h1>
+      <h1>Ingest into Pinecone</h1>
 
       <p>
-        Ballerina has high-level, provider-agnostic APIs to ingest data for
-        retrieval-augmented generation (RAG) workflows. These include
-        abstractions such as <code>ai:DataLoader</code>,{" "}
-        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
-        <code>ai:KnowledgeBase</code>.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>ingest</code> method splits the documents into chunks, embeds the
+        chunks with an embedding provider, and stores them in a vector store.
       </p>
 
       <p>
-        These abstractions enable you to load documents, convert them into
-        semantically meaningful vector representations using embedding models,
-        and index them into a vector database (e.g., Pinecone, Weaviate, etc.).
-        The knowledge base (<code>ai: KnowledgeBase</code>) orchestrates this
-        process.
+        This example loads a PDF document and ingests it into a{" "}
+        <a href="https://www.pinecone.io/">Pinecone</a> index through the{" "}
+        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+          ballerinax/ai.pinecone
+        </a>{" "}
+        module, with the default embedding provider.
       </p>
 
       <p>
-        This example demonstrates how to use <code>ai:TextDataLoader</code> to
-        load documents, generate embeddings with a configured provider, and
-        ingest them into a vector store.
+        For the query part, see the{" "}
+        <a href="/learn/by-example/rag-query-with-external-vector-store/">
+          Retrieve from Pinecone
+        </a>{" "}
+        example.
       </p>
 
       <blockquote>
@@ -106,8 +109,8 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+          <code>ballerinax/ai.pinecone</code> module
         </a>
         .
       </p>
@@ -122,7 +125,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/rag-ingestion-with-external-vector-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/rag-ingestion-with-external-vector-store",
                 "_blank",
               );
             }}
@@ -273,7 +276,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/rag-query-with-external-vector-store/">
-              RAG query with external vector store example
+              Retrieve from Pinecone example
             </a>
           </span>
         </li>
@@ -323,8 +326,8 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="RAG with in-memory vector store"
-            href="/learn/by-example/rag-with-in-memory-vector-store/"
+            title="Ingest with a configured chunker"
+            href="/learn/by-example/rag-with-configured-chunker/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -351,7 +354,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG with in-memory vector store
+                  Ingest with a configured chunker
                 </span>
               </div>
             </div>
@@ -359,8 +362,8 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="RAG query with external vector store"
-            href="/learn/by-example/rag-query-with-external-vector-store/"
+            title="Ingest into pgvector"
+            href="/learn/by-example/rag-pgvector-ingestion/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -370,7 +373,7 @@ export function RagIngestionWithExternalVectorStore({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG query with external vector store
+                  Ingest into pgvector
                 </span>
               </div>
               <svg

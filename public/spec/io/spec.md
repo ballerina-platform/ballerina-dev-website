@@ -3,7 +3,7 @@
 _Owners_: @daneshk @BuddhiWathsala  
 _Reviewers_: @daneshk  
 _Created_: 2021/12/04   
-_Updated_: 2022/02/17  
+_Updated_: 2026/09/03  
 _Edition_: Swan Lake 
 
 ## Introduction
@@ -23,6 +23,7 @@ The conforming implementation of the specification is released and included in t
 5. [CSV I/O](#5-csv-io)
 6. [JSON I/O](#6-json-io)
 7. [XML I/O](#7-xml-io)
+8. [Static Code Rules](#8-static-code-rules)
 
 
 ## 1. Overview
@@ -443,3 +444,124 @@ public type XmlWriteOptions record {|
 |};
 ```
 
+## 8. Static Code Rules
+
+The following static code rules are applied to the I/O module.
+
+| Id             | Kind          | Description                                                                                                                                           |
+|----------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ballerina/io:1 | VULNERABILITY | [I/O function calls should not be vulnerable to path injection attacks](#81-io-function-calls-should-not-be-vulnerable-to-path-injection-attacks)      |
+| ballerina/io:2 | VULNERABILITY | [Configurable variables should not be printed to the console](#82-configurable-variables-should-not-be-printed-to-the-console) |
+
+### 8.1. I/O function calls should not be vulnerable to path injection attacks
+
+A file path built from untrusted input can be steered outside the directory the code intends to read from or write to.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/io:1 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
+
+#### 8.1.1. Why this is an issue?
+
+The I/O functions take a file path as a plain string and hand it to the filesystem as given. A path segment such as `../` is resolved by the filesystem rather than rejected, so a value the caller controls can climb out of the intended directory and name any file the process has permission to open. The code reads as though it were confined to one directory while the path decides otherwise at run time.
+
+#### 8.1.2. What is the potential impact?
+
+An attacker who controls part of the path can read files the service never meant to expose, such as configuration holding credentials or private keys, and on a write path can overwrite files the process owns.
+
+#### 8.1.3. How can I fix this?
+
+Do not build a path from a value that arrives from outside the program. Where a caller must select a file, treat the value as a name rather than a path: validate it against a known set, or resolve it and confirm the result is still inside the intended directory.
+
+**Non-compliant code:**
+
+```ballerina
+public function readUserFile(string fileName) returns string|error {
+    // The caller controls the whole path, including any `../` segments
+    return check io:fileReadString("/var/data/" + fileName);
+}
+```
+
+**Compliant code:**
+
+```ballerina
+public function readUserFile(string fileName) returns string|error {
+    string path;
+    match fileName {
+        "report" => {
+            path = "/var/data/report.txt";
+        }
+        "summary" => {
+            path = "/var/data/summary.txt";
+        }
+        _ => {
+            return error("unknown file");
+        }
+    }
+    return check io:fileReadString(path);
+}
+```
+
+The caller still selects the file, but the path itself is one the program wrote, so nothing the caller supplies reaches the filesystem.
+
+#### 8.1.4. Additional Resources
+
+- [CWE-22: Improper Limitation of a Pathname to a Restricted Directory](https://cwe.mitre.org/data/definitions/22.html)
+- [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)
+
+### 8.2. Configurable variables should not be printed to the console
+
+A configurable variable written to standard output ends up in the platform's log store.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/io:2 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-532](https://cwe.mitre.org/data/definitions/532.html), [CWE-200](https://cwe.mitre.org/data/definitions/200.html) |
+| **OWASP Top 10:2025** | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/) |
+
+#### 8.2.1. Why this is an issue?
+
+Configurable variables carry the values supplied at deployment, which is where credentials, tokens and connection secrets live. Standard output is collected by the container runtime and forwarded to whatever log aggregator the platform uses, so printing one moves the value out of the deployment configuration and into a durable store that a far wider set of people can read.
+
+The rule does not attempt to decide which configurables hold secrets. Every deployment-supplied value is treated as sensitive, which is the same position `ballerina/log:1` takes for log statements.
+
+#### 8.2.2. What is the potential impact?
+
+A credential that reaches the log store is readable by anyone with access to logs, is retained for as long as the retention policy allows, and is copied into any downstream index or backup. Rotating it is the only remedy once it has been written.
+
+#### 8.2.3. How can I fix this?
+
+Print a value that identifies the configuration rather than the configuration itself, or omit the statement.
+
+**Non-compliant code:**
+
+```ballerina
+configurable string dbPassword = ?;
+
+public function connect() {
+    io:println(dbPassword);
+    io:println(string `Connecting with ${dbPassword}`);
+}
+```
+
+**Compliant code:**
+
+```ballerina
+configurable string dbPassword = ?;
+
+public function connect() {
+    io:println("Connecting to the configured database");
+}
+```
+
+Every configurable is treated as sensitive, including one that holds no secret, so a compliant message names none of them.
+
+#### 8.2.4. Additional Resources
+
+- [CWE-532: Insertion of Sensitive Information into Log File](https://cwe.mitre.org/data/definitions/532.html)
+- [CWE-200: Exposure of Sensitive Information to an Unauthorized Actor](https://cwe.mitre.org/data/definitions/200.html)
+- [OWASP Top 10:2025 A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)

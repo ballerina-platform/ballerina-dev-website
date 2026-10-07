@@ -4,6 +4,7 @@ description: Learn about the scan rules used in Ballerina static code analysis.
 keywords: ballerina runtime, static code analysis, scan rules, code smells, bugs, vulnerabilities
 permalink: /learn/scan-rules/
 active: scan-rules
+rule_anchors: true
 ---
 
 The Ballerina scan tool uses a set of predefined rules to analyze Ballerina code and identify potential issues such as
@@ -11,14 +12,68 @@ code smells, bugs, and vulnerabilities.
 These rules are designed to help developers maintain high-quality code and
 adhere to best practices.
 
+## Security standards mapping
+
+Several weakness classes are prevented by the language itself rather than by a rule, so they do not appear in the table below. See [Language guarantees](/learn/language-guarantees/) for what the compiler enforces.
+
+The table below maps each rule to its [CWE](https://cwe.mitre.org/) identifiers, and to the [OWASP Top 10:2025](https://owasp.org/Top10/) category that lists those identifiers. A dash (—) marks a rule that has no mapping to that standard.
+
+| Rule ID            | Rule                                                                                                              | CWE                                                                                                                    | OWASP Top 10:2025                                                                                                                                                                |
+|--------------------|-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ballerina:1        | [Avoid checkpanic](#ballerina-1)                                                                                  | [CWE-248](https://cwe.mitre.org/data/definitions/248.html), [CWE-636](https://cwe.mitre.org/data/definitions/636.html) | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/)                                                        |
+| ballerina:2        | [Unused function parameter](#ballerina-2)                                                                         | [CWE-561](https://cwe.mitre.org/data/definitions/561.html)                                                             | —                                                                                                                                                                                |
+| ballerina:3        | [Non isolated public function](#ballerina-3)                                                                      | —                                                                                                                      | —                                                                                                                                                                                |
+| ballerina:4        | [Non isolated public method](#ballerina-4)                                                                        | —                                                                                                                      | —                                                                                                                                                                                |
+| ballerina:5        | [Non isolated public class](#ballerina-5)                                                                         | —                                                                                                                      | —                                                                                                                                                                                |
+| ballerina:6        | [Non isolated public object](#ballerina-6)                                                                        | —                                                                                                                      | —                                                                                                                                                                                |
+| ballerina:7        | [This operation always evaluates to true](#ballerina-7)                                                           | [CWE-571](https://cwe.mitre.org/data/definitions/571.html)                                                             | —                                                                                                                                                                                |
+| ballerina:8        | [This operation always evaluates to false](#ballerina-8)                                                          | [CWE-570](https://cwe.mitre.org/data/definitions/570.html)                                                             | —                                                                                                                                                                                |
+| ballerina:9        | [This operation always evaluates to the same value](#ballerina-9)                                                 | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                           | —                                                                                                                                                                                |
+| ballerina:10       | [This variable is assigned to itself](#ballerina-10)                                                              | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html)                                                           | —                                                                                                                                                                                |
+| ballerina:11       | [Unused class private fields](#ballerina-11)                                                                      | [CWE-561](https://cwe.mitre.org/data/definitions/561.html)                                                             | —                                                                                                                                                                                |
+| ballerina:12       | [Invalid range expression](#ballerina-12)                                                                         | [CWE-561](https://cwe.mitre.org/data/definitions/561.html)                                                             | —                                                                                                                                                                                |
+| ballerina:13       | [Hard-coded secrets are security-sensitive](#ballerina-13)                                                        | [CWE-798](https://cwe.mitre.org/data/definitions/798.html), [CWE-259](https://cwe.mitre.org/data/definitions/259.html) | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina:14       | [Non configurable secrets are security-sensitive](#ballerina-14)                                                  | [CWE-798](https://cwe.mitre.org/data/definitions/798.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/crypto:1 | [Avoid using insecure cipher modes or padding schemes](#ballerina-crypto-1)                                       | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/crypto:2 | [Avoid using fast hashing algorithms](#ballerina-crypto-2)                                                        | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/crypto:3 | [Avoid reusing counter mode initialization vectors](#ballerina-crypto-3)                                          | [CWE-323](https://cwe.mitre.org/data/definitions/323.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/file:1   | [Avoid using publicly writable directories for file operations without proper access controls](#ballerina-file-1) | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/file:2   | [File function calls should not be vulnerable to path injection attacks](#ballerina-file-2)                       | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                                               | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/http:1   | [Avoid allowing default resource accessor](#ballerina-http-1)                                                     | [CWE-352](https://cwe.mitre.org/data/definitions/352.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/http:2   | [Avoid permissive Cross-Origin Resource Sharing](#ballerina-http-2)                                               | [CWE-942](https://cwe.mitre.org/data/definitions/942.html)                                                             | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/)                                                                                |
+| ballerina/http:3   | [Server-side requests should not be vulnerable to traversing attacks](#ballerina-http-3)                          | [CWE-918](https://cwe.mitre.org/data/definitions/918.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/http:4   | [HTTP request redirections should not be open to forging attacks](#ballerina-http-4)                              | [CWE-601](https://cwe.mitre.org/data/definitions/601.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/io:1     | [I/O function calls should not be vulnerable to path injection attacks](#ballerina-io-1)                          | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                                               | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/io:2     | [Configurable variables should not be printed to the console](#ballerina-io-2)                                    | [CWE-532](https://cwe.mitre.org/data/definitions/532.html), [CWE-200](https://cwe.mitre.org/data/definitions/200.html) | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)                                                      |
+| ballerina/log:1    | [Potentially-sensitive configurable variables are logged](#ballerina-log-1)                                       | [CWE-532](https://cwe.mitre.org/data/definitions/532.html)                                                             | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)                                                      |
+| ballerina/log:2    | [Avoid writing log files to world-writable directories](#ballerina-log-2)                                         | [CWE-379](https://cwe.mitre.org/data/definitions/379.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
+| ballerina/os:1     | [Avoid constructing system command arguments from user input without proper sanitization](#ballerina-os-1)        | [CWE-78](https://cwe.mitre.org/data/definitions/78.html), [CWE-88](https://cwe.mitre.org/data/definitions/88.html)     | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                                                                                |
+| ballerina/os:2     | [Avoid constructing environment variables from user input without proper sanitization](#ballerina-os-2)           | [CWE-454](https://cwe.mitre.org/data/definitions/454.html), [CWE-15](https://cwe.mitre.org/data/definitions/15.html)   | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/), [A06 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/) |
+| ballerina/os:3     | [Avoid executing commands through a shell interpreter](#ballerina-os-3)                                           | [CWE-78](https://cwe.mitre.org/data/definitions/78.html)                                                               | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                                                                                |
+| ballerina/os:4     | [Avoid executing commands resolved through the PATH environment variable](#ballerina-os-4)                        | [CWE-426](https://cwe.mitre.org/data/definitions/426.html)                                                             | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                                                                                |
+| ballerina/jwt:1    | [Avoid using weak cipher algorithms when signing and verifying JWTs](#ballerina-jwt-1)                            | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/jwt:2    | [Avoid validating JSON Web Tokens without a signature configuration](#ballerina-jwt-2)                            | [CWE-347](https://cwe.mitre.org/data/definitions/347.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/jwt:3    | [Avoid validating JSON Web Tokens without checking the issuer and the audience](#ballerina-jwt-3)                 | [CWE-287](https://cwe.mitre.org/data/definitions/287.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/jwt:4    | [Avoid issuing JSON Web Tokens with a long expiry time](#ballerina-jwt-4)                                         | [CWE-613](https://cwe.mitre.org/data/definitions/613.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/jwt:5    | [Avoid validating JSON Web Tokens with a large clock skew](#ballerina-jwt-5)                                      | [CWE-613](https://cwe.mitre.org/data/definitions/613.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/jwt:6    | [Avoid disabling TLS validation on the JWKS endpoint client](#ballerina-jwt-6)                                    | [CWE-295](https://cwe.mitre.org/data/definitions/295.html), [CWE-296](https://cwe.mitre.org/data/definitions/296.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/jwt:7    | [Avoid decoding JSON Web Tokens without verifying them](#ballerina-jwt-7)                                         | [CWE-347](https://cwe.mitre.org/data/definitions/347.html), [CWE-345](https://cwe.mitre.org/data/definitions/345.html) | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/email:1  | [Avoid unverified server hostnames during SSL/TLS connections](#ballerina-email-1)                                | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
+| ballerina/email:2  | [Avoid connecting to mail servers without TLS](#ballerina-email-2)                                                | [CWE-319](https://cwe.mitre.org/data/definitions/319.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/email:3  | [Avoid falling back to cleartext when TLS is unavailable](#ballerina-email-3)                                     | [CWE-757](https://cwe.mitre.org/data/definitions/757.html), [CWE-319](https://cwe.mitre.org/data/definitions/319.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/email:4  | [Avoid using weak TLS protocol versions](#ballerina-email-4)                                                      | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-326](https://cwe.mitre.org/data/definitions/326.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+
 ## Language rules
 
 ### Avoid checkpanic
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:1 |
-| **Rule Kind** | Code Smell  |
+| Property              | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:1                                                                                                               |
+| **Rule Kind**         | Code Smell                                                                                                                |
+| **Severity**          | Low                                                                                                                       |
+| **CWE**               | [CWE-248](https://cwe.mitre.org/data/definitions/248.html), [CWE-636](https://cwe.mitre.org/data/definitions/636.html)    |
+| **OWASP Top 10:2025** | [A10 Mishandling of Exceptional Conditions](https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/) |
 
 When `checkpanic` is used, the program terminates abruptly with a `panic` unless it’s handled explicitly along the call
 stack.
@@ -72,10 +127,12 @@ public function getResult() returns json|error {
 
 ### Unused function parameter
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:2 |
-| **Rule Kind** | Code Smell  |
+| Property      | Description                                                |
+|---------------|------------------------------------------------------------|
+| **Rule ID**   | ballerina:2                                                |
+| **Rule Kind** | Code Smell                                                 |
+| **Severity**  | Low                                                        |
+| **CWE**       | [CWE-561](https://cwe.mitre.org/data/definitions/561.html) |
 
 Unused function parameters cause unnecessary code complexity and can lead to confusion for developers maintaining the
 code. They may also indicate potential errors in function design or changes in requirements that were not properly
@@ -118,6 +175,7 @@ public function main() {
 |---------------|-------------|
 | **Rule ID**   | ballerina:3 |
 | **Rule Kind** | Code Smell  |
+| **Severity**  | Low         |
 
 A non-isolated function will not be called concurrently. Only isolated functions are called concurrently given that they
 are guaranteed to be safe if the arguments are also safe. To allow being called concurrently, a public function should
@@ -147,6 +205,7 @@ public isolated function helperFunction() {
 |---------------|-------------|
 | **Rule ID**   | ballerina:4 |
 | **Rule Kind** | Code Smell  |
+| **Severity**  | Low         |
 
 Class methods can be isolated. An isolated method is the same as an isolated function with self treated as a parameter.
 A non-isolated method will not be called concurrently. Only isolated methods are called concurrently given that they are
@@ -187,6 +246,7 @@ class EvenNumber {
 |---------------|-------------|
 | **Rule ID**   | ballerina:5 |
 | **Rule Kind** | Code Smell  |
+| **Severity**  | Low         |
 
 A class defined as isolated is similar to a module with isolated module-level variables. A non-isolated class will not
 be accessed concurrently. Only isolated classes are accessed concurrently. To allow being accessed concurrently, a
@@ -228,6 +288,7 @@ public isolated class EvenNumber {
 |---------------|-------------|
 | **Rule ID**   | ballerina:6 |
 | **Rule Kind** | Code Smell  |
+| **Severity**  | Low         |
 
 A non-isolated object will not be accessed concurrently. Only isolated objects are accessed concurrently. To allow being
 accessed concurrently, a public object should be marked as isolated.
@@ -252,10 +313,12 @@ public type Hashable isolated object {
 
 ### This operation always evaluates to true
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:7 |
-| **Rule Kind** | Code Smell  |
+| Property      | Description                                                |
+|---------------|------------------------------------------------------------|
+| **Rule ID**   | ballerina:7                                                |
+| **Rule Kind** | Code Smell                                                 |
+| **Severity**  | Low                                                        |
+| **CWE**       | [CWE-571](https://cwe.mitre.org/data/definitions/571.html) |
 
 Conditions that are always true don't do any meaningful computation. They increase code complexity, reduce the code
 readability and potentially hide logical errors.
@@ -271,10 +334,12 @@ public function main() {
 
 ### This operation always evaluates to false
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:8 |
-| **Rule Kind** | Code Smell  |
+| Property      | Description                                                |
+|---------------|------------------------------------------------------------|
+| **Rule ID**   | ballerina:8                                                |
+| **Rule Kind** | Code Smell                                                 |
+| **Severity**  | Low                                                        |
+| **CWE**       | [CWE-570](https://cwe.mitre.org/data/definitions/570.html) |
 
 Conditions that are always false indicate unreachable code or logic that will never execute. This can clutter the
 codebase, make it harder to understand, and potentially hide bugs or unintentional logic errors.
@@ -290,10 +355,12 @@ public function main() {
 
 ### This operation always evaluates to the same value
 
-| Property      | Description |
-|---------------|-------------|
-| **Rule ID**   | ballerina:9 |
-| **Rule Kind** | Code Smell  |
+| Property      | Description                                                  |
+|---------------|--------------------------------------------------------------|
+| **Rule ID**   | ballerina:9                                                  |
+| **Rule Kind** | Code Smell                                                   |
+| **Severity**  | Low                                                          |
+| **CWE**       | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html) |
 
 Conditions which always evaluate to the same value don't do any meaningful computation. They increase code complexity,
 reduce the code readability, and potentially hide logical errors.
@@ -308,10 +375,12 @@ public function main() {
 
 ### This variable is assigned to itself
 
-| Property      | Description  |
-|---------------|--------------|
-| **Rule ID**   | ballerina:10 |
-| **Rule Kind** | Code Smell   |
+| Property      | Description                                                  |
+|---------------|--------------------------------------------------------------|
+| **Rule ID**   | ballerina:10                                                 |
+| **Rule Kind** | Code Smell                                                   |
+| **Severity**  | Low                                                          |
+| **CWE**       | [CWE-1164](https://cwe.mitre.org/data/definitions/1164.html) |
 
 Self-assignments, where a variable is assigned to itself (x = x), are redundant and do not alter the state of the
 variable. They can indicate incomplete or erroneous logic and make the code harder to read and maintain.
@@ -327,10 +396,12 @@ public function main() {
 
 ### Unused class private fields
 
-| Property      | Description  |
-|---------------|--------------|
-| **Rule ID**   | ballerina:11 |
-| **Rule Kind** | Code Smell   |
+| Property      | Description                                                |
+|---------------|------------------------------------------------------------|
+| **Rule ID**   | ballerina:11                                               |
+| **Rule Kind** | Code Smell                                                 |
+| **Severity**  | Low                                                        |
+| **CWE**       | [CWE-561](https://cwe.mitre.org/data/definitions/561.html) |
 
 Unused or unread private fields/methods in a class can indicate incomplete or erroneous logic, lead to unnecessary
 memory usage, and make the code harder to maintain and understand.
@@ -373,10 +444,12 @@ public function main() {
 
 ### Invalid range expression
 
-| Property      | Description  |
-|---------------|--------------|
-| **Rule ID**   | ballerina:12 |
-| **Rule Kind** | Code Smell   |
+| Property      | Description                                                |
+|---------------|------------------------------------------------------------|
+| **Rule ID**   | ballerina:12                                               |
+| **Rule Kind** | Code Smell                                                 |
+| **Severity**  | Low                                                        |
+| **CWE**       | [CWE-561](https://cwe.mitre.org/data/definitions/561.html) |
 
 The update clause of a range expression should ensure the counter moves in the correct direction. Incorrect range
 expression directions can lead to unexpected behavior, making the code harder to understand and debug.
@@ -408,14 +481,110 @@ public function main() {
 }
 ```
 
+### Hard-coded secrets are security-sensitive
+
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:13                                                                                                           |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-798](https://cwe.mitre.org/data/definitions/798.html), [CWE-259](https://cwe.mitre.org/data/definitions/259.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                          |
+
+Embedding secrets such as passwords, API keys, or tokens directly as literal values in source code exposes them to
+anyone with access to the codebase or its version history. Rotating a compromised secret then requires a code change
+and a redeploy.
+
+The rule looks for string literals and constants assigned to names that suggest a secret, such as `password`, `passwd`,
+`pwd`, `passphrase`, `secret`, `auth`, `apiKey`, and `token` (including their snake-case and kebab-case forms). It checks
+variables, constants, default parameter values, record and object fields, map fields, and named arguments. It also
+reports URLs that embed credentials, such as `http://user:password@example.com`.
+
+#### Noncompliant Code Example
+
+```ballerina
+const string API_KEY = "a1b2c3d4";
+
+public function main() {
+    string password = "mySecurePassword123";
+    string serviceUrl = "https://admin:admin123@api.example.com";
+}
+```
+
+#### Compliant Code Example
+
+Read secrets from configurable variables so their values are supplied at deployment rather than stored in the source.
+
+```ballerina
+configurable string password = ?;
+configurable string serviceUrl = ?;
+
+public function main() {
+    connect(serviceUrl, password);
+}
+```
+
+### Non configurable secrets are security-sensitive
+
+| Property              | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina:14                                                                                  |
+| **Rule Kind**         | Vulnerability                                                                                 |
+| **Severity**          | Medium                                                                                        |
+| **CWE**               | [CWE-798](https://cwe.mitre.org/data/definitions/798.html)                                    |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+A secret that is assigned a fixed value rather than being exposed as a configurable value forces the same secret to be
+reused across environments. It also prevents the secret from being rotated or overridden without modifying and
+redeploying the code.
+
+The rule reports a secret-named variable, field, or argument whose value comes from a non-configurable variable or from
+a computed expression, rather than from a configurable variable.
+
+#### Noncompliant Code Example
+
+```ballerina
+string defaultValue = "password";
+
+public type Credential record {
+    string username;
+    string password;
+};
+
+public function main() {
+    string password = defaultValue;
+    Credential credential = {username: "admin", password: defaultValue};
+}
+```
+
+#### Compliant Code Example
+
+Declare the secret as a configurable variable and reference it wherever the secret is needed.
+
+```ballerina
+configurable string password = ?;
+
+public type Credential record {
+    string username;
+    string password;
+};
+
+public function main() {
+    Credential credential = {username: "admin", password};
+}
+```
+
 ## Library rules
 
 ### Avoid using insecure cipher modes or padding schemes
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:1 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:1                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 Encryption algorithms are essential for protecting sensitive information and ensuring secure communications. When implementing encryption, it's critical to select not only strong algorithms but also secure modes of operation and padding schemes. Using weak or outdated encryption modes can compromise the security of otherwise strong algorithms.
 
@@ -424,12 +593,16 @@ Encryption algorithms are essential for protecting sensitive information and ens
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 byte[] cipherText = check crypto:encryptAesEcb(data, key);
 ```
 
 For AES, the weakest mode is ECB (Electronic Codebook). Repeated blocks of data are encrypted to the same value, making them easy to identify and reducing the difficulty of recovering the original cleartext.
 
 ```ballerina
+import ballerina/crypto;
+
 byte[] cipherText = check crypto:encryptAesCbc(data, key, initialVector);
 ```
 
@@ -438,6 +611,8 @@ Unauthenticated modes such as CBC (Cipher Block Chaining) may be used but are pr
 ##### Compliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 byte[] cipherText = check crypto:encryptAesGcm(data, key, initialVector);
 ```
 
@@ -448,6 +623,8 @@ AES-GCM (Galois/Counter Mode) provides authenticated encryption, ensuring both c
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 // Default padding is PKCS1
 byte[] cipherText = check crypto:encryptRsaEcb(data, publicKey);
 
@@ -459,6 +636,8 @@ For `RSA`, avoid using `PKCS1v1.5` padding as it is vulnerable to various attack
 ##### Compliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 byte[] cipherText = check crypto:encryptRsaEcb(data, publicKey, crypto:OAEPwithMD5andMGF1);
 ```
 
@@ -466,10 +645,13 @@ The `OAEP` paddings such as `OAEPwithMD5andMGF1`, `OAEPWithSHA1AndMGF1`, `OAEPWi
 
 ### Avoid using fast hashing algorithms
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:2 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:2                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 Storing passwords in plaintext or using fast hashing algorithms creates significant security vulnerabilities. If an attacker gains access to your database, plaintext passwords are immediately compromised. Similarly, passwords hashed with fast algorithms (like `MD5`, `SHA-1`, or `SHA-256` without sufficient iterations) can be rapidly cracked using modern hardware.
 
@@ -493,6 +675,9 @@ For `Argon2`:
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+import ballerina/io;
+
 public function main() returns error? {
     string password = "mySecurePassword123";
     // Using insufficient work factor
@@ -506,6 +691,9 @@ Using `BCrypt` with a work factor below 10 is insufficient and vulnerable to bru
 ##### Compliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+import ballerina/io;
+
 public function hashPassword() returns error? {
     string password = "mySecurePassword123";
     // Using sufficient work factor (14 or higher for better security)
@@ -519,6 +707,9 @@ public function hashPassword() returns error? {
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+import ballerina/io;
+
 public function main() returns error? {
     string password = "mySecurePassword123";
     // Using insufficient memory configuration
@@ -532,6 +723,9 @@ Using `Argon2` with insufficient memory (less than 19,456 KB) makes it vulnerabl
 ##### Compliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+import ballerina/io;
+
 public function hashPassword() returns error? {
     string password = "mySecurePassword123";
     // Using recommended parameters: sufficient memory, iterations, and parallelism
@@ -542,10 +736,13 @@ public function hashPassword() returns error? {
 
 ### Avoid reusing counter mode initialization vectors
 
-| Property      | Description        |
-|---------------|--------------------|
-| **Rule ID**   | ballerina/crypto:3 |
-| **Rule Kind** | Vulnerability      |
+| Property              | Description                                                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/crypto:3                                                                          |
+| **Rule Kind**         | Vulnerability                                                                               |
+| **Severity**          | High                                                                                        |
+| **CWE**               | [CWE-323](https://cwe.mitre.org/data/definitions/323.html)                                  |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
 
 When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, or `AES-CTR`), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
 
@@ -554,6 +751,8 @@ When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, 
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 public function encryptData(string data) returns byte[]|error {
     byte[16] initialVector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     byte[16] key = [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
@@ -589,6 +788,8 @@ This compliant approach generates a cryptographically secure random initializati
 ##### Noncompliant Code Example
 
 ```ballerina
+import ballerina/crypto;
+
 public function encryptMessage(string message) returns byte[]|error {
     // Static nonce - this is vulnerable!
     byte[12] nonce = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
@@ -619,10 +820,13 @@ public function encryptMessage(string message) returns [byte[], byte[12]]|error 
 
 ### Avoid using publicly writable directories for file operations without proper access controls
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/file:1 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/file:1                                                                                                       |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | Medium                                                                                                                 |
+| **CWE**               | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                              |
 
 Operating systems often have global directories with write access granted to any user. These directories serve as
 temporary storage locations like /tmp in Linux-based systems. However, when an application manipulates files within
@@ -634,6 +838,9 @@ elevated permissions.
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/file;
+import ballerina/os;
+
 string tempFolderPath = os:getEnv("TMP");
 check file:create(tempFolderPath + "/" + "myfile.txt");
 check file:getAbsolutePath(tempFolderPath + "/" + "myfile.txt");
@@ -646,16 +853,21 @@ check file:createTempDir((), "prefix");
 Use dedicated sub-folders.
 
 ```ballerina
+import ballerina/file;
+
 check file:create("./myDirectory/myfile.txt");
 check file:getAbsolutePath("./myDirectory/myfile.txt");
 ```
 
 ### File function calls should not be vulnerable to path injection attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/file:2 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/file:2                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | High                                                                                      |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                  |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Path injections occur when an application constructs a file path using untrusted data without first validating the path.
 
@@ -665,6 +877,9 @@ the path to resolve to a location within the filesystem where the user typically
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/file;
+import ballerina/http;
+
 listener http:Listener endpoint = new (8080);
 string targetDirectory = "./path/to/target/directory/";
 
@@ -681,6 +896,9 @@ service / on endpoint {
 Conduct validation of canonical paths.
 
 ```ballerina
+import ballerina/file;
+import ballerina/http;
+
 listener http:Listener endpoint = new (8080);
 string targetDirectory = "./path/to/target/directory/";
 
@@ -730,10 +948,13 @@ service / on endpoint {
 
 ### Avoid allowing default resource accessor
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:1 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:1                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | Medium                                                                                    |
+| **CWE**               | [CWE-352](https://cwe.mitre.org/data/definitions/352.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 An HTTP resource is safe when used for read-only operations like GET, HEAD, or OPTIONS. An unsafe HTTP resource is used
 to alter the state of an application, such as modifying the user’s profile on a web application.
@@ -747,6 +968,8 @@ resources.
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -763,6 +986,8 @@ For every resource in an application, it’s crucial to explicitly define the ty
 safe resources are exclusively used for read-only operations.
 
 ```ballerina
+import ballerina/http;
+
 service / on endpoint {
     resource function delete deleteRequest(http:Request clientRequest, string username) returns string {
         // state of the application will be changed here
@@ -772,10 +997,13 @@ service / on endpoint {
 
 ### Avoid permissive Cross-Origin Resource Sharing
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:2 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                                       |
+|-----------------------|---------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:2                                                                                  |
+| **Rule Kind**         | Vulnerability                                                                                     |
+| **Severity**          | Medium                                                                                            |
+| **CWE**               | [CWE-942](https://cwe.mitre.org/data/definitions/942.html)                                        |
+| **OWASP Top 10:2025** | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/) |
 
 Browsers enforce the same-origin policy by default, as a security measure, preventing JavaScript frontends from making
 cross-origin HTTP requests to resources with different origins (domains, protocols, or ports). However, the target
@@ -785,6 +1013,8 @@ browser and modify the access control policy, effectively relaxing the same-orig
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -805,6 +1035,8 @@ service / on endpoint {
 The resource configuration should be configured exclusively for trusted origins and specific resources.
 
 ```ballerina
+import ballerina/http;
+
 listener http:Listener endpoint = new (8080);
 
 service / on endpoint {
@@ -822,16 +1054,21 @@ service / on endpoint {
 
 ### Server-side requests should not be vulnerable to traversing attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:3 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:3                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | High                                                                                      |
+| **CWE**               | [CWE-918](https://cwe.mitre.org/data/definitions/918.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Server-Side Request Forgery (SSRF) is a vulnerability that allows attackers to induce the server-side application to make requests to an unintended location. When applications accept user input that influences server-side HTTP requests without proper validation or sanitization, attackers can manipulate these requests.
 
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 service /api/v1 on new http:Listener(8080) {
     resource function get users(string id) returns http:Response|error {
         http:Client userClient = check new ("http://example.com");
@@ -844,6 +1081,8 @@ service /api/v1 on new http:Listener(8080) {
 #### Compliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 service /api/v1 on new http:Listener(8080) {
     resource function get users(string id) returns http:Response|error {
         // Validate the user input
@@ -856,16 +1095,21 @@ service /api/v1 on new http:Listener(8080) {
 
 ### HTTP request redirections should not be open to forging attacks
 
-| Property      | Description      |
-|---------------|------------------|
-| **Rule ID**   | ballerina/http:4 |
-| **Rule Kind** | Vulnerability    |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/http:4                                                                          |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | Medium                                                                                    |
+| **CWE**               | [CWE-601](https://cwe.mitre.org/data/definitions/601.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Open redirects occur when an application accepts user-controlled input that specifies a URL to which the user will be redirected. When these redirects are implemented without proper validation, attackers can craft redirection URLs to malicious sites.
 
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 service /api/v1 on new http:Listener(8080) {
     resource function get redirect(string location) returns http:TemporaryRedirect {
         return {
@@ -881,6 +1125,8 @@ service /api/v1 on new http:Listener(8080) {
 #### Compliant Code Example
 
 ```ballerina
+import ballerina/http;
+
 service /api/v1 on new http:Listener(8080) {
     resource function get redirect(string location) returns http:TemporaryRedirect|error {
         // Validate the user input
@@ -896,10 +1142,13 @@ service /api/v1 on new http:Listener(8080) {
 
 ### I/O function calls should not be vulnerable to path injection attacks
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/io:1 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/io:1                                                                            |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | High                                                                                      |
+| **CWE**               | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                  |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
 
 Path injections occur when an application constructs a file path using untrusted data without first validating the path.
 
@@ -909,8 +1158,8 @@ the path to resolve to a location within the filesystem where the user typically
 #### Noncompliant Code Example
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
 
 service /fileService on new http:Listener(8080) {
    resource function get file(string fileName) returns string|error {
@@ -929,9 +1178,9 @@ service /fileService on new http:Listener(8080) {
 Validate and normalize the path to ensure the accessed file remains within the intended target directory.
 
 ```ballerina
-import ballerina/io;
-import ballerina/http;
 import ballerina/file;
+import ballerina/http;
+import ballerina/io;
 
 service /fileService on new http:Listener(8080) {
     resource function get file(string fileName) returns string|error {
@@ -958,12 +1207,63 @@ service /fileService on new http:Listener(8080) {
 }
 ```
 
+### Configurable variables should not be printed to the console
+
+| Property              | Description                                                                                                                 |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/io:2                                                                                                              |
+| **Rule Kind**         | Vulnerability                                                                                                               |
+| **Severity**          | High                                                                                                                        |
+| **CWE**               | [CWE-532](https://cwe.mitre.org/data/definitions/532.html), [CWE-200](https://cwe.mitre.org/data/definitions/200.html)      |
+| **OWASP Top 10:2025** | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/) |
+
+Configurable variables carry the values supplied at deployment, which is where credentials, tokens, and connection
+secrets live. Standard output is collected by the container runtime and forwarded to whatever log aggregator the
+platform uses, so printing one moves the value out of the deployment configuration and into a durable store that a far
+wider set of people can read.
+
+The rule does not attempt to decide which configurables hold secrets. Every deployment-supplied value is treated as
+sensitive, which is the same position `ballerina/log:1` takes for log statements.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/io;
+
+configurable string dbPassword = ?;
+
+public function connect() {
+    io:println(dbPassword);
+    io:println(string `Connecting with ${dbPassword}`);
+}
+```
+
+#### Compliant Code Example
+
+Print a value that identifies the configuration rather than the configuration itself, or omit the statement.
+
+```ballerina
+import ballerina/io;
+
+configurable string dbPassword = ?;
+
+public function connect() {
+    io:println("Connecting to the configured database");
+}
+```
+
+Every configurable is treated as sensitive, including one that holds no secret, so a compliant message names none of
+them.
+
 ### Potentially-sensitive configurable variables are logged
 
-| Property      | Description     |
-|---------------|-----------------|
-| **Rule ID**   | ballerina/log:1 |
-| **Rule Kind** | Vulnerability   |
+| Property              | Description                                                                                                                 |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/log:1                                                                                                             |
+| **Rule Kind**         | Vulnerability                                                                                                               |
+| **Severity**          | Medium                                                                                                                      |
+| **CWE**               | [CWE-532](https://cwe.mitre.org/data/definitions/532.html)                                                                  |
+| **OWASP Top 10:2025** | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/) |
 
 In Ballerina, configurable variables typically contain sensitive data that should not be exposed externally and are
 usually kept secret. This includes credentials to access external systems, such as databases. To protect users' privacy,
@@ -1002,12 +1302,62 @@ public function main() {
 }
 ```
 
+### Avoid writing log files to world-writable directories
+
+| Property              | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/log:2                                                                           |
+| **Rule Kind**         | Vulnerability                                                                             |
+| **Severity**          | Medium                                                                                    |
+| **CWE**               | [CWE-379](https://cwe.mitre.org/data/definitions/379.html)                                |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
+
+Logs routinely capture request details, identifiers, and error context, so the log file itself is a sensitive artefact.
+A world-writable directory such as `/tmp` lets any local account create the file before the service does. The service
+then appends to a file it does not own, and the permissions on that file were chosen by whoever created it, so the log
+can be readable to others or replaced with a file of their choosing.
+
+The rule reads both ways of naming a log file: the deprecated `setOutputFile`, and the `path` of a file destination on a
+logger configuration. A path is reported only when it is anchored at a world-writable directory, including one reached
+through `os:getEnv("TMPDIR")` and its variants.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/log;
+
+public function configureLogging() returns error? {
+    check log:setOutputFile("/tmp/application.log");
+
+    log:Logger _ = check log:fromConfig({
+        destinations: [{'type: log:FILE, path: "/var/tmp/service.log"}]
+    });
+}
+```
+
+#### Compliant Code Example
+
+Write logs under a directory the service owns, with permissions that exclude other accounts.
+
+```ballerina
+import ballerina/log;
+
+public function configureLogging() returns error? {
+    log:Logger _ = check log:fromConfig({
+        destinations: [{'type: log:FILE, path: "./logs/service.log"}]
+    });
+}
+```
+
 ### Avoid constructing system command arguments from user input without proper sanitization
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/os:1 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                                                        |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:1                                                                                                     |
+| **Rule Kind**         | Vulnerability                                                                                                      |
+| **Severity**          | Blocker                                                                                                            |
+| **CWE**               | [CWE-78](https://cwe.mitre.org/data/definitions/78.html), [CWE-88](https://cwe.mitre.org/data/definitions/88.html) |
+| **OWASP Top 10:2025** | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/)                                                  |
 
 Arguments of system commands are processed by the executed program. The arguments are usually used to configure and
 influence the behavior of the programs. Control over a single argument might be enough for an attacker to trigger
@@ -1018,6 +1368,8 @@ Arguments like -delete or -exec for the find command can alter the expected beha
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/os;
+
 string terminalPath = ...;
 string input = request.getQueryParamValue("input").toString();
 string[] cmd = [..., input];
@@ -1034,6 +1386,8 @@ os:Process result = check os:exec({
 Use an allow-list to restrict the arguments to trusted values.
 
 ```ballerina
+import ballerina/os;
+
 string terminalPath = ...;
 string input = request.getQueryParamValue("input").toString();
 string[] cmd = [..., input];
@@ -1049,60 +1403,131 @@ if allowed.some(keyword => keyword.equalsIgnoreCaseAscii(input)) {
 
 ### Avoid constructing environment variables from user input without proper sanitization
 
-| Property      | Description    |
-|---------------|----------------|
-| **Rule ID**   | ballerina/os:2 |
-| **Rule Kind** | Vulnerability  |
+| Property              | Description                                                                                                                                                                      |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:2                                                                                                                                                                   |
+| **Rule Kind**         | Vulnerability                                                                                                                                                                    |
+| **Severity**          | Medium                                                                                                                                                                           |
+| **CWE**               | [CWE-454](https://cwe.mitre.org/data/definitions/454.html), [CWE-15](https://cwe.mitre.org/data/definitions/15.html)                                                             |
+| **OWASP Top 10:2025** | [A02 Security Misconfiguration](https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/), [A06 Insecure Design](https://owasp.org/Top10/2025/A06_2025-Insecure_Design/) |
 
-Environment variables are often used to store sensitive configuration data, credentials, and application settings. When
-applications allow untrusted input to define or modify environment variables without proper validation, they can
-introduce significant security risks.
-
-Using untrusted input to set environment variables can lead to various security concerns because environment variables
-are often globally accessible within a process and can affect child processes.
+Environment variables are inherited by every child process. Setting one from a value that arrives from outside the
+program therefore reaches well beyond the code that set it, and several variables change how a program resolves
+libraries or executables rather than merely what data it works on. A caller who controls an environment variable can
+influence programs the service starts later, including which executable or library they load.
 
 #### Noncompliant Code Example
 
 ```ballerina
-service / on new http:Listener(8080) {
-    resource function get configPath(http:Request req) {
-        string configPath = req.getQueryParamValue("path") ?: "";
-        
-        os:Error? err = os:setEnv("CONFIG_PATH", configPath);
-    }
+import ballerina/os;
+
+public function configure(string userInput) returns os:Error? {
+    check os:setEnv("APP_MODE", userInput);
 }
 ```
 
 #### Compliant Code Example
 
-Implement proper input validation by ensuring that only alphanumeric characters are allowed in the environment variable
-value.
+Set environment variables from values the program controls. Where a caller must influence one, validate the value
+against the set the program expects.
 
 ```ballerina
-service / on new http:Listener(8080) {
-    resource function get configPath(http:Request req) returns string|error {
-        string configPath = req.getQueryParamValue("path") ?: "";
-        
-        if regex:matches(configPath, "^[a-zA-Z0-9]*$") {
-            os:Error? err = os:setEnv("CONFIG_PATH", configPath);
-            
-            if err is os:Error {
-                return error("Failed to set environment variable");
-            }
-            return "Environment variable set successfully";
-        } else {
-            return error("Invalid input: Only alphanumeric characters are allowed");
-        }
+import ballerina/os;
+
+public function configure(string userInput) returns os:Error? {
+    if !["production", "staging"].some(mode => mode == userInput) {
+        return error("unknown mode");
     }
+    check os:setEnv("APP_MODE", userInput);
+}
+```
+
+### Avoid executing commands through a shell interpreter
+
+| Property              | Description                                                       |
+|-----------------------|-------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:3                                                    |
+| **Rule Kind**         | Vulnerability                                                     |
+| **Severity**          | High                                                              |
+| **CWE**               | [CWE-78](https://cwe.mitre.org/data/definitions/78.html)          |
+| **OWASP Top 10:2025** | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/) |
+
+`os:exec` takes the executable and its arguments separately, and that separation is what keeps an argument from being
+read as syntax. Invoking a shell with a command string throws it away: the argument becomes a script, and every
+metacharacter in it, such as `;`, `|`, or `$()`, is interpreted again. Any value reaching the command string can run
+arbitrary commands with the privileges of the service.
+
+The rule reports a shell only when it is handed a command string, through `-c`, `/c`, or the PowerShell equivalents. A
+shell invoked to run a script by path is not reported, but the script path and its contents still have to be as trusted
+as the program itself.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/os;
+
+public function countFiles() returns os:Process|error {
+    return check os:exec({value: "/bin/sh", arguments: ["-c", "ls /var/data | wc -l"]});
+}
+```
+
+#### Compliant Code Example
+
+Run the executable directly and pass its arguments as separate list elements.
+
+```ballerina
+import ballerina/os;
+
+public function countFiles() returns os:Process|error {
+    return check os:exec({value: "/bin/ls", arguments: ["/var/data"]});
+}
+```
+
+### Avoid executing commands resolved through the PATH environment variable
+
+| Property              | Description                                                       |
+|-----------------------|-------------------------------------------------------------------|
+| **Rule ID**           | ballerina/os:4                                                    |
+| **Rule Kind**         | Vulnerability                                                     |
+| **Severity**          | High                                                              |
+| **CWE**               | [CWE-426](https://cwe.mitre.org/data/definitions/426.html)        |
+| **OWASP Top 10:2025** | [A05 Injection](https://owasp.org/Top10/2025/A05_2025-Injection/) |
+
+A bare executable name is resolved through `PATH` at run time, so which program actually runs depends on the environment
+the service happens to start in. Anyone able to place a file earlier in `PATH`, or to set `PATH` itself, chooses the
+program that executes, with the service's own privileges. `os:setEnv` allows exactly that from within the same program.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/os;
+
+public function status() returns os:Process|error {
+    return check os:exec({value: "git", arguments: ["status"]});
+}
+```
+
+#### Compliant Code Example
+
+Name the executable by an absolute path, or by a path relative to a directory the service controls.
+
+```ballerina
+import ballerina/os;
+
+public function status() returns os:Process|error {
+    return check os:exec({value: "/usr/bin/git", arguments: ["status"]});
 }
 ```
 
 ### Avoid using weak cipher algorithms when signing and verifying JWTs
 
-| Property      | Description     |
-|---------------|-----------------|
-| **Rule ID**   | ballerina/jwt:1 |
-| **Rule Kind** | Vulnerability   |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:1                                                                                                        |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
 
 JSON Web Tokens (JWTs) are a compact, URL-safe means of representing claims between two parties. They're commonly used
 for authentication and authorization in web applications. The security of JWT-based authentication depends critically on
@@ -1114,6 +1539,8 @@ users, modify token claims, bypass authentication entirely, and gain unauthorize
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/jwt;
+
 jwt:IssuerConfig issuerConfig = {
     issuer: "ballerina",
     expTime: 3600,
@@ -1130,6 +1557,8 @@ string token = check jwt:issue(issuerConfig);
 Use a strong signing algorithm like RS256, which uses RSA encryption with an SHA-256 hash function.
 
 ```ballerina
+import ballerina/jwt;
+
 jwt:IssuerConfig issuerConfig = {
     issuer: "ballerina",
     expTime: 3600,
@@ -1144,12 +1573,283 @@ jwt:IssuerConfig issuerConfig = {
 string token = check jwt:issue(issuerConfig);
 ```
 
+### Avoid validating JSON Web Tokens without a signature configuration
+
+| Property              | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:2                                                                               |
+| **Rule Kind**         | Vulnerability                                                                                 |
+| **Severity**          | High                                                                                          |
+| **CWE**               | [CWE-347](https://cwe.mitre.org/data/definitions/347.html)                                    |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+`signatureConfig` is optional, and leaving it out removes the signature check rather than defaulting to one.
+`jwt:validate` still parses the token and returns its claims, so the calling code reads them as though they had been
+verified. A token anyone assembled and self-signed is then accepted on the same terms as one the identity provider
+issued.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina"
+});
+```
+
+#### Compliant Code Example
+
+Configure the signature check with the trusted certificate, a JWKS endpoint, or a trust store.
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+### Avoid validating JSON Web Tokens without checking the issuer and the audience
+
+| Property              | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:3                                                                               |
+| **Rule Kind**         | Vulnerability                                                                                 |
+| **Severity**          | Medium                                                                                        |
+| **CWE**               | [CWE-287](https://cwe.mitre.org/data/definitions/287.html)                                    |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+A signature proves only that the token was minted by a key the service trusts. Without `issuer` and `audience`, a token
+that the same key issued for a different service, or for a different tenant, satisfies the validator as well. A token
+obtained legitimately for a low-value service can then be replayed against a high-value one.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+#### Compliant Code Example
+
+Pin both the expected issuer and the audience the service is registered as.
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+### Avoid issuing JSON Web Tokens with a long expiry time
+
+| Property              | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:4                                                                               |
+| **Rule Kind**         | Vulnerability                                                                                 |
+| **Severity**          | Medium                                                                                        |
+| **CWE**               | [CWE-613](https://cwe.mitre.org/data/definitions/613.html)                                    |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+A JWT is accepted on its own contents; there is no revocation step in the validation path. Where no revocation list or
+signing-key rotation is in place, the expiry is the only thing that ends a stolen token's usefulness. `expTime` defaults
+to 300 seconds, and the rule reports a lifetime beyond one day.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+string token = check jwt:issue({
+    issuer: "wso2",
+    audience: "ballerina",
+    expTime: 604800,
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {keyFile: "/path/to/private.key"}
+    }
+});
+```
+
+#### Compliant Code Example
+
+Issue short-lived tokens and let clients obtain a new one when it expires.
+
+```ballerina
+import ballerina/jwt;
+
+string token = check jwt:issue({
+    issuer: "wso2",
+    audience: "ballerina",
+    expTime: 300,
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {keyFile: "/path/to/private.key"}
+    }
+});
+```
+
+### Avoid validating JSON Web Tokens with a large clock skew
+
+| Property              | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:5                                                                               |
+| **Rule Kind**         | Vulnerability                                                                                 |
+| **Severity**          | Medium                                                                                        |
+| **CWE**               | [CWE-613](https://cwe.mitre.org/data/definitions/613.html)                                    |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+`clockSkew` is allowed on both ends of every expiry check, so it silently lengthens the validity window of every token,
+including ones that have already expired. It defaults to zero, and a few minutes covers any realistic clock drift
+between hosts. The rule reports a skew beyond five minutes.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    clockSkew: 3600,
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
+#### Compliant Code Example
+
+Keep the skew to what clock drift actually requires, and synchronise clocks rather than widening the window.
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    clockSkew: 60,
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
+### Avoid disabling TLS validation on the JWKS endpoint client
+
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:6                                                                                                        |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-295](https://cwe.mitre.org/data/definitions/295.html), [CWE-296](https://cwe.mitre.org/data/definitions/296.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
+
+A JWKS configuration carries its own client for reaching the keys endpoint, separate from any other client the service
+uses. Setting `disable` to `true` on its secure socket means keys are accepted from any host able to answer for the JWKS
+URL. An attacker who can answer for that URL supplies their own signing key, and every signature check downstream then
+passes against it.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        jwksConfig: {
+            url: "https://idp.example.com/jwks",
+            clientConfig: {
+                secureSocket: {disable: true}
+            }
+        }
+    }
+});
+```
+
+#### Compliant Code Example
+
+Leave TLS validation enabled and supply the certificate the keys endpoint presents.
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        jwksConfig: {
+            url: "https://idp.example.com/jwks",
+            clientConfig: {
+                secureSocket: {cert: "/path/to/public.crt"}
+            }
+        }
+    }
+});
+```
+
+### Avoid decoding JSON Web Tokens without verifying them
+
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/jwt:7                                                                                                        |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | Low                                                                                                                    |
+| **CWE**               | [CWE-347](https://cwe.mitre.org/data/definitions/347.html), [CWE-345](https://cwe.mitre.org/data/definitions/345.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                          |
+
+`jwt:decode` splits a token and returns its header and payload. It checks no signature, no issuer, no audience, and no
+expiry. The claims it returns are whatever the sender wrote, so a decision made from them is a decision made on
+attacker-supplied data. `jwt:validate` is the function that establishes trust.
+
+Reading the header before validating, to select a key by `kid`, is a legitimate use. The rule reports the call for
+review rather than asserting a defect, so a deliberate decode is expected to be reviewed and suppressed.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/jwt;
+
+[jwt:Header, jwt:Payload] [_, payload] = check jwt:decode(token);
+```
+
+#### Compliant Code Example
+
+Validate the token and read the claims from the validated payload.
+
+```ballerina
+import ballerina/jwt;
+
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
 ### Avoid unverified server hostnames during SSL/TLS connections
 
-| Property      | Description       |
-|---------------|-------------------|
-| **Rule ID**   | ballerina/email:1 |
-| **Rule Kind** | Vulnerability     |
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/email:1                                                                                                      |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | High                                                                                                                   |
+| **CWE**               | [CWE-297](https://cwe.mitre.org/data/definitions/297.html), [CWE-295](https://cwe.mitre.org/data/definitions/295.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                          |
 
 Using outdated or weak SSL/TLS protocols puts application communications at serious risk. These obsolete protocols
 contain known vulnerabilities that attackers can exploit to intercept, decrypt, or manipulate data transmitted between
@@ -1158,6 +1858,7 @@ clients and servers.
 #### Noncompliant Code Example
 
 ```ballerina
+import ballerina/email;
 
 public function main() returns error? {
     email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {
@@ -1180,6 +1881,7 @@ public function main() returns error? {
 Enable hostname verification to ensure the server's certificate matches the hostname.
 
 ```ballerina
+import ballerina/email;
 
 public function main() returns error? {
     email:PopClient _ = check new ("smtp.email.com", "sender@email.com", "pass123", clientConfig = {
@@ -1188,11 +1890,139 @@ public function main() returns error? {
             cert: "path/to/certfile.crt",
             protocol: {
                 name: email:TLS,
-                versions: ["TLSv1.2", "TLSv1.1"]
+                versions: ["TLSv1.2"]
             },
             ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"],
             verifyHostName: true
         }
     });
 }
+```
+
+### Avoid connecting to mail servers without TLS
+
+| Property              | Description                                                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/email:2                                                                           |
+| **Rule Kind**         | Vulnerability                                                                               |
+| **Severity**          | High                                                                                        |
+| **CWE**               | [CWE-319](https://cwe.mitre.org/data/definitions/319.html)                                  |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
+
+The `security` field decides whether the connection is protected at all. `START_TLS_NEVER` disables the upgrade
+entirely, so the session, including the mailbox credentials sent during authentication, crosses the network in the
+clear. Anyone on the network path can read the credentials and every message the client sends or retrieves, and can
+modify them in transit.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/email;
+
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    port: 25,
+    security: email:START_TLS_NEVER
+});
+```
+
+#### Compliant Code Example
+
+Use `SSL` for an implicitly encrypted connection, or `START_TLS_ALWAYS` where the protocol requires the upgrade form.
+
+```ballerina
+import ballerina/email;
+
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    port: 587,
+    security: email:START_TLS_ALWAYS
+});
+```
+
+### Avoid falling back to cleartext when TLS is unavailable
+
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/email:3                                                                                                      |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | Medium                                                                                                                 |
+| **CWE**               | [CWE-757](https://cwe.mitre.org/data/definitions/757.html), [CWE-319](https://cwe.mitre.org/data/definitions/319.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
+
+`START_TLS_AUTO` upgrades the connection when the server advertises STARTTLS and continues in plaintext when it does
+not. Whether the credentials are encrypted is therefore decided by the server's greeting, which an attacker positioned
+on the network path can rewrite. Stripping the advertisement is enough to have the client send everything in the clear,
+and nothing in the client indicates that anything went wrong.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/email;
+
+email:ImapClient imapClient = check new ("imap.example.com", "reader@example.com", "password", clientConfig = {
+    port: 143,
+    security: email:START_TLS_AUTO
+});
+```
+
+#### Compliant Code Example
+
+Use `START_TLS_ALWAYS`, which fails the connection instead of downgrading it, or `SSL` for an implicitly encrypted
+connection.
+
+```ballerina
+import ballerina/email;
+
+email:ImapClient imapClient = check new ("imap.example.com", "reader@example.com", "password", clientConfig = {
+    port: 143,
+    security: email:START_TLS_ALWAYS
+});
+```
+
+### Avoid using weak TLS protocol versions
+
+| Property              | Description                                                                                                            |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Rule ID**           | ballerina/email:4                                                                                                      |
+| **Rule Kind**         | Vulnerability                                                                                                          |
+| **Severity**          | Medium                                                                                                                 |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-326](https://cwe.mitre.org/data/definitions/326.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                            |
+
+TLS 1.0 and TLS 1.1 depend on MD5 and SHA-1 in the handshake and support no AEAD cipher suites, and RFC 8996 deprecates
+both for those reasons. The SSL family is broken outright. Naming any of them in `protocol.versions` pins the connection
+to a version a current server should refuse, and lets an attacker able to influence the negotiation attack the
+encryption itself.
+
+#### Noncompliant Code Example
+
+```ballerina
+import ballerina/email;
+
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt",
+        protocol: {
+            name: email:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        }
+    }
+});
+```
+
+#### Compliant Code Example
+
+Name only TLS 1.2 and TLS 1.3, or leave `protocol` unset and take the runtime's defaults.
+
+```ballerina
+import ballerina/email;
+
+email:SmtpClient smtpClient = check new ("smtp.example.com", "sender@example.com", "password", clientConfig = {
+    secureSocket: {
+        cert: "/path/to/public.crt",
+        protocol: {
+            name: email:TLS,
+            versions: ["TLSv1.2", "TLSv1.3"]
+        }
+    }
+});
 ```

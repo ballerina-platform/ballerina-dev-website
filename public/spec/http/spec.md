@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2024/06/13   
+_Updated_: 2026/09/25   
 _Edition_: Swan Lake
 
 
@@ -25,6 +25,7 @@ The conforming implementation of the specification is released and included in t
         * 2.1.2. [Programmatically starting the service](#212-programmatically-starting-the-service)
         * 2.1.3. [Default listener](#213-default-listener)
         * 2.1.4. [HTTP/2 stream concurrency](#214-http2-stream-concurrency)
+        * 2.1.5. [Request limits](#215-request-limits)
     * 2.2. [Service](#22-service)
         * 2.2.1. [Service type](#221-service-type)
         * 2.2.2. [Service-base-path](#222-service-base-path)
@@ -63,6 +64,8 @@ The conforming implementation of the specification is released and included in t
             * 2.4.1.8. [Failover](#2418-failover)
             * 2.4.1.9. [Status code binding client](#2419-status-code-binding-client)
             * 2.4.1.10. [Relaxed data binding client](#24110-relaxed-data-binding-client)
+            * 2.4.1.11. [Proxy](#24111-proxy)
+            * 2.4.1.12. [Response limits](#24112-response-limits)
         * 2.4.2. [Client actions](#242-client-action)
             * 2.4.2.1. [Entity body methods](#2421-entity-body-methods)
             * 2.4.2.2. [Non entity body methods](#2422-non-entity-body-methods)
@@ -89,6 +92,7 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Query](#52-query)
     * 5.3. [Matrix](#53-matrix)
 6. [Request and Response](#6-request-and-response)
+    * 6.1. [Message body streaming and back-pressure](#61-message-body-streaming-and-back-pressure)
 7. [Header and Payload](#7-header-and-payload)
     * 7.1. [Parse header functions](#71-parse-header-functions)
     * 7.2. [Links support](#72-links-support)
@@ -270,6 +274,37 @@ listener http:Listener h2Listener = new (9090, {
 ```
 
 A client that reaches this limit on a connection opens an additional connection rather than stalling.
+
+#### 2.1.5. Request limits
+
+The `requestLimits` field of the `ListenerConfiguration` bounds the size of inbound requests.
+
+```ballerina
+public type RequestLimitConfigs record {|
+    int maxUriLength = 4096;
+    int maxHeaderSize = 8192;
+    int maxEntityBodySize = -1;
+|};
+```
+
+- `maxUriLength` - A request line longer than this gets a `414 - URI Too Long` response.
+- `maxHeaderSize` - Request headers larger than this get a `431 - Request Header Fields Too Large` response.
+- `maxEntityBodySize` - The maximum size, in bytes, of the body of each request. The default `-1` means no limit.
+
+`maxEntityBodySize` applies to each request on its own, so the requests sent on a keep-alive connection do not share one budget. It applies to HTTP/1.x requests; HTTP/2 streams are not checked against it.
+
+When the limit is set, a request is not dispatched to the service until its whole body has arrived. A request whose body goes over the limit therefore never reaches the service:
+
+- A request whose `Content-Length` header is over the limit gets a `413 - Payload Too Large` response without its body being read.
+- A request whose body goes over the limit as it arrives, such as a chunked request, gets a `413 - Payload Too Large` response.
+
+In both cases the connection is closed after the response. If an earlier request on the connection has not been answered yet, the connection is closed without the `413 - Payload Too Large` response, which the client would otherwise take as the response to that earlier request. The idle `timeout` of the listener keeps applying while the body arrives, and each part of the body that is read counts as activity. A request that stays idle before its body is complete is answered with a `408 - Request Timeout` response, as it is without the limit.
+
+A request with an `Expect: 100-continue` header and no `Content-Length` over the limit is dispatched as soon as its headers arrive, since the client sends the body only after the service answers. Its body is counted as the service reads it, and the connection is closed once the body goes over the limit. The `413 - Payload Too Large` response is sent only if the service has not already responded to the request.
+
+```ballerina
+listener http:Listener limitedListener = new (9090, requestLimits = {maxEntityBodySize: 1048576});
+```
 
 ### 2.2. Service
 Service is a collection of resources functions, which are the network entry points of a ballerina program. 
@@ -1265,6 +1300,7 @@ public type ClientConfiguration record {|
 public type ClientHttp1Settings record {|
     KeepAlive keepAlive = KEEPALIVE_AUTO;
     Chunking chunking = CHUNKING_AUTO;
+    @deprecated
     ProxyConfig? proxy = ();
 |};
 
@@ -1441,6 +1477,76 @@ runtime failures.
 
 ```ballerina
 final http:Client relaxedClientEP = check new ("http://localhost:9090", laxDataBinding = true);
+```
+
+##### 2.4.1.11 Proxy
+
+The client can route its outbound requests through a proxy server configured via the top-level `proxy` field
+(`ProxyConfig`). The `protocol` field selects the proxy protocol:
+
+```ballerina
+public enum ProxyProtocol {
+    HTTP,
+    SOCKS4,
+    SOCKS5
+}
+
+public type ProxyConfig record {|
+    string host = "";
+    int port = 0;
+    string userName = "";
+    string password = "";
+    ProxyProtocol protocol?;
+|};
+```
+
+The `protocol` field is optional rather than defaultable. When it is not specified, `HTTP` is used. Keeping it optional means a mapping value that does not carry `protocol` stays assignable to `ProxyConfig`, which preserves the record's subtyping relationship with the pre-SOCKS shape used by generated connectors.
+
+- `http:HTTP` (default) — a standard HTTP proxy. Existing behaviour is unchanged.
+- `http:SOCKS4` — a SOCKS version 4 proxy. SOCKS4 does not support password authentication; the optional `userName`
+  is sent as the SOCKS4 user id, and any configured `password` is ignored with a warning. DNS resolution of the
+  target host is performed on the client side.
+- `http:SOCKS5` — a SOCKS version 5 proxy. Supports `userName`/`password` authentication, and DNS resolution of the
+  target host is performed remotely on the proxy side.
+
+SOCKS proxies are supported for both plaintext (`http://`) and TLS (`https://`) targets over HTTP/1.1 and HTTP/2.
+
+The `proxy` field of `ClientHttp1Settings` is deprecated and is annotated with `@deprecated`, so referencing it produces a compile time warning. It is honoured only when `httpVersion` is `http:HTTP_1_1`, and only when the top-level `proxy` field is not set; the top-level field always takes precedence.
+
+```ballerina
+http:Client clientEP = check new ("https://api.example.com",
+    proxy = {
+        host: "localhost",
+        port: 1080,
+        protocol: http:SOCKS5
+    }
+);
+```
+
+##### 2.4.1.12 Response limits
+
+The `responseLimits` field of the `ClientConfiguration` bounds the size of inbound responses.
+
+```ballerina
+public type ResponseLimitConfigs record {|
+    int maxStatusLineLength = 4096;
+    int maxHeaderSize = 8192;
+    int maxEntityBodySize = -1;
+|};
+```
+
+- `maxStatusLineLength` - A status line longer than this fails the request with an `http:ClientError`.
+- `maxHeaderSize` - Response headers larger than this fail the request with an `http:ClientError`.
+- `maxEntityBodySize` - The maximum size, in bytes, of the body of each response. The default `-1` means no limit.
+
+`maxEntityBodySize` applies to each response on its own, so the responses received on a reused connection do not share one budget. It applies to HTTP/1.x responses; HTTP/2 streams are not checked against it.
+
+When the limit is set, a response is not returned to the caller until its whole body has arrived. A response whose `Content-Length` header is over the limit, or whose body goes over the limit as it arrives, fails the request with an `http:ClientError`, and the connection is closed. A response that cannot carry a body is not checked against its `Content-Length` header: a response to a `HEAD` request and a `1xx`, `204` or `304` response.
+
+The idle `timeout` of the client keeps applying while the body arrives, and each part of the body that is read counts as activity. A response that stays idle before its body is complete fails the request with an `http:IdleTimeoutError`.
+
+```ballerina
+http:Client limitedClient = check new ("http://api.example.com", responseLimits = {maxEntityBodySize: 1048576});
 ```
 
 ##### 2.4.2. Client action
@@ -1620,6 +1726,48 @@ json payload = {
 string response = check httpClient->/addPerson.post(payload, profession = "chemist", id = 123);
 // Same as the following :
 // string response = check httpClient->post("/addPerson?profession=chemist&id=123", payload);
+```
+
+The `http:QueryParams` type represents a collection of query parameters and is defined as follows.
+
+```ballerina
+// Defines the possible simple query parameter types.
+public type SimpleQueryParamType boolean|int|float|decimal|string;
+
+// Defines the possible query parameter types.
+public type QueryParamType SimpleQueryParamType[]|SimpleQueryParamType;
+
+// Defines the record type for query parameters.
+public type QueryParams record {|
+    never headers?;
+    never targetType?;
+    never message?;
+    never mediaType?;
+    QueryParamType...;
+|};
+```
+
+Multiple query parameters can be passed together using an `http:QueryParams` value, which can then be passed to the resource method using the `params` parameter.
+
+```ballerina
+// Making a GET request
+http:QueryParams queries = {
+   id: 123,
+   profession: "chemist"
+};
+string resp = check httpClient->/date(params = queries);
+// Same as the following :
+// string response = check httpClient->get("/date?id=123&profession=chemist");
+```
+
+Query parameters can also be passed inline if the value is structurally compatible with `http:QueryParams`.
+
+```ballerina
+// Passing multiple query parameters as an inline value.
+string resp = check httpClient->/date(params = {
+    id: 123,
+    profession: "chemist"
+});
 ```
 
 * Header parameter
@@ -2082,6 +2230,21 @@ public class Response {
 ```
 
 The header and the payload manipulation can be done using the functions associated to the response.
+
+### 6.1. Message body streaming and back-pressure
+
+Message bodies are moved on demand rather than buffered in full. An inbound body is read from the connection as the application consumes what has already been delivered, and an outbound body is written as the remote endpoint accepts it. An application that consumes or produces a body slowly therefore holds the transfer still, and no data moves on the connection while that lasts.
+
+The `timeout` of a client or a listener measures the responsiveness of the remote endpoint. Inactivity that is caused by the pace of the application itself is not a sign of an unresponsive remote endpoint, and does not make the connection eligible for the timeout. A large body is transferred in full however slowly it is consumed, while a remote endpoint that genuinely stops responding is still timed out after the configured period. For HTTP/2, this exclusion applies to both directions of a stream: consuming a response slowly and writing a request slowly are both distinguished from an unresponsive peer. For HTTP/1.1, only the inbound direction currently participates in it - an application that reads a request or response body slowly is protected the same way, but a peer that reads a response or request body slowly from an HTTP/1.1 connection is not yet distinguished from one that has genuinely stopped responding.
+
+That allowance is bounded, so that a connection can still be reclaimed from an application that has stopped consuming altogether, or from a remote endpoint that has stopped reading. A transfer that makes no progress at all is treated as stalled once the connection's own `timeout` has already elapsed once for it, and continues to be excused for up to `maxBackPressureStallTime` further seconds before the timeout applies as usual. Any progress, however small, restarts that span. A transfer that never makes progress again is therefore reclaimed after `timeout + maxBackPressureStallTime`, not `maxBackPressureStallTime` alone. The default is 300 seconds:
+
+```toml
+[ballerina.http]
+maxBackPressureStallTime = 600
+```
+
+A negative value allows back-pressure to hold a transfer still indefinitely. Zero removes the allowance entirely, so that any inactivity is treated as an idle connection.
 
 ## 7. Header and Payload
 The header and payload are the main components of the request and response. In the world of MIME, that is called 

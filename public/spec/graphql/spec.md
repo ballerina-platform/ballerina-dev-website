@@ -2187,6 +2187,8 @@ service on new graphql:Listener(9090) {
 
 The `cacheConfig` field is used to provide the [field-level cache](#10712-field-level-caching) configs. The fields are as same as the operation cache configs.
 
+> **Note:** Cached fields must not return caller-dependent data. See [Server-side Caching](#1071-server-side-caching).
+
 ###### Example: Field-level Cache Configs
 
 ```ballerina
@@ -3107,7 +3109,7 @@ dataloader:DataLoader authorLoader = context.getDataLoader("authorLoader");
 
 The `invalidate()` method can be used to invalidate cache entries from the cache that are related to a particular field. It requires one parameter:
 
-* `path` - The path of the field that needs to be invalidated from the cache. The path should be specified as path segments combined with periods.
+* `path` - The path of the field that needs to be invalidated from the cache. The path should be specified as field names (not aliases) combined with periods.
 
 If the provided path does not match any existing cache entries, an error will be returned.
 
@@ -4088,7 +4090,9 @@ This section describes the caching mechanisms in the Ballerina GraphQL module.
 
 #### 10.7.1 Server-side Caching
 
-The Ballerina GraphQL module offers built-in server-side caching for GraphQL `query` operations. The caching operates as in-memory caching, implemented using the Ballerina cache module. The GraphQL module generates cache keys based on the arguments and the path. In server-side caching, the `errors` and `null` values are skipped when caching. There are two different ways called `operation-level caching` and `field-level caching` to enable server-side caching.
+The Ballerina GraphQL module offers built-in server-side caching for GraphQL `query` operations. The caching operates as in-memory caching, implemented using the Ballerina cache module. The GraphQL module generates cache keys based on the arguments and the field path. The field path is built from the field names in the schema, so aliases used in a document do not affect the cache keys. In server-side caching, the `errors` and `null` values are skipped when caching. There are two different ways called `operation-level caching` and `field-level caching` to enable server-side caching.
+
+> **Note:** The cache is shared by all the clients of a service, and a cached value is returned without executing the resolver again. Therefore, cached fields must not return caller-dependent data (for example, data derived from the request headers or the `graphql:Context`), and must not rely on authorization checks inside the resolver. Use [interceptors](#103-interceptors) to guard the fields instead, as they are executed on every request.
 
 ##### 10.7.1.1 Operation-level Caching
 

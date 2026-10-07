@@ -3,7 +3,7 @@
 _Authors_: @ldclakmal @shafreenAnfar @ayeshLK  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2021/10/01  
-_Updated_: 2024/06/15  
+_Updated_: 2026/09/03  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -42,6 +42,14 @@ The conforming implementation of the specification is released and included in t
         * 5.2.2. [Imperative Approach (HTTP Client)](#522-imperative-approach-http-client)
             * 5.2.2.1. [Bearer Token](#5221-bearer-token)
             * 5.2.2.2. [Self-Signed JWT](#5222-self-signed-jwt)
+6. [Static Code Rules](#6-static-code-rules)
+    * 6.1. [Avoid using weak cipher algorithms when signing and verifying JWTs](#61-avoid-using-weak-cipher-algorithms-when-signing-and-verifying-jwts)
+    * 6.2. [Avoid validating JSON Web Tokens without a signature configuration](#62-avoid-validating-json-web-tokens-without-a-signature-configuration)
+    * 6.3. [Avoid validating JSON Web Tokens without checking the issuer and the audience](#63-avoid-validating-json-web-tokens-without-checking-the-issuer-and-the-audience)
+    * 6.4. [Avoid issuing JSON Web Tokens with a long expiry time](#64-avoid-issuing-json-web-tokens-with-a-long-expiry-time)
+    * 6.5. [Avoid validating JSON Web Tokens with a large clock skew](#65-avoid-validating-json-web-tokens-with-a-large-clock-skew)
+    * 6.6. [Avoid disabling TLS validation on the JWKS endpoint client](#66-avoid-disabling-tls-validation-on-the-jwks-endpoint-client)
+    * 6.7. [Avoid decoding JSON Web Tokens without verifying them](#67-avoid-decoding-json-web-tokens-without-verifying-them)
 
 ## 1. Overview
 This specification elaborates on JWT Auth authentication and authorization for all the Ballerina listeners and
@@ -476,3 +484,387 @@ public function main() returns error? {
     // evaluate response
 }
 ```
+
+## 6. Static Code Rules
+
+The following static code rules are applied to the JWT module.
+
+| Id              | Kind          | Description                                                                                                       |
+|-----------------|---------------|---------------------------------------------------------------------------------------------------------------------|
+| ballerina/jwt:1 | VULNERABILITY | [Avoid using weak cipher algorithms when signing and verifying JWTs](#61-avoid-using-weak-cipher-algorithms-when-signing-and-verifying-jwts) |
+| ballerina/jwt:2 | VULNERABILITY | [Avoid validating JSON Web Tokens without a signature configuration](#62-avoid-validating-json-web-tokens-without-a-signature-configuration) |
+| ballerina/jwt:3 | VULNERABILITY | [Avoid validating JSON Web Tokens without checking the issuer and the audience](#63-avoid-validating-json-web-tokens-without-checking-the-issuer-and-the-audience) |
+| ballerina/jwt:4 | VULNERABILITY | [Avoid issuing JSON Web Tokens with a long expiry time](#64-avoid-issuing-json-web-tokens-with-a-long-expiry-time) |
+| ballerina/jwt:5 | VULNERABILITY | [Avoid validating JSON Web Tokens with a large clock skew](#65-avoid-validating-json-web-tokens-with-a-large-clock-skew) |
+| ballerina/jwt:6 | VULNERABILITY | [Avoid disabling TLS validation on the JWKS endpoint client](#66-avoid-disabling-tls-validation-on-the-jwks-endpoint-client) |
+| ballerina/jwt:7 | VULNERABILITY | [Avoid decoding JSON Web Tokens without verifying them](#67-avoid-decoding-json-web-tokens-without-verifying-them) |
+
+The fields of `jwt:ValidatorConfig` that decide what is verified — `signatureConfig`, `issuer` and `audience` — are all optional, and each one left out removes that check rather than falling back to a safe value. That is what makes an incomplete configuration look like a working one: the code calls `jwt:validate` and reads the claims, while the token was never held to the property the caller assumes it was. The remaining fields configure behaviour rather than verification, and omitting them takes the documented defaults.
+
+### 6.1. Avoid using weak cipher algorithms when signing and verifying JWTs
+
+Signing with `NONE` produces a token that carries no signature at all.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:1 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-347](https://cwe.mitre.org/data/definitions/347.html) |
+| **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
+
+#### 6.1.1. Why this is an issue?
+
+The security of JWT-based authentication rests entirely on the signature. `jwt:NONE` selects the unsigned form, so the token is a plain assertion of whatever claims it contains, with nothing binding those claims to the issuer.
+
+#### 6.1.2. What is the potential impact?
+
+Anyone can assemble a token with any claims and it will be accepted as genuine, which removes authentication rather than weakening it.
+
+#### 6.1.3. How can I fix this?
+
+Sign with a strong algorithm such as `RS256` and supply the signing key.
+
+**Non-compliant code:**
+
+```ballerina
+string token = check jwt:issue({
+    issuer: "wso2",
+    signatureConfig: {
+        algorithm: jwt:NONE
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+string token = check jwt:issue({
+    issuer: "wso2",
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {
+            keyFile: "/path/to/private.key"
+        }
+    }
+});
+```
+
+#### 6.1.4. Additional Resources
+
+- [CWE-327: Use of a Broken or Risky Cryptographic Algorithm](https://cwe.mitre.org/data/definitions/327.html)
+- [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+- [OWASP Top 10:2025 A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)
+
+### 6.2. Avoid validating JSON Web Tokens without a signature configuration
+
+A validator with no `signatureConfig` never checks the signature.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:2 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-347](https://cwe.mitre.org/data/definitions/347.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.2.1. Why this is an issue?
+
+`signatureConfig` is optional, and leaving it out removes the signature check rather than defaulting to one. `jwt:validate` still parses the token and returns its claims, so the calling code reads them as though they had been verified.
+
+#### 6.2.2. What is the potential impact?
+
+A token anyone assembled and self-signed is accepted on the same terms as one the identity provider issued, so every authorization decision made from its claims is made on attacker-supplied data.
+
+#### 6.2.3. How can I fix this?
+
+Configure the signature check with the trusted certificate, a JWKS endpoint, or a trust store.
+
+**Non-compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina"
+});
+```
+
+**Compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+#### 6.2.4. Additional Resources
+
+- [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.3. Avoid validating JSON Web Tokens without checking the issuer and the audience
+
+A verified signature does not say the token was meant for this service.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:3 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-347](https://cwe.mitre.org/data/definitions/347.html), [CWE-863](https://cwe.mitre.org/data/definitions/863.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.3.1. Why this is an issue?
+
+A signature proves only that the token was minted by a key the service trusts. Without `issuer` and `audience`, a token that the same key issued for a different service, or for a different tenant, satisfies the validator here as well.
+
+#### 6.3.2. What is the potential impact?
+
+One service's token becomes a key to every service that trusts the same issuer, so a token obtained legitimately for a low-value service can be replayed against a high-value one.
+
+#### 6.3.3. How can I fix this?
+
+Pin both the expected issuer and the audience this service is registered as.
+
+**Non-compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        certFile: "/path/to/public.crt"
+    }
+});
+```
+
+#### 6.3.4. Additional Resources
+
+- [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+- [CWE-863: Incorrect Authorization](https://cwe.mitre.org/data/definitions/863.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.4. Avoid issuing JSON Web Tokens with a long expiry time
+
+A token cannot be withdrawn once issued, so its lifetime is the window an attacker keeps.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:4 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-613](https://cwe.mitre.org/data/definitions/613.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.4.1. Why this is an issue?
+
+A JWT is accepted on its own contents; there is no revocation step in the validation path. Where no revocation list or signing-key rotation is in place, the expiry is the only thing that ends a stolen token's usefulness. `expTime` defaults to 300 seconds, and the rule reports a lifetime beyond one day, which is well past anything a deployment chooses deliberately.
+
+#### 6.4.2. What is the potential impact?
+
+A token captured from a log, a proxy or a browser stays usable for its whole lifetime. Cutting that short means rotating the signing key, which invalidates every token issued under it, not just the stolen one.
+
+#### 6.4.3. How can I fix this?
+
+Issue short-lived tokens and let clients obtain a new one when it expires.
+
+**Non-compliant code:**
+
+```ballerina
+string token = check jwt:issue({
+    issuer: "wso2",
+    audience: "ballerina",
+    expTime: 604800,
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {keyFile: "/path/to/private.key"}
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+string token = check jwt:issue({
+    issuer: "wso2",
+    audience: "ballerina",
+    expTime: 300,
+    signatureConfig: {
+        algorithm: jwt:RS256,
+        config: {keyFile: "/path/to/private.key"}
+    }
+});
+```
+
+#### 6.4.4. Additional Resources
+
+- [CWE-613: Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.5. Avoid validating JSON Web Tokens with a large clock skew
+
+Skew extends the lifetime of every token the service accepts.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:5 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-613](https://cwe.mitre.org/data/definitions/613.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.5.1. Why this is an issue?
+
+`clockSkew` is allowed on both ends of every expiry check, so it silently lengthens the validity window of every token, including ones that have already expired. It defaults to zero, and a few minutes covers any realistic clock drift between hosts. The rule reports a skew beyond five minutes.
+
+#### 6.5.2. What is the potential impact?
+
+Expired tokens continue to be accepted for the length of the skew, which undoes whatever bound the token's expiry was chosen to provide.
+
+#### 6.5.3. How can I fix this?
+
+Keep the skew to what clock drift actually requires, and synchronise clocks rather than widening the window.
+
+**Non-compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    clockSkew: 3600,
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
+**Compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    clockSkew: 60,
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
+#### 6.5.4. Additional Resources
+
+- [CWE-613: Insufficient Session Expiration](https://cwe.mitre.org/data/definitions/613.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.6. Avoid disabling TLS validation on the JWKS endpoint client
+
+The signing keys are fetched over that client, so its trust decides every signature check.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:6 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-295](https://cwe.mitre.org/data/definitions/295.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.6.1. Why this is an issue?
+
+A JWKS configuration carries its own client for reaching the keys endpoint, separate from any other client the service uses. Setting `disable` to `true` on its secure socket means keys are accepted from any host able to answer for the JWKS URL.
+
+#### 6.6.2. What is the potential impact?
+
+An attacker who can answer for that URL supplies their own signing key, and every signature check downstream then passes against it. The validator keeps working and validates the wrong thing, which is harder to notice than a validator that fails.
+
+#### 6.6.3. How can I fix this?
+
+Leave TLS validation enabled and supply the certificate the keys endpoint presents.
+
+**Non-compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        jwksConfig: {
+            url: "https://idp.example.com/jwks",
+            clientConfig: {
+                secureSocket: {disable: true}
+            }
+        }
+    }
+});
+```
+
+**Compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {
+        jwksConfig: {
+            url: "https://idp.example.com/jwks",
+            clientConfig: {
+                secureSocket: {cert: "/path/to/public.crt"}
+            }
+        }
+    }
+});
+```
+
+#### 6.6.4. Additional Resources
+
+- [CWE-295: Improper Certificate Validation](https://cwe.mitre.org/data/definitions/295.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)
+
+### 6.7. Avoid decoding JSON Web Tokens without verifying them
+
+`jwt:decode` returns the claims without checking anything.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/jwt:7 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-347](https://cwe.mitre.org/data/definitions/347.html) |
+| **OWASP Top 10:2025** | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/) |
+
+#### 6.7.1. Why this is an issue?
+
+`jwt:decode` splits a token and returns its header and payload. It checks no signature, no issuer, no audience and no expiry. The claims it returns are whatever the sender wrote, so a decision made from them is a decision made on attacker-supplied data. `jwt:validate` is the function that establishes trust.
+
+Reading the header before validating, to select a key by `kid`, is a legitimate use. The rule reports the call for review rather than asserting a defect, so a deliberate decode is expected to be reviewed and suppressed.
+
+#### 6.7.2. What is the potential impact?
+
+Where the decoded claims reach an authorization decision, anyone can grant themselves whatever the claims express by writing them into an unsigned token.
+
+#### 6.7.3. How can I fix this?
+
+Validate the token and read the claims from the validated payload.
+
+**Non-compliant code:**
+
+```ballerina
+[jwt:Header, jwt:Payload] [_, payload] = check jwt:decode(token);
+```
+
+**Compliant code:**
+
+```ballerina
+jwt:Payload payload = check jwt:validate(token, {
+    issuer: "wso2",
+    audience: "ballerina",
+    signatureConfig: {certFile: "/path/to/public.crt"}
+});
+```
+
+#### 6.7.4. Additional Resources
+
+- [CWE-347: Improper Verification of Cryptographic Signature](https://cwe.mitre.org/data/definitions/347.html)
+- [OWASP Top 10:2025 A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)

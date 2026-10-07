@@ -3,7 +3,7 @@
 _Authors_: @daneshk @MadhukaHarith92 @TharmiganK  
 _Reviewers_: @daneshk @ThisaruGuruge  
 _Created_: 2021/11/15  
-_Updated_: 2026/02/17
+_Updated_: 2026/09/03
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -42,6 +42,9 @@ The conforming implementation of the specification is released and included in t
    * 6.1. [Sensitive data annotation](#61-sensitive-data-annotation)
    * 6.2. [Masked string function](#62-masked-string-function)
    * 6.3. [Type-based masking](#63-type-based-masking)
+7. [Static Code Rules](#7-static-code-rules)
+   * 7.1. [Potentially-sensitive configurable variables are logged](#71-potentially-sensitive-configurable-variables-are-logged)
+   * 7.2. [Avoid writing log files to world-writable directories](#72-avoid-writing-log-files-to-world-writable-directories)
 
 ## 1. Overview
 
@@ -722,3 +725,131 @@ public function main() returns error? {
    maskedUser = log:toMaskedString(user);
 }    
 ```
+
+## 7. Static Code Rules
+
+The following static code rules are applied to the Log module.
+
+| Id              | Kind          | Description                                                                                                 |
+|-----------------|---------------|---------------------------------------------------------------------------------------------------------------|
+| ballerina/log:1 | VULNERABILITY | [Potentially-sensitive configurable variables are logged](#71-potentially-sensitive-configurable-variables-are-logged) |
+| ballerina/log:2 | VULNERABILITY | [Avoid writing log files to world-writable directories](#72-avoid-writing-log-files-to-world-writable-directories) |
+
+### 7.1. Potentially-sensitive configurable variables are logged
+
+A configurable variable passed to a log statement is written into the log store.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/log:1 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-532](https://cwe.mitre.org/data/definitions/532.html) |
+| **OWASP Top 10:2025** | [A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/) |
+
+#### 7.1.1. Why this is an issue?
+
+Configurable variables carry the values supplied at deployment, which is where credentials, tokens and connection secrets live. A log statement moves the value out of the deployment configuration and into the log store, where it is retained and readable by a far wider set of people than can read the configuration itself.
+
+The rule does not attempt to decide which configurables hold secrets. Every deployment-supplied value is treated as sensitive.
+
+#### 7.1.2. What is the potential impact?
+
+A credential written to a log is readable by anyone with access to logs, is retained for as long as the retention policy allows, and is copied into any downstream index or backup. Rotating it is the only remedy once it has been written.
+
+#### 7.1.3. How can I fix this?
+
+Log a value that identifies the configuration rather than the configuration itself. Where a record must be logged whole, mark its sensitive fields with the `log:Sensitive` annotation so they are masked.
+
+**Non-compliant code:**
+
+```ballerina
+import ballerina/log;
+
+configurable string apiKey = ?;
+
+public function main() {
+    log:printInfo(apiKey);
+    log:printError(string `Failed with ${apiKey}`);
+    log:printWarn("Connection failed", apiKey = apiKey);
+}
+```
+
+**Compliant code:**
+
+```ballerina
+import ballerina/log;
+
+configurable string apiKey = ?;
+
+public function main() {
+    log:printInfo(maskString(apiKey));
+    log:printError(string `Failed with ${maskString(apiKey)}`);
+    log:printWarn("Connection failed", apiKey = maskString(apiKey));
+}
+
+function maskString(string value) returns string {
+    return value.length() == 0 ? "" : "****";
+}
+```
+
+#### 7.1.4. Additional Resources
+
+- [CWE-532: Insertion of Sensitive Information into Log File](https://cwe.mitre.org/data/definitions/532.html)
+- [OWASP Top 10:2025 A09 Security Logging and Alerting Failures](https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/)
+
+### 7.2. Avoid writing log files to world-writable directories
+
+A log file placed in a shared temporary directory can be read, and pre-created, by any local account.
+
+| Property              | Description |
+|-----------------------|-------------|
+| **Rule ID**           | ballerina/log:2 |
+| **Rule Kind**         | Vulnerability |
+| **CWE**               | [CWE-379](https://cwe.mitre.org/data/definitions/379.html), [CWE-532](https://cwe.mitre.org/data/definitions/532.html) |
+| **OWASP Top 10:2025** | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/) |
+
+#### 7.2.1. Why this is an issue?
+
+Logs routinely capture request details, identifiers and error context, so the log file itself is a sensitive artefact. A world-writable directory such as `/tmp` lets any local account create the file before the service does. The service then appends to a file it does not own, and the permissions on that file were chosen by whoever created it, so the log can be readable to others or replaced with a file of their choosing.
+
+What follows from that depends on the rest of the environment. A sticky bit prevents one account deleting another's file but not pre-creating its own, and the permissions the logger opens an existing file with decide the rest. The directory choice is the part the code controls, which is what this rule reports.
+
+The rule reads both ways of naming a log file: the deprecated `setOutputFile`, and the `path` of a file destination on a logger configuration. A path is reported only when it is anchored at a world-writable directory, including one reached through `os:getEnv("TMPDIR")` and its variants; a directory whose name merely begins like one, such as `/tmpfiles`, is a different directory and is not reported. POSIX paths and environment variable names are matched exactly, since both are case-sensitive there; only the Windows directories are matched case-insensitively.
+
+The module-level `destinations` configurable is normally set outside the source, which no source analyzer can see. A deployment that configures its log destination there should confirm the same property separately.
+
+#### 7.2.2. What is the potential impact?
+
+Where the file is pre-created by another account, everything the service logs can be readable to it, and the file can be replaced or truncated, which also removes the record an investigation would depend on.
+
+#### 7.2.3. How can I fix this?
+
+Write logs under a directory the service owns, with permissions that exclude other accounts.
+
+**Non-compliant code:**
+
+```ballerina
+public function configureLogging() returns error? {
+    check log:setOutputFile("/tmp/application.log");
+
+    log:Logger _ = check log:fromConfig({
+        destinations: [{'type: log:FILE, path: "/var/tmp/service.log"}]
+    });
+}
+```
+
+**Compliant code:**
+
+```ballerina
+public function configureLogging() returns error? {
+    log:Logger _ = check log:fromConfig({
+        destinations: [{'type: log:FILE, path: "./logs/service.log"}]
+    });
+}
+```
+
+#### 7.2.4. Additional Resources
+
+- [CWE-379: Creation of Temporary File in Directory with Insecure Permissions](https://cwe.mitre.org/data/definitions/379.html)
+- [CWE-532: Insertion of Sensitive Information into Log File](https://cwe.mitre.org/data/definitions/532.html)
+- [OWASP Top 10:2025 A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)

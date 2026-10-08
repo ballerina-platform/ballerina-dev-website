@@ -170,15 +170,17 @@ tracingProvider=<TRACING_PROVIDER>
 Configuration key | Description | Default value | Possible values 
 --- | --- | --- | --- 
 `ballerina.observe.metricsEnabled` | Whether metrics monitoring is enabled (true) or disabled (false) | false | `true` or `false`
-`ballerina.observe.metricsReporter` | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `prometheus`, `newrelic`, or if any custom implementation, the name of the reporter.
+`ballerina.observe.metricsReporter` | Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used. | `None` | `otel`, `prometheus`, `newrelic`, or if any custom implementation, the name of the reporter.
 `ballerina.observe.tracingEnabled` | Whether tracing is enabled (true) or disabled (false) | false | `true` or `false`
-`ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
+`ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `otel`, `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
 
 ## Observability tools and platforms supported by Ballerina
 
 This outlines how to enable and configure observability in Ballerina for various tools and platforms. It provides a step-by-step guide for setting up monitoring, tracing, and logging using widely used observability solutions.
 
 Observability tools and platforms help monitor and analyze application performance, identify issues, and ensure reliability. The following are the main observability tools and platforms supported by Ballerina:
+
+- **[OpenTelemetry](https://opentelemetry.io/):** A vendor-neutral standard for exporting traces and metrics over the OpenTelemetry Protocol (OTLP) to any compatible backend.
 
 - **[Prometheus](https://prometheus.io/):** A monitoring system and time-series database for metrics collection and alerting.
 
@@ -194,6 +196,7 @@ Observability tools and platforms help monitor and analyze application performan
 
 The following contains a guide to set up and observe Ballerina programs in each of the observability tools or platforms mentioned above.
 
+- [Observe Ballerina programs with OpenTelemetry](/learn/supported-observability-tools-and-platforms/opentelemetry)
 - [Observe Ballerina programs with Prometheus](/learn/supported-observability-tools-and-platforms/prometheus)
 - [Observe Ballerina programs with Jaeger](/learn/supported-observability-tools-and-platforms/jaeger)
 - [Observe Ballerina programs with Zipkin](/learn/supported-observability-tools-and-platforms/zipkin)

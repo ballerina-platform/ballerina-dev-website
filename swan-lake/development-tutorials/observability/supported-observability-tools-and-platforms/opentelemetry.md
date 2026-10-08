@@ -239,7 +239,13 @@ Point the extension at a backend directly, or keep it pointed at a Collector and
 
 ### Jaeger
 
-Jaeger accepts OTLP natively. Start it with OTLP enabled.
+Jaeger accepts OTLP natively. If the Collector from Step 1 is still running, stop it first to free ports `4317` and `4318`.
+
+```
+$ docker stop otel-collector
+```
+
+Then, start Jaeger with OTLP enabled.
 
 ```
 $ docker run -d --name jaeger \

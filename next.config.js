@@ -253,6 +253,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/observability/overview-of-ballerina-observability`,
       },
       {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/opentelemetry`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opentelemetry`,
+      },
+      {
         source: `/${redirectBase}learn/supported-observability-tools-and-platforms/prometheus`,
         destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/prometheus`,
       },

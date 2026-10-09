@@ -1060,6 +1060,38 @@
             "id": "1.2.x-release-notes",
             "subDirectories": [
                 {
+                    "dirName": "1.2.68",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.68",
+                    "id": "1.2.68"
+                },
+                {
+                    "dirName": "1.2.67",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.67",
+                    "id": "1.2.67"
+                },
+                {
+                    "dirName": "1.2.66",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.66",
+                    "id": "1.2.66"
+                },
+                {
+                    "dirName": "1.2.65",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.65",
+                    "id": "1.2.65"
+                },
+                {
                     "dirName": "1.2.64",
                     "level": 2,
                     "position": 1,

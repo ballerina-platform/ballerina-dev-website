@@ -36,21 +36,141 @@ The jBallerina runtime is now upgraded to support Java 25 LTS, the latest long-t
 
 ## Ballerina library updates
 
+### New features
+
+#### Durable workflows with the `workflow` package
+
+The `ballerina/workflow` package is now generally available with a stable `1.0.0` version. It lets you write long-running business processes as ordinary Ballerina functions and execute them durably. The runtime checkpoints every step and replays the recorded history to recover from failures, so a crashed or redeployed program resumes from where it left off instead of starting over.
+
+- `@workflow:Workflow` - A durable function that orchestrates a business process. It must contain only orchestration logic, such as control flow and waiting for data.
+- `@workflow:Activity` - A function that performs a single non-deterministic operation, such as an API call, a database query, or sending an email. Once an activity completes, its result is recorded and is never re-executed during replay.
+
+```ballerina
+import ballerina/workflow;
+
+type OrderRequest record {|
+    string orderId;
+    string item;
+|};
+
+type OrderResult record {|
+    string orderId;
+    string status;
+|};
+
+type ApprovalDecision record {|
+    string approverId;
+    boolean approved;
+|};
+
+@workflow:Activity
+function checkInventory(string item) returns boolean|error {
+    // Call the external inventory API.
+    return true;
+}
+
+@workflow:Workflow
+function processOrder(workflow:Context ctx, OrderRequest request,
+        record {| future<ApprovalDecision> approval; |} events) returns OrderResult|error {
+    boolean inStock = check ctx->callActivity(checkInventory, {"item": request.item});
+    if !inStock {
+        return {orderId: request.orderId, status: "OUT_OF_STOCK"};
+    }
+    // The workflow durably pauses here until the approval data arrives.
+    ApprovalDecision decision = check wait events.approval;
+    return {orderId: request.orderId, status: decision.approved ? "COMPLETED" : "REJECTED"};
+}
+```
+
+Start a workflow instance from any entry point, such as an HTTP service, a scheduled job, a message consumer, or the `main` function, and deliver external data to the running instance using its workflow ID.
+
+```ballerina
+string workflowId = check workflow:run(processOrder, {orderId: "ORD-001", item: "laptop"});
+
+check workflow:sendData(processOrder, workflowId, "approval", {approverId: "mgr-1", approved: true});
+```
+
+Key features include:
+
+- Waiting for multiple data futures at once with `ctx->await`, including wait-for-all, first-wins, quorum (N of M), and deadline-based waits.
+- Handling activity errors as plain Ballerina values to retry, fall back, or compensate, and automatic retries for transient failures using the `retryPolicy` parameter of `ctx->callActivity`.
+- Running in the `IN_MEMORY` mode for local development without a server, and connecting to a Temporal server in production.
+
+  ```toml
+  [ballerina.workflow]
+  mode = "SELF_HOSTED"
+  url = "temporal.mycompany.com:7233"
+  namespace = "default"
+  taskQueue = "my-task-queue"
+  ```
+
+For more information, see the [Get Started](https://github.com/ballerina-platform/module-ballerina-workflow/blob/v1.0.0/docs/get-started.md) and [Key Concepts](https://github.com/ballerina-platform/module-ballerina-workflow/blob/v1.0.0/docs/key-concepts.md) guides, and the [examples](https://github.com/ballerina-platform/module-ballerina-workflow/tree/v1.0.0/examples).
+
+#### Stable releases
+
+The following packages are now generally available with stable `1.0.0` versions.
+
+- `ballerina/otel` - Publish traces and metrics to any OTLP-compatible backend over `grpc` or `http/protobuf`.
+
+  ```ballerina
+  import ballerina/otel as _;
+  ```
+
+  ```toml
+  [ballerina.observe]
+  tracingEnabled = true
+  tracingProvider = "otel"
+
+  [ballerina.otel]
+  tracesEndpoint = "http://localhost:4317"
+  ```
+
+- `ballerina/data.yaml` - Parse YAML into Ballerina types and serialize Ballerina values to YAML. This replaces the `ballerina/yaml` package, which is no longer packed with the distribution.
+- `ballerina/data.csv` - Parse CSV data into Ballerina types and serialize Ballerina values to CSV.
+
+#### `http` package
+
+- Added SOCKS4 and SOCKS5 proxy support to the HTTP client via the new optional `protocol` field in `http:ProxyConfig`.
+
+  ```ballerina
+  http:Client httpClient = check new ("https://api.example.com",
+      proxy = {host: "localhost", port: 1080, protocol: http:SOCKS5}
+  );
+  ```
+
+- Added the `http2MaxActiveStreams` listener configuration to limit the maximum number of concurrent HTTP/2 streams per connection. The default value is `100`.
+
+  ```ballerina
+  listener http:Listener httpListener = new (9090, http2MaxActiveStreams = 200);
+  ```
+
+- Deprecated the `proxy` field of `http:ClientHttp1Settings`. Use the `proxy` field of `http:ClientConfiguration`, which applies to all HTTP versions.
+
 ### Improvements
 
 #### Netty 4.2 support
 
-All packages under the `ballerina` and `ballerinax` organizations are now upgraded to use Netty 4.2.
+Netty 4.1 reaches its [end of life on July 1, 2027](https://netty.io/news/2026/09/09/4-1-EOL-announcement.html), after which no further releases, including security fixes, will be made for the 4.1 series. Therefore, the `http`, `grpc`, `websocket`, `tcp`, and `udp` packages are now upgraded to Netty 4.2 (4.2.18.Final). All packages under the `ballerina` and `ballerinax` organizations that depend on Netty have also been migrated.
 
->**Note:** Packages from other organizations that still depend on Netty 4.1 may fail with unexpected errors when both Netty versions are on the classpath. Such packages should be updated to use Netty 4.2.
+## Backward-incompatible changes
 
-## Ballerina packages updates
+### Runtime changes
 
-### New features
+The switch to Java 25 may have an impact on Ballerina interoperability usage if there are incompatible changes. For more details, refer to the [Java 25 release notes](https://www.oracle.com/java/technologies/javase/25-relnote-issues.html).
 
-#### Stable release of the `workflow` package
+### Ballerina library changes
 
-A stable version of the `ballerina/workflow` package has been released. The `ballerina/workflow` package lets you write long-running processes as plain Ballerina functions and executes them durably: the progress of the process is recorded step by step, so a crashed or redeployed program picks up exactly where it left off instead of starting over.
+- The `ballerina/yaml` package is removed from the distribution. Migrate to the `ballerina/data.yaml` package.
+
+  ```ballerina
+  import ballerina/data.yaml;
+
+  Book book = check yaml:parseString(yamlContent);
+  string yamlString = check yaml:toYamlString(book);
+  ```
+
+- Ballerina library packages now depend on Netty 4.2. Packages from other organizations that bundle Netty 4.1 will conflict with Netty 4.2 at runtime and may fail with unexpected errors. Such packages must be migrated to Netty 4.2 and released for Swan Lake Update 14.
+- Host name verification is now enabled by default for `tcp` clients. To disable it, set `verifyHostName: false` in `tcp:ClientSecureSocket`.
 
 ## Bug fixes
 

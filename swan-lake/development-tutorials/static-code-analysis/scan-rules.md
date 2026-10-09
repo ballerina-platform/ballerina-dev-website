@@ -36,7 +36,7 @@ The table below maps each rule to its [CWE](https://cwe.mitre.org/) identifiers,
 | ballerina:14       | [Non configurable secrets are security-sensitive](#ballerina-14)                                                  | [CWE-798](https://cwe.mitre.org/data/definitions/798.html)                                                             | [A07 Authentication Failures](https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/)                                                                                    |
 | ballerina/crypto:1 | [Avoid using insecure cipher modes or padding schemes](#ballerina-crypto-1)                                       | [CWE-327](https://cwe.mitre.org/data/definitions/327.html), [CWE-780](https://cwe.mitre.org/data/definitions/780.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
 | ballerina/crypto:2 | [Avoid using fast hashing algorithms](#ballerina-crypto-2)                                                        | [CWE-916](https://cwe.mitre.org/data/definitions/916.html), [CWE-327](https://cwe.mitre.org/data/definitions/327.html) | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
-| ballerina/crypto:3 | [Avoid reusing counter mode initialization vectors](#ballerina-crypto-3)                                          | [CWE-323](https://cwe.mitre.org/data/definitions/323.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
+| ballerina/crypto:3 | [Avoid hard-coded initialization vectors](#ballerina-crypto-3)                                                    | [CWE-323](https://cwe.mitre.org/data/definitions/323.html)                                                             | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/)                                                                                      |
 | ballerina/file:1   | [Avoid using publicly writable directories for file operations without proper access controls](#ballerina-file-1) | [CWE-377](https://cwe.mitre.org/data/definitions/377.html), [CWE-379](https://cwe.mitre.org/data/definitions/379.html) | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
 | ballerina/file:2   | [File function calls should not be vulnerable to path injection attacks](#ballerina-file-2)                       | [CWE-22](https://cwe.mitre.org/data/definitions/22.html)                                                               | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
 | ballerina/http:1   | [Avoid allowing default resource accessor](#ballerina-http-1)                                                     | [CWE-352](https://cwe.mitre.org/data/definitions/352.html)                                                             | [A01 Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/)                                                                                        |
@@ -734,7 +734,7 @@ public function hashPassword() returns error? {
 }
 ```
 
-### Avoid reusing counter mode initialization vectors
+### Avoid hard-coded initialization vectors
 
 | Property              | Description                                                                                 |
 |-----------------------|---------------------------------------------------------------------------------------------|
@@ -744,7 +744,9 @@ public function hashPassword() returns error? {
 | **CWE**               | [CWE-323](https://cwe.mitre.org/data/definitions/323.html)                                  |
 | **OWASP Top 10:2025** | [A04 Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/) |
 
-When using encryption algorithms in counter mode (such as `AES-GCM`, `AES-CCM`, or `AES-CTR`), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
+An `AES-CBC` or `AES-GCM` encryption operation uses a hard-coded initialization vector.
+
+A hard-coded initialization vector is likely to be reused across encryptions with the same key. In GCM, reusing an initialization vector repeats the keystream, which can let an attacker recover plaintext by combining ciphertexts and can expose the authentication key. In CBC, a fixed initialization vector makes identical plaintext prefixes produce identical ciphertext. Generate a fresh, random initialization vector for every encryption.
 
 #### AES-GCM Encryption Code Example
 

@@ -40,10 +40,12 @@ The jBallerina runtime is now upgraded to support Java 25 LTS, the latest long-t
 
 #### Durable workflows with the `workflow` package
 
-The `ballerina/workflow` package is now generally available with a stable `1.0.0` version. It lets you write long-running business processes as ordinary Ballerina functions and execute them durably. The runtime checkpoints every step and replays the recorded history to recover from failures, so a crashed or redeployed program resumes from where it left off instead of starting over.
+The `ballerina/workflow` package is now generally available with a stable `1.0.0` version. It lets you write long-running business processes as ordinary Ballerina functions and execute them durably. The workflow engine checkpoints every step and replays the recorded history to recover from failures, so a crashed or redeployed program resumes from where it left off instead of starting over.
 
-- `@workflow:Workflow` - A durable function that orchestrates a business process. It must contain only orchestration logic, such as control flow and waiting for data.
+- `@workflow:Workflow` - A durable function that orchestrates a business process. It must contain only orchestration logic, such as control flow, calling activities, and waiting for people or external data.
 - `@workflow:Activity` - A function that performs a single non-deterministic operation, such as an API call, a database query, or sending an email. Once an activity completes, its result is recorded and is never re-executed during replay.
+
+The example below fulfills an order after a manager approves it. The `ctx->awaitHumanTask` call creates a task in the task inbox for the `MANAGER` role and durably pauses the workflow until a person submits a decision.
 
 ```ballerina
 import ballerina/workflow;
@@ -51,50 +53,52 @@ import ballerina/workflow;
 type OrderRequest record {|
     string orderId;
     string item;
-|};
-
-type OrderResult record {|
-    string orderId;
-    string status;
+    decimal amount;
 |};
 
 type ApprovalDecision record {|
-    string approverId;
     boolean approved;
+    string? reason;
 |};
 
 @workflow:Activity
-function checkInventory(string item) returns boolean|error {
-    // Call the external inventory API.
-    return true;
+function fulfillOrder(string orderId, string item) returns string|error {
+    // Call the fulfillment system.
+    return "FULFILLED-" + orderId;
 }
 
 @workflow:Workflow
-function processOrder(workflow:Context ctx, OrderRequest request,
-        record {| future<ApprovalDecision> approval; |} events) returns OrderResult|error {
-    boolean inStock = check ctx->callActivity(checkInventory, {"item": request.item});
-    if !inStock {
-        return {orderId: request.orderId, status: "OUT_OF_STOCK"};
+function processOrder(workflow:Context ctx, OrderRequest request) returns string|error {
+    if request.amount > 500d {
+        // Creates a task in the inbox and durably pauses until a manager decides.
+        ApprovalDecision decision = check ctx->awaitHumanTask("approveOrder",
+                {orderId: request.orderId, amount: request.amount.toString()},
+                userRoles = "MANAGER", title = string `Approve order ${request.orderId}`);
+        if !decision.approved {
+            return "REJECTED: " + (decision.reason ?: "no reason given");
+        }
     }
-    // The workflow durably pauses here until the approval data arrives.
-    ApprovalDecision decision = check wait events.approval;
-    return {orderId: request.orderId, status: decision.approved ? "COMPLETED" : "REJECTED"};
+    return check ctx->callActivity(fulfillOrder, {"orderId": request.orderId, "item": request.item});
 }
 ```
 
-Start a workflow instance from any entry point, such as an HTTP service, a scheduled job, a message consumer, or the `main` function, and deliver external data to the running instance using its workflow ID.
+Start a workflow instance from any entry point, such as an HTTP service, a scheduled job, a message consumer, or the `main` function. Pending tasks are listed and completed through the `ballerina/workflow.management` submodule or its HTTP management API, so the approval is authorized against the task's roles rather than delivered as raw data.
 
 ```ballerina
-string workflowId = check workflow:run(processOrder, {orderId: "ORD-001", item: "laptop"});
+string workflowId = check workflow:run(processOrder, {orderId: "ORD-001", item: "laptop", amount: 1200});
 
-check workflow:sendData(processOrder, workflowId, "approval", {approverId: "mgr-1", approved: true});
+management:HumanTaskGroup[] tasks = check management:listPendingHumanTasks(workflowId);
+check workflow:completeHumanTask(tasks[0].taskIds[0], {approved: true, reason: ()});
 ```
 
 Key features include:
 
-- Waiting for multiple data futures at once with `ctx->await`, including wait-for-all, first-wins, quorum (N of M), and deadline-based waits.
-- Handling activity errors as plain Ballerina values to retry, fall back, or compensate, and automatic retries for transient failures using the `retryPolicy` parameter of `ctx->callActivity`.
-- Running in the `IN_MEMORY` mode for local development without a server, and connecting to a Temporal server in production.
+- Human-in-the-loop tasks with `ctx->awaitHumanTask`, including role-based assignment, timeouts, and typed results.
+- Reviewing failed activities as tasks, so a person can retry, retry with edited input, or fail the step, and automatic retries for transient failures. Both are configured through the `retryPolicy` of `ctx->callActivity`, and the `approvalPolicy` gates an activity behind an approval before it runs.
+- Waiting for external events, such as payment confirmations, with `future`-typed event parameters and `workflow:sendData`, and waiting for several events at once with `ctx->await`, including wait-for-all, first-wins, quorum (N of M), and deadline-based waits.
+- Composing workflows with child workflows via `ctx->runChildWorkflow` and `ctx->waitForChildWorkflow`.
+- Handling activity errors as plain Ballerina values to retry, fall back, or compensate.
+- Running in the `IN_MEMORY` mode for local development without a server, and connecting to a Temporal server in production. The default `LOCAL` mode expects a development server at `localhost:7233`.
 
   ```toml
   [ballerina.workflow]

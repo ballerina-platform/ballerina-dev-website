@@ -20,6 +20,53 @@ import { Row, Col, Container } from 'react-bootstrap';
 import styles from './Boxes.module.css';
 import { prefix } from '../../../utils/prefix';
 
+const aiIntegrationGuides = [
+  {
+    title: 'AI integrations overview',
+    url: '/learn/ai-integrations-overview/',
+    description: 'Understand when to use direct LLM calls, natural expressions, RAG, agents, MCP, and durable workflows in an integration.',
+  },
+  {
+    title: 'Add an LLM step to an integration',
+    url: '/learn/add-an-llm-step-to-an-integration/',
+    description: 'Configure a model provider, generate typed responses, validate results, and handle failures in a working integration.',
+  },
+  {
+    title: 'Use natural expressions in an integration',
+    url: '/learn/work-with-llms-using-natural-expressions/',
+    description: 'Combine natural language with Ballerina code, bind model responses to expected types, and validate the results before using them.',
+  },
+  {
+    title: 'Ground responses with enterprise data',
+    url: '/learn/ground-responses-with-enterprise-data/',
+    description: 'Build a complete RAG pipeline, from loading and indexing documents to retrieving relevant content and generating responses with source attribution.',
+  },
+  {
+    title: 'Build an agent that uses enterprise systems',
+    url: '/learn/build-an-agent-that-uses-enterprise-systems/',
+    description: 'Connect an agent to APIs and connectors using typed tools, configure conversation memory, and handle tool failures.',
+  },
+  {
+    title: 'Connect integrations and agents through MCP',
+    url: '/learn/connect-integrations-and-agents-through-mcp/',
+    description: 'Expose enterprise capabilities as MCP tools and consume external MCP tools from Ballerina agents.',
+  },
+  {
+    title: 'Add human approval and durable execution',
+    url: '/learn/add-human-approval-and-durable-execution/',
+    description: 'Coordinate approvals and long-running agent workflows, including pause and resume, retries, recovery, and external side effects.',
+  },
+  {
+    title: 'Evaluate agent behavior',
+    url: '/learn/evaluate-agent-behavior/',
+    description: 'Create evaluation datasets, apply rule-based and model-judge checks, and detect regressions in responses and tool use.',
+  },
+  {
+    title: 'Observe and secure AI integrations',
+    url: '/learn/observe-and-secure-ai-integrations/',
+    description: 'Trace model and tool calls, inspect latency and token usage, and configure identities, permissions, and sensitive-data handling.',
+  },
+];
 
 export default function Boxes(props) {
   return (
@@ -109,7 +156,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3 id='integration-tools' className='section'>
+                    <h3 id='build-ai-integrations' className='section'>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -117,85 +164,24 @@ export default function Boxes(props) {
                         fill="currentColor"
                         className="bi bi-link-45deg mdButton pe-2"
                         viewBox="0 0 16 16"
-                        onClick={(e) => props.getLink(e.target, 'integration-tools')}
+                        onClick={(e) => props.getLink(e.target, 'build-ai-integrations')}
                       >
                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                       </svg>
-                      Integration tools
+                      Build AI integrations
                     </h3>
                     <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/openapi-tool`} className={styles.titleLink}>
-                            OpenAPI tool</a>
-                        </p>
-                        <p className={styles.description}>Generate a Ballerina service and client skeletons for an OpenAPI contract.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
-                            GraphQL tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Generate GraphQL service skeleton for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
-                            AsyncAPI tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Generate a Ballerina service and listener skeletons for an AsyncAPI contract.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/grpc-tool`} className={styles.titleLink}>
-                            gRPC tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/health-tool`} className={styles.titleLink}>
-                            Health tool (FHIR/HL7)
-                          </a>
-                        </p>
-                        <p className={styles.description}>FHIR/HL7 profile to client and stub generation tool of Ballerina.</p>
-                      </div>
-
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/edi-tool`} className={styles.titleLink}>
-                            EDI tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>The set of command line tools provided to work with EDI files in Ballerina.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/wsdl-tool`} className={styles.titleLink}>
-                            WSDL tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Generate Ballerina clients and records for a WSDL specification.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/xsd-tool`} className={styles.titleLink}>
-                            XSD tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Generate Ballerina records for an XSD specification.</p>
-                      </div>
-                      
-
+                      {aiIntegrationGuides.map((guide) => (
+                        <div className={styles.content} key={guide.title}>
+                          <p className={styles.title}>
+                            <a href={`${prefix}${guide.url}`} className={styles.titleLink}>
+                              {guide.title}
+                            </a>
+                          </p>
+                          <p className={styles.description}>{guide.description}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -889,7 +875,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3 id='additional-tools' className='section'>
+                    <h3 id='developer-tools' className='section'>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
@@ -897,14 +883,84 @@ export default function Boxes(props) {
                         fill="currentColor"
                         className="bi bi-link-45deg mdButton pe-2"
                         viewBox="0 0 16 16"
-                        onClick={(e) => props.getLink(e.target, 'additional-tools')}
+                        onClick={(e) => props.getLink(e.target, 'developer-tools')}
                       >
                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                       </svg>
-                      Additional tools
+                      Developer tools
                     </h3>
                     <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/openapi-tool`} className={styles.titleLink}>
+                            OpenAPI tool</a>
+                        </p>
+                        <p className={styles.description}>Generate a Ballerina service and client skeletons for an OpenAPI contract.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
+                            GraphQL tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate GraphQL service skeleton for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                            AsyncAPI tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate a Ballerina service and listener skeletons for an AsyncAPI contract.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/grpc-tool`} className={styles.titleLink}>
+                            gRPC tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/health-tool`} className={styles.titleLink}>
+                            Health tool (FHIR/HL7)
+                          </a>
+                        </p>
+                        <p className={styles.description}>FHIR/HL7 profile to client and stub generation tool of Ballerina.</p>
+                      </div>
+
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/edi-tool`} className={styles.titleLink}>
+                            EDI tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>The set of command line tools provided to work with EDI files in Ballerina.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/wsdl-tool`} className={styles.titleLink}>
+                            WSDL tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate Ballerina clients and records for a WSDL specification.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/xsd-tool`} className={styles.titleLink}>
+                            XSD tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Generate Ballerina records for an XSD specification.</p>
+                      </div>
+
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/scan-tool`} className={styles.titleLink}>
@@ -1028,14 +1084,6 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Use Ballerina constructs to work with change data capture (cdc) services.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/work-with-llms-using-natural-expressions/`} className={styles.titleLink}>
-                            Work with Large Language Models (LLMs) using natural expressions
-                          </a>
-                        </p>
-                        <p className={styles.description}>Use natural expressions to work with LLMs.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>

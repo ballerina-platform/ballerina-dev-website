@@ -58,7 +58,39 @@ const nextConfig = {
       },
       {
         source: `/learn/work-with-llms-using-natural-expressions`,
-        destination: `/learn/resources/featured-scenarios/work-with-llms-using-natural-expressions`,
+        destination: `/learn/ai-integrations/work-with-llms-using-natural-expressions`,
+      },
+      {
+        source: `/learn/ai-integrations-overview`,
+        destination: `/learn/ai-integrations/ai-integrations-overview`,
+      },
+      {
+        source: `/learn/add-an-llm-step-to-an-integration`,
+        destination: `/learn/ai-integrations/add-an-llm-step-to-an-integration`,
+      },
+      {
+        source: `/learn/ground-responses-with-enterprise-data`,
+        destination: `/learn/ai-integrations/ground-responses-with-enterprise-data`,
+      },
+      {
+        source: `/learn/build-an-agent-that-uses-enterprise-systems`,
+        destination: `/learn/ai-integrations/build-an-agent-that-uses-enterprise-systems`,
+      },
+      {
+        source: `/learn/connect-integrations-and-agents-through-mcp`,
+        destination: `/learn/ai-integrations/connect-integrations-and-agents-through-mcp`,
+      },
+      {
+        source: `/learn/add-human-approval-and-durable-execution`,
+        destination: `/learn/ai-integrations/add-human-approval-and-durable-execution`,
+      },
+      {
+        source: `/learn/evaluate-agent-behavior`,
+        destination: `/learn/ai-integrations/evaluate-agent-behavior`,
+      },
+      {
+        source: `/learn/observe-and-secure-ai-integrations`,
+        destination: `/learn/ai-integrations/observe-and-secure-ai-integrations`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,

@@ -123,76 +123,84 @@
             ]
         },
         {
-            "dirName": "Integration tools",
+            "dirName": "Build AI integrations",
             "level": 1,
             "position": 3,
             "isDir": true,
-            "url": "/learn/integration-tools",
-            "id": "integration-tools",
+            "url": "swan-lake/ai-integrations",
+            "id": "ai-integrations",
             "subDirectories": [
                 {
-                    "dirName": "OpenAPI tool",
-                    "level": 3,
+                    "dirName": "AI integrations overview",
+                    "level": 2,
                     "position": 1,
                     "isDir": false,
-                    "url": "/learn/openapi-tool",
-                    "id": "openapi-tool"
+                    "url": "/learn/ai-integrations-overview",
+                    "id": "ai-integrations-overview"
                 },
                 {
-                    "dirName": "GraphQL tool",
-                    "level": 3,
+                    "dirName": "Add an LLM step to an integration",
+                    "level": 2,
                     "position": 2,
                     "isDir": false,
-                    "url": "/learn/graphql-tool",
-                    "id": "graphql-tool"
+                    "url": "/learn/add-an-llm-step-to-an-integration",
+                    "id": "add-an-llm-step-to-an-integration"
                 },
                 {
-                    "dirName": "AsyncAPI tool",
-                    "level": 3,
+                    "dirName": "Use natural expressions in an integration",
+                    "level": 2,
                     "position": 3,
                     "isDir": false,
-                    "url": "/learn/asyncapi-tool",
-                    "id": "asyncapi-tool"
+                    "url": "/learn/work-with-llms-using-natural-expressions",
+                    "id": "work-with-llms-using-natural-expressions"
                 },
                 {
-                    "dirName": "gRPC tool",
-                    "level": 3,
+                    "dirName": "Ground responses with enterprise data",
+                    "level": 2,
                     "position": 4,
                     "isDir": false,
-                    "url": "/learn/grpc-tool",
-                    "id": "grpc-tool"
+                    "url": "/learn/ground-responses-with-enterprise-data",
+                    "id": "ground-responses-with-enterprise-data"
                 },
                 {
-                    "dirName": "Health tool (FHIR/HL7)",
-                    "level": 3,
+                    "dirName": "Build an agent that uses enterprise systems",
+                    "level": 2,
                     "position": 5,
                     "isDir": false,
-                    "url": "/learn/health-tool",
-                    "id": "health-tool"
+                    "url": "/learn/build-an-agent-that-uses-enterprise-systems",
+                    "id": "build-an-agent-that-uses-enterprise-systems"
                 },
                 {
-                    "dirName": "EDI tool",
-                    "level": 3,
+                    "dirName": "Connect integrations and agents through MCP",
+                    "level": 2,
                     "position": 6,
                     "isDir": false,
-                    "url": "/learn/edi-tool",
-                    "id": "edi-tool"
+                    "url": "/learn/connect-integrations-and-agents-through-mcp",
+                    "id": "connect-integrations-and-agents-through-mcp"
                 },
                 {
-                    "dirName": "WSDL tool",
-                    "level": 3,
+                    "dirName": "Add human approval and durable execution",
+                    "level": 2,
                     "position": 7,
                     "isDir": false,
-                    "url": "/learn/wsdl-tool",
-                    "id": "wsdl-tool"
+                    "url": "/learn/add-human-approval-and-durable-execution",
+                    "id": "add-human-approval-and-durable-execution"
                 },
                 {
-                    "dirName": "XSD tool",
-                    "level": 3,
+                    "dirName": "Evaluate agent behavior",
+                    "level": 2,
                     "position": 8,
                     "isDir": false,
-                    "url": "/learn/xsd-tool",
-                    "id": "xsd-tool"
+                    "url": "/learn/evaluate-agent-behavior",
+                    "id": "evaluate-agent-behavior"
+                },
+                {
+                    "dirName": "Observe and secure AI integrations",
+                    "level": 2,
+                    "position": 9,
+                    "isDir": false,
+                    "url": "/learn/observe-and-secure-ai-integrations",
+                    "id": "observe-and-secure-ai-integrations"
                 }
             ]
         },
@@ -943,7 +951,7 @@
                     ]
                 },
                 {
-                    "dirName": "Additional tools",
+                    "dirName": "Developer tools",
                     "level": 2,
                     "position": 12,
                     "isDir": true,
@@ -951,9 +959,73 @@
                     "id": "additional-tools",
                     "subDirectories": [
                         {
-                            "dirName": "Consolidate-packages tool",
+                            "dirName": "OpenAPI tool",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/openapi-tool",
+                            "id": "openapi-tool"
+                        },
+                        {
+                            "dirName": "GraphQL tool",
                             "level": 3,
                             "position": 2,
+                            "isDir": false,
+                            "url": "/learn/graphql-tool",
+                            "id": "graphql-tool"
+                        },
+                        {
+                            "dirName": "AsyncAPI tool",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/asyncapi-tool",
+                            "id": "asyncapi-tool"
+                        },
+                        {
+                            "dirName": "gRPC tool",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/grpc-tool",
+                            "id": "grpc-tool"
+                        },
+                        {
+                            "dirName": "Health tool (FHIR/HL7)",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/health-tool",
+                            "id": "health-tool"
+                        },
+                        {
+                            "dirName": "EDI tool",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/edi-tool",
+                            "id": "edi-tool"
+                        },
+                        {
+                            "dirName": "WSDL tool",
+                            "level": 3,
+                            "position": 7,
+                            "isDir": false,
+                            "url": "/learn/wsdl-tool",
+                            "id": "wsdl-tool"
+                        },
+                        {
+                            "dirName": "XSD tool",
+                            "level": 3,
+                            "position": 8,
+                            "isDir": false,
+                            "url": "/learn/xsd-tool",
+                            "id": "xsd-tool"
+                        },
+                        {
+                            "dirName": "Consolidate-packages tool",
+                            "level": 3,
+                            "position": 10,
                             "isDir": false,
                             "url": "/learn/consolidate-packages-tool",
                             "id": "consolidate-packages-tool"
@@ -1009,14 +1081,6 @@
                             "isDir": false,
                             "url": "/learn/build-a-change-data-capture-service-in-ballerina",
                             "id": "build-a-change-data-capture-service-in-ballerina"
-                        },
-                        {
-                            "dirName": "Work with Large Language Models (LLMs) using natural expressions",
-                            "level": 3,
-                            "position": 7,
-                            "isDir": false,
-                            "url": "/learn/work-with-llms-using-natural-expressions",
-                            "id": "work-with-llms-using-natural-expressions"
                         },
                         {
                             "dirName": "Write a GraphQL API with Ballerina",

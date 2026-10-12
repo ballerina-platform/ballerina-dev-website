@@ -5,7 +5,7 @@ const base = 'https://github.com/ballerina-guides/integration-samples/tree/main/
 export const examples = [
   {
     id: 'connect-applications', label: 'Connect applications', title: 'GitHub pull requests to Google Sheets',
-    description: 'Read repository pull requests and append their URL, title, state, and timestamps to Google Sheets.',
+    description: 'Use the GitHub and Google Sheets connectors to read open pull requests and append their URL, title, state, and timestamps to a sheet.',
     source: 'consuming_services/consuming_services.bal', link: base + 'consuming_services',
     diagram: {kind: 'sequence', nodes: ['Ballerina', 'GitHub', 'Google Sheets'], steps: [['Ballerina', 'GitHub', 'Read pull requests'], ['GitHub', 'Ballerina', 'Pull request records'], ['Ballerina', 'Google Sheets', 'Append rows']]}
   },

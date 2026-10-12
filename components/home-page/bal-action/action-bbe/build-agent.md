@@ -1,3 +1,22 @@
+import ballerina/ai;
+import ballerina/http;
+import ballerina/io;
+import ballerinax/ai.openai;
+
+configurable string openAiApiKey = ?;
+
+// In-process enterprise backend fixtures, replace URLs for real systems.
+service /orders on new http:Listener(9091) {
+    resource function get [string id]() returns json {
+        return {orderId: id, shipmentId: "S-100", item: "Travel mug"};
+    }
+}
+service /shipments on new http:Listener(9092) {
+    resource function get [string id]() returns json {
+        return {shipmentId: id, status: "In transit", eta: "2026-10-15"};
+    }
+}
+
 @ai:AgentTool
 isolated function lookupOrder(string orderId) returns json|error {
     io:println("Tool: lookupOrder ", orderId);

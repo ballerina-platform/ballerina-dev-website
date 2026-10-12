@@ -1,14 +1,38 @@
-service /catalog on new http:Listener(8080) {
-    resource function get [string id]() returns json|error {
-        http:Client products = check new ("http://localhost:9091");
-        http:Client stock = check new ("http://localhost:9092");
-        Product product = check products->/products/[id];
-        Stock availability = check stock->/stock/[id];
-        return {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            available: availability.available
-        };
+import ballerina/http;
+
+configurable int port = 8080;
+
+type Album readonly & record {|
+    string id;
+    string title;
+    string artist;
+    decimal price;
+|};
+
+table<Album> key(id) albums = table [
+    {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
+    {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
+    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+];
+
+service / on new http:Listener(port) {
+    resource function get albums() returns Album[] {
+        return albums.toArray();
+    }
+
+    resource function get albums/[string id]() returns Album|http:NotFound {
+        Album? album = albums[id];
+        if album is () {
+            return http:NOT_FOUND;
+        }
+        return album;
+    }
+
+    resource function post albums(@http:Payload Album album) returns Album|http:Conflict {
+        if albums.hasKey(album.id) {
+            return http:CONFLICT;
+        }
+        albums.add(album);
+        return album;
     }
 }

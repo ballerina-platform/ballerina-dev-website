@@ -1,3 +1,17 @@
+import ballerina/http;
+import ballerina/mcp;
+
+type Stock record {|
+    string productId;
+    int available;
+|};
+
+service /stock on new http:Listener(9091) {
+    resource function get [string id]() returns Stock {
+        return {productId: id, available: 12};
+    }
+}
+
 listener http:Listener mcpHttp = new (9090);
 listener mcp:StreamableHttpListener mcpListener = check new (mcpHttp);
 

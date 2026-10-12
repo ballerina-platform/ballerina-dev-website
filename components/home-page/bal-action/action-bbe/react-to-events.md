@@ -1,3 +1,22 @@
+import ballerina/io;
+import ballerinax/kafka;
+
+configurable string broker = kafka:DEFAULT_URL;
+configurable string inputTopic = "orders";
+configurable string outputTopic = "fulfillment";
+
+type Order readonly & record {|
+    string orderId;
+    string productId;
+    int quantity;
+|};
+
+final kafka:ConsumerConfiguration consumerConfig = {
+    groupId: "fulfillment-example",
+    topics: [inputTopic],
+    offsetReset: kafka:OFFSET_RESET_EARLIEST
+};
+
 service on new kafka:Listener(broker, consumerConfig) {
     private final kafka:Producer producer;
 

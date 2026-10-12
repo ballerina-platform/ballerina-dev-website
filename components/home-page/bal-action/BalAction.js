@@ -33,6 +33,10 @@ function Preview({ preview }) {
       <tbody>{preview.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>}
     {preview.kind === 'json' && <pre>{preview.value}</pre>}
     {preview.kind === 'comparison' && <div className={styles.comparison}><pre>{preview.left}</pre><span aria-hidden="true">→</span><pre>{preview.right}</pre></div>}
+    {preview.kind === 'formats' && <div className={styles.formats}>
+      <div><strong>JSON input</strong><pre>{preview.input}</pre></div>
+      <div><strong>JSON output</strong><pre>{preview.json}</pre><strong>XML output</strong><pre>{preview.xml}</pre></div>
+    </div>}
     {preview.kind === 'chat' && <div className={styles.chat}>{preview.rows.map((row, i) => <p key={i}>{row}</p>)}</div>}
   </div>;
 }
@@ -87,7 +91,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
       <div className={styles.intro}><div><h3>{example.title}</h3><p>{example.description}</p></div>
         <a href={example.link} target="_blank" rel="noopener noreferrer">View full example <span aria-hidden="true">↗</span></a></div>
       <div className={styles.mainGrid}>
-        <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina source excerpt</span>
+        <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina code</span>
           <CopyToClipboard text={codeSamples[example.id]} onCopy={() => setCopied(true)}>
             <button type="button" aria-label={`Copy ${example.label} code`} className={styles.copyButton}>
               {copied ? <FaCheck aria-hidden="true" /> : <FaRegCopy aria-hidden="true" />}{copied ? 'Copied' : 'Copy code'}
@@ -98,7 +102,6 @@ export default function BalAction({ samples, codeSamples, getLink }) {
         <div className={styles.diagramPane}><div className={styles.paneHeader}>How it works</div><Diagram diagram={example.diagram} /></div>
       </div>
       <Preview preview={example.preview} />
-      <p className={styles.sourceNote}>Source: <code>{example.source}</code>. Imports, configuration, types, fixtures, and supporting definitions are in the full project.</p>
     </section>
   </Container></Col>;
 }

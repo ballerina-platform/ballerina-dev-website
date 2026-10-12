@@ -1,28 +1,31 @@
-// Display metadata only. Source excerpts live in action-bbe/<id>.md and are
-// copied from the linked sample's .bal file. Keep both repositories in sync.
+// Display metadata only. Complete source files live in action-bbe/<id>.md and
+// are copied from the linked sample's .bal file. Keep both repositories in sync.
 const base = 'https://github.com/ballerina-guides/integration-samples/tree/main/';
 
 export const examples = [
   {
-    id: 'connect-applications', label: 'Connect applications', title: 'GitHub issues to Google Sheets',
-    description: 'Read repository issues, skip pull requests, and append the issue number, title, state, and URL to a sheet.',
+    id: 'connect-applications', label: 'Connect applications', title: 'GitHub pull requests to Google Sheets',
+    description: 'Read repository pull requests and append their number, title, state, URL, and creation time to a sheet.',
     source: 'consuming_services/consuming_services.bal', link: base + 'consuming_services',
-    diagram: {kind: 'sequence', nodes: ['Ballerina', 'GitHub', 'Google Sheets'], steps: [['Ballerina', 'GitHub', 'Read issues'], ['GitHub', 'Ballerina', 'Issue records'], ['Ballerina', 'Google Sheets', 'Append rows']]},
-    preview: {kind: 'table', heading: 'Sheet preview', columns: ['Number', 'Title', 'State'], rows: [['123', 'Example issue', 'open']]}
+    diagram: {kind: 'sequence', nodes: ['Ballerina', 'GitHub', 'Google Sheets'], steps: [['Ballerina', 'GitHub', 'Read pull requests'], ['GitHub', 'Ballerina', 'Pull request records'], ['Ballerina', 'Google Sheets', 'Append rows']]},
+    preview: {kind: 'table', heading: 'Sheet preview', columns: ['Number', 'Title', 'State', 'Created'], rows: [['123', 'Example pull request', 'open', '12 Oct 2026']]}
   },
   {
-    id: 'build-apis', label: 'Build APIs', title: 'One catalog response from two services',
-    description: 'A catalog request reads product details and stock availability from two local services, then returns one response.',
+    id: 'build-apis', label: 'Build APIs', title: 'RESTful albums API',
+    description: 'Serve albums from an in-memory table with list, lookup, and create resources. A request for an album ID returns its details as JSON.',
     source: 'restful_api/main.bal', link: base + 'restful_api',
-    diagram: {kind: 'sequence', nodes: ['Client', 'Catalog API', 'Product service', 'Stock service'], steps: [['Client', 'Catalog API', 'GET /catalog/P-100'], ['Catalog API', 'Product service', 'Get product'], ['Catalog API', 'Stock service', 'Get stock'], ['Catalog API', 'Client', 'Combined JSON']]},
-    preview: {kind: 'json', heading: 'API response', value: '{"id":"P-100","name":"Travel mug","price":18.50,"available":12}'}
+    diagram: {kind: 'sequence', nodes: ['Client', 'Albums API', 'Album table'], steps: [['Client', 'Albums API', 'GET /albums/1'], ['Albums API', 'Album table', 'Look up album'], ['Albums API', 'Client', 'Album JSON']]},
+    preview: {kind: 'json', heading: 'API response', value: '{"id":"1","title":"Blue Train","artist":"John Coltrane","price":56.99}'}
   },
   {
     id: 'transform-data', label: 'Transform data', title: 'Customers into contacts',
-    description: 'Filter inactive customers and map each remaining record into the fields a contact system expects.',
+    description: 'Read customers as JSON, filter and map active records with a query expression, then produce native JSON and XML contact values.',
     source: 'working_with_data/working_with_data.bal', link: base + 'working_with_data',
-    diagram: {kind: 'mapping', nodes: ['Customer records', 'Filter active → map fields', 'Contact records']},
-    preview: {kind: 'comparison', heading: 'Input → output', left: 'C-101 Asha (active)\nC-102 Milan (inactive)', right: 'C-101 Asha Perera\nasha@example.com'}
+    diagram: {kind: 'mapping', nodes: ['JSON customers', 'Filter active → map fields', 'JSON + XML contacts']},
+    preview: {kind: 'formats', heading: 'Input → output',
+      input: '[{"id":"C-101","name":"Asha Perera","email":"asha@example.com","active":true},\n{"id":"C-102","name":"Milan Silva","email":"milan@example.com","active":false}]',
+      json: '[{"externalId":"C-101","displayName":"Asha Perera","email":"asha@example.com"}]',
+      xml: '<contacts><contact id="C-101"><name>Asha Perera</name><email>asha@example.com</email></contact></contacts>'}
   },
   {
     id: 'react-to-events', label: 'React to events', title: 'Order event to fulfillment message',

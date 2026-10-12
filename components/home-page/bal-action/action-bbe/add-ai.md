@@ -1,3 +1,14 @@
+import ballerina/ai;
+import ballerina/io;
+import ballerinax/ai.openai;
+
+configurable string openAiApiKey = ?;
+
+type Classification record {|
+    string category;
+    string priority;
+|};
+
 public function main() returns error? {
     string message = "My order O-100 arrived damaged. Please replace it.";
     ai:ModelProvider model = check new openai:ModelProvider(

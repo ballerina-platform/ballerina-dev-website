@@ -1,3 +1,19 @@
+import ballerina/http;
+import ballerina/io;
+import ballerina/workflow;
+import ballerina/workflow.management;
+
+type PurchaseRequest record {|
+    string requestId;
+    string item;
+    decimal amount;
+|};
+
+type Approval record {|
+    boolean approved;
+    string comment;
+|};
+
 @workflow:Workflow
 function purchaseWorkflow(workflow:Context ctx, PurchaseRequest request)
         returns string|error {
@@ -13,4 +29,29 @@ function purchaseWorkflow(workflow:Context ctx, PurchaseRequest request)
     string reference = check ctx->callActivity(processPurchase,
         {"requestId": request.requestId});
     return string `Purchase ${request.requestId} processed: ${reference}`;
+}
+
+@workflow:Activity
+function processPurchase(string requestId) returns string|error {
+    io:println("Processing approved purchase ", requestId);
+    return string `PO-${requestId}`;
+}
+
+service /purchases on new http:Listener(8080) {
+    resource function post .(PurchaseRequest request) returns json|error {
+        string workflowId = check workflow:run(purchaseWorkflow, request);
+        return {requestId: request.requestId, workflowId,
+            status: "PENDING_APPROVAL"};
+    }
+
+    resource function get [string workflowId]() returns json|error {
+        management:WorkflowExecutionInfo info =
+            check management:getWorkflowInfo(workflowId);
+        if info.status != "COMPLETED" {
+            return {workflowId, status: info.status};
+        }
+        anydata result = check workflow:getWorkflowResult(workflowId);
+        return {workflowId, status: info.status,
+            result: check result.cloneWithType(json)};
+    }
 }

@@ -33,11 +33,11 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                    AI is no longer just trained — it&apos;s integrated.
+                                    Your models. Your systems. One integration.
                                 </p>
 
                                 <p className={styles.introText3}>
-                                Ballerina is purpose-built for integration, making it an ideal choice for bringing AI into your applications. With built-in abstractions designed for invoking your favourite large language models and other generative AI technologies, Ballerina simplifies and streamlines AI integration like never before.
+                                    Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures.
                                 </p>
 
                                 <p className={styles.dVersion}>
@@ -50,7 +50,7 @@ export default function Intro() {
                         </Col>
                         <Col xs={12} lg={7} className={styles.introImg}>
                             {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                            <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
+                            <img src={`${prefix}/images/Vectors-05.png`} alt="Ballerina logo linked to AI, integration, and automation icons" />
                         </Col>
                     </Row>
 

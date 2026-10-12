@@ -51,10 +51,6 @@ a.cDownload span {
     margin-bottom: 20px;
 }
 
-:is(#code-container, #agent-code-container) .codeSnippet {
-    overflow-y: scroll;
-}
-
 .dVersions {
     display: flex;
     /* justify-content: space-between; */
@@ -97,4 +93,46 @@ a.cDownload span {
 
 .dVersions .dVersion:hover {
     background-color: #585a5e;
+}
+
+.details {
+    color: #585a5e;
+    font-size: 15px;
+}
+
+.details code,
+.wrapper code {
+    overflow-wrap: anywhere;
+}
+
+.codeSnippet pre {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.legacyAnchor {
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
+a.cDownload:hover,
+a.cDownload:focus {
+    text-decoration: underline;
+}
+
+a.cDownload img {
+    margin-right: 6px;
+}
+
+.box img.screenshot {
+    height: auto;
+    max-width: 100%;
+    border: 1px solid #e6e6e6;
+}
+
+.pageIntro {
+    font-size: 24px;
+    font-weight: 400;
+    color: #20b6b0;
 }

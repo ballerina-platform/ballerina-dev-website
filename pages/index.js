@@ -30,20 +30,11 @@ import Users from '../components/home-page/users/Users';
 import Articles from '../components/home-page/articles/Articles';
 import styles from '../styles/Home.module.css';
 import EventsData from '../_data/events.json';
+import { examples } from '../components/home-page/bal-action/examples';
 
 import fs from "fs";
 import matter from "gray-matter";
 import { getSingletonHighlighter } from "shiki";
-
-var traverseFolder = function (dir) {
-  var results = [];
-  var list = fs.readdirSync(dir);
-  list.forEach(function (file) {
-    var filex = dir + "/" + file;
-    results.push(filex);
-  });
-  return results;
-};
 
 export function getUpcomingEvents(now) {
   const events = EventsData.events;
@@ -64,16 +55,14 @@ export async function getStaticProps() {
   const highlighter = await getSingletonHighlighter();
   await highlighter.loadTheme('github-light');
   await highlighter.loadLanguage('ballerina');
-  const files = traverseFolder("components/home-page/bal-action/action-bbe");
-  var samples = {};
-  var codeSamples = {};
-
-  files.forEach(function (item, index) {
-    const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
-    const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' });
-    codeSamples[sampleName] = content.replaceAll('```','');
+  const samples = {};
+  const codeSamples = {};
+  examples.forEach(({ id }) => {
+    const filename = fs.readFileSync(`components/home-page/bal-action/action-bbe/${id}.md`, 'utf-8');
+    const { content } = matter(filename);
+    const source = content.trim();
+    samples[id] = highlighter.codeToHtml(source, { lang: 'ballerina', theme: 'github-light' });
+    codeSamples[id] = source;
   });
 
   return {

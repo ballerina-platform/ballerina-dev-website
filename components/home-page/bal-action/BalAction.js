@@ -26,21 +26,6 @@ function Diagram({ diagram }) {
   </div>;
 }
 
-function Preview({ preview }) {
-  return <div className={styles.preview}>
-    <div className={styles.previewHeader}><strong>{preview.heading}</strong><span>Illustrative preview · no sample executed here</span></div>
-    {preview.kind === 'table' && <div className={styles.tableScroll}><table><thead><tr>{preview.columns.map(column => <th key={column}>{column}</th>)}</tr></thead>
-      <tbody>{preview.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>}
-    {preview.kind === 'json' && <pre>{preview.value}</pre>}
-    {preview.kind === 'comparison' && <div className={styles.comparison}><pre>{preview.left}</pre><span aria-hidden="true">→</span><pre>{preview.right}</pre></div>}
-    {preview.kind === 'formats' && <div className={styles.formats}>
-      <div><strong>JSON input</strong><pre>{preview.input}</pre></div>
-      <div><strong>JSON output</strong><pre>{preview.json}</pre><strong>XML output</strong><pre>{preview.xml}</pre></div>
-    </div>}
-    {preview.kind === 'chat' && <div className={styles.chat}>{preview.rows.map((row, i) => <p key={i}>{row}</p>)}</div>}
-  </div>;
-}
-
 export default function BalAction({ samples, codeSamples, getLink }) {
   const [active, setActive] = React.useState(0);
   const [copied, setCopied] = React.useState(false);
@@ -101,7 +86,6 @@ export default function BalAction({ samples, codeSamples, getLink }) {
         </div>
         <div className={styles.diagramPane}><div className={styles.paneHeader}>How it works</div><Diagram diagram={example.diagram} /></div>
       </div>
-      <Preview preview={example.preview} />
     </section>
   </Container></Col>;
 }

@@ -26,20 +26,6 @@
 .flowNode { display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #20b6b0; border-radius: 4px; padding: 11px; min-width: 110px; background: #ecf8f7; font-size: 13px; }
 .waiting { border-color: #d58a38; background: #fff5e8; }
 .arrow { align-self: center; color: #147d79; }
-.preview { margin-top: 18px; border: 1px solid #d5d5d5; padding: 14px; background: #fafafa; }
-.previewHeader { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; margin-bottom: 10px; }
-.previewHeader span { color: #666; font-size: 12px; }
-.preview pre, .comparison pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font-size: 13px; }
-.tableScroll { overflow-x: auto; }
-.preview table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.preview th, .preview td { text-align: left; border: 1px solid #ddd; padding: 7px 10px; }
-.comparison { display: flex; align-items: center; gap: 15px; }
-.comparison pre { flex: 1; padding: 9px; background: #fff; border: 1px solid #e0e0e0; }
-.formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
-.formats > div { min-width: 0; }
-.formats strong { display: block; margin: 0 0 5px; font-size: 13px; }
-.formats pre { padding: 9px; margin: 0 0 9px; background: #fff; border: 1px solid #e0e0e0; }
-.chat p { margin: 5px 0; font-size: 13px; }
 @media (max-width: 767px) {
   .tabHint { display: block; margin: 0 0 6px; color: #555; font-size: 13px; }
   .tabList button { flex: 0 0 auto; }
@@ -47,6 +33,4 @@
   .intro { flex-direction: column; gap: 8px; }
   .mainGrid { grid-template-columns: 1fr; }
   .codePane :global(pre) { max-height: 350px; }
-  .comparison { flex-direction: column; align-items: stretch; }
-  .formats { grid-template-columns: 1fr; }
 }

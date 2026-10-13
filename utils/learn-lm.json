@@ -687,9 +687,17 @@
                             "id": "supported-observability-tools-and-platforms",
                             "subDirectories": [
                                 {
-                                    "dirName": "Prometheus",
+                                    "dirName": "OpenTelemetry",
                                     "level": 4,
                                     "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/opentelemetry",
+                                    "id": "opentelemetry"
+                                },
+                                {
+                                    "dirName": "Prometheus",
+                                    "level": 4,
+                                    "position": 2,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/prometheus",
                                     "id": "prometheus"
@@ -697,7 +705,7 @@
                                 {
                                     "dirName": "Jaeger",
                                     "level": 4,
-                                    "position": 2,
+                                    "position": 3,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/jaeger",
                                     "id": "jaeger"
@@ -705,7 +713,7 @@
                                 {
                                     "dirName": "Zipkin",
                                     "level": 4,
-                                    "position": 3,
+                                    "position": 4,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/zipkin",
                                     "id": "zipkin"
@@ -713,7 +721,7 @@
                                 {
                                     "dirName": "Datadog",
                                     "level": 4,
-                                    "position": 4,
+                                    "position": 5,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/datadog",
                                     "id": "datadog"
@@ -721,7 +729,7 @@
                                 {
                                     "dirName": "New Relic",
                                     "level": 4,
-                                    "position": 5,
+                                    "position": 6,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/new-relic",
                                     "id": "new-relic"
@@ -729,7 +737,7 @@
                                 {
                                     "dirName": "Elastic Stack",
                                     "level": 4,
-                                    "position": 6,
+                                    "position": 7,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
                                     "id": "elastic-stack"
@@ -737,7 +745,7 @@
                                 {
                                     "dirName": "OpenSearch",
                                     "level": 4,
-                                    "position": 7,
+                                    "position": 8,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/opensearch",
                                     "id": "opensearch"
@@ -745,7 +753,7 @@
                                 {
                                     "dirName": "Moesif",
                                     "level": 4,
-                                    "position": 8,
+                                    "position": 9,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/moesif",
                                     "id": "moesif"

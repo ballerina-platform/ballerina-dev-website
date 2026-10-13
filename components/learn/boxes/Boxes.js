@@ -678,7 +678,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/supported-observability-tools-and-platforms/prometheus`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/supported-observability-tools-and-platforms/opentelemetry`} className={styles.titleLink}>
                               Supported observability tools and platforms
                           </a>
                         </p>

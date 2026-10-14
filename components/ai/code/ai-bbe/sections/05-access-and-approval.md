@@ -6,11 +6,6 @@ details: "The integration keeps three identities separate. The **customer** is i
 guide: { label: 'Observe and secure AI integrations', url: '/learn/observe-and-secure-ai-integrations/' }
 samples:
   - { label: 'Approve tool calls in an interactive agent (guide)', url: '/learn/add-human-approval-and-durable-execution/#approve-tool-calls-in-an-interactive-agent' }
-  - { label: 'HTTP service JWT authentication (BBE)', url: '/learn/by-example/http-service-jwt-authentication/' }
-  - { label: 'OAuth2 client credentials (BBE)', url: '/learn/by-example/http-client-oauth2-client-credentials-grant-type/' }
 tabs:
-  - { key: 'identity', title: 'Agent tool' }
-  - { key: 'approval', title: 'Approval gate' }
-  - { key: 'sequence', title: 'Sequence' }
-  - { key: 'result', title: 'Result' }
+  - { key: 'approval', title: 'Code' }
 ---

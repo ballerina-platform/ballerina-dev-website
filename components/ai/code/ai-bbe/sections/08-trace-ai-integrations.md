@@ -6,11 +6,7 @@ details: "When an answer is slow, costly, or wrong, the trace shows which model 
 guide: { label: 'Observe and secure AI integrations', url: '/learn/observe-and-secure-ai-integrations/' }
 samples:
   - { label: 'Complete claims assistant sample (in the guide)', url: '/learn/observe-and-secure-ai-integrations/#the-complete-sample-code' }
-  - { label: 'Tracing (BBE)', url: '/learn/by-example/tracing/' }
   - { label: 'View traces in Jaeger', url: '/learn/supported-observability-tools-and-platforms/jaeger/' }
 tabs:
-  - { key: 'trace', title: 'Trace' }
-  - { key: 'config', title: 'Config' }
   - { key: 'code', title: 'Code' }
-  - { key: 'failure', title: 'Tool failure' }
 ---

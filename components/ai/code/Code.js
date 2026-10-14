@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Tabs, Tab } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -125,7 +125,7 @@ function SectionRow({ odd, children }) {
 }
 
 function CapabilitySection({ section, odd, getLink }) {
-    const defaultTab = section.tabs.length > 0 ? section.tabs[0].key : undefined;
+    const code = section.tabs.length > 0 ? section.tabs[0].code : '';
     return (
         <SectionRow odd={odd}>
             <Row>
@@ -162,19 +162,11 @@ function CapabilitySection({ section, odd, getLink }) {
                     </div>
                 </Col>
                 <Col xs={12} md={7} lg={7} className={styles.box}>
-                    <Tabs
-                        defaultActiveKey={defaultTab}
-                        id={`${section.id}-tabs`}
-                        className="mb-3 codeTabs"
-                    >
-                        {section.tabs.map((tab) => (
-                            <Tab eventKey={tab.key} title={tab.title} key={tab.key}>
-                                <div className={styles.codeSnippet}>
-                                    <div className="highlight" dangerouslySetInnerHTML={{ __html: tab.code }} />
-                                </div>
-                            </Tab>
-                        ))}
-                    </Tabs>
+                    {code ?
+                        <div className={styles.codeSnippet}>
+                            <div className="highlight" dangerouslySetInnerHTML={{ __html: code }} />
+                        </div>
+                        : null}
                 </Col>
             </Row>
         </SectionRow>

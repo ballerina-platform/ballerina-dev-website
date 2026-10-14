@@ -6,10 +6,6 @@ details: "Before a prompt, tool, or model change ships, the order support agent 
 guide: { label: 'Evaluate agent behavior', url: '/learn/evaluate-agent-behavior/' }
 samples:
   - { label: 'Complete evaluation project: broadband support agent (in the guide)', url: '/learn/evaluate-agent-behavior/#the-complete-code' }
-  - { label: 'Data-driven tests (BBE)', url: '/learn/by-example/testerina-data-driven-tests/' }
 tabs:
   - { key: 'evaluation', title: 'Code' }
-  - { key: 'checks', title: 'Checks' }
-  - { key: 'dataset', title: 'Dataset' }
-  - { key: 'report', title: 'Report' }
 ---

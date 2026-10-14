@@ -9,7 +9,4 @@ samples:
   - { label: 'Agent order processing (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-workflow/tree/main/examples/agent-order-processing' }
 tabs:
   - { key: 'code', title: 'Code' }
-  - { key: 'timeline', title: 'Timeline' }
-  - { key: 'recovery', title: 'Failure and recovery' }
-  - { key: 'config', title: 'Config' }
 ---

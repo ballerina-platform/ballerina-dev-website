@@ -27,7 +27,7 @@ import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
 import Integration from '../components/home-page/integration/Integration';
 import Users from '../components/home-page/users/Users';
-import Articles from '../components/home-page/articles/Articles';
+import AiCoding from '../components/home-page/ai-coding/AiCoding';
 import styles from '../styles/Home.module.css';
 import EventsData from '../_data/events.json';
 
@@ -136,12 +136,12 @@ export default function Home({ samples, codeSamples }) {
           <WhyBal getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeUsers}>
-          <Users getLink={getLink} />
+        <Row className={styles.homeAiCoding}>
+          <AiCoding />
         </Row>
 
-        <Row className={styles.homeArticles}>
-          <Articles getLink={getLink} />
+        <Row className={styles.homeUsers}>
+          <Users getLink={getLink} />
         </Row>
 
         <Row className={styles.homeVideos}>

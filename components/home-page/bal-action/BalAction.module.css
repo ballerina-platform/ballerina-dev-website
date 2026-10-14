@@ -12,11 +12,15 @@
 .mainGrid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; }
 .fullWidth { grid-template-columns: minmax(0, 1fr); }
 .codePane, .diagramPane { border: 1px solid #d5d5d5; min-width: 0; }
+.codePane { display: flex; flex-direction: column; }
 .paneHeader { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 14px; background: #f5f5f5; color: #555; font-size: 14px; font-weight: 600; }
 .copyButton { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #b6c8c7; border-radius: 3px; padding: 5px 8px; color: #147d79; background: #fff; font: inherit; font-size: 13px; }
-.codePane :global(pre) { margin: 0; padding: 16px !important; max-height: 430px; overflow: auto; background: #fff !important; }
+.codePane :global(.highlight) { display: flex; flex: 1; min-width: 0; }
+.codePane :global(pre) { flex: 1; width: 100%; margin: 0; padding: 16px !important; max-height: none; overflow-x: auto; overflow-y: visible; background: #fff !important; }
 .codePane :global(pre code) { font-size: 13px !important; line-height: 1.55; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 .diagramPane { display: flex; flex-direction: column; }
+.diagramImageWrap { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; padding: 12px; background: #fff; }
+.diagramImage { display: block; width: 100%; height: auto; max-height: 430px; object-fit: contain; }
 .sequence { display: flex; flex-direction: column; gap: 18px; padding: 24px 18px; flex: 1; justify-content: center; }
 .participants { display: flex; justify-content: space-between; gap: 6px; }
 .participants span { display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #20b6b0; background: #ecf8f7; border-radius: 4px; padding: 9px 6px; min-width: 0; flex: 1; font-size: 13px; }

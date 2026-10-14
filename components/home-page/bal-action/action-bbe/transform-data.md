@@ -1,4 +1,5 @@
 import ballerina/io;
+import ballerina/log;
 
 type Customer record {|
     string id;
@@ -7,25 +8,13 @@ type Customer record {|
     boolean active;
 |};
 
-type Contact record {|
-    string externalId;
-    string displayName;
-    string email;
-|};
-
 public function main() returns error? {
     json input = check io:fileReadJson("input.json");
     Customer[] customers = check input.cloneWithType();
-    Contact[] contacts = from Customer customer in customers
+    xml contactsXml = xml `<contacts>${
+        from Customer customer in customers
         where customer.active
-        select {
-            externalId: customer.id,
-            displayName: customer.name,
-            email: customer.email
-        };
-    json contactsJson = contacts.toJson();
-    xml contactsXml = xml `<contacts>${from var {externalId, displayName, email} in contacts
-        select xml `<contact id="${externalId}"><name>${displayName}</name><email>${email}</email></contact>`}</contacts>`;
-    io:println("JSON: ", contactsJson);
-    io:println("XML: ", contactsXml);
+        select xml `<contact><email>${customer.email}</email></contact>`
+    }</contacts>`;
+    log:printInfo("XML: " + contactsXml.toString());
 }

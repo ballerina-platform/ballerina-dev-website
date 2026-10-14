@@ -1,7 +1,6 @@
 import ballerina/http;
 import ballerina/io;
 import ballerina/workflow;
-import ballerina/workflow.management;
 
 type PurchaseRequest record {|
     string requestId;
@@ -42,16 +41,5 @@ service /purchases on new http:Listener(8080) {
         string workflowId = check workflow:run(purchaseWorkflow, request);
         return {requestId: request.requestId, workflowId,
             status: "PENDING_APPROVAL"};
-    }
-
-    resource function get [string workflowId]() returns json|error {
-        management:WorkflowExecutionInfo info =
-            check management:getWorkflowInfo(workflowId);
-        if info.status != "COMPLETED" {
-            return {workflowId, status: info.status};
-        }
-        anydata result = check workflow:getWorkflowResult(workflowId);
-        return {workflowId, status: info.status,
-            result: check result.cloneWithType(json)};
     }
 }

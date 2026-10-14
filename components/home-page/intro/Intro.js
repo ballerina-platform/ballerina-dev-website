@@ -52,12 +52,13 @@ export default function Intro() {
 
         <Row className={styles.introBottomRow}>
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <h1>Flexible, Powerful, Beautiful<br />Integrations as Code with Ballerina</h1>
+            <h1>Open Source Programming Language <br />for Integration</h1>
 
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Open source, cloud-native programming language optimized for integration</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Cloud-native by design, with first-class support for APIs, services, events, and data transformations</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Rich ecosystem of connectors, network protocols, and data formats</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Data-oriented, flexibly typed, and designed to catch integration errors early</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Textual code and graphical sequence diagrams and flowcharts that stay in sync</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Ready for the agentic era, with libraries, abstractions, and tooling for AI agents, MCP, and durable workflows</span></p>
             <p className={styles.desItem}><BsCheck className={styles.check} /><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2022</span></p>
 
 

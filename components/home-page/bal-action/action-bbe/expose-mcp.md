@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/log;
 import ballerina/mcp;
 
 type Stock record {|
@@ -6,23 +7,28 @@ type Stock record {|
     int available;
 |};
 
-service /stock on new http:Listener(9091) {
-    resource function get [string id]() returns Stock {
-        return {productId: id, available: 12};
-    }
-}
+final http:Client stockClient = check new ("http://localhost:9091");
 
-listener http:Listener mcpHttp = new (9090);
-listener mcp:StreamableHttpListener mcpListener = check new (mcpHttp);
+listener mcp:StreamableHttpListener stockMcpListener = check new (9090);
 
 @mcp:StreamableHttpServiceConfig {
     info: {name: "Product stock", version: "1.0.0"},
     sessionMode: mcp:STATELESS
 }
-service mcp:StreamableHttpService /mcp on mcpListener {
-    @mcp:Tool {description: "Look up available stock for a product ID"}
-    remote function getProductStock(string productId) returns Stock|error {
-        http:Client stock = check new ("http://localhost:9091");
-        return stock->/stock/[productId];
+service mcp:StreamableHttpService /mcp on stockMcpListener {
+
+    # Look up the available stock quantity for a given product ID.
+    #
+    # + productId - The identifier of the product to look up
+    # + return - The current stock information, or an error if the lookup fails
+    isolated remote function getProductStock(string productId) returns Stock|error {
+        Stock|error stock = stockClient->/stock/[productId];
+        if stock is error {
+            log:printError("Failed to fetch stock details", 'error = stock, productId = productId);
+            return error(string `Unable to fetch stock for product ${productId}`, stock);
+        }
+
+        log:printInfo("Fetched stock details", productId = productId, available = stock.available);
+        return stock;
     }
 }

@@ -1,4 +1,4 @@
-import ballerina/io;
+import ballerina/log;
 import ballerinax/kafka;
 
 configurable string broker = kafka:DEFAULT_URL;
@@ -29,7 +29,7 @@ service on new kafka:Listener(broker, consumerConfig) {
             json message = {orderId: item.orderId,
                 productId: item.productId, status: "READY_TO_PACK"};
             check self.producer->send({topic: outputTopic, value: message});
-            io:println("Published fulfillment for ", item.orderId);
+            log:printInfo("Published fulfillment for " + item.orderId);
         }
     }
 }

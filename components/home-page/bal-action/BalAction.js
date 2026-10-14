@@ -10,6 +10,11 @@ import { examples } from './examples';
 import styles from './BalAction.module.css';
 
 function Diagram({ diagram }) {
+  if (diagram.kind === 'image') {
+    return <div className={styles.diagramImageWrap}>
+      <img className={styles.diagramImage} src={diagram.src} alt={diagram.alt} />
+    </div>;
+  }
   if (diagram.kind === 'mapping' || diagram.kind === 'workflow') {
     return <div className={styles.flow} aria-label={diagram.nodes.join(' then ')}>
       {diagram.nodes.map((node, index) => <React.Fragment key={node}>
@@ -86,7 +91,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
           </CopyToClipboard></div>
           <div className="highlight" dangerouslySetInnerHTML={{ __html: samples[example.id] }} />
         </div>
-        {showDiagram && <div className={styles.diagramPane}><div className={styles.paneHeader}>{example.diagram.kind === 'sequence' ? 'Sequence diagram' : 'Flow diagram'}</div><Diagram diagram={example.diagram} /></div>}
+        {showDiagram && <div className={styles.diagramPane}><div className={styles.paneHeader}>Diagram</div><Diagram diagram={example.diagram} /></div>}
       </div>
     </section>
   </Container></Col>;

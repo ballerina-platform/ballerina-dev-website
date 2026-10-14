@@ -1,8 +1,12 @@
 ---
 title: 'Code where code is clearer. Words where words are clearer.'
 id: 'natural-expressions'
-description: "Use runtime natural expressions to describe bounded tasks in plain language and receive results shaped by an expected Ballerina type. Combine these expressions with ordinary code for validation, error handling, and downstream integration."
-details: "A model reads a free-form return request. Ordinary code then checks the input, validates constraints, looks up the order in the system of record, and returns a distinct HTTP status for each failure. A natural expression is a language construct that calls a model at run time through an `ai:ModelProvider`. It is an experimental feature that requires Ballerina 2201.13.0 or later and the `--experimental` flag on `bal build`, `bal run`, and `bal test`. The result conforms to the expected type or the expression returns an error, but conformance does not make the values true, so treat them like any other external input. Compile-time code generation (`@natural:code`, `const natural`) is a separate, development-time feature. See [AI-assisted development](/use-cases/ai/ai-assisted-development/)."
+description: |
+  Describe what you want in plain language, right inside your code, and get back a result of the type you expect. Use words where words are clearer and code where code is clearer.
+
+  - **Natural expressions**: express fuzzy tasks, such as understanding a free-form request, in plain language.
+  - **Typed results**: results conform to a Ballerina type, so the rest of your code stays type-safe.
+  - **Ordinary code around it**: validate, handle errors, and call existing systems as usual. Experimental, from Ballerina 2201.13.0.
 guide: { label: 'Use natural expressions in an integration', url: '/learn/work-with-llms-using-natural-expressions/' }
 samples:
   - { label: 'Rate blog posts using natural expressions (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/rate-blog-posts-using-natural-expressions' }

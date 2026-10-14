@@ -276,6 +276,8 @@ The Ballerina application writes its logs to a file in JSON format. A Fluent Bit
 
 Fluent Bit starts reading at the **end** of the log file the first time it runs, so it only sends log entries written after it starts. After that, it remembers its position in the file across restarts.
 
+Log delivery is best effort. If Moesif can't be reached, Fluent Bit retries each batch of logs up to three times (`retry_limit: 3`) and then drops it. To keep retrying for longer, increase `retry_limit`, or set it to `no_limits`.
+
 >**Note:** The `.env` file contains your Moesif application ID. Treat it as a secret and do not commit it to source control.
 
 ## Step 4 - Run the Ballerina service

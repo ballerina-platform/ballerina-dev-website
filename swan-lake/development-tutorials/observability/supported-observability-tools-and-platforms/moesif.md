@@ -94,206 +94,189 @@ These configurations enable traces and metrics publishing for the Ballerina appl
 
 ## Step 3 - Publish Ballerina application logs to Moesif
 
-This setup leverages `Fluent Bit` to forward logs to an `OTEL Collector`, which then sends the logs to Moesif’s log endpoint.
+The Ballerina application writes its logs to a file in JSON format. A Fluent Bit sidecar reads that file, converts each entry to an OpenTelemetry log record, and sends it straight to Moesif's OTLP logs endpoint (`/v1/logs`) over HTTPS.
 
-> Ballerina → Fluent Bit → OTEL Collector → Moesif
+> Ballerina → Fluent Bit → Moesif
 
-1. Copy the following configs into a local directory to set up containerized log publishing.
-
-   ```
-   .
-   ├── docker-compose.yaml
-   ├── fluent-bit.conf
-   └── otelcol.yaml
-   ```
-
-   * **docker-compose.yaml** – Container setup for Fluent Bit and OTEL Collector.
-   * **fluent-bit.conf** – Reads Ballerina logs and forwards them.
-   * **otelcol.yaml** – Processes logs and sends to Moesif.
-
-   **docker-compose.yaml**
-   
-   Update the `<ballerina-log-path>` with the log storage location, and `<MOESIF_APPLICATION_ID>` with the 
-   application ID obtained in **Step 1**.
-   
-   ```yaml
-   services:
-     otelcol:
-       image: otel/opentelemetry-collector-contrib:0.132.0
-       container_name: otelcol
-       command: ["--config", "/etc/otelcol.yaml"]
-       environment:
-         MOESIF_APP_ID: "<MOESIF_APPLICATION_ID>"
-       ports:
-         - "4317:4317"
-         - "4318:4318"
-       volumes:
-         - ./otelcol.yaml:/etc/otelcol.yaml:ro
-       networks:
-         - otelnet
-   
-     fluent-bit:
-       image: fluent/fluent-bit:3.0
-       container_name: fluent-bit
-       depends_on:
-         - otelcol
-       ports:
-         - "2020:2020"
-       volumes:
-         - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
-         # Mount the local log directory into the container
-         - <ballerina-log-path>:/app/logs:ro
-       networks:
-         - otelnet
-   
-   networks:
-     otelnet:
-       driver: bridge
-   ```
-   
-   **fluent-bit.conf**
-   
-   ```conf
-   [SERVICE]
-       Flush         1
-       Log_Level     debug
-       Daemon        off
-       HTTP_Server   On
-       HTTP_Listen   0.0.0.0
-       HTTP_Port     2020
-   
-   # Read logs from local Ballerina app
-   [INPUT]
-       Name              tail
-       Path              /app/logs/app.log
-       Tag               ballerina.*
-       Read_from_Head    true
-       Skip_Long_Lines   On
-       Skip_Empty_Lines  On
-       Refresh_Interval  1
-   
-   # Add metadata
-   [FILTER]
-       Name         modify
-       Match        ballerina.*
-       Add          service.name ballerina-service
-       Add          deployment.environment prod
-   
-   # Convert to OTEL format and send to collector
-   [OUTPUT]
-       Name          opentelemetry
-       Match         ballerina.*
-       Host          otelcol
-       Port          4318
-       Logs_uri      /v1/logs
-       Log_response_payload True
-       Tls           Off
-       Tls.verify    Off
-   
-   # Debug output to see what's being processed
-   [OUTPUT]
-       Name          stdout
-       Match         ballerina.*
-       Format        json_lines
-   ```
-   
-   **otelcol.yaml**
-   
-   Update the `<MOESIF_APPLICATION_ID>` with the application ID obtained in **Step 1**.
-   
-   ```yaml
-   receivers:
-     otlp:
-       protocols:
-         grpc:
-           endpoint: "0.0.0.0:4317"
-         http:
-           endpoint: "0.0.0.0:4318"
-   
-   processors:
-     resource:
-       attributes:
-         - key: service.name
-           value: ballerina-service
-           action: upsert
-         - key: deployment.environment
-           value: prod
-           action: upsert
-   
-     transform/severity_from_message:
-       log_statements:
-         - context: log
-           statements:
-             # Set default severity to INFO for all logs first
-             - set(severity_number, 9) where body != nil
-             - set(severity_text, "INFO") where body != nil
-   
-             # Try to parse JSON body, but handle parsing errors gracefully
-             - set(cache["is_json"], false)
-             - set(cache["is_json"], true) where body != nil and IsMatch(body, "^\\s*\\{")
-             
-             # For JSON logs, parse and extract level
-             - set(cache["parsed_body"], ParseJSON(body)) where cache["is_json"] == true
-             
-             # Override with specific levels based on JSON level field
-             - set(severity_number, 1) where cache["is_json"] == true and cache["parsed_body"]["level"] == "TRACE"
-             - set(severity_text, "TRACE") where cache["is_json"] == true and cache["parsed_body"]["level"] == "TRACE"
-             - set(severity_number, 5) where cache["is_json"] == true and cache["parsed_body"]["level"] == "DEBUG"
-             - set(severity_text, "DEBUG") where cache["is_json"] == true and cache["parsed_body"]["level"] == "DEBUG"
-             - set(severity_number, 9) where cache["is_json"] == true and cache["parsed_body"]["level"] == "INFO"
-             - set(severity_text, "INFO") where cache["is_json"] == true and cache["parsed_body"]["level"] == "INFO"
-             - set(severity_number, 13) where cache["is_json"] == true and cache["parsed_body"]["level"] == "WARN"
-             - set(severity_text, "WARN") where cache["is_json"] == true and cache["parsed_body"]["level"] == "WARN"
-             - set(severity_number, 17) where cache["is_json"] == true and cache["parsed_body"]["level"] == "ERROR"
-             - set(severity_text, "ERROR") where cache["is_json"] == true and cache["parsed_body"]["level"] == "ERROR"
-             - set(severity_number, 21) where cache["is_json"] == true and cache["parsed_body"]["level"] == "FATAL"
-             - set(severity_text, "FATAL") where cache["is_json"] == true and cache["parsed_body"]["level"] == "FATAL"
-   
-     batch: {}
-   
-   exporters:
-     # OTLP over HTTP to Moesif
-     otlphttp:
-       endpoint: "https://api.moesif.net"
-       logs_endpoint: "https://api.moesif.net/v1/logs"
-       headers:
-         X-Moesif-Application-Id: "<MOESIF_APPLICATION_ID>"
-       compression: none
-       timeout: 10s
-       sending_queue:
-         enabled: true
-         num_consumers: 2
-         queue_size: 512
-       retry_on_failure:
-         enabled: true
-         initial_interval: 1s
-         max_interval: 10s
-         max_elapsed_time: 0s
-   
-   service:
-     telemetry:
-       logs:
-         level: debug
-     pipelines:
-       logs:
-         receivers:  [otlp]
-         processors: [resource, transform/severity_from_message, batch]
-         exporters:  [otlphttp]
-   ```
-
-2. Run the above components stack using the following command.
-   `docker compose up`
-
-3. Create the `Config.toml` file in the package directory with the following content to log to a file in `json` format.
+1. Add the following to the `Config.toml` file in the package directory so that the application writes JSON logs to a file.
 
    ```toml
    [ballerina.log]
    format = "json"
 
    [[ballerina.log.destinations]]
-   # Replace /path/to/your/ballerina/logs with the absolute path to the Ballerina application's log directory
-   path = "/path/to/your/ballerina/logs/app.log"
+   path = "/absolute/path/to/ballerina/logs/app.log"
    ```
+
+   Replace the path with your log file location.
+
+2. Create a local directory with the following files.
+
+   ```
+   moesif-fluent-bit-logs/
+   ├── .env
+   ├── docker-compose.yaml
+   └── fluent-bit.yaml
+   ```
+
+   * **.env** – Values specific to your setup, such as the Moesif application ID and the log directory.
+   * **docker-compose.yaml** – Runs the Fluent Bit container.
+   * **fluent-bit.yaml** – Reads the Ballerina logs, maps them to OpenTelemetry logs, and sends them to Moesif.
+
+   **.env**
+
+   ```
+   MOESIF_APPLICATION_ID=<MOESIF_APPLICATION_ID>
+   BALLERINA_LOG_DIR=/absolute/path/to/ballerina/logs
+   LOG_FILE_PATH=/app/logs/app.log
+   MOESIF_HOST=api.moesif.net
+   OTEL_SERVICE_NAME=<SERVICE_NAME>
+   DEPLOYMENT_ENVIRONMENT=<ENVIRONMENT_NAME>
+   FLUENT_BIT_HTTP_PORT=2020
+   ```
+
+   - Replace `<MOESIF_APPLICATION_ID>` with the application ID obtained in **Step 1**.
+   - `BALLERINA_LOG_DIR` is the **host directory** that contains the `app.log` file configured above. Docker mounts it at `/app/logs` inside the container.
+   - `LOG_FILE_PATH` is the path of the log file **inside the container**. Change it if your log file has a different name.
+   - Set `OTEL_SERVICE_NAME` to your service name and `DEPLOYMENT_ENVIRONMENT` to the environment name, such as `dev` or `prod`.
+   - If another process already uses port `2020`, change `FLUENT_BIT_HTTP_PORT`.
+   - On Windows, use a Windows-style host path and allow access to the drive in Docker Desktop's file sharing settings.
+
+   **docker-compose.yaml**
+
+   ```yaml
+   services:
+     fluent-bit:
+       image: fluent/fluent-bit:4.2.2
+       volumes:
+         - ${BALLERINA_LOG_DIR}:/app/logs:ro
+         - ./fluent-bit.yaml:/fluent-bit/etc/fluent-bit.yaml:ro
+         - fluent-bit-db:/var/log
+       command: ["/fluent-bit/bin/fluent-bit", "-c", "/fluent-bit/etc/fluent-bit.yaml"]
+       environment:
+         - MOESIF_APPLICATION_ID=${MOESIF_APPLICATION_ID}
+         - LOG_FILE_PATH=${LOG_FILE_PATH:-/app/logs/app.log}
+         - MOESIF_HOST=${MOESIF_HOST:-api.moesif.net}
+         - OTEL_SERVICE_NAME=${OTEL_SERVICE_NAME:-ballerina-service}
+         - DEPLOYMENT_ENVIRONMENT=${DEPLOYMENT_ENVIRONMENT:-prod}
+       ports:
+         - "${FLUENT_BIT_HTTP_PORT:-2020}:2020"
+       restart: unless-stopped
+
+   volumes:
+     fluent-bit-db:
+   ```
+
+   **fluent-bit.yaml**
+
+   ```yaml
+   service:
+     flush: 5
+     log_level: info
+     http_server: on
+     http_listen: 0.0.0.0
+     http_port: 2020
+
+   pipeline:
+     inputs:
+       - name: tail
+         path: ${LOG_FILE_PATH}
+         tag: ballerina.logs
+         read_from_head: false
+         refresh_interval: 5
+         buffer_max_size: 64KB
+         skip_long_lines: on
+         skip_empty_lines: on
+         mem_buf_limit: 10MB
+         inotify_watcher: false
+         db: /var/log/fluent-bit.db   # Tracks the read offset across restarts
+
+         processors:
+           logs:
+             # Parse each JSON log line so that its fields, such as "level", are available
+             - name: parser
+               key_name: log
+               parser: ballerina_json
+               reserve_data: true
+
+             # Map the "level" field to the OpenTelemetry severity number (defaults to INFO)
+             - name: lua
+               call: set_severity
+               code: |
+                 function set_severity(tag, timestamp, record)
+                     local map = { TRACE = 1, DEBUG = 5, INFO = 9, WARN = 13, ERROR = 17, FATAL = 21 }
+                     local num = map[record["level"]]
+                     if num == nil then
+                         num = 9
+                         record["level"] = "INFO"
+                     end
+                     record["severity_number"] = num
+                     return 2, timestamp, record
+                 end
+
+             # Wrap records in the OpenTelemetry log schema
+             - name: opentelemetry_envelope
+
+             # Add resource attributes
+             - name: content_modifier
+               action: upsert
+               context: otel_resource_attributes
+               key: service.name
+               value: ${OTEL_SERVICE_NAME}
+
+             - name: content_modifier
+               action: upsert
+               context: otel_resource_attributes
+               key: deployment.environment
+               value: ${DEPLOYMENT_ENVIRONMENT}
+
+             # "time" is already used as the log timestamp, so remove it from the body
+             - name: content_modifier
+               action: delete
+               context: body
+               key: time
+
+     outputs:
+       - name: opentelemetry
+         match: ballerina.logs
+         host: ${MOESIF_HOST}
+         port: 443
+         tls: true
+         tls.verify: on
+         tls.verify_hostname: on
+         logs_uri: /v1/logs
+         logs_severity_text_message_key: level
+         logs_severity_number_message_key: severity_number
+         logs_body_key_attributes: on   # Make parsed JSON fields queryable as log attributes
+         header:
+           - X-Moesif-Application-Id ${MOESIF_APPLICATION_ID}
+         log_response_payload: on
+         workers: 2
+         retry_limit: 3
+
+   parsers:
+     - name: ballerina_json
+       format: json
+       time_key: time
+       time_format: "%Y-%m-%dT%H:%M:%S.%L%z"
+       time_keep: on
+   ```
+
+3. From the `moesif-fluent-bit-logs` directory, start Fluent Bit.
+
+   ```
+   $ docker compose up -d
+   ```
+
+4. To check that Fluent Bit is running and sending logs, view its output.
+
+   ```
+   $ docker compose logs -f fluent-bit
+   ```
+
+Fluent Bit starts reading at the **end** of the log file the first time it runs, so it only sends log entries written after it starts. After that, it remembers its position in the file across restarts.
+
+>**Note:** The `.env` file contains your Moesif application ID. Treat it as a secret and do not commit it to source control.
 
 ## Step 4 - Run the Ballerina service
 

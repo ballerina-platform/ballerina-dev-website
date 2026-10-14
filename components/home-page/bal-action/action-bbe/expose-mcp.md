@@ -12,8 +12,7 @@ final http:Client stockClient = check new ("http://localhost:9091");
 listener mcp:StreamableHttpListener stockMcpListener = check new (9090);
 
 @mcp:StreamableHttpServiceConfig {
-    info: {name: "Product stock", version: "1.0.0"},
-    sessionMode: mcp:STATELESS
+    info: {name: "Product stock", version: "1.0.0"}
 }
 service mcp:StreamableHttpService /mcp on stockMcpListener {
 

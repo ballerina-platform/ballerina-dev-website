@@ -59,13 +59,14 @@ export const examples = [
     source: 'enterprise_agent/main.bal', link: base + 'enterprise_agent',
     diagram: {
       kind: 'image',
+      large: true,
       src: '/images/home-page/build-agent-flow.png',
       alt: 'Flow diagram showing an OpenAI-powered delivery agent with order and shipment lookup tools, followed by the agent run and logged answer'
     }
   },
   {
     id: 'expose-mcp', label: 'Expose MCP tools', title: 'Expose product stock through MCP',
-    description: 'Expose a stateless MCP service that retrieves typed stock data from an HTTP backend, logs successful lookups, and returns contextual errors when requests fail.',
+    description: 'Expose an MCP service that retrieves typed stock data from an HTTP backend, logs successful lookups, and returns contextual errors when requests fail.',
     source: 'expose_mcp_tools/main.bal', link: base + 'expose_mcp_tools',
     diagram: {
       kind: 'image',
@@ -74,13 +75,14 @@ export const examples = [
     }
   },
   {
-    id: 'coordinate-workflow', label: 'Coordinate a workflow', title: 'Purchase approval',
-    description: 'Pause a durable purchase workflow for a human decision, return a clear rejection when approval is denied, or continue to process an approved purchase.',
-    source: 'workflow_purchase_approval/main.bal', link: base + 'workflow_purchase_approval',
+    id: 'coordinate-workflow', label: 'Coordinate a workflow', title: 'Claim approval with a human task',
+    description: 'Verify an insurance claim, pause the durable workflow for a manager’s decision, and pay approved claims while returning clear rejection results.',
+    source: 'workflow-human-task/main.bal', link: base + 'workflow-human-task',
     diagram: {
       kind: 'image',
+      large: true,
       src: '/images/home-page/coordinate-workflow-flow.png',
-      alt: 'Workflow diagram that waits for a human approval, returns a rejection when denied, or processes and returns an approved purchase'
+      alt: 'Visual workflow for claim approval showing claim verification, a human decision task, rejection paths, and payment for approved claims'
     }
   }
 ];

@@ -12,7 +12,7 @@ import styles from './BalAction.module.css';
 function Diagram({ diagram }) {
   if (diagram.kind === 'image') {
     return <div className={styles.diagramImageWrap}>
-      <img className={styles.diagramImage} src={diagram.src} alt={diagram.alt} />
+      <img className={`${styles.diagramImage} ${diagram.large ? styles.diagramImageLarge : ''}`} src={diagram.src} alt={diagram.alt} />
     </div>;
   }
   if (diagram.kind === 'mapping' || diagram.kind === 'workflow') {

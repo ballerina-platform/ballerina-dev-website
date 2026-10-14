@@ -21,6 +21,7 @@
 .diagramPane { display: flex; flex-direction: column; }
 .diagramImageWrap { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; padding: 12px; background: #fff; }
 .diagramImage { display: block; width: 100%; height: auto; max-height: 430px; object-fit: contain; }
+.diagramImageLarge { max-height: 700px; }
 .sequence { display: flex; flex-direction: column; gap: 18px; padding: 24px 18px; flex: 1; justify-content: center; }
 .participants { display: flex; justify-content: space-between; gap: 6px; }
 .participants span { display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #20b6b0; background: #ecf8f7; border-radius: 4px; padding: 9px 6px; min-width: 0; flex: 1; font-size: 13px; }

@@ -1,45 +1,63 @@
 import ballerina/http;
 import ballerina/io;
 import ballerina/workflow;
+import ballerina/workflow.management;
 
-type PurchaseRequest record {|
-    string requestId;
-    string item;
+type Claim record {|
+    string claimId;
+    string policyNo;
     decimal amount;
 |};
 
-type Approval record {|
+type ApprovalDecision record {|
     boolean approved;
     string comment;
 |};
 
 @workflow:Workflow
-function purchaseWorkflow(workflow:Context ctx, PurchaseRequest request)
-        returns string|error {
-    Approval decision = check ctx->awaitHumanTask("approvePurchase",
-        {requestId: request.requestId, item: request.item,
-            amount: request.amount},
-        userRoles = "MANAGER",
-        title = string `Approve purchase ${request.requestId}`,
-        description = "Review the purchase request.");
-    if !decision.approved {
-        return string `Purchase ${request.requestId} rejected: ${decision.comment}`;
+function claimApprovalWorkflow(workflow:Context ctx, Claim claim) returns string|error {
+    boolean verified = check ctx->callActivity(verifyClaim, {"claim": claim});
+    if !verified {
+        return string `Claim ${claim.claimId} was rejected during verification.`;
     }
-    string reference = check ctx->callActivity(processPurchase,
-        {"requestId": request.requestId});
-    return string `Purchase ${request.requestId} processed: ${reference}`;
+    ApprovalDecision decision = check ctx->awaitHumanTask("approveClaim", "MANAGER",
+            payload = {claimId: claim.claimId, policyNo: claim.policyNo, amount: claim.amount},
+            title = string `Approve claim ${claim.claimId}`,
+            description = "Review the claim and approve or reject the payment.");
+    if !decision.approved {
+        return string `Claim ${claim.claimId} rejected by manager: ${decision.comment}`;
+    }
+    string paymentRef = check ctx->callActivity(makePayment, {"claimId": claim.claimId, "amount": claim.amount});
+    return string `Claim ${claim.claimId} approved. Payment reference: ${paymentRef}`;
 }
 
 @workflow:Activity
-function processPurchase(string requestId) returns string|error {
-    io:println("Processing approved purchase ", requestId);
-    return string `PO-${requestId}`;
+function verifyClaim(Claim claim) returns boolean|error {
+    io:println(string `Verifying claim ${claim.claimId} against policy ${claim.policyNo}`);
+    return claim.amount <= 1000.0d;
 }
 
-service /purchases on new http:Listener(8080) {
-    resource function post .(PurchaseRequest request) returns json|error {
-        string workflowId = check workflow:run(purchaseWorkflow, request);
-        return {requestId: request.requestId, workflowId,
-            status: "PENDING_APPROVAL"};
+@workflow:Activity
+function makePayment(string claimId, decimal amount) returns string|error {
+    io:println(string `Paying ${amount} for claim ${claimId}`);
+    return string `PAY-${claimId}`;
+}
+
+service /claims on new http:Listener(8080) {
+
+    resource function post .(Claim claim) returns json|error {
+        string workflowId = check workflow:run(claimApprovalWorkflow, claim);
+        return {claimId: claim.claimId, workflowId, status: "PENDING_APPROVAL"};
+    }
+
+    resource function get [string workflowId]() returns json|error {
+        // Check the status first instead of blocking on the result:
+        // getWorkflowResult waits until the workflow completes.
+        management:WorkflowExecutionInfo info = check management:getWorkflowInfo(workflowId);
+        if info.status != "COMPLETED" {
+            return {workflowId, status: info.status};
+        }
+        anydata result = check workflow:getWorkflowResult(workflowId);
+        return {workflowId, status: info.status, result: check result.cloneWithType(json)};
     }
 }

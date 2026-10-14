@@ -10,19 +10,19 @@ import styles from './AiCoding.module.css';
 const benefits = [
   {
     title: 'Less code to generate',
-    description: 'High-level constructs mean fewer tokens and fewer places for a model to make a mistake.'
+    description: 'Services, clients, and data mappings are language constructs, so a program needs fewer lines than the same logic assembled from libraries.'
   },
   {
-    title: 'Fewer silent choices',
-    description: 'Retries, timeouts, and serialization come from documented library defaults, not whatever a model picks on a given run.'
+    title: 'Compiler feedback',
+    description: 'Static types catch mismatched fields and missing error handling at compile time. An agent can read the diagnostics and fix them before the code runs.'
   },
   {
-    title: 'Easier to review',
-    description: 'Types reject malformed data at compile time, and the sequence diagram shows the flow at a glance.'
+    title: 'Documented defaults',
+    description: 'Retries, timeouts, and serialization are configured on standard library clients instead of being written by hand.'
   },
   {
-    title: 'Source you keep',
-    description: 'Generate once, then version, test, and diff it like any other code.'
+    title: 'Reviewable as diagrams',
+    description: 'Generated code renders as a sequence diagram and a flow diagram, so you can check the control flow and external calls without reading every line.'
   }
 ];
 
@@ -32,7 +32,7 @@ export default function AiCoding() {
       <Row className={styles.content}>
         <Col xs={12} lg={6} className={styles.intro}>
           <h2>Writing Ballerina with AI coding agents</h2>
-          <p>More integration code is now generated than typed. Ballerina&apos;s design suits that: the model describes the integration at a high level, the compiler and standard library handle the plumbing, and you review the result as code and as a diagram.</p>
+          <p>AI coding agents can write Ballerina like any other language. A few properties of the language make their output shorter and easier to check.</p>
         </Col>
         <Col xs={12} lg={6} className={styles.benefits}>
           {benefits.map(benefit => <div className={styles.benefit} key={benefit.title}>

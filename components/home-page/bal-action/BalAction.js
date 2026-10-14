@@ -59,6 +59,8 @@ export default function BalAction({ samples, codeSamples, getLink }) {
   };
 
   const example = examples[active];
+  // A diagram only helps when parties interact or state changes; a pure data mapping gets full-width code.
+  const showDiagram = example.diagram.kind !== 'mapping';
   return <Col sm={12}><Container>
     <Row><Col sm={12} className="sectionTitle"><h2 id="ballerina-in-action" className="section">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16" onClick={e => getLink(e.target, 'ballerina-in-action')} aria-hidden="true">
@@ -75,7 +77,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
     <section id={`action-panel-${example.id}`} role="tabpanel" aria-labelledby={`action-tab-${example.id}`} tabIndex={0} className={styles.panel}>
       <div className={styles.intro}><div><h3>{example.title}</h3><p>{example.description}</p></div>
         <a href={example.link} target="_blank" rel="noopener noreferrer">View full example <span aria-hidden="true">↗</span></a></div>
-      <div className={styles.mainGrid}>
+      <div className={`${styles.mainGrid} ${showDiagram ? '' : styles.fullWidth}`}>
         <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina code</span>
           <CopyToClipboard text={codeSamples[example.id]} onCopy={() => setCopied(true)}>
             <button type="button" aria-label={`Copy ${example.label} code`} className={styles.copyButton}>
@@ -84,7 +86,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
           </CopyToClipboard></div>
           <div className="highlight" dangerouslySetInnerHTML={{ __html: samples[example.id] }} />
         </div>
-        <div className={styles.diagramPane}><div className={styles.paneHeader}>How it works</div><Diagram diagram={example.diagram} /></div>
+        {showDiagram && <div className={styles.diagramPane}><div className={styles.paneHeader}>{example.diagram.kind === 'sequence' ? 'Sequence diagram' : 'Flow diagram'}</div><Diagram diagram={example.diagram} /></div>}
       </div>
     </section>
   </Container></Col>;

@@ -10,6 +10,7 @@
 .intro p { margin: 0; max-width: 780px; line-height: 1.5; }
 .intro a { color: #147d79; white-space: nowrap; font-weight: 600; }
 .mainGrid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; }
+.fullWidth { grid-template-columns: minmax(0, 1fr); }
 .codePane, .diagramPane { border: 1px solid #d5d5d5; min-width: 0; }
 .paneHeader { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 14px; background: #f5f5f5; color: #555; font-size: 14px; font-weight: 600; }
 .copyButton { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #b6c8c7; border-radius: 3px; padding: 5px 8px; color: #147d79; background: #fff; font: inherit; font-size: 13px; }

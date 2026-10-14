@@ -18,21 +18,59 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
+import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
+
 import styles from './WhyBal.module.css';
 
+const T = '#3DBDB5';
+const o = { stroke: T, strokeWidth: 3, strokeLinecap: 'round', strokeLinejoin: 'round' };
+
+const features = [
+  {
+    slug: 'cloud-native', title: 'Cloud native',
+    text: 'Services, listeners, clients, and resources are first-class language constructs, not library afterthoughts.',
+    icon: null,
+    img: ['cloud-native', 126]
+  },
+  {
+    slug: 'graphical', title: 'Graphical',
+    text: 'Every program is also a sequence diagram. Both are views of one source, so editing either updates the other.',
+    icon: null,
+    img: ['graphical', 135]
+  },
+  {
+    slug: 'data-oriented', title: 'Data oriented',
+    text: 'JSON and XML are native types. Query expressions turn one message format into another in a few lines.',
+    icon: null,
+    img: ['data-transformation', 142]
+  },
+  {
+    slug: 'flexibly-typed', title: 'Flexibly typed',
+    text: 'Data binds to a type by its shape, and malformed data is caught at compile time.',
+    icon: null,
+    img: ['flexible-typing', 151]
+  },
+  {
+    slug: 'concurrent', title: 'Concurrent and durable',
+    text: 'Workers without asynchronous functions, plus durable workflows and agents that keep state across crashes and restarts.',
+    icon: null,
+    img: ['concurrent', 108]
+  },
+  {
+    slug: 'ai-built-in', title: 'AI built in',
+    text: 'Natural expressions return typed values from a model, checked by the compiler. Build agents and MCP servers.',
+    icon: <>
+      <rect {...o} x="16" y="16" width="40" height="40" rx="8" />
+      <path {...o} d="M28 8v8M44 8v8M28 56v8M44 56v8M8 28h8M8 44h8M56 28h8M56 44h8" />
+      <path d="M36 25l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill={T} />
+    </>
+  }
+];
+
 export default function WhyBal(props) {
-
-  let imagePath = prefix + '/images/toc-bg.svg';
-
-  const linkStyle = {
-    backgroundImage: 'url(' + imagePath + ')',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'left center'
-  };
 
   return (
     <Col sm={12}>
@@ -56,92 +94,22 @@ export default function WhyBal(props) {
             </h2>
           </Col>
         </Row>
-        <Row className={styles.whyBallerinaRow}>
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/cloud-native.svg`} width={126} height={100} alt="cloud-native" />
-              <h3>Cloud native</h3>
-              <p>Network primitives in the language make it simpler to write services and run them in the cloud.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/cloud-native/`}>More info</Link>
-                </li>
-              </ul>
+        <div className={styles.featureGrid}>
+          {features.map(f => (
+            <div className={styles.featureCard} key={f.slug}>
+              <div className={styles.iconBox}>
+              {f.img
+                ? <Image src={`${prefix}/images/home-page/icons/${f.img[0]}.svg`} width={f.img[1]} height={100} alt="" />
+                : <svg className={styles.featureIcon} width="100" height="100" viewBox="0 0 72 72" fill="none" aria-hidden="true">{f.icon}</svg>}
+              </div>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+              <Link href={`/why-ballerina/${f.slug}/`} passHref>
+                <a className={styles.moreLink}>More info <span aria-hidden="true">→</span></a>
+              </Link>
             </div>
-          </Col>
-
-
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/flexible-typing.svg`} width={151} height={100} alt="flexible-typing" />
-              <h3>Flexibly typed</h3>
-              <p>Structural types with support for openness are used both for static typing within a program and for
-                describing service interfaces.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/flexibly-typed/`}>More info</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/data-transformation.svg`} width={142} height={100} alt="data-transformation" />
-              <h3>Data oriented</h3>
-              <p>Type-safe, declarative processing of JSON, XML, and tabular data with language-integrated queries.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/data-oriented/`}>More info</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-        </Row>
-
-
-
-        <Row className={styles.whyBallerinaRow}>
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/graphical.svg`} width={135} height={100} alt="graphical" />
-              <h3>Graphical</h3>
-              <p>Programs have both a textual syntax and an equivalent graphical form based on sequence diagrams.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/graphical/`}>More info</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-
-
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/concurrent.svg`} width={108} height={100} alt="concurrent" />
-              <h3>Concurrent</h3>
-              <p>Easy and efficient  concurrency with sequence diagrams and language-managed threads without the complexity of asynchronous functions.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/concurrent/`}>More info</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-
-          <Col sm={12} md={4}>
-            <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/reliable-maintainable.svg`} width={100} height={100} alt="reliable-maintainable" />
-              <h3>Reliable, maintainable</h3>
-              <p>Explicit error handling, static types, and concurrency safety, combined with a  familiar, readable syntax make programs reliable and maintainable.</p>
-              <ul className={styles.inlineLinkList}>
-                <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/reliable-maintainable/`}>More info</Link>
-                </li>
-              </ul>
-            </div>
-          </Col>
-        </Row>
+          ))}
+        </div>
       </Container>
     </Col>
   );

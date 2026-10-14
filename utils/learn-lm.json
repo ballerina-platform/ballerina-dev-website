@@ -17,7 +17,7 @@
                 {
                     "dirName": "Reliable, maintainable",
                     "level": 2,
-                    "position": 6,
+                    "position": 7,
                     "isDir": false,
                     "url": "/why-ballerina/reliable-maintainable",
                     "id": "reliable-maintainable"
@@ -55,12 +55,20 @@
                     "id": "flexibly-typed"
                 },
                 {
-                    "dirName": "Concurrent",
+                    "dirName": "Concurrent and durable",
                     "level": 2,
                     "position": 5,
                     "isDir": false,
                     "url": "/why-ballerina/concurrent",
                     "id": "concurrent"
+                },
+                {
+                    "dirName": "AI built in",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/why-ballerina/ai-built-in",
+                    "id": "ai-built-in"
                 }
             ]
         },

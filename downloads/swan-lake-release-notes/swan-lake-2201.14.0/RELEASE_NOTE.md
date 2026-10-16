@@ -122,11 +122,7 @@ For more information, see the [Get Started](https://github.com/ballerina-platfor
 
 The following packages are now generally available with stable `1.0.0` versions.
 
-- `ballerina/otel` - Publish traces and metrics to any OTLP-compatible backend over `grpc` or `http/protobuf`.
-
-  ```ballerina
-  import ballerina/otel as _;
-  ```
+- `ballerina/otel` - Publish traces and metrics to any OTLP-compatible backend over `grpc` or `http/protobuf`. The package is bundled automatically for packages built with the `observabilityIncluded=true` build option, so no explicit import is required.
 
   ```toml
   [ballerina.observe]

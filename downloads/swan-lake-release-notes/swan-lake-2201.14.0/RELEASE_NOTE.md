@@ -85,10 +85,18 @@ function processOrder(workflow:Context ctx, OrderRequest request) returns string
 Start a workflow instance from any entry point, such as an HTTP service, a scheduled job, a message consumer, or the `main` function. Pending tasks are listed and completed through the `ballerina/workflow.management` submodule or its HTTP management API, so the approval is authorized against the task's roles rather than delivered as raw data.
 
 ```ballerina
-string workflowId = check workflow:run(processOrder, {orderId: "ORD-001", item: "laptop", amount: 1200});
+import ballerina/workflow;
+import ballerina/workflow.management;
 
+// Start an instance, for example, from an HTTP resource.
+string workflowId = check workflow:run(processOrder, {orderId: "ORD-001", item: "laptop", amount: 1200d});
+
+// Later, once the workflow reaches `awaitHumanTask`, a manager completes the pending task.
 management:HumanTaskGroup[] tasks = check management:listPendingHumanTasks(workflowId);
-check workflow:completeHumanTask(tasks[0].taskIds[0], {approved: true, reason: ()});
+if tasks.length() > 0 {
+    check management:completeHumanTask(tasks[0].taskIds[0], {approved: true, reason: ()},
+            callerRoles = ["MANAGER"], userId = "alice");
+}
 ```
 
 Key features include:

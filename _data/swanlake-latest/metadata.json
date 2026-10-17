@@ -2,7 +2,7 @@
 	"version":"2201.14.1",
 	"short-version":"2201.14.1",
 	"display-version":"2201.14.1 (Swan Lake Update 14)",
-	"release-date":"2026-10-13",
+	"release-date":"2026-10-15",
 	"windows-installer":"ballerina-2201.14.1-swan-lake-windows-x64.msi",
 	"windows-installer-size":"309mb",
 	"linux-installer":"ballerina-2201.14.1-swan-lake-linux-x64.deb",

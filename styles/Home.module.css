@@ -3,29 +3,27 @@
   padding: 80px 0 80px 0;
 }
 
-.homeWhyBal, .homeIntegration, .homeUsers, .homeEvents {
+/* Sections alternate white and grey in page order. */
+.homeIntegration, .homeBalForAi, .homeBalAction, .homeEvents {
   background: #fff;
 }
 
-.homeBalAction, .homeAiCoding, .homeVideos {
+.homeWhyBal, .homeAiCoding, .homeUsers {
   background: #f5f5f5;
+}
+
+.homeGetStarted {
+  background: #fff;
+  border-top: 1px solid #dfe5e3;
+  border-bottom: 1px solid #dfe5e3;
 }
 
 .homeBalAction, .homeIntegration {
   padding-bottom: 6rem;
 }
 
-.homeAiCoding, .homeUsers {
-  padding-bottom: 3rem;
-}
-
-.homeAiCoding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.home h2, .homeBalAction h2, .homeWhyBal h2, .homeIntegration h2,
-.homeVideos h2, .homeEvents h2, .homeArticles h2, .homeUsers h2 {
+.home h2, .homeIntegration h2,
+.homeEvents h2, .homeArticles h2 {
   font-size: 32px;
   margin-top: 40px;
   margin-bottom: 30px;

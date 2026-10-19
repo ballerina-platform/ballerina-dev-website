@@ -66,12 +66,18 @@ export default function BalAction({ samples, codeSamples, getLink }) {
   const example = examples[active];
   // A diagram only helps when parties interact or state changes; a pure data mapping gets full-width code.
   const showDiagram = example.diagram.kind !== 'mapping';
+  const sourceFile = example.source.split('/').pop();
   return <Col sm={12}><Container>
-    <Row><Col sm={12} className="sectionTitle"><h2 id="ballerina-in-action" className="section">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16" onClick={e => getLink(e.target, 'ballerina-in-action')} aria-hidden="true">
-        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-      </svg>Ballerina in action</h2></Col></Row>
+    <Row className={styles.header}>
+      <Col xs={12}>
+        <p className={styles.eyebrow}>See the language at work</p>
+        <h2 id="ballerina-in-action" className={`section ${styles.heading}`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16" onClick={e => getLink(e.target, 'ballerina-in-action')} aria-hidden="true">
+            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+          </svg>Ballerina in action</h2>
+      </Col>
+    </Row>
     <p className={styles.tabHint}>Scroll to explore all eight examples.</p>
     <div className={styles.tabList} role="tablist" aria-label="Ballerina examples">
       {examples.map((item, index) => <button key={item.id} ref={node => tabs.current[index] = node}
@@ -83,7 +89,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
       <div className={styles.intro}><div><h3>{example.title}</h3><p>{example.description}</p></div>
         <a href={example.link} target="_blank" rel="noopener noreferrer">View full example <span aria-hidden="true">↗</span></a></div>
       <div className={`${styles.mainGrid} ${showDiagram ? '' : styles.fullWidth}`}>
-        <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina code</span>
+        <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina · {sourceFile}</span>
           <CopyToClipboard text={codeSamples[example.id]} onCopy={() => setCopied(true)}>
             <button type="button" aria-label={`Copy ${example.label} code`} className={styles.copyButton}>
               {copied ? <FaCheck aria-hidden="true" /> : <FaRegCopy aria-hidden="true" />}{copied ? 'Copied' : 'Copy code'}
@@ -91,7 +97,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
           </CopyToClipboard></div>
           <div className="highlight" dangerouslySetInnerHTML={{ __html: samples[example.id] }} />
         </div>
-        {showDiagram && <div className={styles.diagramPane}><div className={styles.paneHeader}>Diagram</div><Diagram diagram={example.diagram} /></div>}
+        {showDiagram && <div className={styles.diagramPane}><div className={styles.paneHeader}>Diagram · {example.label.toLowerCase()}</div><Diagram diagram={example.diagram} /></div>}
       </div>
     </section>
   </Container></Col>;

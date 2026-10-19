@@ -33,6 +33,7 @@ export default function Document() {
         <link rel="shortcut icon" href={`${prefix}/images/favicon.ico`}></link>
 
         <link rel="stylesheet" href={`${prefix}/css/roboto.css`} />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" />
         
         {/* Algolia */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />

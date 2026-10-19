@@ -1,0 +1,21 @@
+/* Token colors follow the github-light theme used by "Ballerina in action". */
+
+.comment {
+    color: #6a737d;
+}
+
+.string {
+    color: #032f62;
+}
+
+.annotation {
+    color: #6f42c1;
+}
+
+.type {
+    color: #11756e;
+}
+
+.keyword {
+    color: #d73a49;
+}

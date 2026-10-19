@@ -1,0 +1,60 @@
+.band {
+    --ai-teal: #11756e;
+    align-items: center;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+
+h2.heading {
+    margin: 0 0 .75rem;
+    padding: 0;
+    border: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1f2a28;
+}
+
+.lead {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+}
+
+a.cta {
+    display: inline-block;
+    padding: 14px 22px;
+    background-color: #11756e;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+a.cta:hover {
+    background-color: #0d5f59;
+    color: #ffffff;
+}
+
+a.cta:focus-visible {
+    outline: 3px solid #20b6b0;
+    outline-offset: 2px;
+}
+
+@media (max-width: 767.98px) {
+    .action {
+        justify-content: flex-start;
+        margin-top: 1.5rem;
+    }
+
+    h2.heading {
+        font-size: 1.6rem;
+    }
+}

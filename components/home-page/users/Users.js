@@ -20,15 +20,17 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 
 import { prefix } from '../../../utils/prefix';
+import shared from '../ai-shared/section.module.css';
 import styles from './Users.module.css';
 
 export default function Users(props) {
   return (
-    <Col sm={12}>
+    <Col xs={12}>
       <Container>
-        <Row>
-          <Col sm={12} className='sectionTitle'>
-            <h2 id="users" className='section'>
+        <Row className={shared.section}>
+          <Col xs={12} className={shared.text}>
+            <p className={shared.eyebrow}>In production</p>
+            <h2 id="users" className={`section ${shared.heading}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -44,30 +46,31 @@ export default function Users(props) {
               Who uses Ballerina?
             </h2>
           </Col>
-        </Row>
 
-        <Row>
-          <Col sm={18} md={12} className={styles.logo}>
-              <a href={`${prefix}/case-studies/wso2`}><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
-              <a href={`${prefix}/case-studies/redcross-elixir`}><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
-              <a href={`${prefix}/case-studies/fat-tuesday`}><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
-              <a href={`${prefix}/case-studies/mosip`}><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
-              <a href={`${prefix}/case-studies/qhana`}><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>
-
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={18} md={12} className={styles.logo}>
-              <a href={`${prefix}/case-studies/ballerina-central`}><img src={`${prefix}/images/home-page/user-logos/ballerina-central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
-              <a href={`${prefix}/case-studies/raapid-ai`}><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
-              <a href="https://console.choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={400} alt="WSO2 Developer Platform" title="WSO2 Developer Platform" /></a>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={18} md={12} className={styles.logo}>
-              <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
-              <a href={`https://wso2.com/library/conference/2024/05/less-is-more-utilizing-ballerina-to-architect-a-cloud-data-platform/`} target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/visualize-hr.png`}  width={230} alt="Visualize HR" title="Visualize HR" /></a>
-              <a href={`${prefix}/case-studies/avinya-foundation`}><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
+          <Col xs={12}>
+            <Row>
+              <Col sm={18} md={12} className={styles.logo}>
+                  <a href={`${prefix}/case-studies/wso2`}><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
+                  <a href={`${prefix}/case-studies/redcross-elixir`}><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
+                  <a href={`${prefix}/case-studies/fat-tuesday`}><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
+                  <a href={`${prefix}/case-studies/mosip`}><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
+                  <a href={`${prefix}/case-studies/qhana`}><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={18} md={12} className={styles.logo}>
+                  <a href={`${prefix}/case-studies/ballerina-central`}><img src={`${prefix}/images/home-page/user-logos/ballerina-central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
+                  <a href={`${prefix}/case-studies/raapid-ai`}><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
+                  <a href="https://console.choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={400} alt="WSO2 Developer Platform" title="WSO2 Developer Platform" /></a>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={18} md={12} className={styles.logo}>
+                  <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
+                  <a href={`https://wso2.com/library/conference/2024/05/less-is-more-utilizing-ballerina-to-architect-a-cloud-data-platform/`} target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/visualize-hr.png`}  width={230} alt="Visualize HR" title="Visualize HR" /></a>
+                  <a href={`${prefix}/case-studies/avinya-foundation`}><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

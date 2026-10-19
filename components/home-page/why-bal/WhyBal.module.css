@@ -1,76 +1,94 @@
+.header {
+  padding-top: 4.5rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 .9rem;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #11756e;
+}
+
+h2.heading {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1f2a28;
+  scroll-margin-top: 65px;
+}
+
+/* Ruled grid: the container draws the top and left rules, each card its right and bottom. */
 .featureGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  margin-bottom: 3rem;
+  margin-bottom: 4.5rem;
+  border-top: 1px solid #cfdcd8;
+  border-left: 1px solid #cfdcd8;
+  background: #fff;
 }
 
 .featureCard {
-  background: #fff;
-  border: 1px solid #e3e5e8;
-  border-radius: 14px;
-  padding: 32px;
-  text-align: left;
   display: flex;
   flex-direction: column;
-}
-
-.iconBox {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.iconBox img {
-  height: 100px;
-  width: auto;
-}
-
-.featureIcon {
-  width: 100px;
-  height: 100px;
-  display: block;
-  flex: none;
+  padding: 28px 28px 24px;
+  border-right: 1px solid #cfdcd8;
+  border-bottom: 1px solid #cfdcd8;
+  text-align: left;
 }
 
 .featureCard h3 {
-  text-align: center;
-  margin: 20px 0 12px;
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #1f2a28;
 }
 
 .featureCard p {
-  font-size: 16px;
-  color: #57595d;
-  font-weight: 300;
   margin-bottom: 0;
-  line-height: 27px;
-  letter-spacing: 0.4px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #4a5552;
 }
 
 .featureCard .moreLink {
   display: inline-block;
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 18px;
   align-self: flex-start;
-  color: #20b6b0 !important;
+  color: #11756e !important;
+  font-size: 15px;
+  font-weight: 700;
   text-decoration: none;
-  font-weight: 400;
 }
 
 .featureCard .moreLink:hover {
-  color: #000 !important;
+  color: #0d5f59 !important;
+  text-decoration: underline;
+}
+
+.featureCard .moreLink:focus-visible {
+  outline: 3px solid #20b6b0;
+  outline-offset: 2px;
 }
 
 @media (max-width: 991px) {
   .featureGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (max-width: 767px) {
+  .header { padding-top: 3.5rem; }
+  h2.heading { font-size: 2rem; }
+}
+
 @media (max-width: 575px) {
   .featureGrid { grid-template-columns: minmax(0, 1fr); }
-  .featureCard { padding: 24px; }
+  .featureCard { padding: 24px 20px; }
 }

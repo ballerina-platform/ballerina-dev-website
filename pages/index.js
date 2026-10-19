@@ -23,11 +23,12 @@ import { Col, Row } from 'react-bootstrap';
 import Layout from '../layouts/LayoutHome';
 import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
-import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
 import Integration from '../components/home-page/integration/Integration';
 import Users from '../components/home-page/users/Users';
+import BalForAi from '../components/home-page/bal-for-ai/BalForAi';
 import AiCoding from '../components/home-page/ai-coding/AiCoding';
+import GetStarted from '../components/home-page/get-started/GetStarted';
 import styles from '../styles/Home.module.css';
 import EventsData from '../_data/events.json';
 
@@ -128,31 +129,36 @@ export default function Home({ samples, codeSamples }) {
           <Integration getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeBalAction}>
-          <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
-        </Row>
-
         <Row className={styles.homeWhyBal}>
           <WhyBal getLink={getLink} />
         </Row>
 
+        <Row className={styles.homeBalForAi}>
+          <BalForAi getLink={getLink} />
+        </Row>
+
         <Row className={styles.homeAiCoding}>
-          <AiCoding />
+          <AiCoding getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeBalAction}>
+          <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
         </Row>
 
         <Row className={styles.homeUsers}>
           <Users getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeVideos}>
-          <Videos getLink={getLink} />
-        </Row>
         {
           upcomingEvents &&
           <Row className={styles.homeEvents}>
             <Events getLink={getLink} />
           </Row>
         }
+
+        <Row className={styles.homeGetStarted}>
+          <GetStarted />
+        </Row>
 
       </Col>
     </Layout>

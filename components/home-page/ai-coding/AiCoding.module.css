@@ -1,94 +1,124 @@
-.content {
-  align-items: flex-start;
+@media (min-width: 992px) {
+    .textCol {
+        padding-left: 2.5rem;
+    }
 }
 
-.intro {
-  padding-right: 48px;
+.line {
+    position: relative;
+    display: block;
+    width: max-content;
+    min-width: 100%;
 }
 
-.intro h2 {
-  max-width: 650px;
-  margin: 0 0 22px;
-  border: 0;
-  padding: 0;
-  color: #464646;
-  font-size: 42px;
-  line-height: 1.2;
-  font-weight: 700;
+/* Diff */
+
+.add {
+    background: #e6ffec;
 }
 
-.intro h2::after {
-  content: '';
-  display: block;
-  width: 240px;
-  margin-top: 12px;
-  border-bottom: 2px solid #464646;
+.del {
+    background: #ffebe9;
 }
 
-.intro p,
-.benefit p {
-  color: #585a5e;
-  font-size: 18px;
-  line-height: 1.55;
+/* Diagram */
+
+.panel + .panel {
+    margin-top: 14px;
 }
 
-.intro p {
-  max-width: 680px;
-  margin: 0;
+.diagramWrap {
+    padding: 14px 14px 10px;
 }
 
-.benefits {
-  padding-left: 48px;
+.diagram {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-.benefit {
-  border-top: 1px solid #d8dfe2;
-  padding: 18px 0 20px;
+.flowDot {
+    fill: #d5dbd9;
 }
 
-.benefit:last-child {
-  border-bottom: 1px solid #d8dfe2;
+.flowBox {
+    fill: #ffffff;
+    stroke: #3b4442;
+    stroke-width: 1.2;
 }
 
-.benefit h3 {
-  margin: 0 0 4px;
-  color: #464646;
-  font-size: 18px;
-  line-height: 1.4;
-  font-weight: 700;
+.flowEdge {
+    fill: none;
+    stroke: #3b4442;
+    stroke-width: 1.2;
 }
 
-.benefit p {
-  margin: 0;
+.flowArrowHead {
+    fill: #3b4442;
 }
 
-@media (max-width: 991px) {
-  .intro,
-  .benefits {
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-
-  .intro {
-    margin-bottom: 36px;
-  }
-
-  .intro h2 {
-    font-size: 36px;
-  }
+.flowTitle {
+    fill: #1f2a28;
+    font-size: 13px;
+    font-weight: 600;
+    dominant-baseline: central;
 }
 
-@media (max-width: 575px) {
-  .intro h2::after {
-    width: 180px;
-  }
+.flowSub {
+    fill: #5f6a67;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    dominant-baseline: central;
+}
 
-  .intro h2 {
-    font-size: 32px;
-  }
+.flowLabel {
+    fill: #1f2a28;
+    font-size: 12px;
+}
 
-  .intro p,
-  .benefit p {
-    font-size: 16px;
-  }
+.flowCall,
+.flowReturn,
+.flowIcon {
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.flowCall {
+    stroke: #1f9d55;
+}
+
+.flowReturn {
+    stroke: #2557c7;
+}
+
+.flowIcon {
+    stroke: #1f2a28;
+    stroke-width: 1.3;
+}
+
+.flowKebab circle {
+    fill: #3b4442;
+}
+
+.note {
+    font-style: normal;
+    font-size: 13px;
+    text-align: right;
+}
+
+.exampleNote {
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+.exampleNote code {
+    color: #11756e;
+    font-size: 13px;
 }

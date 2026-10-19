@@ -99,3 +99,181 @@ a.cDownload:hover {
   width: -webkit-fill-available;  
   width: fill-available;
 }
+/* Agentic AI section */
+
+.integrationRow {
+    --int-teal: #11756e;
+    --int-ink: #1f2a28;
+    align-items: center;
+    padding-top: 4rem;
+}
+
+@media (min-width: 992px) {
+    .diagramCol {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+    .textCol {
+        flex: 0 0 55%;
+        max-width: 55%;
+        padding-left: 3rem;
+    }
+}
+
+.eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--int-teal);
+    margin-bottom: 1rem;
+}
+
+.introText h2.heading {
+    display: block;
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin: 0 0 1.5rem;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--int-ink);
+}
+
+.introText .introText2 {
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 40em;
+}
+
+.chips {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chips li {
+    background-color: #e8f1ee;
+    color: #2f3d3a;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 2px;
+}
+
+/* Diagram card */
+
+.diagram {
+    margin: 0;
+    background-color: #f1f6f4;
+    border: 1px solid #cfdcd8;
+    padding: 24px 22px 20px;
+}
+
+.diagramTitle {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--int-teal);
+    margin-bottom: 20px;
+}
+
+.diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.narrow {
+    display: none !important;
+}
+
+.node {
+    fill: #ffffff;
+    stroke: #b9c9c4;
+    stroke-width: 1;
+}
+
+.nodeLabel {
+    fill: var(--int-ink);
+    font-size: 11px;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.hub {
+    fill: var(--int-teal);
+}
+
+.hubTitle {
+    fill: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.hubSub {
+    fill: #ffffff;
+    font-size: 9.5px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.link {
+    fill: none;
+    stroke: var(--int-teal);
+    stroke-width: 1.2;
+}
+
+.arrowHead {
+    fill: none;
+    stroke: var(--int-teal);
+    stroke-width: 1.5;
+}
+
+.caption {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+@media (max-width: 991.98px) {
+    .diagram {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .wide {
+        display: none !important;
+    }
+
+    .narrow {
+        display: block !important;
+    }
+
+    .introText h2.heading {
+        font-size: 2rem;
+    }
+}
+
+/* The wide diagram sits in a narrow column, so its text is set larger. */
+.wide .nodeLabel {
+    font-size: 12.5px;
+}
+
+.wide .hubTitle {
+    font-size: 19px;
+}
+
+.wide .hubSub {
+    font-size: 10.5px;
+}

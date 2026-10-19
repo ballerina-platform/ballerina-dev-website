@@ -1,0 +1,22 @@
+@media (min-width: 992px) {
+    .textCol {
+        padding-right: 2.5rem;
+    }
+}
+
+.excerpt + .excerpt {
+    margin-top: 14px;
+}
+
+.note {
+    font-style: normal;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: right;
+}
+
+@media (min-width: 992px) {
+    .exampleCol {
+        padding-top: 2.4rem;
+    }
+}

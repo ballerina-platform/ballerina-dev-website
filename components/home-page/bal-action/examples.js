@@ -4,7 +4,7 @@ const base = 'https://github.com/ballerina-guides/integration-samples/tree/main/
 
 export const examples = [
   {
-    id: 'connect-applications', label: 'Connect applications', title: 'GitHub pull requests to Google Sheets',
+    id: 'connect-applications', label: 'Connect applications', title: 'Move data from one business system to another.',
     description: 'Call the GitHub REST API with an HTTP client, bind the response to typed pull request records, and append each pull request to Google Sheets.',
     source: 'consuming_services/consuming_services.bal', link: base + 'consuming_services',
     diagram: {
@@ -14,7 +14,7 @@ export const examples = [
     }
   },
   {
-    id: 'build-apis', label: 'Build APIs', title: 'RESTful albums API',
+    id: 'build-apis', label: 'Build APIs', title: 'Put your data behind a typed HTTP API.',
     description: 'Serve albums from an in-memory table with list, lookup, and create resources. A request for an album ID returns its details as JSON.',
     source: 'restful_api/main.bal', link: base + 'restful_api',
     diagram: {
@@ -24,7 +24,7 @@ export const examples = [
     }
   },
   {
-    id: 'transform-data', label: 'Transform data', title: 'Customers into contacts',
+    id: 'transform-data', label: 'Transform data', title: 'Turn source data into the shape you need.',
     description: 'Read customers from JSON, bind them to typed records, select the active customers with a query expression, and transform their email addresses into XML contacts.',
     source: 'working_with_data/working_with_data.bal', link: base + 'working_with_data',
     diagram: {
@@ -34,7 +34,7 @@ export const examples = [
     }
   },
   {
-    id: 'react-to-events', label: 'React to events', title: 'Order event to fulfillment message',
+    id: 'react-to-events', label: 'React to events', title: 'Act on every event as it arrives.',
     description: 'Consume batches of orders from Kafka, publish a READY_TO_PACK fulfillment message for each order, and log every published order ID.',
     source: 'kafka_consumer_producer/kafka_consumer_producer.bal', link: base + 'kafka_consumer_producer',
     diagram: {
@@ -44,7 +44,7 @@ export const examples = [
     }
   },
   {
-    id: 'add-ai', label: 'Add AI to an integration', title: 'Extract typed order details',
+    id: 'add-ai', label: 'Add AI to an integration', title: 'Turn unstructured text into typed data.',
     description: 'Send an order confirmation to an OpenAI model, bind the generated response directly to a typed order record, and log the extracted details.',
     source: 'add_ai_to_integration/main.bal', link: base + 'add_ai_to_integration',
     diagram: {
@@ -54,7 +54,7 @@ export const examples = [
     }
   },
   {
-    id: 'build-agent', label: 'Build an enterprise agent', title: 'Track an order with enterprise tools',
+    id: 'build-agent', label: 'Build an enterprise agent', title: 'Give an agent access to order information.',
     description: 'Build a delivery assistant that calls order and shipment APIs as agent tools, follows explicit lookup instructions, and answers with the latest status and ETA.',
     source: 'enterprise_agent/main.bal', link: base + 'enterprise_agent',
     diagram: {
@@ -65,7 +65,7 @@ export const examples = [
     }
   },
   {
-    id: 'expose-mcp', label: 'Expose MCP tools', title: 'Expose product stock through MCP',
+    id: 'expose-mcp', label: 'Expose MCP tools', title: 'Make an enterprise capability available through MCP.',
     description: 'Expose an MCP service that retrieves typed stock data from an HTTP backend, logs successful lookups, and returns contextual errors when requests fail.',
     source: 'expose_mcp_tools/main.bal', link: base + 'expose_mcp_tools',
     diagram: {
@@ -75,7 +75,7 @@ export const examples = [
     }
   },
   {
-    id: 'coordinate-workflow', label: 'Coordinate a workflow', title: 'Claim approval with a human task',
+    id: 'coordinate-workflow', label: 'Coordinate a workflow', title: 'Pause for a human decision. Resume where you left off.',
     description: 'Verify an insurance claim, pause the durable workflow for a manager’s decision, and pay approved claims while returning clear rejection results.',
     source: 'workflow-human-task/main.bal', link: base + 'workflow-human-task',
     diagram: {

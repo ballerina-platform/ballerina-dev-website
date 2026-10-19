@@ -4,11 +4,11 @@
 }
 
 /* Sections alternate white and grey in page order. */
-.homeIntegration, .homeBalForAi, .homeBalAction, .homeEvents {
+.homeIntegration, .homeAiCoding, .homeBalAction, .homeEvents {
   background: #fff;
 }
 
-.homeWhyBal, .homeAiCoding, .homeUsers {
+.homeBalForAi, .homeWhyBal, .homeUsers {
   background: #f5f5f5;
 }
 

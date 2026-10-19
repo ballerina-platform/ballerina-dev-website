@@ -129,16 +129,16 @@ export default function Home({ samples, codeSamples }) {
           <Integration getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeWhyBal}>
-          <WhyBal getLink={getLink} />
-        </Row>
-
         <Row className={styles.homeBalForAi}>
           <BalForAi getLink={getLink} />
         </Row>
 
         <Row className={styles.homeAiCoding}>
           <AiCoding getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeWhyBal}>
+          <WhyBal getLink={getLink} />
         </Row>
 
         <Row className={styles.homeBalAction}>

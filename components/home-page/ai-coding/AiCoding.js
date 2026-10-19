@@ -248,6 +248,11 @@ function MaintainableExample() {
 
 const ADVANTAGES = [
   {
+    title: 'Easier to review',
+    description: 'Types reject malformed data at compile time, and the diagram shows how the integration works at a glance.',
+    Example: VisualExample
+  },
+  {
     title: 'Less code to generate',
     description: 'High-level constructs mean fewer tokens and fewer places for a model to make a mistake.',
     Example: ConstructsExample
@@ -256,11 +261,6 @@ const ADVANTAGES = [
     title: 'Fewer silent choices',
     description: 'Retries, timeouts, and serialization come from documented library defaults, not whatever a model picks on a given run.',
     Example: SettingsExample
-  },
-  {
-    title: 'Easier to review',
-    description: 'Types reject malformed data at compile time, and the diagram shows how the integration works at a glance.',
-    Example: VisualExample
   },
   {
     title: 'Source you keep',

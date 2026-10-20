@@ -26,7 +26,7 @@ const TOKEN = new RegExp([
   '("[^"]*")',                                              // 2 string
   '(@[a-z]\\w*:\\w+)',                                      // 3 annotation
   '(\\b[a-z]\\w*:[A-Z]\\w*\\b|\\b[A-Z][a-z]\\w*\\b)',        // 4 type
-  '\\b(public|function|isolated|returns|resource|service|on|new|final|check|return|if|is|string|error)\\b', // 5 keyword
+  '\\b(public|class|function|isolated|returns|resource|service|on|new|final|check|return|if|is|string|error)\\b', // 5 keyword
 ].join('|'), 'g');
 
 const CLASS = [null, styles.comment, styles.string, styles.annotation, styles.type, styles.keyword];

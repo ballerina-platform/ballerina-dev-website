@@ -109,35 +109,50 @@ ai:Agent agent = check new (
     ]
   },
   {
-    title: 'Retrieval and business context',
-    description: 'Connect embedding providers and vector stores to retrieve relevant knowledge for model interactions.',
+    title: 'Agent-to-agent (A2A)',
+    description: 'Publish agents as A2A services with an agent card, and delegate tasks to other agents through the A2A client.',
     excerpts: [
       {
-        label: 'Ingest',
-        note: 'embeds policy documents into a vector store',
-        code: `final ai:EmbeddingProvider embeddings = check new openai:EmbeddingProvider(
-        openAiKey, openai:TEXT_EMBEDDING_3_SMALL);
+        label: 'The A2A service',
+        note: 'publishes an agent card and runs incoming tasks',
+        code: `@a2a:ServiceConfig {
+    agentCard: {
+        name: "Weather Agent",
+        description: "Answers weather questions",
+        skills: [{id: "forecast", name: "Forecast",
+            description: "Multi-day forecasts", tags: ["weather"]}]
+        // Plus version, provider, input and output modes, and capabilities.
+    }
+}
+isolated service on new a2a:RestListener(9090) {
+    private final a2a:DefaultHandler handler = new (new WeatherExecutor());
 
-final ai:KnowledgeBase knowledgeBase = new ai:VectorKnowledgeBase(
-        check new ai:InMemoryVectorStore(), embeddings);
+    isolated resource function post message\\:send(a2a:Context context,
+            a2a:SendMessageRequest request) returns a2a:Task|a2a:Message|a2a:Error {
+        return self.handler.sendMessage(context, request);
+    }
 
-function ingestPolicies(string[] paths) returns error? {
-    ai:DataLoader loader = check new ai:TextDataLoader(...paths);
-    check knowledgeBase.ingest(check loader.load());
+    // Streaming, task, and push notification resources delegate the same way.
 }`
       },
       {
-        label: 'Retrieve and answer',
-        note: 'grounds the model in the matching excerpts',
-        code: `ai:QueryMatch[] matches = check knowledgeBase.retrieve(question, 5);
+        label: 'The A2A client',
+        note: 'discovers a remote agent and sends it a task',
+        code: `a2a:AgentCard card = check a2a:resolveAgentCard(agentUrl);
+a2a:HttpClient weatherAgent = check new (card);
 
-GeneratedAnswer answer = check model->generate(\`
-    Answer the employee's question using only the policy
-    excerpts below. If they do not contain the answer,
-    set answerFound to false.
+a2a:Task|a2a:Message reply = check weatherAgent->sendMessage({
+    message: {
+        messageId: "msg-1",
+        role: a2a:ROLE_USER,
+        parts: [{text: "What is the forecast for Colombo?"}]
+    }
+});
 
-    Excerpts: \${matches}
-    Question: \${question}\`);`
+if reply is a2a:Task {
+    a2a:Artifact[] artifacts = reply.artifacts ?: [];
+    io:println(reply.status.state, ": ", artifacts);
+}`
       }
     ]
   },
@@ -210,7 +225,7 @@ export default function BalForAi(props) {
               Build agents that work with enterprise systems.
             </h2>
 
-            <p className={shared.lead}>An enterprise agent needs models, tools, and business context. Ballerina brings these together with the language constructs and connector ecosystem used to build integrations.</p>
+            <p className={shared.lead}>An enterprise agent needs models, tools, and other agents to work with. Ballerina brings these together with the language constructs and connector ecosystem used to build integrations.</p>
 
             <ul className={shared.rows}>
               {CAPABILITIES.map((c, i) => (

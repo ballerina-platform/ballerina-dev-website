@@ -182,60 +182,84 @@ a.cDownload:hover {
     margin-bottom: 20px;
 }
 
-.diagram svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    overflow: visible;
+.stack {
+    border: 1px solid #b9c9c4;
+    background-color: #ffffff;
 }
 
-.narrow {
-    display: none !important;
+.layer {
+    display: flex;
+    border-bottom: 1px solid #cfdcd8;
 }
 
-.node {
-    fill: #ffffff;
-    stroke: #b9c9c4;
-    stroke-width: 1;
+.layerLabel {
+    flex: 0 0 92px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 10px 10px 12px;
+    border-right: 1px solid #cfdcd8;
 }
 
-.nodeLabel {
-    fill: var(--int-ink);
+.layerName {
     font-size: 11px;
-    text-anchor: middle;
-    dominant-baseline: central;
-}
-
-.hub {
-    fill: var(--int-teal);
-}
-
-.hubTitle {
-    fill: #ffffff;
-    font-size: 17px;
     font-weight: 700;
-    text-anchor: middle;
-    dominant-baseline: central;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--int-ink);
 }
 
-.hubSub {
-    fill: #ffffff;
-    font-size: 9.5px;
-    font-weight: 500;
-    text-anchor: middle;
-    dominant-baseline: central;
+.layerRole {
+    font-size: 12px;
+    line-height: 1.3;
+    color: #5b6764;
 }
 
-.link {
-    fill: none;
-    stroke: var(--int-teal);
-    stroke-width: 1.2;
+.blocks {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
 }
 
-.arrowHead {
-    fill: none;
-    stroke: var(--int-teal);
-    stroke-width: 1.5;
+.blocks.three {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 10px;
+    background-color: var(--int-teal);
+}
+
+.blockTitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+.blockSub {
+    font-size: 12px;
+    line-height: 1.35;
+    color: #ffffff;
+    opacity: .85;
+}
+
+.model {
+    margin: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--int-ink);
+    background-color: #f1f6f4;
+    border: 1px dashed #9fb3ad;
 }
 
 .caption {
@@ -252,28 +276,29 @@ a.cDownload:hover {
 }
 
 @media (max-width: 575.98px) {
-    .wide {
-        display: none !important;
-    }
-
-    .narrow {
-        display: block !important;
-    }
-
     .introText h2.heading {
         font-size: 2rem;
     }
-}
 
-/* The wide diagram sits in a narrow column, so its text is set larger. */
-.wide .nodeLabel {
-    font-size: 12.5px;
-}
+    .diagram {
+        padding: 18px 14px 16px;
+    }
 
-.wide .hubTitle {
-    font-size: 19px;
-}
+    .layer {
+        flex-direction: column;
+    }
 
-.wide .hubSub {
-    font-size: 10.5px;
+    .layerLabel {
+        flex-basis: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 8px;
+        padding: 8px 10px 0;
+        border-right: 0;
+    }
+
+    .blocks.three {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

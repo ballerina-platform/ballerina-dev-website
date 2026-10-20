@@ -20,89 +20,61 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import styles from './Integration.module.css';
 
-const SOURCES = ['Applications', 'AI agents'];
-const TARGETS = ['Business APIs', 'Enterprise data', 'Events & messages'];
 const CAPABILITIES = ['Services & listeners', 'Clients & resources', 'JSON & XML', 'Types & queries'];
 
-function Node({ x, y, w, h, label }) {
+// The parts of the agent stack that are built with Ballerina, resting on the model.
+const LAYERS = [
+    {
+        name: 'Surface', role: 'Meets users', blocks: [
+            { title: 'Interface', sub: 'Chat, voice, messaging triggers, webhooks, HTTP' },
+        ],
+    },
+    {
+        name: 'Action', role: 'Does things safely', cols: 'three', blocks: [
+            { title: 'Agent ID', sub: 'Identity and permissions' },
+            { title: 'Human approval', sub: 'Pause for review before acting' },
+            { title: 'Observe & eval', sub: 'Traces and evaluations' },
+        ],
+    },
+    {
+        name: 'Reach', role: 'Connects & remembers', cols: 'three', blocks: [
+            { title: 'Tools & skills', sub: 'MCP, tools, connectors' },
+            { title: 'Agent-to-agent', sub: 'A2A' },
+            { title: 'Memory', sub: 'Short- and long-term' },
+        ],
+    },
+    {
+        name: 'Control', role: 'Drives the loop', blocks: [
+            { title: 'Orchestration loop', sub: 'The reason-and-act cycle that turns a model into an agent' },
+        ],
+    },
+];
+
+function Block({ title, sub }) {
     return (
-        <g>
-            <rect className={styles.node} x={x} y={y} width={w} height={h} />
-            <text className={styles.nodeLabel} x={x + w / 2} y={y + h / 2}>{label}</text>
-        </g>
+        <li className={styles.block}>
+            <span className={styles.blockTitle}>{title}</span>
+            <span className={styles.blockSub}>{sub}</span>
+        </li>
     );
 }
 
-function Hub({ x, y, w, h }) {
-    const cx = x + w / 2;
-    const cy = y + h / 2;
+function AgentStack() {
     return (
-        <g>
-            <rect className={styles.hub} x={x} y={y} width={w} height={h} />
-            <text className={styles.hubTitle} x={cx} y={cy - 14}>Ballerina</text>
-            <text className={styles.hubSub} x={cx} y={cy + 9}>Connect · Transform</text>
-            <text className={styles.hubSub} x={cx} y={cy + 24}>Coordinate · Expose</text>
-        </g>
-    );
-}
-
-function Arrow({ d, marker }) {
-    return <path className={styles.link} d={d} markerEnd={`url(#${marker})`} />;
-}
-
-// Wide layout: sources on the left, Ballerina in the middle, targets on the right.
-function WideDiagram() {
-    const m = 'integrationArrowWide';
-    return (
-        <svg className={styles.wide} viewBox="0 0 400 210" role="img"
-            aria-label="Applications and AI agents connect through Ballerina to business APIs, enterprise data, and events and messages.">
-            <defs>
-                <marker id={m} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                    <path className={styles.arrowHead} d="M0 1 L9 5 L0 9" />
-                </marker>
-            </defs>
-            <Node x={0} y={26} w={96} h={40} label={SOURCES[0]} />
-            <Node x={0} y={144} w={96} h={40} label={SOURCES[1]} />
-            <Arrow marker={m} d="M96 46 H111 V82 H125" />
-            <Arrow marker={m} d="M96 164 H111 V128 H125" />
-
-            <Hub x={126} y={55} w={124} h={100} />
-
-            <Arrow marker={m} d="M250 80 H262 V27 H275" />
-            <Arrow marker={m} d="M250 105 H275" />
-            <Arrow marker={m} d="M250 130 H262 V183 H275" />
-            <Node x={276} y={8} w={124} h={38} label={TARGETS[0]} />
-            <Node x={276} y={86} w={124} h={38} label={TARGETS[1]} />
-            <Node x={276} y={164} w={124} h={38} label={TARGETS[2]} />
-        </svg>
-    );
-}
-
-// Narrow layout: the same flow, top to bottom.
-function NarrowDiagram() {
-    const m = 'integrationArrowNarrow';
-    return (
-        <svg className={styles.narrow} viewBox="0 0 320 270" role="img"
-            aria-label="Applications and AI agents connect through Ballerina to business APIs, enterprise data, and events and messages.">
-            <defs>
-                <marker id={m} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                    <path className={styles.arrowHead} d="M0 1 L9 5 L0 9" />
-                </marker>
-            </defs>
-            <Node x={20} y={0} w={130} h={38} label={SOURCES[0]} />
-            <Node x={170} y={0} w={130} h={38} label={SOURCES[1]} />
-            <Arrow marker={m} d="M85 38 V54 H130 V78" />
-            <Arrow marker={m} d="M235 38 V54 H190 V78" />
-
-            <Hub x={60} y={80} w={200} h={92} />
-
-            <Arrow marker={m} d="M110 172 V190 H50 V212" />
-            <Arrow marker={m} d="M160 172 V212" />
-            <Arrow marker={m} d="M210 172 V190 H270 V212" />
-            <Node x={0} y={214} w={100} h={46} label={TARGETS[0]} />
-            <Node x={110} y={214} w={100} h={46} label={TARGETS[1]} />
-            <Node x={220} y={214} w={100} h={46} label={TARGETS[2]} />
-        </svg>
+        <div className={styles.stack}>
+            {LAYERS.map((layer) => (
+                <div key={layer.name} className={styles.layer}>
+                    <div className={styles.layerLabel}>
+                        <span className={styles.layerName}>{layer.name}</span>
+                        <span className={styles.layerRole}>{layer.role}</span>
+                    </div>
+                    <ul className={`${styles.blocks} ${layer.cols ? styles[layer.cols] : ''}`}>
+                        {layer.blocks.map((b) => <Block key={b.title} {...b} />)}
+                    </ul>
+                </div>
+            ))}
+            <div className={styles.model}>The model</div>
+        </div>
     );
 }
 
@@ -115,11 +87,10 @@ export default function Intro(props) {
             <Row className={styles.integrationRow}>
                 <Col xs={{ span: 12, order: 2 }} lg={{ order: 1 }} className={styles.diagramCol}>
                     <figure className={styles.diagram}>
-                        <p className={styles.diagramTitle}>The same foundations. New interactions.</p>
-                        <WideDiagram />
-                        <NarrowDiagram />
+                        <p className={styles.diagramTitle}>Building blocks of agentic integration</p>
+                        <AgentStack />
                         <figcaption className={styles.caption}>
-                            The same integration foundations connect applications and AI agents to enterprise systems.
+                            Ballerina is the integration layer of the agent stack: how agents meet users, reach tools and data, remember, and run the reason-and-act loop.
                         </figcaption>
                     </figure>
                 </Col>

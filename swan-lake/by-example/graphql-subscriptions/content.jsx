@@ -9,6 +9,11 @@ export const codeSnippetData = [
 import ballerina/lang.runtime;
 import ballerina/random;
 
+@graphql:ServiceConfig {
+    graphiql: {
+        enabled: true
+    }
+}
 service /graphql on new graphql:Listener(9090) {
 
     private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
@@ -109,7 +114,7 @@ export function GraphqlSubscriptions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.1/examples/graphql-subscriptions",
                 "_blank",
               );
             }}
@@ -259,7 +264,7 @@ export function GraphqlSubscriptions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.1/examples/graphql-subscriptions",
                 "_blank",
               );
             }}

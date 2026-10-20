@@ -4835,6 +4835,56 @@
     ]
   },
   {
+    "title": "SMB service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "smb-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Caller object",
+        "url": "smb-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "SMB client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Write file",
+        "url": "smb-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read file",
+        "url": "smb-client-read-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "Database access",
     "column": 3,
     "category": "Network libraries",
@@ -5199,6 +5249,15 @@
         "needCentral": false
       },
       {
+        "name": "Log file rotation",
+        "url": "log-file-rotation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output and file creation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Child loggers with context",
         "url": "child-loggers-with-context",
         "verifyBuild": true,
@@ -5460,6 +5519,43 @@
     ]
   },
   {
+    "title": "Zip",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Create a ZIP archive",
+        "url": "zip-compress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Extract a ZIP archive",
+        "url": "zip-decompress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Unpack an untrusted archive",
+        "url": "zip-decompress-untrusted",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "XSLT",
     "column": 3,
     "category": "Common libraries",
@@ -5654,6 +5750,117 @@
         "verifyOutput": true,
         "isLearnByExample": false,
         "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Workflow basics",
+    "column": 0,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Workflow",
+        "url": "workflow-function",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Activity",
+        "url": "workflow-activity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Data events",
+        "url": "workflow-data-events",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Durable sleep",
+        "url": "workflow-durable-sleep",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Human tasks",
+    "column": 1,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Human task",
+        "url": "workflow-human-task",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a client and the output contains generated IDs",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Human task with REST API",
+        "url": "workflow-human-task-rest-api",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a client and the output contains generated IDs",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Durable agents",
+    "column": 2,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Durable agent",
+        "url": "workflow-durable-agent",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Durable agent with human task",
+        "url": "workflow-durable-agent-human-task",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Durable agent with data events",
+        "url": "workflow-durable-agent-data-events",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
       }
     ]
   },

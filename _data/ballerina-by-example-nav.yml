@@ -1729,8 +1729,26 @@ sublinks:
           - title: Read file
             id: 2
             url: smb-client-read-file
-      - title: Database access
+      - title: SMB service
         id: 65
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: smb-service-receive-file
+          - title: Caller object
+            id: 2
+            url: smb-caller
+      - title: SMB client
+        id: 66
+        sublinks:
+          - title: Write file
+            id: 1
+            url: smb-client-write-file
+          - title: Read file
+            id: 2
+            url: smb-client-read-file
+      - title: Database access
+        id: 67
         sublinks:
           - title: Simple query
             id: 1
@@ -1754,7 +1772,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: Change data capture
-        id: 66
+        id: 68
         sublinks:
           - title: Listen to database
             id: 1
@@ -1861,17 +1879,20 @@ sublinks:
           - title: Log file rotation
             id: 5
             url: log-file-rotation
-          - title: Child loggers with context
+          - title: Log file rotation
             id: 6
+            url: log-file-rotation
+          - title: Child loggers with context
+            id: 7
             url: child-loggers-with-context
           - title: Logger from configuration
-            id: 7
+            id: 8
             url: logger-from-config
           - title: Custom logger
-            id: 8
+            id: 9
             url: custom-logger
           - title: Sensitive data logging
-            id: 9
+            id: 10
             url: sensitive-data-logging
       - title: EDI
         id: 9
@@ -1951,14 +1972,26 @@ sublinks:
           - title: Unpack an untrusted archive
             id: 3
             url: zip-decompress-untrusted
-      - title: XSLT
+      - title: Zip
         id: 16
+        sublinks:
+          - title: Create a ZIP archive
+            id: 1
+            url: zip-compress
+          - title: Extract a ZIP archive
+            id: 2
+            url: zip-decompress
+          - title: Unpack an untrusted archive
+            id: 3
+            url: zip-decompress-untrusted
+      - title: XSLT
+        id: 17
         sublinks:
           - title: XSLT transformation
             id: 1
             url: xslt-transformation
       - title: XML data
-        id: 17
+        id: 18
         sublinks:
           - title: XML to JSON conversion
             id: 1
@@ -1973,7 +2006,7 @@ sublinks:
             id: 4
             url: xml-from-record-conversion
       - title: YAML data
-        id: 18
+        id: 19
         sublinks:
           - title: YAML to anydata
             id: 1
@@ -1985,7 +2018,7 @@ sublinks:
             id: 3
             url: anydata-to-yaml-string
       - title: CSV data
-        id: 19
+        id: 20
         sublinks:
           - title: Convert CSV string to records
             id: 1
@@ -2006,7 +2039,7 @@ sublinks:
             id: 6
             url: csv-user-configurations
       - title: XLSX data
-        id: 20
+        id: 21
         sublinks:
           - title: Parse Excel file to records
             id: 1
@@ -2021,13 +2054,52 @@ sublinks:
             id: 4
             url: xlsx-to-records-advanced
       - title: Constraint
-        id: 21
+        id: 22
         sublinks:
           - title: Constraint validations
             id: 1
             url: constraint-validations
-  - title: Generative AI
+  - title: Workflow
     id: 4
+    sublinks:
+      - title: Workflow basics
+        id: 1
+        sublinks:
+          - title: Workflow
+            id: 1
+            url: workflow-function
+          - title: Activity
+            id: 2
+            url: workflow-activity
+          - title: Data events
+            id: 3
+            url: workflow-data-events
+          - title: Durable sleep
+            id: 4
+            url: workflow-durable-sleep
+      - title: Human tasks
+        id: 2
+        sublinks:
+          - title: Human task
+            id: 1
+            url: workflow-human-task
+          - title: Human task with REST API
+            id: 2
+            url: workflow-human-task-rest-api
+      - title: Durable agents
+        id: 3
+        sublinks:
+          - title: Durable agent
+            id: 1
+            url: workflow-durable-agent
+          - title: Durable agent with human task
+            id: 2
+            url: workflow-durable-agent-human-task
+          - title: Durable agent with data events
+            id: 3
+            url: workflow-durable-agent-data-events
+  - title: Generative AI
+    id: 5
     sublinks:
       - title: Direct LLM calls
         id: 1
@@ -2087,7 +2159,7 @@ sublinks:
             id: 1
             url: natural-expressions
   - title: Deployment
-    id: 5
+    id: 6
     sublinks:
       - title: Docker
         id: 1
@@ -2132,7 +2204,7 @@ sublinks:
             id: 4
             url: azure-functions-cosmosdb-trigger
   - title: Bal persist
-    id: 6
+    id: 7
     sublinks:
       - title: Query data
         id: 1
@@ -2165,7 +2237,7 @@ sublinks:
             id: 3
             url: persist-delete
   - title: Observability
-    id: 7
+    id: 8
     sublinks:
       - title: Tracing
         id: 1

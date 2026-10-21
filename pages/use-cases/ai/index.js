@@ -27,56 +27,75 @@ import {transformerCopyButton} from "../../../utils/copy-button-transformer";
 
 
 import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { getSingletonHighlighter } from "shiki";
 
-var traverseFolder = function (dir) {
-  var results = [];
-  var list = fs.readdirSync(dir);
-  list.forEach(function (file) {
-    var filex = dir + "/" + file;
-    results.push(filex);
-  });
-  return results;
-};
+const SECTIONS_DIR = path.join("components", "ai", "code", "ai-bbe", "sections");
+// NN-slug.md, where the slug never contains "--" (that marks a tab file).
+const SECTION_FILE = /^\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$/;
+const TAB_LANGS = ["ballerina", "toml", "json", "shell", "http"];
+
+const toLink = (item) => ({
+  label: item && item.label ? String(item.label) : "",
+  url: item && item.url ? String(item.url) : "",
+});
 
 export async function getStaticProps() {
   const highlighter = await getSingletonHighlighter();
-  await highlighter.loadTheme('github-light');
-  await highlighter.loadLanguage('ballerina');
-  const files = traverseFolder("components/ai/code/ai-bbe");
-  var samples = {};
+  await highlighter.loadTheme("github-light");
+  for (const lang of TAB_LANGS) {
+    await highlighter.loadLanguage(lang);
+  }
 
-  files.forEach(function (item, index) {
-    const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/ai/code/ai-bbe/', '').replace('.md', '');
-    const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = {
-      frontmatter: {
-        title: frontmatter.title? frontmatter.title : '',
-        description: frontmatter.description? frontmatter.description : '',
-        url: frontmatter.url ? frontmatter.url : '',
-        image: frontmatter.image ? frontmatter.image : '',
-      },
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), {
-        lang: 'ballerina',
-        theme: 'github-light',
-        transformers: [
-            transformerCopyButton()
-        ]
-      }) : ''
+  const highlight = (content, lang) =>
+    highlighter.codeToHtml(content.replaceAll("```", "").trim(), {
+      lang: TAB_LANGS.includes(lang) ? lang : "text",
+      theme: "github-light",
+      transformers: [transformerCopyButton()],
+    });
+
+  // Only top-level NN-slug.md files are sections; tab files (NN-slug--key.md)
+  // and any subdirectories are ignored here.
+  const sectionFiles = fs
+    .readdirSync(SECTIONS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && SECTION_FILE.test(entry.name))
+    .map((entry) => entry.name)
+    .sort();
+
+  const sections = sectionFiles.map((file) => {
+    const base = file.replace(/\.md$/, "");
+    const { data } = matter(fs.readFileSync(path.join(SECTIONS_DIR, file), "utf-8"));
+    const tabs = (data.tabs || []).map((tab) => {
+      const tabFile = path.join(SECTIONS_DIR, `${base}--${tab.key}.md`);
+      const { data: tabData, content } = matter(fs.readFileSync(tabFile, "utf-8"));
+      return {
+        key: String(tab.key),
+        title: tab.title ? String(tab.title) : String(tab.key),
+        lang: tabData.lang ? String(tabData.lang) : "text",
+        code: highlight(content, tabData.lang),
+      };
+    });
+    return {
+      id: data.id ? String(data.id) : base.replace(/^\d{2}-/, ""),
+      title: data.title ? String(data.title) : "",
+      description: data.description ? String(data.description) : "",
+      details: data.details ? String(data.details) : "",
+      guide: toLink(data.guide),
+      samples: (data.samples || []).map(toLink).filter((s) => s.url !== ""),
+      tabs,
     };
   });
 
   return {
     props: {
-      samples,
+      sections,
     },
   };
 }
 
 
-export default function Integrations({ samples }) {
+export default function Integrations({ sections }) {
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -103,12 +122,12 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
+          content="Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
           name="keywords"
-          content="ballerina, learn, documentation, docs, programming language"
+          content="ballerina, AI integration, LLM, RAG, AI agents, MCP, human approval, durable workflows, agent evaluation, observability"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
         <title>Ballerina for AI - The Ballerina programming language</title>
@@ -118,7 +137,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Ballerina for AI - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
+          content="Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures."
         />
         <meta
           property="og:image"
@@ -135,7 +154,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
+          content="Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures."
         />
 
         {/* TWITTER */}
@@ -146,7 +165,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
+          content="Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures."
         />
         <meta
           name="twitter:image"
@@ -154,7 +173,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
+          content="Connect models and agents to the APIs, data, and workflows your business runs on. Ballerina brings typed integration code together with AI libraries, helping you build applications that retrieve knowledge, use tools, coordinate approvals, and handle failures."
         />
         <meta
           property="twitter:image"
@@ -176,12 +195,7 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          {/* <Row className="pageContentRow integration usecases">
-            <UseCases getLink={getLink} />
-          </Row> */}
-          {/* <Row className="pageContentRow integration code"> */}
-            <Code samples={samples} getLink={getLink} />
-          {/* </Row> */}
+          <Code sections={sections} getLink={getLink} />
         </Col>
       </Layout>
     </>

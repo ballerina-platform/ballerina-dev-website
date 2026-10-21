@@ -1,11 +1,11 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Flexibly typed
-description: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
-keywords: ballerina, programming lanaguage, type system, data binding
+description: Data binds to a type by its shape, which matches systems you don't control. Malformed data is caught at compile time.
+keywords: ballerina, programming language, structurally typed, why ballerina
 permalink: /why-ballerina/flexibly-typed/
 active: flexibly-typed
-intro: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
+intro: Data binds to a type by its shape, which matches systems you don't control. Malformed data is caught at compile time.
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.
@@ -335,3 +335,28 @@ $ bal run sample.bal
    display:none !important;
 }**/
 </style>
+
+## Binding data by shape
+
+When JSON arrives from another system, you bind it to a record type. The value is accepted if its shape matches, with no class or schema from the sender required.
+
+```ballerina
+type Album record {| string title; string artist; int year; |};
+
+function parse(json payload) returns Album|error => payload.fromJsonWithType();
+```
+
+If the type and the data disagree, the result is an `error` value you must handle. Mismatches between types written in the program are reported at compile time. [VERSION: confirm the API name for the minimum supported release]
+
+## Related
+
+- [Cloud native](/why-ballerina/cloud-native/)
+- [Graphical](/why-ballerina/graphical/)
+- [Data oriented](/why-ballerina/data-oriented/)
+- [Concurrent and durable](/why-ballerina/concurrent/)
+- [AI built in](/why-ballerina/ai-built-in/)
+
+## Learn more
+
+- [Ballerina by Example](https://ballerina.io/learn/by-example/)
+- [Language specification](https://ballerina.io/spec/lang/) [LINK: confirm specification URL]

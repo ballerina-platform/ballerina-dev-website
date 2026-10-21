@@ -1,11 +1,11 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Cloud native
-description: See how the Ballerina programming language has built-in language constructs for network interactions and cloud support. 
-keywords: ballerina, programming language, cloud, kubernetes, docker
+description: Network primitives in the language make it simpler to write services and run them in the cloud. Services, listeners, clients, and resources are first-class constructs, not library afterthoughts.
+keywords: ballerina, programming language, cloud native, why ballerina
 permalink: /why-ballerina/cloud-native/
 active: cloud-native
-intro: See how the Ballerina programming language has constructs that seamlessly map to network programming concepts such as services and network resources. It also comes with built-in language support to deploy Ballerina applications on the cloud using Docker and Kubernetes.
+intro: Network primitives in the language make it simpler to write services and run them in the cloud. Services, listeners, clients, and resources are first-class constructs, not library afterthoughts.
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the 
@@ -251,3 +251,32 @@ With the <a href="https://github.com/marketplace/actions/ballerina-action" targe
    display:none !important;
 }**/
 </style>
+
+## Services, listeners, and resources in the language
+
+A service is declared with `service`, attached to a listener, and exposes resource functions. The compiler knows these constructs, so a service's shape is part of the program rather than something configured through a library.
+
+```ballerina
+import ballerina/http;
+
+service /greeting on new http:Listener(8080) {
+    resource function get hello(string name) returns string {
+        return "Hello, " + name;
+    }
+}
+```
+
+For an AI agent generating code, this means fewer lines to produce and fewer framework choices to make silently.
+
+## Related
+
+- [Graphical](/why-ballerina/graphical/)
+- [Data oriented](/why-ballerina/data-oriented/)
+- [Flexibly typed](/why-ballerina/flexibly-typed/)
+- [Concurrent and durable](/why-ballerina/concurrent/)
+- [AI built in](/why-ballerina/ai-built-in/)
+
+## Learn more
+
+- [Ballerina by Example](https://ballerina.io/learn/by-example/)
+- [Language specification](https://ballerina.io/spec/lang/) [LINK: confirm specification URL]

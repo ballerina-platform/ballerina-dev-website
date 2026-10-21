@@ -1,0 +1,124 @@
+@media (min-width: 992px) {
+    .textCol {
+        padding-left: 2.5rem;
+    }
+}
+
+.line {
+    position: relative;
+    display: block;
+    width: max-content;
+    min-width: 100%;
+}
+
+/* Diff */
+
+.add {
+    background: #e6ffec;
+}
+
+.del {
+    background: #ffebe9;
+}
+
+/* Diagram */
+
+.panel + .panel {
+    margin-top: 14px;
+}
+
+.diagramWrap {
+    padding: 14px 14px 10px;
+}
+
+.diagram {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.flowDot {
+    fill: #d5dbd9;
+}
+
+.flowBox {
+    fill: #ffffff;
+    stroke: #3b4442;
+    stroke-width: 1.2;
+}
+
+.flowEdge {
+    fill: none;
+    stroke: #3b4442;
+    stroke-width: 1.2;
+}
+
+.flowArrowHead {
+    fill: #3b4442;
+}
+
+.flowTitle {
+    fill: #1f2a28;
+    font-size: 13px;
+    font-weight: 600;
+    dominant-baseline: central;
+}
+
+.flowSub {
+    fill: #5f6a67;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    dominant-baseline: central;
+}
+
+.flowLabel {
+    fill: #1f2a28;
+    font-size: 12px;
+}
+
+.flowCall,
+.flowReturn,
+.flowIcon {
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.flowCall {
+    stroke: #1f9d55;
+}
+
+.flowReturn {
+    stroke: #2557c7;
+}
+
+.flowIcon {
+    stroke: #1f2a28;
+    stroke-width: 1.3;
+}
+
+.flowKebab circle {
+    fill: #3b4442;
+}
+
+.note {
+    font-style: normal;
+    font-size: 13px;
+    text-align: right;
+}
+
+.exampleNote {
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+.exampleNote code {
+    color: #17827e;
+    font-size: 13px;
+}

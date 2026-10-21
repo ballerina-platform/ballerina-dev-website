@@ -1,116 +1,60 @@
-.balActionTabs {
-    width: 100%;
-    background: #f5f5f5;
-}
+/* Header */
+.header { align-items: end; padding-top: 4.5rem; margin-bottom: 1.75rem; }
+.eyebrow { margin: 0 0 .9rem; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #17827e; }
+h2.heading { display: block; margin: 0; padding: 0; border: 0; font-size: 2.6rem; font-weight: 700; line-height: 1.15; color: #1f2a28; scroll-margin-top: 65px; }
 
-.balActionTabs li {
-    display: flex;
-}
+/* Tabs: plain labels on a shared baseline; the selected one is underlined. */
+.tabHint { display: none; }
+.tabList { display: flex; gap: 4px; overflow-x: auto; padding: 0; border-bottom: 1px solid #cfdcd8; scrollbar-width: thin; }
+.tabList button { flex: 0 0 auto; margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px 12px; color: #1f2a28; background: none; font: inherit; font-size: 15px; white-space: nowrap; }
+.tabList button:first-child { padding-left: 0; }
+.tabList button:hover { color: #17827e; }
+.tabList button[aria-selected="true"] { color: #17827e; border-bottom-color: #17827e; font-weight: 600; }
+.tabList button:focus-visible, .copyButton:focus-visible, .intro a:focus-visible { outline: 3px solid #20b6b0; outline-offset: 2px; }
 
-.balActionTabs li button {
-    color: #20b6b0;
-    cursor: default;
-    background: #f5f5f5;
-    border: 1px #c7c7c7 solid !important;
-}
+/* Example panel */
+.panel { margin-top: 0; border: 1px solid #cfdcd8; border-top: 0; background: #fff; padding: 28px 24px 24px; }
+.intro { display: flex; align-items: start; justify-content: space-between; gap: 22px; margin-bottom: 22px; }
+.intro h3 { margin: 0 0 8px; font-size: 21px; font-weight: 700; color: #1f2a28; }
+.intro p { margin: 0; max-width: 780px; font-size: 16px; line-height: 1.55; color: #4a5552; }
+.intro a { margin-top: 4px; color: #17827e; white-space: nowrap; font-size: 15px; font-weight: 700; text-decoration: none; }
+.intro a:hover { color: #0d5f59; text-decoration: underline; }
 
-.balActionTabs li button:focus, .balActionTabs li button:hover {
-    color: #555 !important;
-    border: 1px #b0aeae solid !important;
-    isolation: isolate;
-}
+/* Code and diagram share one frame, split by a rule. */
+.mainGrid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); border: 1px solid #cfdcd8; }
+.fullWidth { grid-template-columns: minmax(0, 1fr); }
+.codePane, .diagramPane { min-width: 0; display: flex; flex-direction: column; }
+.diagramPane { border-left: 1px solid #cfdcd8; }
+.paneHeader { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; padding: 6px 14px; border-bottom: 1px solid #cfdcd8; background: #fff; color: #4a5552; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
+.paneHeader > span { min-width: 0; overflow-wrap: anywhere; }
+.copyButton { display: inline-flex; flex-shrink: 0; align-items: center; gap: 6px; white-space: nowrap; border: 1px solid #cfdcd8; border-radius: 2px; padding: 4px 8px; color: #17827e; background: #fff; line-height: 1.4; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 12.5px; }
+.copyButton:hover { border-color: #17827e; }
+.codePane :global(.highlight) { display: flex; flex: 1; min-width: 0; background: #f6f8f7; }
+.codePane :global(pre) { flex: 1; width: 100%; margin: 0; padding: 18px !important; max-height: none; overflow-x: auto; overflow-y: visible; background: #f6f8f7 !important; }
+.codePane :global(pre code) { font-size: 13px !important; line-height: 1.6; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 
-.balActionTabs li button[aria-selected="true"],
-.balActionTabs li button[aria-selected="true"]:focus,
-.balActionTabs li button[aria-selected="true"]:hover {
-    color: #555 !important;
-    cursor: default;
-    background-color: #f5f5f5 !important;
-    border: 1px #c7c7c7 solid !important;
-    border-bottom: #20b6b0 3px solid !important;
-}
+/* Diagrams */
+.diagramImageWrap { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; padding: 16px; background: #fff; }
+.diagramImage { display: block; width: 100%; height: auto; max-height: 430px; object-fit: contain; }
+.diagramImageLarge { max-height: 700px; }
+.sequence { display: flex; flex-direction: column; gap: 18px; padding: 24px 18px; flex: 1; justify-content: center; }
+.participants { display: flex; justify-content: space-between; gap: 6px; }
+.participants span { display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #b9cfc9; background: #eef5f3; padding: 9px 6px; min-width: 0; flex: 1; font-size: 12.5px; color: #1f2a28; }
+.sequence ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.sequence li { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 5px; align-items: center; text-align: center; font-size: 12px; color: #4a5552; }
+.stepArrow { border-bottom: 1px solid #17827e; padding-bottom: 4px; color: #1f2a28; }
+.flow { display: flex; align-items: stretch; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 30px 16px; margin: auto 0; }
+.flowNode { display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #b9cfc9; padding: 11px; min-width: 110px; background: #eef5f3; font-size: 13px; color: #1f2a28; }
+.waiting { border-color: #d58a38; background: #fff5e8; }
+.arrow { align-self: center; color: #17827e; }
 
-@media (min-width: 576px) {
-.col1 {
-    padding-right: 0 !important;
-}
-
-.col2 {
-    padding-left: 0 !important;
-}
-}
-
-.focusPane {
-    padding: 20px;
-    border: 1px #c7c7c7 solid;
-    height: 100%;
-}
-
-.focusPane:hover {
-    transform: scale(1.019);
-    background-color: #f5f5f5;
-    border: 1px #20b6b0 solid !important;
-    z-index: 7;
-}
-
-.balActionTabs pre code {
-    font-size: 12px !important;
-}
-
-.balActionTabs .line-numbers .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    font-size: 100%;
-    left: 0em;
-    width: 0em; /* works for line-numbers below 1000 lines */
-    letter-spacing: -1px;
-    border-right: 1px solid #999;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.balActionTabs .code[class*="language-"], 
-.balActionTabs .pre[class*="language-"] {
-    font-size: 12px !important;
-}
-
-.balActionTabs .line-numbers-rows > span {
-    pointer-events: none;
-    display: none;
-    counter-increment: linenumber;
-}
-
-.balActionTabs .line-numbers-rows > span:before {
-    content: counter(linenumber);
-    color: #999;
-    display: none;
-    padding-right: 0em;
-    text-align: right;
-}
-
-.balActionTabs pre.line-numbers {
-    position: relative;
-    padding-left: 15px !important;
-    counter-reset: linenumber;
-}
-
-.playgroundButton {
-    background: url(/images/play=button.svg)no-repeat scroll right center;
-    color: #20b6b0;
-    padding: 12px 30px;
-    border: none;
-    float: right;
-    background-size: 20px;
-    font-size: 17px;
-    margin-right: 50px;
-    margin-top: 50px;
-}
-
-.codeActionIcons {
-    display: block;
-    clear: both;
-    text-align: right;
+@media (max-width: 767px) {
+  .header { padding-top: 3.5rem; }
+  h2.heading { font-size: 2rem; }
+  .tabHint { display: block; margin: 0 0 6px; color: #4a5552; font-size: 13px; }
+  .panel { padding: 18px 15px; }
+  .intro { flex-direction: column; gap: 8px; }
+  .mainGrid { grid-template-columns: 1fr; }
+  .diagramPane { border-left: 0; border-top: 1px solid #cfdcd8; }
+  .codePane :global(pre) { max-height: 350px; }
 }

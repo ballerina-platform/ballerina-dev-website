@@ -1,11 +1,11 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
-title: Concurrent
-description: Concurrency in Ballerina is enabled by strands, which are lightweight threads. 
-keywords: ballerina, ballerina platform, concurrency, workers, strands, threads, lightweight threads
+title: Concurrent and durable
+description: Workers without asynchronous functions, plus durable workflows and agents that keep state across crashes, restarts, and deployments.
+keywords: ballerina, programming language, concurrent, durable, workflow, workers, why ballerina
 permalink: /why-ballerina/concurrent/
 active: concurrent
-intro: Concurrency in Ballerina is enabled by strands, which are lightweight threads.
+intro: Workers without asynchronous functions, plus durable workflows and agents that keep state across crashes, restarts, and deployments.
 ---
 
 Ballerina's concurrency model supports both threads and coroutines and has been designed to have a close correspondence with sequence diagrams.
@@ -154,3 +154,37 @@ function persistIdWithLocation(record {|int id; string location;|} rec) {
    display:none !important;
 }*/
 </style>
+
+## Durable workflows
+
+Concurrency covers work that happens at the same time. Durability covers work that must outlive the process running it. A durable workflow records its progress, so after a crash, a restart, or a deployment it resumes at the step where it stopped instead of starting over.
+
+This suits processes that wait: a purchase that needs a manager's approval can wait days, and the program holds no thread or in-memory state while it waits. Durability comes from the workflow library, the same way the AI features come from the AI libraries, and it is written in the same Ballerina functions as the rest of the program.
+
+```ballerina
+// TODO: verify syntax
+import ballerina/workflow;
+
+@workflow:Workflow
+function approvePurchase(string requestId) returns error? {
+    // Each step is recorded. After a restart, execution continues
+    // after the last completed step.
+}
+```
+
+## Durable agents
+
+An AI agent that works through a long task (look up an order, wait for a person, call a service) faces the same problem: a restart should not erase what it has already done. Running the agent as a durable workflow keeps its state and completed steps, so it continues instead of repeating calls or asking again. [LINK: durable agent documentation]
+
+## Related
+
+- [Cloud native](/why-ballerina/cloud-native/)
+- [Graphical](/why-ballerina/graphical/)
+- [Data oriented](/why-ballerina/data-oriented/)
+- [Flexibly typed](/why-ballerina/flexibly-typed/)
+- [AI built in](/why-ballerina/ai-built-in/)
+
+## Learn more
+
+- [Ballerina by Example](https://ballerina.io/learn/by-example/)
+- [Language specification](https://ballerina.io/spec/lang/) [LINK: confirm specification URL]

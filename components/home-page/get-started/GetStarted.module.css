@@ -1,5 +1,5 @@
 .band {
-    --ai-teal: #11756e;
+    --ai-teal: #17827e;
     align-items: center;
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
@@ -30,7 +30,7 @@ h2.heading {
 a.cta {
     display: inline-block;
     padding: 14px 22px;
-    background-color: #11756e;
+    background-color: #17827e;
     color: #ffffff;
     font-size: 16px;
     font-weight: 600;

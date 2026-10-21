@@ -8,7 +8,8 @@ description: |
   - **Answers with sources**: return the documents and sections behind every answer.
   - **Pluggable vector stores**: start in memory, then move to pgvector, Pinecone, Milvus, or Weaviate through the same interface.
 guide: { label: 'Ground responses with enterprise data', url: '/learn/ground-responses-with-enterprise-data/' }
-samples: []
+samples:
+  - { label: 'HR policy assistant with RAG (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/ground-responses-with-enterprise-data' }
 tabs:
   - { key: 'answer', title: 'Code' }
 ---

@@ -8,6 +8,7 @@ description: |
   - **Typed results**: results conform to a Ballerina type, so the rest of your code stays type-safe.
 guide: { label: 'Use natural expressions in an integration', url: '/learn/work-with-llms-using-natural-expressions/' }
 samples:
+  - { label: 'Tourist attraction suggestions using natural expressions (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/work-with-llms-using-natural-expressions' }
   - { label: 'Rate blog posts using natural expressions (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/rate-blog-posts-using-natural-expressions' }
 tabs:
   - { key: 'code', title: 'Code' }

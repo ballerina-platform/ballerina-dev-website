@@ -9,7 +9,7 @@ description: |
   - **Bounded behavior**: control iterations, tool access, and error handling in code.
 guide: { label: 'Build an agent that uses enterprise systems', url: '/learn/build-an-agent-that-uses-enterprise-systems/' }
 samples:
-  - { label: 'Personal AI assistant (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-ai/tree/main/examples/personal-ai-assistant' }
+  - { label: 'Order support agent (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/build-an-agent-that-uses-enterprise-systems' }
 tabs:
   - { key: 'agent', title: 'Code' }
 ---

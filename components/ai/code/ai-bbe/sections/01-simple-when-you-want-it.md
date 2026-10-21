@@ -8,7 +8,8 @@ description: |
   - **Typed responses**: map model output directly to Ballerina records and validate it with constraints.
   - **Full provider access**: use typed connectors for provider-specific features when you need them.
 guide: { label: 'Add an LLM step to an integration', url: '/learn/add-an-llm-step-to-an-integration/' }
-samples: []
+samples:
+  - { label: 'Support ticket triage service (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/add-an-llm-step-to-an-integration' }
 tabs:
   - { key: 'code', title: 'Code' }
 ---

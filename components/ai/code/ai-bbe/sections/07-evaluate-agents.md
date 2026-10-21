@@ -9,7 +9,7 @@ description: |
   - **Runs as standard tests**: set pass-rate thresholds and run evaluations in CI with `bal test`.
 guide: { label: 'Evaluate agent behavior', url: '/learn/evaluate-agent-behavior/' }
 samples:
-  - { label: 'Complete evaluation project: broadband support agent (in the guide)', url: '/learn/evaluate-agent-behavior/#the-complete-code' }
+  - { label: 'Broadband support agent evaluation (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/evaluate-agent-behavior' }
 tabs:
   - { key: 'evaluation', title: 'Code' }
 ---

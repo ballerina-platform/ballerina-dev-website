@@ -34,11 +34,6 @@ const LEGACY_ANCHORS = {
     'agents': ['ballerina-ai-agent'],
     'multimodal-ai': ['ballerina_multimodel'],
     'natural-expressions': ['ai-powered-blog-analyzer-using-natural-programming'],
-    'ai-assisted-development': [
-        'copilot_your_partner',
-        'natural-programming-vs-code-features',
-        'natural-programming-complie-time-code-generation',
-    ],
 };
 
 const withPrefix = (url) => (url.startsWith('/') ? `${prefix}${url}` : url);
@@ -186,37 +181,8 @@ export default function Code({ sections, getLink }) {
                 />
             ))}
 
-            {/* related: AI-assisted development */}
-            <SectionRow odd={count % 2 === 0}>
-                <Row>
-                    <Col xs={12} className={styles.box}>
-                        <SectionHeading
-                            id="ai-assisted-development"
-                            title="Related: AI-assisted development"
-                            getLink={getLink}
-                            legacyIds={LEGACY_ANCHORS['ai-assisted-development']}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12} md={8} className={styles.box}>
-                        <div className={styles.wrapper}>
-                            <p>
-                                The capabilities above run inside your integration. Editor and build-time
-                                assistance for writing that integration, including Copilot, requirements-to-code,
-                                drift detection, and experimental compile-time code generation, is covered on its own page.
-                            </p>
-                            <ResourceLink
-                                url="/use-cases/ai/ai-assisted-development/"
-                                action="Explore AI-assisted development"
-                            />
-                        </div>
-                    </Col>
-                </Row>
-            </SectionRow>
-
             {/* WSO2 Integration Platform */}
-            <SectionRow odd={count % 2 !== 0}>
+            <SectionRow odd={count % 2 === 0}>
                 <Row>
                     <Col xs={12} className={styles.box}>
                         <SectionHeading

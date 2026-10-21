@@ -9,6 +9,7 @@ description: |
   - **Built-in recovery**: retry policies and failure handling, backed by Temporal.
 guide: { label: 'Add human approval and durable execution', url: '/learn/add-human-approval-and-durable-execution/' }
 samples:
+  - { label: 'Durable refund agent with human approval (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/add-human-approval-and-durable-execution' }
   - { label: 'Agent human approval (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-workflow/tree/main/examples/agent-human-approval' }
   - { label: 'Agent order processing (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-workflow/tree/main/examples/agent-order-processing' }
 tabs:

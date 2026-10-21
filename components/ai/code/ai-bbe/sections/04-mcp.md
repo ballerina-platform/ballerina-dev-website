@@ -9,8 +9,7 @@ description: |
   - **Secured access**: protect tools with standard authentication and scopes.
 guide: { label: 'Connect integrations and agents through MCP', url: '/learn/connect-integrations-and-agents-through-mcp/' }
 samples:
-  - { label: 'MCP shopping server (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-mcp/tree/main/examples/servers/mcp-shopping-server' }
-  - { label: 'MCP shopping client (GitHub)', url: 'https://github.com/ballerina-platform/module-ballerina-mcp/tree/main/examples/clients/mcp-shopping-client' }
+  - { label: 'Customer care MCP server and agent (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/connect-integrations-and-agents-through-mcp' }
 tabs:
   - { key: 'server', title: 'Code' }
 ---

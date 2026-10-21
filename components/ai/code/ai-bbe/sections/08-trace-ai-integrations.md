@@ -9,7 +9,7 @@ description: |
   - **Works with your stack**: export to Jaeger or any OTLP-compatible backend.
 guide: { label: 'Observe and secure AI integrations', url: '/learn/observe-and-secure-ai-integrations/' }
 samples:
-  - { label: 'Complete claims assistant sample (in the guide)', url: '/learn/observe-and-secure-ai-integrations/#the-complete-sample-code' }
+  - { label: 'Traced claims assistant (GitHub)', url: 'https://github.com/ballerina-guides/ai-samples/tree/main/observe-and-secure-ai-integrations' }
   - { label: 'View traces in Jaeger', url: '/learn/supported-observability-tools-and-platforms/jaeger/' }
 tabs:
   - { key: 'code', title: 'Code' }

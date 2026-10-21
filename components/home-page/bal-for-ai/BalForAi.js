@@ -125,7 +125,7 @@ ai:Agent agent = check new (
     }
 }
 isolated service on new a2a:RestListener(9090) {
-    private final a2a:DefaultHandler handler = new (new WeatherExecutor());
+    private final a2a:DefaultHandler handler = new (new WeatherAgentExecutor());
 
     isolated resource function post message\\:send(a2a:Context context,
             a2a:SendMessageRequest request) returns a2a:Task|a2a:Message|a2a:Error {

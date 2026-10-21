@@ -37,7 +37,7 @@ export default function Intro() {
 
             <h1>The programming language for integration and agentic AI</h1>
 
-            <p className={styles.lead}>Connect systems, build durable agents and expose MCP tools in one typed language. Every program is also a diagram, so what an agent writes, a person can verify at a glance.</p>
+            <p className={styles.lead}>Integration and agentic applications face the same engineering challenges: unreliable networks, structured data, security, observability, and long-running work. Ballerina makes them first-class in the language, so you build both on the same foundations.</p>
 
             <div className={styles.btnRow}>
               <a className={`${styles.homeIntroButton} ${styles.primaryButton}`}

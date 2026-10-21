@@ -151,23 +151,6 @@ a.cDownload:hover {
     max-width: 40em;
 }
 
-.chips {
-    list-style: none;
-    padding: 0;
-    margin: 1.75rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.chips li {
-    background-color: #e8f1ee;
-    color: #2f3d3a;
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 2px;
-}
-
 /* Diagram card */
 
 .diagram {

@@ -21,8 +21,6 @@ import { Row, Col, Container } from 'react-bootstrap';
 import { prefix } from '../../../utils/prefix';
 import styles from './Integration.module.css';
 
-const CAPABILITIES = ['Services & listeners', 'Clients & resources', 'JSON & XML', 'Types & queries'];
-
 // The parts of the agent stack that are built with Ballerina, resting on the model.
 const LAYERS = [
     {
@@ -75,8 +73,9 @@ function IntegrationGap() {
             <figcaption className={styles.gapLead}>
                 <p className={styles.diagramTitle}>Ballerina fills the integration gap</p>
                 <p className={styles.gapText}>
-                    Integration products connect systems but keep the logic in configuration, outside the code.
-                    General-purpose languages are flexible but leave network calls, data mapping, and failure handling to libraries.
+                    Integration products connect systems through configuration, often separating integration logic from application code.
+                    General-purpose languages keep that logic in code but leave network calls, data mapping, failure handling, and security to libraries.
+                    Building agents brings these same integration concerns into focus.
                 </p>
             </figcaption>
             <div className={styles.gapGrid}>
@@ -171,15 +170,11 @@ export default function Intro(props) {
                         Agentic AI is an integration problem.
                     </h2>
 
-                    <p className={styles.introText2}>An agent that does real work spends much of its time calling systems it does not control and waiting on them. It retrieves data, invokes tools, and coordinates actions across systems. That is integration.</p>
+                    <p className={styles.introText2}>Integration flows run predefined logic. Agents use models to decide their next action at runtime. Both still call systems they do not control, exchange structured data, act on behalf of users, and wait on work that can take hours or days.</p>
 
-                    <p className={styles.introText2}>Integration has long been built in one of two ways: with integration products that sit outside the code, or with general-purpose languages that were not designed for it.</p>
+                    <p className={styles.introText2}>Agentic applications do not remove the need for integration principles. They make those principles more important: reliable connectivity, secure interactions, observability, structured data handling, and support for long-running execution.</p>
 
-                    <p className={styles.introText2}>Ballerina fills that gap. It is a programming language designed for integration, so agents get the same first-class services, listeners, clients, and resources, with structural types and explicit error handling, as every other integration.</p>
-
-                    <ul className={styles.chips}>
-                        {CAPABILITIES.map((c) => <li key={c}>{c}</li>)}
-                    </ul>
+                    <p className={styles.introText2}>Ballerina builds these principles into the language, so integrations and agents are written with the same services, clients, types, and error handling.</p>
                 </Col>
             </Row>
 

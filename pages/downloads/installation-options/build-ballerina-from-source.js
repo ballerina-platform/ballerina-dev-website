@@ -115,7 +115,7 @@ export default function PostPage({ frontmatter, content, id, codes }) {
                         </Col>
                         <Col xs={1} className="gitIcon">
                             <a
-                                href={`${process.env.gitHubPath}downloads/${id}.md`}
+                                href={`${process.env.gitHubPath}downloads/installation-options/${id}.md`}
                                 target="_blank"
                                 rel="noreferrer"
                                 title="Edit in GitHub"

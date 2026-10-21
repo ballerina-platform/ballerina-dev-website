@@ -18,6 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
+import { prefix } from '../../../utils/prefix';
 import styles from './Integration.module.css';
 
 const CAPABILITIES = ['Services & listeners', 'Clients & resources', 'JSON & XML', 'Types & queries'];
@@ -49,6 +50,64 @@ const LAYERS = [
         ],
     },
 ];
+
+// The two ways integration has traditionally been built, and where each falls short.
+const GAP = {
+    products: {
+        title: 'Integration products & platforms',
+        items: ['ESB, EAI, BPM', 'iPaaS and low-code builders'],
+        verdict: 'Not code-first',
+    },
+    languages: {
+        title: 'General-purpose languages & frameworks',
+        items: [
+            ['Java', 'Spring Boot, Quarkus'],
+            ['Node.js', 'Express, NestJS'],
+            ['Python', 'Flask, FastAPI'],
+        ],
+        verdict: 'Wrong abstractions',
+    },
+};
+
+function IntegrationGap() {
+    return (
+        <figure className={styles.gap}>
+            <figcaption className={styles.gapLead}>
+                <p className={styles.diagramTitle}>Ballerina fills the integration gap</p>
+                <p className={styles.gapText}>
+                    Integration products connect systems but keep the logic in configuration, outside the code.
+                    General-purpose languages are flexible but leave network calls, data mapping, and failure handling to libraries.
+                </p>
+            </figcaption>
+            <div className={styles.gapGrid}>
+                <div className={styles.gapSide}>
+                    <p className={styles.gapTitle}>{GAP.products.title}</p>
+                    <ul className={styles.gapItems}>
+                        {GAP.products.items.map((i) => <li key={i}>{i}</li>)}
+                    </ul>
+                    <p className={styles.gapVerdict}>{GAP.products.verdict}</p>
+                </div>
+                <div className={styles.gapCenter}>
+                    <img className={styles.gapLogo} src={`${prefix}/images/ballerina-logo-white.svg`} alt="Ballerina" />
+                    <p className={styles.gapClaim}>The programming language for integration and agentic AI</p>
+                    <p className={styles.gapCenterText}>Services, clients, and data are part of the language, and agents are built with the same constructs.</p>
+                </div>
+                <div className={styles.gapSide}>
+                    <p className={styles.gapTitle}>{GAP.languages.title}</p>
+                    <dl className={styles.gapLangs}>
+                        {GAP.languages.items.map(([lang, frameworks]) => (
+                            <React.Fragment key={lang}>
+                                <dt>{lang}</dt>
+                                <dd>{frameworks}</dd>
+                            </React.Fragment>
+                        ))}
+                    </dl>
+                    <p className={styles.gapVerdict}>{GAP.languages.verdict}</p>
+                </div>
+            </div>
+        </figure>
+    );
+}
 
 function Block({ title, sub }) {
     return (
@@ -114,11 +173,19 @@ export default function Intro(props) {
 
                     <p className={styles.introText2}>An agent that does real work spends much of its time calling systems it does not control and waiting on them. It retrieves data, invokes tools, and coordinates actions across systems. That is integration.</p>
 
-                    <p className={styles.introText2}>Ballerina was designed for this from day one. Agents get the same first-class services, listeners, clients, and resources, with structural types and explicit error handling, as every other integration.</p>
+                    <p className={styles.introText2}>Integration has long been built in one of two ways: with integration products that sit outside the code, or with general-purpose languages that were not designed for it.</p>
+
+                    <p className={styles.introText2}>Ballerina fills that gap. It is a programming language designed for integration, so agents get the same first-class services, listeners, clients, and resources, with structural types and explicit error handling, as every other integration.</p>
 
                     <ul className={styles.chips}>
                         {CAPABILITIES.map((c) => <li key={c}>{c}</li>)}
                     </ul>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col xs={12}>
+                    <IntegrationGap />
                 </Col>
             </Row>
 

@@ -25,7 +25,6 @@ import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
 import Events from '../components/home-page/events/Events';
 import Integration from '../components/home-page/integration/Integration';
-import Users from '../components/home-page/users/Users';
 import BalForAi from '../components/home-page/bal-for-ai/BalForAi';
 import AiCoding from '../components/home-page/ai-coding/AiCoding';
 import GetStarted from '../components/home-page/get-started/GetStarted';
@@ -143,10 +142,6 @@ export default function Home({ samples, codeSamples }) {
 
         <Row className={styles.homeBalAction}>
           <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
-        </Row>
-
-        <Row className={styles.homeUsers}>
-          <Users getLink={getLink} />
         </Row>
 
         {

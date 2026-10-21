@@ -101,9 +101,13 @@ a.cDownload:hover {
 }
 /* Agentic AI section */
 
-.integrationRow {
+.integrationRow,
+.gap {
     --int-teal: #11756e;
     --int-ink: #1f2a28;
+}
+
+.integrationRow {
     align-items: center;
     padding-top: 4rem;
 }
@@ -269,9 +273,135 @@ a.cDownload:hover {
     color: #4a5552;
 }
 
+/* Integration gap */
+
+.gap {
+    margin: 4rem 0 0;
+}
+
+.gapLead {
+    max-width: 52em;
+    margin-bottom: 24px;
+}
+
+.gapText {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5552;
+    margin: 0;
+}
+
+.gapGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.gapSide {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 22px 22px;
+    background-color: #f1f6f4;
+    border: 1px solid #cfdcd8;
+}
+
+.gapTitle {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--int-ink);
+    margin-bottom: 20px;
+}
+
+.gapItems {
+    list-style: none;
+    padding: 0;
+    margin: auto 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2f3d3a;
+}
+
+.gapLangs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 16px;
+    margin: auto 0;
+    font-size: 15px;
+    color: #2f3d3a;
+}
+
+.gapLangs dt {
+    font-weight: 600;
+}
+
+.gapLangs dd {
+    margin: 0;
+}
+
+.gapVerdict {
+    align-self: center;
+    margin: 24px 0 0;
+    padding: 6px 14px;
+    border: 1px solid #5b6764;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #2f3d3a;
+}
+
+.gapCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 36px;
+    text-align: center;
+    background-color: var(--int-teal);
+    color: #ffffff;
+    /* Notches on both sides, where the two approaches meet Ballerina. */
+    clip-path: polygon(0 0, 100% 0, 100% 44%, calc(100% - 12px) 50%, 100% 56%, 100% 100%, 0 100%, 0 56%, 12px 50%, 0 44%);
+}
+
+.gapLogo {
+    width: 180px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    /* The logo's "Swan Lake" is teal; render it all white on the teal panel. */
+    filter: brightness(0) invert(1);
+}
+
+.gapClaim {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 12px;
+}
+
+.gapCenterText {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+    opacity: .9;
+}
+
 @media (max-width: 991.98px) {
     .diagram {
         margin-top: 2rem;
+    }
+
+    .gapGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .gapCenter {
+        clip-path: none;
     }
 }
 

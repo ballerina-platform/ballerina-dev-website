@@ -26,7 +26,7 @@ export const examples = [
   {
     id: 'transform-data', label: 'Transform data', title: 'Turn source data into the shape you need.',
     description: 'Read customers from JSON, bind them to typed records, select the active customers with a query expression, and transform their email addresses into XML contacts.',
-    source: 'working_with_data/working_with_data.bal', link: base + 'working_with_data',
+    source: 'working_with_data/main.bal', link: base + 'working_with_data',
     diagram: {
       kind: 'image',
       src: '/images/home-page/transform-data-flow.png',
@@ -36,7 +36,7 @@ export const examples = [
   {
     id: 'react-to-events', label: 'React to events', title: 'Act on every event as it arrives.',
     description: 'Consume batches of orders from Kafka, publish a READY_TO_PACK fulfillment message for each order, and log every published order ID.',
-    source: 'kafka_consumer_producer/kafka_consumer_producer.bal', link: base + 'kafka_consumer_producer',
+    source: 'kafka_consumer_producer/main.bal', link: base + 'kafka_consumer_producer',
     diagram: {
       kind: 'image',
       src: '/images/home-page/react-to-events-flow.png',

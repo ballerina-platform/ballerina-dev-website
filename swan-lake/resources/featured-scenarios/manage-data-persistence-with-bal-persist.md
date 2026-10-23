@@ -198,7 +198,7 @@ This creates the first database record with the client API. The next sections de
 
 Let’s try to fetch all the records inserted into the database. The client API offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
 
-Replace the previous code and add the new `get` call instead.
+Note: This guide uses an in-memory datastore, which does not persist data between application runs. Each of the following examples either includes the insert operation (as shown here) or assumes the employee record from earlier steps exists. To reproduce these examples, either run all operations in a single bal run or re-insert the employee in each example.
 
 ```ballerina
 import ballerina/io;
@@ -206,10 +206,29 @@ import rainier.store;
 import ballerina/persist;
 
 
-final store:Client sClient = check new ();
+final store:Client sClient = check new();
 
 
 public function main() returns error? {
+   store:EmployeeInsert employee1 = {
+       id: "emp_01",
+       firstName: "John",
+       lastName: "Doe",
+       email: "johnd@xyz.com",
+       phone: "1234567890",
+       hireDate: {
+           year: 2020,
+           month: 10,
+           day: 10
+       },
+       managerId: "mng_01",
+       jobTitle: "Software Engineer"
+   };
+
+
+   string[] employeeIds = check sClient->/employees.post([employee1]);
+   io:println("Inserted employee id: " + employeeIds[0]);
+
    // Get the complete `Employee` record.
    stream<store:Employee, persist:Error?> employees = sClient->/employees;
    check from var employee in employees
@@ -225,7 +244,6 @@ public function main() returns error? {
            io:println(name);
        };
 }
-
 
 type EmployeeName record {|
    string id;

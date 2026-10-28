@@ -1,8 +1,13 @@
-# Algolia-Crawler-Verif: 720EF8ECBD19B46F
+# robots.txt for ballerina.io development website
+# https://www.robotstxt.org/
 
-User-Agent: *
-Disallow: /
-User-Agent: web-site-map	
+User-agent: *
 Allow: /
-User-agent: Twitterbot
-Allow: *  
+
+# Disallow server-side and build routes
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap locations
+Sitemap: https://ballerina.io/sitemap.xml
+Sitemap: https://ballerina.io/sitemap-0.xml

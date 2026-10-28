@@ -175,7 +175,7 @@ Configuration key | Description | Default value | Possible values
 `ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
 
 ## Common tags in metrics and traces
-When observability is enabled, the Ballerina runtime adds a set of common tags (labels) to the metrics and spans it records for service resource functions, service remote functions, client remote calls, workers, and the `main` function. You can use these tags to filter, group, and correlate telemetry data in your observability tool or platform.
+When observability is enabled, the Ballerina runtime adds a set of common tags (labels) to the metrics and spans it records for service resource functions, service remote functions, client remote calls, client resource calls, workers, and the `main` function. You can use these tags to filter, group, and correlate telemetry data in your observability tool or platform.
 
 A tag is added only when it applies to the observed function. For example, `src.resource.path` is added only for resource functions, and `error` is added only when the function returns an error. Boolean tags are set to `true` when they apply and are left out otherwise. They are never set to `false`.
 
@@ -186,13 +186,14 @@ Tag | Description | When it is added | Possible values
 --- | --- | --- | ---
 `src.module` | The module that contains the observed function, in the `<org>/<module>:<version>` format. | Always | For example, `myorg/observability_demo:0.1.0`
 `src.position` | The location of the observed function or call in the source code, in the `<file-name>:<line>:<column>` format. | Always | For example, `main.bal:38:5`
-`src.function.name` | The name of the observed function or the called method. | All observations except service resource functions | For example, `main`, `onMessage`, `get`
-`src.object.name` | For a service function, the service name. For a method call on an object (such as a client remote call), the type name of the object, in the `<org>/<module>/<type-name>` format. | Service functions and method calls on objects | For example, `Shopping Service`, `/shop`, `ballerina/http/Client`
+`src.function.name` | The name of the observed function or the called method. For a client resource call, this is the internal name of the resource method, which combines the accessor and the resource path. | All observations except service resource functions | For example, `main`, `onMessage`, `get`, `$get$products`
+`src.object.name` | For a service function, the service name. For a method call on an object (such as a client remote call or a client resource call), the type name of the object, in the `<org>/<module>/<type-name>` format. | Service functions and method calls on objects | For example, `Shopping Service`, `/shop`, `ballerina/http/Client`
 `src.resource.path` | The resource path of the observed resource function. A path parameter is shown as `^` and a rest path parameter is shown as `^^`. | Service resource functions | For example, `/products`, `/orders/^`
 `src.resource.accessor` | The accessor of the observed resource function. For HTTP services, this is the HTTP method. | Service resource functions | For example, `get`, `post`, `put`, `delete`
 `src.service.resource` | Shows that the observed function is a resource function of a service. | Service resource functions | `true`
 `src.service.remote` | Shows that the observed function is a remote function of a service. | Service remote functions | `true`
 `src.client.remote` | Shows that the observation is for a remote method call on a client object. | Client remote calls | `true`
+`src.client.resource` | Shows that the observation is for a resource method call on a client object (for example, `check httpClient->/products`). | Client resource calls | `true`
 `src.worker` | Shows that the observed function is a worker. | Workers | `true`
 `src.main` | Shows that the observed function is the `main` function of the program. | The `main` function | `true`
 

@@ -6,6 +6,12 @@ import re
 # Initialize spell checker
 spell = SpellChecker()
 
+# Load custom wordlist from .spelling if available
+if os.path.exists('.spelling'):
+    with open('.spelling', 'r', encoding='utf-8') as f:
+        custom_words = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+    spell.word_frequency.load_words(custom_words)
+
 # List of directories to scan for files
 directories = ["_data", "case-studies", "community", "components", "downloads", "hacktoberfest", "pages", "policy", "spec", "swan-lake", "utils"]
 

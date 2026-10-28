@@ -25,6 +25,19 @@ def remove_code_snippets(text):
     text = re.sub(r'`[^`]*`', '', text)  # Remove inline code (single backticks)
     return text
 
+# Function to normalize scanned tokens by removing surrounding punctuation and possessive suffixes
+def normalize_token(token):
+    # Strip leading and trailing non-word/punctuation characters
+    token = re.sub(r'^[^\w]+|[^\w]+$', '', token)
+    # Remove possessive suffixes ('s, ’s, ')
+    if token.endswith(("'s", "’s", "'S", "’S")):
+        token = token[:-2]
+    elif token.endswith(("'", "’")):
+        token = token[:-1]
+    # Strip any remaining edge punctuation
+    token = re.sub(r'^[^\w]+|[^\w]+$', '', token)
+    return token
+
 # Function to check spelling in a file
 def check_spelling_in_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -43,8 +56,10 @@ def check_spelling_in_file(file_path):
     if file_path.endswith('.md'):
         text = remove_code_snippets(text)
 
-    # Split text into words and check for misspelled words
-    words = text.split()
+    # Split text into words, normalize tokens, and check for misspelled words
+    raw_words = text.split()
+    words = [normalize_token(w) for w in raw_words]
+    words = [w for w in words if w]
     misspelled = spell.unknown(words)
 
     return misspelled

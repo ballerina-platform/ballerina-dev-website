@@ -174,6 +174,64 @@ Configuration key | Description | Default value | Possible values
 `ballerina.observe.tracingEnabled` | Whether tracing is enabled (true) or disabled (false) | false | `true` or `false`
 `ballerina.observe.tracingProvider` | The tracer name, which implements the tracer interface. | `None` | `otel`, `jaeger`, `zipkin`, `newrelic` or the name of the tracer of any custom implementation.
 
+## Common tags in metrics and traces
+When observability is enabled, the Ballerina runtime adds a set of common tags (labels) to the metrics and spans it records for service resource functions, service remote functions, client remote calls, client resource calls, workers, and the `main` function. You can use these tags to filter, group, and correlate telemetry data in your observability tool or platform.
+
+A tag is added only when it applies to the observed function. For example, `src.resource.path` is added only for resource functions, and `error` is added only when the function returns an error. Boolean tags are set to `true` when they apply and are left out otherwise. They are never set to `false`.
+
+### Source tags
+These tags describe the function being observed.
+
+Tag | Description | When it is added | Possible values
+--- | --- | --- | ---
+`src.module` | The module that contains the observed function, in the `<org>/<module>:<version>` format. | Always | For example, `myorg/observability_demo:0.1.0`
+`src.position` | The location of the observed function or call in the source code, in the `<file-name>:<line>:<column>` format. | Always | For example, `main.bal:38:5`
+`src.function.name` | The name of the observed function or the called method. For a client resource call, this is the internal name of the resource method, which combines the accessor and the resource path. | All observations except service resource functions | For example, `main`, `onMessage`, `get`, `$get$products`
+`src.object.name` | For a service function, the service name. For a method call on an object (such as a client remote call or a client resource call), the type name of the object, in the `<org>/<module>/<type-name>` format. | Service functions and method calls on objects | For example, `Shopping Service`, `/shop`, `ballerina/http/Client`
+`src.resource.path` | The resource path of the observed resource function. A path parameter is shown as `^` and a rest path parameter is shown as `^^`. | Service resource functions | For example, `/products`, `/orders/^`
+`src.resource.accessor` | The accessor of the observed resource function. For HTTP services, this is the HTTP method. | Service resource functions | For example, `get`, `post`, `put`, `delete`
+`src.service.resource` | Shows that the observed function is a resource function of a service. | Service resource functions | `true`
+`src.service.remote` | Shows that the observed function is a remote function of a service. | Service remote functions | `true`
+`src.client.remote` | Shows that the observation is for a remote method call on a client object. | Client remote calls | `true`
+`src.client.resource` | Shows that the observation is for a resource method call on a client object (for example, `check httpClient->/products`). | Client resource calls | `true`
+`src.worker` | Shows that the observed function is a worker. | Workers | `true`
+`src.main` | Shows that the observed function is the `main` function of the program. | The `main` function | `true`
+
+>**Note:** The service name is the `label` of the `@display` annotation attached to the service (for example, `Shopping Service` in the example above). If the annotation is not present, the service base path is used (for example, `/shop`). If the service has no base path, a generated name in the `<org>_<module>_svc_<index>` format is used.
+
+### Entry point tags
+These tags describe the entry point of the execution in which the function was observed. The entry point is the first service resource function, service remote function, or function that started the observation, such as `main`. Nested observations carry the same entry point tags, so a call made deep in the call stack can be traced back to the entry point that triggered it.
+
+Tag | Description | When it is added | Possible values
+--- | --- | --- | ---
+`entrypoint.function.module` | The module of the entry point, in the `<org>/<module>:<version>` format. | Always | For example, `myorg/observability_demo:0.1.0`
+`entrypoint.service.name` | The name of the service that contains the entry point. | When the entry point is a service resource function or service remote function | For example, `Shopping Service`, `/shop`
+`entrypoint.function.name` | The name of the entry point. For a resource function, this is the resource path. For other functions, this is the function name. | Always | For example, `/products`, `main`
+`entrypoint.resource.accessor` | The accessor of the entry point resource function. | When the entry point is a service resource function | For example, `get`, `post`
+
+### Error tag
+
+Tag | Description | When it is added | Possible values
+--- | --- | --- | ---
+`error` | Shows that the observed function or call returned an error. | When the observed function or call returns an error | `true`
+
+For example, a request to the `GET /shop/products` resource in the example above is recorded with the following tags:
+
+```
+src.module                   = myorg/observability_demo:0.1.0
+src.position                 = main.bal:38:5
+src.object.name              = Shopping Service
+src.service.resource         = true
+src.resource.accessor        = get
+src.resource.path            = /products
+entrypoint.function.module   = myorg/observability_demo:0.1.0
+entrypoint.service.name      = Shopping Service
+entrypoint.function.name     = /products
+entrypoint.resource.accessor = get
+```
+
+>**Note:** Connectors such as the HTTP and SQL clients and listeners add their own tags on top of these common tags (for example, `http.method`, `http.url`, and `http.status_code_group`).
+
 ## Observability tools and platforms supported by Ballerina
 
 This outlines how to enable and configure observability in Ballerina for various tools and platforms. It provides a step-by-step guide for setting up monitoring, tracing, and logging using widely used observability solutions.

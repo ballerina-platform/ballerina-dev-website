@@ -1,24 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ballerina Dev Website
 
-## Run website locally
+The development version of the [ballerina.io](https://ballerina.io) website, built with [Next.js](https://nextjs.org/).
 
-First, execute the following command to install necessary packages
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) **v16 or later**
+- [npm](https://www.npmjs.com/) **v8 or later**
+
+## Getting Started
+
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-Execute the following command to run the development server:
+### 2. Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### 3. Build for production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Running the Linter
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+```bash
+npm run lint
+```
+
+## Contributing
+
+We welcome all contributions! Please read our [Contributing Guide](.github/CONTRIBUTING.md) before submitting a pull request.
+
+1. Fork this repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes with clear, descriptive messages
+4. Push to your fork and open a Pull Request targeting `master`
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).

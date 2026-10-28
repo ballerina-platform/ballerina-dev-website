@@ -11,9 +11,7 @@
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Report via:
-1. **Email**: [ballerina-security@wso2.com](mailto:ballerina-security@wso2.com)
-2. **GitHub Security Advisories**: [Report privately](https://github.com/ballerina-platform/ballerina-dev-website/security/advisories/new)
+Report via email to [ballerina-security@wso2.com](mailto:ballerina-security@wso2.com).
 
 ### Include in Your Report
 

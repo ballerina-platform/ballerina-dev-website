@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @dilanSachi @Bhashinee \
 _Reviewers_: @shafreenAnfar @Bhashinee \
 _Created_: 2020/10/28 \
-_Updated_: 2026/09/01 \
+_Updated_: 2026/11/02 \
 _Edition_: Swan Lake
 
 ## Introduction
@@ -392,7 +392,7 @@ Reading a path that is not there gives an `ftp:FileNotFoundError`.
 
 The first five read the whole file into memory, and are the operations `retryConfig` retries; see [Section 3.7](#37-retry). The two streaming reads hold the file open until the stream is consumed or closed, so always close them.
 
-`getCsv` and `getCsvAsStream` treat the first row of the file as the header row.
+`getCsv` and `getCsvAsStream` treat the first row of the file as the header row. A record result takes its field names from it, and a `string[][]` result leaves it out, so the first element is the first data row. Lines starting with `#` are comments, and are skipped.
 
 ```ballerina
 type Order record {|
@@ -500,7 +500,7 @@ foreach ftp:FileInfo file in files {
 
 ### 3.7 Retry
 
-`retryConfig` retries a failed read with exponential backoff. It covers the reads that load the whole file — `getBytes`, `getText`, `getJson`, `getXml`, and `getCsv` — and not the streaming reads, whose transfer happens later, as the stream is consumed.
+`retryConfig` retries a read that failed for a reason that may pass — an `ftp:ConnectionError` or an `ftp:ServiceUnavailableError` — with exponential backoff. It covers the reads that load the whole file — `getBytes`, `getText`, `getJson`, `getXml`, and `getCsv` — and not the streaming reads, whose transfer happens later, as the stream is consumed.
 
 ```ballerina
 public type RetryConfig record {|
@@ -513,7 +513,7 @@ public type RetryConfig record {|
 
 `interval` is the wait before the first retry, in seconds. Each subsequent wait is multiplied by `backOffFactor`, up to `maxWaitInterval`. With the defaults, the waits are 1, 2, and 4 seconds.
 
-When every attempt has failed, the operation returns an `ftp:AllRetryAttemptsFailedError` wrapping the last failure. A `CircuitBreakerOpenError` is not retried, since the circuit is open precisely because retrying is pointless.
+When every attempt has failed, the operation returns an `ftp:AllRetryAttemptsFailedError` wrapping the last failure. Any other error is returned at once, unwrapped: a missing file, content that cannot be bound, a rejected identity, or a closed client fails the same way on every attempt. A `CircuitBreakerOpenError` is not retried either, since the circuit is open precisely because retrying is pointless.
 
 ```ballerina
 ftp:Client ftpClient = check new ({
@@ -555,7 +555,7 @@ public type RollingWindow record {|
 |};
 ```
 
-`failureThreshold` is a ratio between `0.0` and `1.0`. `resetTime`, `timeWindow`, and `bucketSize` are in seconds, and `bucketSize` must be smaller than `timeWindow`. **The circuit does not open until `requestVolumeThreshold` operations have happened inside the window**, so a threshold crossed by two failures out of two does nothing on its own.
+`failureThreshold` is a ratio between `0.0` and `1.0`. `resetTime`, `timeWindow`, and `bucketSize` are in seconds, and `bucketSize` must not exceed `timeWindow` and must divide it evenly. A value outside these bounds fails client initialization with an `ftp:InvalidConfigError`, before any connection is opened. **The circuit does not open until `requestVolumeThreshold` operations have happened inside the window**, so a threshold crossed by two failures out of two does nothing on its own.
 
 `failureCategories` decides which failures count towards the ratio. Anything outside the listed categories is returned to the caller without moving the circuit.
 
@@ -622,7 +622,7 @@ public type ListenerConfiguration record {|
 |};
 ```
 
-`pollingInterval` is the number of seconds between polls. On each cycle the listener polls the watched directory of every attached service, and compares what it finds with the previous cycle: a path that has appeared is a new file, and a path that has gone is a deleted file.
+`pollingInterval` is the number of seconds between polls. On each cycle the listener polls the watched directory of every attached service, and reports every file that passes the filters, even if an earlier cycle reported it. A file is therefore picked up on every poll until it is moved or deleted, which is what the post-processing actions of [Section 4.6](#46-post-processing-actions) are for. A path present in the previous cycle and gone from this one is a deleted file.
 
 The four monitoring fields — `path`, `fileNamePattern`, `fileAgeFilter`, and `fileDependencyConditions` — are deprecated at this level. They belong on `@ftp:ServiceConfig`, which is what [Section 4.2](#42-service) covers.
 
@@ -639,7 +639,7 @@ listener ftp:Listener ftpListener = check new ({
 });
 ```
 
-`start`, `attach`, `detach`, `gracefulStop`, and `immediateStop` return a plain `error?`. Configuration the listener can only check once services are attached — a duplicate path, a bad regular expression, an inconsistent age filter — fails at `start`, with an `ftp:InvalidConfigError`.
+`start`, `attach`, `detach`, `gracefulStop`, and `immediateStop` return a plain `error?`. `attach` connects to the server and validates the service's configuration, so a duplicate path, a bad regular expression, an inconsistent age filter in `@ftp:ServiceConfig`, or an empty `moveTo` fails at `attach`, with an `ftp:InvalidConfigError`. The deprecated listener-level `fileAgeFilter` is validated when the listener is created. The `name` argument of `attach`, a `string` or `string[]`, does not affect how files are dispatched. `detach` removes one service; the others on the listener keep polling.
 
 ### 4.2 Service
 
@@ -752,7 +752,7 @@ public enum AgeCalculationMode {
 }
 ```
 
-Both bounds are in seconds and inclusive, and either may be set alone. `minAge` is what keeps a file still being written by an upstream process from being picked up half-finished. `ageCalculationMode` chooses the timestamp the age is measured from; `CREATION_TIME` needs a server that reports one. A negative bound, or a `minAge` above `maxAge`, fails at listener start with an `ftp:InvalidConfigError`.
+Both bounds are in seconds and inclusive, and either may be set alone. `minAge` is what keeps a file still being written by an upstream process from being picked up half-finished. `ageCalculationMode` chooses the timestamp the age is measured from; `CREATION_TIME` needs a server that reports one. A negative bound, or a `minAge` above `maxAge`, fails with an `ftp:InvalidConfigError`: at `attach` for `@ftp:ServiceConfig`, and when the listener is created for the deprecated listener-level `fileAgeFilter`.
 
 `fileDependencyConditions` holds a file back until the files it belongs with have arrived too.
 
@@ -817,7 +817,7 @@ public type Move record {|
 public type MOVE Move;
 ```
 
-`DELETE` is a constant, and removes the file. `MOVE` is an alias for the `Move` record, and relocates the file under `moveTo`, creating the directories leading to the destination when they are absent. `preserveSubDirs`, on by default, recreates the file's subdirectory structure relative to the watched directory under the destination — watching `/input` and processing `/input/orders/2026/file.csv` with `moveTo: "/archive"` puts it at `/archive/orders/2026/file.csv`. With `preserveSubDirs: false` it lands directly in `moveTo`, which collapses two same-named files from different subdirectories onto one destination path. An empty `moveTo` fails at listener start with an `ftp:InvalidConfigError`.
+`DELETE` is a constant, and removes the file. `MOVE` is an alias for the `Move` record, and relocates the file under `moveTo`, creating the directories leading to the destination when they are absent. `preserveSubDirs`, on by default, recreates the file's subdirectory structure relative to the watched directory under the destination — watching `/input` and processing `/input/orders/2026/file.csv` with `moveTo: "/archive"` puts it at `/archive/orders/2026/file.csv`. With `preserveSubDirs: false` it lands directly in `moveTo`, which collapses two same-named files from different subdirectories onto one destination path. An empty `moveTo` fails at `attach` with an `ftp:InvalidConfigError`.
 
 ```ballerina
 service on ftpListener {
@@ -960,7 +960,7 @@ An `ftp:Caller` declared as a handler parameter lets a handler act on the server
 
 The caller offers the same operations as the client, less `close`: the write, read, and file management methods, including the deprecated `get`, `put`, and `append`. Its read operations bind to the type expected at the call site, exactly as the client's do. It inherits the listener's protocol, identity, and transport settings.
 
-A listener creates a caller only when something needs one: a handler that declares an `ftp:Caller` parameter, or a service with post-processing actions. How many callers exist depends on how the services are configured. With `@ftp:ServiceConfig`, each service gets its own caller connection, rooted at that service's watched path. Without it, one caller is created and shared by every service on the listener. Either way a listener that has callers holds one connection for polling plus one per caller.
+A listener creates a caller only when something needs one: a handler that declares an `ftp:Caller` parameter, or a service with post-processing actions. How many callers exist depends on how the services are configured. With `@ftp:ServiceConfig`, each service gets its own caller connection. Without it, one caller is created and shared by every service on the listener. Either way a listener that has callers holds one connection for polling plus one per caller. A caller resolves relative paths against the root of [Section 2.5](#25-the-server-root), not against the service's watched path.
 
 ```ballerina
 service on ftpListener {
@@ -987,8 +987,8 @@ public type Error distinct error;
 | `ConnectionError` | The server could not be reached — network failure, unreachable host, refused connection |
 | `FileNotFoundError` | The path is not on the server |
 | `FileAlreadyExistsError` | The destination of a `mkdir`, `rename`, `move`, or `copy` is taken |
-| `InvalidConfigError` | A configuration value is unusable — a bad port, regular expression, timeout, path, or filter bound |
-| `ServiceUnavailableError` | A transient server failure that may succeed on retry — overload (421), data connection trouble (425, 426), a temporary lock (450), or a server-side processing failure (451) |
+| `InvalidConfigError` | A configuration value is unusable — a port outside 1–65535, a regular expression, timeout, path, or filter bound |
+| `ServiceUnavailableError` | A transient server failure that may succeed on retry — overload (421), data connection trouble (425, 426), a temporary lock (450), a server-side processing failure (451), or insufficient storage (452) |
 | `ContentBindingError` | File content could not be parsed or bound to the expected type. Its detail record carries the `filePath` and the raw `content` |
 | `AllRetryAttemptsFailedError` | Every retry attempt failed. It wraps the last failure |
 | `CircuitBreakerOpenError` | A subtype of `ServiceUnavailableError`, returned while the circuit is open |

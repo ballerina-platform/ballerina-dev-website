@@ -69,15 +69,28 @@ service /api on new http:Listener(8080) {
     }
 }`;
 
-const TEST = `@test:Config
-function unknownOrderReturns404() returns error? {
-    http:Response res = check api->/orders/["ORD-0000"]/delivery;
-    test:assertEquals(res.statusCode, 404);
+// A data race a coding agent might generate: a module-level map shared by concurrent requests.
+const RACE = `map<Order> cache = {};
+
+isolated service /api on new http:Listener(8080) {
+    isolated resource function get orders/[string orderId]() returns Order|error {
+        if cache.hasKey(orderId) {
+            return cache.get(orderId);
+        }
+        Order 'order = check orderApi->/orders/[orderId];
+        cache[orderId] = 'order;
+        return 'order;
+    }
 }`;
 
-const DIFF = `-        return {orderId, status: shipment.status, eta: shipment.eta};
-+        return {orderId, status: shipment.status, eta: shipment.eta,
-+                carrier: shipment.carrier};`;
+// Lines of RACE (1-based) that the compiler rejects.
+const RACE_ERROR_LINES = [5, 6, 9];
+
+// Captured from `bal build` (Ballerina 2201.14.0).
+const BUILD_OUTPUT = `ERROR [orders.bal:(5:12,5:17)] invalid access of mutable storage in an 'isolated' function
+ERROR [orders.bal:(6:20,6:25)] invalid access of mutable storage in an 'isolated' function
+ERROR [orders.bal:(9:9,9:14)] invalid access of mutable storage in an 'isolated' function
+error: compilation contains errors`;
 
 function Code({ code, className }) {
   return (
@@ -224,24 +237,32 @@ function VisualExample() {
   );
 }
 
-function MaintainableExample() {
+function SafetyExample() {
   return (
     <>
-      <Panel label="Test" note={<span>tests/delivery_test.bal</span>}>
-        <Code code={TEST} />
-      </Panel>
-      <Panel label="Change" note={<span>git diff delivery.bal</span>}>
-        <pre className={`${shared.code} ${styles.diff}`}>
+      <Panel label="Generated code" note={<span>orders.bal</span>}>
+        <pre className={shared.code}>
           <code>
-            {DIFF.split('\n').map((line, i) => (
-              <span key={i} className={`${styles.line} ${line[0] === '+' ? styles.add : styles.del}`}>
-                {line[0]}{highlightLine(line.slice(1))}
+            {RACE.split('\n').map((line, i) => (
+              <span key={i} className={`${styles.line} ${RACE_ERROR_LINES.includes(i + 1) ? styles.flagged : ''}`}>
+                {highlightLine(line)}{'\n'}
               </span>
             ))}
           </code>
         </pre>
       </Panel>
-      <p className={styles.exampleNote}>Generated integrations are ordinary <code>.bal</code> files. Teams review changes as diffs, run them with <code>bal test</code>, and keep evolving the same source.</p>
+      <Panel label="Compiler" note={<span>bal build</span>}>
+        <pre className={`${shared.code} ${styles.buildOutput}`}>
+          <code>
+            {BUILD_OUTPUT.split('\n').map((line, i) => (
+              <React.Fragment key={i}>
+                {line.startsWith('ERROR') ? <><span className={styles.error}>ERROR</span>{line.slice(5)}</> : line}{'\n'}
+              </React.Fragment>
+            ))}
+          </code>
+        </pre>
+      </Panel>
+      <p className={styles.exampleNote}>The generated service shares one mutable cache across concurrent requests. The compiler rejects the data race before the code runs, instead of leaving it to fail under load. Declaring the cache <code>isolated</code> and accessing it inside <code>lock</code> blocks fixes the build, and the service then handles requests in parallel. The same compile-time checks make every error and nil value be handled explicitly.</p>
     </>
   );
 }
@@ -263,9 +284,9 @@ const ADVANTAGES = [
     Example: SettingsExample
   },
   {
-    title: 'Source you keep',
-    description: 'Generate once, then version, test, and diff it like any other code.',
-    Example: MaintainableExample
+    title: 'Safe to run once it compiles',
+    description: 'The compiler rules out data races and unhandled errors, so generated code that builds is safe to run concurrently.',
+    Example: SafetyExample
   }
 ];
 

@@ -29,13 +29,13 @@ export default function GetStarted() {
       <Container>
         <Row className={styles.band}>
           <Col xs={12} md={8}>
-            <p className={shared.eyebrow}>Start with one integration</p>
-            <h2 className={styles.heading}>Connect something. Then build on it.</h2>
-            <p className={styles.lead}>Learn the language through practical integration examples.</p>
+            <p className={shared.eyebrow}>Start with one agent</p>
+            <h2 className={styles.heading}>Get your hands dirty. Build an AI agent.</h2>
+            <p className={styles.lead}>Build an agent that calls real enterprise APIs, remembers the conversation, and handles tool failures, one step at a time.</p>
           </Col>
           <Col xs={12} md={4} className={styles.action}>
-            <a className={styles.cta} href={`${prefix}/learn/get-started/`}>
-              Get started with Ballerina <span aria-hidden="true">→</span>
+            <a className={styles.cta} href={`${prefix}/learn/build-an-agent-that-uses-enterprise-systems/`}>
+              Build your first agent <span aria-hidden="true">→</span>
             </a>
           </Col>
         </Row>

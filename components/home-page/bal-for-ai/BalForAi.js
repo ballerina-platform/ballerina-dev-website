@@ -25,28 +25,19 @@ import styles from './BalForAi.module.css';
 
 const CAPABILITIES = [
   {
-    title: 'Agents and enterprise tools',
-    description: 'Build agents that invoke Ballerina functions and use connectors to interact with business systems.',
+    title: 'Agents and Durable Agents',
+    description: 'Build agents that call Ballerina functions and connectors, and durable agents that survive restarts and wait for human approval.',
     excerpts: [
       {
-        label: 'The tool',
-        note: 'an order lookup against the order system',
-        code: `final http:Client orderApi = check new (orderApiUrl);
-
-# Retrieves an order, including its status and tracking number.
-#
-# + orderId - The order ID, in the format ORD-1234
-# + return - The order, or an error if it cannot be retrieved
+        label: 'The agent',
+        note: 'calls an order lookup tool and is served over HTTP',
+        code: `# Retrieves an order, including its status and tracking number.
 @ai:AgentTool
 isolated function getOrder(string orderId) returns Order|error {
-    Order 'order = check orderApi->/orders/[orderId];
-    return 'order;
-}`
-      },
-      {
-        label: 'The agent',
-        note: 'uses the tool and is served over HTTP',
-        code: `final ai:Agent supportAgent = check new (
+    return orderApi->/orders/[orderId];
+}
+
+final ai:Agent supportAgent = check new (
     systemPrompt = {
         role: "Order Support Assistant",
         instructions: "Answer order questions. Use the tools; do not guess."
@@ -58,11 +49,38 @@ isolated function getOrder(string orderId) returns Order|error {
 service /support on new http:Listener(8080) {
     resource function post chat(ai:ChatReqMessage request)
             returns ai:ChatRespMessage|error {
-        string answer = check supportAgent.run(request.message,
-                request.sessionId);
+        string answer = check supportAgent.run(request.message, request.sessionId);
         return {message: answer};
     }
 }`
+      },
+      {
+        label: 'The durable agent',
+        note: 'pauses for approval and resumes after a restart',
+        code: `# Refunds an amount to the customer's original payment method.
+@workflow:Activity
+isolated function issueRefund(string orderId, decimal amount) returns Refund|error {
+    return paymentsApi->/refunds.post({orderId, amount});
+}
+
+final workflow:DurableAgent refundAgent = check new (
+    systemPrompt = {
+        role: "Refund Assistant",
+        instructions: "Check the order, then refund only the eligible amount."
+    },
+    model = model,
+    tools = [getOrder],
+    activities = [{
+        activity: issueRefund,
+        // The run waits durably for a support lead before any refund is issued.
+        approvalPolicy: {userRoles: "SUPPORT_LEAD", title: "Approve refund"},
+        retryPolicy: {maxRetries: 3, retryDelay: 2}
+    }]
+);
+
+// The ticket ID is the instance ID, so a retried request joins the running instance.
+string instanceId = check refundAgent.runWithId(ticketId, customerMessage,
+        ifRunning = workflow:USE_EXISTING);`
       }
     ]
   },
@@ -109,7 +127,7 @@ ai:Agent agent = check new (
     ]
   },
   {
-    title: 'Agent-to-agent (A2A)',
+    title: 'Agent-to-Agent (A2A)',
     description: 'Publish agents as A2A services with an agent card, and delegate tasks to other agents through the A2A client.',
     excerpts: [
       {

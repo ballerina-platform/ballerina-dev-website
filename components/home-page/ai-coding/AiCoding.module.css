@@ -11,14 +11,19 @@
     min-width: 100%;
 }
 
-/* Diff */
+/* Compile-time safety */
 
-.add {
-    background: #e6ffec;
+.flagged {
+    background: #ffebe9;
 }
 
-.del {
-    background: #ffebe9;
+.buildOutput {
+    color: #3b4442;
+}
+
+.error {
+    color: #cf222e;
+    font-weight: 600;
 }
 
 /* Diagram */

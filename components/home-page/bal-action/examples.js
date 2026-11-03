@@ -4,6 +4,37 @@ const base = 'https://github.com/ballerina-guides/integration-samples/tree/main/
 
 export const examples = [
   {
+    id: 'build-agent', label: 'Build an enterprise agent', title: 'Give an agent access to order information.',
+    description: 'Build a delivery assistant that calls order and shipment APIs as agent tools, follows explicit lookup instructions, and answers with the latest status and ETA.',
+    source: 'enterprise_agent/main.bal', link: base + 'enterprise_agent',
+    diagram: {
+      kind: 'image',
+      large: true,
+      src: '/images/home-page/build-agent-flow.png',
+      alt: 'Flow diagram showing an OpenAI-powered delivery agent with order and shipment lookup tools, followed by the agent run and logged answer'
+    }
+  },
+  {
+    id: 'expose-mcp', label: 'Expose MCP tools', title: 'Make an enterprise capability available through MCP.',
+    description: 'Expose an MCP service that retrieves typed stock data from an HTTP backend, logs successful lookups, and returns contextual errors when requests fail.',
+    source: 'expose_mcp_tools/main.bal', link: base + 'expose_mcp_tools',
+    diagram: {
+      kind: 'image',
+      src: '/images/home-page/expose-mcp-flow.png',
+      alt: 'Flow diagram that gets product stock through an HTTP client, handles and logs errors, logs successful lookups, and returns the stock record'
+    }
+  },
+  {
+    id: 'add-ai', label: 'Add AI to an integration', title: 'Turn unstructured text into typed data.',
+    description: 'Send an order confirmation to an OpenAI model, bind the generated response directly to a typed order record, and log the extracted details.',
+    source: 'add_ai_to_integration/main.bal', link: base + 'add_ai_to_integration',
+    diagram: {
+      kind: 'image',
+      src: '/images/home-page/add-ai-flow.png',
+      alt: 'Flow diagram that sends an order confirmation to an OpenAI model, binds the generated order details, and logs them'
+    }
+  },
+  {
     id: 'connect-applications', label: 'Connect applications', title: 'Move data from one business system to another.',
     description: 'Call the GitHub REST API with an HTTP client, bind the response to typed pull request records, and append each pull request to Google Sheets.',
     source: 'consuming_services/consuming_services.bal', link: base + 'consuming_services',
@@ -41,37 +72,6 @@ export const examples = [
       kind: 'image',
       src: '/images/home-page/react-to-events-flow.png',
       alt: 'Flow diagram that loops over orders, creates a fulfillment message, publishes it to Kafka, and logs the order ID'
-    }
-  },
-  {
-    id: 'add-ai', label: 'Add AI to an integration', title: 'Turn unstructured text into typed data.',
-    description: 'Send an order confirmation to an OpenAI model, bind the generated response directly to a typed order record, and log the extracted details.',
-    source: 'add_ai_to_integration/main.bal', link: base + 'add_ai_to_integration',
-    diagram: {
-      kind: 'image',
-      src: '/images/home-page/add-ai-flow.png',
-      alt: 'Flow diagram that sends an order confirmation to an OpenAI model, binds the generated order details, and logs them'
-    }
-  },
-  {
-    id: 'build-agent', label: 'Build an enterprise agent', title: 'Give an agent access to order information.',
-    description: 'Build a delivery assistant that calls order and shipment APIs as agent tools, follows explicit lookup instructions, and answers with the latest status and ETA.',
-    source: 'enterprise_agent/main.bal', link: base + 'enterprise_agent',
-    diagram: {
-      kind: 'image',
-      large: true,
-      src: '/images/home-page/build-agent-flow.png',
-      alt: 'Flow diagram showing an OpenAI-powered delivery agent with order and shipment lookup tools, followed by the agent run and logged answer'
-    }
-  },
-  {
-    id: 'expose-mcp', label: 'Expose MCP tools', title: 'Make an enterprise capability available through MCP.',
-    description: 'Expose an MCP service that retrieves typed stock data from an HTTP backend, logs successful lookups, and returns contextual errors when requests fail.',
-    source: 'expose_mcp_tools/main.bal', link: base + 'expose_mcp_tools',
-    diagram: {
-      kind: 'image',
-      src: '/images/home-page/expose-mcp-flow.png',
-      alt: 'Flow diagram that gets product stock through an HTTP client, handles and logs errors, logs successful lookups, and returns the stock record'
     }
   },
   {

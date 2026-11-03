@@ -1,15 +1,15 @@
 {
-  "version": "1.2.68",
-  "release-date": "2026-10-08",
-  "windows-installer": "ballerina-windows-installer-x64-1.2.68.msi",
-  "windows-installer-size": "148mb",
-  "linux-installer": "ballerina-linux-installer-x64-1.2.68.deb",
-  "linux-installer-size": "145mb",
-  "macos-installer": "ballerina-macos-installer-x64-1.2.68.pkg",
-  "macos-installer-size": "165mb",
-  "rpm-installer": "ballerina-linux-installer-x64-1.2.68.rpm",
-  "rpm-installer-size": "168mb",
-  "other-artefacts": ["ballerina-1.2.68.zip", "ballerina-1.2.68.vsix"],
-  "api-docs": "ballerina-api-docs-1.2.68.zip",
-  "release-notes": "ballerina-release-notes-1.2.68.md"
+  "version": "1.2.71",
+  "release-date": "2026-11-03",
+  "windows-installer": "ballerina-windows-installer-x64-1.2.71.msi",
+  "windows-installer-size": "272K",
+  "linux-installer": "ballerina-linux-installer-x64-1.2.71.deb",
+  "linux-installer-size": "177mb",
+  "macos-installer": "ballerina-macos-installer-x64-1.2.71.pkg",
+  "macos-installer-size": "197mb",
+  "rpm-installer": "ballerina-linux-installer-x64-1.2.71.rpm",
+  "rpm-installer-size": "177mb",
+  "other-artefacts": ["ballerina-1.2.71.zip", "ballerina-1.2.71.vsix"],
+  "api-docs": "ballerina-api-docs-1.2.71.zip",
+  "release-notes": "ballerina-release-notes-1.2.71.md"
 }

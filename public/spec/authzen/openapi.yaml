@@ -1,0 +1,600 @@
+openapi: 3.0.3
+info:
+  title: AuthZEN
+  version: 1.0.0
+  description: >-
+    Connects to a Policy Decision Point (PDP) that implements the OpenID AuthZEN Authorization API 1.0, so an
+    integration can act as a Policy Enforcement Point (PEP): evaluate one or many access requests, search for the
+    subjects, resources or actions an access applies to, and read the PDP metadata.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: OpenID AuthZEN Authorization API 1.0
+  url: https://openid.net/specs/authorization-api-1_0.html
+servers:
+  - url: https://pdp.example.com
+    description: The PDP base URL (the policy_decision_point identifier).
+security:
+  - bearerAuth: []
+  - oauth2: []
+tags:
+  - name: evaluation
+    description: Access Evaluation and Access Evaluations APIs
+  - name: search
+    description: Subject, Resource and Action Search APIs
+  - name: metadata
+    description: PDP metadata discovery
+paths:
+  /.well-known/authzen-configuration:
+    get:
+      tags: [metadata]
+      operationId: getMetadata
+      summary: Get the PDP metadata
+      description: >-
+        Returns the PDP metadata: its identifier, the endpoints of the APIs it supports and its capabilities. An API
+        whose endpoint is absent is not supported by the PDP.
+      security: []
+      responses:
+        '200':
+          description: PDP metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Metadata'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /access/v1/evaluation:
+    post:
+      tags: [evaluation]
+      operationId: evaluate
+      summary: Evaluate an access request
+      description: >-
+        Asks the PDP whether the subject may perform the action on the resource, in the given context. A deny is a
+        successful response with `decision` set to `false`; HTTP errors are reserved for requests the PDP can't
+        evaluate.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationRequest'
+      responses:
+        '200':
+          description: The access decision
+          headers:
+            X-Request-ID:
+              $ref: '#/components/headers/X-Request-ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decision'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /access/v1/evaluations:
+    post:
+      tags: [evaluation]
+      operationId: evaluateBatch
+      summary: Evaluate a batch of access requests
+      description: >-
+        Evaluates several access requests in one call. The top-level `subject`, `action`, `resource` and `context`
+        are defaults that each entry of `evaluations` may override. Decisions are returned in request order. Without
+        an `evaluations` array (or with an empty one) the request is a single access evaluation, answered with a
+        top-level `decision`.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchEvaluationRequest'
+      responses:
+        '200':
+          description: The access decisions, in request order
+          headers:
+            X-Request-ID:
+              $ref: '#/components/headers/X-Request-ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchEvaluationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /access/v1/search/subject:
+    post:
+      tags: [search]
+      operationId: searchSubjects
+      summary: Find the subjects that may perform an action on a resource
+      description: >-
+        Returns the subjects of the given subject type that may perform the action on the resource. The subject
+        `id` should be omitted, and the PDP ignores it.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubjectSearchRequest'
+      responses:
+        '200':
+          description: The matching subjects
+          headers:
+            X-Request-ID:
+              $ref: '#/components/headers/X-Request-ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectSearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /access/v1/search/resource:
+    post:
+      tags: [search]
+      operationId: searchResources
+      summary: Find the resources a subject may perform an action on
+      description: >-
+        Returns the resources of the given resource type on which the subject may perform the action. The resource
+        `id` should be omitted, and the PDP ignores it.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceSearchRequest'
+      responses:
+        '200':
+          description: The matching resources
+          headers:
+            X-Request-ID:
+              $ref: '#/components/headers/X-Request-ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceSearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  /access/v1/search/action:
+    post:
+      tags: [search]
+      operationId: searchActions
+      summary: Find the actions a subject may perform on a resource
+      description: Returns the actions the subject may perform on the resource.
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionSearchRequest'
+      responses:
+        '200':
+          description: The matching actions
+          headers:
+            X-Request-ID:
+              $ref: '#/components/headers/X-Request-ID'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionSearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: An access token the PDP accepts.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0, which AuthZEN recommends for authenticating the PEP.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.example.com/oauth2/token
+          scopes: {}
+  parameters:
+    RequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      x-ballerina-name: requestId
+      description: >-
+        An identifier of the request, generated by the PEP. The PDP returns it in the `X-Request-ID` response header.
+      schema:
+        type: string
+  headers:
+    X-Request-ID:
+      description: The `X-Request-ID` the PEP sent, echoed by the PDP.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad Request. The request is malformed, for example a required member is missing.
+      content:
+        text/plain:
+          schema:
+            type: string
+    Unauthorized:
+      description: Unauthorized. The PEP is not authenticated.
+      content:
+        text/plain:
+          schema:
+            type: string
+    Forbidden:
+      description: Forbidden. The PEP may not use this API.
+      content:
+        text/plain:
+          schema:
+            type: string
+    InternalError:
+      description: Internal Error. The PDP failed to process the request.
+      content:
+        text/plain:
+          schema:
+            type: string
+    NotFound:
+      description: The PDP does not publish metadata.
+      content:
+        text/plain:
+          schema:
+            type: string
+  schemas:
+    Properties:
+      description: Additional, implementation-specific attributes.
+      type: object
+      additionalProperties: true
+    Subject:
+      description: The user or machine principal about whom the authorization is asked.
+      type: object
+      required: [type, id]
+      properties:
+        type:
+          description: The type of the subject, for example `user`
+          type: string
+        id:
+          description: The unique identifier of the subject, scoped to its type
+          type: string
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Resource:
+      description: The target of the access request.
+      type: object
+      required: [type, id]
+      properties:
+        type:
+          description: The type of the resource, for example `document`
+          type: string
+        id:
+          description: The unique identifier of the resource, scoped to its type
+          type: string
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Action:
+      description: The type of access the subject requests on the resource.
+      type: object
+      required: [name]
+      properties:
+        name:
+          description: The name of the action, for example `can_read`
+          type: string
+        properties:
+          $ref: '#/components/schemas/Properties'
+    Context:
+      description: Attributes of the environment of the request, for example the time or the location.
+      type: object
+      additionalProperties: true
+    EvaluationRequest:
+      description: An access request.
+      type: object
+      required: [subject, action, resource]
+      properties:
+        subject:
+          $ref: '#/components/schemas/Subject'
+        action:
+          $ref: '#/components/schemas/Action'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        context:
+          $ref: '#/components/schemas/Context'
+    Decision:
+      description: >-
+        An access decision. `context` may carry the reasons for the decision; for a batch entry the PDP could not
+        evaluate, `decision` is `false` and `context` describes the error.
+      type: object
+      required: [decision]
+      properties:
+        decision:
+          description: '`true` if the access is permitted, `false` if it is denied'
+          type: boolean
+        context:
+          $ref: '#/components/schemas/Context'
+    BatchEvaluationItem:
+      description: >-
+        One access request of a batch. A member it omits is taken from the top-level default of the batch request;
+        a member it includes overrides that default.
+      type: object
+      properties:
+        subject:
+          $ref: '#/components/schemas/Subject'
+        action:
+          $ref: '#/components/schemas/Action'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        context:
+          $ref: '#/components/schemas/Context'
+    BatchEvaluationOptions:
+      description: Options that control how the PDP runs the batch.
+      type: object
+      additionalProperties: true
+      properties:
+        evaluations_semantic:
+          x-ballerina-name: evaluationsSemantic
+          description: >-
+            `execute_all` (the default) evaluates every entry; `deny_on_first_deny` stops after the first deny;
+            `permit_on_first_permit` stops after the first permit
+          type: string
+          enum: [execute_all, deny_on_first_deny, permit_on_first_permit]
+    BatchEvaluationRequest:
+      description: >-
+        A batch of access requests. The top-level `subject`, `action` and `resource` may be omitted only when every
+        entry of `evaluations` contains them.
+      type: object
+      properties:
+        subject:
+          $ref: '#/components/schemas/Subject'
+        action:
+          $ref: '#/components/schemas/Action'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        context:
+          $ref: '#/components/schemas/Context'
+        evaluations:
+          description: The access requests, each overriding the top-level defaults
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchEvaluationItem'
+        options:
+          $ref: '#/components/schemas/BatchEvaluationOptions'
+    BatchEvaluationResponse:
+      description: >-
+        The decisions of a batch. `evaluations` holds one decision per evaluated entry, in request order. With the
+        `deny_on_first_deny` and `permit_on_first_permit` semantics, the PDP stops early and returns fewer decisions
+        than entries. A request without an `evaluations` array is a single evaluation and is answered with a
+        top-level `decision` instead.
+      type: object
+      properties:
+        decision:
+          description: The decision of a request without an `evaluations` array
+          type: boolean
+        context:
+          $ref: '#/components/schemas/Context'
+        evaluations:
+          description: >-
+            The decisions, in the order of the request entries. Fewer than the entries when the PDP stops early
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+    SubjectFilter:
+      description: The subject type to search for. `id` should be omitted, and the PDP ignores it.
+      type: object
+      required: [type]
+      properties:
+        type:
+          description: The type of the subjects to find, for example `user`
+          type: string
+        id:
+          description: Ignored by the PDP
+          type: string
+        properties:
+          $ref: '#/components/schemas/Properties'
+    ResourceFilter:
+      description: The resource type to search for. `id` should be omitted, and the PDP ignores it.
+      type: object
+      required: [type]
+      properties:
+        type:
+          description: The type of the resources to find, for example `document`
+          type: string
+        id:
+          description: Ignored by the PDP
+          type: string
+        properties:
+          $ref: '#/components/schemas/Properties'
+    PageRequest:
+      description: >-
+        The page of a search to return. To get the next page, send the `nextToken` of the previous response as
+        `token`, with every other member of the request unchanged.
+      type: object
+      properties:
+        token:
+          description: The `nextToken` of the previous response
+          type: string
+        limit:
+          description: The maximum number of results to return
+          type: integer
+          minimum: 0
+        properties:
+          $ref: '#/components/schemas/Properties'
+    PageResponse:
+      description: >-
+        Paging information, present when the response doesn't hold the entire result set. AuthZEN requires
+        `next_token` in it, but some PDPs and the AuthZEN examples omit it, so an absent `next_token` means there are
+        no more results.
+      type: object
+      properties:
+        next_token:
+          x-ballerina-name: nextToken
+          description: The token of the next page; an empty string or absent when there are no more results
+          type: string
+        count:
+          description: The number of results in this response
+          type: integer
+          minimum: 0
+        total:
+          description: The total number of matching results
+          type: integer
+          minimum: 0
+        properties:
+          $ref: '#/components/schemas/Properties'
+    SubjectSearchRequest:
+      description: A search for the subjects that may perform an action on a resource.
+      type: object
+      required: [subject, action, resource]
+      properties:
+        subject:
+          $ref: '#/components/schemas/SubjectFilter'
+        action:
+          $ref: '#/components/schemas/Action'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        context:
+          $ref: '#/components/schemas/Context'
+        page:
+          $ref: '#/components/schemas/PageRequest'
+    SubjectSearchResponse:
+      description: The subjects found.
+      type: object
+      required: [results]
+      properties:
+        results:
+          description: The matching subjects
+          type: array
+          items:
+            $ref: '#/components/schemas/Subject'
+        page:
+          $ref: '#/components/schemas/PageResponse'
+        context:
+          $ref: '#/components/schemas/Context'
+    ResourceSearchRequest:
+      description: A search for the resources on which a subject may perform an action.
+      type: object
+      required: [subject, action, resource]
+      properties:
+        subject:
+          $ref: '#/components/schemas/Subject'
+        action:
+          $ref: '#/components/schemas/Action'
+        resource:
+          $ref: '#/components/schemas/ResourceFilter'
+        context:
+          $ref: '#/components/schemas/Context'
+        page:
+          $ref: '#/components/schemas/PageRequest'
+    ResourceSearchResponse:
+      description: The resources found.
+      type: object
+      required: [results]
+      properties:
+        results:
+          description: The matching resources
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        page:
+          $ref: '#/components/schemas/PageResponse'
+        context:
+          $ref: '#/components/schemas/Context'
+    ActionSearchRequest:
+      description: A search for the actions a subject may perform on a resource.
+      type: object
+      required: [subject, resource]
+      properties:
+        subject:
+          $ref: '#/components/schemas/Subject'
+        resource:
+          $ref: '#/components/schemas/Resource'
+        context:
+          $ref: '#/components/schemas/Context'
+        page:
+          $ref: '#/components/schemas/PageRequest'
+    ActionSearchResponse:
+      description: The actions found.
+      type: object
+      required: [results]
+      properties:
+        results:
+          description: The matching actions
+          type: array
+          items:
+            $ref: '#/components/schemas/Action'
+        page:
+          $ref: '#/components/schemas/PageResponse'
+        context:
+          $ref: '#/components/schemas/Context'
+    Metadata:
+      description: >-
+        The PDP metadata. An endpoint that is absent means the PDP doesn't support that API.
+      type: object
+      required: [policy_decision_point, access_evaluation_endpoint]
+      properties:
+        policy_decision_point:
+          x-ballerina-name: policyDecisionPoint
+          description: The PDP identifier, an `https` URL without query or fragment
+          type: string
+        access_evaluation_endpoint:
+          x-ballerina-name: accessEvaluationEndpoint
+          description: URL of the Access Evaluation API
+          type: string
+        access_evaluations_endpoint:
+          x-ballerina-name: accessEvaluationsEndpoint
+          description: URL of the Access Evaluations API
+          type: string
+        search_subject_endpoint:
+          x-ballerina-name: searchSubjectEndpoint
+          description: URL of the Subject Search API
+          type: string
+        search_resource_endpoint:
+          x-ballerina-name: searchResourceEndpoint
+          description: URL of the Resource Search API
+          type: string
+        search_action_endpoint:
+          x-ballerina-name: searchActionEndpoint
+          description: URL of the Action Search API
+          type: string
+        capabilities:
+          description: The registered capability URNs the PDP supports
+          type: array
+          items:
+            type: string
+        signed_metadata:
+          x-ballerina-name: signedMetadata
+          description: >-
+            A JWT, signed or MACed with JWS, that holds metadata values as claims. Its values take precedence over
+            the plain values once its signature is verified, which this client doesn't do
+          type: string

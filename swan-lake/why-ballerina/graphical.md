@@ -1,11 +1,11 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Graphical
-description: See why the support for a visual representation of the development experience lays the foundation for designing the syntax and semantics of the Ballerina programming language.
+description: Every program is also a sequence diagram, and both are views of one source. Edit either and the other updates.
 keywords: ballerina, programming language, sequence diagram, graphical, diagram editor, why ballerina
-intro: See why the support for a visual representation of the development experience lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 permalink: /why-ballerina/graphical/
 active: graphical
+intro: Every program is also a sequence diagram, and both are views of one source. Edit either and the other updates.
 ---
 
 In today’s cloud era, you need technologies that can model distributed systems in a more developer-friendly way. The feature-rich development experience of the [Ballerina Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) brings in graphical representations for designing and editing your services, modeling how concurrent execution flows and how multiple actors interact with each other, and mapping the data conversions within your applications.
@@ -23,3 +23,35 @@ The [Ballerina Visulaizer](/learn/vs-code-extension/implement-the-code/ballerina
 ## Data Mapper
 
 The Ballerina VS Code extension supports [creating and updating the data mappings](/learn/vs-code-extension/implement-the-code/data-mapper/) to convert data between the corresponding input and output types. The user interface eases performing data integration, migration, and transformation elements of the data mapping process via the graphical representation of the source code.
+
+## One source, two views
+
+The Ballerina VS Code extension renders a function or a service resource as a sequence diagram. The diagram is not a separate model: it is generated from the code, and edits made in the diagram are written back to the same source file. [LINK: add a screenshot of the code beside its diagram]
+
+```ballerina
+import ballerina/http;
+
+final http:Client inventory = check new ("http://localhost:9090");
+
+service /orders on new http:Listener(8080) {
+    resource function get [string id]() returns json|error {
+        // In the diagram: client -> this resource -> inventory -> back to the client.
+        return inventory->get("/stock/" + id);
+    }
+}
+```
+
+Because the diagram is a view of the code, it cannot drift out of date, and a reviewer can read the interaction without reading every line.
+
+## Related
+
+- [Cloud native](/why-ballerina/cloud-native/)
+- [Data oriented](/why-ballerina/data-oriented/)
+- [Flexibly typed](/why-ballerina/flexibly-typed/)
+- [Concurrent and durable](/why-ballerina/concurrent/)
+- [AI built in](/why-ballerina/ai-built-in/)
+
+## Learn more
+
+- [Ballerina by Example](https://ballerina.io/learn/by-example/)
+- [Language specification](https://ballerina.io/spec/lang/) [LINK: confirm specification URL]

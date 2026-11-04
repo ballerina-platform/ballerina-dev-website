@@ -1,168 +1,112 @@
-img.homePageLogo {
-    width: 330px;
-}
-
-.homeIntro h1 {
-    color: #ffffff;
-    font-size: 50px;
-    font-weight: 100;
-    line-height: 60px;
-    margin: 40px 0;
-}
-
-.descriptionMain {
-    color: #c0c0c0;
-    font-size: 31px;
-    line-height: 40px;
-    font-weight: 300;
-}
-
-.descriptionSub {
-    color: #c0c0c0;
-    font-size: 16px;
-    line-height: 40px;
-    font-weight: 300;
-}
-
-.introTopRow,
 .introBottomRow {
     padding: 0;
-}
-
-.introTopRow {
-    padding-bottom: 60px;
-}
-
-.introBottomRow ul {
-    padding: 0;
-    margin: 10px 0;
-    display: inline-block;
-    float: right;
-}
-
-.introBottomRow ul li {
-    list-style: none;
-    display: inline-block;
-    float: right;
-    margin-right: 30px;
-}
-
-a.homeIntroButton {
-    font-size: 25px;
-    background-color: #20b6b0;
-    color: #fff;
-    padding: 20px 70px 20px 20px;
-    display: inline-block;
-    float: right;
-    font-weight: 500;
-    text-decoration: none;
-    margin-bottom: 10px;
-    border: 1px solid #20b6b0;
-    /* margin-top: 8px; */
-    width: 100%;
-}
-
-.homeIntroButton p {
-    padding: 0;
-    margin: 0;
-    font-family: monaco, Consolas, "Lucida Console", monospace;
-    font-size: 11px;
-    margin-left: 1px;
-    line-height: 15px;
-}
-
-a.playButton {
-    background-color: transparent;
-}
-
-a.homeIntroButton:hover {
-    background-color: #eeeeee;
-    color: #494949;
-}
-
-.socialMediaIcons {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #ffffff;
-    font-size: 25px;
-}
-
-.socialMediaIcons:hover {
-    color:#ffffff;
-}
-
-.socialMediaPanel {
-    margin-top: 30px;
-    /* margin-bottom: 0.5rem; */
-    text-align: center;
-}
-
-.introLinks {
-    /* color: #ffffff; */
-    color: #20b6b0;
-    text-decoration: none;
-    margin-top: 20px !important;
-    padding-top: 20px;
-    cursor: pointer;
-}
-
-.introLinks:hover {
-    color: #20b6b0;
+    align-items: center;
 }
 
 .description {
     color: #ffffff;
 }
 
+.eyebrow {
+    font-family: "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 14px;
+    letter-spacing: .02em;
+    color: #20b6b0;
+    margin-bottom: 1.25rem;
+}
+
 .description h1 {
-    margin-bottom: 1.5rem;
-    font-size: 2.45rem;
-}
-
-.description p {
-    line-height: 1.3rem;
-    margin-bottom: 0.5rem;
-    font-size: 16px;
-    /* color: #c0c0c0; */
     color: #ffffff;
+    font-size: 3.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    margin: 0 0 1.5rem;
 }
 
-.btnCol {
+.lead {
+    color: #e0e0e0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 36em;
+}
+
+.btnRow {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 1.75rem;
 }
 
-.check {
-    margin-right: 5px;
+a.homeIntroButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid #20b6b0;
+    border-radius: 2px;
+    transition: background-color .2s, color .2s, border-color .2s;
 }
 
-.desItem {
-    display: flex;
-    flex-direction: row;
+a.homeIntroButton:hover {
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+    color: #494949;
+}
+
+a.primaryButton {
+    background-color: #20b6b0;
+    color: #1d2a2a;
+}
+
+.origin {
+    color: #a8a8a8;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.introLinks {
+    color: #20b6b0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.introLinks:hover {
+    color: #20b6b0;
+}
+
+.socialMediaPanel {
+    margin-top: 1.5rem;
+    margin-left: -10px;
+}
+
+.socialMediaIcons {
+    margin: 0 10px;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.socialMediaIcons:hover {
+    color: #20b6b0;
+}
+
+@media (max-width: 991px) {
+    .cardCol {
+        margin-top: 40px;
+    }
 }
 
 @media (max-width: 576px) {
-    .btnCol {
-        margin-top: 20px;
+    .description h1 {
+        font-size: 2.4rem;
     }
-}
 
-@media (min-width: 576px) {
-    .btnCol {
-        margin-top: 20px;
-    }
-}
-
-@media (min-width: 768px) {
-    .btnCol {
-        margin-top: 20px;
-    }
-}
-
-@media (min-width: 992px) {
-    .btnCol {
-        margin-top: 0px;
+    .lead {
+        font-size: 16px;
     }
 }

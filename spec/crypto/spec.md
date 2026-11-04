@@ -114,7 +114,7 @@ The conforming implementation of the specification is released and included in t
 12. [Static Code Rules](#12-static-code-rules)
     - 12.1 [Avoid using insecure cipher modes or padding schemes](#121-avoid-using-insecure-cipher-modes-or-padding-schemes)
     - 12.2 [Avoid using fast hashing algorithms](#122-avoid-using-fast-hashing-algorithms)
-    - 12.3 [Avoid reusing counter mode initialization vectors](#123-avoid-reusing-counter-mode-initialization-vectors)
+    - 12.3 [Avoid hard-coded initialization vectors](#123-avoid-hard-coded-initialization-vectors)
 
 ## 1. Overview
 
@@ -1305,9 +1305,9 @@ The following static code rules are applied to the Crypto module.
 
 | Id                 | Kind          | Description                                                                                                       |
 |--------------------|---------------|-------------------------------------------------------------------------------------------------------------------|
-| ballerina/crypto:1 | VULNERABILITY | [Avoid using insecure cipher modes or padding schemes](#111-avoid-using-insecure-cipher-modes-or-padding-schemes) |
-| ballerina/crypto:2 | VULNERABILITY | [Avoid using fast hashing algorithms](#112-avoid-using-fast-hashing-algorithms)                                   |
-| ballerina/crypto:3 | VULNERABILITY | [Avoid reusing counter mode initialization vectors](#113-avoid-reusing-counter-mode-initialization-vectors)       |
+| ballerina/crypto:1 | VULNERABILITY | [Avoid using insecure cipher modes or padding schemes](#121-avoid-using-insecure-cipher-modes-or-padding-schemes) |
+| ballerina/crypto:2 | VULNERABILITY | [Avoid using fast hashing algorithms](#122-avoid-using-fast-hashing-algorithms)                                   |
+| ballerina/crypto:3 | VULNERABILITY | [Avoid hard-coded initialization vectors](#123-avoid-hard-coded-initialization-vectors)                           |
 
 ### 12.1 Avoid using insecure cipher modes or padding schemes
 
@@ -1529,36 +1529,24 @@ public function hashPassword() returns error? {
 - CWE - [CWE-916 - Use of Password Hash With Insufficient Computational Effort](https://cwe.mitre.org/data/definitions/916)
 - STIG Viewer - [Application Security and Development: V-222542](https://stigviewer.com/stigs/application_security_and_development/2024-12-06/finding/V-222542) - The application must only store cryptographic representations of passwords.
 
-### 12.3 Avoid reusing counter mode initialization vectors
+### 12.3 Avoid hard-coded initialization vectors
 
-When using encryption algorithms in counter mode (such as AES-GCM, AES-CCM, or AES-CTR), initialization vectors (IVs) or nonces should never be reused with the same encryption key. Reusing IVs with the same key can completely compromise the security of the encryption.
+This rule reports an AES-CBC or AES-GCM encryption operation (`crypto:encryptAesCbc` or `crypto:encryptAesGcm`) whose initialization vector (IV) is hard-coded, such as a byte array literal or a string literal or constant converted with `toBytes()`. A hard-coded IV is likely to be reused across encryptions with the same key, which weakens or breaks the security guarantees of these modes.
 
 ## 12.3.1. Why this is an issue?
 
-Counter mode encryption relies on unique initialization vectors to ensure security. When the same IV is used with the same encryption key for different plaintexts, it creates serious vulnerabilities that can lead to:
+Both AES-CBC and AES-GCM require a fresh initialization vector for every encryption performed with the same key. When the IV is hard-coded, every encryption that uses that code path shares the same IV, so the IV is very likely reused with the same key.
 
-- Exposure of encrypted data
-- Ability for attackers to forge authenticated messages
-- Recovery of the authentication key in some cases
-- Disclosure of plaintext by XORing two ciphertexts created with the same IV and key
+The consequences of IV reuse depend on the mode:
 
-In modes like GCM (Galois Counter Mode), the initialization vector must be unique for each encryption operation. When an IV is reused, an attacker who observes multiple encrypted messages can perform cryptanalysis to recover the plaintext or even the encryption key.
-
-The security risks of reusing IVs in counter mode include:
-
-- Complete compromise of confidentiality
-- Potential loss of message authentication
-- Violation of the security guarantees provided by the encryption algorithm
-- Exposure of sensitive data even when using strong encryption algorithms
+- **AES-GCM**: GCM is built on counter (CTR) mode, so reusing an IV with the same key produces the same keystream. An attacker who observes two ciphertexts can XOR them to recover information about both plaintexts, and can recover the authentication key and forge authenticated messages.
+- **AES-CBC**: A fixed IV makes encryption deterministic for the first block, so identical plaintexts, or plaintexts with identical prefixes, produce identical ciphertext. This leaks information about the plaintext and enables chosen-plaintext attacks.
 
 ## 12.3.2. What is the potential impact?
 
-Reusing initialization vectors in counter mode encryption creates critical security vulnerabilities:
-
-- **Confidentiality breach**: Attackers can XOR two ciphertexts encrypted with the same IV and key to reveal patterns in the plaintext
-- **Authentication forgery**: In authenticated encryption modes like GCM, IV reuse can allow attackers to create valid forged messages
-- **Key recovery**: In some scenarios, repeated IV usage can lead to recovery of the encryption key itself
-- **Complete system compromise**: Once the encryption is broken, all data encrypted with that key becomes vulnerable
+- **Confidentiality breach**: With AES-GCM, attackers can combine ciphertexts encrypted with the same IV and key to recover plaintext. With AES-CBC, attackers can detect repeated messages and common prefixes.
+- **Authentication forgery**: With AES-GCM, IV reuse exposes the authentication key, allowing attackers to create valid forged messages.
+- **Exposure of sensitive data**: These weaknesses apply regardless of the key strength, so data encrypted with a strong key can still be exposed.
 
 ## 12.3.3. How can I fix this?
 
@@ -1605,11 +1593,11 @@ This compliant approach generates a cryptographically secure random initializati
 
 ```ballerina
 public function encryptMessage(string message) returns byte[]|error {
-    // Static nonce - this is vulnerable!
-    byte[12] nonce = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
+    // Hard-coded IV - this is vulnerable!
+    byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
     byte[16] key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     byte[] messageBytes = message.toBytes();
-    return crypto:encryptAesCbc(messageBytes, key, nonce);
+    return crypto:encryptAesCbc(messageBytes, key, initialVector);
 }
 ```
 
@@ -1619,16 +1607,16 @@ public function encryptMessage(string message) returns byte[]|error {
 import ballerina/crypto;
 import ballerina/random;
 
-public function encryptMessage(string message) returns [byte[], byte[12]]|error {
-    // Generate unique nonce for each encryption
-    byte[12] nonce = [];
-    foreach int i in 0...11 {
-        nonce[i] = <byte>(check random:createIntInRange(0, 255));
+public function encryptMessage(string message) returns [byte[], byte[16]]|error {
+    // Generate a fresh IV for each encryption
+    byte[16] initialVector = [];
+    foreach int i in 0...15 {
+        initialVector[i] = <byte>(check random:createIntInRange(0, 255));
     }
     byte[16] key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     byte[] messageBytes = message.toBytes();
-    byte[] encryptedData = check crypto:encryptAesCbc(messageBytes, key, nonce);
-    return [encryptedData, nonce];
+    byte[] encryptedData = check crypto:encryptAesCbc(messageBytes, key, initialVector);
+    return [encryptedData, initialVector];
 }
 ```
 
@@ -1641,5 +1629,4 @@ public function encryptMessage(string message) returns [byte[], byte[12]]|error 
 - OWASP - [Mobile Top 10 2024 Category M10 - Insufficient Cryptography](https://owasp.org/www-project-mobile-top-10/2023-risks/m10-insufficient-cryptography)
 - CWE - [CWE-323 - Reusing a Nonce, Key Pair in Encryption](https://cwe.mitre.org/data/definitions/323)
 - [NIST, SP-800-38A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38a.pdf) - Recommendation for Block Cipher Modes of Operation
-- [NIST, SP-800-38C](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38c.pdf) - Recommendation for Block Cipher Modes of Operation: The CCM Mode for Authentication and Confidentiality
 - [NIST, SP-800-38D](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf) - Recommendation for Block Cipher Modes of Operation: Galois/Counter Mode (GCM) and GMAC

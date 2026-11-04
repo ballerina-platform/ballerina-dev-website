@@ -25,8 +25,8 @@ import styles from './BalForAi.module.css';
 
 const CAPABILITIES = [
   {
-    title: 'Agents and Durable Agents',
-    description: 'Build agents that call Ballerina functions and connectors, and durable agents that survive restarts and wait for human approval.',
+    title: 'Agents and durable agents',
+    description: 'Build agents that use Ballerina functions and connectors as tools, and durable agents that survive restarts and wait for human approval.',
     excerpts: [
       {
         label: 'The agent',
@@ -53,43 +53,15 @@ service /support on new http:Listener(8080) {
         return {message: answer};
     }
 }`
-      },
-      {
-        label: 'The durable agent',
-        note: 'pauses for approval and resumes after a restart',
-        code: `# Refunds an amount to the customer's original payment method.
-@workflow:Activity
-isolated function issueRefund(string orderId, decimal amount) returns Refund|error {
-    return paymentsApi->/refunds.post({orderId, amount});
-}
-
-final workflow:DurableAgent refundAgent = check new (
-    systemPrompt = {
-        role: "Refund Assistant",
-        instructions: "Check the order, then refund only the eligible amount."
-    },
-    model = model,
-    tools = [getOrder],
-    activities = [{
-        activity: issueRefund,
-        // The run waits durably for a support lead before any refund is issued.
-        approvalPolicy: {userRoles: "SUPPORT_LEAD", title: "Approve refund"},
-        retryPolicy: {maxRetries: 3, retryDelay: 2}
-    }]
-);
-
-// The ticket ID is the instance ID, so a retried request joins the running instance.
-string instanceId = check refundAgent.runWithId(ticketId, customerMessage,
-        ifRunning = workflow:USE_EXISTING);`
       }
     ]
   },
   {
-    title: 'MCP clients and services',
-    description: 'Consume MCP tools and expose enterprise capabilities through Ballerina’s client and service abstractions.',
+    title: 'MCP servers and clients',
+    description: 'Expose enterprise capabilities as MCP servers, and give agents the tools of any MCP server through the MCP client.',
     excerpts: [
       {
-        label: 'The MCP service',
+        label: 'The MCP server',
         note: 'exposes order operations as tools',
         code: `listener mcp:StreamableHttpListener mcpListener = new (9090);
 

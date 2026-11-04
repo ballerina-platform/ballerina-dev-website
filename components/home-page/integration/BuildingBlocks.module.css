@@ -1,0 +1,244 @@
+/* Building blocks diagram, shared by the integration gap and agentic integration sections. */
+
+.card {
+    --bb-teal: #17827e;
+    --bb-teal-dark: #0f5f5c;
+    --bb-ink: #1f2a28;
+    --bb-muted: #5b6764;
+    --bb-line: #cfdcd8;
+    margin: 0;
+    padding: 24px 22px 20px;
+    background-color: #f1f6f4;
+    border: 1px solid var(--bb-line);
+}
+
+/* On a grey section the tinted card disappears; use white instead. */
+.card.onGrey {
+    background-color: #ffffff;
+}
+
+.title {
+    margin-bottom: 26px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--bb-teal);
+}
+
+/* Everything inside the frame is provided by Ballerina. */
+
+.frame {
+    position: relative;
+    padding-top: 12px;
+    background-color: #ffffff;
+    border: 2px solid var(--bb-teal);
+}
+
+.frameLabel {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: #ffffff;
+    background-color: var(--bb-teal);
+}
+
+.layer {
+    display: flex;
+    border-bottom: 1px solid var(--bb-line);
+}
+
+.layer:last-child {
+    border-bottom: 0;
+}
+
+.layerLabel {
+    flex: 0 0 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 8px 10px 12px;
+    border-right: 1px solid var(--bb-line);
+}
+
+.layerName {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--bb-ink);
+}
+
+.layerRole {
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--bb-muted);
+}
+
+.blocks {
+    flex: 1;
+    min-width: 0;
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.blocks.cols2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.blocks.cols3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 8px 10px 9px;
+    background-color: var(--bb-teal);
+}
+
+.blockTitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+.blockSub {
+    font-size: 12px;
+    line-height: 1.35;
+    color: #ffffff;
+    opacity: .85;
+}
+
+/* The systems the stack connects to, outside the frame. */
+
+.base {
+    position: relative;
+    margin-top: 30px;
+    padding: 18px 10px 10px;
+    border: 1px dashed #9fb3ad;
+}
+
+/* Links the frame to the systems below it. */
+.base::before {
+    content: '';
+    position: absolute;
+    top: -31px;
+    left: 50%;
+    width: 0;
+    height: 30px;
+    border-left: 2px dashed var(--bb-teal);
+}
+
+.baseLabel {
+    position: absolute;
+    top: -11px;
+    left: 12px;
+    margin: 0;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--bb-muted);
+    background-color: #f1f6f4;
+    border: 1px dashed #9fb3ad;
+}
+
+.onGrey .baseLabel {
+    background-color: #ffffff;
+}
+
+.baseItems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.baseItems li {
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--bb-ink);
+    background-color: #ffffff;
+    border: 1px solid #b9c9c4;
+}
+
+.onGrey .baseItems li {
+    background-color: #f1f6f4;
+}
+
+.baseItems.single {
+    grid-template-columns: 1fr;
+}
+
+.baseTitle {
+    display: block;
+}
+
+.baseSub {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--bb-muted);
+}
+
+.caption {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+@media (max-width: 575.98px) {
+    .card {
+        padding: 18px 14px 16px;
+    }
+
+    .layer {
+        flex-direction: column;
+    }
+
+    .layerLabel {
+        flex-basis: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 8px;
+        padding: 8px 10px 0;
+        border-right: 0;
+    }
+
+    .blocks.cols3,
+    .baseItems {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* The third block takes the full row instead of sitting alone in half of it. */
+    .blocks.cols3 > .block:last-child {
+        grid-column: 1 / -1;
+    }
+}

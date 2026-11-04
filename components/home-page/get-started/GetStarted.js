@@ -27,15 +27,15 @@ export default function GetStarted() {
   return (
     <Col xs={12}>
       <Container>
-        <Row className={styles.band}>
-          <Col xs={12} md={8}>
+        <Row className={`${shared.section} ${styles.band}`}>
+          <Col xs={12} md={8} className={shared.text}>
             <p className={shared.eyebrow}>Start with one agent</p>
-            <h2 className={styles.heading}>Get your hands dirty. Build an AI agent.</h2>
-            <p className={styles.lead}>Build an agent that calls real enterprise APIs, remembers the conversation, and handles tool failures, one step at a time.</p>
+            <h2 className={`${shared.heading} ${styles.heading}`}>Build your first agent.</h2>
+            <p className={`${shared.lead} ${styles.lead}`}>Follow the guide to build an agent that calls real enterprise APIs, remembers the conversation, and recovers from tool failures, one step at a time.</p>
           </Col>
           <Col xs={12} md={4} className={styles.action}>
             <a className={styles.cta} href={`${prefix}/learn/build-an-agent-that-uses-enterprise-systems/`}>
-              Build your first agent <span aria-hidden="true">→</span>
+              Start building <span aria-hidden="true">→</span>
             </a>
           </Col>
         </Row>

@@ -35,9 +35,9 @@ export default function Intro() {
           <Col xs={12} sm={12} md={12} lg={6} className={styles.description}>
             <p className={styles.eyebrow}>Open source · Apache 2.0</p>
 
-            <h1>The programming language for integration and agentic AI</h1>
+            <h1>Programming language for integrations and agents</h1>
 
-            <p className={styles.lead}>Integration and agentic applications face the same engineering challenges: unreliable networks, structured data, security, observability, and long-running work. Ballerina makes them first-class in the language, so you build both on the same foundations.</p>
+            <p className={styles.lead}>Integrations and agents face the same engineering challenges: unreliable networks, structured data, security, observability, and long-running work. Ballerina makes these first-class in the language, so you build both on the same foundations.</p>
 
             <div className={styles.btnRow}>
               <a className={`${styles.homeIntroButton} ${styles.primaryButton}`}

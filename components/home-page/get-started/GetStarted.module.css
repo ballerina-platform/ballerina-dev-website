@@ -1,25 +1,16 @@
+/* Typography and spacing come from the shared section styles; these are the band's own adjustments. */
+
 .band {
-    --ai-teal: #17827e;
     align-items: center;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
 }
 
+.text h2.heading,
 h2.heading {
-    margin: 0 0 .75rem;
-    padding: 0;
-    border: 0;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #1f2a28;
+    margin-bottom: 1rem;
 }
 
 .lead {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.55;
-    color: #4a5552;
+    margin-bottom: 0;
 }
 
 .action {
@@ -27,19 +18,26 @@ h2.heading {
     justify-content: flex-end;
 }
 
+/* Matches the hero's primary button. */
 a.cta {
-    display: inline-block;
-    padding: 14px 22px;
-    background-color: #17827e;
-    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid #20b6b0;
+    border-radius: 2px;
+    background-color: #20b6b0;
+    color: #1d2a2a;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
     white-space: nowrap;
+    transition: background-color .2s, color .2s, border-color .2s;
 }
 
 a.cta:hover {
-    background-color: #0d5f59;
+    background-color: #17827e;
+    border-color: #17827e;
     color: #ffffff;
 }
 
@@ -51,10 +49,6 @@ a.cta:focus-visible {
 @media (max-width: 767.98px) {
     .action {
         justify-content: flex-start;
-        margin-top: 1.5rem;
-    }
-
-    h2.heading {
-        font-size: 1.6rem;
+        margin-top: 1.75rem;
     }
 }

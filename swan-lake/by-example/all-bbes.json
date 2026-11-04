@@ -5658,6 +5658,117 @@
     ]
   },
   {
+    "title": "Workflow basics",
+    "column": 0,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Workflow",
+        "url": "workflow-function",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Activity",
+        "url": "workflow-activity",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Data events",
+        "url": "workflow-data-events",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Durable sleep",
+        "url": "workflow-durable-sleep",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "The engine may log a timestamped shutdown line",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Human tasks",
+    "column": 1,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Human task",
+        "url": "workflow-human-task",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a client and the output contains generated IDs",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      },
+      {
+        "name": "Human task with REST API",
+        "url": "workflow-human-task-rest-api",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a client and the output contains generated IDs",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Durable agents",
+    "column": 2,
+    "category": "Workflow",
+    "samples": [
+      {
+        "name": "Durable agent",
+        "url": "workflow-durable-agent",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Durable agent with human task",
+        "url": "workflow-durable-agent-human-task",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Durable agent with data events",
+        "url": "workflow-durable-agent-data-events",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "Direct LLM calls",
     "column": 0,
     "category": "Generative AI",

@@ -103,7 +103,7 @@ export function DirectLlmCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/direct-llm-calls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.1/examples/direct-llm-calls",
                 "_blank",
               );
             }}
@@ -309,8 +309,8 @@ export function DirectLlmCalls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations/"
+            title="Durable agent with data events"
+            href="/learn/by-example/workflow-durable-agent-data-events/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -337,7 +337,7 @@ export function DirectLlmCalls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  Durable agent with data events
                 </span>
               </div>
             </div>

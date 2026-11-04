@@ -1,0 +1,13 @@
+{
+  "title": "Workflow",
+  "description": "This BBE demonstrates how to write a durable workflow in Ballerina and start an instance of it.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "workflow",
+    "durable execution"
+  ],
+  "permalink": "/learn/by-example/workflow-function/",
+  "active": "workflow-function"
+}

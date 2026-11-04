@@ -1,0 +1,15 @@
+{
+  "title": "MCP tools with HTTP request binding",
+  "description": "This BBE demonstrates how MCP tools can bind information from the underlying HTTP request.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "mcp",
+    "http headers"
+  ],
+  "permalink": "/learn/by-example/mcp-service-http-request-binding/",
+  "active": "mcp-service-http-request-binding"
+}

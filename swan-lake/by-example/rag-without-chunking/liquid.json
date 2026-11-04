@@ -1,0 +1,16 @@
+{
+  "title": "Ingest without chunking",
+  "description": "This BBE demonstrates how to disable chunking in a knowledge base for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "chunker",
+    "knowledge base"
+  ],
+  "permalink": "/learn/by-example/rag-without-chunking/",
+  "active": "rag-without-chunking"
+}

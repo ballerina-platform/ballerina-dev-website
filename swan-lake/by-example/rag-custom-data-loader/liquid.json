@@ -1,0 +1,17 @@
+{
+  "title": "Load using a custom data loader",
+  "description": "This BBE demonstrates how to implement a custom data loader that loads documents from any source for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "data loader",
+    "custom data loader",
+    "documents"
+  ],
+  "permalink": "/learn/by-example/rag-custom-data-loader/",
+  "active": "rag-custom-data-loader"
+}

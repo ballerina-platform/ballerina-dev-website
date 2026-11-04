@@ -1,0 +1,16 @@
+{
+  "title": "Agent execution trace",
+  "description": "This BBE demonstrates how to obtain and inspect the execution trace of an AI agent run.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "trace",
+    "observability"
+  ],
+  "permalink": "/learn/by-example/ai-agent-execution-trace/",
+  "active": "ai-agent-execution-trace"
+}

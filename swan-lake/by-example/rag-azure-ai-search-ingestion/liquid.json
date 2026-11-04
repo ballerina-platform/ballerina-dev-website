@@ -1,0 +1,17 @@
+{
+  "title": "Ingest into Azure AI Search",
+  "description": "This BBE demonstrates how to create an Azure AI Search index and ingest documents into it for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "ingestion",
+    "knowledge base",
+    "azure ai search"
+  ],
+  "permalink": "/learn/by-example/rag-azure-ai-search-ingestion/",
+  "active": "rag-azure-ai-search-ingestion"
+}

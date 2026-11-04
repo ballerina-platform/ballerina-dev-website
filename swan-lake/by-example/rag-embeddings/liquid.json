@@ -1,0 +1,16 @@
+{
+  "title": "Generate embeddings with the default WSO2 embedding provider",
+  "description": "This BBE demonstrates how to generate embeddings and compare text similarity using the default WSO2 embedding provider.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "embeddings",
+    "embedding provider"
+  ],
+  "permalink": "/learn/by-example/rag-embeddings/",
+  "active": "rag-embeddings"
+}

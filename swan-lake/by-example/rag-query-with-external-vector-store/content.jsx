@@ -86,39 +86,35 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Retrieval-augmented generation (RAG) query</h1>
+      <h1>Retrieve from Pinecone</h1>
 
       <p>
-        Retrieval-augmented generation (RAG) is a technique that enhances
-        capabilities of large language models by combining them with external
-        knowledge sources to provide more accurate and contextually-relevant
-        responses.
+        Ballerina provides the <code>ai:KnowledgeBase</code> type for
+        retrieval-augmented generation (RAG), and the{" "}
+        <code>ai:VectorKnowledgeBase</code> implementation of it. Its{" "}
+        <code>retrieve</code> method embeds the question with the same embedding
+        provider that was used for ingestion, and returns the most similar
+        chunks from the vector store. You then add the chunks to the prompt, for
+        example with <code>ai:augmentUserQuery</code>, and generate the answer
+        with a model provider.
       </p>
 
       <p>
-        Ballerina has high-level, provider-agnostic APIs for retrieval-augmented
-        generation (RAG) workflows. These include abstractions such as{" "}
-        <code>ai:VectorStore</code>, <code>ai:EmbeddingProvider</code>, and{" "}
-        <code>ai:KnowledgeBase</code>.
-      </p>
-
-      <p>
-        These abstractions enable you to query semantically similar content from
-        vector databases (e.g., Pinecone, Weaviate, etc.) and use retrieved
-        context in the request to the LLM to generate more accurate responses.
-      </p>
-
-      <p>
-        This example demonstrates how to query a knowledge base to retrieve
-        relevant documents and use them with a language model to answer
-        questions based on the retrieved context.
+        This example retrieves chunks from the{" "}
+        <a href="https://www.pinecone.io/">Pinecone</a> index that the ingestion
+        example populated, and answers questions in two ways: with a custom
+        prompt and the <code>generate</code> method, and with{" "}
+        <code>ai:augmentUserQuery</code> and the <code>chat</code> method.
       </p>
 
       <blockquote>
         <p>
-          Note: You can follow the{" "}
-          <a href="/learn/by-example/rag-ingestion/">RAG ingestion</a> example
-          to ingest data first.
+          Prerequisite: The ingestion for this example is in the{" "}
+          <a href="/learn/by-example/rag-ingestion-with-external-vector-store/">
+            Ingest into Pinecone
+          </a>{" "}
+          example. Run it first. It populates the Pinecone index that this
+          example queries.
         </p>
       </blockquote>
 
@@ -145,8 +141,8 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ai/latest/">
-          <code>ballerina/ai</code> module
+        <a href="https://central.ballerina.io/ballerinax/ai.pinecone/latest">
+          <code>ballerinax/ai.pinecone</code> module
         </a>
         .
       </p>
@@ -161,7 +157,7 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/rag-query-with-external-vector-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/rag-query-with-external-vector-store",
                 "_blank",
               );
             }}
@@ -306,7 +302,9 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/rag-ingestion/">RAG ingestion example</a>
+            <a href="/learn/by-example/rag-ingestion-with-external-vector-store/">
+              Ingest into Pinecone example
+            </a>
           </span>
         </li>
       </ul>
@@ -355,8 +353,8 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="RAG ingestion with external vector store"
-            href="/learn/by-example/rag-ingestion-with-external-vector-store/"
+            title="Retrieve from an in-memory vector store"
+            href="/learn/by-example/rag-in-memory-vector-store-retrieval/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -383,14 +381,17 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG ingestion with external vector store
+                  Retrieve from an in-memory vector store
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="MCP service" href="/learn/by-example/mcp-service/">
+          <Link
+            title="Retrieve from pgvector"
+            href="/learn/by-example/rag-pgvector-retrieval/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -399,7 +400,7 @@ export function RagQueryWithExternalVectorStore({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP service
+                  Retrieve from pgvector
                 </span>
               </div>
               <svg

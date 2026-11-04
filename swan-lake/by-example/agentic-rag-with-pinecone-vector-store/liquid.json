@@ -1,0 +1,18 @@
+{
+  "title": "Agentic RAG with Pinecone",
+  "description": "This BBE demonstrates agentic retrieval-augmented generation (RAG), where an agent retrieves from a Pinecone vector store through a tool.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "agentic rag",
+    "agent",
+    "vector store",
+    "pinecone"
+  ],
+  "permalink": "/learn/by-example/agentic-rag-with-pinecone-vector-store/",
+  "active": "agentic-rag-with-pinecone-vector-store"
+}

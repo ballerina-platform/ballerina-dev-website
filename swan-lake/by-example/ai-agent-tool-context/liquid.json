@@ -1,0 +1,15 @@
+{
+  "title": "Passing context to agent tools",
+  "description": "This BBE demonstrates how to pass values from the application to agent tools using an ai:Context, without exposing them to the LLM.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "agent",
+    "tool",
+    "context"
+  ],
+  "permalink": "/learn/by-example/ai-agent-tool-context/",
+  "active": "ai-agent-tool-context"
+}

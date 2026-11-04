@@ -1,0 +1,15 @@
+{
+  "title": "Direct LLM calls with a specific model provider",
+  "description": "This BBE demonstrates how to do direct LLM calls using a specific model provider with your own keys.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "model-provider",
+    "openai"
+  ],
+  "permalink": "/learn/by-example/direct-llm-calls-with-model-provider/",
+  "active": "direct-llm-calls-with-model-provider"
+}

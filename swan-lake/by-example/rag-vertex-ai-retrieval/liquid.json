@@ -1,0 +1,17 @@
+{
+  "title": "Retrieve and generate with Google Vertex AI",
+  "description": "This BBE demonstrates how to retrieve chunks embedded with Google Vertex AI and generate an answer with Gemini for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "retrieval",
+    "vertex ai",
+    "gemini"
+  ],
+  "permalink": "/learn/by-example/rag-vertex-ai-retrieval/",
+  "active": "rag-vertex-ai-retrieval"
+}

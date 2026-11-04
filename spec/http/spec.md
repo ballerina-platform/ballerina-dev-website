@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2026/11/02   
+_Updated_: 2026/09/25   
 _Edition_: Swan Lake
 
 
@@ -1158,10 +1158,6 @@ OAS resources are internally generated for each service and host the generated O
 different formats. In order to access these resources user can send an OPTIONS request either to one of the resources or
 the service base-path. The link header in the 204 response specifies the location for the OAS resources.
 
-When the service is secured with the `auth` field of `http:ServiceConfig`, the OAS resources apply the same auth
-configurations, including the scopes. Only the service-level `auth` is applied; `auth` configured only on individual
-resources does not secure the OAS resources. The OPTIONS response carrying the link header is not secured.
-
 Sample service
 ```ballerina
 import ballerina/http;
@@ -1362,59 +1358,14 @@ http:Client clientEP = check new ("http://localhost:9090",
 ##### 2.4.1.4 Retry
 Provides the retrying over HTTP requests when `retryConfig` is defined.
 ```ballerina
-public type RetryConfig record {|
-    int count = 0;
-    decimal interval = 0;
-    float backOffFactor = 0.0;
-    decimal maxWaitInterval = 0;
-    int[] statusCodes = [];
-|};
-```
-
-| Field             | Description                                                                                                                                                                                       |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`           | Number of retries after the initial attempt. A request is sent at most `count + 1` times. The default `0` disables retrying.                                                                      |
-| `interval`        | Wait time in seconds before the first retry.                                                                                                                                                      |
-| `backOffFactor`   | Multiplier applied to the previous wait time before each subsequent retry. A value `<= 0.0` (the default) is treated as `1.0`, which keeps the wait constant. A value between `0.0` and `1.0` shrinks the wait. |
-| `maxWaitInterval` | Upper bound in seconds for the wait time computed using `backOffFactor`. The default `0` is treated as `60`. The first retry always waits `interval`, even if it exceeds this bound.              |
-| `statusCodes`     | HTTP response status codes on which the request is retried. Empty by default.                                                                                                                    |
-
-The client classifies failures into two kinds, and retries them as follows:
-
-1. **Network-level failures**: The request did not result in an HTTP response, e.g. connection failures, connection resets, idle timeouts and TLS handshake failures. These are retried regardless of `statusCodes`, as long as `count` allows another attempt.
-2. **Application-level failures**: The request resulted in an HTTP response whose status code is listed in `statusCodes`.
-
-Any other response, including `4XX` and `5XX` responses whose status codes are not listed in `statusCodes`, is returned to the caller without retrying. Therefore, if `statusCodes` is not configured, only network-level failures are retried. The status code based errors such as `http:ClientRequestError` and `http:RemoteServerError` returned during client data binding are created after the retry handling and do not trigger retries on their own.
-
-When all the retries are exhausted, the outcome of the last attempt is returned:
-- If the last attempt received a response whose status code is listed in `statusCodes`, that response is returned. With data binding, it is then converted to the corresponding `http:ApplicationResponseError`.
-- If the last attempt failed with a network-level failure, that `http:ClientError` is returned.
-
-The wait time before the `n`th retry is calculated as follows:
-```
-wait(1) = interval
-wait(n) = min(wait(n - 1) * backOffFactor, maxWaitInterval)
-```
-
-For example, the following client sends a request at most five times, retrying on network-level failures and on `503 Service Unavailable` responses. The wait times between the attempts are 3, 6, 12 and 20 seconds, where the last one is capped by `maxWaitInterval`.
-```ballerina
 http:Client clientEP = check new ("http://localhost:9090",
     retryConfig = {
-        count: 4,
         interval: 3,
-        backOffFactor: 2.0,
-        maxWaitInterval: 20,
-        statusCodes: [503]
+        count: 3,
+        backOffFactor: 0.5
     }
 );
 ```
-
-The following behaviours also apply to the retry client:
-- The client `timeout` applies to each attempt separately. The worst-case duration of a single call is roughly `(count + 1) * timeout` plus the sum of the wait times. In the current implementation, when the last attempt fails with a network-level error, the client waits once more before returning the error, which adds one more wait time to this duration ([ballerina-library#9450](https://github.com/ballerina-platform/ballerina-library/issues/9450)).
-- Requests are retried regardless of the HTTP method, including non-idempotent methods such as `POST` and `PATCH`. Configure retrying only when the remote service can safely handle duplicate requests.
-- The request payload is built in memory before the first attempt so that it can be resent. This applies to streaming and passthrough payloads as well.
-- When `circuitBreaker` is also configured, the circuit breaker wraps the retry client. Therefore, a call and all of its retries are counted as a single request by the circuit breaker.
-- When `followRedirects` is enabled, the redirect client wraps the retry client. The request to each redirect location is retried independently.
 
 ##### 2.4.1.5 Circuit breaker
 A Circuit Breaker implementation which can be used to gracefully handle network failures.

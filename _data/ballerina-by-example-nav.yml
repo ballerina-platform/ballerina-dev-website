@@ -2026,8 +2026,47 @@ sublinks:
           - title: Constraint validations
             id: 1
             url: constraint-validations
-  - title: Generative AI
+  - title: Workflow
     id: 4
+    sublinks:
+      - title: Workflow basics
+        id: 1
+        sublinks:
+          - title: Workflow
+            id: 1
+            url: workflow-function
+          - title: Activity
+            id: 2
+            url: workflow-activity
+          - title: Data events
+            id: 3
+            url: workflow-data-events
+          - title: Durable sleep
+            id: 4
+            url: workflow-durable-sleep
+      - title: Human tasks
+        id: 2
+        sublinks:
+          - title: Human task
+            id: 1
+            url: workflow-human-task
+          - title: Human task with REST API
+            id: 2
+            url: workflow-human-task-rest-api
+      - title: Durable agents
+        id: 3
+        sublinks:
+          - title: Durable agent
+            id: 1
+            url: workflow-durable-agent
+          - title: Durable agent with human task
+            id: 2
+            url: workflow-durable-agent-human-task
+          - title: Durable agent with data events
+            id: 3
+            url: workflow-durable-agent-data-events
+  - title: Generative AI
+    id: 5
     sublinks:
       - title: Direct LLM calls
         id: 1
@@ -2087,7 +2126,7 @@ sublinks:
             id: 1
             url: natural-expressions
   - title: Deployment
-    id: 5
+    id: 6
     sublinks:
       - title: Docker
         id: 1
@@ -2132,7 +2171,7 @@ sublinks:
             id: 4
             url: azure-functions-cosmosdb-trigger
   - title: Bal persist
-    id: 6
+    id: 7
     sublinks:
       - title: Query data
         id: 1
@@ -2165,7 +2204,7 @@ sublinks:
             id: 3
             url: persist-delete
   - title: Observability
-    id: 7
+    id: 8
     sublinks:
       - title: Tracing
         id: 1

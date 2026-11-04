@@ -7,6 +7,13 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/log;
 
+final map<int> & readonly logLevelWeight = {
+    ERROR: 1000,
+    WARN: 900,
+    INFO: 800,
+    DEBUG: 700
+};
+
 // Custom logger implementation that implements the Logger type
 public isolated class ApplicationLogger {
     *log:Logger;
@@ -14,30 +21,23 @@ public isolated class ApplicationLogger {
     private final string applicationName;
     private final string version;
     private final readonly & log:KeyValues context;
-    private log:Level level;
+    private log:Level currentLevel;
+    private final ApplicationLogger? parent;
 
     public isolated function init(string applicationName, string version, log:KeyValues context = {},
-            log:Level level = log:INFO) {
+        ApplicationLogger? parent = ()) {
         self.applicationName = applicationName;
         self.version = version;
+        self.parent = parent;
+        self.currentLevel = log:INFO;
         self.context = context.cloneReadOnly();
-        self.level = level;
-    }
-
-    public isolated function getLevel() returns log:Level {
-        lock {
-            return self.level;
-        }
-    }
-
-    public isolated function setLevel(log:Level level) returns error? {
-        lock {
-            self.level = level;
-        }
     }
 
     public isolated function printInfo(string|log:PrintableRawTemplate msg, error? 'error = (),
             error:StackFrame[]? stackTrace = (), *log:KeyValues keyValues) {
+        if logLevelWeight[self.getLevel()] > logLevelWeight[log:INFO] {
+            return;
+        }
         string evaluatedMsg = msg is string ? msg : log:evaluateTemplate(msg);
         string printableMsg = string \`[Application: \${self.applicationName} v\${self.version}] \${evaluatedMsg}\`;
         log:KeyValues newKeyValues = {...self.context};
@@ -67,13 +67,26 @@ public isolated class ApplicationLogger {
         foreach [string, log:Value] [k, v] in keyValues.entries() {
             newContext[k] = v;
         }
+        return new ApplicationLogger(self.applicationName, self.version, newContext, self);
+    }
 
-        log:Level parentLevel;
-        lock {
-            // Child loggers inherit the level from the parent logger
-            parentLevel = self.level;
+    public isolated function getLevel() returns log:Level {
+        ApplicationLogger? p = self.parent;
+        if p is ApplicationLogger {
+            return p.getLevel();
         }
-        return new ApplicationLogger(self.applicationName, self.version, newContext, parentLevel);
+        lock {
+            return self.currentLevel;
+        }
+    }
+
+    public isolated function setLevel(log:Level level) returns error? {
+        if self.parent is ApplicationLogger {
+            return error("unsupported operation: cannot set level on a child logger");
+        }
+        lock {
+            self.currentLevel = level;
+        }
     }
 }
 
@@ -122,7 +135,7 @@ export function CustomLogger({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/custom-logger",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.1/examples/custom-logger",
                 "_blank",
               );
             }}

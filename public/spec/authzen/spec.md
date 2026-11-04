@@ -48,7 +48,7 @@ The library implements the HTTPS JSON binding of AuthZEN (section 10.1). Every A
 | Action Search | `/access/v1/search/action` | `searchActions` |
 | PDP metadata | `/.well-known/authzen-configuration` (inserted after the host) | `getMetadata` |
 
-The client is built from an OpenAPI description of the API (`docs/spec/openapi.yaml`, see `docs/spec/sanitations.md`) and a hand-written wrapper that implements the discovery, validation and authentication rules of AuthZEN.
+The client implements these endpoints as defined in the [AuthZEN Authorization API 1.0](https://openid.net/specs/authorization-api-1_0.html), with a hand-written wrapper that implements the discovery, validation and authentication rules of AuthZEN.
 
 ## 2. Client
 

@@ -46,17 +46,24 @@ $ bal scan [OPTIONS] [<workspace>|<package>|<source-file>]
 
 ### Available options
 
-All options are optional. Rule filters and platforms can also be configured in a `Scan.toml` file. See [Configure the scan with Scan.toml](#configure-the-scan-with-scantoml).
+All options are optional. Rule filters, platforms, suppression settings, the gate, and test exclusion can also be
+configured in a `Scan.toml` file. See [Configure the scan with Scan.toml](#configure-the-scan-with-scantoml).
 
-| Option                         | Description                                                                                         | Default                                  |
-|--------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------|
-| `--target-dir=<path>`          | Specify target directory for analysis reports (only for Ballerina projects)                         | The project's `target` directory         |
-| `--scan-report`                | Generate HTML report with detailed analysis results (only for Ballerina projects)                   | Disabled                                 |
-| `--format=<json\|sarif>`       | Specify the format of the report                                                                    | `json`                                   |
-| `--list-rules`                 | List the rules available to the project, along with their kind and severity (only inside a project) | Disabled                                 |
-| `--include-rules=<rule1, ...>` | Run analysis for specific rules only                                                                | All available rules are included         |
-| `--exclude-rules=<rule1, ...>` | Exclude specific rules from analysis                                                                | No rules are excluded                    |
-| `--platforms=<platform1, ...>` | Define platforms for result reporting                                                               | Results are not reported to any platform |
+| Option                                                 | Description                                                                                                                                                          | Default                                  |
+|--------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| `--target-dir=<path>`                                  | Specify target directory for analysis reports (only for Ballerina projects)                                                                                          | The project's `target` directory         |
+| `--scan-report`                                        | Generate HTML report with detailed analysis results (only for Ballerina projects)                                                                                    | Disabled                                 |
+| `--format=<json\|sarif>`                               | Specify the format of the report                                                                                                                                     | `json`                                   |
+| `--list-rules`                                         | List the rules available to the project, along with their kind and severity (only inside a project)                                                                  | Disabled                                 |
+| `--include-rules=<rule1, ...>`                         | Run analysis for specific rules only. A rule that is not available to the project is an error                                                                        | All available rules are included         |
+| `--exclude-rules=<rule1, ...>`                         | Exclude specific rules from analysis. A rule that is not available to the project is an error                                                                        | No rules are excluded                    |
+| `--platforms=<platform1, ...>`                         | Define platforms for result reporting (not supported for a single Ballerina file)                                                                                    | Results are not reported to any platform |
+| `--ignore-suppressions`                                | Disregard `@scan:Suppress` annotations and report every issue. See [Suppress issues](#suppress-issues)                                                               | Disabled                                 |
+| `--require-suppression-reason`                         | Fail the scan when a `@scan:Suppress` annotation does not give a reason                                                                                              | Disabled                                 |
+| `--require-suppression-rule-id`                        | Fail the scan when a `@scan:Suppress` annotation does not name the rules it suppresses                                                                               | Disabled                                 |
+| `--fail-on-severity=<BLOCKER\|HIGH\|MEDIUM\|LOW\|INFO\|NONE>` | Fail the scan when the number of issues at or above this severity reaches `--fail-on-count`, or `1` if the count is not set. See [Exit codes and the gate](#exit-codes-and-the-gate) | No gate is set                           |
+| `--fail-on-count=<n>`                                  | Fail the scan when there are `n` or more issues at or above `--fail-on-severity`, or of any severity if it is not set                                                | No gate is set                           |
+| `--exclude-tests[=<true\|false>]`                      | Leave the test sources of each package out of the scan. Written alone, it means `true`                                                                               | Test sources are scanned                 |
 
 ## Running analysis
 
@@ -86,7 +93,21 @@ $ bal scan myfile.bal
 ```
 
 When run on a workspace, the scan tool resolves the workspace dependencies and analyzes each package in dependency
-order.
+order. The issues of every package are printed as one document.
+
+### Console output
+
+Only the issues are written to standard output, so `bal scan > issues.json` saves valid JSON, or SARIF with
+`--format=sarif`. Progress messages, warnings, report paths, and the closing summary, such as `3 issue(s)`, are written
+to standard error.
+
+### Dependency resolution
+
+The scan uses the dependency versions locked in `Dependencies.toml`, as `bal build --locking-mode=hard` does. A package
+without `Dependencies.toml` is not scanned, in the command line or the editor, and its rules are not listed either. Run
+`bal build` first to lock its dependencies. The scan does not update `Dependencies.toml`.
+Only the analyzers declared in `Scan.toml` are resolved by the scan, since they are not dependencies of the package. In
+a workspace, each package needs its own `Dependencies.toml`.
 
 ## Report generation
 
@@ -96,8 +117,9 @@ To generate a detailed HTML report of the analysis results, use the `--scan-repo
 $ bal scan --scan-report
 ```
 
-This will produce an HTML report and scan results in JSON format inside the `target/report` directory. The report is
-not generated when results are reported to a platform. See [Platform integration](#platform-integration).
+This will produce an HTML report and scan results in JSON format inside the `target/report` directory (or the directory
+given via `--target-dir`). The report is only generated for Ballerina projects, not for standalone Ballerina files. It
+is generated even when the results are also reported to a platform.
 
 The HTML report includes a summary of the total number of files scanned and the number of code smells, bugs, and
 vulnerabilities found in each file. You can filter, search, and export the list of files.
@@ -156,7 +178,7 @@ useful information:
       "name": "Avoid checkpanic",
       "description": "Using `checkpanic` lets an unhandled error panic and crash the program instead of being handled.",
       "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing.",
-      "helpUri": "https://ballerina.io/learn/scan-rules/#avoid-checkpanic",
+      "helpUri": "https://ballerina.io/learn/scan-rules/#ballerina-1",
       "severity": "LOW",
       "tags": [
         "error-handling"
@@ -267,11 +289,27 @@ To exclude multiple rules, provide them as a comma-separated list:
 $ bal scan --exclude-rules="ballerina:1, ballerina/io:2"
 ```
 
+> **Note:** A rule ID that is not available to the project is an error, for both `--include-rules` and
+> `--exclude-rules`. To accept a single issue rather than turning a rule off for the whole project, see
+> [Suppress issues](#suppress-issues).
+
+## Exclude test sources
+
+By default, the test sources of each package are scanned along with the rest of the package. To leave them out, use
+the `--exclude-tests` option:
+
+```
+$ bal scan --exclude-tests
+```
+
+Written alone, the option means `true`. You can also pass `--exclude-tests=false` to scan the test sources even when
+`excludeTests = true` is set in the `[analysis]` table of `Scan.toml`.
+
 ## Configure the scan with Scan.toml
 
-Rule filters, platform plugins, and static code analyzer plugins can also be configured in a `Scan.toml` file (only for
-Ballerina projects). The scan tool picks up a `Scan.toml` in the package root, or the file (local path or URL) specified
-in `Ballerina.toml`:
+Rule filters, platform plugins, static code analyzer plugins, suppression settings, the gate, and test exclusion can
+also be configured in a `Scan.toml` file (only for Ballerina projects). The scan tool picks up a `Scan.toml` in the
+package root, or the file (local path or URL) specified in `Ballerina.toml`:
 
 ```toml
 [scan]
@@ -286,17 +324,35 @@ A sample `Scan.toml`:
 include = ["ballerina:1", "ballerina/io:2"]
 # exclude = ["ballerina:1"]
 
-# Platform plugins to report results to (enables reporting; required for --platforms)
+# Platform plugins that --platforms can report results to
 [[platform]]
 name = "sonarqube"
 path = "path/to/sonar_platform_plugin.jar"
+
+# How @scan:Suppress annotations are applied
+[suppression]
+enabled = true        # false reports every issue, same as --ignore-suppressions
+requireReason = true  # same as --require-suppression-reason
+requireRuleId = true  # same as --require-suppression-rule-id
+
+# When the scan fails on its findings (same as --fail-on-severity and --fail-on-count)
+[gate]
+failOnSeverity = "MEDIUM"
+failOnCount = 5
+
+# Leave the test sources out of the scan (same as --exclude-tests)
+[analysis]
+excludeTests = true
 ```
 
-Rules specified in `Scan.toml` are combined with those passed via `--include-rules` and `--exclude-rules`. Including and
-excluding rules at the same time is not allowed.
+The rules given with `--include-rules` are added to `include`, and those given with `--exclude-rules` are added to
+`exclude`, for that run. For example, with `exclude = ["ballerina:1"]` in `Scan.toml`, `--exclude-rules=ballerina:2`
+excludes both rules. Including and excluding rules at the same time is not allowed, so an option that conflicts with
+the other setting in `Scan.toml` is a usage error. For example, with `exclude = ["ballerina:1"]` in `Scan.toml`,
+`--include-rules=ballerina:2` exits with code `2`.
 
 Each `[[platform]]` entry requires both a `name` and a `path`. The `path` must point to the platform plugin JAR, either
-as a local file path (resolved relative to the current working directory) or as a URL to download it from.
+as a local file path (resolved relative to the folder of the `Scan.toml` file) or as a URL to download it from.
 
 See [Scan file configurations](https://github.com/ballerina-platform/static-code-analysis-tool/blob/main/docs/static-code-analysis-tool/ScanFileConfigurations.md) for all available options.
 
@@ -314,12 +370,158 @@ The `--platforms` option accepts a comma-separated list, so results can be repor
 $ bal scan --platforms="sonarqube, <another-platform>"
 ```
 
-> **Note:** `sonarqube` is currently the only platform plugin available, and its path must be declared in a `[[platform]]` entry in `Scan.toml`. If you pass a name that has no corresponding platform plugin, the scan tool reports that platform as unavailable.
+> **Note:** `sonarqube` is currently the only platform plugin available, and its path must be declared in a `[[platform]]` entry in `Scan.toml`.
 
-A platform declared in `Scan.toml` is reported to automatically, and `--platforms` can only reference platforms declared
-there. When results are reported to a platform, they are not printed to the console or saved to the target directory.
-This also applies to `--scan-report`: if it is used together with `--platforms` (or with a platform declared in
-`Scan.toml`), the option is ignored and neither the HTML report nor the JSON results are saved in `target/report`.
+A platform declared in `Scan.toml` is reported to only when it is named in `--platforms`, and `--platforms` can only
+name platforms declared there. The plugin JAR is checked, or downloaded, only when its platform is named. A path that is
+then neither an existing file nor a URL stops the scan with an error.
+
+The results are always printed and saved first, and the named platforms then run one after another. If any platform
+fails, the scan lists every failure and exits with code `1`. Platform reporting is not supported for a single Ballerina
+file.
+
+## Exit codes and the gate
+
+`bal scan` exits with the standard exit codes of Ballerina CLI tools, so scripts, Git hooks, and CI/CD pipelines can
+act on the result:
+
+| Code  | Meaning                                                                                                                                                                                                                                                                                                                            |
+|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `0`   | The scan completed, and no gate is set or the gate was not tripped.                                                                                                                                                                                                                                                                |
+| `1`   | The gate was tripped, or the scan could not be completed. For example, because of an invalid `Scan.toml`, a package that cannot be loaded (such as one whose `Ballerina.toml` has an error), a compilation error, an empty package (an empty workspace member is skipped with a warning), a plugin failure, an invalid suppression, or a report that cannot be written. |
+| `2`   | Invalid command-line input, such as an invalid option value, both `--include-rules` and `--exclude-rules`, or an unknown rule ID.                                                                                                                                                                                                 |
+| `3`   | The path is not a Ballerina package, workspace, or standalone file, or is a `.bal` file inside a package.                                                                                                                                                                                                                          |
+| `130` | The scan was interrupted.                                                                                                                                                                                                                                                                                                          |
+
+Every failure other than an interrupt is reported on standard error as `bal scan: error: <message>`, followed by the
+problems that caused it, such as `Scan.toml:2:18: error: <message>`. Warnings are reported as
+`bal scan: warning: <message>` and never change the exit code.
+
+### Fail the scan on findings
+
+By default, no gate is set, so findings never fail the scan. The gate is set with `--fail-on-severity` and
+`--fail-on-count`, or with the `[gate]` table of `Scan.toml`, and fails the scan when the number of issues at or above
+the severity reaches the count:
+
+| `--fail-on-severity` | `--fail-on-count` | Fails when                                    |
+|----------------------|-------------------|-----------------------------------------------|
+| Not set              | Not set           | Never. The gate is off.                       |
+| Not set              | `n`               | There are `n` or more issues of any severity. |
+| `X`                  | Not set           | There is at least one issue at or above `X`.  |
+| `X`                  | `n`               | There are `n` or more issues at or above `X`. |
+| `NONE`               | Any               | Never. The gate is off.                       |
+
+For example, to fail on one or more `BLOCKER` or `HIGH` issues:
+
+```
+$ bal scan --fail-on-severity=HIGH
+```
+
+To fail on 5 or more `BLOCKER`, `HIGH`, or `MEDIUM` issues:
+
+```
+$ bal scan --fail-on-severity=MEDIUM --fail-on-count=5
+```
+
+Each command-line option replaces only its own setting in `Scan.toml` for that run, so a setting left off the command
+line is still read from `Scan.toml`. For example, `--fail-on-count=2` with `failOnSeverity = "HIGH"` in `Scan.toml`
+fails on 2 or more issues at or above `HIGH`. `--fail-on-count` does not turn on a gate that `failOnSeverity = "NONE"`
+turns off; the scan warns that the count has no effect.
+
+The gate counts the issues left after rule selection and suppressions, and runs after the reports are written, so a
+failing scan still leaves a full report. An error always takes precedence over a tripped gate, so the gate is not
+checked when a platform fails. In a workspace, each package is checked against its own gate with the issues of that
+package only, whether the gate comes from the command line, the workspace `Scan.toml`, or the package `Scan.toml`.
+
+## Suppress issues
+
+An individual issue can be accepted in the source with the `@scan:Suppress` annotation from the `ballerina/scan`
+package. Unlike excluding a rule, which turns it off for the whole project, a suppression applies only to the construct
+it is attached to and records why the issue is accepted:
+
+```ballerina
+import ballerina/crypto;
+import ballerina/scan;
+
+function hashPassword(string password) returns string|error {
+    @scan:Suppress {rules: ["ballerina/crypto:2"], reason: "Legacy hash kept for the migration window, SEC-1042"}
+    string hashed = check crypto:hashBcrypt(password, 4);
+    return hashed;
+}
+```
+
+### Placement
+
+The annotation applies to issues reported within the construct it is attached to: a variable or constant declaration,
+a function, method, or resource, a parameter, a return type, a field, a type, a class, a service, a listener, a worker,
+or an `external` function body.
+
+- A suppression on a service, class, object type, or object constructor does not reach issues inside its members.
+- An issue in a statement that is not a declaration can be suppressed by turning the statement into one, for example,
+  `var _ = check f();` instead of `check f();`.
+- A suppression the scan cannot apply, such as one on a destructuring declaration or on the return type of a function
+  type, is reported as a warning and ignored.
+
+### Fields
+
+Both fields are optional. Without `rules`, every issue in the construct is suppressed. Without `reason`, the issue is
+suppressed without a justification. The annotation can be attached more than once to give each rule its own reason.
+See the [`ballerina/scan` package documentation](https://central.ballerina.io/ballerina/scan/latest) for examples of
+each option, the checks done during `bal build`, and the editor's code actions.
+
+### Rule ID validation
+
+The compiler plugin of `ballerina/scan` reports a malformed rule ID or an empty rule list as a compile error, and
+`bal scan` reports them as errors too, so that such a suppression never passes as one of no rule. `bal scan` checks
+that each rule exists, among the core rules and the rules of every analyzer it engages, and fails before reporting
+anything when one does not. A rule of an analyzer the scan does not engage cannot be verified and is reported as a
+warning.
+
+### Suppressed issues in the results
+
+Suppressed issues are not printed to the console or sent to platforms, and the closing summary counts them, such as
+`3 issue(s), 2 suppressed`. They remain in the saved JSON and SARIF reports with a `suppressions` entry of kind
+`inSource` carrying the reason, so every accepted issue stays reviewable. The HTML report counts them separately from
+the active issues and lists them, with their reason and the rules the annotation names, under the `Suppressed` or `All`
+status filter.
+
+### Unmatched suppressions
+
+A suppression that matches no issue, for example, because the issue was fixed, is reported as a warning.
+
+- A suppression is not reported for a rule left out by `--include-rules`, `--exclude-rules`, or `Scan.toml`.
+- A suppression without `rules` is only reported when every rule is scanned, since whether it is still needed cannot be
+  told from a narrowed scan.
+- An unknown rule still fails the scan, before anything is reported.
+- A rule that an earlier annotation on the same construct already names is reported as already suppressed instead,
+  since that annotation is the one that applies. Likewise, a second annotation without `rules` on a construct is
+  reported as suppressing rules that are already suppressed.
+
+### Require a reason or rule ID
+
+A project can require every suppression to give a reason or name its rules, with `requireReason` and `requireRuleId`
+in the `[suppression]` table of `Scan.toml`, or with the matching command-line options:
+
+```
+$ bal scan --require-suppression-reason --require-suppression-rule-id
+```
+
+The requirements have no effect when suppressions are disabled, since every issue is then reported. A suppression that
+does not meet a requirement fails the scan before anything is reported: the errors are printed, and no issues are
+printed, saved to the target directory, or sent to platforms. In a workspace, every package is checked first, so no
+package is reported when one of them fails.
+
+### Audit suppressed issues
+
+To report every issue as though no suppression existed, use the `--ignore-suppressions` option. Rule inclusion and
+exclusion still apply.
+
+```
+$ bal scan --ignore-suppressions
+```
+
+To disregard suppressions for every run of a project, for example, from a shared `Scan.toml`, set `enabled = false` in
+the `[suppression]` table.
 
 ## Publish static code analysis reports to SonarQube
 
@@ -417,7 +619,7 @@ This guide walks you through the process of configuring SonarQube and publishing
 
 3. Run the scan tool to publish the reports to SonarQube.
    ```
-   $ bal scan
+   $ bal scan --platforms=sonarqube
    ```
 
 ### After the scan

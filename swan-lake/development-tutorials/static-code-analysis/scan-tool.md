@@ -481,9 +481,9 @@ warning.
 
 Suppressed issues are not printed to the console or sent to platforms, and the closing summary counts them, such as
 `3 issue(s), 2 suppressed`. They remain in the saved JSON and SARIF reports with a `suppressions` entry of kind
-`inSource` carrying the reason, so every accepted issue stays reviewable. The HTML report counts them separately from
-the active issues and lists them, with their reason and the rules the annotation names, under the `Suppressed` or `All`
-status filter.
+`inSource` that carries the reason when one is given, so every accepted issue stays reviewable. The HTML report counts
+them separately from the active issues and lists them, with their reason when one is given and the rules the annotation
+names, under the `Suppressed` or `All` status filter.
 
 ### Unmatched suppressions
 

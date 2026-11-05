@@ -8,6 +8,8 @@ active: consolidate-packages-tool
 intro: The consolidate-packages tool allows you to create a single executable by consolidating multiple Ballerina services. These services can either be pulled from Ballerina Central or used directly from your local environment without needing to publish them to a remote repository.
 ---
 
+>**Note:** The consolidate-packages tool requires Ballerina Swan Lake Update 12 (2201.12.0) or later. If you are using an earlier version, [update your Ballerina distribution](/learn/build-and-run/update-tool/).
+
 ## Consolidate packages from the Ballerina Central
 
 ### Define the consolidator package

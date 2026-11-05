@@ -6,6 +6,12 @@ import re
 # Initialize spell checker
 spell = SpellChecker()
 
+# Load custom wordlist from .spelling if available
+if os.path.exists('.spelling'):
+    with open('.spelling', 'r', encoding='utf-8') as f:
+        custom_words = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+    spell.word_frequency.load_words(custom_words)
+
 # List of directories to scan for files
 directories = ["_data", "case-studies", "community", "components", "downloads", "hacktoberfest", "pages", "policy", "spec", "swan-lake", "utils"]
 
@@ -18,6 +24,19 @@ def remove_code_snippets(text):
     text = re.sub(r'```[\s\S]*?```', '', text)  # Remove triple backtick blocks
     text = re.sub(r'`[^`]*`', '', text)  # Remove inline code (single backticks)
     return text
+
+# Function to normalize scanned tokens by removing surrounding punctuation and possessive suffixes
+def normalize_token(token):
+    # Strip leading and trailing non-word/punctuation characters
+    token = re.sub(r'^[^\w]+|[^\w]+$', '', token)
+    # Remove possessive suffixes ('s, ’s, ')
+    if token.endswith(("'s", "’s", "'S", "’S")):
+        token = token[:-2]
+    elif token.endswith(("'", "’")):
+        token = token[:-1]
+    # Strip any remaining edge punctuation
+    token = re.sub(r'^[^\w]+|[^\w]+$', '', token)
+    return token
 
 # Function to check spelling in a file
 def check_spelling_in_file(file_path):
@@ -37,8 +56,10 @@ def check_spelling_in_file(file_path):
     if file_path.endswith('.md'):
         text = remove_code_snippets(text)
 
-    # Split text into words and check for misspelled words
-    words = text.split()
+    # Split text into words, normalize tokens, and check for misspelled words
+    raw_words = text.split()
+    words = [normalize_token(w) for w in raw_words]
+    words = [w for w in words if w]
     misspelled = spell.unknown(words)
 
     return misspelled

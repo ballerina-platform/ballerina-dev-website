@@ -372,8 +372,8 @@ $ bal scan --platforms="sonarqube, <another-platform>"
 
 > **Note:** `sonarqube` is currently the only platform plugin available, and its path must be declared in a `[[platform]]` entry in `Scan.toml`.
 
-A platform declared in `Scan.toml` is reported to only when it is named in `--platforms`, and `--platforms` can only
-name platforms declared there. The plugin JAR is checked, or downloaded, only when its platform is named. A path that is
+Results are reported only to the platforms named in `--platforms`, and `--platforms` can name only platforms declared in
+`Scan.toml`. The plugin JAR is checked, or downloaded, only when its platform is named. A path that is
 then neither an existing file nor a URL stops the scan with an error.
 
 The results are always printed and saved first, and the named platforms then run one after another. If any platform

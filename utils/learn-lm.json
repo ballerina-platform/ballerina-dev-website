@@ -139,9 +139,17 @@
             "id": "ai-integrations",
             "subDirectories": [
                 {
-                    "dirName": "AI integrations overview",
+                    "dirName": "Build a hello world agent",
                     "level": 2,
                     "position": 1,
+                    "isDir": false,
+                    "url": "/learn/build-your-first-agent",
+                    "id": "build-your-first-agent"
+                },
+                {
+                    "dirName": "AI integrations overview",
+                    "level": 2,
+                    "position": 2,
                     "isDir": false,
                     "url": "/learn/ai-integrations-overview",
                     "id": "ai-integrations-overview"
@@ -149,7 +157,7 @@
                 {
                     "dirName": "Add an LLM step to an integration",
                     "level": 2,
-                    "position": 2,
+                    "position": 3,
                     "isDir": false,
                     "url": "/learn/add-an-llm-step-to-an-integration",
                     "id": "add-an-llm-step-to-an-integration"
@@ -157,7 +165,7 @@
                 {
                     "dirName": "Use natural expressions in an integration",
                     "level": 2,
-                    "position": 3,
+                    "position": 4,
                     "isDir": false,
                     "url": "/learn/work-with-llms-using-natural-expressions",
                     "id": "work-with-llms-using-natural-expressions"
@@ -165,7 +173,7 @@
                 {
                     "dirName": "Ground responses with enterprise data",
                     "level": 2,
-                    "position": 4,
+                    "position": 5,
                     "isDir": false,
                     "url": "/learn/ground-responses-with-enterprise-data",
                     "id": "ground-responses-with-enterprise-data"
@@ -173,7 +181,7 @@
                 {
                     "dirName": "Build an agent that uses enterprise systems",
                     "level": 2,
-                    "position": 5,
+                    "position": 6,
                     "isDir": false,
                     "url": "/learn/build-an-agent-that-uses-enterprise-systems",
                     "id": "build-an-agent-that-uses-enterprise-systems"
@@ -181,7 +189,7 @@
                 {
                     "dirName": "Connect integrations and agents through MCP",
                     "level": 2,
-                    "position": 6,
+                    "position": 7,
                     "isDir": false,
                     "url": "/learn/connect-integrations-and-agents-through-mcp",
                     "id": "connect-integrations-and-agents-through-mcp"
@@ -189,7 +197,7 @@
                 {
                     "dirName": "Add human approval and durable execution",
                     "level": 2,
-                    "position": 7,
+                    "position": 8,
                     "isDir": false,
                     "url": "/learn/add-human-approval-and-durable-execution",
                     "id": "add-human-approval-and-durable-execution"
@@ -197,7 +205,7 @@
                 {
                     "dirName": "Evaluate agent behavior",
                     "level": 2,
-                    "position": 8,
+                    "position": 9,
                     "isDir": false,
                     "url": "/learn/evaluate-agent-behavior",
                     "id": "evaluate-agent-behavior"
@@ -205,7 +213,7 @@
                 {
                     "dirName": "Observe and secure AI integrations",
                     "level": 2,
-                    "position": 9,
+                    "position": 10,
                     "isDir": false,
                     "url": "/learn/observe-and-secure-ai-integrations",
                     "id": "observe-and-secure-ai-integrations"

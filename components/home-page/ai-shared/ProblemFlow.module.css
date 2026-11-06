@@ -1,0 +1,392 @@
+/* Problem → Ballerina → outcome flow, shared by the integration and agent sections. */
+
+/* Section layout: text (35%) beside the diagram (65%) on wide screens, text above the diagram otherwise. */
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.layout .textCol .lead:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 1400px) {
+    .layout {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 13fr);
+        gap: 3.5rem;
+    }
+
+    /* Diagram on the left, text on the right. */
+    .layout.reverse {
+        grid-template-columns: minmax(0, 13fr) minmax(0, 7fr);
+    }
+
+    .layout.reverse .diagramCol {
+        order: -1;
+    }
+}
+
+/* The diagram reads left to right as a progression:
+   neutral challenges → teal Ballerina → teal-tinted outcomes. */
+
+.flow {
+    --pf-teal: #17827e;
+    --pf-teal-dark: #0f5f5c;
+    --pf-ink: #1f2a28;
+    --pf-muted: #5b6764;
+    --pf-line: #e1e9e6;
+    --pf-edge: #d3e0dc;
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Side boxes */
+
+.box {
+    padding: 16px 16px 6px;
+    background-color: #ffffff;
+    border: 1px solid var(--pf-edge);
+    border-radius: 12px;
+}
+
+.boxTitle {
+    margin: 0 0 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--pf-muted);
+}
+
+.outcomes .boxTitle {
+    color: var(--pf-teal);
+}
+
+.list {
+    display: grid;
+    column-gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.list li + li {
+    border-top: 1px solid var(--pf-line);
+}
+
+.listIcon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Challenges: quiet outline icons. */
+.challenges .listIcon {
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+    color: #7c8a86;
+}
+
+/* Outcomes: teal icons on a light tint. */
+.outcomes .listIcon {
+    width: 26px;
+    height: 26px;
+    margin-top: -3px;
+    font-size: 14px;
+    color: var(--pf-teal);
+    background-color: #e7f3f0;
+    border-radius: 7px;
+}
+
+.listText {
+    min-width: 0;
+}
+
+.listTitle {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--pf-ink);
+}
+
+.challenges .listTitle {
+    font-weight: 500;
+}
+
+.listSub {
+    display: block;
+    margin-top: 1px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--pf-muted);
+}
+
+/* LLMs: outside Ballerina, so dashed. */
+
+.llm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 14px;
+    padding: 10px 14px;
+    background-color: transparent;
+    border-style: dashed;
+    border-color: #a9bfb9;
+}
+
+.llmTitle {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--pf-muted);
+}
+
+.llmNote {
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logos li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: #ffffff;
+    border: 1px solid var(--pf-edge);
+    border-radius: 50%;
+}
+
+.logos svg {
+    width: 17px;
+    height: 17px;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-teal);
+    transform: rotate(90deg);
+    height: 28px;
+}
+
+/* Ballerina, with the LLMs that feed it stacked above. */
+
+.core {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.core .arrow {
+    height: 22px;
+}
+
+.center {
+    padding: 14px 14px 16px;
+    background-color: #f2f9f7;
+    border: 2px solid var(--pf-teal);
+    border-radius: 14px;
+    box-shadow: 0 0 0 5px rgba(23, 130, 126, .08), 0 10px 28px rgba(23, 130, 126, .14);
+}
+
+.centerHead {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #c9e1db;
+}
+
+.centerHead img {
+    display: block;
+    height: 20px;
+    width: auto;
+}
+
+.group + .group {
+    margin-top: 14px;
+}
+
+.groupLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--pf-ink);
+    text-align: center;
+}
+
+.groupIcon {
+    color: var(--pf-teal);
+}
+
+.groupNote {
+    font-weight: 400;
+    color: var(--pf-muted);
+}
+
+.plus {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    color: #ffffff;
+    background-color: var(--pf-teal);
+    border-radius: 50%;
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding: 12px 8px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #bcdcd4;
+    border-radius: 10px;
+}
+
+.tileIcon {
+    display: flex;
+    margin-bottom: 6px;
+    font-size: 20px;
+    color: var(--pf-teal);
+}
+
+.tileTitle {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--pf-teal-dark);
+}
+
+.tileSub {
+    margin-top: 3px;
+    font-size: 11.5px;
+    line-height: 1.3;
+    color: var(--pf-muted);
+}
+
+/* Stacked top to bottom on small screens. */
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Two columns: a rule between rows, not between neighbours. */
+    .list li + li {
+        border-top: 0;
+    }
+
+    .list li:nth-child(n + 3) {
+        border-top: 1px solid var(--pf-line);
+    }
+}
+
+@media (min-width: 576px) {
+    .tiles.cols3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tiles.cols4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Left to right from desktop width: challenges → Ballerina → outcomes. */
+@media (min-width: 992px) {
+    .flow {
+        grid-template-columns: minmax(0, 1fr) 24px minmax(0, 2fr) 24px minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .flow > .arrow {
+        transform: none;
+    }
+}
+
+/* In the 65% column four tiles in a row no longer fit. */
+@media (min-width: 1400px) {
+    .flow {
+        grid-template-columns: minmax(0, 1.1fr) 22px minmax(0, 2fr) 22px minmax(0, 1.1fr);
+        gap: 8px;
+    }
+
+    .tiles.cols4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .box {
+        padding: 14px 14px 4px;
+    }
+
+    .llm {
+        padding: 10px 12px;
+    }
+}

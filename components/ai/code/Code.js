@@ -169,7 +169,6 @@ function CapabilitySection({ section, odd, getLink }) {
 }
 
 export default function Code({ sections, getLink }) {
-    const count = sections.length;
     return (
         <>
             {sections.map((section, index) => (
@@ -180,37 +179,6 @@ export default function Code({ sections, getLink }) {
                     getLink={getLink}
                 />
             ))}
-
-            {/* WSO2 Integration Platform */}
-            <SectionRow odd={count % 2 === 0}>
-                <Row>
-                    <Col xs={12} className={styles.box}>
-                        <SectionHeading
-                            id="deploy-ai-powered-integrations-with-wso2-integration-platform"
-                            title="(Extra!) Deploy AI-Powered Integrations with WSO2 Integration Platform"
-                            getLink={getLink}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12} md={5} lg={5} className={styles.box}>
-                        <div className={styles.wrapper}>
-                            <p>
-                                WSO2 Integration Platform is an AI-powered iPaaS built for the era of intelligent applications. Go beyond building—deploy, scale, and manage AI integrations effortlessly. Whether it&apos;s GenAI models, knowledge bases, or custom AI agents, the platform helps you operationalize them with low-code speed and cloud-native ease. From idea to live integration—it gets you there faster.
-                            </p>
-                            <div className={styles.dVersion}>
-                                <a href="https://wso2.com/integration-platform/" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                    Get started with WSO2 Integration Platform for free
-                                    <span className="visually-hidden"> (opens in a new tab)</span>
-                                </a>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
-                        <img src={`${prefix}/images/devant-ipaas.png`} alt="WSO2 Integration Platform" />
-                    </Col>
-                </Row>
-            </SectionRow>
         </>
     );
 }

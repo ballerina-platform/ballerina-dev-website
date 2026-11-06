@@ -31,25 +31,7 @@ The agent's tools are ordinary `@workflow:Activity` functions. You attach polici
 - An **approval policy** creates a review task before the activity runs. The agent suspends durably until a person decides.
 - A **retry policy** says what happens when the activity fails: retry automatically, or create a review task for a person.
 
-```
-POST /refunds                                                 Support lead / payments ops
-     │                                                                    │
-     ▼                                                                    ▼
-┌─────────────────┐  runWithId(ticketId)  ┌────────────────────────────────────────────┐
-│  HTTP service   │──────────────────────►│  refundAgent (workflow:DurableAgent)       │
-│  :8080/refunds  │◄──────────────────────│                                            │
-└─────────────────┘  getResult(ticketId)  │   llmChat ──► OpenAI                       │
-                                          │   getOrder           (no approval)         │
-┌─────────────────┐  review tasks         │   issueRefund ─► [approval: SUPPORT_LEAD]  │
-│ Management API  │◄─────────────────────►│        │           [on failure: PAYMENTS_OPS]
-│ :8234/workflow  │  proceed / reject     │        ▼                                   │
-└─────────────────┘                       │   payment gateway (idempotency key)        │
-                                          │   notifyCustomer     (automatic retries)   │
-                                          └───────────────────┬────────────────────────┘
-                                                              │ recorded history
-                                                              ▼
-                                               Workflow engine (in-memory or Temporal)
-```
+![The HTTP service starts a durable refund agent and later reads its result. The agent calls the model and its tools as recorded activities. Issuing a refund needs approval from a support lead, reviewed through the management API. The workflow engine keeps the history so the agent can resume.](/learn/images/ai-integrations/add-human-approval-and-durable-execution.svg "Refund approval agent")
 
 1. The HTTP service starts an agent run. The ticket ID is the run's instance ID, so submitting the same ticket twice does not start a second run.
 2. The agent calls the model and looks up the order with `getOrder`.

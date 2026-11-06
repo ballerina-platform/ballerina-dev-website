@@ -17,11 +17,8 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
 
-import { highlightLine } from '../ai-shared/highlight';
-import shared from '../ai-shared/section.module.css';
-import styles from './BalForAi.module.css';
+import CapabilityShowcase from '../ai-shared/CapabilityShowcase';
 
 const CAPABILITIES = [
   {
@@ -189,71 +186,17 @@ isolated function evaluateOrderAgent(ai:ConversationThread thread) returns error
   }
 ];
 
+// Follows "Ballerina for Integration", so the excerpts sit on the left.
 export default function BalForAi(props) {
-  const [active, setActive] = React.useState(0);
-  const example = CAPABILITIES[active];
-
   return (
-    <Col xs={12}>
-      <Container>
-        <Row className={shared.section}>
-          <Col xs={12} lg={5} className={`${shared.text} ${styles.textCol}`}>
-            <p className={shared.eyebrow}>Ballerina for AI</p>
-            <h2 id="ballerina-for-ai" className={`section ${shared.heading}`}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                className="bi bi-link-45deg mdButton pe-2"
-                viewBox="0 0 16 16"
-                onClick={(e) => props.getLink(e.target, 'ballerina-for-ai')}
-              >
-                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-              </svg>
-              Build agents that work with enterprise systems.
-            </h2>
-
-            <p className={shared.lead}>An enterprise agent needs models, tools, and other agents to work with. Ballerina brings these together with the language constructs and connector ecosystem used to build integrations.</p>
-
-            <ul className={shared.rows}>
-              {CAPABILITIES.map((c, i) => (
-                <li key={c.title} className={i === active ? shared.itemOn : undefined}>
-                  <button
-                    type="button"
-                    className={shared.item}
-                    aria-pressed={i === active}
-                    aria-controls="bal-for-ai-example"
-                    onClick={() => setActive(i)}
-                  >
-                    <span className={shared.itemTitle}>{c.title}</span>
-                    <span className={shared.itemText}>{c.description}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </Col>
-
-          <Col xs={12} lg={7} id="bal-for-ai-example" aria-live="polite" className={`${shared.example} ${styles.exampleCol}`}>
-            {example.excerpts.map((x) => (
-              <figure key={x.label} className={`${shared.panel} ${styles.excerpt}`}>
-                <figcaption className={shared.panelLabel}>
-                  <strong>{x.label}</strong>
-                  <em className={styles.note}>{x.note}</em>
-                </figcaption>
-                <pre className={shared.code}>
-                  <code>
-                    {x.code.split('\n').map((line, i) => (
-                      <React.Fragment key={i}>{highlightLine(line)}{'\n'}</React.Fragment>
-                    ))}
-                  </code>
-                </pre>
-              </figure>
-            ))}
-          </Col>
-        </Row>
-      </Container>
-    </Col>
+    <CapabilityShowcase
+      id="ballerina-for-ai"
+      eyebrow="Ballerina for AI"
+      heading="Build agents that work with enterprise systems."
+      lead="Enterprise agents need models, tools, and other agents. Ballerina brings them together with the same language constructs and connectors used to build integrations."
+      capabilities={CAPABILITIES}
+      reverse
+      getLink={props.getLink}
+    />
   );
 }

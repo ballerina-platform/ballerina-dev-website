@@ -26,24 +26,7 @@ The requirements are:
 
 In Ballerina, the [`ballerina/mcp`](https://central.ballerina.io/ballerina/mcp/latest) module provides the server side: each `remote` function of an MCP service becomes a tool. The [`ballerina/ai`](https://central.ballerina.io/ballerina/ai/latest) module provides the client side: an `ai:McpToolKit` connects to an MCP server and gives its tools to an `ai:Agent`.
 
-```
- POST /support/chat                                  MCP (Streamable HTTP)
-        │                                            tools/list, tools/call
-        ▼                                                     │
-┌──────────────────────────────┐                ┌─────────────▼───────────────┐
-│ customer_care_agent (:8080)  │                │ customer_care_mcp_server    │
-│  1. validate the request     │                │ (:9090/mcp)                 │
-│  2. ai:Agent                 │  permitted     │  searchProducts             │
-│     └─ ai:McpToolKit ────────┼──────────────► │  getOrderStatus             │
-│        (3 of 4 tools)        │  tools only    │  submitReturnRequest        │
-│  3. map errors to HTTP       │                │  issueRefund (not given to  │
-└──────────────┬───────────────┘                │   the customer agent)       │
-               │                                └─────────────┬───────────────┘
-               ▼                                              ▼
-        ┌─────────────┐                          catalog and order systems
-        │ LLM (OpenAI)│                          (in-memory in this guide)
-        └─────────────┘
-```
+![The customer care agent uses an MCP toolkit that is limited to three of the four tools that the MCP server exposes. It calls the server over Streamable HTTP. The server's tools use the catalog and order systems.](/learn/images/ai-integrations/connect-integrations-and-agents-through-mcp.svg "Agent and MCP server")
 
 1. The MCP server publishes four tools. Their names, descriptions, and input schemas are generated from the `remote` function signatures and their documentation.
 2. On the first chat request, the agent service connects to the MCP server, lists its tools, and keeps only the permitted ones. If the server cannot be reached, the request fails with `503 Service Unavailable` and the next request tries again.

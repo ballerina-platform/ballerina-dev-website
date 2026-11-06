@@ -27,28 +27,7 @@ The requirements are:
 
 An evaluation is a Ballerina test that runs the agent against each entry of a dataset and checks the result. The `ballerina/ai` module returns the agent's execution trace, which records the tool calls and the final answer, and the `ballerina/test` module turns a data-driven test into an evaluation with a minimum pass rate.
 
-```
- tests/resources/evalsets/broadband_support.evalset.json
-   threads ─► traces: user message, expected tool calls, reference answer
-        │
-        │  ai:loadConversationThreads (data provider: one entry per thread)
-        ▼
-┌───────────────────────────────────────────────────────────────┐
-│ @test:Config {groups: ["live-eval"], runs: 3, minPassRate: 0.8}│
-│ evaluateSupportAgent(thread)                                   │
-│   for each expected trace in the thread:                       │
-│     1. agent.run(user message) ──► ai:Trace ───────────┐       │
-│     2. rule checks: tool calls, contact details  ◄─────┤       │
-│     3. judge model: answer vs. reference answer ◄──────┘       │
-└───────────────────────────────────────────────────────────────┘
-        │                                    │
-        ▼                                    ▼
-  agent under test (OpenAI)          judge model (OpenAI, temperature 0)
-        │
-        ▼
- pass rate of each run = passed threads / all threads
- evaluation passes if the average over the runs >= minPassRate
-```
+![An evaluation dataset of conversation threads feeds a data-driven test. For each expected trace, the test runs the agent, applies rule checks, and asks a judge model to compare the answer with the reference answer. The test passes when the average pass rate over the runs reaches minPassRate.](/learn/images/ai-integrations/evaluate-agent-behavior.svg "Agent evaluation test")
 
 1. The dataset is a JSON file that contains conversation threads. Each thread contains one or more traces, and each trace holds a user message, the tool calls that the agent is expected to make, and a reference answer.
 2. `ai:loadConversationThreads` reads the file into `ai:ConversationThread` values, keyed by thread ID. It is used as the data provider of the test, so each thread is one entry of the evaluation.
@@ -1152,7 +1131,7 @@ $ bal test --groups live-eval --test-report
 
 ## Run evaluations in CI
 
-Run the deterministic tests on every push, and the evaluation on pull requests. The workflow below is for GitHub Actions and uses the setup steps from [Configure CI/CD for Ballerina projects](/learn/build-and-run/ci-cd/). Store the OpenAI API key as a repository secret named `OPENAI_API_KEY`.
+Run the deterministic tests on every push, and the evaluation on pull requests. The workflow below is for GitHub Actions and uses the setup steps from [Configure CI/CD for Ballerina projects](/learn/cicd/). Store the OpenAI API key as a repository secret named `OPENAI_API_KEY`.
 
 ```yaml
 name: Agent tests

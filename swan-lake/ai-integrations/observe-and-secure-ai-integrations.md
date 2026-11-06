@@ -23,26 +23,7 @@ An insurance company wants a claims assistant that policyholders can chat with f
 
 The assistant is an HTTP service in front of an `ai:Agent`. The service authenticates the caller, removes personal data from the message, and passes the caller's identity to the tools through an `ai:Context`. The tools call the claims API with their own credentials. Ballerina exports a trace of every request to an OpenTelemetry (OTLP) collector, such as Jaeger.
 
-```
-Mobile app ── POST /assistant/chat  (Authorization: Bearer <JWT with scope claims:assist>)
-                    │
-                    ▼
-┌─────────────────────────────────────────┐                         ┌────────────────────┐
-│ HTTP service (:8080)                    │  redacted prompt,       │   LLM (OpenAI)     │
-│ 1. validate the JWT and the scope       │  tool schemas           └─────────▲──────────┘
-│ 2. validate the request, redact PII     │                                   │
-│ 3. log and tag metadata, not content    │ ──────────► ai:Agent ◄────────────┘
-│ 4. run the agent with an ai:Context     │               │    │
-│    that holds the policyholder ID       │               │    │
-│ 5. map the outcome to HTTP              │      getClaimStatus  requestCallback
-└─────────────────────────────────────────┘               │    │
-                                       read-only token    │    │  callback-only token
-                                                          ▼    ▼
-                                             Claims API (:9090, mocked)
-                    │
-                    ▼  spans: HTTP, invoke_agent, chat, execute_tool (OTLP)
-          Jaeger or another OpenTelemetry collector (:4317)
-```
+![A mobile app calls the HTTP service with a scoped JWT. The service validates the token, redacts personal data, and runs the agent. Each tool calls the claims API with its own least-privilege token. Spans for HTTP, agent, model, and tool calls are exported to an OpenTelemetry collector.](/learn/images/ai-integrations/observe-and-secure-ai-integrations.svg "Secured and observed claims assistant")
 
 1. The service validates the bearer token and checks that it grants the `claims:assist` scope. The `sub` claim of the token identifies the policyholder.
 2. The service validates the request and replaces email addresses, card numbers, and phone numbers in the message with placeholders.

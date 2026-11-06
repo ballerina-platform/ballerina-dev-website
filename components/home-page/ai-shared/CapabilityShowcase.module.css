@@ -1,0 +1,29 @@
+/* Capability list beside code excerpts, shared by "Ballerina for Integration" and "Ballerina for AI". */
+
+@media (min-width: 992px) {
+    /* Text on the left: space toward the excerpts on its right. */
+    .textStart {
+        padding-right: 2.5rem;
+    }
+
+    /* Text on the right: space toward the excerpts on its left. */
+    .textEnd {
+        padding-left: 2.5rem;
+    }
+
+    /* Lines the first excerpt up with the heading rather than the eyebrow. */
+    .exampleCol {
+        padding-top: 2.4rem;
+    }
+}
+
+.excerpt + .excerpt {
+    margin-top: 14px;
+}
+
+.note {
+    font-style: normal;
+    font-family: inherit;
+    font-size: 13px;
+    text-align: right;
+}

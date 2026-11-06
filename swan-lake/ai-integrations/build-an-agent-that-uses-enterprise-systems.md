@@ -24,27 +24,7 @@ The requirements are:
 
 An agent is a loop around a model. In each iteration, the model receives the conversation and the descriptions of the available tools, and either asks for one or more tool calls or returns the final answer. The agent runs the requested tools, adds their results to the conversation, and calls the model again.
 
-```
-POST /support/chat {sessionId, message}
-        │
-        ▼
-┌──────────────────────────────┐            ┌─────────────────────┐
-│ HTTP service (:8080)         │            │   LLM (OpenAI)      │
-│ 1. validate the request      │            └──────────▲──────────┘
-│ 2. agent.run(message,        │                       │ prompt + tool schemas,
-│              sessionId, ctx) │──────► ai:Agent ◄─────┘ tool calls
-│ 3. map the outcome to HTTP   │          │    │
-└──────────────────────────────┘          │    └── ai:ShortTermMemory (history per sessionId)
-                                          │
-                       ┌──────────────────┼────────────────────────┐
-                       ▼                  ▼                        ▼
-                  getOrder           cancelOrder              getShipment
-               (function tool)     (function tool)      (HTTP service toolkit)
-                       │                  │                        │
-                       └──────────────────┴───────────┬────────────┘
-                                                      ▼
-                                   Order and shipment APIs (:9090, mocked)
-```
+![The HTTP service runs an agent that keeps conversation memory per session, calls the LLM, and uses the getOrder, cancelOrder, and getShipment tools, which call the order and shipment APIs.](/learn/images/ai-integrations/build-an-agent-that-uses-enterprise-systems.svg "Order support agent")
 
 1. The service validates the request and calls the agent with the message, the session ID, and a new `ai:Context`.
 2. The agent loads the session's history from memory and calls the model with the system prompt, the history, and the tool schemas.

@@ -363,8 +363,10 @@ failOnCount = 5
 excludeTests = true
 ```
 
-Each table accepts only the keys shown, with the TOML types shown. Unknown keys, wrongly typed values, and setting both
-`include` and `exclude` fail the scan with exit code `1`, and every error is listed with its line and column.
+The `[rule]`, `[suppression]`, `[gate]`, and `[analysis]` tables accept only the keys shown, with the TOML types shown.
+Unknown keys in these tables, wrongly typed values, and setting both `include` and `exclude` fail the scan with exit code
+`1`, and every error is listed with its line and column. `[[analyzer]]` and `[[platform]]` entries accept further keys,
+such as an analyzer's `version` and `repository`, or platform-specific arguments such as `sonarProjectPropertiesPath`.
 
 The rules given with `--include-rules` are added to `include`, and those given with `--exclude-rules` are added to
 `exclude`, for that run. For example, with `exclude = ["ballerina:1"]` in `Scan.toml`, `--exclude-rules=ballerina:2`
@@ -373,9 +375,10 @@ the other setting in `Scan.toml` is a usage error. For example, with `exclude = 
 `--include-rules=ballerina:2` exits with code `2`.
 
 Each `[[platform]]` entry needs both a `name` and a `path`, and an entry missing either is ignored. The `path` must
-point to the platform plugin JAR, either as a local file path or as a URL to download it from. A local path, and any
-platform argument whose name ends in `Path`, such as `sonarProjectPropertiesPath`, is resolved relative to the folder of
-the `Scan.toml` file, or to the package root when `Scan.toml` is loaded from a URL.
+point to the platform plugin JAR, either as a local file path or as a URL to download it from. A local path is resolved
+relative to the folder of the `Scan.toml` file, or to the package root when `Scan.toml` is loaded from a URL. A platform
+argument whose name ends in `Path`, such as `sonarProjectPropertiesPath`, is resolved the same way only when it names an
+existing file. URLs, and paths to files that the plugin will create, are passed to the plugin unchanged.
 
 See [Scan file configurations](https://github.com/ballerina-platform/static-code-analysis-tool/blob/main/docs/static-code-analysis-tool/ScanFileConfigurations.md) for all available options.
 

@@ -13,42 +13,107 @@ h2.heading {
     margin-bottom: 0;
 }
 
-.action {
+@media (min-width: 992px) {
+    .textCol {
+        padding-right: 2.5rem;
+    }
+}
+
+/* Two guide boxes, side by side from tablet width. */
+
+.guides {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .guides {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 991.98px) {
+    .guides {
+        margin-top: 2rem;
+    }
+}
+
+a.guide {
     display: flex;
-    justify-content: flex-end;
-}
-
-/* Matches the hero's primary button. */
-a.cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
-    border: 1px solid #20b6b0;
-    border-radius: 2px;
-    background-color: #20b6b0;
-    color: #1d2a2a;
-    font-size: 16px;
-    font-weight: 500;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px 24px 22px;
+    background-color: #ffffff;
+    border: 1px solid #cfdcd8;
+    border-radius: 12px;
+    color: inherit;
     text-decoration: none;
-    white-space: nowrap;
-    transition: background-color .2s, color .2s, border-color .2s;
+    transition: border-color .2s, box-shadow .2s;
 }
 
-a.cta:hover {
-    background-color: #17827e;
+a.guide:hover {
     border-color: #17827e;
-    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(23, 130, 126, .12);
 }
 
-a.cta:focus-visible {
+a.guide:focus-visible {
     outline: 3px solid #20b6b0;
     outline-offset: 2px;
 }
 
-@media (max-width: 767.98px) {
-    .action {
-        justify-content: flex-start;
-        margin-top: 1.75rem;
+.guideIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #17827e;
+    background-color: #e7f3f0;
+    border-radius: 10px;
+}
+
+.guideTitle {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1f2a28;
+}
+
+.guideText {
+    flex: 1;
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #4a5552;
+}
+
+.guideLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #17827e;
+}
+
+.arrow {
+    transition: transform .2s;
+}
+
+a.guide:hover .arrow {
+    transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    a.guide,
+    .arrow {
+        transition: none;
     }
 }

@@ -65,7 +65,6 @@ export default function UseCases(props) {
     const anything = samples['connect-with-anything'];
     const diagram = samples['diagram-when-you-need'];
     const community = samples['community-driven-development'];
-    const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
 
     var isResizing = false;
 
@@ -785,66 +784,6 @@ export default function UseCases(props) {
                                 {
                                     (community.frontmatter.image && community.frontmatter.image !== '') ?
                                         <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title}  />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* ipaas */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='trivial-hosting-in-wso2-integration-platform' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'trivial-hosting-in-wso2-integration-platform')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {ipaas.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{ipaas.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Integration Platform for free
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
-                                {
-                                    (ipaas.code && ipaas.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: ipaas.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (ipaas.frontmatter.image && ipaas.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${ipaas.frontmatter.image}`} alt={ipaas.frontmatter.title}  />
                                         : null
                                 }
                             </Col>

@@ -73,6 +73,10 @@ const nextConfig = {
         destination: `/learn/ai-integrations/ground-responses-with-enterprise-data`,
       },
       {
+        source: `/learn/build-your-first-agent`,
+        destination: `/learn/ai-integrations/build-your-first-agent`,
+      },
+      {
         source: `/learn/build-an-agent-that-uses-enterprise-systems`,
         destination: `/learn/ai-integrations/build-an-agent-that-uses-enterprise-systems`,
       },

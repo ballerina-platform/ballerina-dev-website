@@ -18,25 +18,52 @@
 
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { BsDiagram3, BsRobot } from 'react-icons/bs';
 
 import { prefix } from '../../../utils/prefix';
 import shared from '../ai-shared/section.module.css';
 import styles from './GetStarted.module.css';
+
+const GUIDES = [
+  {
+    icon: BsDiagram3,
+    title: 'Build your first integration',
+    description: 'Install Ballerina, then write and run a REST API.',
+    href: `${prefix}/learn/get-started/`,
+  },
+  {
+    icon: BsRobot,
+    title: 'Build a hello world AI agent',
+    description: 'Build a math tutor agent with tools and chat with it over HTTP.',
+    href: `${prefix}/learn/build-your-first-agent/`,
+  },
+];
 
 export default function GetStarted() {
   return (
     <Col xs={12}>
       <Container>
         <Row className={`${shared.section} ${styles.band}`}>
-          <Col xs={12} md={8} className={shared.text}>
-            <p className={shared.eyebrow}>Start with one agent</p>
-            <h2 className={`${shared.heading} ${styles.heading}`}>Build your first agent.</h2>
-            <p className={`${shared.lead} ${styles.lead}`}>Follow the guide to build an agent that calls real enterprise APIs, remembers the conversation, and recovers from tool failures, one step at a time.</p>
+          <Col xs={12} lg={5} className={`${shared.text} ${styles.textCol}`}>
+            <p className={shared.eyebrow}>Get started</p>
+            <h2 className={`${shared.heading} ${styles.heading}`}>Start building with Ballerina.</h2>
+            <p className={`${shared.lead} ${styles.lead}`}>Whether you’re connecting enterprise systems or building AI agents, get started with practical examples and step-by-step guides.</p>
           </Col>
-          <Col xs={12} md={4} className={styles.action}>
-            <a className={styles.cta} href={`${prefix}/learn/build-an-agent-that-uses-enterprise-systems/`}>
-              Start building <span aria-hidden="true">→</span>
-            </a>
+          <Col xs={12} lg={7}>
+            <ul className={styles.guides}>
+              {GUIDES.map(({ icon: Icon, title, description, href }) => (
+                <li key={title}>
+                  <a className={styles.guide} href={href}>
+                    <span className={styles.guideIcon} aria-hidden="true"><Icon /></span>
+                    <span className={styles.guideTitle}>{title}</span>
+                    <span className={styles.guideText}>{description}</span>
+                    <span className={styles.guideLink}>
+                      Start the guide <span className={styles.arrow} aria-hidden="true">→</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </Col>
         </Row>
       </Container>

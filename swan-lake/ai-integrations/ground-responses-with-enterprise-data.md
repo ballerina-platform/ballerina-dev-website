@@ -24,24 +24,7 @@ The requirements are:
 
 Retrieval-augmented generation (RAG) has two stages. The *ingestion* stage prepares the documents once. The *query* stage runs for every question.
 
-```
-Ingestion (at startup)                 Query (per request)
-
-  policies/*.md                          POST /hr/ask {"question": ".."}
-        │                                              │
-        ▼                                              ▼
-┌─────────────────────┐        ┌───────────────────────────────────┐
-│ TextDataLoader      │        │ 1. validate the question          │
-├─────────────────────┤        │ 2. retrieve the top K chunks ─────┼──────┐
-│ MarkdownChunker     │        │ 3. drop chunks below min score    │      │
-│ + source metadata   │        │ 4. generate a typed answer ───────┼──► LLM
-├─────────────────────┤        │ 5. check the cited sources        │      │
-│ knowledge base      │        └───────────────────────────────────┘      │
-│   embed chunks ─────┼──► Embedding provider ◄── embed the question ─────┤
-│   store vectors ────┼──► Vector store ◄──────── similarity search ──────┘
-└─────────────────────┘
-                               PolicyAnswer | 400 | 502 | 503
-```
+![At startup, policy documents are loaded, chunked with source metadata, and ingested into a vector knowledge base. Per request, the service retrieves the closest chunks, drops weak matches, asks the LLM for a typed answer, and checks the cited sources.](/learn/images/ai-integrations/ground-responses-with-enterprise-data.svg "HR policy assistant")
 
 1. **Ingestion.** A data loader reads the policy documents. A chunker splits each document into smaller pieces (*chunks*), and the integration adds the document title and section headings to the metadata of each chunk. An embedding provider converts each chunk into a vector, and a vector store keeps the vectors together with the chunks. A *knowledge base* (`ai:VectorKnowledgeBase`) combines the embedding provider and the vector store, and performs the embedding and storing in one call.
 2. **Retrieval.** The knowledge base embeds the question and returns the most similar chunks with a similarity score. Chunks below a minimum score are dropped. If none remain, the integration returns a "not found" answer without calling the model.

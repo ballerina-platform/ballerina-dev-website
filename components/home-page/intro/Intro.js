@@ -37,7 +37,7 @@ export default function Intro() {
 
             <h1>Programming language for integrations and agents</h1>
 
-            <p className={styles.lead}>Integrations and agents face the same engineering challenges: unreliable networks, structured data, security, observability, and long-running work. Ballerina makes these first-class in the language, so you build both on the same foundations.</p>
+            <p className={styles.lead}>Ballerina is designed for building connected applications. From APIs and event-driven integrations to workflows and AI agents, Ballerina brings networking, data, concurrency, and reliability into the language, making it easier to build applications that interact with real-world systems.</p>
 
             <div className={styles.btnRow}>
               <a className={`${styles.homeIntroButton} ${styles.primaryButton}`}

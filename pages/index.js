@@ -26,6 +26,7 @@ import WhyBal from '../components/home-page/why-bal/WhyBal';
 import Events from '../components/home-page/events/Events';
 import IntegrationGap from '../components/home-page/integration-gap/IntegrationGap';
 import Integration from '../components/home-page/integration/Integration';
+import BalForIntegration from '../components/home-page/bal-for-integration/BalForIntegration';
 import BalForAi from '../components/home-page/bal-for-ai/BalForAi';
 import AiCoding from '../components/home-page/ai-coding/AiCoding';
 import GetStarted from '../components/home-page/get-started/GetStarted';
@@ -131,6 +132,10 @@ export default function Home({ samples, codeSamples }) {
 
         <Row className={styles.homeIntegration}>
           <Integration getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeBalForIntegration}>
+          <BalForIntegration getLink={getLink} />
         </Row>
 
         <Row className={styles.homeBalForAi}>

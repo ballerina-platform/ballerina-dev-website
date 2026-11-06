@@ -22,21 +22,7 @@ The requirements are:
 
 A natural expression is a Ballerina expression whose body is written in natural language. It runs against a model provider, and its result is bound to the *expected type* — the type of the variable that the expression is assigned to.
 
-```
-GET /attractions?country=..&interest=..&count=..
-        │
-        ▼
-┌──────────────────────────┐   prompt + JSON schema of Attraction[]   ┌───────────┐
-│  HTTP resource           │ ───────────────────────────────────────► │    LLM    │
-│  1. validate input       │ ◄─────────────────────────────────────── │ (provider)│
-│  2. natural expression   │           JSON response                  └───────────┘
-│  3. validate the result  │
-│  4. map errors to HTTP   │
-└──────────────────────────┘
-        │
-        ▼
-  Attraction[]  |  400 Bad Request  |  502 Bad Gateway
-```
+![The HTTP resource validates the input, runs a natural expression that the model answers with the JSON schema of Attraction[], validates the result, and maps errors to HTTP.](/learn/images/ai-integrations/work-with-llms-using-natural-expressions.svg "Attraction finder with a natural expression")
 
 1. The resource checks the request parameters before spending a model call.
 2. The natural expression sends the prompt, together with a JSON schema that is generated from the expected type (`Attraction[]`), to the model. The response is parsed and bound to `Attraction[]`. If the call fails or the response cannot be bound to the type, the expression evaluates to an `error`.

@@ -22,6 +22,11 @@ import { prefix } from '../../../utils/prefix';
 
 const aiIntegrationGuides = [
   {
+    title: 'Build a hello world agent',
+    url: '/learn/build-your-first-agent/',
+    description: 'Build a math tutor agent in a few minutes. Give it tools, expose it as a chat service, and talk to it.',
+  },
+  {
     title: 'AI integrations overview',
     url: '/learn/ai-integrations-overview/',
     description: 'Understand when to use direct LLM calls, natural expressions, RAG, agents, MCP, and durable workflows in an integration.',

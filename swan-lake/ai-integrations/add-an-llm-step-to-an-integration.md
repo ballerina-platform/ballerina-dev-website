@@ -23,22 +23,7 @@ The requirements are:
 
 The classification step is a *direct LLM call*: the integration builds the prompt itself and calls the `generate` method of an `ai:ModelProvider`. The response is bound to the type that the result is assigned to, which is called the *expected type*.
 
-```
-POST /support/tickets  {subject, body}
-        │
-        ▼
-┌───────────────────────────────┐   prompt + JSON schema of Triage   ┌───────────┐
-│  HTTP resource                │ ─────────────────────────────────► │    LLM    │
-│  1. validate the payload      │ ◄───────────────────────────────── │ (provider)│
-│  2. model->generate()         │           JSON response            └───────────┘
-│  3. validate the result       │
-│  4. route to a queue          │
-│  5. fall back on failure      │
-└───────────────────────────────┘
-        │
-        ▼
-  RoutedTicket (201 Created)  |  400 Bad Request
-```
+![The HTTP resource validates the ticket, calls the model with the JSON schema of Triage, validates the result, routes the ticket to a queue, and falls back on failure.](/learn/images/ai-integrations/add-an-llm-step-to-an-integration.svg "Ticket triage with an LLM step")
 
 1. The HTTP listener checks the payload against the constraints on the `Ticket` type and rejects invalid tickets with `400 Bad Request` before the resource runs.
 2. The resource calls `generate` with a prompt that contains the ticket. The model provider sends the prompt to the model together with a JSON schema that is generated from the expected type (`Triage`), and binds the response to `Triage`.

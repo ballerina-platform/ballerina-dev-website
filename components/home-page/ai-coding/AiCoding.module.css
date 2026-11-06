@@ -1,6 +1,7 @@
+/* Text on the left: space toward the example on its right. */
 @media (min-width: 992px) {
     .textCol {
-        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
 }
 

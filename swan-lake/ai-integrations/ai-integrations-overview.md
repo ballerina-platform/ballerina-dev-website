@@ -24,23 +24,7 @@ Each requirement maps to a different building block. This guide explains the bui
 
 All AI building blocks in Ballerina are provided by the [`ballerina/ai`](https://lib.ballerina.io/ballerina/ai/latest/) module, with provider-specific implementations in `ballerinax/ai.<provider>` packages. Every building block depends on an `ai:ModelProvider` value, so you configure the model once and reuse it everywhere.
 
-```
-                         ┌──────────────────────────────┐
-                         │  ai:ModelProvider            │
-                         │  (OpenAI, Azure, Ollama ...) │
-                         └──────────────┬───────────────┘
-                                        │ used by
-   ┌──────────────┬──────────────┬──────┴───────┬──────────────┬──────────────────┐
-   ▼              ▼              ▼              ▼              ▼                  ▼
-Direct LLM     Natural        RAG            Agent          MCP              Durable
-call           expression     (knowledge     (tools +       (expose tools /  workflow
-generate()     natural{...}   base + model)  memory)        use MCP tools)   (human approval)
-   │              │              │              │              │                  │
-   └──────────────┴──────────────┴──────┬───────┴──────────────┴──────────────────┘
-                                        ▼
-                    HTTP services, listeners, connectors, and data mapping
-                    (the rest of your integration)
-```
+![One model provider is used by six capabilities: direct LLM calls, natural expressions, RAG, agents, MCP, and durable workflows. They all run inside your integration alongside HTTP services, listeners, connectors, and data mapping.](/learn/images/ai-integrations/ai-capabilities-overview.svg "AI capabilities in a Ballerina integration")
 
 The following sections describe each building block. The snippets share the module-level `model` defined in [Model providers and configuration](#model-providers-and-configuration) and the `Triage` type defined in [Direct LLM calls](#direct-llm-calls).
 
@@ -343,21 +327,7 @@ final ai:ModelProvider model = check ai:getDefaultModelProvider();
 
 The service accepts a ticket, asks the model to classify it, validates the classification, and routes the ticket to a queue with plain Ballerina logic.
 
-```
-POST /tickets/triage  {subject, body}
-        │
-        ▼
-┌───────────────────────────────┐   prompt + JSON schema of Triage   ┌───────────┐
-│  HTTP resource                │ ─────────────────────────────────► │    LLM    │
-│  1. bind and validate payload │ ◄───────────────────────────────── │ (OpenAI)  │
-│  2. model->generate()         │            JSON response           └───────────┘
-│  3. validate the result       │
-│  4. route with routeTo()      │
-└───────────────────────────────┘
-        │
-        ▼
-  TriageResult  |  400 Bad Request  |  502 Bad Gateway
-```
+![The HTTP resource binds and validates the payload, calls the model with the JSON schema of Triage, validates the result, and routes the ticket.](/learn/images/ai-integrations/ai-integrations-overview-triage.svg "Ticket triage service")
 
 ### Define the types
 

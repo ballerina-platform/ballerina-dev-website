@@ -102,14 +102,18 @@ order. The issues of every package are printed as one document.
 
 ### Console output
 
-When the scan completes, only the issues are written to standard output, so `bal scan > issues.json` saves valid JSON,
-or SARIF with `--format=sarif`. Progress messages, warnings, report paths, and the issue summary, such as
-`3 issue(s)`, are written to standard error. The exceptions are `--list-rules`, which prints its rule table to standard
-output, and `--platforms`, since platform plugins may also write to standard output. Output printed while the package
-and its analyzers are resolved may also reach standard output.
+When the scan completes, the issues are written to standard output, in JSON or in SARIF with `--format=sarif`.
+Progress messages, warnings, report paths, and the issue summary, such as `3 issue(s)`, are written to standard error.
+The exceptions are `--list-rules`, which prints its rule table to standard output, and `--platforms`, since platform
+plugins may also write to standard output. Output printed while the package and its analyzers are resolved may also
+reach standard output, so `bal scan > issues.json` is not guaranteed to save valid JSON. For a package, scripts should
+read the saved report, `target/report/scan_results.json` or `target/report/scan_results.sarif`, instead. The saved
+report also contains the suppressed issues, each marked with a `suppressions` entry.
 
-When the scan fails, for example, on a compilation error, a missing `Dependencies.toml`, or an unmet suppression
-requirement, no issues are printed and the redirected file can be empty. Check the exit code before parsing the output.
+When the scan fails before reporting, for example, on a compilation error, a missing `Dependencies.toml`, or an unmet
+suppression requirement, no issues are printed and the redirected file can be empty. The exit code alone does not show
+whether results were written: a tripped gate or a failed platform also exits with code `1`, but only after the results
+are printed and saved.
 
 ### Dependency resolution
 
@@ -385,7 +389,7 @@ the other setting in `Scan.toml` is a usage error. For example, with `exclude = 
 
 Each `[[platform]]` entry needs both a `name` and a `path`, and an entry missing either is ignored. The `path` points to
 the platform plugin JAR, as a local path relative to the folder of the `Scan.toml` file, or as a URL to download it
-from. The `name` must match the name of a plugin that the JAR provides, such as `sonarqube`. Otherwise, naming that
+from. When `configPath` is a URL, a relative local path is resolved against the package or workspace root instead. The `name` must match the name of a plugin that the JAR provides, such as `sonarqube`. Otherwise, naming that
 platform in `--platforms` fails the scan with exit code `1`.
 
 See [Scan file configurations](https://github.com/ballerina-platform/static-code-analysis-tool/blob/main/docs/static-code-analysis-tool/ScanFileConfigurations.md)
@@ -429,9 +433,9 @@ the scan lists every failure and exits with code `1`. Using `--platforms` with a
 and exits with code `2`.
 
 > **Note:** When a platform runs the scan itself, such as the SonarQube Ballerina plugin during a SonarScanner
-> analysis, the results are not printed or saved to the target directory, and no gate is applied, since the platform
-> applies its own quality gate. The results are reported to every platform declared in `Scan.toml`, unless
-> `--platforms` names some.
+> analysis, the results are not printed or saved to the target directory, except that a workspace scan still writes the
+> combined workspace report. No gate is applied, since the platform applies its own quality gate. The results are
+> reported to every platform declared in `Scan.toml`, unless `--platforms` names some.
 
 ## Exit codes and the gate
 
@@ -455,9 +459,10 @@ point to a source location, such as an unmatched suppression. Warnings never cha
 
 By default, no gate is set, so findings never fail the scan. The gate is set with `--fail-on-severity` and
 `--fail-on-count`, or with the `[gate]` table of `Scan.toml`, and fails the scan when the number of issues at or above
-the severity reaches the count:
+the severity reaches the count. The table shows the effective settings, after the command-line options and `Scan.toml`
+are combined as described below:
 
-| --fail-on-severity | --fail-on-count | Fails when |
+| Severity (effective) | Count (effective) | Fails when |
 |---|---|---|
 | Not set | Not set | Never. The gate is off. |
 | Not set | `n` | There are `n` or more issues of any severity. |

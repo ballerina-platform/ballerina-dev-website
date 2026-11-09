@@ -1,0 +1,16 @@
+{
+  "title": "Chat client",
+  "description": "This BBE demonstrates how to interact with a chat agent service using the chat client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "chat",
+    "chat client"
+  ],
+  "permalink": "/learn/by-example/ai-chat-client/",
+  "active": "ai-chat-client"
+}

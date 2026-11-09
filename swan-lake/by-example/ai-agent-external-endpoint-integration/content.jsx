@@ -173,7 +173,7 @@ export function AiAgentExternalEndpointIntegration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/ai-agent-external-endpoint-integration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/ai-agent-external-endpoint-integration",
                 "_blank",
               );
             }}
@@ -436,8 +436,8 @@ export function AiAgentExternalEndpointIntegration({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Agent with MCP integration"
-            href="/learn/by-example/ai-agent-mcp-integration/"
+            title="Passing context to agent tools"
+            href="/learn/by-example/ai-agent-tool-context/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -464,14 +464,17 @@ export function AiAgentExternalEndpointIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with MCP integration
+                  Passing context to agent tools
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Chat agents" href="/learn/by-example/chat-agents/">
+          <Link
+            title="Human-in-the-loop tool approval"
+            href="/learn/by-example/ai-agent-human-in-the-loop/"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -480,7 +483,7 @@ export function AiAgentExternalEndpointIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chat agents
+                  Human-in-the-loop tool approval
                 </span>
               </div>
               <svg

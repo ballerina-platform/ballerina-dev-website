@@ -123,7 +123,7 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/direct-llm-calls-with-multimodal-input",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/direct-llm-calls-with-multimodal-input",
                 "_blank",
               );
             }}
@@ -319,6 +319,26 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
+              The <code>ballerinax/ai.openrouter</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+              The <code>ballerinax/ai.googleapis.vertex</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
@@ -360,8 +380,8 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="RAG with in-memory vector store"
-            href="/learn/by-example/rag-with-in-memory-vector-store/"
+            title="Direct LLM calls with a specific model provider"
+            href="/learn/by-example/direct-llm-calls-with-model-provider/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -371,7 +391,7 @@ export function DirectLlmCallsWithMultimodalInput({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG with in-memory vector store
+                  Direct LLM calls with a specific model provider
                 </span>
               </div>
               <svg

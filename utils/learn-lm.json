@@ -711,9 +711,17 @@
                             "id": "supported-observability-tools-and-platforms",
                             "subDirectories": [
                                 {
-                                    "dirName": "Prometheus",
+                                    "dirName": "OpenTelemetry",
                                     "level": 4,
                                     "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/supported-observability-tools-and-platforms/opentelemetry",
+                                    "id": "opentelemetry"
+                                },
+                                {
+                                    "dirName": "Prometheus",
+                                    "level": 4,
+                                    "position": 2,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/prometheus",
                                     "id": "prometheus"
@@ -721,7 +729,7 @@
                                 {
                                     "dirName": "Jaeger",
                                     "level": 4,
-                                    "position": 2,
+                                    "position": 3,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/jaeger",
                                     "id": "jaeger"
@@ -729,7 +737,7 @@
                                 {
                                     "dirName": "Zipkin",
                                     "level": 4,
-                                    "position": 3,
+                                    "position": 4,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/zipkin",
                                     "id": "zipkin"
@@ -737,7 +745,7 @@
                                 {
                                     "dirName": "Datadog",
                                     "level": 4,
-                                    "position": 4,
+                                    "position": 5,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/datadog",
                                     "id": "datadog"
@@ -745,7 +753,7 @@
                                 {
                                     "dirName": "New Relic",
                                     "level": 4,
-                                    "position": 5,
+                                    "position": 6,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/new-relic",
                                     "id": "new-relic"
@@ -753,7 +761,7 @@
                                 {
                                     "dirName": "Elastic Stack",
                                     "level": 4,
-                                    "position": 6,
+                                    "position": 7,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/elastic-stack",
                                     "id": "elastic-stack"
@@ -761,7 +769,7 @@
                                 {
                                     "dirName": "OpenSearch",
                                     "level": 4,
-                                    "position": 7,
+                                    "position": 8,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/opensearch",
                                     "id": "opensearch"
@@ -769,7 +777,7 @@
                                 {
                                     "dirName": "Moesif",
                                     "level": 4,
-                                    "position": 8,
+                                    "position": 9,
                                     "isDir": false,
                                     "url": "/learn/supported-observability-tools-and-platforms/moesif",
                                     "id": "moesif"
@@ -1211,6 +1219,88 @@
                             "isDir": false,
                             "url": "/learn/data",
                             "id": "data"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Build AI applications",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": true,
+                    "url": "swan-lake/resources/build-ai-applications",
+                    "id": "build-ai-applications",
+                    "subDirectories": [
+                        {
+                            "dirName": "AI in Ballerina overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/ai-in-ballerina-overview",
+                            "id": "ai-in-ballerina-overview"
+                        },
+                        {
+                            "dirName": "Configure model and embedding providers",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-model-and-embedding-providers",
+                            "id": "configure-model-and-embedding-providers"
+                        },
+                        {
+                            "dirName": "Build an AI agent",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/build-an-ai-agent",
+                            "id": "build-an-ai-agent"
+                        },
+                        {
+                            "dirName": "Persist agent memory",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-agent-memory",
+                            "id": "persist-agent-memory"
+                        },
+                        {
+                            "dirName": "Build a RAG application",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/build-a-rag-application",
+                            "id": "build-a-rag-application"
+                        },
+                        {
+                            "dirName": "Expose and consume MCP servers",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/expose-and-consume-mcp-servers",
+                            "id": "expose-and-consume-mcp-servers"
+                        },
+                        {
+                            "dirName": "Human-in-the-loop agents",
+                            "level": 3,
+                            "position": 7,
+                            "isDir": false,
+                            "url": "/learn/human-in-the-loop-agents",
+                            "id": "human-in-the-loop-agents"
+                        },
+                        {
+                            "dirName": "Observe and evaluate agents",
+                            "level": 3,
+                            "position": 8,
+                            "isDir": false,
+                            "url": "/learn/observe-and-evaluate-agents",
+                            "id": "observe-and-evaluate-agents"
+                        },
+                        {
+                            "dirName": "Natural programming",
+                            "level": 3,
+                            "position": 9,
+                            "isDir": false,
+                            "url": "/learn/natural-programming",
+                            "id": "natural-programming"
                         }
                     ]
                 }

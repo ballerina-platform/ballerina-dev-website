@@ -1,0 +1,16 @@
+{
+  "title": "Agent with typed input and output",
+  "description": "This BBE demonstrates how to pass structured input to an AI agent and bind its response to a typed value.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "typed",
+    "structured output"
+  ],
+  "permalink": "/learn/by-example/ai-agent-typed-input-output/",
+  "active": "ai-agent-typed-input-output"
+}

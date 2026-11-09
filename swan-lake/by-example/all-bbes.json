@@ -4835,6 +4835,56 @@
     ]
   },
   {
+    "title": "SMB service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "smb-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Caller object",
+        "url": "smb-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "SMB client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Write file",
+        "url": "smb-client-write-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Read file",
+        "url": "smb-client-read-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "Database access",
     "column": 3,
     "category": "Network libraries",
@@ -5460,6 +5510,43 @@
     ]
   },
   {
+    "title": "Zip",
+    "column": 2,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Create a ZIP archive",
+        "url": "zip-compress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Extract a ZIP archive",
+        "url": "zip-decompress",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      },
+      {
+        "name": "Unpack an untrusted archive",
+        "url": "zip-decompress-untrusted",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false,
+        "needCentral": true
+      }
+    ]
+  },
+  {
     "title": "XSLT",
     "column": 3,
     "category": "Common libraries",
@@ -5688,67 +5775,30 @@
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Retrieval-augmented generation (RAG)",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "RAG with in-memory vector store",
-        "url": "rag-with-in-memory-vector-store",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys",
-        "disablePlayground": true,
-        "needCentral": false
       },
       {
-        "name": "RAG ingestion with external vector store",
-        "url": "rag-ingestion-with-external-vector-store",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Requires keys",
-        "disablePlayground": true,
-        "needCentral": true
-      },
-      {
-        "name": "RAG query with external vector store",
-        "url": "rag-query-with-external-vector-store",
+        "name": "Direct LLM calls with a specific model provider",
+        "url": "direct-llm-calls-with-model-provider",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": true
-      }
-    ]
-  },
-  {
-    "title": "Model context protocol (MCP)",
-    "column": 1,
-    "category": "Generative AI",
-    "samples": [
-      {
-        "name": "MCP service",
-        "url": "mcp-service",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true
       },
       {
-        "name": "MCP advanced service",
-        "url": "mcp-service-advanced",
+        "name": "Direct LLM calls with a local model using Ollama",
+        "url": "direct-llm-calls-with-ollama",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true
+        "disableVerificationReason": "Requires a local Ollama server and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
       }
     ]
   },
   {
     "title": "AI agents",
-    "column": 2,
+    "column": 1,
     "category": "Generative AI",
     "samples": [
       {
@@ -5761,8 +5811,8 @@
         "needCentral": false
       },
       {
-        "name": "Agent with MCP integration",
-        "url": "ai-agent-mcp-integration",
+        "name": "Passing context to agent tools",
+        "url": "ai-agent-tool-context",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys and the output is not fixed",
@@ -5779,6 +5829,15 @@
         "needCentral": true
       },
       {
+        "name": "Human-in-the-loop tool approval",
+        "url": "ai-agent-human-in-the-loop",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and user input",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
         "name": "Chat agents",
         "url": "chat-agents",
         "verifyBuild": true,
@@ -5788,6 +5847,115 @@
         "needCentral": false
       },
       {
+        "name": "Chat client",
+        "url": "ai-chat-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the chat agent service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent definitions",
+        "url": "ai-agent-definitions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent memory",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with in-memory short-term memory",
+        "url": "ai-agent-memory",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent with persistent memory",
+        "url": "ai-agent-persistent-memory",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Memory overflow handling",
+        "url": "ai-agent-memory-overflow-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent ID",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent ID",
+        "url": "ai-agent-id",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an agent identity registered with an authorization server",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agent tracing and evaluation",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent execution trace",
+        "url": "ai-agent-execution-trace",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Publish agent traces to Jaeger",
+        "url": "ai-agent-tracing-jaeger",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and a running Jaeger instance",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Agent evaluation",
+        "url": "ai-agent-evaluation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Test file; has different naming convention and requires keys",
+        "disablePlayground": true,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "Advanced agent features",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
         "name": "Agent with tool kits",
         "url": "ai-agent-tool-kit",
         "verifyBuild": true,
@@ -5795,6 +5963,433 @@
         "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
+      },
+      {
+        "name": "Agent with typed input and output",
+        "url": "ai-agent-typed-input-output",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent tool loading strategy",
+        "url": "ai-agent-tool-loading-strategy",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Multi-agent systems",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent as a tool",
+        "url": "ai-agent-as-tool",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "MCP service",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP service",
+        "url": "mcp-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP advanced service",
+        "url": "mcp-service-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP service with request metadata",
+        "url": "mcp-service-with-request-metadata",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Long-running service",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "MCP tools with HTTP request binding",
+        "url": "mcp-service-http-request-binding",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Long-running service",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "MCP service security",
+        "url": "mcp-service-security",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Long-running service with TLS resources",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "MCP client",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "MCP client",
+        "url": "mcp-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "MCP client with request metadata",
+        "url": "mcp-client-with-request-metadata",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agents with MCP tools",
+    "column": 1,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agent with MCP integration",
+        "url": "ai-agent-mcp-integration",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Agent with advanced MCP integration",
+        "url": "ai-agent-mcp-integration-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Passing context to MCP tools",
+        "url": "ai-agent-mcp-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the MCP service to be running",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "RAG fundamentals",
+    "category": "Generative AI",
+    "column": 2,
+    "samples": [
+      {
+        "name": "Load documents",
+        "url": "rag-document-loading",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Depends on the sample documents",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Load documents from multiple sources",
+        "url": "rag-document-sources",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires Microsoft SharePoint credentials",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Load using a custom data loader",
+        "url": "rag-custom-data-loader",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Chunk documents",
+        "url": "rag-document-chunking",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Implement a custom chunker",
+        "url": "rag-with-custom-chunker",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Generate embeddings with the default WSO2 embedding provider",
+        "url": "rag-embeddings",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Generate embeddings with a specific provider",
+        "url": "rag-embedding-provider",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Implement a custom embedding provider",
+        "url": "rag-custom-embedding-provider",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a running Ollama server",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Vector store operations",
+        "url": "rag-vector-store-operations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Implement a custom vector store",
+        "url": "rag-custom-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Augment the prompt with retrieved context",
+        "url": "rag-augment-prompt",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "RAG ingestion",
+    "category": "Generative AI",
+    "column": 2,
+    "samples": [
+      {
+        "name": "Ingest into an in-memory vector store",
+        "url": "rag-in-memory-vector-store-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Ingest without chunking",
+        "url": "rag-without-chunking",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Ingest with a configured chunker",
+        "url": "rag-with-configured-chunker",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Ingest into Pinecone",
+        "url": "rag-ingestion-with-external-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Ingest into pgvector",
+        "url": "rag-pgvector-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and a PostgreSQL database",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Ingest into Azure AI Search",
+        "url": "rag-azure-ai-search-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and an Azure AI Search service",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Ingest with Google Vertex AI embeddings",
+        "url": "rag-vertex-ai-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires Google Cloud credentials",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Ingest with OpenRouter embeddings",
+        "url": "rag-openrouter-ingestion",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
+        "disablePlayground": true,
+        "needCentral": true
+      }
+    ]
+  },
+  {
+    "title": "RAG query",
+    "category": "Generative AI",
+    "column": 3,
+    "samples": [
+      {
+        "name": "Retrieve from an in-memory vector store",
+        "url": "rag-in-memory-vector-store-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Retrieve from Pinecone",
+        "url": "rag-query-with-external-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Retrieve from pgvector",
+        "url": "rag-pgvector-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and a PostgreSQL database",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Retrieve from Azure AI Search",
+        "url": "rag-azure-ai-search-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and an Azure AI Search service",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Retrieve from a WSO2 Cloud knowledge base",
+        "url": "rag-wso2-cloud-knowledge-base-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a WSO2 Integration platform knowledge base and access token",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Retrieve and generate with Google Vertex AI",
+        "url": "rag-vertex-ai-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires Google Cloud credentials and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Retrieve and generate with OpenRouter",
+        "url": "rag-openrouter-retrieval",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Filter results by metadata",
+        "url": "rag-query-with-metadata-filters",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": false
+      }
+    ]
+  },
+  {
+    "title": "Agentic RAG",
+    "column": 3,
+    "category": "Generative AI",
+    "samples": [
+      {
+        "name": "Agentic RAG with WSO2 Cloud",
+        "url": "agentic-rag-with-wso2-integration-knowledge-base",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires a WSO2 Integration knowledge base and keys",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Agentic RAG with Pinecone",
+        "url": "agentic-rag-with-pinecone-vector-store",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and a Pinecone index",
+        "disablePlayground": true,
+        "needCentral": true
       }
     ]
   },
@@ -5809,6 +6404,24 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Requires keys",
+        "disablePlayground": true,
+        "needCentral": false
+      },
+      {
+        "name": "Natural expressions with a specific model provider",
+        "url": "natural-expressions-with-model-provider",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
+        "disablePlayground": true,
+        "needCentral": true
+      },
+      {
+        "name": "Natural functions",
+        "url": "natural-functions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys and the output is not fixed",
         "disablePlayground": true,
         "needCentral": false
       }

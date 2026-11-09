@@ -139,7 +139,7 @@ export function AiAgentLocalTools({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/ai-agent-local-tools",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/ai-agent-local-tools",
                 "_blank",
               );
             }}
@@ -396,8 +396,8 @@ export function AiAgentLocalTools({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="MCP advanced service"
-            href="/learn/by-example/mcp-service-advanced/"
+            title="Direct LLM calls with a local model using Ollama"
+            href="/learn/by-example/direct-llm-calls-with-ollama/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -424,7 +424,7 @@ export function AiAgentLocalTools({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP advanced service
+                  Direct LLM calls with a local model using Ollama
                 </span>
               </div>
             </div>
@@ -432,8 +432,8 @@ export function AiAgentLocalTools({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Agent with MCP integration"
-            href="/learn/by-example/ai-agent-mcp-integration/"
+            title="Passing context to agent tools"
+            href="/learn/by-example/ai-agent-tool-context/"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -443,7 +443,7 @@ export function AiAgentLocalTools({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Agent with MCP integration
+                  Passing context to agent tools
                 </span>
               </div>
               <svg

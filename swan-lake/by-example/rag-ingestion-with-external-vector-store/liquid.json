@@ -1,5 +1,5 @@
 {
-  "title": "RAG ingestion with external vector store",
+  "title": "Ingest into Pinecone",
   "description": "This BBE demonstrates how to do data ingestion for retrieval-augmented generation (RAG).",
   "keywords": ["ballerina", "ballerina by example", "BBE", "ai", "llm", "rag"],
   "permalink": "/learn/by-example/rag-ingestion-with-external-vector-store/",

@@ -33,17 +33,17 @@ type WeatherForecast record {|
     ForecastItem[] forecast;
 |};
 
-// Define an MCP service attached to the MCP listener on port 9090.
-listener mcp:Listener mcpListener = new (9090);
+// Define an MCP service attached to the MCP Streamable HTTP listener on port 9090.
+listener mcp:StreamableHttpListener mcpListener = new (9090);
 
-service mcp:Service /mcp on mcpListener {
+service mcp:StreamableHttpService /mcp on mcpListener {
 
     // The remote methods defined in this service become MCP tools.
     // The MCP listener handles listing and calling the tools on MCP requests.
-    // The tool descriptions and schema are generated from the method signatures 
+    // The tool descriptions and schema are generated from the method signatures
     // and the documentation.
     # Get current weather for a city.
-    # 
+    #
     # + city - City name (e.g., "New York", "Tokyo")
     # + return - Current weather data for the specified city
     remote function getCurrentWeather(string city) returns Weather|error {
@@ -55,12 +55,12 @@ service mcp:Service /mcp on mcpListener {
 
     # Get weather forecast for upcoming days.
     #
-    # + location - City name or coordinates (e.g., "London", "40.7128,-74.0060") 
+    # + location - City name or coordinates (e.g., "London", "40.7128,-74.0060")
     # + days - Number of days to forecast (1 - 7)
     # + return - Weather forecast for the specified location and days
     remote function getWeatherForecast(string location, int days) returns WeatherForecast|error {
         WeatherForecast mockForecast = {
-            forecast: check getMockForecastItems(days), 
+            forecast: check getMockForecastItems(days),
             location
         };
         log:printInfo(string \`Forecast generated for \${location}: \${days} days with random data\`);
@@ -111,8 +111,9 @@ export function McpService({ codeSnippets }) {
 
       <p>
         Ballerina’s MCP library allows you to create MCP servers that expose
-        tools. Remote methods of a <code>mcp:Service</code> service declaration
-        automatically become MCP tools that AI assistants can discover and call.
+        tools over the Streamable HTTP transport. Remote methods of an{" "}
+        <code>mcp:StreamableHttpService</code> service declaration automatically
+        become MCP tools that AI assistants can discover and call.
       </p>
 
       <p>
@@ -139,7 +140,7 @@ export function McpService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.5/examples/mcp-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.13.6/examples/mcp-service",
                 "_blank",
               );
             }}
@@ -289,8 +290,8 @@ export function McpService({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="RAG query with external vector store"
-            href="/learn/by-example/rag-query-with-external-vector-store/"
+            title="Agent as a tool"
+            href="/learn/by-example/ai-agent-as-tool/"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -317,7 +318,7 @@ export function McpService({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RAG query with external vector store
+                  Agent as a tool
                 </span>
               </div>
             </div>

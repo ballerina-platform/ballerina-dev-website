@@ -97,6 +97,42 @@ const nextConfig = {
         destination: `/learn/ai-integrations/observe-and-secure-ai-integrations`,
       },
       {
+        source: `/${redirectBase}learn/ai-in-ballerina-overview`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/ai-in-ballerina-overview`,
+      },
+      {
+        source: `/${redirectBase}learn/configure-model-and-embedding-providers`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/configure-model-and-embedding-providers`,
+      },
+      {
+        source: `/${redirectBase}learn/build-an-ai-agent`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/build-an-ai-agent`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-agent-memory`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/persist-agent-memory`,
+      },
+      {
+        source: `/${redirectBase}learn/build-a-rag-application`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/build-a-rag-application`,
+      },
+      {
+        source: `/${redirectBase}learn/expose-and-consume-mcp-servers`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/expose-and-consume-mcp-servers`,
+      },
+      {
+        source: `/${redirectBase}learn/human-in-the-loop-agents`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/human-in-the-loop-agents`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-and-evaluate-agents`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/observe-and-evaluate-agents`,
+      },
+      {
+        source: `/${redirectBase}learn/natural-programming`,
+        destination: `/${redirectBase}learn/resources/build-ai-applications/natural-programming`,
+      },
+      {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
@@ -287,6 +323,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/overview-of-ballerina-observability`,
         destination: `/${redirectBase}learn/development-tutorials/observability/overview-of-ballerina-observability`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-observability-tools-and-platforms/opentelemetry`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/supported-observability-tools-and-platforms/opentelemetry`,
       },
       {
         source: `/${redirectBase}learn/supported-observability-tools-and-platforms/prometheus`,
@@ -619,6 +659,10 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/by-example/sftp-service-send-file`,
         destination: `/${redirectBase}learn/by-example/sftp-caller`,
+      },
+      {
+        source: `/${redirectBase}learn/by-example/rag-with-in-memory-vector-store`,
+        destination: `/${redirectBase}learn/by-example/rag-in-memory-vector-store-retrieval`,
       }
     ];
   },

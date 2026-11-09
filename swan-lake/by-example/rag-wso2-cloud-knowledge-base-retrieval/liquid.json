@@ -1,0 +1,17 @@
+{
+  "title": "Retrieve from a WSO2 Cloud knowledge base",
+  "description": "This BBE demonstrates how to retrieve relevant chunks from a WSO2 Cloud knowledge base and generate an answer for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "retrieval",
+    "knowledge base",
+    "wso2 cloud"
+  ],
+  "permalink": "/learn/by-example/rag-wso2-cloud-knowledge-base-retrieval/",
+  "active": "rag-wso2-cloud-knowledge-base-retrieval"
+}

@@ -457,7 +457,7 @@ By default, no gate is set, so findings never fail the scan. The gate is set wit
 `--fail-on-count`, or with the `[gate]` table of `Scan.toml`, and fails the scan when the number of issues at or above
 the severity reaches the count:
 
-| `--fail-on-severity` | `--fail-on-count` | Fails when |
+| --fail-on-severity | --fail-on-count | Fails when |
 |---|---|---|
 | Not set | Not set | Never. The gate is off. |
 | Not set | `n` | There are `n` or more issues of any severity. |

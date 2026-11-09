@@ -4,6 +4,7 @@
 cp -r ./out/learn/development-tutorials/* ./out/learn
 cp -r ./out/learn/integration/* ./out/learn
 cp -r ./out/learn/integration-tools/* ./out/learn
+cp -r ./out/learn/ai-integrations/* ./out/learn
 cp -r ./out/learn/troubleshoot-the-runtime/* ./out/learn
 cp -r ./out/learn/references/* ./out/learn
 cp -r ./out/learn/resources/* ./out/learn
@@ -36,7 +37,7 @@ cp -r ./out/learn/manage-dependencies ./out/learn/proxy-ballerina-central-with-m
 cp ./out/404/index.html ./out/404.html
 
 #Remove duplicated files
-rm -rf ./out/learn/development-tutorials/ ./out/learn/integration/ ./out/learn/integration-tools/ ./out/learn/troubleshoot-the-runtime/ ./out/policies/ ./out/learn/references/ .out/learn/resources/
+rm -rf ./out/learn/development-tutorials/ ./out/learn/integration/ ./out/learn/integration-tools/ ./out/learn/ai-integrations/ ./out/learn/troubleshoot-the-runtime/ ./out/policies/ ./out/learn/references/ .out/learn/resources/
 rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-repositories/ ./out/learn/configurability/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/ ./out/learn/ballerina-persist/ ./out/learn/build-and-run/ ./out/learn/observability/ ./out/learn/featured-scenarios/ ./out/learn/learn-the-language/* ./out/learn/build-ai-applications/ ./out/learn/run-in-the-cloud/ ./out/learn/deployment-guide/ ./out/learn/static-code-analysis/ ./out/learn/additional-tools/
 
 
@@ -44,6 +45,7 @@ rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-repositories
 sed -i '' 's/development-tutorials\///g' ./out/sitemap.xml
 sed -i '' -e '/\/use-cases\/integration\//!s/\/integration\//\//g' ./out/sitemap.xml
 sed -i '' 's/integration-tools\///g' ./out/sitemap.xml
+sed -i '' 's/\/learn\/ai-integrations\//\/learn\//g' ./out/sitemap.xml
 sed -i '' 's/troubleshoot-the-runtime\///g' ./out/sitemap.xml
 sed -i '' 's/\/learn\/references\//\/learn\//g' ./out/sitemap.xml
 sed -i '' 's/\/resources\//\//g' ./out/sitemap.xml

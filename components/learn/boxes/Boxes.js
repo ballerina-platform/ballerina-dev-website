@@ -250,6 +250,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Features of the Ballerina Visual Studio Code extension.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ai-coding-assistants/`} className={styles.titleLink}>
+                            AI coding assistants
+                          </a>
+                        </p>
+                        <p className={styles.description}>Give AI coding assistants the context and tooling to write real Ballerina.</p>
+                      </div>
                     </div>
                   </div>
                 </div>

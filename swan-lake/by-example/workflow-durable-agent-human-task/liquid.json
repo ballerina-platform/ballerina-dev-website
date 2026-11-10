@@ -1,0 +1,13 @@
+{
+  "title": "Durable agent with human task",
+  "description": "This BBE demonstrates how a durable AI agent in Ballerina pauses on a human task before it acts.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "durable agent",
+    "human task"
+  ],
+  "permalink": "/learn/by-example/workflow-durable-agent-human-task/",
+  "active": "workflow-durable-agent-human-task"
+}

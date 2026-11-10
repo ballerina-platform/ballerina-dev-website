@@ -1,0 +1,13 @@
+{
+  "title": "Activity",
+  "description": "This BBE demonstrates how to call an activity from a Ballerina workflow so that its result is recorded.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "workflow",
+    "activity"
+  ],
+  "permalink": "/learn/by-example/workflow-activity/",
+  "active": "workflow-activity"
+}

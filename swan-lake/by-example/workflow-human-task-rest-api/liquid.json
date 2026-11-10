@@ -1,0 +1,13 @@
+{
+  "title": "Human task with REST API",
+  "description": "This BBE demonstrates how to list and complete workflow human tasks with the workflow management REST API.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "workflow",
+    "human task rest api"
+  ],
+  "permalink": "/learn/by-example/workflow-human-task-rest-api/",
+  "active": "workflow-human-task-rest-api"
+}

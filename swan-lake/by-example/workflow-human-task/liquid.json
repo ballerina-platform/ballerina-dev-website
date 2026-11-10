@@ -1,0 +1,13 @@
+{
+  "title": "Human task",
+  "description": "This BBE demonstrates how a Ballerina workflow waits for a human task and how to complete the task.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "workflow",
+    "human task"
+  ],
+  "permalink": "/learn/by-example/workflow-human-task/",
+  "active": "workflow-human-task"
+}

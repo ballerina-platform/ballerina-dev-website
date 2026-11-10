@@ -1702,5 +1702,50 @@
       "other-artefacts": ["ballerina-1.2.68.zip", "ballerina-1.2.68.vsix"],
       "api-docs": "ballerina-api-docs-1.2.68.zip",
       "release-notes": "ballerina-release-notes-1.2.68.md"
+   },
+   {
+      "version": "1.2.69",
+      "release-date": "2026-10-14",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.69.msi",
+      "windows-installer-size": "272K",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.69.deb",
+      "linux-installer-size": "177mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.69.pkg",
+      "macos-installer-size": "197mb",
+      "rpm-installer": "ballerina-linux-installer-x64-1.2.69.rpm",
+      "rpm-installer-size": "200mb",
+      "other-artefacts": ["ballerina-1.2.69.zip", "ballerina-1.2.69.vsix"],
+      "api-docs": "ballerina-api-docs-1.2.69.zip",
+      "release-notes": "ballerina-release-notes-1.2.69.md"
+   },
+   {
+      "version": "1.2.70",
+      "release-date": "2026-10-14",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.70.msi",
+      "windows-installer-size": "272K",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.70.deb",
+      "linux-installer-size": "177mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.70.pkg",
+      "macos-installer-size": "197mb",
+      "rpm-installer": "ballerina-linux-installer-x64-1.2.70.rpm",
+      "rpm-installer-size": "200mb",
+      "other-artefacts": ["ballerina-1.2.70.zip", "ballerina-1.2.70.vsix"],
+      "api-docs": "ballerina-api-docs-1.2.70.zip",
+      "release-notes": "ballerina-release-notes-1.2.70.md"
+   },
+   {
+      "version": "1.2.71",
+      "release-date": "2026-11-03",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.71.msi",
+      "windows-installer-size": "272K",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.71.deb",
+      "linux-installer-size": "177mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.71.pkg",
+      "macos-installer-size": "197mb",
+      "rpm-installer": "ballerina-linux-installer-x64-1.2.71.rpm",
+      "rpm-installer-size": "177mb",
+      "other-artefacts": ["ballerina-1.2.71.zip", "ballerina-1.2.71.vsix"],
+      "api-docs": "ballerina-api-docs-1.2.71.zip",
+      "release-notes": "ballerina-release-notes-1.2.71.md"
    }
 ]

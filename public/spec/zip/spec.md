@@ -3,7 +3,7 @@
 _Owners_: @niveathika @Nuvindu  
 _Reviewers_: @niveathika  
 _Created_: 2026/08/14  
-_Updated_: 2026/08/19  
+_Updated_: 2026/11/02  
 _Edition_: Swan Lake
 
 ## Introduction
@@ -111,7 +111,9 @@ public type Entry record {|
 
 `modifiedTime` is accurate to two seconds, which is all the format stores by default; archives that record a more precise time report that instead. An entry recording no time at all, and one recording a time before the epoch, both report the epoch.
 
-`unixMode` reports the mode as the archive records it, including the setuid, setgid and sticky bits. It excludes the bits saying what kind of file it is, which is why `isSymlink` is a separate field. A symbolic link entry is visible when listing but cannot be extracted, per [Section 4.4](#44-extracting).
+The standard ZIP date and time carries no time zone. It is read and written in the local time zone of the running program, as other ZIP tools do, so an archive read in a different time zone from the one it was written in reports a different `modifiedTime`. A time recorded in the extended timestamp fields is UTC and is reported as recorded.
+
+`unixMode` reports the mode as the archive records it, including the setuid, setgid and sticky bits. It is present whenever the archive records Unix attributes for the entry, and is `0` when those attributes set no permission bit. It excludes the bits saying what kind of file it is, which is why `isSymlink` is a separate field. A symbolic link entry is visible when listing but cannot be extracted, per [Section 4.4](#44-extracting).
 
 ### 2.3. Compression method and level
 
@@ -171,12 +173,15 @@ public type FileSystemError distinct Error;
 | `UnsafePathError` | An entry would be written outside the folder you chose |
 | `LimitExceededError` | Extraction went past one of the limits in [Section 8.2](#82-extraction-limits) |
 | `FileSystemError` | A file could not be read, written, or created |
+| `Error` | An argument is invalid, such as an extraction limit that is not positive or content given under a name ending in `/`, or a content stream given to `addEntry` could not be read or closed |
 
-`UnsupportedEntryError`, `UnsafePathError`, and `LimitExceededError` carry a detail record naming the entry. The other three carry no details.
+`UnsupportedEntryError`, `UnsafePathError`, and `LimitExceededError` carry a detail record naming the entry. The others carry no details.
 
 `FileSystemError` has no detail record. When extracting a whole archive fails on one entry, its message names that entry; it also covers failures with no entry behind them, such as being unable to create the target folder.
 
 Error messages always come from this library. Messages from the compression library underneath are never passed through, so they stay the same if that library is replaced.
+
+A message names the operation that failed before the reason it failed, as `cannot <operation>: <reason>`, and states the reason as a fact rather than as what would have happened: `cannot extract entry 'notes.txt': file '/tmp/out/notes.txt' already exists`. An operation that has nothing to say beyond what went missing is stated plainly instead, as in `the archive contains no entry named 'notes.txt'`.
 
 ## 4. Reading an archive
 
@@ -246,7 +251,7 @@ public isolated function extractEntry(string name, string targetPath,
 public isolated function extractAll(string targetPath, DecompressOptions options = {}) returns Error?;
 ```
 
-`extractEntry` writes one entry to the file path you give. The folder it goes in must already exist.
+`extractEntry` writes one entry to the file path you give. For a file entry, the folder it goes in must already exist. A directory entry is created at that path, along with any missing folders above it.
 
 `extractAll` writes every entry into the folder you give, in the order the entries are stored in the archive, creating that folder and any folders below it as needed. Folders are created for any entry name that contains a `/`, whether or not the archive records the folder itself.
 

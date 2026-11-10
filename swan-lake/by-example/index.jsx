@@ -2192,6 +2192,42 @@ import {
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
 import {
+  WorkflowFunction,
+  codeSnippetData as WorkflowFunctionCodeSnippetData,
+} from "./workflow-function/content.jsx";
+import {
+  WorkflowActivity,
+  codeSnippetData as WorkflowActivityCodeSnippetData,
+} from "./workflow-activity/content.jsx";
+import {
+  WorkflowDataEvents,
+  codeSnippetData as WorkflowDataEventsCodeSnippetData,
+} from "./workflow-data-events/content.jsx";
+import {
+  WorkflowDurableSleep,
+  codeSnippetData as WorkflowDurableSleepCodeSnippetData,
+} from "./workflow-durable-sleep/content.jsx";
+import {
+  WorkflowHumanTask,
+  codeSnippetData as WorkflowHumanTaskCodeSnippetData,
+} from "./workflow-human-task/content.jsx";
+import {
+  WorkflowHumanTaskRestApi,
+  codeSnippetData as WorkflowHumanTaskRestApiCodeSnippetData,
+} from "./workflow-human-task-rest-api/content.jsx";
+import {
+  WorkflowDurableAgent,
+  codeSnippetData as WorkflowDurableAgentCodeSnippetData,
+} from "./workflow-durable-agent/content.jsx";
+import {
+  WorkflowDurableAgentHumanTask,
+  codeSnippetData as WorkflowDurableAgentHumanTaskCodeSnippetData,
+} from "./workflow-durable-agent-human-task/content.jsx";
+import {
+  WorkflowDurableAgentDataEvents,
+  codeSnippetData as WorkflowDurableAgentDataEventsCodeSnippetData,
+} from "./workflow-durable-agent-data-events/content.jsx";
+import {
   DirectLlmCalls,
   codeSnippetData as DirectLlmCallsCodeSnippetData,
 } from "./direct-llm-calls/content.jsx";
@@ -3635,6 +3671,24 @@ const BBEs = {
   XlsxToRecordsAdvancedCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  WorkflowFunction,
+  WorkflowFunctionCodeSnippetData,
+  WorkflowActivity,
+  WorkflowActivityCodeSnippetData,
+  WorkflowDataEvents,
+  WorkflowDataEventsCodeSnippetData,
+  WorkflowDurableSleep,
+  WorkflowDurableSleepCodeSnippetData,
+  WorkflowHumanTask,
+  WorkflowHumanTaskCodeSnippetData,
+  WorkflowHumanTaskRestApi,
+  WorkflowHumanTaskRestApiCodeSnippetData,
+  WorkflowDurableAgent,
+  WorkflowDurableAgentCodeSnippetData,
+  WorkflowDurableAgentHumanTask,
+  WorkflowDurableAgentHumanTaskCodeSnippetData,
+  WorkflowDurableAgentDataEvents,
+  WorkflowDurableAgentDataEventsCodeSnippetData,
   DirectLlmCalls,
   DirectLlmCallsCodeSnippetData,
   DirectLlmCallsWithHistory,

@@ -2340,6 +2340,18 @@ import {
   codeSnippetData as McpServiceSecurityCodeSnippetData,
 } from "./mcp-service-security/content.jsx";
 import {
+  McpV2Service,
+  codeSnippetData as McpV2ServiceCodeSnippetData,
+} from "./mcp-v2-service/content.jsx";
+import {
+  McpV2ServiceAdvanced,
+  codeSnippetData as McpV2ServiceAdvancedCodeSnippetData,
+} from "./mcp-v2-service-advanced/content.jsx";
+import {
+  McpV2ServiceElicitation,
+  codeSnippetData as McpV2ServiceElicitationCodeSnippetData,
+} from "./mcp-v2-service-elicitation/content.jsx";
+import {
   McpClient,
   codeSnippetData as McpClientCodeSnippetData,
 } from "./mcp-client/content.jsx";
@@ -2347,6 +2359,10 @@ import {
   McpClientWithRequestMetadata,
   codeSnippetData as McpClientWithRequestMetadataCodeSnippetData,
 } from "./mcp-client-with-request-metadata/content.jsx";
+import {
+  McpV2Client,
+  codeSnippetData as McpV2ClientCodeSnippetData,
+} from "./mcp-v2-client/content.jsx";
 import {
   AiAgentMcpIntegration,
   codeSnippetData as AiAgentMcpIntegrationCodeSnippetData,
@@ -3745,10 +3761,18 @@ const BBEs = {
   McpServiceHttpRequestBindingCodeSnippetData,
   McpServiceSecurity,
   McpServiceSecurityCodeSnippetData,
+  McpV2Service,
+  McpV2ServiceCodeSnippetData,
+  McpV2ServiceAdvanced,
+  McpV2ServiceAdvancedCodeSnippetData,
+  McpV2ServiceElicitation,
+  McpV2ServiceElicitationCodeSnippetData,
   McpClient,
   McpClientCodeSnippetData,
   McpClientWithRequestMetadata,
   McpClientWithRequestMetadataCodeSnippetData,
+  McpV2Client,
+  McpV2ClientCodeSnippetData,
   AiAgentMcpIntegration,
   AiAgentMcpIntegrationCodeSnippetData,
   AiAgentMcpIntegrationAdvanced,

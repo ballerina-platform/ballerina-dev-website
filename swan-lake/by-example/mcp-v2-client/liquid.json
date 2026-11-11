@@ -1,0 +1,16 @@
+{
+  "title": "MCP client (v2)",
+  "description": "This BBE demonstrates how to connect to an MCP server and call its tools with the ballerina/mcp.v2 module.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "mcp",
+    "mcp.v2",
+    "client"
+  ],
+  "permalink": "/learn/by-example/mcp-v2-client/",
+  "active": "mcp-v2-client"
+}

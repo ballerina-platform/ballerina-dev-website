@@ -2176,6 +2176,15 @@ sublinks:
           - title: MCP service security
             id: 5
             url: mcp-service-security
+          - title: MCP service (v2)
+            id: 6
+            url: mcp-v2-service
+          - title: MCP advanced service (v2)
+            id: 7
+            url: mcp-v2-service-advanced
+          - title: MCP service with elicitation (v2)
+            id: 8
+            url: mcp-v2-service-elicitation
       - title: MCP client
         id: 9
         sublinks:
@@ -2185,6 +2194,9 @@ sublinks:
           - title: MCP client with request metadata
             id: 2
             url: mcp-client-with-request-metadata
+          - title: MCP client (v2)
+            id: 3
+            url: mcp-v2-client
       - title: Agents with MCP tools
         id: 10
         sublinks:

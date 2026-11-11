@@ -92,8 +92,8 @@ service mcp:StreamableHttpAdvancedService /mcp on mcpListener {
             }
 
             if name == "getWeatherForecast" {
-                record {| string location; int days; |} {location, days} = check params.arguments.cloneWithType();
-                WeatherForecast forecast = check getWeatherForecast(location, days);
+                record {| string city; int days; |} {city, days} = check params.arguments.cloneWithType();
+                WeatherForecast forecast = check getWeatherForecast(city, days);
                 return {content: [{'type: "text", text: forecast.toJsonString()}]};
             }
         } on fail {

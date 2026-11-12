@@ -1,0 +1,16 @@
+{
+  "title": "MCP service with elicitation (v2)",
+  "description": "This BBE demonstrates how an MCP tool asks the user for input with elicitation in the ballerina/mcp.v2 module.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "mcp",
+    "mcp.v2",
+    "elicitation"
+  ],
+  "permalink": "/learn/by-example/mcp-v2-service-elicitation/",
+  "active": "mcp-v2-service-elicitation"
+}

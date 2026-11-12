@@ -351,10 +351,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="MCP client with request metadata"
-            href="/learn/by-example/mcp-client-with-request-metadata/"
-          >
+          <Link title="MCP client (v2)" href="/learn/by-example/mcp-v2-client/">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -380,7 +377,7 @@ export function AiAgentMcpIntegration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  MCP client with request metadata
+                  MCP client (v2)
                 </span>
               </div>
             </div>

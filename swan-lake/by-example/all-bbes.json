@@ -4835,56 +4835,6 @@
     ]
   },
   {
-    "title": "SMB service",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Receive file",
-        "url": "smb-service-receive-file",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      },
-      {
-        "name": "Caller object",
-        "url": "smb-caller",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      }
-    ]
-  },
-  {
-    "title": "SMB client",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Write file",
-        "url": "smb-client-write-file",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      },
-      {
-        "name": "Read file",
-        "url": "smb-client-read-file",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      }
-    ]
-  },
-  {
     "title": "Database access",
     "column": 3,
     "category": "Network libraries",
@@ -5469,43 +5419,6 @@
         "verifyOutput": true,
         "isLearnByExample": false,
         "needCentral": false
-      }
-    ]
-  },
-  {
-    "title": "Zip",
-    "column": 2,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Create a ZIP archive",
-        "url": "zip-compress",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      },
-      {
-        "name": "Extract a ZIP archive",
-        "url": "zip-decompress",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
-      },
-      {
-        "name": "Unpack an untrusted archive",
-        "url": "zip-decompress-untrusted",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false,
-        "needCentral": true
       }
     ]
   },
@@ -6156,6 +6069,27 @@
         "disableVerificationReason": "Long-running service with TLS resources",
         "disablePlayground": true,
         "needCentral": false
+      },
+      {
+        "name": "MCP service (v2)",
+        "url": "mcp-v2-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP advanced service (v2)",
+        "url": "mcp-v2-service-advanced",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
+      },
+      {
+        "name": "MCP service with elicitation (v2)",
+        "url": "mcp-v2-service-elicitation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },
@@ -6181,6 +6115,13 @@
         "disableVerificationReason": "Requires the MCP service to be running",
         "disablePlayground": true,
         "needCentral": false
+      },
+      {
+        "name": "MCP client (v2)",
+        "url": "mcp-v2-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true
       }
     ]
   },
@@ -6253,7 +6194,8 @@
         "name": "Chunk documents",
         "url": "rag-document-chunking",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires keys",
         "disablePlayground": true,
         "needCentral": false
       },

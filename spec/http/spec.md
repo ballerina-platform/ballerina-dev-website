@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2026/11/02   
+_Updated_: 2026/11/10   
 _Edition_: Swan Lake
 
 
@@ -2625,6 +2625,8 @@ If the JWT information of the request is required, it can be retrieved by using 
 ```ballerina
 [jwt:Header, jwt:Payload] jwtInformation = check ctx.getWithType(http:JWT_INFORMATION);
 ```
+
+The JWT information is decoded from the bearer token in the `Authorization` header of every request without validating the token. Its claims can be trusted only after the token is validated. Declarative JWT auth validates the token when the resource function is invoked, which is after the request interceptors have run, so a request interceptor that relies on these claims must validate the token itself (for example, with an `http:ListenerJwtAuthHandler`).
 
 #### 8.1.2 Response interceptor
 

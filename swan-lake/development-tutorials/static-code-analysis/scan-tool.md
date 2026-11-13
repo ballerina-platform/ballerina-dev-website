@@ -19,8 +19,7 @@ Execute the command below to pull the scan tool from [Ballerina Central](https:/
 $ bal tool pull scan
 ```
 
-This page describes version 0.13.0 of the scan tool, which requires Ballerina 2201.13.2 or later. To update an
-earlier installation, run `bal tool update scan`.
+This page describes the latest version of the scan tool, which is compatible with Ballerina 2201.13.0 (Swan Lake Update 13) and later. To update an earlier installation, run `bal tool update scan`.
 
 To verify the installation and check the version:
 
@@ -102,13 +101,9 @@ order. The issues of every package are printed as one document.
 
 ### Console output
 
-When the scan completes, the issues are written to standard output, in JSON or in SARIF with `--format=sarif`.
-Progress messages, warnings, report paths, and the issue summary, such as `3 issue(s)`, are written to standard error.
-The exceptions are `--list-rules`, which prints its rule table to standard output, and `--platforms`, since platform
-plugins may also write to standard output. Output printed while the package and its analyzers are resolved may also
-reach standard output, so `bal scan > issues.json` is not guaranteed to save valid JSON. For a package, scripts should
-read the saved report, `target/report/scan_results.json` or `target/report/scan_results.sarif`, instead. The saved
-report also contains the suppressed issues, each marked with a `suppressions` entry.
+When the scan completes, the issues are written to standard output, in JSON or in SARIF with `--format=sarif`. Only the issues are written there, so `bal scan > issues.json` saves valid JSON. Progress messages, warnings, report paths, the issue summary, such as `3 issue(s)`, and anything printed by compiler plugins while the package compiles or by platform plugins are written to standard error. The exception is `--list-rules`, which prints its rule table to standard output. A process started by a platform plugin writes to the streams directly, so a plugin that lets such a process inherit standard output can still add to it.
+
+For a package, the results are also saved to `target/report/scan_results.json` or `target/report/scan_results.sarif`. The saved report also contains the suppressed issues, each marked with a `suppressions` entry.
 
 When the scan fails before reporting, for example, on a compilation error, a missing `Dependencies.toml`, or an unmet
 suppression requirement, no issues are printed and the redirected file can be empty. The exit code alone does not show
@@ -184,10 +179,10 @@ useful information:
   {
     "location": {
       "filePath": "main.bal",
-      "startLine": 22,
-      "endLine": 22,
-      "startColumn": 16,
-      "endColumn": 43,
+      "startLine": 23,
+      "endLine": 23,
+      "startColumn": 17,
+      "endColumn": 44,
       "startOffset": 875,
       "length": 27,
       "snippet": "checkpanic parseCount(\"12\")"
@@ -197,7 +192,7 @@ useful information:
       "numericId": 1,
       "name": "Avoid checkpanic",
       "description": "Using `checkpanic` lets an unhandled error panic and crash the program instead of being handled.",
-      "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing.",
+      "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing. A `checkpanic` caught by an enclosing `trap` is still reported: it turns an error into a panic only to turn it back into an error, so test the value with `is` or use `value:ensureType` instead.",
       "helpUri": "https://ballerina.io/learn/scan-rules/#ballerina-1",
       "severity": "LOW",
       "tags": [
@@ -225,6 +220,8 @@ useful information:
   }
 ]
 ```
+
+The `location` gives one-based lines and columns, as the compiler diagnostics and the SARIF report do. Its `filePath` is the path of the file relative to the package root, such as `modules/db/db.bal`, or to the workspace root in the output and combined report of a workspace scan. The `scan_results.json` of each workspace package gives paths relative to the root of that package, and a single Ballerina file gives its file name. The top-level `filePath` is the path of the file as the scan loaded it.
 
 To generate a report in the `sarif` format, use the following command:
 

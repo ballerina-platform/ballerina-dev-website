@@ -138,6 +138,8 @@ Unused function parameters cause unnecessary code complexity and can lead to con
 code. They may also indicate potential errors in function design or changes in requirements that were not properly
 implemented.
 
+A parameter is not reported when the signature is fixed elsewhere: by an external function, by an object type included with `*T`, by the type of a service declaration or object constructor, or by the function type expected where an anonymous function is used, such as the type of the parameter it is passed to or of the variable, list, or mapping it is written in. An anonymous function with no expected type, such as the value of a `var` variable, is still reported.
+
 #### Noncompliant Code Example
 
 ```ballerina
@@ -181,6 +183,8 @@ A non-isolated function will not be called concurrently. Only isolated functions
 are guaranteed to be safe if the arguments are also safe. To allow being called concurrently, a public function should
 be marked as isolated.
 
+Constructs in test sources are not reported, as they are not part of the public API of the package.
+
 #### Noncompliant Code Example
 
 ```ballerina
@@ -211,6 +215,8 @@ Class methods can be isolated. An isolated method is the same as an isolated fun
 A non-isolated method will not be called concurrently. Only isolated methods are called concurrently given that they are
 guaranteed to be safe if the arguments are also safe. To allow being called concurrently, a public method should be
 marked as isolated.
+
+Constructs in test sources are not reported, as they are not part of the public API of the package.
 
 #### Noncompliant Code Example
 
@@ -252,6 +258,8 @@ A class defined as isolated is similar to a module with isolated module-level va
 be accessed concurrently. Only isolated classes are accessed concurrently. To allow being accessed concurrently, a
 public class should be marked as isolated.
 
+A `readonly` class is not reported, as its instances are immutable and can be shared without a lock. A public `service class` is reported, unlike a `service object` type for `ballerina:6`: it holds the state that the requests of a listener share, and the listener calls its methods concurrently only when it is `isolated`. Constructs in test sources are not reported, as they are not part of the public API of the package.
+
 #### Noncompliant Code Example
 
 ```ballerina
@@ -292,6 +300,8 @@ public isolated class EvenNumber {
 
 A non-isolated object will not be accessed concurrently. Only isolated objects are accessed concurrently. To allow being
 accessed concurrently, a public object should be marked as isolated.
+
+A public `service object` type is not reported: it is the contract a listener accepts, user code does not share its values, and marking it `isolated` would require every service that implements it to be isolated. Constructs in test sources are not reported, as they are not part of the public API of the package.
 
 #### Noncompliant Code Example
 
@@ -500,6 +510,8 @@ The rule looks for string literals and constants assigned to names that suggest 
 variables, constants, default parameter values, record and object fields, map fields, and named arguments. It also
 reports URLs that embed credentials, such as `http://user:password@example.com`.
 
+A password, passphrase, passcode, `passwd`, or `pwd` is reported for any value that is not a placeholder, since a person chooses it, as is a secret whose name mentions one, such as `passwordToken`, or a value in a map of passwords. Other secrets, such as API keys, tokens, credentials, and client secrets, are generated, so they are reported only for a value that looks generated: at least 8 characters, not made of words only, not a run of consecutive characters such as `"12345678"`, and with at least 2.5 bits of entropy per character, which is about six distinct characters in eight. A value such as `"true"`, `"Basic "`, `"No Proxy"`, or `"my-secret-key"` is not reported for them. A run of more than 15 letters in one case is not taken as a word, so a key such as `"correcthorsebatterystaple"` is reported. Placeholders are not reported for any secret: an empty value, one character or one repeated character, such as `"*"` or `"xxxxxxxx"`, a template or variable reference, such as `"${DB_PASSWORD}"`, `"{{token}}"`, `"<token>"`, `"$TOKEN"`, or `"%TOKEN%"`, a value such as `"your-api-key-here"`, and dummy values such as `"changeme"` or `"redacted"`. A password that contains a `${...}` or `{{...}}` reference is not reported, while the rest of a key or token around such a reference is still checked.
+
 #### Noncompliant Code Example
 
 ```ballerina
@@ -538,8 +550,9 @@ A secret that is assigned a fixed value rather than being exposed as a configura
 reused across environments. It also prevents the secret from being rotated or overridden without modifying and
 redeploying the code.
 
-The rule reports a secret-named variable, field, or argument whose value comes from a non-configurable variable or from
-a computed expression, rather than from a configurable variable.
+The rule reports a secret-named variable, field, or argument whose value comes from a non-configurable variable that holds a fixed value, such as a variable initialized with a literal and never assigned again, rather than from a configurable variable. Values computed at run time, such as the result of a function call, are not reported.
+
+A password, passphrase, passcode, `passwd`, or `pwd` is reported for any value that is not a placeholder, since a person chooses it, as is a secret whose name mentions one, such as `passwordToken`, or a value in a map of passwords. Other secrets, such as API keys, tokens, credentials, and client secrets, are generated, so they are reported only for a value that looks generated: at least 8 characters, not made of words only, not a run of consecutive characters such as `"12345678"`, and with at least 2.5 bits of entropy per character, which is about six distinct characters in eight. A value such as `"true"`, `"Basic "`, `"No Proxy"`, or `"my-secret-key"` is not reported for them. A run of more than 15 letters in one case is not taken as a word, so a key such as `"correcthorsebatterystaple"` is reported. Placeholders are not reported for any secret: an empty value, one character or one repeated character, such as `"*"` or `"xxxxxxxx"`, a template or variable reference, such as `"${DB_PASSWORD}"`, `"{{token}}"`, `"<token>"`, `"$TOKEN"`, or `"%TOKEN%"`, a value such as `"your-api-key-here"`, and dummy values such as `"changeme"` or `"redacted"`. A password that contains a `${...}` or `{{...}}` reference is not reported, while the rest of a key or token around such a reference is still checked.
 
 #### Noncompliant Code Example
 

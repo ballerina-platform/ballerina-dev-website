@@ -125,22 +125,6 @@ public function getResult() returns json|error {
 }
 ```
 
-Do not pair `checkpanic` with `trap`. A `checkpanic` caught by an enclosing `trap` is still reported: `checkpanic` turns the error into a panic only for `trap` to turn it back into an error. Test the value instead, with `is` or `value:ensureType`.
-
-```ballerina
-// Noncompliant
-function getAll(cache:Cache cache, string key) returns Response[]? {
-    Response[]|error entry = trap <Response[]> checkpanic cache.get(key);
-    return entry is Response[] ? entry : ();
-}
-
-// Compliant
-function getAll(cache:Cache cache, string key) returns Response[]? {
-    any|error entry = cache.get(key);
-    return entry is Response[] ? entry : ();
-}
-```
-
 ### Unused function parameter
 
 | Property      | Description                                                |

@@ -192,7 +192,7 @@ useful information:
       "numericId": 1,
       "name": "Avoid checkpanic",
       "description": "Using `checkpanic` lets an unhandled error panic and crash the program instead of being handled.",
-      "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing. A `checkpanic` caught by an enclosing `trap` is still reported: it turns an error into a panic only to turn it back into an error, so test the value with `is` or use `value:ensureType` instead.",
+      "details": "The `checkpanic` expression causes the program to panic and terminate abruptly when the checked expression evaluates to an error, instead of allowing the error to be handled. Prefer `check` with explicit error handling so callers can recover instead of crashing.",
       "helpUri": "https://ballerina.io/learn/scan-rules/#ballerina-1",
       "severity": "LOW",
       "tags": [

@@ -56,7 +56,7 @@ a.guide {
 }
 
 a.guide:hover {
-    border-color: #17827e;
+    border-color: #167d7a;
     box-shadow: 0 8px 24px rgba(23, 130, 126, .12);
 }
 
@@ -73,7 +73,7 @@ a.guide:focus-visible {
     height: 40px;
     margin-bottom: 18px;
     font-size: 20px;
-    color: #17827e;
+    color: #167d7a;
     background-color: #e7f3f0;
     border-radius: 10px;
 }
@@ -100,7 +100,7 @@ a.guide:focus-visible {
     margin-top: 20px;
     font-size: 15px;
     font-weight: 600;
-    color: #17827e;
+    color: #167d7a;
 }
 
 .arrow {

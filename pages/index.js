@@ -74,7 +74,10 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' });
+    // github-light's red and orange fall under 4.5:1 on the code background; darken them to pass.
+    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' })
+      .replace(/#D73A49/gi, '#CE3846')
+      .replace(/#E36209/gi, '#BA5007');
     codeSamples[sampleName] = content.replaceAll('```','');
   });
 

@@ -18,8 +18,10 @@
 
 import * as React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { BsChevronRight } from 'react-icons/bs';
 
 import { highlightLine } from '../ai-shared/highlight';
+import { useAnchoredSelection, useStacked } from '../ai-shared/useShowcase';
 import hl from '../ai-shared/highlight.module.css';
 import shared from '../ai-shared/section.module.css';
 import styles from './AiCoding.module.css';
@@ -92,9 +94,9 @@ ERROR [orders.bal:(6:20,6:25)] invalid access of mutable storage in an 'isolated
 ERROR [orders.bal:(9:9,9:14)] invalid access of mutable storage in an 'isolated' function
 error: compilation contains errors`;
 
-function Code({ code, className }) {
+function Code({ code, label, className }) {
   return (
-    <pre className={`${shared.code} ${className || ''}`}>
+    <pre className={`${shared.code} ${className || ''}`} tabIndex={0} role="group" aria-label={label}>
       <code>{highlightCode(code)}</code>
     </pre>
   );
@@ -116,7 +118,7 @@ function ConstructsExample() {
   return (
     <>
       <Panel label="Code" note={<span>delivery.bal</span>}>
-        <Code code={CONSTRUCTS} />
+        <Code code={CONSTRUCTS} label="delivery.bal code" />
       </Panel>
       <p className={styles.exampleNote}>Clients, the listener, the service, and the resource path are language constructs, not library calls or framework configuration. A coding agent writes the integration in the same terms an engineer uses to describe it.</p>
     </>
@@ -135,7 +137,7 @@ function SettingsExample() {
   return (
     <>
       <Panel label="Code" note={<span>delivery.bal</span>}>
-        <Code code={SETTINGS} />
+        <Code code={SETTINGS} label="delivery.bal code" />
       </Panel>
       <p className={styles.exampleNote}>Timeouts, retries, and serialization are options of the HTTP client, not code the model writes. Anything left unset falls back to a documented library default, so the behavior does not depend on what a model picked on a given run.</p>
     </>
@@ -225,7 +227,7 @@ function VisualExample() {
   return (
     <>
       <Panel label="Code" note={<span>support.bal</span>}>
-        <Code code={REVIEW} />
+        <Code code={REVIEW} label="support.bal code" />
       </Panel>
       <Panel label="Diagram" note={<em className={styles.note}>generated from the same source</em>}>
         <div className={styles.diagramWrap}>
@@ -241,7 +243,7 @@ function SafetyExample() {
   return (
     <>
       <Panel label="Generated code" note={<span>orders.bal</span>}>
-        <pre className={shared.code}>
+        <pre className={shared.code} tabIndex={0} role="group" aria-label="Generated orders.bal code">
           <code>
             {RACE.split('\n').map((line, i) => (
               <span key={i} className={`${styles.line} ${RACE_ERROR_LINES.includes(i + 1) ? styles.flagged : ''}`}>
@@ -252,7 +254,7 @@ function SafetyExample() {
         </pre>
       </Panel>
       <Panel label="Compiler" note={<span>bal build</span>}>
-        <pre className={`${shared.code} ${styles.buildOutput}`}>
+        <pre className={`${shared.code} ${styles.buildOutput}`} tabIndex={0} role="group" aria-label="bal build output">
           <code>
             {BUILD_OUTPUT.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -290,19 +292,18 @@ const ADVANTAGES = [
   }
 ];
 
+const EXAMPLE_ID = 'ai-for-ballerina-example';
+
 export default function AiCoding(props) {
-  const [selected, setSelected] = React.useState(0);
+  const [selected, select] = useAnchoredSelection(0);
+  const stacked = useStacked();
   const { Example } = ADVANTAGES[selected];
 
   return (
     <Col xs={12}>
       <Container>
         <Row className={shared.section}>
-          <Col xs={{ span: 12, order: 2 }} lg={{ span: 7, order: 2 }} id="ai-for-ballerina-example" aria-live="polite" className={`${shared.example} ${styles.exampleCol}`}>
-            <Example />
-          </Col>
-
-          <Col xs={{ span: 12, order: 1 }} lg={{ span: 5, order: 1 }} className={`${shared.text} ${styles.textCol}`}>
+          <Col xs={12} lg={5} className={`${shared.text} ${styles.textCol}`}>
             <p className={shared.eyebrow}>AI for Ballerina</p>
             <h2 id="ai-for-ballerina" className={`section ${shared.heading}`}>
               <svg
@@ -322,6 +323,7 @@ export default function AiCoding(props) {
 
             <p className={shared.lead}>More integration code is now generated than typed. The model describes the integration, Ballerina handles the plumbing, and you review the result as code and as a diagram.</p>
 
+            <p className={shared.pickHint}>Pick one to see its code.</p>
             <ul className={shared.rows}>
               {ADVANTAGES.map((a, i) => (
                 <li key={a.title} className={i === selected ? shared.itemOn : undefined}>
@@ -329,16 +331,29 @@ export default function AiCoding(props) {
                     type="button"
                     className={shared.item}
                     aria-pressed={i === selected}
-                    aria-controls="ai-for-ballerina-example"
-                    onClick={() => setSelected(i)}
+                    aria-controls={EXAMPLE_ID}
+                    onClick={(e) => select(i, e.currentTarget)}
                   >
                     <span className={shared.itemTitle}>{a.title}</span>
                     <span className={shared.itemText}>{a.description}</span>
+                    <BsChevronRight className={shared.itemChevron} aria-hidden="true" />
                   </button>
+                  {/* Stacked layouts open the example under the selected item, not after the whole list. */}
+                  {stacked && i === selected && (
+                    <div id={EXAMPLE_ID} aria-live="polite" className={shared.inlineExample}>
+                      <Example />
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
           </Col>
+
+          {!stacked && (
+            <Col xs={12} lg={7} id={EXAMPLE_ID} aria-live="polite" className={`${shared.example} ${styles.exampleCol}`}>
+              <Example />
+            </Col>
+          )}
         </Row>
       </Container>
     </Col>

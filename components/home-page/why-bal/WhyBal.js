@@ -80,7 +80,7 @@ export default function WhyBal(props) {
               <h3>{f.title}</h3>
               <p>{f.text}</p>
               <Link href={`/why-ballerina/${f.slug}/`} passHref>
-                <a className={styles.moreLink}>More info <span aria-hidden="true">→</span></a>
+                <a className={styles.moreLink}>More info<span className="visually-hidden"> about {f.title}</span> <span aria-hidden="true">→</span></a>
               </Link>
             </div>
           ))}

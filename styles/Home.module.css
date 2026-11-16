@@ -45,3 +45,29 @@
 
 
 
+
+/* Skip link: hidden until focused, then pinned to the top left above the nav. */
+.skipLink:focus {
+  position: fixed !important;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #1f2a28;
+  font-weight: 600;
+  border: 2px solid #167d7a;
+  border-radius: 2px;
+  outline: 3px solid #20b6b0;
+  outline-offset: 2px;
+}
+
+/* The main landmark takes focus from the skip link; it needs no ring of its own. */
+.mainContent:focus {
+  outline: none;
+}
+
+/* Body text in Roboto Regular: Light (300) is hard to read on lower-quality screens. */
+:global(.wrap-page-content).mainContent {
+  font-weight: 400;
+}

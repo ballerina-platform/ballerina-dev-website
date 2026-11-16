@@ -11,7 +11,8 @@
     font-family: "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
     font-size: 14px;
     letter-spacing: .02em;
-    color: #20b6b0;
+    /* #59c9c4 keeps 4.5:1 on the #494949 hero background; #20b6b0 does not. */
+    color: #59c9c4;
     margin-bottom: 1.25rem;
 }
 
@@ -64,20 +65,42 @@ a.primaryButton {
     color: #1d2a2a;
 }
 
+a.homeIntroButton:focus-visible,
+a.textLink:focus-visible {
+    outline: 3px solid #59c9c4;
+    outline-offset: 2px;
+}
+
+/* A quieter third choice beside the two buttons. */
+a.textLink {
+    align-self: center;
+    padding: 14px 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #59c9c4;
+    text-underline-offset: 4px;
+}
+
+a.textLink:hover {
+    color: #59c9c4;
+}
+
 .origin {
-    color: #a8a8a8;
+    color: #b8b8b8;
     font-size: 14px;
     margin-bottom: 0;
 }
 
 .introLinks {
-    color: #20b6b0;
+    color: #59c9c4;
     text-decoration: underline;
     text-underline-offset: 2px;
 }
 
 .introLinks:hover {
-    color: #20b6b0;
+    color: #ffffff;
 }
 
 .socialMediaPanel {

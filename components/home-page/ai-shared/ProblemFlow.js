@@ -59,7 +59,8 @@ function LlmBox({ title, note, providers }) {
         <div className={`${styles.box} ${styles.llm}`}>
             <p className={styles.llmTitle}>
                 {title}
-                {note && <span className={styles.llmNote}>{note}</span>}
+                {/* The space keeps the title and note apart in the accessible text. */}
+                {note && <>{' '}<span className={styles.llmNote}>{note}</span></>}
             </p>
             <ul className={styles.logos}>
                 {providers.map(({ name, color, icon: Icon }) => (

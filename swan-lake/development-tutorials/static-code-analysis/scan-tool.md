@@ -19,7 +19,7 @@ Execute the command below to pull the scan tool from [Ballerina Central](https:/
 $ bal tool pull scan
 ```
 
-This page describes the latest version of the scan tool, which is compatible with Ballerina 2201.13.0 (Swan Lake Update 13) and later. To update an earlier installation, run `bal tool update scan`.
+This page describes the latest version of the scan tool, which is compatible with Ballerina 2201.13.2 (Swan Lake Update 13) and later. To update an earlier installation, run `bal tool update scan`.
 
 To verify the installation and check the version:
 
@@ -222,6 +222,8 @@ useful information:
 ```
 
 The `location` gives one-based lines and columns, as the compiler diagnostics and the SARIF report do. Its `filePath` is the path of the file relative to the package root, such as `modules/db/db.bal`, or to the workspace root in the output and combined report of a workspace scan. The `scan_results.json` of each workspace package gives paths relative to the root of that package, and a single Ballerina file gives its file name. The top-level `filePath` is the path of the file as the scan loaded it.
+
+This is a breaking change in versions 0.14.0 and 0.11.2: earlier versions gave zero-based lines and columns and only the file name in the `location`. Consumers that added one to the lines or columns, or matched files by name, must be updated.
 
 To generate a report in the `sarif` format, use the following command:
 

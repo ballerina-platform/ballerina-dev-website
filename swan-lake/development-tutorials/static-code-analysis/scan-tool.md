@@ -21,7 +21,7 @@ Execute the command below to pull the scan tool from [Ballerina Central](https:/
 $ bal tool pull scan
 ```
 
-This page describes version 0.13.0 of the scan tool, which requires Ballerina 2201.13.2 or later. To update an
+This page describes version 0.13.0 of the scan tool, which requires Ballerina 2201.13.0 or later. To update an
 earlier installation, run `bal tool update scan`.
 
 To verify the installation and check the version:
@@ -245,18 +245,20 @@ $ bal scan --list-rules
 The output looks like this:
 
 ```
-RuleID       | Rule Kind     | Severity | Rule Description
------------------------------------------------------------------------------------------
-ballerina:1  | CODE_SMELL    | LOW      | Avoid checkpanic
-ballerina:2  | CODE_SMELL    | LOW      | Unused function parameter
-...
-ballerina:13 | VULNERABILITY | HIGH     | Hard-coded secrets are security-sensitive
-ballerina:14 | VULNERABILITY | MEDIUM   | Non configurable secrets are security-sensitive
-...
+Resolving scan rules from package dependencies
+	RuleID       | Rule Kind     | Severity | Rule Description
+	-----------------------------------------------------------------------------------------
+	ballerina:1  | CODE_SMELL    | LOW      | Avoid checkpanic
+	ballerina:2  | CODE_SMELL    | LOW      | Unused function parameter
+	...
+	ballerina:13 | VULNERABILITY | HIGH     | Hard-coded secrets are security-sensitive
+	ballerina:14 | VULNERABILITY | MEDIUM   | Non configurable secrets are security-sensitive
+	...
 ```
 
-The list contains the core rules and the rules contributed by the project's dependencies (library tools and static
-code analyzer plugins), so it differs from project to project. For a single Ballerina file, such as
+The list contains the core rules, the rules contributed by the project's direct dependencies (library tools and static
+code analyzer plugins, but not transitive dependencies), and the rules of the analyzers in the `[[analyzer]]` table of
+`Scan.toml`, so it differs from project to project. For a single Ballerina file, such as
 `bal scan main.bal --list-rules`, the core rules are listed, along with the rules of any imported module that provides
 a scan-enabled compiler plugin.
 

@@ -154,10 +154,12 @@ When suppressions are disabled with `--ignore-suppressions` or `enabled = false`
 [Audit suppressed issues](#audit-suppressed-issues)), the requirements are not checked, since every issue is reported
 regardless of its annotations.
 
-> **Note:** In a workspace, every package is compiled and scanned, and its suppressions are validated, before the
-> results of any package are reported. If any package fails with an error, such as a compilation error or a
-> suppression that does not meet a requirement, the scan lists the errors of every failed package and reports no
-> results for any package, including those that scanned successfully.
+> **Note:** In a workspace, no results are reported until every package has been processed. If a package fails while
+> it is being set up, for example, because of an invalid `Scan.toml` or a platform that cannot be loaded, the scan lists
+> only those setup errors and compiles no package. Otherwise, every package is compiled and scanned, and its
+> suppressions are validated. If any package then fails, such as with a compilation error or a suppression that does
+> not meet a requirement, the scan lists the errors of every failed package and reports no results for any package,
+> including those that scanned successfully.
 
 ### Audit suppressed issues
 
@@ -264,9 +266,8 @@ point to a source location, such as an unmatched suppression. Warnings never cha
 
 ### Details
 
-- `--fail-on-count` does not turn on a gate that `NONE` turns off. With `--fail-on-severity=NONE`, `--fail-on-count`
-  is ignored with a warning, and with `failOnSeverity = "NONE"` in `Scan.toml`, the scan warns that the count has no
-  effect.
+- A count does not turn on a gate that `NONE` turns off. When the severity is `NONE`, from either the command line or
+  `Scan.toml`, `--fail-on-count` is ignored with a warning, and a `failOnCount` in `Scan.toml` is ignored silently.
 - The gate counts the issues left after rule selection and suppressions.
 - The gate runs after the reports are written, so a failing scan still leaves a full report.
 - An error always takes precedence over a tripped gate, so the gate is not checked when a platform fails.
@@ -319,8 +320,10 @@ failOnCount = 5
 excludeTests = true
 ```
 
-When a command option, including the gate options, `--exclude-tests`, and the suppression options, differs from
-`Scan.toml`, the scan warns that the option overrides the setting for that run.
+When `--exclude-tests`, a gate option, or a suppression option is passed and `Scan.toml` sets the same key to a
+different value, the scan warns that the option overrides the setting for that run. `--include-rules` and
+`--exclude-rules` never override `Scan.toml`: they are added to its list, or conflict with it and exit with code `2`
+(see [Include and exclude rules](#include-and-exclude-rules)).
 
 The `[rule]`, `[suppression]`, `[gate]`, and `[analysis]` tables accept only the keys shown, each with a plain value of
 the TOML type shown. Unknown keys in these tables and wrongly typed values fail the scan with exit code `1`, and every

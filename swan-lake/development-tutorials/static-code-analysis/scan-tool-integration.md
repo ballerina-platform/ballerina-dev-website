@@ -35,8 +35,8 @@ $ bal scan --platforms="sonarqube, <another-platform>"
 > **Note:** `sonarqube` is currently the only platform plugin available.
 
 Results are reported only to the platforms named in `--platforms`, and `--platforms` can name only platforms declared
-in `Scan.toml`. The named platforms run one after another. If any platform fails, the scan lists every failure and
-exits with code `1`.
+in `Scan.toml`. The named platforms run one after another. If a platform plugin fails with an error, the scan lists
+every failure and exits with code `1`.
 
 ### The `[[platform]]` entry
 
@@ -56,8 +56,9 @@ exits with code `1`.
   file nor a URL stops the scan with an error.
 - For a package, naming a platform that is not declared fails the scan with exit code `1`.
 - In a workspace, platforms are declared in the `Scan.toml` of each package, since `[[platform]]` cannot be set in the
-  workspace `Scan.toml`. A package that does not declare a named platform is skipped with a warning, and the scan fails
-  only when no package declares it.
+  workspace `Scan.toml`. A package that does not declare a named platform is still scanned, saved, and checked against
+  its gate, but its results are not sent to that platform, and the scan warns about it. The scan fails only when no
+  package declares the platform.
 - Using `--platforms` with a single Ballerina file is a usage error and exits with code `2`.
 - A failed platform takes precedence over the gate, so the gate is not checked when a platform fails. See
   [Fail the scan on findings](/learn/scan-tool-configuration/#fail-the-scan-on-findings).
@@ -282,7 +283,8 @@ names must be unique within a workflow run.
 [Fail the scan on findings](/learn/scan-tool-configuration/#fail-the-scan-on-findings)), but the action applies them to
 the findings of every scanned package together. The findings are uploaded before the gate is applied, so they reach the
 platforms even when the gate fails. The action turns off the `[gate]` of each package's `Scan.toml` with
-`--fail-on-severity=NONE`, and `bal scan` warns when it overrides a `[gate]` setting.
+`--fail-on-severity=NONE`. `bal scan` warns about this only when the package sets `failOnSeverity` to a value other
+than `NONE`. A `[gate]` that sets only `failOnCount` is turned off without a warning.
 
 The gate counts every finding in the scanned packages, not only those a pull request introduces. To block only new
 findings, upload to code scanning and add a
@@ -304,8 +306,8 @@ The action applies [`@scan:Suppress` annotations](/learn/scan-tool-configuration
   request newly suppresses is still a new alert until the merge.
 - In `pull_request` and `pull_request_target` runs, the action warns at each `@scan:Suppress` annotation the pull request
   adds or removes. Unless `suppression-comments` is `false`, it also posts the suppression's reason as a review comment,
-  which needs `pull-requests: write`. Runs for pull requests from forks and Dependabot have a read-only token, so they
-  skip the comments.
+  which needs `pull-requests: write`. `pull_request` runs for pull requests from forks and Dependabot have a read-only
+  token, so they skip the comments. `pull_request_target` runs have a write token, so they still post them.
 
 To report every finding as if no suppression existed, for example, in an audit job, set `suppressions: false`. The
 action then passes `--ignore-suppressions` to `bal scan` and leaves the code scanning alerts as they are.
@@ -329,10 +331,10 @@ how alerts are dismissed and reopened, and how pull requests are commented.
 | `suppressions` | `true` | Apply the `@scan:Suppress` annotations. `false` reports every finding. |
 | `suppression-comments` | `true` | Comment on the suppressions a pull request adds or removes. |
 | `annotations` | `false` | Show each counted finding as a file and line annotation on the run. |
-| `job-summary` | `true` | Write the result, the counts by severity, and the gate to the job summary. |
+| `job-summary` | `true` | Write the result and the counts by severity to the job summary. |
 | `artifacts` | `false` | Save the merged SARIF file as a workflow artifact. |
 | `category` | `bal-scan` | Name for this scan. Use a different one for each scan in a job. |
-| `ballerina-version` | Compatible | Ballerina version to install, or `latest`. Empty uses the Ballerina on the path if it can run the scan tool. |
+| `ballerina-version` | Compatible | Ballerina version to install, or `latest`. Empty uses the Ballerina on the path if it can run the scan tool. When `tool-version` is also empty, the Ballerina on the path is used only if it is 2201.13.0 or later; otherwise, the latest is installed. |
 | `tool-version` | Latest compatible | Scan tool version, or `latest`. Empty uses the latest version compatible with the Ballerina version. |
 
 The action also sets the `result`, `sarif-file`, `high-count`, `medium-count`, `low-count`, `total-count`,

@@ -53,10 +53,6 @@ export default function Intro() {
                 Download <span aria-hidden="true">→</span>
               </a>
               <a className={styles.homeIntroButton}
-                href={`${prefix}/learn/get-started/`}>
-                Get started
-              </a>
-              <a className={styles.textLink}
                 href={`${prefix}/learn/by-example/`}>
                 See examples
               </a>

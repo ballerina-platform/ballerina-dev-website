@@ -549,6 +549,14 @@ const nextConfig = {
         destination: `/learn/development-tutorials/static-code-analysis/scan-tool`,
       },
       {
+        source: `/learn/scan-tool-configuration`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-tool-configuration`,
+      },
+      {
+        source: `/learn/scan-tool-integration`,
+        destination: `/learn/development-tutorials/static-code-analysis/scan-tool-integration`,
+      },
+      {
         source: `/learn/scan-rules`,
         destination: `/learn/development-tutorials/static-code-analysis/scan-rules`,
       },

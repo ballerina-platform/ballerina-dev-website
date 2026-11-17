@@ -7,7 +7,7 @@ active: 2201.14.2
 
 ## Overview of Ballerina Swan Lake Update 14 (2201.14.2)
 
-<em>Swan Lake Update 14 (2201.14.2) is the second patch release of Ballerina 2201.14.0 (Swan Lake Update 14).</em>
+<em>Swan Lake Update 14 (2201.14.2) is the second patch release of Ballerina 2201.14.0 (Swan Lake Update 14) and includes a new set of bug fixes to the compiler and runtime. It also includes a few security improvements.</em>
 
 ## Update Ballerina
 
@@ -21,6 +21,8 @@ $ bal dist pull 2201.14.2
 
 If you have not installed Ballerina, then, download the [installers](/downloads/#swanlake) to install.
 
-## Release information
+## Language updates
 
-For release artifacts and verification instructions, see the [Ballerina 2201.14.2 GitHub release](https://github.com/ballerina-platform/ballerina-distribution/releases/tag/v2201.14.2).
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 14 (2201.14.2)](https://github.com/ballerina-platform/ballerina-lang/milestone/210?closed=1).

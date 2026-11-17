@@ -179,7 +179,7 @@ file with paths relative to the repository root. Any file it changes during a sc
 when that scan ends.
 
 > **Note:** `v0` is a pre-release that tracks the latest `v0.x.y` release. For reproducible runs, pin a release tag
-> such as `v0.2.0`, or a commit SHA, and set `ballerina-version` and `tool-version`. Otherwise, a new scan tool release
+> whose `action.yml` declares the inputs used on this page, or a commit SHA, and set `ballerina-version` and `tool-version`. Otherwise, a new scan tool release
 > can change the rule IDs, severities, and findings that the rule filters and the gate depend on.
 
 ### Upload to GitHub code scanning
@@ -247,6 +247,8 @@ platform-config: |
 
 - Put each `${{ }}` value in single quotes, since GitHub inserts it into the YAML text before the action parses it.
 - Every server URL must use `https`, and a `packages` item that sets `host-url` must also set `token`.
+- Workspaces are not supported with SonarQube yet. When `sonarqube` is selected, listing a workspace root or a directory
+  above it in `paths`, including the default `.`, fails the step. List the member package directories instead. Workspaces are fully supported for the SARIF file.
 - The action caches the SonarScanner CLI and the analyzers it downloads, so later jobs and runs restore them instead of
   downloading them again.
 
@@ -307,7 +309,9 @@ The action applies [`@scan:Suppress` annotations](/learn/scan-tool-configuration
 - In `pull_request` and `pull_request_target` runs, the action warns at each `@scan:Suppress` annotation the pull request
   adds or removes. Unless `suppression-comments` is `false`, it also posts the suppression's reason as a review comment,
   which needs `pull-requests: write`. `pull_request` runs for pull requests from forks and Dependabot have a read-only
-  token, so they skip the comments. `pull_request_target` runs have a write token, so they still post them.
+  token, so they skip the comments. `pull_request_target` runs have a write token, so they still post them. However, do not check out, scan, or run the
+  pull request's code in a `pull_request_target` run, since it would run with the base repository's secrets and the
+  write token. Scan pull requests in `pull_request` runs instead.
 
 To report every finding as if no suppression existed, for example, in an audit job, set `suppressions: false`. The
 action then passes `--ignore-suppressions` to `bal scan` and leaves the code scanning alerts as they are.
@@ -323,7 +327,7 @@ how alerts are dismissed and reopened, and how pull requests are commented.
 | `platforms` | Empty | Comma-separated platforms to send the findings to: `github-code-scanning`, `sonarqube`. Empty produces the SARIF file only. |
 | `platform-config` | Empty | YAML mapping, keyed by platform, with the settings and credentials each selected platform needs. |
 | `paths` | `.` | Paths to scan. Every package and workspace in them, including their subdirectories, is scanned. |
-| `exclude-paths` | Empty | Globs, relative to the repository root, for the packages and files to leave out. |
+| `exclude-paths` | Empty | Globs, relative to the repository root, for the packages and files to leave out. An excluded package is not scanned, so it reaches no platform. Excluded files within a scanned package are dropped only from the SARIF file, the counts, and code scanning, so SonarQube still receives their findings. Use `sonar.exclusions` to leave them out of SonarQube too. |
 | `exclude-tests` | `true` | Leave the test sources out with `bal scan --exclude-tests`. `false` scans them. |
 | `include-rules`, `exclude-rules` | Empty | Comma-separated rule IDs to report or leave out. They cannot be combined. |
 | `fail-on-severity` | `none` | Fail when findings are at or above `low`, `medium`, or `high`. |

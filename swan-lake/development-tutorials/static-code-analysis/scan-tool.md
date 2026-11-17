@@ -21,8 +21,7 @@ Execute the command below to pull the scan tool from [Ballerina Central](https:/
 $ bal tool pull scan
 ```
 
-This page describes version 0.13.0 of the scan tool, which requires Ballerina 2201.13.0 or later. To update an
-earlier installation, run `bal tool update scan`.
+This page describes the latest version of the scan tool, which is compatible with Ballerina 2201.13.2 (Swan Lake Update 13) and later. To update an earlier installation, run `bal tool update scan`.
 
 To verify the installation and check the version:
 
@@ -49,7 +48,7 @@ Running Scans
   {
     "location": {
       "filePath": "main.bal",
-      "startLine": 22,
+      "startLine": 23,
       ...
     },
     "rule": {
@@ -69,8 +68,9 @@ View scan results at:
 ```
 
 The scan compiles and analyzes every `.bal` file in the package, prints the issues it finds, and saves them to
-`target/report/scan_results.json`. The issues are written to standard output. Everything else, such as progress
-messages, warnings, the issue summary, and the report path, is written to standard error. For every option the
+`target/report/scan_results.json`. Only the issues are written to standard output, so `bal scan > issues.json` saves
+valid JSON. Everything else, such as progress messages, warnings, the issue summary, the report path, and anything
+printed by compiler plugins or platform plugins, is written to standard error. For every option the
 command accepts, see [Command syntax and options](/learn/scan-tool-configuration/#command-syntax-and-options).
 
 The scan exits with code `0` even when it finds issues. To make it fail on findings, for example, to stop a CI
@@ -82,11 +82,10 @@ issues are left out of the printed results and counted separately in the summary
 
 ### Details
 
-- Output printed while the package and its analyzers are resolved may also reach standard output, so
-  `bal scan > issues.json` is not guaranteed to save valid JSON. Scripts should read the saved report instead. The
-  saved report also contains the suppressed issues, each marked with a `suppressions` entry.
-- `--list-rules` prints its rule table to standard output, and with `--platforms`, platform plugins may also write to
-  standard output.
+- The saved report also contains the suppressed issues, each marked with a `suppressions` entry.
+- `--list-rules` prints its rule table to standard output.
+- A process started by a platform plugin writes to the streams directly, so a plugin that lets such a process inherit
+  standard output can still add to it.
 - When the scan fails before reporting, for example, on a compilation error, a missing `Dependencies.toml`, or an unmet
   suppression requirement, no issues are printed and a redirected file can be empty. The exit code alone does not show
   whether results were written: a tripped gate or a failed platform also exits with code `1`, but only after the
@@ -142,10 +141,10 @@ details of the rule that raised it, and other useful information:
   {
     "location": {
       "filePath": "main.bal",
-      "startLine": 22,
-      "endLine": 22,
-      "startColumn": 16,
-      "endColumn": 43,
+      "startLine": 23,
+      "endLine": 23,
+      "startColumn": 17,
+      "endColumn": 44,
       "startOffset": 875,
       "length": 27,
       "snippet": "checkpanic parseCount(\"12\")"
@@ -183,6 +182,16 @@ details of the rule that raised it, and other useful information:
   }
 ]
 ```
+
+The `location` gives one-based lines and columns, as the compiler diagnostics and the SARIF report do. Its `filePath`
+is the path of the file relative to the package root, such as `modules/db/db.bal`, or to the workspace root in the
+output and combined report of a workspace scan. The `scan_results.json` of each workspace package gives paths relative
+to the root of that package, and a single Ballerina file gives its file name. The top-level `filePath` is the path of
+the file as the scan loaded it.
+
+> **Note:** This is a breaking change in versions 0.14.0 and 0.11.2: earlier versions gave zero-based lines and columns
+> and only the file name in the `location`. Consumers that added one to the lines or columns, or matched files by name,
+> must be updated.
 
 To use SARIF, a standardized format for static analysis results, use the `--format` option. The results are then
 printed in SARIF and saved to `scan_results.sarif`:

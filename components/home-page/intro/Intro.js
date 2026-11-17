@@ -23,6 +23,14 @@ import { prefix } from '../../../utils/prefix';
 import CodeDiagramCard from './CodeDiagramCard';
 import styles from './Intro.module.css';
 
+// External links open in a new tab; the label says so.
+const SOCIAL = [
+  { name: 'GitHub', href: 'https://github.com/ballerina-platform/ballerina-lang', icon: 'bi-github' },
+  { name: 'X', href: 'https://twitter.com/ballerinalang', icon: 'bi-twitter-x' },
+  { name: 'Discord', href: 'https://discord.gg/ballerinalang', icon: 'bi-discord' },
+  { name: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/ballerina', icon: 'bi-stack-overflow' },
+  { name: 'YouTube', href: 'https://www.youtube.com/c/Ballerinalang', icon: 'bi-youtube' },
+];
 
 export default function Intro() {
 
@@ -41,45 +49,24 @@ export default function Intro() {
 
             <div className={styles.btnRow}>
               <a className={`${styles.homeIntroButton} ${styles.primaryButton}`}
-                target="_blank"
-                href={`${prefix}/downloads/`}
-                rel="noreferrer">
+                href={`${prefix}/downloads/`}>
                 Download <span aria-hidden="true">→</span>
               </a>
               <a className={styles.homeIntroButton}
-                target="_blank"
-                href={`${prefix}/learn/by-example/`}
-                rel="noreferrer">
+                href={`${prefix}/learn/by-example/`}>
                 See examples
               </a>
             </div>
 
-            <p className={styles.origin}>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016. First released February 2022.</p>
+            <p className={styles.origin}>Developed by <a href="https://wso2.com/" target="_blank" rel="noreferrer" className={styles.introLinks}>WSO2<span aria-hidden="true"> ↗</span><span className="visually-hidden"> (opens in a new tab)</span></a> since 2016. First released February 2022.</p>
 
-            <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" title="GitHub">
-                <i className="bi bi-github"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
-                <i className="bi bi-twitter-x"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                <i className="bi bi-discord"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                <i className="bi bi-stack-overflow"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube">
-                <i className="bi bi-youtube"></i>
-              </a>
-
-              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer"  title="LinkedIn">
-                <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
-              </a> */}
+            <div className={styles.socialMediaPanel}>
+              {SOCIAL.map(({ name, href, icon }) => (
+                <a key={name} className={styles.socialMediaIcons} href={href} target="_blank" rel="noreferrer"
+                  title={name} aria-label={`${name} (opens in a new tab)`}>
+                  <i className={`bi ${icon}`} aria-hidden="true"></i>
+                </a>
+              ))}
             </div>
           </Col>
 

@@ -1,7 +1,7 @@
 /* Shared typography for the home page integration, agent, and AI sections. */
 
 .section {
-    --ai-teal: #17827e;
+    --ai-teal: #167d7a;
     --ai-ink: #1f2a28;
     --ai-muted: #4a5552;
     --ai-line: #cfdcd8;
@@ -75,11 +75,18 @@
 
 /* Selectable rows: the selected row drives the example panel next to it. */
 
+.pickHint {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--ai-muted);
+}
+
 button.item {
+    position: relative;
     display: block;
     width: 100%;
     margin: 0;
-    padding: 0 0 0 14px;
+    padding: 0 32px 0 14px;
     border: 0;
     border-left: 3px solid transparent;
     background: none;
@@ -111,8 +118,37 @@ button.item {
     font-size: 14px;
 }
 
+button.item:hover {
+    border-left-color: var(--ai-line);
+}
+
 button.item:hover .itemTitle {
     color: var(--ai-teal);
+}
+
+/* Points toward the code beside the list; turns down when the code opens under the item. */
+.itemChevron {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    color: var(--ai-muted);
+    transition: transform .2s, color .2s;
+}
+
+button.item:hover .itemChevron,
+.itemOn .itemChevron {
+    color: var(--ai-teal);
+}
+
+button.item:hover .itemChevron {
+    transform: translateX(3px);
+}
+
+.inlineExample {
+    margin-top: 14px;
 }
 
 button.item:focus-visible {
@@ -159,6 +195,8 @@ button.item:focus-visible {
     font-size: 12px;
 }
 
+/* The local backgrounds cover the edge shadows until there is more code to scroll to,
+   so a shadow at an edge says the line continues. */
 pre.code {
     margin: 0;
     padding: 14px 16px;
@@ -167,7 +205,17 @@ pre.code {
     font-size: 12.5px;
     line-height: 1.6;
     color: #24292e;
-    background: #ffffff;
+    background:
+        linear-gradient(to right, #ffffff 40%, rgba(255, 255, 255, 0)) left / 40px 100% no-repeat local,
+        linear-gradient(to left, #ffffff 40%, rgba(255, 255, 255, 0)) right / 40px 100% no-repeat local,
+        radial-gradient(farthest-side at 0 50%, rgba(31, 42, 40, .22), rgba(31, 42, 40, 0)) left / 16px 100% no-repeat scroll,
+        radial-gradient(farthest-side at 100% 50%, rgba(31, 42, 40, .22), rgba(31, 42, 40, 0)) right / 16px 100% no-repeat scroll,
+        #ffffff;
+}
+
+pre.code:focus-visible {
+    outline: 3px solid #20b6b0;
+    outline-offset: -3px;
 }
 
 pre.code code {
@@ -183,6 +231,14 @@ pre.code code {
 
     .example {
         margin-top: 2rem;
+    }
+
+    .itemOn .itemChevron {
+        transform: rotate(90deg);
+    }
+
+    .itemOn button.item:hover .itemChevron {
+        transform: rotate(90deg);
     }
 }
 

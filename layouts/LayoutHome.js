@@ -20,6 +20,8 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Row, Stack } from 'react-bootstrap';
 
+import styles from '../styles/Home.module.css';
+
 
 export default function Layout({ children }) {
   const TopNav = dynamic(() => import('../components/common/top-nav/TopNav'), { ssr: false });
@@ -32,7 +34,7 @@ export default function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>The Ballerina programming language</title>
 
-        <meta name="description" content="Ballerina is an open-source programming language for the cloud that makes it easier to use, combine and create network services."></meta>
+        <meta name="description" content="Ballerina is an open-source programming language for integrations and agents, with networking, data, and reliability built into the language."></meta>
 
         {/* Google Tag Manager */}
         <script
@@ -68,14 +70,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
         {/* <!--FB--> */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="The Ballerina programming language" />
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:description" content="Ballerina is an open-source programming language for integrations and agents, with networking, data, and reliability built into the language." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:description" content="Ballerina is an open-source programming language for integrations and agents, with networking, data, and reliability built into the language." />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
-        <meta name="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="twitter:description" content="Ballerina is an open-source programming language for integrations and agents, with networking, data, and reliability built into the language." />
+        <meta name="twitter:text:description" content="Ballerina is an open-source programming language for integrations and agents, with networking, data, and reliability built into the language." />
 
         {/* CookiePro Cookies Consent Notice start for ballerina.io */}
         <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" defer />
@@ -83,21 +85,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
       </Head>
       <Meta />
       <Stack gap={0} className='main-wrapper home'>
-        <TopNav
-          launcher='home'
-          announcement={{
-            text: 'Introducing Ballerina Nutcracker — a native interpreter.',
-            href: '/nutcracker/',
-            cta: 'Learn more',
-          }}
-        />
-        <div className='wrap-page-content'>
+        <a href="#main" className={`visually-hidden-focusable ${styles.skipLink}`}>Skip to content</a>
+        {/* display: contents keeps the sticky nav working inside the header landmark. */}
+        <header style={{ display: 'contents' }}>
+          <TopNav
+            launcher='home'
+            announcement={{
+              text: 'Introducing Ballerina Nutcracker — a native interpreter.',
+              href: '/nutcracker/',
+              cta: 'Learn more',
+            }}
+          />
+        </header>
+        <main id="main" tabIndex={-1} className={`wrap-page-content ${styles.mainContent}`}>
           <Row className='contentRow'>
             {children}
           </Row>
-        </div>
+        </main>
 
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
 
       </Stack>
 

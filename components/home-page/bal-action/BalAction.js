@@ -87,7 +87,7 @@ export default function BalAction({ samples, codeSamples, getLink }) {
     </div>
     <section id={`action-panel-${example.id}`} role="tabpanel" aria-labelledby={`action-tab-${example.id}`} tabIndex={0} className={styles.panel}>
       <div className={styles.intro}><div><h3>{example.title}</h3><p>{example.description}</p></div>
-        <a href={example.link} target="_blank" rel="noopener noreferrer">View full example <span aria-hidden="true">↗</span></a></div>
+        <a href={example.link} target="_blank" rel="noopener noreferrer">View full example <span aria-hidden="true">↗</span><span className="visually-hidden"> (opens in a new tab)</span></a></div>
       <div className={`${styles.mainGrid} ${showDiagram ? '' : styles.fullWidth}`}>
         <div className={styles.codePane}><div className={styles.paneHeader}><span>Ballerina · {sourceFile}</span>
           <CopyToClipboard text={codeSamples[example.id]} onCopy={() => setCopied(true)}>

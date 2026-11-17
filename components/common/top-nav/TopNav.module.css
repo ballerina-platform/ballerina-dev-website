@@ -177,7 +177,8 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     border: 0.5px solid #ffffff;
     padding: 7px 16px;
     text-decoration: none;
-    border-radius: 5px;
+    /* Same corners as the home page hero buttons. */
+    border-radius: 2px;
     white-space: nowrap;
     transition: all 0.3s;
 }

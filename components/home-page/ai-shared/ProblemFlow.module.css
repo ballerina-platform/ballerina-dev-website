@@ -33,7 +33,7 @@
    neutral challenges → teal Ballerina → teal-tinted outcomes. */
 
 .flow {
-    --pf-teal: #17827e;
+    --pf-teal: #167d7a;
     --pf-teal-dark: #0f5f5c;
     --pf-ink: #1f2a28;
     --pf-muted: #5b6764;
@@ -68,7 +68,7 @@
 
 .boxTitle {
     margin: 0 0 4px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .12em;
     line-height: 1.4;
@@ -144,7 +144,7 @@
 .listSub {
     display: block;
     margin-top: 1px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.35;
     color: var(--pf-muted);
 }
@@ -165,7 +165,7 @@
 
 .llmTitle {
     margin: 0;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .12em;
     line-height: 1.4;
@@ -174,8 +174,8 @@
 }
 
 .llmNote {
-    margin-left: 6px;
-    font-size: 12px;
+    margin-left: 2px;
+    font-size: 13px;
     font-weight: 400;
     letter-spacing: 0;
     text-transform: none;
@@ -327,7 +327,7 @@
 
 .tileSub {
     margin-top: 3px;
-    font-size: 11.5px;
+    font-size: 13px;
     line-height: 1.3;
     color: var(--pf-muted);
 }

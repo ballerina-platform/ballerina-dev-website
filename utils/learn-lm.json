@@ -17,7 +17,7 @@
                 {
                     "dirName": "Reliable, maintainable",
                     "level": 2,
-                    "position": 7,
+                    "position": 6,
                     "isDir": false,
                     "url": "/why-ballerina/reliable-maintainable",
                     "id": "reliable-maintainable"
@@ -55,20 +55,12 @@
                     "id": "flexibly-typed"
                 },
                 {
-                    "dirName": "Concurrent and durable",
+                    "dirName": "Concurrent",
                     "level": 2,
                     "position": 5,
                     "isDir": false,
                     "url": "/why-ballerina/concurrent",
                     "id": "concurrent"
-                },
-                {
-                    "dirName": "AI built in",
-                    "level": 2,
-                    "position": 6,
-                    "isDir": false,
-                    "url": "/why-ballerina/ai-built-in",
-                    "id": "ai-built-in"
                 }
             ]
         },
@@ -131,92 +123,76 @@
             ]
         },
         {
-            "dirName": "Build AI integrations",
+            "dirName": "Integration tools",
             "level": 1,
             "position": 3,
             "isDir": true,
-            "url": "swan-lake/ai-integrations",
-            "id": "ai-integrations",
+            "url": "/learn/integration-tools",
+            "id": "integration-tools",
             "subDirectories": [
                 {
-                    "dirName": "Build a hello world agent",
-                    "level": 2,
+                    "dirName": "OpenAPI tool",
+                    "level": 3,
                     "position": 1,
                     "isDir": false,
-                    "url": "/learn/build-your-first-agent",
-                    "id": "build-your-first-agent"
+                    "url": "/learn/openapi-tool",
+                    "id": "openapi-tool"
                 },
                 {
-                    "dirName": "AI integrations overview",
-                    "level": 2,
+                    "dirName": "GraphQL tool",
+                    "level": 3,
                     "position": 2,
                     "isDir": false,
-                    "url": "/learn/ai-integrations-overview",
-                    "id": "ai-integrations-overview"
+                    "url": "/learn/graphql-tool",
+                    "id": "graphql-tool"
                 },
                 {
-                    "dirName": "Add an LLM step to an integration",
-                    "level": 2,
+                    "dirName": "AsyncAPI tool",
+                    "level": 3,
                     "position": 3,
                     "isDir": false,
-                    "url": "/learn/add-an-llm-step-to-an-integration",
-                    "id": "add-an-llm-step-to-an-integration"
+                    "url": "/learn/asyncapi-tool",
+                    "id": "asyncapi-tool"
                 },
                 {
-                    "dirName": "Use natural expressions in an integration",
-                    "level": 2,
+                    "dirName": "gRPC tool",
+                    "level": 3,
                     "position": 4,
                     "isDir": false,
-                    "url": "/learn/work-with-llms-using-natural-expressions",
-                    "id": "work-with-llms-using-natural-expressions"
+                    "url": "/learn/grpc-tool",
+                    "id": "grpc-tool"
                 },
                 {
-                    "dirName": "Ground responses with enterprise data",
-                    "level": 2,
+                    "dirName": "Health tool (FHIR/HL7)",
+                    "level": 3,
                     "position": 5,
                     "isDir": false,
-                    "url": "/learn/ground-responses-with-enterprise-data",
-                    "id": "ground-responses-with-enterprise-data"
+                    "url": "/learn/health-tool",
+                    "id": "health-tool"
                 },
                 {
-                    "dirName": "Build an agent that uses enterprise systems",
-                    "level": 2,
+                    "dirName": "EDI tool",
+                    "level": 3,
                     "position": 6,
                     "isDir": false,
-                    "url": "/learn/build-an-agent-that-uses-enterprise-systems",
-                    "id": "build-an-agent-that-uses-enterprise-systems"
+                    "url": "/learn/edi-tool",
+                    "id": "edi-tool"
                 },
                 {
-                    "dirName": "Connect integrations and agents through MCP",
-                    "level": 2,
+                    "dirName": "WSDL tool",
+                    "level": 3,
                     "position": 7,
                     "isDir": false,
-                    "url": "/learn/connect-integrations-and-agents-through-mcp",
-                    "id": "connect-integrations-and-agents-through-mcp"
+                    "url": "/learn/wsdl-tool",
+                    "id": "wsdl-tool"
                 },
                 {
-                    "dirName": "Add human approval and durable execution",
-                    "level": 2,
+                    "dirName": "XSD tool",
+                    "level": 3,
                     "position": 8,
                     "isDir": false,
-                    "url": "/learn/add-human-approval-and-durable-execution",
-                    "id": "add-human-approval-and-durable-execution"
-                },
-                {
-                    "dirName": "Evaluate agent behavior",
-                    "level": 2,
-                    "position": 9,
-                    "isDir": false,
-                    "url": "/learn/evaluate-agent-behavior",
-                    "id": "evaluate-agent-behavior"
-                },
-                {
-                    "dirName": "Observe and secure AI integrations",
-                    "level": 2,
-                    "position": 10,
-                    "isDir": false,
-                    "url": "/learn/observe-and-secure-ai-integrations",
-                    "id": "observe-and-secure-ai-integrations"
+                    "url": "/learn/xsd-tool",
+                    "id": "xsd-tool"
                 }
             ]
         },
@@ -975,7 +951,7 @@
                     ]
                 },
                 {
-                    "dirName": "Developer tools",
+                    "dirName": "Additional tools",
                     "level": 2,
                     "position": 12,
                     "isDir": true,
@@ -983,73 +959,9 @@
                     "id": "additional-tools",
                     "subDirectories": [
                         {
-                            "dirName": "OpenAPI tool",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/openapi-tool",
-                            "id": "openapi-tool"
-                        },
-                        {
-                            "dirName": "GraphQL tool",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/graphql-tool",
-                            "id": "graphql-tool"
-                        },
-                        {
-                            "dirName": "AsyncAPI tool",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/asyncapi-tool",
-                            "id": "asyncapi-tool"
-                        },
-                        {
-                            "dirName": "gRPC tool",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/grpc-tool",
-                            "id": "grpc-tool"
-                        },
-                        {
-                            "dirName": "Health tool (FHIR/HL7)",
-                            "level": 3,
-                            "position": 5,
-                            "isDir": false,
-                            "url": "/learn/health-tool",
-                            "id": "health-tool"
-                        },
-                        {
-                            "dirName": "EDI tool",
-                            "level": 3,
-                            "position": 6,
-                            "isDir": false,
-                            "url": "/learn/edi-tool",
-                            "id": "edi-tool"
-                        },
-                        {
-                            "dirName": "WSDL tool",
-                            "level": 3,
-                            "position": 7,
-                            "isDir": false,
-                            "url": "/learn/wsdl-tool",
-                            "id": "wsdl-tool"
-                        },
-                        {
-                            "dirName": "XSD tool",
-                            "level": 3,
-                            "position": 8,
-                            "isDir": false,
-                            "url": "/learn/xsd-tool",
-                            "id": "xsd-tool"
-                        },
-                        {
                             "dirName": "Consolidate-packages tool",
                             "level": 3,
-                            "position": 10,
+                            "position": 2,
                             "isDir": false,
                             "url": "/learn/consolidate-packages-tool",
                             "id": "consolidate-packages-tool"
@@ -1105,6 +1017,14 @@
                             "isDir": false,
                             "url": "/learn/build-a-change-data-capture-service-in-ballerina",
                             "id": "build-a-change-data-capture-service-in-ballerina"
+                        },
+                        {
+                            "dirName": "Work with Large Language Models (LLMs) using natural expressions",
+                            "level": 3,
+                            "position": 7,
+                            "isDir": false,
+                            "url": "/learn/work-with-llms-using-natural-expressions",
+                            "id": "work-with-llms-using-natural-expressions"
                         },
                         {
                             "dirName": "Write a GraphQL API with Ballerina",
@@ -1219,88 +1139,6 @@
                             "isDir": false,
                             "url": "/learn/data",
                             "id": "data"
-                        }
-                    ]
-                },
-                {
-                    "dirName": "Build AI applications",
-                    "level": 2,
-                    "position": 3,
-                    "isDir": true,
-                    "url": "swan-lake/resources/build-ai-applications",
-                    "id": "build-ai-applications",
-                    "subDirectories": [
-                        {
-                            "dirName": "AI in Ballerina overview",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/ai-in-ballerina-overview",
-                            "id": "ai-in-ballerina-overview"
-                        },
-                        {
-                            "dirName": "Configure model and embedding providers",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/configure-model-and-embedding-providers",
-                            "id": "configure-model-and-embedding-providers"
-                        },
-                        {
-                            "dirName": "Build an AI agent",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/build-an-ai-agent",
-                            "id": "build-an-ai-agent"
-                        },
-                        {
-                            "dirName": "Persist agent memory",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/persist-agent-memory",
-                            "id": "persist-agent-memory"
-                        },
-                        {
-                            "dirName": "Build a RAG application",
-                            "level": 3,
-                            "position": 5,
-                            "isDir": false,
-                            "url": "/learn/build-a-rag-application",
-                            "id": "build-a-rag-application"
-                        },
-                        {
-                            "dirName": "Expose and consume MCP servers",
-                            "level": 3,
-                            "position": 6,
-                            "isDir": false,
-                            "url": "/learn/expose-and-consume-mcp-servers",
-                            "id": "expose-and-consume-mcp-servers"
-                        },
-                        {
-                            "dirName": "Human-in-the-loop agents",
-                            "level": 3,
-                            "position": 7,
-                            "isDir": false,
-                            "url": "/learn/human-in-the-loop-agents",
-                            "id": "human-in-the-loop-agents"
-                        },
-                        {
-                            "dirName": "Observe and evaluate agents",
-                            "level": 3,
-                            "position": 8,
-                            "isDir": false,
-                            "url": "/learn/observe-and-evaluate-agents",
-                            "id": "observe-and-evaluate-agents"
-                        },
-                        {
-                            "dirName": "Natural programming",
-                            "level": 3,
-                            "position": 9,
-                            "isDir": false,
-                            "url": "/learn/natural-programming",
-                            "id": "natural-programming"
                         }
                     ]
                 }

@@ -1,0 +1,17 @@
+{
+  "title": "Agent with advanced MCP integration",
+  "description": "This BBE demonstrates how to define a custom MCP toolkit that controls which MCP tools an AI agent can use and how each call is made.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "mcp",
+    "toolkit",
+    "custom toolkit"
+  ],
+  "permalink": "/learn/by-example/ai-agent-mcp-integration-advanced/",
+  "active": "ai-agent-mcp-integration-advanced"
+}

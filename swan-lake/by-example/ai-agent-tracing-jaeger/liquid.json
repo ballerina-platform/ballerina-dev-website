@@ -1,0 +1,17 @@
+{
+  "title": "Publish agent traces to Jaeger",
+  "description": "This BBE demonstrates how to publish the OpenTelemetry traces of an AI agent to Jaeger.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "agent",
+    "tracing",
+    "observability",
+    "jaeger",
+    "opentelemetry"
+  ],
+  "permalink": "/learn/by-example/ai-agent-tracing-jaeger/",
+  "active": "ai-agent-tracing-jaeger"
+}

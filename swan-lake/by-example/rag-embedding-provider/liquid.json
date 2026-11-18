@@ -1,0 +1,16 @@
+{
+  "title": "Generate embeddings with a specific provider",
+  "description": "This BBE demonstrates how to generate embeddings using a specific embedding provider.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "embeddings",
+    "embedding provider"
+  ],
+  "permalink": "/learn/by-example/rag-embedding-provider/",
+  "active": "rag-embedding-provider"
+}

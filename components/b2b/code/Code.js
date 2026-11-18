@@ -37,7 +37,6 @@ export default function UseCases(props) {
     const edifact = samples['ballerina-is-edifact'];
     const spec = samples['spec-deviations'];
     const customEdi = samples['custom-edi'];
-    const apisNewDll = samples['apis-are-new-dll'];
     
     return (
         <>
@@ -460,66 +459,6 @@ export default function UseCases(props) {
                     </Container>
                 </Col>
             </Row>
-
-            {/* apisNewDll */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='start-integrating-with-the-partner-network' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'start-integrating-with-the-partner-network')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {apisNewDll.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{apisNewDll.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (apisNewDll.frontmatter.url && apisNewDll.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={apisNewDll.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with WSO2 Integration Platform for free
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
-                                {
-                                    (apisNewDll.code && apisNewDll.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: apisNewDll.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (apisNewDll.frontmatter.image && apisNewDll.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title}  />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
 
         </>
     );

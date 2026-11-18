@@ -1,0 +1,18 @@
+{
+  "title": "Retrieve from pgvector",
+  "description": "This BBE demonstrates how to retrieve relevant chunks from the pgvector vector store and generate an answer for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "retrieval",
+    "vector store",
+    "pgvector",
+    "postgresql"
+  ],
+  "permalink": "/learn/by-example/rag-pgvector-retrieval/",
+  "active": "rag-pgvector-retrieval"
+}

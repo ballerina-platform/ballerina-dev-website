@@ -1,0 +1,16 @@
+{
+  "title": "Direct LLM calls with a local model using Ollama",
+  "description": "This BBE demonstrates how to do direct LLM calls to a local model served by Ollama.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "model-provider",
+    "ollama",
+    "local model"
+  ],
+  "permalink": "/learn/by-example/direct-llm-calls-with-ollama/",
+  "active": "direct-llm-calls-with-ollama"
+}

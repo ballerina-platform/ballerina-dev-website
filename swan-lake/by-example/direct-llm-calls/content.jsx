@@ -304,6 +304,26 @@ export function DirectLlmCalls({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.openrouter/latest">
+              The <code>ballerinax/ai.openrouter</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://central.ballerina.io/ballerinax/ai.googleapis.vertex/latest">
+              The <code>ballerinax/ai.googleapis.vertex</code> module
+            </a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">

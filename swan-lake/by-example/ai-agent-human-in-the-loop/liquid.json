@@ -1,0 +1,16 @@
+{
+  "title": "Human-in-the-loop tool approval",
+  "description": "This BBE demonstrates how to require human approval before an AI agent calls a sensitive tool.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "human in the loop",
+    "approval"
+  ],
+  "permalink": "/learn/by-example/ai-agent-human-in-the-loop/",
+  "active": "ai-agent-human-in-the-loop"
+}

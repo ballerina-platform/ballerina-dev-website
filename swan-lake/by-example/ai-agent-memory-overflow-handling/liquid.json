@@ -1,0 +1,16 @@
+{
+  "title": "Memory overflow handling",
+  "description": "This BBE demonstrates how to handle memory overflow in AI agents by trimming or summarizing older messages.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "agent",
+    "memory",
+    "overflow"
+  ],
+  "permalink": "/learn/by-example/ai-agent-memory-overflow-handling/",
+  "active": "ai-agent-memory-overflow-handling"
+}

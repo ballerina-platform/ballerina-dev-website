@@ -1,0 +1,16 @@
+{
+  "title": "Filter results by metadata",
+  "description": "This BBE demonstrates how to use metadata filters with vector search in retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "vector store",
+    "metadata filters"
+  ],
+  "permalink": "/learn/by-example/rag-query-with-metadata-filters/",
+  "active": "rag-query-with-metadata-filters"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Implement a custom embedding provider",
+  "description": "This BBE demonstrates how to implement a custom embedding provider for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "embeddings",
+    "embedding provider",
+    "custom embedding provider"
+  ],
+  "permalink": "/learn/by-example/rag-custom-embedding-provider/",
+  "active": "rag-custom-embedding-provider"
+}

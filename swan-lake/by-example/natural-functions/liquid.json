@@ -1,0 +1,15 @@
+{
+  "title": "Natural functions",
+  "description": "This BBE demonstrates how to write natural functions, whose logic is described in natural language and executed by an LLM.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "natural programming",
+    "natural functions"
+  ],
+  "permalink": "/learn/by-example/natural-functions/",
+  "active": "natural-functions"
+}

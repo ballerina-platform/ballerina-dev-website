@@ -1,0 +1,17 @@
+{
+  "title": "Retrieve from Azure AI Search",
+  "description": "This BBE demonstrates how to retrieve relevant chunks from an Azure AI Search index and generate an answer for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "retrieval",
+    "knowledge base",
+    "azure ai search"
+  ],
+  "permalink": "/learn/by-example/rag-azure-ai-search-retrieval/",
+  "active": "rag-azure-ai-search-retrieval"
+}

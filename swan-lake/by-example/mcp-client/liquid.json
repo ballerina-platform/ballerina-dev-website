@@ -1,0 +1,15 @@
+{
+  "title": "MCP client",
+  "description": "This BBE demonstrates how to implement an MCP client to discover and call tools exposed by an MCP server.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "mcp",
+    "mcp client"
+  ],
+  "permalink": "/learn/by-example/mcp-client/",
+  "active": "mcp-client"
+}

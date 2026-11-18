@@ -57,11 +57,12 @@ export default function Toc(props) {
   //Highlight toc on scroll
   React.useEffect(() => {
     // Add event listener for hash changes
-    window.addEventListener("hashchange", () => {
+    const onHashChange = () => {
       hash = true;
       setTimeout(() => (hash = false), 1000);
       scrollToHash();
-    });
+    };
+    window.addEventListener("hashchange", onHashChange);
 
     // If a hash exists in the URL on load, scroll to it
     if (window.location.hash) {
@@ -111,12 +112,18 @@ export default function Toc(props) {
     };
 
     // Highlight section while scrolling
-    window.addEventListener("scroll", () => {
+    const onScroll = () => {
       if (!hash) {
         checkVisibleSection();
       }
-    });
+    };
+    window.addEventListener("scroll", onScroll);
 
+    // Remove the listeners on unmount so they do not fire on pages without a TOC
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   // Map an alias anchor (e.g. a rule ID) back to the heading id it stands for
@@ -169,7 +176,9 @@ export default function Toc(props) {
     let nav = document.getElementById("markdown-navigation"),
       sections = document.querySelectorAll(".section"),
       section = null;
-  
+
+    if (!nav) return;
+
     // Set a smaller threshold (reduce from window.innerHeight to a smaller value like 100)
     let threshold = 100;
   
@@ -195,8 +204,8 @@ export default function Toc(props) {
         );
   
       // Update the TOC highlighting
-      if (!link.classList.contains("active")) {
-        nav.querySelector("div.active").classList.remove("active");
+      if (link && !link.classList.contains("active")) {
+        nav.querySelector("div.active")?.classList.remove("active");
         link.classList.add("active");
       }
     }

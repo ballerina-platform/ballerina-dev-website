@@ -85,7 +85,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const id = slug[slug.length - 1];
-  let sub = "";
+  // Integration tools are listed under Developer tools (additional-tools) in the left nav.
+  let sub = "additional-tools";
   let third = "";
   if (slug.length == 2) {
     sub = slug[slug.length - 2];
@@ -185,7 +186,7 @@ export default function PostPage({
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="integration-tools"
+            mainDir="development-tutorials"
             sub={sub}
             third={third}
             Toc={LearnToc}
@@ -201,7 +202,7 @@ export default function PostPage({
               <LeftNav
                 launcher="learn"
                 id={id}
-                mainDir="integration-tools"
+                mainDir="development-tutorials"
                 sub={sub}
                 third={third}
                 Toc={LearnToc}
@@ -241,7 +242,7 @@ export default function PostPage({
 <PrevNext
                 launcher="learn"
                 id={id}
-                mainDir="integration-tools"
+                mainDir="development-tutorials"
                 sub={sub}
                 third={third}
                 Toc={LearnToc}

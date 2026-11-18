@@ -18,32 +18,21 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import { BsCheck } from 'react-icons/bs';
 
 import { prefix } from '../../../utils/prefix';
+import CodeDiagramCard from './CodeDiagramCard';
 import styles from './Intro.module.css';
 
+// External links open in a new tab; the label says so.
+const SOCIAL = [
+  { name: 'GitHub', href: 'https://github.com/ballerina-platform/ballerina-lang', icon: 'bi-github' },
+  { name: 'X', href: 'https://twitter.com/ballerinalang', icon: 'bi-twitter-x' },
+  { name: 'Discord', href: 'https://discord.gg/ballerinalang', icon: 'bi-discord' },
+  { name: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/ballerina', icon: 'bi-stack-overflow' },
+  { name: 'YouTube', href: 'https://www.youtube.com/c/Ballerinalang', icon: 'bi-youtube' },
+];
 
 export default function Intro() {
-
-  const [hoverBtn, setHoverBtn] = React.useState(false);
-
-  let imagePath = prefix + '/images/main-right-arrow-home.svg';
-  let imagePathHover = prefix + '/images/main-right-arrow-home-hover.svg';
-
-  const buttonStyle = {
-    backgroundImage: 'url(' + imagePath + ')',
-    backgroundSize: '60px 60px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-  };
-
-  const buttonStyleHover = {
-    backgroundImage: 'url(' + imagePathHover + ')',
-    backgroundSize: '60px 60px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-  };
 
   return (
 
@@ -51,71 +40,38 @@ export default function Intro() {
       <Container>
 
         <Row className={styles.introBottomRow}>
-          <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <h1>Flexible, Powerful, Beautiful<br />Integrations as Code with Ballerina</h1>
+          <Col xs={12} sm={12} md={12} lg={6} className={styles.description}>
+            <p className={styles.eyebrow}>Open source · Apache 2.0</p>
 
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Open source, cloud-native programming language optimized for integration</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
-            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2022</span></p>
+            <h1>Programming language for integrations and agents</h1>
 
+            <p className={styles.lead}>Ballerina is designed for building connected applications. From APIs and event-driven integrations to workflows and AI agents, Ballerina brings networking, data, concurrency, and reliability into the language, making it easier to build applications that interact with real-world systems.</p>
 
+            <div className={styles.btnRow}>
+              <a className={`${styles.homeIntroButton} ${styles.primaryButton}`}
+                href={`${prefix}/downloads/`}>
+                Download <span aria-hidden="true">→</span>
+              </a>
+              <a className={styles.homeIntroButton}
+                href={`${prefix}/learn/by-example/`}>
+                See examples
+              </a>
+            </div>
 
+            <p className={styles.origin}>Developed by <a href="https://wso2.com/" target="_blank" rel="noreferrer" className={styles.introLinks}>WSO2<span aria-hidden="true"> ↗</span><span className="visually-hidden"> (opens in a new tab)</span></a> since 2016. First released February 2022.</p>
+
+            <div className={styles.socialMediaPanel}>
+              {SOCIAL.map(({ name, href, icon }) => (
+                <a key={name} className={styles.socialMediaIcons} href={href} target="_blank" rel="noreferrer"
+                  title={name} aria-label={`${name} (opens in a new tab)`}>
+                  <i className={`bi ${icon}`} aria-hidden="true"></i>
+                </a>
+              ))}
+            </div>
           </Col>
 
-          <Col xs={12} sm={12} md={12} lg={4} className={styles.btnCol}>
-            <a className={styles.homeIntroButton}
-              onMouseEnter={() => {
-                setHoverBtn(true);
-              }}
-              onMouseLeave={() => {
-                setHoverBtn(false);
-              }}
-              style={
-                (hoverBtn ? buttonStyleHover : buttonStyle)
-              }
-              target="_blank"
-              href={`${prefix}/downloads/`}
-              rel="noreferrer">
-              Download
-              {/* <p>Install Ballerina, set it all up <br />and take it for a spin.</p> */}
-            </a>
-            <a className={`${styles.homeIntroButton} ${styles.playButton}`}
-              style={buttonStyleHover}
-              target="_blank"
-              href={`${prefix}/learn/by-example/`}
-              rel="noreferrer">
-              Examples
-              {/* <p>Explore and try out a series of guided Ballerina examples.<br /> &nbsp;</p> */}
-            </a>
-
-
-            <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" title="GitHub">
-                <i className="bi bi-github"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
-                <i className="bi bi-twitter-x"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                <i className="bi bi-discord"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                <i className="bi bi-stack-overflow"></i>
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube">
-                <i className="bi bi-youtube"></i>
-              </a>
-
-              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer"  title="LinkedIn">
-                <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
-              </a> */}
-            </div>
+          <Col xs={12} sm={12} md={12} lg={6} className={styles.cardCol}>
+            <CodeDiagramCard />
           </Col>
         </Row>
 

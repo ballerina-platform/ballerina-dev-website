@@ -1,0 +1,18 @@
+{
+  "title": "Agentic RAG with WSO2 Cloud",
+  "description": "This BBE demonstrates agentic RAG with an AI agent retrieving from a WSO2 Integration platform knowledge base.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "agentic rag",
+    "agent",
+    "knowledge base",
+    "wso2"
+  ],
+  "permalink": "/learn/by-example/agentic-rag-with-wso2-integration-knowledge-base/",
+  "active": "agentic-rag-with-wso2-integration-knowledge-base"
+}

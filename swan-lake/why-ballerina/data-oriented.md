@@ -1,11 +1,11 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Data oriented
-description: Language-integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. See how Ballerina provides first-class support for writing queries that process data.
-keywords: ballerina, networking, microservices, programming language, distributed computing, services, data oriented, data transformation
+description: JSON and XML are native types. Query expressions turn one message format into another in a few readable lines.
+keywords: ballerina, programming language, data oriented, why ballerina
 permalink: /why-ballerina/data-oriented/
 active: data-oriented
-intro: Language-integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. See how Ballerina provides first-class support for writing queries that process data.
+intro: JSON and XML are native types. Query expressions turn one message format into another in a few readable lines.
 ---
 
 As of now, language-integrated queries are supported for iterator implementations such as an array, map, stream, and table. There are two kinds of integrated queries that can be written in Ballerina:
@@ -256,3 +256,32 @@ The `main` method is responsible for identifying the popular books according to 
    display:none !important;
 }**/
 </style>
+
+## Query expressions
+
+A query expression filters and maps values with SQL-like syntax and is checked by the compiler.
+
+```ballerina
+type Customer record {| string name; string email; boolean active; |};
+type Contact record {| string name; string email; |};
+
+function toContacts(Customer[] customers) returns Contact[] =>
+    from Customer c in customers
+    where c.active
+    select {name: c.name, email: c.email};
+```
+
+Shorter code also means fewer tokens when an AI agent writes or reads it.
+
+## Related
+
+- [Cloud native](/why-ballerina/cloud-native/)
+- [Graphical](/why-ballerina/graphical/)
+- [Flexibly typed](/why-ballerina/flexibly-typed/)
+- [Concurrent and durable](/why-ballerina/concurrent/)
+- [AI built in](/why-ballerina/ai-built-in/)
+
+## Learn more
+
+- [Ballerina by Example](https://ballerina.io/learn/by-example/)
+- [Language specification](https://ballerina.io/spec/lang/) [LINK: confirm specification URL]

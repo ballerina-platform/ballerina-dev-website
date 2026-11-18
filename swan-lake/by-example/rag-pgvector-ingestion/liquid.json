@@ -1,0 +1,18 @@
+{
+  "title": "Ingest into pgvector",
+  "description": "This BBE demonstrates how to ingest documents into the pgvector vector store for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "ingestion",
+    "vector store",
+    "pgvector",
+    "postgresql"
+  ],
+  "permalink": "/learn/by-example/rag-pgvector-ingestion/",
+  "active": "rag-pgvector-ingestion"
+}

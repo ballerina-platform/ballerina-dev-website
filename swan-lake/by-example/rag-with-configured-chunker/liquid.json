@@ -1,0 +1,17 @@
+{
+  "title": "Ingest with a configured chunker",
+  "description": "This BBE demonstrates how to ingest documents into a knowledge base with a configured chunker for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "ingestion",
+    "chunker",
+    "knowledge base"
+  ],
+  "permalink": "/learn/by-example/rag-with-configured-chunker/",
+  "active": "rag-with-configured-chunker"
+}

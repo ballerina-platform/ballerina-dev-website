@@ -1,0 +1,16 @@
+{
+  "title": "Implement a custom chunker",
+  "description": "This BBE demonstrates how to implement a custom chunker for retrieval-augmented generation (RAG).",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "ai",
+    "llm",
+    "rag",
+    "chunker",
+    "custom chunker"
+  ],
+  "permalink": "/learn/by-example/rag-with-custom-chunker/",
+  "active": "rag-with-custom-chunker"
+}

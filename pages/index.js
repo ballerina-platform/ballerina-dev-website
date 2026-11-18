@@ -23,11 +23,13 @@ import { Col, Row } from 'react-bootstrap';
 import Layout from '../layouts/LayoutHome';
 import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
-import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
+import IntegrationGap from '../components/home-page/integration-gap/IntegrationGap';
 import Integration from '../components/home-page/integration/Integration';
-import Users from '../components/home-page/users/Users';
-import Articles from '../components/home-page/articles/Articles';
+import BalForIntegration from '../components/home-page/bal-for-integration/BalForIntegration';
+import BalForAi from '../components/home-page/bal-for-ai/BalForAi';
+import AiCoding from '../components/home-page/ai-coding/AiCoding';
+import GetStarted from '../components/home-page/get-started/GetStarted';
 import styles from '../styles/Home.module.css';
 import EventsData from '../_data/events.json';
 
@@ -72,7 +74,10 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' });
+    // github-light's red and orange fall under 4.5:1 on the code background; darken them to pass.
+    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina', theme: 'github-light' })
+      .replace(/#D73A49/gi, '#CE3846')
+      .replace(/#E36209/gi, '#BA5007');
     codeSamples[sampleName] = content.replaceAll('```','');
   });
 
@@ -124,35 +129,44 @@ export default function Home({ samples, codeSamples }) {
           <Intro />
         </Row>
 
+        <Row className={styles.homeIntegrationGap}>
+          <IntegrationGap getLink={getLink} />
+        </Row>
+
         <Row className={styles.homeIntegration}>
           <Integration getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeBalAction}>
-          <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
+        <Row className={styles.homeBalForIntegration}>
+          <BalForIntegration getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeBalForAi}>
+          <BalForAi getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeAiCoding}>
+          <AiCoding getLink={getLink} />
         </Row>
 
         <Row className={styles.homeWhyBal}>
           <WhyBal getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeUsers}>
-          <Users getLink={getLink} />
+        <Row className={styles.homeBalAction}>
+          <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeArticles}>
-          <Articles getLink={getLink} />
-        </Row>
-
-        <Row className={styles.homeVideos}>
-          <Videos getLink={getLink} />
-        </Row>
         {
           upcomingEvents &&
           <Row className={styles.homeEvents}>
             <Events getLink={getLink} />
           </Row>
         }
+
+        <Row className={styles.homeGetStarted}>
+          <GetStarted />
+        </Row>
 
       </Col>
     </Layout>

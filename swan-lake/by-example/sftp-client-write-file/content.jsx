@@ -74,7 +74,7 @@ export function SftpClientWriteFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.1/examples/sftp-client-write-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.14.2/examples/sftp-client-write-file",
                 "_blank",
               );
             }}

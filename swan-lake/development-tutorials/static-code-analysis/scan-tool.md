@@ -69,9 +69,10 @@ View scan results at:
 
 The scan compiles and analyzes every `.bal` file in the package, prints the issues it finds, and saves them to
 `target/report/scan_results.json`. Only the issues are written to standard output, so `bal scan > issues.json` saves
-valid JSON. Everything else, such as progress messages, warnings, the issue summary, the report path, and anything
-printed by compiler plugins or platform plugins, is written to standard error. For every option the
-command accepts, see [Command syntax and options](/learn/scan-tool-configuration/#command-syntax-and-options).
+valid JSON, unless a platform plugin starts a process that inherits standard output and prints to it. Everything else,
+such as progress messages, warnings, the issue summary, the report path, and anything printed by compiler plugins or
+platform plugins, is written to standard error. For every option the command accepts, see
+[Command syntax and options](/learn/scan-tool-configuration/#command-syntax-and-options).
 
 The scan exits with code `0` even when it finds issues. To make it fail on findings, for example, to stop a CI
 pipeline on `HIGH` issues, see [Fail the scan on findings](/learn/scan-tool-configuration/#fail-the-scan-on-findings).
@@ -84,12 +85,11 @@ issues are left out of the printed results and counted separately in the summary
 
 - The saved report also contains the suppressed issues, each marked with a `suppressions` entry.
 - `--list-rules` prints its rule table to standard output.
-- A process started by a platform plugin writes to the streams directly, so a plugin that lets such a process inherit
-  standard output can still add to it.
-- When the scan fails before reporting, for example, on a compilation error, a missing `Dependencies.toml`, or an unmet
-  suppression requirement, no issues are printed and a redirected file can be empty. The exit code alone does not show
-  whether results were written: a tripped gate or a failed platform also exits with code `1`, but only after the
-  results are printed and saved. See [Exit codes](/learn/scan-tool-configuration/#exit-codes).
+- When the scan fails before reporting, for example, on a compilation error, a missing `Dependencies.toml`, an unmet
+  suppression requirement, or a platform that is not declared or cannot be loaded, no issues are printed and a
+  redirected file can be empty. The exit code alone does not show whether results were written: a tripped gate, or a
+  platform that fails while it receives the results, also exits with code `1`, but only after the results are printed
+  and saved. See [Exit codes](/learn/scan-tool-configuration/#exit-codes).
 
 ## Choose what to scan
 

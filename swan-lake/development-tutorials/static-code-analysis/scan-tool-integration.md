@@ -76,29 +76,30 @@ The Ballerina scan tool can be integrated with SonarQube to publish static code 
 enabling seamless integration into your CI/CD pipelines.
 
 This guide walks you through the process of configuring SonarQube and publishing Ballerina static code analysis reports.
+For more configuration options, see the [SonarQube Ballerina plugin README](https://github.com/ballerina-platform/sonar-ballerina#readme).
 
 ### Prerequisites
-- SonarQube 9.9 LTA Community Edition installed.
-- SonarScanner CLI 4.8.0 or later installed, and added to your system `PATH`.
+- SonarQube with Sonar Plugin API 13.4 or later installed. The plugin is tested on SonarQube Community Build 26.11.
+- SonarScanner CLI installed, and added to your system `PATH`.
 - [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146), and [SonarQube platform plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580149) downloaded.
 
 ### Configure the SonarQube server
 
-1. Install [Java 17](https://adoptium.net/en-gb/temurin/releases/?version=17) in your machine.
-    - If Java 17 is not the default Java installation, override it.
+1. Install [Java 21](https://adoptium.net/en-gb/temurin/releases/?version=21) in your machine.
+    - If Java 21 is not the default Java installation, override it.
 
       **For Unix/macOS:**
        ```
-       export SONAR_JAVA_PATH="path/to/java17_home/bin/java"
+       export SONAR_JAVA_PATH="path/to/java21_home/bin/java"
        ```
 
       **For Windows:**
        ```
-       setx SONAR_JAVA_PATH="path\to\java17_home\bin\java"
+       setx SONAR_JAVA_PATH "path\to\java21_home\bin\java"
        ```
 
-2. Set up SonarQube 9.9 LTA.
-    - Download SonarQube 9.9 LTA from [here](https://www.sonarsource.com/products/sonarqube/downloads/historical-downloads/).
+2. Set up SonarQube Community Build 26.11.
+    - Download SonarQube Community Build from [here](https://www.sonarsource.com/products/sonarqube/downloads/).
     - Extract the downloaded zip file.
 
 3. Add the [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146).
@@ -122,7 +123,7 @@ This guide walks you through the process of configuring SonarQube and publishing
         - Copy the generated token and store it securely, as it is not shown again. This token is also required when [publishing reports to SonarQube](#publish-reports-to-sonarqube).
 
 6. Install and configure SonarScanner CLI.
-    - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-server/9.9/analyzing-source-code/scanners/sonarscanner/).
+    - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-community-build/analyzing-source-code/scanners/sonarscanner/).
     - Add it to your system `PATH`.
     - Ensure `sonar.host.url` is set correctly (either via a properties file or CLI parameter).
 

@@ -957,9 +957,25 @@
                             "id": "scan-tool"
                         },
                         {
-                            "dirName": "Scan rules",
+                            "dirName": "Configure the scan tool",
                             "level": 3,
                             "position": 2,
+                            "isDir": false,
+                            "url": "/learn/scan-tool-configuration",
+                            "id": "scan-tool-configuration"
+                        },
+                        {
+                            "dirName": "Integrate the scan tool",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/scan-tool-integration",
+                            "id": "scan-tool-integration"
+                        },
+                        {
+                            "dirName": "Scan rules",
+                            "level": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/scan-rules",
                             "id": "scan-rules"
@@ -967,7 +983,7 @@
                         {
                             "dirName": "Language guarantees",
                             "level": 3,
-                            "position": 3,
+                            "position": 5,
                             "isDir": false,
                             "url": "/learn/language-guarantees",
                             "id": "language-guarantees"

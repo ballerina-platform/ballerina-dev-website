@@ -134,7 +134,6 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 6. Install and configure SonarScanner CLI.
     - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-community-build/analyzing-source-code/scanners/sonarscanner/).
     - Add it to your system `PATH`.
-    - Ensure `sonar.host.url` is set correctly.
 
 ### Configure the Ballerina project
 
@@ -144,9 +143,21 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
    ```properties
    sonar.projectKey=<your-project-key>
    sonar.projectName=<your-project-name>
+   sonar.host.url=<your-sonarqube-server-url>
    ```
 
-3. Create a `Scan.toml` at the root of your Ballerina project. Add additional SonarQube configurations by referencing the `sonar-project.properties` file.
+   Set `sonar.host.url` to the URL of your SonarQube server, such as `http://localhost:9000` for a local server.
+
+3. Create a `Scan.toml` at the root of your Ballerina project to declare the SonarQube platform.
+   ```toml
+   [[platform]]
+   name = "sonarqube"
+   path = "<path-to-sonar-platform-plugin>"
+   ```
+
+   SonarScanner reads the `sonar-project.properties` file from the directory where you run `bal scan`. If you run
+   `bal scan` from the project root, no further configuration is needed. Otherwise, or if the file is elsewhere, point
+   to it with `sonarProjectPropertiesPath`. A relative path is resolved against the directory where you run `bal scan`.
    ```toml
    [[platform]]
    name = "sonarqube"

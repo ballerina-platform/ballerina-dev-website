@@ -122,6 +122,10 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
    You can access the SonarQube dashboard at http://localhost:9000 once the server is up.
 
+   To verify that the Ballerina plugin is installed, navigate to `Policies` -> `Rules` and filter by the `Ballerina` language.
+
+   ![sonarqube-ballerina-rules](/learn/images/sonarqube-ballerina-rules.png)
+
 5. Create a new project in SonarQube.
     - Log in to the SonarQube dashboard.
     - Click on `Create Project` and choose whether to import the repository from a DevOps platform or create a local project manually.
@@ -195,14 +199,7 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
 The [Scan Ballerina](https://github.com/marketplace/actions/scan-ballerina) GitHub Action runs `bal scan` on every
 Ballerina package in a repository and sends the findings to GitHub code scanning, SonarQube, or any other platform that
-reads SARIF. It installs Ballerina and the scan tool, scans each package, and merges the reports into one SARIF 2.1.0
-file with paths relative to the repository root. Any file it changes during a scan, such as `Scan.toml`, is restored
-when that scan ends.
-
-> **Note:** `v0` is a pre-release that tracks the latest `v0.x.y` release. For reproducible runs, pin a release tag
-> whose `action.yml` declares the inputs used on this page, or a commit SHA, and set `ballerina-version` and
-> `tool-version`. Otherwise, a new scan tool release can change the rule IDs, severities, and findings that the rule
-> filters and the gate depend on.
+reads SARIF. It installs Ballerina and the scan tool, scans each package, and merges the reports into one SARIF file.
 
 ### Upload to GitHub code scanning
 
@@ -213,8 +210,6 @@ jobs:
     permissions:
       contents: read
       security-events: write
-      pull-requests: write # Only needed to comment on suppressions in pull requests
-      actions: read # Only needed in private repositories
     steps:
       - uses: actions/checkout@v4
       - uses: ballerina-platform/scan-ballerina@v0
@@ -222,23 +217,22 @@ jobs:
           platforms: github-code-scanning
 ```
 
-The findings appear as alerts under **Security and quality > Code scanning**, attributed to the Ballerina Scan Tool.
-In a pull request, code scanning comments on the lines that introduce new alerts.
+The findings appear as alerts under **Security and quality > Code scanning**.
 
 ### Publish to SonarQube
 
 The SonarQube server needs the [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina).
-The action installs the SonarScanner CLI and the scan tool's SonarQube platform plugin, and passes the server URL, token,
-and project key to the scan:
+The action installs the SonarScanner CLI and the SonarQube platform plugin, and passes the server URL, token, and
+project key to the scan:
 
 ```yaml
 permissions:
   contents: read
-  packages: read # The platform plugin is downloaded from GitHub Packages
+  packages: read
 steps:
   - uses: actions/checkout@v4
     with:
-      fetch-depth: 0 # SonarQube needs the history for blame and new code detection
+      fetch-depth: 0
   - uses: ballerina-platform/scan-ballerina@v0
     with:
       platforms: sonarqube
@@ -249,136 +243,9 @@ steps:
           project-key: my-project
 ```
 
-`platform-config` is a YAML mapping keyed by platform. Settings left out of it are read from the package's `Scan.toml`
-and `sonar-project.properties`. To scan several packages, give each one its own project key, and its own server and
-token if needed, under `packages`:
+### Learn more
 
-```yaml
-platform-config: |
-  sonarqube:
-    host-url: https://sonar.example.com
-    token: '${{ secrets.SONAR_TOKEN }}'
-    packages:
-      - path: services/orders
-        project-key: orders
-      - path: services/payments
-        host-url: https://sonar.payments.example.com
-        token: '${{ secrets.PAYMENTS_SONAR_TOKEN }}'
-        project-key: payments
-```
-
-- Put each `${{ }}` value in single quotes, since GitHub inserts it into the YAML text before the action parses it.
-- Every server URL must use `https`, and a `packages` item that sets `host-url` must also set `token`.
-- Workspaces are not supported with SonarQube yet. When `sonarqube` is selected, listing a workspace root or a directory
-  above it in `paths`, including the default `.`, fails the step. List the member package directories instead.
-  Workspaces are fully supported for the SARIF file.
-- The action caches the SonarScanner CLI and the analyzers it downloads, so later jobs and runs restore them instead of
-  downloading them again.
-
-See [SonarQube](https://github.com/ballerina-platform/scan-ballerina/blob/main/docs/sonarqube.md) for how each setting
-is resolved.
-
-### Use the SARIF file elsewhere
-
-With no `platforms`, the action only produces the merged SARIF file, which the `sarif-file` output points to. Pass it to
-any other tool:
-
-```yaml
-steps:
-  - uses: actions/checkout@v4
-  - id: scan
-    uses: ballerina-platform/scan-ballerina@v0
-  - run: ./upload-to-defectdojo.sh "${{ steps.scan.outputs.sarif-file }}"
-```
-
-To save it as a workflow artifact, set `artifacts: true`. Give each scan in a job its own `category`, since artifact
-names must be unique within a workflow run.
-
-### Fail the workflow on findings
-
-```yaml
-- uses: ballerina-platform/scan-ballerina@v0
-  with:
-    platforms: github-code-scanning
-    fail-on-severity: medium # Fail on MEDIUM or higher findings
-    fail-on-count: 5         # ...when there are five or more of them
-```
-
-`fail-on-severity` and `fail-on-count` work like the `bal scan` options of the same names (see
-[Fail the scan on findings](/learn/scan-tool-configuration/#fail-the-scan-on-findings)), but the action applies them to
-the findings of every scanned package together. The findings are uploaded before the gate is applied, so they reach the
-platforms even when the gate fails. The action turns off the `[gate]` of each package's `Scan.toml` with
-`--fail-on-severity=NONE`. `bal scan` warns about this only when the package sets `failOnSeverity` to a value other
-than `NONE`. A `[gate]` that sets only `failOnCount` is turned off without a warning.
-
-The gate counts every finding in the scanned packages, not only those a pull request introduces. To block only new
-findings, upload to code scanning and add a
-[code scanning merge protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#set-code-scanning-merge-protection)
-to a ruleset.
-
-### Suppressions in GitHub Actions
-
-The action applies [`@scan:Suppress` annotations](/learn/scan-tool-configuration/#suppress-issues) by default:
-
-- Suppressed findings are left out of the counts, the gate, and the annotations, and the `suppressed-count` output gives
-  their number. The SARIF file keeps them, each with a SARIF suppression, so the accepted risk stays auditable.
-  SonarQube receives only the findings that are not suppressed.
-- Code scanning ignores SARIF suppressions, so on the default branch, in `push`, `schedule`, and `workflow_dispatch`
-  runs, the action dismisses the alert of each suppressed finding as "won't fix", with the suppression's reason as the
-  comment. It reopens the alert once the suppression is removed or the finding is gone, so that code scanning sets it to
-  fixed. Alerts dismissed by hand for other reasons are left alone.
-- Other branches and events, including every pull request, leave the alerts as they are, so a finding that a pull
-  request newly suppresses is still a new alert until the merge.
-- In `pull_request` and `pull_request_target` runs, the action warns at each `@scan:Suppress` annotation the pull request
-  adds or removes. Unless `suppression-comments` is `false`, it also posts the suppression's reason as a review comment,
-  which needs `pull-requests: write`. `pull_request` runs for pull requests from forks and Dependabot have a read-only
-  token, so they skip the comments. `pull_request_target` runs have a write token, so they still post them. However, do not check out, scan, or run the
-  pull request's code in a `pull_request_target` run, since it would run with the base repository's secrets and the
-  write token. Scan pull requests in `pull_request` runs instead.
-
-To report every finding as if no suppression existed, for example, in an audit job, set `suppressions: false`. The
-action then passes `--ignore-suppressions` to `bal scan` and leaves the code scanning alerts as they are.
-`[suppression] enabled = false` in a package's `Scan.toml` still turns suppressions off for that package.
-
-See [In-source suppressions](https://github.com/ballerina-platform/scan-ballerina/blob/main/docs/suppressions.md) for
-how alerts are dismissed and reopened, and how pull requests are commented.
-
-### Inputs
-
-| Input | Default | Description |
-|---|---|---|
-| `platforms` | Empty | Comma-separated platforms to send the findings to: `github-code-scanning`, `sonarqube`. Empty produces the SARIF file only. |
-| `platform-config` | Empty | YAML mapping, keyed by platform, with the settings and credentials each selected platform needs. |
-| `paths` | `.` | Paths to scan. Every package and workspace in them, including their subdirectories, is scanned. |
-| `exclude-paths` | Empty | Globs, relative to the repository root, for the packages and files to leave out. An excluded package or workspace is not scanned, so it reaches no platform. A workspace is scanned as one unit, so excluding one of its member packages drops only the member's findings, and a member that fails to compile still fails the step. To scan only some members, list their directories in `paths` instead. Excluded files within a scanned package are dropped only from the SARIF file, the counts, and code scanning, so SonarQube still receives their findings. Use `sonar.exclusions` to leave them out of SonarQube too. |
-| `exclude-tests` | `true` | Leave the test sources out with `bal scan --exclude-tests`. `false` scans them. |
-| `include-rules`, `exclude-rules` | Empty | Comma-separated rule IDs to report or leave out. They cannot be combined. |
-| `fail-on-severity` | `none` | Fail when findings are at or above `low`, `medium`, or `high`. |
-| `fail-on-count` | `1` | Fail when this many findings, or more, are at or above `fail-on-severity`. |
-| `suppressions` | `true` | Apply the `@scan:Suppress` annotations. `false` reports every finding. |
-| `suppression-comments` | `true` | Comment on the suppressions a pull request adds or removes. |
-| `annotations` | `false` | Show each counted finding as a file and line annotation on the run. |
-| `job-summary` | `true` | Write the result and the counts by severity to the job summary. |
-| `artifacts` | `false` | Save the merged SARIF file as a workflow artifact. |
-| `category` | `bal-scan` | Name for this scan. Use a different one for each scan in a job. |
-| `ballerina-version` | Compatible | Ballerina version to install, or `latest`. Empty uses the Ballerina on the path if it can run the scan tool. When `tool-version` is also empty, the Ballerina on the path is used only if it is 2201.13.0 or later; otherwise, the latest is installed. |
-| `tool-version` | Latest compatible | Scan tool version, or `latest`. Empty uses the latest version compatible with the Ballerina version. |
-
-The action also sets the `result`, `sarif-file`, `high-count`, `medium-count`, `low-count`, `total-count`,
-`suppressed-count`, `packages-scanned`, and `uploads` outputs. To read them after the gate fails, use a later step with
-`if: always()`. See the [action's Marketplace page](https://github.com/marketplace/actions/scan-ballerina) for every
-input and output, the severity mapping, and the failure behavior.
-
-### Details
-
-- The action supports `bal scan` 0.13.0 and later, with Ballerina 2201.13.0 and later, and `bal scan` 0.11.1 and later
-  of 0.11.x, with Ballerina 2201.12.x. Scan tool versions 0.11.0 and 0.12.x do not support suppressions or
-  `--exclude-tests`, so the action rejects them before installing the scan tool.
-- Workspaces need Ballerina 2201.13.0 and `bal scan` 0.13.0 or later.
-- Unlike `bal scan`, the action leaves the test sources out by default. Its `exclude-tests` input overrides
-  `[analysis] excludeTests` in `Scan.toml`.
-- Commit `Dependencies.toml` with each package, or run `bal build` in an earlier step, since `bal scan` fails a package
-  without it. See [Dependency resolution](/learn/scan-tool/#dependency-resolution).
-- A `configPath` in `Ballerina.toml` that points to a remote `Scan.toml` must use `https`, since the scan tool loads the
-  platform plugin JARs that the file names.
-- Findings never fail the step unless `fail-on-severity` is set. Problems with the setup, the scan, or an upload do.
+The action can also fail the workflow on findings, apply `@scan:Suppress` annotations, and expose the merged SARIF file
+for other tools. See the [action's Marketplace page](https://github.com/marketplace/actions/scan-ballerina) for every
+input and output, multi-package SonarQube configuration, suppression handling, and supported Ballerina and scan tool
+versions.

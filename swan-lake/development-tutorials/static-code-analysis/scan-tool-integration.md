@@ -79,7 +79,7 @@ This guide walks you through the process of configuring SonarQube and publishing
 For more configuration options, see the [SonarQube Ballerina plugin README](https://github.com/ballerina-platform/sonar-ballerina#readme).
 
 ### Prerequisites
-- SonarQube with Sonar Plugin API 13.4 or later installed. The plugin is tested on SonarQube Community Build 26.11.
+- SonarQube Community Build 26.x or later. The plugin is tested on SonarQube Community Build 26.11.
 - SonarScanner CLI installed, and added to your system `PATH`.
 - [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146), and [SonarQube platform plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580149) downloaded.
 

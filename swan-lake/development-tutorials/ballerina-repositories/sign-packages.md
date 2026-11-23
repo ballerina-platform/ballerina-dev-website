@@ -10,26 +10,10 @@ intro: Signing is optional. You sign your package with cosign (Sigstore's tool),
 
 >**Info:** "Signed" means the package is exactly what the signer signed. It does not mean Ballerina Central vouches for the signer, so check that the signer shown is the one you expect.
 
-## How it works
-
-Every case below runs the same three commands.
-
-```
-$ bal pack
-$ cosign sign-blob ...
-$ bal push
-```
-
-How you run `cosign sign-blob` depends on where you run it.
-
-`cosign sign-blob` writes a signature file next to the package, `<package>.bala.sigstore.json`. `bal push` finds it and sends it to Ballerina Central with the package.
-
-The examples use the package `myorg-mypkg-any-1.0.0.bala`. Use the file name `bal pack` creates in `target/bala/`.
-
 ## Prerequisites
 
 - Ballerina [next release] or later. Earlier versions push the package without the signature file.
-- cosign 2.x. Newer cosign versions may not work with Ballerina Central yet.
+- cosign 2.4 or a later 2.x release. Newer major versions may not work with Ballerina Central yet.
     - On GitHub Actions, the `sigstore/cosign-installer` step installs it for you (see [Sign on GitHub Actions](#sign-on-github-actions)).
     - Anywhere else, follow the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a>.
 
@@ -85,7 +69,7 @@ GitHub proves to Sigstore which workflow is running, so you do not need a key.
 
           - uses: ballerina-platform/setup-ballerina@v1
             with:
-              version: 2201.14.1      # use an exact version, [next release] or later
+              version: "[next release]"      # an exact version, [next release] or later
 
           - uses: sigstore/cosign-installer@v3     # installs cosign
 
@@ -98,7 +82,7 @@ GitHub proves to Sigstore which workflow is running, so you do not need a key.
               BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_ACCESS_TOKEN }}
     ```
 
-    Change `myorg-mypkg-any-1.0.0.bala` to your package's file name (`<org>-<name>-<platform>-<version>.bala`). The `--yes` flag skips cosign's confirmation prompt, since nobody is there to answer it.
+    Change `myorg-mypkg-any-1.0.0.bala` to your package's file name, as `bal pack` creates it in `target/bala/` (`<org>-<name>-<platform>-<version>.bala`). The `--yes` flag skips cosign's confirmation prompt, since nobody is there to answer it.
 
     >**Tip:** If you already have a release workflow, add the `id-token: write` permission, the `cosign-installer` step, and the `cosign sign-blob` line between `bal pack` and `bal push`.
 
@@ -118,7 +102,7 @@ GitLab.com proves to Sigstore which pipeline is running, so you do not need a ke
         aud: sigstore
     ```
 
-2. Install cosign 2.x in the job. Follow the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a>.
+2. Install cosign 2.4 or a later 2.x release in the job. Follow the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a>.
 
 3. In the job's script, build, sign, and push the package.
 
@@ -170,11 +154,11 @@ Ballerina Central shows the key's fingerprint (`SHA256:…`) as the signer.
 If you signed on GitHub Actions, execute the command below.
 
 ```
-$ cosign verify-blob --bundle target/bala/myorg-mypkg-any-1.0.0.bala.sigstore.json --certificate-oidc-issuer https://token.actions.githubusercontent.com --certificate-identity https://github.com/myorg/mypkg/.github/workflows/release.yml@refs/heads/main target/bala/myorg-mypkg-any-1.0.0.bala
+$ cosign verify-blob --new-bundle-format --bundle target/bala/myorg-mypkg-any-1.0.0.bala.sigstore.json --certificate-oidc-issuer https://token.actions.githubusercontent.com --certificate-identity https://github.com/myorg/mypkg/.github/workflows/release.yml@refs/heads/main target/bala/myorg-mypkg-any-1.0.0.bala
 ```
 
 If you signed with a key, execute the command below.
 
 ```
-$ cosign verify-blob --bundle target/bala/myorg-mypkg-any-1.0.0.bala.sigstore.json --key cosign.pub target/bala/myorg-mypkg-any-1.0.0.bala
+$ cosign verify-blob --new-bundle-format --bundle target/bala/myorg-mypkg-any-1.0.0.bala.sigstore.json --key cosign.pub target/bala/myorg-mypkg-any-1.0.0.bala
 ```

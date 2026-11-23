@@ -95,8 +95,10 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
       **For Windows:**
        ```
-       setx SONAR_JAVA_PATH "path\to\java21_home\bin\java"
+       setx SONAR_JAVA_PATH "path\to\java21_home\bin\java.exe"
        ```
+
+       `setx` does not update the current command window. Open a new command window before you start the SonarQube server.
 
 2. Set up SonarQube Community Build 26.11.
     - Download SonarQube Community Build from [here](https://www.sonarsource.com/products/sonarqube/downloads/).

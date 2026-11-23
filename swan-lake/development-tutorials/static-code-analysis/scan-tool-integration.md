@@ -107,15 +107,22 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
     - Place the JAR file into the `extensions/plugins/` directory of your SonarQube installation.
 
 4. Navigate to the appropriate `bin/<OS>/` directory and run the SonarQube server.
-   ```
-   $ ./sonar.sh start
-   ```
+
+   **For Unix/macOS** (`bin/linux-x86-64/` or `bin/macosx-universal-64/`):
+    ```
+    $ ./sonar.sh start
+    ```
+
+   **For Windows** (`bin\windows-x86-64\`):
+    ```
+    > StartSonar.bat
+    ```
 
    You can access the SonarQube dashboard at http://localhost:9000 once the server is up.
 
 5. Create a new project in SonarQube.
     - Log in to the SonarQube dashboard.
-    - Click on `Create Project`.
+    - Click on `Create Project` and choose whether to import the repository from a DevOps platform or create a local project manually.
     - Follow the prompts to set up your project. Note the project key you provide, as it is required when [configuring the Ballerina project](#configure-the-ballerina-project).
     - When prompted to provide a token, generate a token as follows and use it in the prompt.
         - Navigate to `My Account` -> `Security` in the SonarQube UI.
@@ -125,7 +132,7 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 6. Install and configure SonarScanner CLI.
     - Download SonarScanner CLI from [here](https://docs.sonarsource.com/sonarqube-community-build/analyzing-source-code/scanners/sonarscanner/).
     - Add it to your system `PATH`.
-    - Ensure `sonar.host.url` is set correctly (either via a properties file or CLI parameter).
+    - Ensure `sonar.host.url` is set correctly.
 
 ### Configure the Ballerina project
 
@@ -147,7 +154,7 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
 ### Publish reports to SonarQube
 
-1. Link a Ballerina source repository to the SonarQube server from a DevOps platform or manually.
+1. Make sure you have completed the steps in [Configure the SonarQube server](#configure-the-sonarqube-server) and [Configure the Ballerina project](#configure-the-ballerina-project), which link your Ballerina source repository to the SonarQube server.
 
 2. Authenticate using a token.
     - Set the token generated when [creating the SonarQube project](#configure-the-sonarqube-server) as an environment variable.

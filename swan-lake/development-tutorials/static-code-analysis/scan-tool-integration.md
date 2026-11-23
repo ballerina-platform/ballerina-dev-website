@@ -38,7 +38,7 @@ Results are reported only to the platforms named in `--platforms`, and `--platfo
 in `Scan.toml`. The named platforms run one after another. If a platform plugin fails with an error, the scan lists
 every failure and exits with code `1`.
 
-### The `[[platform]]` entry
+### Platform entry fields
 
 - Each entry needs both a `name` and a `path`, and an entry missing either is ignored.
 - The `name` must match the name of a plugin that the JAR provides, such as `sonarqube`. Otherwise, naming that
@@ -80,7 +80,7 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
 ### Prerequisites
 - SonarQube Community Build 26.x or later. The plugin is tested on SonarQube Community Build 26.11.
-- SonarScanner CLI installed, and added to your system `PATH`.
+- SonarScanner CLI 4.8.0 or later installed, and added to your system `PATH`.
 - [SonarQube Ballerina plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580146), and [SonarQube platform plugin](https://github.com/ballerina-platform/sonar-ballerina/packages/2580149) downloaded.
 
 ### Configure the SonarQube server
@@ -117,7 +117,7 @@ For more configuration options, see the [SonarQube Ballerina plugin README](http
 
    **For Windows** (`bin\windows-x86-64\`):
     ```
-    > StartSonar.bat
+    $ StartSonar.bat
     ```
 
    You can access the SonarQube dashboard at http://localhost:9000 once the server is up.

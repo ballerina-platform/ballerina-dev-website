@@ -269,6 +269,8 @@ point to a source location, such as an unmatched suppression. Warnings never cha
 - A count does not turn on a gate that `NONE` turns off. When the severity is `NONE`, from either the command line or
   `Scan.toml`, `--fail-on-count` is ignored with a warning, and a `failOnCount` in `Scan.toml` is ignored silently.
 - The gate counts the issues left after rule selection and suppressions.
+- A rule without a severity, such as some plugin rules, is counted by its kind: `BUG` as `HIGH`, `VULNERABILITY` as
+  `MEDIUM`, and `CODE_SMELL` as `LOW`.
 - The gate runs after the reports are written, so a failing scan still leaves a full report.
 - An error always takes precedence over a tripped gate, so the gate is not checked when a platform fails.
 - In a workspace, each package is checked against its own gate with the issues of that package only, whether the gate
@@ -285,8 +287,8 @@ specified in its `Ballerina.toml`:
 configPath = "path/to/Scan.toml"
 ```
 
-`Scan.toml` is only read for Ballerina packages and workspaces. A sample `Scan.toml` that shows every table. The values
-are examples: replace the placeholders and keep only the settings you need.
+`Scan.toml` is only read for Ballerina packages and workspaces. The following sample `Scan.toml` shows every table. The
+values are examples: replace the placeholders and keep only the settings you need.
 
 ```toml
 # Rules to include or exclude; combined with --include-rules/--exclude-rules

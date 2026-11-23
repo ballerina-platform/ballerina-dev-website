@@ -128,8 +128,9 @@ the scan resolves them itself. See [Settings only in Scan.toml](/learn/scan-tool
 
 ## Generate reports
 
-Every scan of a package or workspace saves its results to the `report` folder of the target directory, which is
-`target/report` by default.
+Every `bal scan` run on a package or workspace saves its results to the `report` folder of the target directory, which
+is `target/report` by default. When a platform runs the scan itself, such as SonarQube during a SonarScanner analysis,
+the results are not saved there. See [Platform integration](/learn/scan-tool-integration/#details).
 
 ### Report formats
 

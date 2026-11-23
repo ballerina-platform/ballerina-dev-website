@@ -15,7 +15,7 @@ intro: Signing is optional. You sign your package with cosign (Sigstore's tool),
 - Ballerina [next release] or later. Earlier versions push the package without the signature file.
 - cosign 2.4 or a later 2.x release. Newer major versions may not work with Ballerina Central yet.
     - On GitHub Actions, the `sigstore/cosign-installer` step installs it for you (see [Sign on GitHub Actions](#sign-on-github-actions)).
-    - Anywhere else, follow the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a>.
+    - Anywhere else, download a 2.x release, for example v2.4.1, from the <a href="https://github.com/sigstore/cosign/releases/tag/v2.4.1" target="_blank">cosign releases page</a>, or run `go install github.com/sigstore/cosign/v2/cmd/cosign@v2.4.1`. The commands in the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a> install the latest version, which may be 3.x.
 
 ## Sign on your local machine
 
@@ -72,6 +72,8 @@ GitHub proves to Sigstore which workflow is running, so you do not need a key.
               version: "[next release]"      # an exact version, [next release] or later
 
           - uses: sigstore/cosign-installer@v3     # installs cosign
+            with:
+              cosign-release: v2.4.1
 
           - name: Build, sign and push
             run: |
@@ -102,7 +104,12 @@ GitLab.com proves to Sigstore which pipeline is running, so you do not need a ke
         aud: sigstore
     ```
 
-2. Install cosign 2.4 or a later 2.x release in the job. Follow the <a href="https://docs.sigstore.dev/cosign/system_config/installation/" target="_blank">Sigstore installation guide</a>.
+2. Install cosign 2.4 or a later 2.x release in the job, for example v2.4.1.
+
+    ```
+    curl -sSL -o /usr/local/bin/cosign https://github.com/sigstore/cosign/releases/download/v2.4.1/cosign-linux-amd64
+    chmod +x /usr/local/bin/cosign
+    ```
 
 3. In the job's script, build, sign, and push the package.
 

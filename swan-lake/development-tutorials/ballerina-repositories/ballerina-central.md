@@ -99,6 +99,8 @@ Now, that you are ready to publish, execute the command below to publish the pac
 $ bal push
 ```
 
+>**Info:** You can optionally sign the package with Sigstore before you push it. For more information, see [Sign packages](/learn/sign-packages/).
+
 ### Publish a new version of a package
 If you require adding new features/improvements/fixes to a package, which you have already published to Ballerina central, you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
 

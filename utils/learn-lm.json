@@ -871,9 +871,17 @@
                             "id": "ballerina-central"
                         },
                         {
-                            "dirName": "Custom Repositories",
+                            "dirName": "Sign packages",
                             "level": 3,
                             "position": 2,
+                            "isDir": false,
+                            "url": "/learn/sign-packages",
+                            "id": "sign-packages"
+                        },
+                        {
+                            "dirName": "Custom Repositories",
+                            "level": 3,
+                            "position": 3,
                             "isDir": true,
                             "url": "/learn/custom-repositories",
                             "id": "custom-repositories",
@@ -907,7 +915,7 @@
                         {
                             "dirName": "Configure a network proxy",
                             "level": 3,
-                            "position": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/configure-a-network-proxy",
                             "id": "configure-a-network-proxy"

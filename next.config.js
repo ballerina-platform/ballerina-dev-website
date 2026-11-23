@@ -373,6 +373,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/ballerina-central`,
       },
       {
+        source: `/${redirectBase}learn/sign-packages`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/sign-packages`,
+      },
+      {
         source: `/${redirectBase}learn/configure-a-network-proxy`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-repositories/configure-a-network-proxy`,
       },

@@ -33,18 +33,19 @@ const REPO = 'ballerina-nutcracker/ballerina';
 // Refresh this at each release — it is what visitors see if the API is down or
 // rate-limited during a build. `size` matters: without it the download buttons
 // render with no file size, unlike the live path.
-const FALLBACK_TAG = 'v0.6.0';
+const FALLBACK_TAG = 'v0.7.0';
 const FALLBACK_RELEASE = {
   tag: FALLBACK_TAG,
   name: FALLBACK_TAG,
-  publishedAt: '2026-08-05T08:34:08Z',
+  publishedAt: '2026-11-21T17:52:01Z',
   htmlUrl: `https://github.com/${REPO}/releases/tag/${FALLBACK_TAG}`,
   assets: [
-    ['darwin-amd64', 28501452],
-    ['darwin-arm64', 27875033],
-    ['linux-amd64', 28364579],
-    ['linux-arm64', 27501499],
-    ['windows-amd64', 28605559],
+    ['darwin-amd64', 51618342],
+    ['darwin-arm64', 50332728],
+    ['linux-amd64', 51297301],
+    ['linux-arm64', 49617210],
+    ['windows-amd64', 51694114],
+    ['windows-arm64', 49783666],
   ].map(([platform, size]) => {
     const name = `ballerina-nutcracker-${platform}-${FALLBACK_TAG.slice(1)}.zip`;
     return { name, size, url: `https://github.com/${REPO}/releases/download/${FALLBACK_TAG}/${name}` };

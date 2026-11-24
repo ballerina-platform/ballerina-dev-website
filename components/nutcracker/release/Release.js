@@ -183,7 +183,7 @@ export default function Release({ release, repo }) {
                 and it won&rsquo;t affect an existing <code>bal</code> (e.g. Swan Lake) on your <code>PATH</code>:
               </p>
               <pre className={styles.codeBlock}>{`# macOS / Linux — the zip extracts a ballerina-<version>/ folder
-unzip ballerina-bal-*.zip
+unzip ballerina-nutcracker-*.zip
 
 # Run it by path — no PATH changes, works alongside Swan Lake
 ./ballerina-*/bal run hello.bal`}</pre>

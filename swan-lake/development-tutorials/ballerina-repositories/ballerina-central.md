@@ -95,6 +95,8 @@ You can also choose who will have access to the package you are publishing by [s
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
+>**Info:** You can optionally sign the package with Sigstore before you push it. For more information, see [Sign packages](/learn/sign-packages/).
+
 ```
 $ bal push
 ```

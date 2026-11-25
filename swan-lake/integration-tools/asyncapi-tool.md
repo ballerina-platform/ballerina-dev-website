@@ -28,7 +28,7 @@ The input decides what the tool generates:
 
 | Input | Output |
 |-------|--------|
-| A webhook AsyncAPI definition, with `x-ballerina-event-identifier` | A webhook listener that verifies each request and calls a remote function for each event |
+| A webhook AsyncAPI definition, with `x-ballerina-event-identifier` | A webhook listener that calls a remote function for each event. With `x-ballerina-auth`, it also verifies each request and rejects the ones that fail with `401`. |
 | A WebSocket AsyncAPI definition, with a `ws` or `wss` server | A WebSocket client for each channel |
 | A Ballerina package directory or a standalone `.bal` file | An AsyncAPI definition of its WebSocket services |
 
@@ -121,7 +121,7 @@ This generates the following files.
 1. `types.bal` - contains the Ballerina data types of the event payloads and the listener configuration
 2. `service_types.bal` - contains a service type for each channel, with a remote function for each event
 3. `listener.bal` - contains the HTTP listener that receives the events
-4. `dispatcher_service.bal` - contains the logic that verifies each request and calls the remote function of its event
+4. `dispatcher_service.bal` - contains the logic that calls the remote function of each event, after verifying the request when the definition has `x-ballerina-auth`
 5. `lib/asyncapi-trigger-compiler-plugin.jar` and `CompilerPlugin.toml` - a compiler plugin that lists the listener's endpoints when the package is built with `bal build --export-endpoints`
 
 If a file already exists with different content, the tool asks before replacing it. Add `--force` to replace files without asking, or `--dry-run` to list what it would write.
@@ -166,7 +166,7 @@ $ curl -X POST http://localhost:8090 -H "Content-Type: application/json" -H "X-S
 
 The listener calls `onOrderCreated`, which logs the order. A request with a wrong signature, or none, gets `401`.
 
-To generate tests that send a signed sample of each event to the listener, add `--with-tests`. Each test reads its payload from `tests/resources/trigger_payloads/<event type>.json`.
+To generate tests that send a signed sample of each event to the listener, add `--with-tests`. Each test reads its payload from `tests/resources/trigger_payloads/<event type>.json`. The tests are signed, so they need `x-ballerina-auth` in the definition; without it, the tool warns and writes no tests.
 
 Below are some triggers generated using the tool.
 
@@ -310,6 +310,8 @@ The tool generates an AsyncAPI 3.0 definition of the WebSocket services in a pac
 $ bal asyncapi service.bal
 ```
 
+Here `service.bal` is a standalone file. For services in a package, pass the package directory instead, such as `bal asyncapi .`, as a `.bal` file that belongs to a package is not accepted. The tool compiles the package with the dependency versions in its `Dependencies.toml`, so run `bal build` once first if the package doesn't have one.
+
 This writes the definition to a file named after the base path of the service, such as `chat_asyncapi.yaml`. To export one service, add `--service /chat`. To write JSON, add `--spec-format json`.
 
 ## Command options
@@ -322,7 +324,7 @@ This writes the definition to a file named after the base path of the service, s
 | `-n, --dry-run` | Lists the files the tool would write, without writing anything. |
 | `--module <name>` | Generates code into, or reads services from, this module of the package. |
 | `--license <file>` | Adds the license header in this file to the generated `.bal` files. |
-| `--with-tests` | Generates tests along with the code. |
+| `--with-tests` | Generates tests along with the code. For a webhook listener, the definition needs `x-ballerina-auth`; without it, the tool warns and writes no tests. |
 | `--spec-side <client\|service>` | Reads a WebSocket definition as written from the client's or the server's side. Defaults to `client`. |
 | `--service <path>` | Generates the definition of this service only. |
 | `--spec-format <yaml\|json>` | The format of the generated definition. Defaults to `yaml`. |

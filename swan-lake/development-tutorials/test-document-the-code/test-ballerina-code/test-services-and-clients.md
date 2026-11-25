@@ -103,10 +103,8 @@ public function testGetRandomJoke() returns error? {
 
     test:prepare(clientEndpoint).whenResource("::path").withPathParameters({path: ["random"]}).onMethod("get").thenReturn(getMockResponse());
 
-    http:Response result = check clientEndpoint->/random;
-    json payload = check result.getJsonPayload();
-
-    test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
+    string result = check getRandomJoke("Alex");
+    test:assertEquals(result, "When Alex wants an egg, he cracks open a chicken.");
 }
 
 function getMockResponse() returns http:Response {

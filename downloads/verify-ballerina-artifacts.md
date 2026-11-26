@@ -66,7 +66,7 @@ Follow the steps below to send an API call to Rekor to retrieve and verify the d
     
 4. Assign the UUID returned by the above API call to a variable  as shown below.
 
-    > **Tip:** Replace the `<UUID_VALUE>` in the below exmaple with the UUID value you recieved 
+    > **Tip:** Replace the `<UUID_VALUE>` in the below example with the UUID value you received 
 
     ```
     $ UUID=<UUID_VALUE>

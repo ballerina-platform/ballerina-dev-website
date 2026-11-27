@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-- name: General Question
-  url: https://stackoverflow.com/questions/tagged/ballerina
-  about: "If you have a question then please ask on Stack Overflow using the #ballerina tag."
-- name: Chat on Ballerina Discord Channel
-  url: https://discord.gg/ballerinalang
-  about: "Chat about anything else with the community."
+  - name: Ballerina Community Forum
+    url: https://ballerina.io/community/
+    about: Ask questions and get help from the Ballerina community.
+  - name: Ballerina Discord
+    url: https://discord.gg/ballerinalang
+    about: Join the Ballerina Discord server for real-time discussions.
+  - name: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/ballerina
+    about: Search or ask questions using the ballerina tag.
